@@ -1,0 +1,22 @@
+<div ng-controller="tagsCtrl">
+    <div class="top-btncase">
+        <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+        <h1>Edit</h1><h2>Tags</h2>
+    </div>
+    <div class="formcase-border">
+        <input type="text" ng-model="tags.search" placeholder="e.g., company, soccer, big salad">
+        <label>Search</label>
+    </div>
+    <ul>
+        <li class="tag-list" ng-repeat="tag in tags.tags | filter:tags.search">
+            <a ng-click="tags.selectedTag=tag;tags.newTag=tag;">{{tag}}</a>
+            <div ng-show="tags.selectedTag">
+                <div ng-if="tags.selectedTag==tag">
+                    <input value="text" type="text" ng-model="tags.newTag">
+                    <button class="error-button" ng-click="deleteTag()">delete</button>
+                    <button class="success-button" ng-click="updateTag()">update</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

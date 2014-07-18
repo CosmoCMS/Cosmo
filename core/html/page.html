@@ -1,0 +1,51 @@
+<div ng-controller="pageCtrl">
+    <div class="new-version" ng-show="newerVersion">
+        <p>There's a newer version of this document you didn't save. Would you like to use that instead?</p>
+        <div class="btn-case">
+            <button class="error-button" type="button" ng-click="deleteNewerVersion()">discard</button>
+            <button class="options-button" type="button" ng-click='localVersion()'>compare</button>
+            <button class="success-button" type="button" ng-click='localVersion()'>use</button>
+        </div>
+    </div>
+    <div>
+        <div class="top-btncase">
+            <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+            <h1>Page</h1><h2>Details:</h2>
+        </div>
+
+        <div class="formcase">
+            <input  type="radio" id="Y" value="Y" ng-modal="page.publish">
+            <label for="Y" ng-click="page.publish='Y'">Publish</label>
+            <input  type="radio" id="N" value="N" ng-modal="page.publish">
+            <label for="N" ng-click="page.publish='N'">Draft</label>
+            <input  type="radio" id="schedule" value="schedule" ng-modal="page.publish">
+            <label for="schedule" ng-click="page.publish='schedule'">Schedule</label>
+            <div class="schedule-triangle" ng-show="page.publish=='schedule'"></div>
+            <datepicker class="schedule radio-inline" ng-model="page.scheduleDate" ng-show="page.publish=='schedule'"></datepicker>
+            <div class="cos-select">
+                <select value="type" ng-change="updatePageType()" ng-model="page.type" ng-options="(themePage.name | themeFiles ) for themePage in page.themePages" required></select>
+            </div>
+            <label for="type">Type</label>
+            <input type='text' ng-model="page.title" ng-keyup="titleChange()" placeholder="about us, contact us">
+            <label>Title</label> <span class="num-count">{{page.title.length}}</span>
+            <textarea value="description" ng-model="page.description" ng-keyup="descriptionChange()" placeholder="Tom's Restaurant is a diner located at 2880 Broadway (on the corner of 112th Street) in the Morningside Heights neighborhood of Manhattan in New York City."></textarea>
+            <label for="description">Description</label> <span class="num-count">{{page.description.length}}</span>
+            <input value="tags" type="text" ng-list ng-model="page.tags" ng-change="autocompleteTags()" placeholder="about, restaurant, food, nyc">
+            <div class="tag-suggestions-triangle" ng-show="page.suggestions"></div>
+            <div class="tag-suggestions" ng-show="page.suggestions">
+                <div ng-repeat="tag in page.suggestions | limitTo:10">
+                    <a ng-click="selectSuggestion(tag)">{{tag | titlecase}}</a>
+                </div>
+            </div>
+            <label for="tags">Tags</label>
+            <input value="url" type='text' ng-model='page.url' ng-keyup="autoURL=false;urlChange()">
+            <label for="url">URL</label>
+	</div>
+
+        <div class="btn-case-btm">
+            <button type="button" class="error-button" ng-click="deletePage()">delete</button>
+            <button type="button" class="options-button" ng-click="savePage(true)">duplicate</button>
+            <button type="button" class="success-button" ng-click="savePage()">save</button>
+        </div>
+    </div>
+</div>

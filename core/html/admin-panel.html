@@ -1,0 +1,13 @@
+<div ng-controller="adminPanelCtrl">
+    <div class="cosmo-default">
+        <a class="hamburger" ng-class="{hamburgeractive: active}" ng-click="showAdminPanel=!showAdminPanel;active=!active;">
+            <i class="fa fa-bars inactive"></i>
+            <i class="fa fa-times active"></i>
+        </a>
+        <div class="cosmosidebar fade" ng-class="{adminSidebarSlideOut:showAdminPanel}">
+            <div class="fade" ng-include="admin.sidebar"></div>
+        </div>
+    </div>
+</div>
+
+<div modal></div>

@@ -1,0 +1,15 @@
+<ul ng-model="list">
+    <li ng-repeat="item in list track by $index">
+        <a ng-href="{{item.url}}">{{item.title}}</a>
+        <ul>
+            <li ng-repeat="subItem in item.items track by $index">
+                <a ng-href="{{subItem.url}}">{{subItem.title}}</a>
+                <ul>
+                    <li ng-repeat="subItem1 in subItem.items track by $index">
+                        <a ng-href="{{subItem1.url}}">{{subItem1.title}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>

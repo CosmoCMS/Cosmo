@@ -1,0 +1,27 @@
+<div ng-controller="settingsCtrl">
+    <div class="top-btncase">
+        <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+        <h1>Site</h1><h2>Settings</h2>
+    </div>
+    <div class="formcase">
+        <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
+        <label for="sitename">Site Name</label>
+
+        <input value="slogan" type='textarea' ng-model='settings.slogan' placeholder="e.g., Pretzels are make me thirsty">
+        <label for="slogan">Slogan</label>
+
+        <input value="logo" type='text' ng-model='settings.logo'>
+        <label for="logo">Logo</label>
+
+        <input value="email" type='text' ng-model='settings.email' placeholder="info@builtwithcosmo.com">
+        <label for="email">Email</label>
+
+        <input value="maintenance" type='text' ng-model='settings.maintenanceURL' placeholder="/maintenance">
+        <label for="maintenance">Maintenance URL</label>
+
+        <input type='checkbox' id="maintenance" ng-model='settings.maintenanceMode'>
+        <label for="maintenance">Activate Maintenance Mode</label>
+
+        <button class="success-button" ng-click='changeSettings()'>save</button>
+    </div>
+</div>

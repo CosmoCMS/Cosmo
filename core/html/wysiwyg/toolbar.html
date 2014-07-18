@@ -1,0 +1,120 @@
+<div class="cosmo-toolbar-large" ng-show="editor.showToolbar">
+    <ul>
+        <li>
+            <button ng-mouseenter="format=true" ng-mouseleave="format=false">
+                <i class="fa fa-font"></i>
+            </button>
+        </li>
+        <li>
+            <button ng-mouseenter="style=true" ng-mouseleave="style=false">
+                <i class="fa fa-bold"></i>
+            </button>
+        </li>
+        <li>
+            <button ng-click="openModal('link')">
+                <i class="fa fa-link"></i>
+            </button>
+        </li>
+        <li>
+            <button ng-click="action('unlink')">
+                <i class="fa fa-chain-broken"></i>
+            </button>
+        </li>
+        <li>
+            <button ng-click="action('ol')">
+                <i class="fa fa-list-ol"></i>
+            </button>
+        </li>
+        <li>
+            <button ng-click="action('ul')">
+                <i class="fa fa-list-ul"></i>
+            </button>
+        </li>
+        <li>
+            <button ng-click="action('hr')">
+                <i class="fa fa-minus"></i>
+            </button>
+        </li>
+        <li class="indent">
+            <button ng-click="action('indent')">
+                <i class="fa fa-indent"></i>
+            </button>
+        </li>
+        <li class="outdent">
+            <button ng-click="action('outdent')">
+                <i class="fa fa-outdent"></i>
+            </button>
+        </li>
+        <li>
+            <button ng-mouseenter="align=true" ng-mouseleave="align=false">
+                <i class="fa fa-align-left fa-flip-vertical text-alignment"></i>
+            </button>
+        </li>
+        <li class="table">
+            <button ng-mouseenter="table=true" ng-mouseleave="table=false">
+                <i class="fa fa-table"></i>
+            </button>
+        </li>
+        <li class="media">
+            <button ng-mouseenter="media=true" ng-mouseleave="media=false">
+                <i class="fa fa-camera-retro"></i>
+            </button>
+        </li>
+        <li>
+            <button ng-click="action('toggle')">
+                <i class="fa fa-code"></i>
+            </button>
+        </li>
+    </ul>
+
+    <div class="type-dropdown" ng-show="format" ng-mouseenter="format=true" ng-mouseleave="format=false">
+        <button class="wysiwyg-p" ng-click="action('p')">Paragraph text</button>
+        <button class="wysiwyg-u" ng-click="action('unformat')">Unformatted Text</button>
+        <button class="wysiwyg-q" ng-click="action('unformat')">&#147;Quote&#148;</button>
+        <button class="wysiwyg-c" ng-click="action('unformat')">code</button>
+        <button class="wysiwyg-h1" ng-click="action('h1')">Header1</button>
+        <button class="wysiwyg-h2" ng-click="action('h2')">Header2</button>
+        <button class="wysiwyg-h3" ng-click="action('h3')">Header3</button>
+        <button class="wysiwyg-h4" ng-click="action('h4')">Header4</button>
+        <button class="wysiwyg-h5" ng-click="action('h5')">Header5</button>
+        <button class="wysiwyg-h6" ng-click="action('h6')">Header6</button>
+    </div>
+    <div class="format-dropdown" ng-show="style" ng-mouseenter="style=true" ng-mouseleave="style=false">
+        <button ng-click="action('bold')">
+            <i class="fa fa-bold"></i>Bold
+        </button>
+        <button ng-click="action('italic')">
+            <i class="fa fa-italic"></i>Italicize
+        </button>
+        <button ng-click="action('strikethrough')">
+            <i class="fa fa-strikethrough"></i>Strikethrough
+        </button>
+        <button ng-click="action('underline')">
+            <i class="fa fa-underline"></i>Underline
+        </button>
+    </div>
+    <div class="align-dropdown" ng-show="align" ng-mouseenter="align=true" ng-mouseleave="align=false">
+        <button ng-click="action('left')"><i class="fa fa-align-left"></i>Align Left</button>
+        <button ng-click="action('center')"><i class="fa fa-align-center"></i>Align Center</button>
+        <button ng-click="action('right')"><i class="fa fa-align-right"></i>Align Right</button>
+        <button ng-click="action('justify')"><i class="fa fa-align-justify"></i>Justify Text</button>
+    </div>
+    <div class="table-dropdown" ng-show="table" ng-mouseenter="table=true" ng-mouseleave="table=false">
+        <button class="divide" ng-click="openModal('table')"><i class="fa fa-table"></i>Insert Table</button>
+        <button ng-click="action('addTableHeader')"><i class="fa fa-plus"></i>Table Head</button>
+        <button class="divide" ng-click="action('removeTableHeader')"><i class="fa fa-minus"></i>Table Head</button>
+        <button ng-click="action('addRowAbove')"><i class="fa fa-plus"></i>Row Above</button>
+        <button ng-click="action('addRowBelow')"><i class="fa fa-plus"></i>Row Below</button>
+        <button class="divide" ng-click="action('deleteRow')"><i class="fa fa-minus"></i>Row</button>
+        <button ng-click="action('addColLeft')"><i class="fa fa-plus"></i>Column Left</button>
+        <button ng-click="action('addColRight')"><i class="fa fa-plus"></i>Column Right</button>
+        <button class="divide" ng-click="action('deleteCol')"><i class="fa fa-minus"></i>Column</button>
+        <button ng-click="action('deleteTable')"><i class="fa fa-minus"></i>Table</button>
+    </div>
+    <div class="media-dropdown" ng-show="media" ng-mouseenter="media=true" ng-mouseleave="media=false">
+        <button ng-click="action('photo')"><i class="fa fa-picture-o"></i>Insert Photo</button>
+        <button ng-click="action('video')"><i class="fa fa-video-camera"></i>Insert Video</button>
+        <button ng-click="action('audio')"><i class="fa fa-volume-up"></i>Insert Audio</button>
+        <button ng-click="action('gallery')"><i class="fa fa-camera"></i>Insert Gallery</button>
+    </div>
+</div>
