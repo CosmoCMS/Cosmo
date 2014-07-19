@@ -5,11 +5,17 @@
             <h1>Register</h1><h2>For Cosmo</h2>
         </div>
         <div class="formcase">
-            <input placeholder="username" id="username" type="text" ng-model="register.username" class="ng-valid ng-dirty">
-            <input placeholder="email address" id="email" type="email" ng-model="register.email" class="ng-valid ng-dirty">
-            <input placeholder="password" id="password" type="password" ng-model="register.password" class="ng-valid ng-dirty">
-            <input placeholder="confirm your password" id="confirm your password" type="password" ng-model="register.confirmPassword" class="ng-valid ng-dirty">
-            <button type="button" class="success-button" ng-click="register()">create account</button>
+            <input id="username" type="text" ng-model="register.username" class="ng-valid ng-dirty">
+            <label>Username</label>
+            <input id="email" type="email" ng-model="register.email" class="ng-valid ng-dirty">
+            <label>Email Address</label>
+            <input id="password" type="password" ng-model="register.password" class="ng-valid ng-dirty">
+            <label>Password</label>
+            <input id="confirm your password" type="password" ng-model="register.confirmPassword" class="ng-valid ng-dirty">
+            <label>Confirm Password</label>
+            <div>
+                <button type="button" class="success-button" ng-click="register()">create account</button>
+            </div>
         </div>
     </div>
     <div class="login" ng-show="panel=='login'">
@@ -17,10 +23,18 @@
             <h1 class="no-marg">Sign</h1><h2>In</h2>
         </div>
         <div class="formcase">
-            <input placeholder="username" id="username" type="text" ng-model="login.username" class="ng-valid ng-dirty">
-            <input placeholder="password" id="password" type="password" ng-model="login.password" class="ng-valid ng-dirty">
-            <button type="button" class="options-button" ng-click="panel='register'">Register</button>
-            <button type="button" class="success-button" ng-click="login()">login</button>
+            <div class="form">
+                <input id="username" type="text" ng-model="login.username" class="ng-valid ng-dirty">
+                <label>Username</label>
+            </div>
+            <div class="form">
+                <input id="password" type="password" ng-model="login.password" class="ng-valid ng-dirty">
+                <label>Password</label>
+            </div>
+            <div>
+                <button type="button" class="options-button" ng-click="panel='register'">Register</button>
+                <button type="button" class="success-button" ng-click="login()">login</button>
+            </div>
             <small><a class="block" ng-click="resetPassword()">Forgot your password?</a></small>
         </div>
     </div>

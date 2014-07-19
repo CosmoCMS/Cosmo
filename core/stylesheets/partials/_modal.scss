@@ -1,0 +1,797 @@
+input[type='file'] {
+  opacity: 0;
+  padding: 3.75rem;
+  margin: -$pad-beta * 7 0 0 0;
+  float: left;
+
+  @media only screen and (max-width: 439px) {
+      margin-top: -$pad-beta * 9;
+  }
+
+  &:hover {
+      cursor: pointer;
+  }
+}
+
+.url {
+    margin-top: $pad-delta;
+}
+
+.cosmo-default {
+
+    .url-uploader {
+        width: 68rem;
+        margin-right: $pad-beta * 7;
+
+        @media #{$bp-delta} {
+            width: 39rem;
+        }
+        @media #{$bp-gamma} {
+            margin-bottom: $pad-beta;
+            width: 100%;
+        }
+    }
+}
+
+.cosmo-default {
+    .uploader {
+        position: relative;
+        top: 9rem;
+        padding: 0 $pad-epsilon $pad-epsilon $pad-epsilon;
+
+        button {
+            margin-right: 0;
+        }
+    }
+}
+
+.img-edit {
+    background-color: $color-alpha;
+    overflow: hidden;
+    padding-top: $pad-epsilon;
+    position: fixed;
+    top: 0;
+    width: 91.5rem;
+    margin-left: -$pad-epsilon;
+    padding-left: $pad-epsilon;
+    padding-top: 8.36rem;
+    height: 57rem;
+
+    .media-nav {
+        display: block;
+        background-color: $color-brand-blue;
+        @include border ($border-alpha-dark, bottom);
+        position: fixed;
+        display: block;
+        z-index: 100000;
+        height: auto;
+        width: 91.5rem;
+        @include border ($border-brand-blue-dark, bottom);
+        margin-left: -$pad-epsilon;
+        margin-top: -8.36rem;
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        @media #{$bp-gamma} {
+            margin-left: 0;
+        }
+
+    }
+
+    @media #{$bp-delta} {
+        height: 49rem;
+        width: 62.3rem;
+    }
+
+    @media #{$bp-gamma} {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        background-color: #e9eeef;
+        margin-left: 0;
+        left: 0;
+        padding: $pad-beta * 8 $pad-epsilon 0 $pad-epsilon;
+    }
+
+    input {
+        margin-bottom: 0;
+    }
+
+    label {
+        margin-right: $pad-alpha;
+    }
+
+    .img-prev {
+      width: 100%;
+      vertical-align: top;
+      display: inline-block;
+      height: 28rem;
+
+      @media #{$bp-delta} {
+          height: 20rem;
+          overflow: hidden;
+      }
+
+      @media #{$bp-gamma} {
+          height: auto;
+      }
+
+      p {
+          display: inline-block;
+      }
+
+      .img-size {
+          display: inline-block;
+          margin-left: $pad-beta;
+          width: 47%;
+          @media #{$bp-gamma} {
+              margin-left: 0;
+              width: 100%;
+          }
+
+          .blk {
+              display: block;
+              margin-bottom: $pad-alpha;
+          }
+      }
+
+      img, iframe {
+        width: 47%;
+        padding-bottom: $pad-epsilon * .5;
+        vertical-align: top;
+        max-height: 28rem;
+
+        @media #{$bp-gamma} {
+            width: 100%;
+            max-height: none;
+        }
+      }
+
+      button {
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .img-info {
+        vertical-align: top;
+        width: 47%;
+        display: inline-block;
+        margin-right: $pad-delta;
+        @media #{$bp-gamma} {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.no-line {
+    border-bottom: 0;
+}
+
+.hamburgeractive {
+  left: 37.86rem;
+
+  i.inactive {
+    display: none;
+  }
+
+  i.active {
+    @include font-size(21);
+    display: block;
+    color: $color-beta;
+    margin-top: $pad-beta;
+    margin-left: $pad-beta + .3;
+  }
+
+  &:hover {
+    background-color: $color-beta;
+
+    i.active {
+      color: $color-alpha;
+    }
+    @include fade-all;
+  }
+}
+
+h1.no-marg {
+    margin-left: 0;
+}
+
+input.search-bar {
+    width: 100%;
+}
+
+.media-wrapper {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: $color-alpha;
+    position: absolute;
+    top: 11rem;
+    width: 100%;
+
+    .success-button {
+        margin-bottom: 0;
+    }
+
+    @media #{$bp-delta} {
+        top: 12.5rem;
+    }
+}
+
+
+.gallery-media-wrapper {
+    @extend .media-wrapper;
+
+    @media #{$bp-delta} {
+        top: 15.5rem;
+    }
+
+    @media #{$bp-gamma} {
+        top: 15.5rem;
+    }
+
+    @media #{$bp-beta} {
+        top: 22.5rem;
+    }
+}
+
+.media-search {
+    position: fixed;
+    top: 6.1rem;
+    display: block;
+    background-color: $color-alpha;
+    width: 100%;
+    margin: 0 $pad-epsilon $pad-epsilon $pad-epsilon;
+    padding: $pad-epsilon $pad-epsilon * 2 $pad-beta 0;
+    z-index: 100000;
+    @include border ($border-alpha-dark, bottom);
+
+    button {
+        margin-bottom: $pad-alpha;
+    }
+
+    .search-bar{
+        display: inline-block;
+
+        label {
+            margin-right: $pad-alpha;
+        }
+
+        input {
+            width: 24rem;
+        }
+    }
+}
+
+.media-nav {
+    display: block;
+    background-color: $color-brand-blue;
+    padding: 0 0 $pad-alpha $pad-epsilon;
+    position: fixed;
+    display: block;
+    z-index: 100000;
+    height: auto;
+    width: 91.5rem;
+    margin: 0 auto;
+    @include border ($border-brand-blue-dark, bottom);
+
+    .options {
+        display: inline;
+        margin-left: $pad-delta;
+
+        ::-webkit-input-placeholder {
+           color: $color-alpha;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+           color: $color-alpha;
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: $color-alpha;
+        }
+
+        :-ms-input-placeholder {
+           color: $color-alpha;
+        }
+
+        @media #{$bp-delta} {
+            display: block;
+            margin-left: 0;
+        }
+
+        @media #{$bp-gamma} {
+            display: block;
+            margin-left: 0;
+        }
+    }
+
+    h1, h2 {
+        color: white;
+    }
+
+    input.search-bar {
+        @include border ($border-alpha, bottom);
+        color: white;
+        width: 86.5rem;
+        margin-bottom: $pad-beta;
+
+        @media #{$bp-delta} {
+            width: 57rem;
+        }
+
+        @media #{$bp-gamma} {
+            width: 91%;
+        }
+    }
+
+    @media #{$bp-delta} {
+        width: 62.3rem;
+    }
+
+    @media #{$bp-gamma} {
+        left: 0;
+        width: 100%;
+    }
+
+    i {
+        color: $color-alpha;
+        display: block;
+        position: absolute;
+        top: 2.25rem;
+
+        &:hover {
+            color: $color-beta;
+        }
+    }
+
+    .no-marg {
+        margin-bottom: 0;
+    }
+}
+
+// Fade in / out for cosmo sidebar
+@-webkit-keyframes ngdialog-fadeout {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes ngdialog-fadeout {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @-webkit-keyframes ngdialog-fadein {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ngdialog-fadein {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .ngdialog,
+  .ngdialog *,
+  .ngdialog *:before,
+  .ngdialog *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .ngdialog {
+    position: fixed;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 11000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .ngdialog-overlay {
+    position: fixed;
+    background-color: $color-beta-overlay;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2000rem;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadein 0.5s;
+    animation: ngdialog-fadein 0.5s;
+  }
+
+  .ngdialog.ngdialog-closing .ngdialog-overlay {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadeout 0.5s;
+    animation: ngdialog-fadeout 0.5s;
+  }
+
+  .ngdialog-content {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadein 0.5s;
+    animation: ngdialog-fadein 0.5s;
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+    display: block;
+    background-color: $color-alpha;
+    width: 91.5rem;
+
+    @media #{$bp-delta} {
+        width: 62.3rem;
+    }
+    @media #{$bp-gamma} {
+        left: 0;
+        width: 100%;
+    }
+
+      button {
+        margin-bottom: $pad-epsilon * .75;
+    }
+
+    .info {
+      color: $color-brand-blue;
+    }
+
+    .media-holder {
+      padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
+      overflow-y: scroll;
+      background-color: $color-alpha;
+
+
+      .media-tile {
+        display: inline-block;
+        width: 28rem;
+        margin: 0 $pad-epsilon * .5 $pad-epsilon * .5 0;
+        vertical-align: top;
+        text-align: center;
+
+        i {
+            font-size: 16rem;
+            margin-top: 1.5rem;
+
+            @media #{$bp-gamma} {
+                font-size: 12rem;
+                margin-top: 0;
+            }
+
+            @media #{$bp-beta} {
+                margin-top: 0;
+            }
+        }
+
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        img {
+            height: auto;
+        }
+
+        @media #{$bp-delta} {
+            &:nth-child(even) {  /* or 4n+1 */
+                margin-right: 0;
+            }
+
+            &:nth-child(odd) {  /* or 4n+1 */
+                margin-right: $pad-epsilon * .5;
+            }
+        }
+
+        @media #{$bp-gamma} {
+            width: 48.2%;
+
+            &:nth-child(even) {  /* or 4n+1 */
+                margin-right: 0;
+            }
+
+            &:nth-child(odd) {  /* or 4n+1 */
+                margin-right: $pad-epsilon * .5;
+            }
+        }
+
+        @media #{$bp-beta} {
+            width: 100%;
+        }
+      }
+
+      .btncase {
+        margin-left: 0;
+
+        button {
+          width: 100%;
+          margin-right: 0;
+        }
+      }
+    }
+
+    p {
+      margin-bottom: $pad-epsilon;
+    }
+
+    .dropzone {
+      background-color: $color-brand-blue-overlay;
+      height: $pad-epsilon * 4;
+      text-align: center;
+      margin-top: 0;
+      border: .2rem dashed $color-beta;
+      @include fade-all;
+
+      h4 {
+        color: $color-beta;
+        @include fade-all;
+        left: 0;
+        right: 0;
+        margin-top: 3rem;
+        bottom: 0;
+
+        @media only screen and (max-width: 439px) {
+            margin-top: $pad-beta;
+        }
+
+        &:hover {
+            color: $color-alpha;
+            @include fade-all;
+        }
+      }
+
+      &:hover {
+        background-color: $color-brand-blue;
+        border: .2rem dashed $color-alpha;
+        @include fade-all;
+
+
+        h4 {
+            color: $color-alpha;
+        }
+      }
+
+      &:active {
+          @extend :hover;
+      }
+    }
+  }
+
+.info-close {
+  cursor: pointer;
+
+  &:after {
+    @include font-size(17.5);
+    font-family: $font-beta;
+    content: '\f00d';
+    color: $color-beta;
+    position: absolute;
+    left: 84.75rem;
+    top: 2rem;
+    z-index: 100001;
+
+    @media #{$bp-delta} {
+        left: 55.5rem;
+    }
+
+    @media #{$bp-gamma} {
+        display: none;
+    }
+  }
+}
+
+
+  .ngdialog.ngdialog-closing .ngdialog-content {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadeout 0.5s;
+    animation: ngdialog-fadeout 0.5s;
+  }
+
+  .ngdialog-close {
+    cursor: pointer;
+
+    &:after {
+        @include font-size(17.5);
+        font-family: $font-beta;
+        content: '\f00d';
+        color: $color-alpha;
+        position: fixed;
+        right: 2.5rem;
+        top: 1.35rem;
+        z-index: 100001;
+
+        @media #{$bp-gamma} {
+          color: $color-beta;
+        }
+    }
+  }
+
+  body.ngdialog-open {
+    overflow: hidden;
+  }
+
+  // ** End here in your search *** //
+
+  @-webkit-keyframes ngdialog-flyin {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(-40px);
+      transform: translateY(-40px);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ngdialog-flyin {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(-40px);
+      -ms-transform: translateY(-40px);
+      transform: translateY(-40px);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+
+  @-webkit-keyframes ngdialog-flyout {
+    0% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    100% {
+      opacity: 0;
+      -webkit-transform: translateY(-40px);
+      transform: translateY(-40px);
+    }
+  }
+
+  @keyframes ngdialog-flyout {
+    0% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    100% {
+      opacity: 0;
+      -webkit-transform: translateY(-40px);
+      -ms-transform: translateY(-40px);
+      transform: translateY(-40px);
+    }
+  }
+
+// Page Suggestions box for Link Adding
+.page-suggestions-triangle {
+  @include triangle(2rem, $color-brand-blue, up);
+  margin: -1.75rem 0 -.75rem .75rem;
+}
+
+.page-suggestions {
+  background-color: $color-brand-blue;
+  padding: $pad-alpha;
+  margin-bottom: $pad-gamma;
+
+  a {
+    display: block;
+    font-weight: $font-weight-beta;
+    color: $color-alpha;
+  }
+
+  &:hover {
+    .Page {
+      background-color: lighten($color-brand-blue, 10%);
+    }
+  }
+}
+
+.media-info {
+  width: 100%;
+  display: inline-block;
+
+  .blk {
+    margin-bottom: $pad-epsilon;
+  }
+}
+
+.img-gallery {
+    vertical-align: top;
+    width: 33%;
+    display: inline-block;
+    margin: 0 $pad-epsilon 2rem $pad-epsilon;
+
+    @media #{$bp-gamma} {
+        width: auto;
+    }
+
+    img {
+        @media #{$bp-gamma} {
+            width: 100%;
+        }
+    }
+}
+
+.img-gallery-info {
+    width: 61%;
+    vertical-align: top;
+    display: inline-block;
+    margin: 0 0 $pad-delta 0;
+
+    @media #{$bp-delta} {
+        width: 53%;
+        overflow: hidden;
+    }
+
+    @media #{$bp-gamma} {
+        margin-left: $pad-epsilon;
+        padding-right: $pad-delta;
+        overflow: hidden;
+        width: auto;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+    .tag {
+        display: inline-block;
+        padding: $pad-alpha $pad-beta .75rem $pad-beta;
+        background-color: darken($color-alpha, 6%);
+        height: auto;
+        width: auto;
+        margin: 0 $pad-beta $pad-delta $pad-beta;
+
+      &:first-child {
+          margin-left: 0;
+      }
+
+      .fa-tag {
+        vertical-align: middle;
+        margin-right: $pad-alpha;
+      }
+    }
+}

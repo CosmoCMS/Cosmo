@@ -1,37 +1,38 @@
 <div class="cosmo-default" ng-controller="wysiwygCtrl">
-    <div class="top-btncase">
-        <h1 class="nomarg">Add A Link</h1>
+    <div class="media-nav">
+        <h1 class="no-marg">Add A Link</h1>
     </div>
-    <div class="formcase">
+    <div class="formcase tables">
         <div class="page-suggestions-triangle" ng-show="page.suggestions"></div>
         <div class="page-suggestions" ng-show="page.suggestions">
             <div ng-repeat="tag in page.suggestions | limitTo:10">
                 <a ng-click="selectSuggestion(tag)">{{tag | titlecase}}</a>
             </div>
         </div>
-        
-        <label>URL</label><i class="fa fa-info-circle info" ng-click="showUrlInfo=!showUrlInfo"></i>
+
         <div ng-mousedown="clicked($event, 'url')" class="form-control" ng-class="{'form-control-focus': editor.selected=='url'}">
             <span ng-repeat="letter in editor.url track by $index" ng-click="clickedLetter($index)">{{letter}}</span>
         </div>
+        <label>URL</label><i class="fa fa-info-circle info" ng-click="showUrlInfo=!showUrlInfo"></i>
         <small ng-show="showUrlInfo">To insert an email, simply type in the email address (e.g. instead of "mailto:email@cosmocms.org" type "email@cosmocms.org")</small>
         <small ng-show="showUrlInfo">To add an anchor, type in the id of the anchor (e.g. instead of "id="#anchor" type "anchor").</small>
         <small ng-show="showUrlInfo">To insert a link to a page, just type in the page name (e.g. "about") and cosmo will recommend the correct page to select</small>
-        
-        <label>Text</label>
+
         <div ng-mousedown="clicked($event, 'text')" class="form-control" ng-class="{'form-control-focus': editor.selected=='text'}">
             <span ng-repeat="letter in editor.text track by $index" ng-click="clickedLetter($index)">{{letter}}</span>
         </div>
-        
-        <input  type="checkbox" value="Y" ng-model="editor.newTab">
-        <label for="Y">Open in New Tab</label>
-        <input  type="checkbox" value="Y" ng-model="editor.style">
-        <label for="Y">Style Link</label>
+        <label>Text</label>
+        <div>
+            <input  type="checkbox" id="tab" value="Y" ng-model="editor.newTab">
+            <label for="tab">Open in New Tab</label>
+            <input  type="checkbox" id="link" value="Y" ng-model="editor.style">
+            <label for="link">Style Link</label>
+        </div>
         <div ng-mousedown="clicked($event, 'classes')" class="form-control" ng-class="{'form-control-focus': editor.selected=='text'}" ng-show="editor.style">
             <span ng-repeat="letter in editor.classes track by $index" ng-click="clickedLetter($index)">{{letter}}</span>
         </div>
     </div>
-    <div class="btncase">
+    <div class="formcase">
         <button type="button" class="success-button" ng-click="insertLink()">insert link</button>
     </div>
 </div>

@@ -1,0 +1,215 @@
+.quickdate-close {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    font-size: 110%;
+    margin-top: -.6rem;
+    text-decoration: none;
+    color: $color-brand-blue;
+
+    &:hover, &:visited {
+        text-decoration: none;
+    }
+}
+
+.quickdate-calendar-header {
+  display: block;
+  padding: .2rem 0;
+  margin-bottom: $pad-alpha;
+  text-align: center;
+}
+
+.quickdate-month {
+  display: inline-block;
+}
+
+a.quickdate-prev-month {
+  float: left;
+}
+
+a.quickdate-next-month {
+  float: right;
+}
+
+.quickdate-text-inputs {
+  text-align: left;
+  margin-bottom: $pad-alpha;
+}
+
+.quickdate-input-wrapper {
+  width: 48%;
+  display: inline-block;
+}
+
+input.quickdate-date-input,
+input.quickdate-time-input {
+  width: 10rem;
+  margin: 0;
+  height: auto;
+  padding: .2rem .3rem;
+}
+table.quickdate-calendar {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: $pad-epsilon * .25;
+}
+table.quickdate-calendar th, table.quickdate-calendar td {
+  padding: $pad-alpha;
+}
+table.quickdate-calendar td:hover {
+  cursor: pointer;
+}
+
+.quickdate-popup-footer {
+  text-align: right;
+  display: block;
+}
+
+.quickdate-error {
+  @include border ($border-error, top, right, bottom, left);
+
+    &:focus {
+        outline-color: $color-error;
+    }
+}
+
+.quickdate{
+    display: inline-block;
+    vertical-align: bottom;
+    @include font-size(14);
+
+    input, select {
+        @include font-size(14 * .8);
+    }
+}
+
+input.quickdate-date-input, input.quickdate-time-input {
+    width: 7rem;
+    height: auto;
+    padding: $pad-epsilon * .5 0;
+}
+
+.quickdate-button{
+    background-color: $color-beta;
+    margin-top: $pad-delta;
+    width: 26.75rem;
+    color: $color-alpha;
+    font-weight: $font-weight-beta;
+    padding: $pad-epsilon * .5;
+    display: inline-block;
+    text-decoration: none;
+
+    i {
+        padding-right: $pad-epsilon * .5;
+    }
+
+    &:hover {
+        color: lighten($color-brand-blue, 30%);
+
+        i {
+            text-decoration:none
+        }
+    }
+}
+.quickdate-popup{
+    z-index: 10;
+    background-color: $color-alpha;
+    text-align: center;
+    display: none;
+    position: absolute;
+    padding: $pad-epsilon * .25;
+    color: $color-beta;
+    @include font-size(14);
+    background-color: $color-alpha;
+    border: solid .1rem darken($color-alpha, 8%);
+    width: 100%;
+    box-shadow: none;
+    margin-top: -$pad-epsilon;
+
+    span {
+        font-family: $font-alpha;
+    }
+}
+
+.quickdate-action-link:visited, &:hover{
+    color: $color-brand-blue;
+    text-decoration: none;
+}
+
+.quickdate-next-month i{
+    padding-left: $pad-epsilon * .05;
+}
+
+.quickdate-prev-month i{
+    padding-right: $pad-epsilon * .05;
+}
+
+
+table.quickdate-calendar {
+    border: solid .1rem darken($color-alpha, 8%);
+    background-color: $color-alpha;
+
+    th,table, td {
+        font-family: $font-alpha;
+        @include border ($border-alpha-dark, right, bottom);
+    }
+
+    td.other-month {
+        font-family: $font-alpha;
+        background-color: $color-beta;
+        color: $color-alpha;
+
+        &:hover {
+            background-color: lighten($color-beta, 10%);
+        }
+    }
+
+    td.disabled-date {
+        font-family: $font-alpha;
+        background-color: inherit;
+        color: $color-beta;
+
+        &:hover {
+            background-color: inherit;
+            cursor: default;
+        }
+    }
+
+    td.selected{
+        font-family: $font-alpha;
+        background-color: $color-brand-blue;
+        color: $color-alpha;
+        font-weight: $font-weight-beta;
+    }
+
+    td.is-today{
+        font-family: $font-alpha;
+        color: lighten($color-brand-blue, 10%);
+        font-weight: $font-weight-beta;
+
+        .disabled-date{
+            color: $color-beta;
+            font-weight:$font-weight-alpha;
+        }
+    }
+
+    &:hover {
+        background-color: darken($color-alpha, 5%);
+        color: $color-beta;
+    }
+}
+
+.quickdate-clear {
+    @include button($color-alpha, $color-error, $border-error-dark);
+    color: $color-beta;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: $pad-epsilon * .1;
+    margin-bottom: $pad-epsilon * .1;
+    margin-right: 0;
+
+    &:hover {
+        color: $color-alpha;
+    }
+}

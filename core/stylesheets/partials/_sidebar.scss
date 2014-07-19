@@ -1,0 +1,145 @@
+.cosmosidebar {
+  margin-top: 0;
+  padding-top: $pad-delta * 3;
+  position: fixed;
+  overflow-y: auto;
+  width: 32rem;
+  height: 100%;
+  background-color: $color-alpha;
+  z-index: 9000;
+  overflow-x: hidden;
+  @include border ($border-alpha-dark, right);
+  @include transition (left .3s);
+  top: 0;
+  bottom: 0;
+  left: -32rem;
+}
+
+// Sidebar transition to reveal sidebar from the left side of the screen.
+.userSidebarSlideOut {
+  @include transition (left .3s);
+  left: 25.8rem;;
+}
+
+// Sidebar transition to reveal sidebar from the left side of the screen.
+.adminSidebarSlideOut {
+  @include transition (left .3s);
+  left: 0;
+}
+
+// Hamburger Navigation
+.hamburger {
+    @include border ($border-alpha-dark, top, right, bottom, left);
+  position: fixed;
+  z-index: 10000;
+  display: block;
+  padding: .8rem;
+  background-color: $color-alpha;
+  height: 6.2rem;
+  width: 6.2rem;
+  left: -.1rem;
+  top: -.1rem;
+  @include transition (left .3s);
+  @include fade-all;
+
+  i.active {
+    position: absolute;
+    left: -32rem;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  i.inactive {
+    left: -32rem;
+    color: $color-beta;
+    font-size: 2.1rem;
+    height: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1.3rem;
+    width: 1.5rem;
+  }
+
+  &:hover {
+    background-color: $color-beta;
+    @include fade-all;
+
+    i.inactive {
+      color: $color-alpha;
+    }
+  }
+}
+
+.hamburgeractive {
+    background-color: transparent;
+    border: 0;
+    left: 26.5rem;
+    position: fixed;
+
+  i.inactive {
+    display: none;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  i.active {
+    position: absolute;
+    left: 0;
+    display: block;
+    color: $color-alpha;
+    font-size: 1.75rem;
+    height: 1.5rem;
+    margin-left: 1.3rem;
+    margin-top: .65rem;
+    width: 1.5rem;
+    @include fade-all;
+  }
+
+  &:hover {
+      background-color: transparent;
+
+      i.active {
+          color: $color-beta;
+          @include fade-all;
+      }
+  }
+}
+
+.prfl-qk-view {
+    background-color: $color-brand-blue;
+    @include border ($border-brand-blue-dark, bottom);
+    height: 6rem;
+    margin-top: -$pad-delta * 3;
+    position: fixed;
+    width: 32rem;
+    z-index: 100;
+
+    img {
+        height: 6rem;
+        margin: -$pad-epsilon $pad-beta 0 0;
+        width: 6rem;
+    }
+
+    .prfl-info {
+        display: inline-block;
+        overflow: hidden;
+        padding: $pad-gamma $pad-delta * 2 0 0;
+        width: 20rem;
+
+        p {
+            color: white;
+            margin-bottom: 0;
+            @include font-size(13);
+            line-height: 1rem;
+        }
+
+        a {
+            color: $color-alpha;
+            @include font-size(12);
+            font-weight: 700;
+
+            &:hover {
+                color: $color-beta;
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+// Tag styling when editing or creating new pages
+.tag-suggestions-triangle {
+  @include triangle(2.8rem, $color-brand-blue, up);
+  margin: -$pad-beta 0 -.7rem .7rem;
+}
+
+.tag-suggestions {
+  background-color: $color-brand-blue;
+  padding: $pad-epsilon * .25;
+  margin-bottom: $pad-epsilon * .75;
+  max-height: 26rem;
+  overflow-y: scroll;
+
+  a {
+    @include font-size(14 * 1.25);
+    display: block;
+    padding: .5rem 0;
+    font-weight: $font-weight-beta;
+    color: $color-alpha;
+
+    &:hover {
+        color: lighten($color-brand-blue, 20%);
+    }
+  }
+
+  &:hover {
+    .tag {
+      background-color: lighten($color-brand-blue, 10%);
+    }
+  }
+}
