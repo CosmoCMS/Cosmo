@@ -40,6 +40,7 @@
 .#{$fa-css-prefix}-search:before { content: $fa-var-search; }
 .#{$fa-css-prefix}-chevron-down:before { content: $fa-var-chevron-down; }
 .#{$fa-css-prefix}-envelope:before { content: $fa-var-envelope; }
+.#{$fa-css-prefix}-external-link:before { content: $fa-var-external-link; }
 
 // Icons for WYSIWG
 
@@ -237,7 +238,6 @@
 .#{$fa-css-prefix}-sign-out:before { content: $fa-var-sign-out; }
 .#{$fa-css-prefix}-linkedin-square:before { content: $fa-var-linkedin-square; }
 .#{$fa-css-prefix}-thumb-tack:before { content: $fa-var-thumb-tack; }
-.#{$fa-css-prefix}-external-link:before { content: $fa-var-external-link; }
 .#{$fa-css-prefix}-sign-in:before { content: $fa-var-sign-in; }
 .#{$fa-css-prefix}-trophy:before { content: $fa-var-trophy; }
 .#{$fa-css-prefix}-github-square:before { content: $fa-var-github-square; }

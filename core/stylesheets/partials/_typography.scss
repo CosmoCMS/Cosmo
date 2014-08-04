@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  @include font-size(14);
+  @include font-size(16);
   color: $color-beta;
   font-family: $font-alpha;
   font-weight: $font-weight-alpha;

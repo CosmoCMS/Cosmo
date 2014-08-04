@@ -560,7 +560,6 @@ $fa-var-exclamation: "\f12a";
 $fa-var-exclamation-circle: "\f06a";
 $fa-var-exclamation-triangle: "\f071";
 $fa-var-expand: "\f065";
-$fa-var-external-link: "\f08e";
 $fa-var-external-link-square: "\f14c";
 $fa-var-eye: "\f06e";
 $fa-var-eye-slash: "\f070";
@@ -1022,6 +1021,9 @@ $fa-var-youtube-square: "\f166";
 .fa-envelope:before {
   content: "\f0e0"; }
 
+.fa-external-link:before {
+  content: "\f08e"; }
+
 .fa-list-ul:before {
   content: "\f0ca"; }
 
@@ -1299,7 +1301,6 @@ $fa-var-youtube-square: "\f166";
 .fa-sign-out:before { content: $fa-var-sign-out; }
 .fa-linkedin-square:before { content: $fa-var-linkedin-square; }
 .fa-thumb-tack:before { content: $fa-var-thumb-tack; }
-.fa-external-link:before { content: $fa-var-external-link; }
 .fa-sign-in:before { content: $fa-var-sign-in; }
 .fa-trophy:before { content: $fa-var-trophy; }
 .fa-github-square:before { content: $fa-var-github-square; }
@@ -1673,10 +1674,10 @@ $fa-var-youtube-square: "\f166";
     font-size: 62.5%;
     font-family: quicksand, sans-serif; }
   .cosmo-default body {
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-size: 16px;
+    line-height: 24px;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
     color: #4a6067;
     font-family: quicksand, sans-serif;
     font-weight: 200;
@@ -1798,7 +1799,7 @@ $fa-var-youtube-square: "\f166";
           display: block;
           width: 100%; } }
   .cosmo-default .border-btm {
-    border-bottom: 0.1rem solid #bdcccf; }
+    border-bottom: 1px solid #bdcccf; }
   .cosmo-default .cosmosidebar {
     margin-top: 0;
     padding-top: 6rem;
@@ -1809,7 +1810,7 @@ $fa-var-youtube-square: "\f166";
     background-color: #e9eeef;
     z-index: 9000;
     overflow-x: hidden;
-    border-right: 0.1rem solid #bdcccf;
+    border-right: 1px solid #bdcccf;
     -webkit-transition: left 0.3s;
     transition: left 0.3s;
     top: 0;
@@ -1824,10 +1825,10 @@ $fa-var-youtube-square: "\f166";
     transition: left 0.3s;
     left: 0; }
   .cosmo-default .hamburger {
-    border-top: 0.1rem solid #bdcccf;
-    border-right: 0.1rem solid #bdcccf;
-    border-bottom: 0.1rem solid #bdcccf;
-    border-left: 0.1rem solid #bdcccf;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
     position: fixed;
     z-index: 10000;
     display: block;
@@ -1889,7 +1890,7 @@ $fa-var-youtube-square: "\f166";
         transition: opacity 0.2s linear; }
   .cosmo-default .prfl-qk-view {
     background-color: #70c8c4;
-    border-bottom: 0.1rem solid #41aaa5;
+    border-bottom: 1px solid #41aaa5;
     height: 6rem;
     margin-top: -6rem;
     position: fixed;
@@ -2003,10 +2004,10 @@ $fa-var-youtube-square: "\f166";
     padding: 0.65rem 1.5rem 0.75rem 1.5rem;
     text-align: center;
     text-transform: lowercase;
-    border-top: 0.1rem solid #4a6067;
-    border-right: 0.1rem solid #4a6067;
-    border-bottom: 0.1rem solid #4a6067;
-    border-left: 0.1rem solid #4a6067;
+    border-top: 1px solid #4a6067;
+    border-right: 1px solid #4a6067;
+    border-bottom: 1px solid #4a6067;
+    border-left: 1px solid #4a6067;
     font-size: 13px;
     line-height: 19.5px;
     font-size: 1.3rem;
@@ -2020,10 +2021,10 @@ $fa-var-youtube-square: "\f166";
     .cosmo-default .options-button:hover, .cosmo-default .ngdialog-content .options-button.dropzone:active, .ngdialog-content .cosmo-default .options-button.dropzone:active {
       background-color: #4a6067;
       color: #e9eeef;
-      border-top: 0.1rem solid #2a373a;
-      border-right: 0.1rem solid #2a373a;
-      border-bottom: 0.1rem solid #2a373a;
-      border-left: 0.1rem solid #2a373a; }
+      border-top: 1px solid #2a373a;
+      border-right: 1px solid #2a373a;
+      border-bottom: 1px solid #2a373a;
+      border-left: 1px solid #2a373a; }
   .cosmo-default .error-button {
     background-color: transparent;
     color: #4a6067;
@@ -2035,10 +2036,10 @@ $fa-var-youtube-square: "\f166";
     padding: 0.65rem 1.5rem 0.75rem 1.5rem;
     text-align: center;
     text-transform: lowercase;
-    border-top: 0.1rem solid #4a6067;
-    border-right: 0.1rem solid #4a6067;
-    border-bottom: 0.1rem solid #4a6067;
-    border-left: 0.1rem solid #4a6067;
+    border-top: 1px solid #4a6067;
+    border-right: 1px solid #4a6067;
+    border-bottom: 1px solid #4a6067;
+    border-left: 1px solid #4a6067;
     font-size: 13px;
     line-height: 19.5px;
     font-size: 1.3rem;
@@ -2052,10 +2053,10 @@ $fa-var-youtube-square: "\f166";
     .cosmo-default .error-button:hover, .cosmo-default .ngdialog-content .error-button.dropzone:active, .ngdialog-content .cosmo-default .error-button.dropzone:active {
       background-color: #ea1d2c;
       color: #e9eeef;
-      border-top: 0.1rem solid #ab101b;
-      border-right: 0.1rem solid #ab101b;
-      border-bottom: 0.1rem solid #ab101b;
-      border-left: 0.1rem solid #ab101b; }
+      border-top: 1px solid #ab101b;
+      border-right: 1px solid #ab101b;
+      border-bottom: 1px solid #ab101b;
+      border-left: 1px solid #ab101b; }
   .cosmo-default .success-button {
     background-color: transparent;
     color: #4a6067;
@@ -2067,10 +2068,10 @@ $fa-var-youtube-square: "\f166";
     padding: 0.65rem 1.5rem 0.75rem 1.5rem;
     text-align: center;
     text-transform: lowercase;
-    border-top: 0.1rem solid #4a6067;
-    border-right: 0.1rem solid #4a6067;
-    border-bottom: 0.1rem solid #4a6067;
-    border-left: 0.1rem solid #4a6067;
+    border-top: 1px solid #4a6067;
+    border-right: 1px solid #4a6067;
+    border-bottom: 1px solid #4a6067;
+    border-left: 1px solid #4a6067;
     font-size: 13px;
     line-height: 19.5px;
     font-size: 1.3rem;
@@ -2084,12 +2085,12 @@ $fa-var-youtube-square: "\f166";
     .cosmo-default .success-button:hover, .cosmo-default .ngdialog-content .success-button.dropzone:active, .ngdialog-content .cosmo-default .success-button.dropzone:active {
       background-color: #20ba2c;
       color: #e9eeef;
-      border-top: 0.1rem solid #15791d;
-      border-right: 0.1rem solid #15791d;
-      border-bottom: 0.1rem solid #15791d;
-      border-left: 0.1rem solid #15791d; }
+      border-top: 1px solid #15791d;
+      border-right: 1px solid #15791d;
+      border-bottom: 1px solid #15791d;
+      border-left: 1px solid #15791d; }
   .cosmo-default .top-btncase {
-    border-bottom: 0.1rem solid #41aaa5;
+    border-bottom: 1px solid #41aaa5;
     background-color: #70c8c4;
     display: block;
     height: 6rem;
@@ -2136,17 +2137,17 @@ $fa-var-youtube-square: "\f166";
     .cosmo-default .formcase .btncase {
       margin: 0; }
   .cosmo-default .formcase-border {
-    border-bottom: 0.1rem solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
     padding: 2.5rem 2.5rem 0 2.5rem; }
     .cosmo-default .formcase-border input, .cosmo-default .formcase-border textarea, .cosmo-default .formcase-border .form-control, .cosmo-default .formcase-border .blk-code {
-      border-bottom: 0.1rem solid #bdcccf; }
+      border-bottom: 1px solid #bdcccf; }
     .cosmo-default .formcase-border > div button {
       margin-bottom: 2rem; }
   .cosmo-default .cos-select, .cosmo-default .cos-select-half {
-    border-top: 0.1rem solid #4a6067;
-    border-right: 0.1rem solid #4a6067;
-    border-bottom: 0.1rem solid #4a6067;
-    border-left: 0.1rem solid #4a6067;
+    border-top: 1px solid #4a6067;
+    border-right: 1px solid #4a6067;
+    border-bottom: 1px solid #4a6067;
+    border-left: 1px solid #4a6067;
     background: url(../img/arrows.svg) no-repeat transparent right;
     -webkit-background-size: 3.5rem 1.5rem;
             background-size: 3.5rem 1.5rem;
@@ -2178,8 +2179,10 @@ $fa-var-youtube-square: "\f166";
     font-size: 1.5rem;
     line-height: 2.25rem;
     background-color: transparent;
-    border: 0;
-    border-bottom: 0.1rem solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: none;
+    border-right: none;
+    border-top: none;
     -webkit-box-shadow: none;
             box-shadow: none;
     color: #79959e;
@@ -2198,7 +2201,7 @@ $fa-var-youtube-square: "\f166";
     .cosmo-default input:focus, .cosmo-default textarea:focus, .cosmo-default .form-control:focus, .cosmo-default .form-control-focus, .cosmo-default .blk-code:focus {
       background-color: transparent;
       border: 0;
-      border-bottom: 0.1rem solid #4a6067; }
+      border-bottom: 1px solid #4a6067; }
   .cosmo-default .label-case {
     display: block;
     margin-bottom: 1rem; }
@@ -2228,10 +2231,10 @@ $fa-var-youtube-square: "\f166";
     padding: 0.65rem 1.5rem 0.75rem 1.5rem;
     text-align: center;
     text-transform: lowercase;
-    border-top: 0.1rem solid #4a6067;
-    border-right: 0.1rem solid #4a6067;
-    border-bottom: 0.1rem solid #4a6067;
-    border-left: 0.1rem solid #4a6067;
+    border-top: 1px solid #4a6067;
+    border-right: 1px solid #4a6067;
+    border-bottom: 1px solid #4a6067;
+    border-left: 1px solid #4a6067;
     font-size: 13px;
     line-height: 19.5px;
     font-size: 1.3rem;
@@ -2250,10 +2253,10 @@ $fa-var-youtube-square: "\f166";
     .cosmo-default input[type=radio] + label:hover, .cosmo-default textarea[type=radio] + label:hover, .cosmo-default [type=radio].form-control + label:hover, .cosmo-default [type=radio].blk-code + label:hover, .cosmo-default .ngdialog-content input[type=radio] + label.dropzone:active, .ngdialog-content .cosmo-default input[type=radio] + label.dropzone:active, .cosmo-default .ngdialog-content textarea[type=radio] + label.dropzone:active, .ngdialog-content .cosmo-default textarea[type=radio] + label.dropzone:active, .cosmo-default .ngdialog-content [type=radio].form-control + label.dropzone:active, .ngdialog-content .cosmo-default [type=radio].form-control + label.dropzone:active, .cosmo-default .ngdialog-content [type=radio].blk-code + label.dropzone:active, .ngdialog-content .cosmo-default [type=radio].blk-code + label.dropzone:active {
       background-color: #cbd7da;
       color: #e9eeef;
-      border-top: 0.1rem solid #bdcccf;
-      border-right: 0.1rem solid #bdcccf;
-      border-bottom: 0.1rem solid #bdcccf;
-      border-left: 0.1rem solid #bdcccf; }
+      border-top: 1px solid #bdcccf;
+      border-right: 1px solid #bdcccf;
+      border-bottom: 1px solid #bdcccf;
+      border-left: 1px solid #bdcccf; }
     .cosmo-default input[type=radio] + label:before, .cosmo-default textarea[type=radio] + label:before, .cosmo-default [type=radio].form-control + label:before, .cosmo-default [type=radio].blk-code + label:before {
       font-family: "FontAwesome";
       content: "\f10c";
@@ -2280,10 +2283,10 @@ $fa-var-youtube-square: "\f166";
     padding: 0.65rem 1.5rem 0.75rem 1.5rem;
     text-align: center;
     text-transform: lowercase;
-    border-top: 0.1rem solid #4a6067;
-    border-right: 0.1rem solid #4a6067;
-    border-bottom: 0.1rem solid #4a6067;
-    border-left: 0.1rem solid #4a6067;
+    border-top: 1px solid #4a6067;
+    border-right: 1px solid #4a6067;
+    border-bottom: 1px solid #4a6067;
+    border-left: 1px solid #4a6067;
     font-size: 13px;
     line-height: 19.5px;
     font-size: 1.3rem;
@@ -2302,10 +2305,10 @@ $fa-var-youtube-square: "\f166";
     .cosmo-default input[type=checkbox] + label:hover, .cosmo-default textarea[type=checkbox] + label:hover, .cosmo-default [type=checkbox].form-control + label:hover, .cosmo-default [type=checkbox].blk-code + label:hover, .cosmo-default .ngdialog-content input[type=checkbox] + label.dropzone:active, .ngdialog-content .cosmo-default input[type=checkbox] + label.dropzone:active, .cosmo-default .ngdialog-content textarea[type=checkbox] + label.dropzone:active, .ngdialog-content .cosmo-default textarea[type=checkbox] + label.dropzone:active, .cosmo-default .ngdialog-content [type=checkbox].form-control + label.dropzone:active, .ngdialog-content .cosmo-default [type=checkbox].form-control + label.dropzone:active, .cosmo-default .ngdialog-content [type=checkbox].blk-code + label.dropzone:active, .ngdialog-content .cosmo-default [type=checkbox].blk-code + label.dropzone:active {
       background-color: #cbd7da;
       color: #e9eeef;
-      border-top: 0.1rem solid #bdcccf;
-      border-right: 0.1rem solid #bdcccf;
-      border-bottom: 0.1rem solid #bdcccf;
-      border-left: 0.1rem solid #bdcccf; }
+      border-top: 1px solid #bdcccf;
+      border-right: 1px solid #bdcccf;
+      border-bottom: 1px solid #bdcccf;
+      border-left: 1px solid #bdcccf; }
     .cosmo-default input[type=checkbox] + label:before, .cosmo-default textarea[type=checkbox] + label:before, .cosmo-default [type=checkbox].form-control + label:before, .cosmo-default [type=checkbox].blk-code + label:before {
       font-family: "FontAwesome";
       content: "\f058";
@@ -2317,7 +2320,7 @@ $fa-var-youtube-square: "\f166";
   .cosmo-default .form-control {
     min-height: 3.1rem; }
   .cosmo-default ::-webkit-input-placeholder, .cosmo-default :-moz-placeholder, .cosmo-default ::-moz-placeholder, .cosmo-default :-ms-input-placeholder {
-    color: 0.1rem solid #bdcccf; }
+    color: 1px solid #bdcccf; }
   .cosmo-default .tag-suggestions-triangle {
     height: 0;
     width: 0;
@@ -2368,10 +2371,10 @@ $fa-var-youtube-square: "\f166";
             background-size: cover;
     height: 6.2rem;
     width: 6.2rem;
-    border-top: 0.1rem solid #bdcccf;
-    border-right: 0.1rem solid #bdcccf;
-    border-bottom: 0.1rem solid #bdcccf;
-    border-left: 0.1rem solid #bdcccf;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
     position: fixed;
     left: 41.86rem;
     top: 6rem;
@@ -2387,7 +2390,7 @@ $fa-var-youtube-square: "\f166";
   .cosmo-default .users {
     margin-top: 2.5rem; }
     .cosmo-default .users .info {
-      border-bottom: 0.1rem solid #bdcccf; }
+      border-bottom: 1px solid #bdcccf; }
       .cosmo-default .users .info p {
         font-weight: 700;
         display: inline-block;
@@ -2426,10 +2429,10 @@ $fa-var-youtube-square: "\f166";
     display: inline-block;
     margin-right: 1rem; }
   .cosmo-default .blk-code {
-    border-top: 0.1rem solid #bdcccf;
-    border-right: 0.1rem solid #bdcccf;
-    border-bottom: 0.1rem solid #bdcccf;
-    border-left: 0.1rem solid #bdcccf;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
     height: 50rem;
     margin-bottom: 2.5rem;
     overflow: scroll; }
@@ -2540,10 +2543,10 @@ $fa-var-youtube-square: "\f166";
     text-align: right;
     display: block; }
   .cosmo-default .quickdate-error {
-    border-top: 0.1rem solid #ea1d2c;
-    border-right: 0.1rem solid #ea1d2c;
-    border-bottom: 0.1rem solid #ea1d2c;
-    border-left: 0.1rem solid #ea1d2c; }
+    border-top: 1px solid #ea1d2c;
+    border-right: 1px solid #ea1d2c;
+    border-bottom: 1px solid #ea1d2c;
+    border-left: 1px solid #ea1d2c; }
     .cosmo-default .quickdate-error:focus {
       outline-color: #ea1d2c; }
   .cosmo-default .quickdate {
@@ -2609,8 +2612,8 @@ $fa-var-youtube-square: "\f166";
     background-color: #e9eeef; }
     .cosmo-default table.quickdate-calendar th, .cosmo-default table.quickdate-calendar table, .cosmo-default table.quickdate-calendar td {
       font-family: quicksand, sans-serif;
-      border-right: 0.1rem solid #bdcccf;
-      border-bottom: 0.1rem solid #bdcccf; }
+      border-right: 1px solid #bdcccf;
+      border-bottom: 1px solid #bdcccf; }
     .cosmo-default table.quickdate-calendar td.other-month {
       font-family: quicksand, sans-serif;
       background-color: #4a6067;
@@ -2650,10 +2653,10 @@ $fa-var-youtube-square: "\f166";
     padding: 0.65rem 1.5rem 0.75rem 1.5rem;
     text-align: center;
     text-transform: lowercase;
-    border-top: 0.1rem solid #4a6067;
-    border-right: 0.1rem solid #4a6067;
-    border-bottom: 0.1rem solid #4a6067;
-    border-left: 0.1rem solid #4a6067;
+    border-top: 1px solid #4a6067;
+    border-right: 1px solid #4a6067;
+    border-bottom: 1px solid #4a6067;
+    border-left: 1px solid #4a6067;
     font-size: 13px;
     line-height: 19.5px;
     font-size: 1.3rem;
@@ -2673,10 +2676,10 @@ $fa-var-youtube-square: "\f166";
     .cosmo-default .quickdate-clear:hover, .cosmo-default .ngdialog-content .quickdate-clear.dropzone:active, .ngdialog-content .cosmo-default .quickdate-clear.dropzone:active {
       background-color: #ea1d2c;
       color: #e9eeef;
-      border-top: 0.1rem solid #ab101b;
-      border-right: 0.1rem solid #ab101b;
-      border-bottom: 0.1rem solid #ab101b;
-      border-left: 0.1rem solid #ab101b; }
+      border-top: 1px solid #ab101b;
+      border-right: 1px solid #ab101b;
+      border-bottom: 1px solid #ab101b;
+      border-left: 1px solid #ab101b; }
     .cosmo-default .quickdate-clear:hover, .cosmo-default .ngdialog-content .quickdate-clear.dropzone:active, .ngdialog-content .cosmo-default .quickdate-clear.dropzone:active {
       color: #e9eeef; }
 
@@ -2690,7 +2693,7 @@ $fa-var-youtube-square: "\f166";
   background-color: #e9eeef;
   display: block;
   height: 3em;
-  width: 36rem;
+  width: 33.25rem;
   border: 0.1em solid #d1dcde;
   font-size: 12.6px;
   line-height: 18.9px;
@@ -2737,14 +2740,13 @@ $fa-var-youtube-square: "\f166";
         .cosmo-toolbar-large ul li button:hover i, .cosmo-toolbar-large ul li .ngdialog-content button.dropzone:active i, .ngdialog-content .cosmo-toolbar-large ul li button.dropzone:active i {
           color: #70c8c4; }
   .cosmo-toolbar-large .type-dropdown {
-    z-index: 9999;
     position: relative;
     left: 0;
     height: auto;
-    border-top: 0.1rem solid #bdcccf;
-    border-right: 0.1rem solid #bdcccf;
-    border-bottom: 0.1rem solid #bdcccf;
-    border-left: 0.1rem solid #bdcccf;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
     background-color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
@@ -2752,7 +2754,8 @@ $fa-var-youtube-square: "\f166";
     font-size: 1.3rem;
     line-height: 1.95rem;
     width: 14.5rem;
-    margin-top: -0.625rem; }
+    margin-top: -.5rem;
+    width: 13rem; }
     .cosmo-toolbar-large .type-dropdown button {
       font-family: quicksand, sans-serif;
       outline: none;
@@ -2850,14 +2853,13 @@ $fa-var-youtube-square: "\f166";
       font-size: 1.26rem;
       line-height: 1.89rem; }
   .cosmo-toolbar-large .format-dropdown {
-    z-index: 9999;
     position: relative;
     left: 2.1rem;
     height: auto;
-    border-top: 0.1rem solid #bdcccf;
-    border-right: 0.1rem solid #bdcccf;
-    border-bottom: 0.1rem solid #bdcccf;
-    border-left: 0.1rem solid #bdcccf;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
     background-color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
@@ -2865,7 +2867,8 @@ $fa-var-youtube-square: "\f166";
     font-size: 1.3rem;
     line-height: 1.95rem;
     width: 14.5rem;
-    margin-top: -0.625rem; }
+    margin-top: -.5rem;
+    width: 14.5rem; }
     .cosmo-toolbar-large .format-dropdown button {
       font-family: quicksand, sans-serif;
       outline: none;
@@ -2889,15 +2892,14 @@ $fa-var-youtube-square: "\f166";
         .cosmo-toolbar-large .format-dropdown button:hover i, .cosmo-toolbar-large .format-dropdown .ngdialog-content button.dropzone:active i, .ngdialog-content .cosmo-toolbar-large .format-dropdown button.dropzone:active i {
           background-color: transparent;
           color: #70c8c4; }
-  .cosmo-toolbar-large .align-dropdown {
-    z-index: 9999;
+  .cosmo-toolbar-large .link-dropdown {
     position: relative;
-    left: 24rem;
+    left: 5rem;
     height: auto;
-    border-top: 0.1rem solid #bdcccf;
-    border-right: 0.1rem solid #bdcccf;
-    border-bottom: 0.1rem solid #bdcccf;
-    border-left: 0.1rem solid #bdcccf;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
     background-color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
@@ -2905,7 +2907,48 @@ $fa-var-youtube-square: "\f166";
     font-size: 1.3rem;
     line-height: 1.95rem;
     width: 14.5rem;
-    margin-top: -0.625rem; }
+    margin-top: -.5rem;
+    width: 13.5rem; }
+    .cosmo-toolbar-large .link-dropdown button {
+      font-family: quicksand, sans-serif;
+      outline: none;
+      margin: 0;
+      padding: 0.625rem;
+      padding-bottom: 0;
+      display: block;
+      text-align: center;
+      border-bottom: 0;
+      background-color: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 0.625rem; }
+      .cosmo-toolbar-large .link-dropdown button i {
+        margin-right: 0.9375rem;
+        vertical-align: middle; }
+      .cosmo-toolbar-large .link-dropdown button:hover, .cosmo-toolbar-large .link-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .link-dropdown button.dropzone:active {
+        background-color: transparent;
+        color: #70c8c4; }
+        .cosmo-toolbar-large .link-dropdown button:hover i, .cosmo-toolbar-large .link-dropdown .ngdialog-content button.dropzone:active i, .ngdialog-content .cosmo-toolbar-large .link-dropdown button.dropzone:active i {
+          background-color: transparent;
+          color: #70c8c4; }
+  .cosmo-toolbar-large .align-dropdown {
+    position: relative;
+    left: 21.35rem;
+    height: auto;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
+    background-color: #e9eeef;
+    padding: 0.25rem 0.625rem 0.625rem 0.625rem;
+    font-size: 13px;
+    line-height: 19.5px;
+    font-size: 1.3rem;
+    line-height: 1.95rem;
+    width: 14.5rem;
+    margin-top: -.5rem;
+    width: 13.25rem; }
     .cosmo-toolbar-large .align-dropdown button {
       font-family: quicksand, sans-serif;
       outline: none;
@@ -2930,14 +2973,13 @@ $fa-var-youtube-square: "\f166";
           background-color: transparent;
           color: #70c8c4; }
   .cosmo-toolbar-large .table-dropdown {
-    z-index: 9999;
     position: relative;
-    left: 26.5rem;
+    left: 24rem;
     height: auto;
-    border-top: 0.1rem solid #bdcccf;
-    border-right: 0.1rem solid #bdcccf;
-    border-bottom: 0.1rem solid #bdcccf;
-    border-left: 0.1rem solid #bdcccf;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
     background-color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
@@ -2945,7 +2987,8 @@ $fa-var-youtube-square: "\f166";
     font-size: 1.3rem;
     line-height: 1.95rem;
     width: 14.5rem;
-    margin-top: -0.625rem; }
+    margin-top: -.5rem;
+    width: 13.5rem; }
     .cosmo-toolbar-large .table-dropdown button {
       font-family: quicksand, sans-serif;
       outline: none;
@@ -2971,17 +3014,16 @@ $fa-var-youtube-square: "\f166";
           color: #70c8c4; }
     .cosmo-toolbar-large .table-dropdown .divide {
       padding-bottom: 1.25rem;
-      border-bottom: 0.1rem solid #bdcccf;
+      border-bottom: 1px solid #bdcccf;
       margin-bottom: 0.625rem; }
-  .cosmo-toolbar-large .media-dropdown {
-    z-index: 9999;
+  .cosmo-toolbar-large .table-dropdown--insert {
     position: relative;
-    left: 29rem;
+    left: -19rem;
     height: auto;
-    border-top: 0.1rem solid #bdcccf;
-    border-right: 0.1rem solid #bdcccf;
-    border-bottom: 0.1rem solid #bdcccf;
-    border-left: 0.1rem solid #bdcccf;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
     background-color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
@@ -2989,7 +3031,75 @@ $fa-var-youtube-square: "\f166";
     font-size: 1.3rem;
     line-height: 1.95rem;
     width: 14.5rem;
-    margin-top: -0.625rem; }
+    margin-top: -.5rem;
+    margin-top: -3.5rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    position: absolute;
+    width: 19.5rem; }
+    .cosmo-toolbar-large .table-dropdown--insert button {
+      font-family: quicksand, sans-serif;
+      outline: none;
+      margin: 0;
+      padding: 0.625rem;
+      padding-bottom: 0;
+      display: block;
+      text-align: center;
+      border-bottom: 0;
+      background-color: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 0.625rem; }
+      .cosmo-toolbar-large .table-dropdown--insert button i {
+        margin-right: 0.9375rem;
+        vertical-align: middle; }
+      .cosmo-toolbar-large .table-dropdown--insert button:hover, .cosmo-toolbar-large .table-dropdown--insert .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .table-dropdown--insert button.dropzone:active {
+        background-color: transparent;
+        color: #70c8c4; }
+        .cosmo-toolbar-large .table-dropdown--insert button:hover i, .cosmo-toolbar-large .table-dropdown--insert .ngdialog-content button.dropzone:active i, .ngdialog-content .cosmo-toolbar-large .table-dropdown--insert button.dropzone:active i {
+          background-color: transparent;
+          color: #70c8c4; }
+    .cosmo-toolbar-large .table-dropdown--insert p {
+      margin: 0; }
+    .cosmo-toolbar-large .table-dropdown--insert .cell-select {
+      border-top: 1px solid #bdcccf;
+      border-right: 1px solid #bdcccf;
+      border-bottom: 1px solid #bdcccf;
+      border-left: 1px solid #bdcccf;
+      display: inline-block;
+      height: 1.5rem;
+      width: 1.5rem;
+      padding: 0;
+      margin: 0 .25rem .25rem 0; }
+      .cosmo-toolbar-large .table-dropdown--insert .cell-select:nth-child(10) {
+        margin-right: 0; }
+      .cosmo-toolbar-large .table-dropdown--insert .cell-select:hover, .cosmo-toolbar-large .table-dropdown--insert .ngdialog-content .cell-select.dropzone:active, .ngdialog-content .cosmo-toolbar-large .table-dropdown--insert .cell-select.dropzone:active {
+        background-color: white; }
+    .cosmo-toolbar-large .table-dropdown--insert .cell-select--focus {
+      background-color: white;
+      display: inline-block;
+      border-top: 1px solid #4a6067;
+      border-right: 1px solid #4a6067;
+      border-bottom: 1px solid #4a6067;
+      border-left: 1px solid #4a6067; }
+  .cosmo-toolbar-large .media-dropdown {
+    position: relative;
+    left: 26.5rem;
+    height: auto;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
+    background-color: #e9eeef;
+    padding: 0.25rem 0.625rem 0.625rem 0.625rem;
+    font-size: 13px;
+    line-height: 19.5px;
+    font-size: 1.3rem;
+    line-height: 1.95rem;
+    width: 14.5rem;
+    margin-top: -.5rem;
+    width: 10rem; }
     .cosmo-toolbar-large .media-dropdown button {
       font-family: quicksand, sans-serif;
       outline: none;
@@ -3080,13 +3190,13 @@ input[type='file'], .cosmo-default textarea[type='file'], .cosmo-default [type='
   .img-edit .media-nav {
     display: block;
     background-color: #70c8c4;
-    border-bottom: 0.1rem solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
     position: fixed;
     display: block;
     z-index: 100000;
     height: auto;
     width: 91.5rem;
-    border-bottom: 0.1rem solid #41aaa5;
+    border-bottom: 1px solid #41aaa5;
     margin-left: -2.5rem;
     margin-top: -8.36rem;
     padding-bottom: 0;
@@ -3223,7 +3333,7 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
   margin: 0 2.5rem 2.5rem 2.5rem;
   padding: 2.5rem 5rem 1rem 0;
   z-index: 100000;
-  border-bottom: 0.1rem solid #bdcccf; }
+  border-bottom: 1px solid #bdcccf; }
   .media-search button {
     margin-bottom: 0.5rem; }
   .media-search .search-bar {
@@ -3243,7 +3353,7 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
   height: auto;
   width: 91.5rem;
   margin: 0 auto;
-  border-bottom: 0.1rem solid #41aaa5; }
+  border-bottom: 1px solid #41aaa5; }
   .media-nav .options {
     display: inline;
     margin-left: 2rem; }
@@ -3268,7 +3378,10 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
   .media-nav h1, .media-nav h2 {
     color: white; }
   .media-nav input.search-bar, .media-nav .cosmo-default textarea.search-bar, .cosmo-default .media-nav textarea.search-bar, .media-nav .cosmo-default .search-bar.form-control, .cosmo-default .media-nav .search-bar.form-control, .media-nav .cosmo-default .search-bar.blk-code, .cosmo-default .media-nav .search-bar.blk-code {
-    border-bottom: 0.1rem solid #e9eeef;
+    border-bottom: 1px solid #e9eeef;
+    border-left: none;
+    border-right: none;
+    border-top: none;
     color: white;
     width: 86.5rem;
     margin-bottom: 1rem; }
@@ -3425,6 +3538,11 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
         margin-right: 0; }
   .ngdialog-content p {
     margin-bottom: 2.5rem; }
+  .ngdialog-content .ng-file-over {
+    background-color: #70c8c4 !important;
+    border: 2px dashed #e9eeef !important;
+    -webkit-transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear; }
   .ngdialog-content .dropzone {
     background-color: rgba(112, 200, 196, 0.75);
     height: 10rem;
@@ -3614,6 +3732,135 @@ body.ngdialog-open {
       vertical-align: middle;
       margin-right: 0.5rem; }
 
+/*
+Copyright (c) 2010-2012 Ivan Vanderbyl
+Originally found at http://ivan.ly/ui
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+/* Webkit animation keyframes */
+@-webkit-keyframes animate-stripes {
+  to {
+    background-position: 0 0; }
+
+  from {
+    background-position: 44px 0; } }
+/* Bar which is placed behind the progress */
+.ui-progress-bar {
+  /* Usual setup stuff */
+  position: relative;
+  height: 25px;
+  /* Pad right so we don't cover the borders when fully progressed */
+  padding-right: 2px;
+  /* For browser that don't support gradients, we'll set a blanket background colour */
+  background-color: #abb2bc;
+  /* Rounds the ends, we specify an excessive amount to make sure they are completely rounded */
+  /* Adjust to your liking, and don't forget to adjust to the same amount in .ui-progress */
+  -o-border-radius: 25px;
+  -khtml-border-radius: 25px;
+  border-radius: 25px;
+  /* Background gradient */
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #949daa), color-stop(100%, #abb2bc));
+  background: -webkit-linear-gradient(#949daa 0%, #abb2bc 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#949daa), to(#abb2bc));
+  background: linear-gradient(#949daa 0%, #abb2bc 100%);
+  /* Give it the inset look by adding some shadows and highlights */
+  -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px white;
+  -o-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px white;
+  box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px white;
+  /* Alt colours */
+  /* Progress part of the progress bar */ }
+
+.ui-progress-bar.blue .ui-progress {
+  background-color: #339bb9 !important;
+  border: 1px solid #287a91; }
+
+.ui-progress-bar.error .ui-progress {
+  background-color: #C43C35 !important;
+  border: 1px solid #9c302a; }
+
+.ui-progress-bar.warning .ui-progress {
+  background-color: #d9b31a !important;
+  border: 1px solid #ab8d15; }
+
+.ui-progress-bar.success .ui-progress {
+  background-color: #57a957 !important;
+  border: 1px solid #458845; }
+
+.ui-progress-bar.transition .ui-progress {
+  -webkit-transition: background-color 0.5s ease-in, border-color 1.5s ease-out, -webkit-box-shadow 1.5s ease-out;
+  transition: background-color 0.5s ease-in, border-color 1.5s ease-out, box-shadow 1.5s ease-out; }
+
+.ui-progress-bar .ui-progress {
+  /* Usual setup stuff */
+  position: relative;
+  display: block;
+  overflow: hidden;
+  /* Height should be 2px less than .ui-progress-bar so as to not cover borders and give it a look of being inset */
+  height: 23px;
+  /* Rounds the ends, we specify an excessive amount to make sure they are completely rounded */
+  /* Adjust to your liking, and don't forget to adjust to the same amount in .ui-progress-bar */
+  -o-border-radius: 25px;
+  -khtml-border-radius: 25px;
+  border-radius: 25px;
+  /* Set the background size so the stripes work correctly */
+  -webkit-background-size: 44px 44px;
+  -moz-background-size: 36px 36px;
+  /* Webkit */
+  /* For browser that don't support gradients, we'll set a base background colour */
+  background-color: #74d04c;
+  /* Webkit background stripes and gradient */
+  background: -webkit-gradient(linear, 0 0, 44 44, color-stop(0, rgba(255, 255, 255, 0.17)), color-stop(0.25, rgba(255, 255, 255, 0.17)), color-stop(0.26, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, 0)), color-stop(0.51, rgba(255, 255, 255, 0.17)), color-stop(0.75, rgba(255, 255, 255, 0.17)), color-stop(0.76, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0.35))), #74d04c;
+  /* Mozilla (Firefox etc) background stripes */
+  /* Note: Mozilla's support for gradients is more true to the original design, allowing gradients at 30 degrees, as apposed to 45 degress in webkit. */
+  -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4), inset 0px -1px 1px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4), inset 0px -1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4), inset 0px -1px 1px rgba(0, 0, 0, 0.2);
+  /* Give it a higher contrast outline */
+  border: 1px solid #4c8932;
+  /* Animate */
+  -webkit-animation: animate-stripes 2s linear infinite;
+  -ms-animation: animate-stripes 2s linear infinite;
+  -khtml-animation: animate-stripes 2s linear infinite;
+  animation: animate-stripes 2s linear infinite;
+  /* Style status label */ }
+
+.ui-progress-bar .ui-progress span.ui-label {
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -khtml-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-size: 13px;
+  position: absolute;
+  right: 0;
+  line-height: 23px;
+  padding-right: 12px;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: rgba(255, 255, 255, 0.45) 0 1px 0px;
+  white-space: nowrap; }
+
+.ui-progress-bar .ui-progress span.ui-label b {
+  font-weight: bold; }
+
 /**
  * angular-growl - v0.3.1 - 2013-10-01
  * https://github.com/marcorinck/angular-growl
@@ -3645,10 +3892,10 @@ body.ngdialog-open {
   background-color: #4a6067;
   color: #e9eeef;
   padding: 1.25rem;
-  border-top: 0.1rem solid #bdcccf;
-  border-right: 0.1rem solid #bdcccf;
-  border-bottom: 0.1rem solid #bdcccf;
-  border-left: 0.1rem solid #bdcccf;
+  border-top: 1px solid #bdcccf;
+  border-right: 1px solid #bdcccf;
+  border-bottom: 1px solid #bdcccf;
+  border-left: 1px solid #bdcccf;
   -webkit-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear; }
   .cosmo-growl-item i {
@@ -3660,10 +3907,10 @@ body.ngdialog-open {
   background-color: #4a6067;
   color: #e9eeef;
   padding: 1.25rem;
-  border-top: 0.1rem solid #bdcccf;
-  border-right: 0.1rem solid #bdcccf;
-  border-bottom: 0.1rem solid #bdcccf;
-  border-left: 0.1rem solid #bdcccf;
+  border-top: 1px solid #bdcccf;
+  border-right: 1px solid #bdcccf;
+  border-bottom: 1px solid #bdcccf;
+  border-left: 1px solid #bdcccf;
   -webkit-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear; }
   .alert-info i {
@@ -3675,10 +3922,10 @@ body.ngdialog-open {
   background-color: #20ba2c;
   color: #e9eeef;
   padding: 1.25rem;
-  border-top: 0.1rem solid #bdcccf;
-  border-right: 0.1rem solid #bdcccf;
-  border-bottom: 0.1rem solid #bdcccf;
-  border-left: 0.1rem solid #bdcccf;
+  border-top: 1px solid #bdcccf;
+  border-right: 1px solid #bdcccf;
+  border-bottom: 1px solid #bdcccf;
+  border-left: 1px solid #bdcccf;
   -webkit-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear; }
   .alert-success i {
@@ -3690,10 +3937,10 @@ body.ngdialog-open {
   background-color: #ea1d2c;
   color: #e9eeef;
   padding: 1.25rem;
-  border-top: 0.1rem solid #bdcccf;
-  border-right: 0.1rem solid #bdcccf;
-  border-bottom: 0.1rem solid #bdcccf;
-  border-left: 0.1rem solid #bdcccf;
+  border-top: 1px solid #bdcccf;
+  border-right: 1px solid #bdcccf;
+  border-bottom: 1px solid #bdcccf;
+  border-left: 1px solid #bdcccf;
   -webkit-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear; }
   .alert-error i {
@@ -3705,10 +3952,10 @@ body.ngdialog-open {
   background-color: #ffd32c;
   color: #e9eeef;
   padding: 1.25rem;
-  border-top: 0.1rem solid #bdcccf;
-  border-right: 0.1rem solid #bdcccf;
-  border-bottom: 0.1rem solid #bdcccf;
-  border-left: 0.1rem solid #bdcccf;
+  border-top: 1px solid #bdcccf;
+  border-right: 1px solid #bdcccf;
+  border-bottom: 1px solid #bdcccf;
+  border-left: 1px solid #bdcccf;
   -webkit-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear; }
   .alert-alert i {

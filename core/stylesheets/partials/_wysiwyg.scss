@@ -1,6 +1,5 @@
 // Mixin for dropdowns used in the cosmo WYSIWYG editor
 @mixin wysiwyg-dropdown ($left) {
-  z-index: 9999;
   position: relative;
   left: $left;
   height: auto;
@@ -9,7 +8,7 @@
   padding: $pad-epsilon * .1 $pad-epsilon * .25 $pad-epsilon * .25 $pad-epsilon * .25;
   @include font-size(13);
   width: 14.5rem;
-  margin-top: $pad-epsilon * -.25;
+  margin-top: -.5rem;
 
   button {
     font-family: $font-alpha;
@@ -55,7 +54,7 @@
   background-color: $color-alpha;
   display: block;
   height: 3em;
-  width: 36rem;
+  width: 33.25rem;
   border: .1em solid darken($color-alpha, 8%);
   @include font-size(14 * .9);
 
@@ -122,6 +121,7 @@
 
   .type-dropdown {
     @include wysiwyg-dropdown (0);
+    width: 13rem;
 
     .wysiwyg-p {
       display: block;
@@ -189,14 +189,22 @@
 
   .format-dropdown {
     @include wysiwyg-dropdown (2.1rem);
+    width: 14.5rem;
   }
 
+    .link-dropdown {
+        @include wysiwyg-dropdown (5rem);
+        width: 13.5rem;
+    }
+
   .align-dropdown {
-    @include wysiwyg-dropdown (24rem);
+    @include wysiwyg-dropdown (21.35rem);
+    width: 13.25rem;
   }
 
   .table-dropdown {
-    @include wysiwyg-dropdown (26.5rem);
+    @include wysiwyg-dropdown (24rem);
+    width: 13.5rem;
 
     .divide {
       padding-bottom: $pad-epsilon * .5;
@@ -205,8 +213,45 @@
     }
   }
 
+  .table-dropdown--insert {
+    @include wysiwyg-dropdown (-19rem);
+    margin-top: -3.5rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    position: absolute;
+    width: 19.5rem;
+
+    p {
+        margin: 0;
+    }
+
+    .cell-select {
+        @include border ($border-alpha-dark, top, right, bottom, left);
+        display: inline-block;
+        height: 1.5rem;
+        width: 1.5rem;
+        padding: 0;
+        margin: 0 .25rem .25rem 0;
+
+        &:nth-child(10) {
+            margin-right: 0;
+        }
+
+        &:hover {
+            background-color: lighten($color-alpha, 15%);
+        }
+    }
+
+    .cell-select--focus {
+        background-color: lighten($color-alpha, 15%);
+        display: inline-block;
+        @include border ($border-beta, top, right, bottom, left);
+    }
+  }
+
   .media-dropdown {
-    @include wysiwyg-dropdown (29rem);
+    @include wysiwyg-dropdown (26.5rem);
+    width: 10rem;
   }
 }
 

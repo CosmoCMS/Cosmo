@@ -88,18 +88,18 @@ iota
     }
 }
 
-$border-alpha: .1rem solid $color-alpha;
-$border-alpha-dark: .1rem solid darken($color-alpha, 15%);
-$border-beta: .1rem solid $color-beta;
-$border-beta-dark: .1rem solid darken($color-beta, 15%);
-$border-gamma: .1rem solid $color-gamma;
-$border-gamma-dark: .1rem solid darken($color-gamma, 15%);
-$border-alert: .1rem solid $color-alert;
-$border-alert-dark: .1rem solid darken($color-alert, 15%);
-$border-error: .1rem solid $color-error;
-$border-error-dark: .1rem solid darken($color-error, 15%);
-$border-success: .1rem solid $color-success;
-$border-success-dark: .1rem solid darken($color-success, 15%);
-$border-brand-blue: .1rem solid $color-brand-blue;
-$border-brand-blue-dark: .1rem solid darken($color-brand-blue, 15%);
+$border-alpha: 1px solid $color-alpha;
+$border-alpha-dark: 1px solid darken($color-alpha, 15%);
+$border-beta: 1px solid $color-beta;
+$border-beta-dark: 1px solid darken($color-beta, 15%);
+$border-gamma: 1px solid $color-gamma;
+$border-gamma-dark: 1px solid darken($color-gamma, 15%);
+$border-alert: 1px solid $color-alert;
+$border-alert-dark: 1px solid darken($color-alert, 15%);
+$border-error: 1px solid $color-error;
+$border-error-dark: 1px solid darken($color-error, 15%);
+$border-success: 1px solid $color-success;
+$border-success-dark: 1px solid darken($color-success, 15%);
+$border-brand-blue: 1px solid $color-brand-blue;
+$border-brand-blue-dark: 1px solid darken($color-brand-blue, 15%);
 // End Border Styling Variables

@@ -93,8 +93,10 @@
 input {
 	@include font-size(15);
 	background-color: transparent;
-	border: 0;
 	@include border ($border-alpha-dark, bottom);
+	border-left: none;
+	border-right: none;
+	border-top: none;
 	box-shadow: none;
 	color: lighten($color-beta, 20%);
 	display: inline-block;
