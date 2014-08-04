@@ -92,6 +92,8 @@
 .#{$fa-css-prefix}-file-text-o:before { content: $fa-var-file-text-o; }
 .#{$fa-css-prefix}-file-o:before { content: $fa-var-file-o; }
 .#{$fa-css-prefix}-files-o:before { content: $fa-var-files-o; }
+.#{$fa-css-prefix}-list-alt:before { content: $fa-var-list-alt; }
+
 
 /*
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
@@ -129,7 +131,6 @@
 .#{$fa-css-prefix}-rotate-right:before,
 .#{$fa-css-prefix}-repeat:before { content: $fa-var-repeat; }
 .#{$fa-css-prefix}-refresh:before { content: $fa-var-refresh; }
-.#{$fa-css-prefix}-list-alt:before { content: $fa-var-list-alt; }
 .#{$fa-css-prefix}-lock:before { content: $fa-var-lock; }
 .#{$fa-css-prefix}-flag:before { content: $fa-var-flag; }
 .#{$fa-css-prefix}-headphones:before { content: $fa-var-headphones; }

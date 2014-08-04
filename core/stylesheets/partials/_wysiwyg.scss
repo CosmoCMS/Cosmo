@@ -27,6 +27,7 @@
 
     i {
       margin-right: $pad-epsilon * .375;
+      margin-top: -.2rem;
       vertical-align: middle;
     }
 
@@ -54,7 +55,7 @@
   background-color: $color-alpha;
   display: block;
   height: 3em;
-  width: 33.25rem;
+  width: 22.25rem;
   border: .1em solid darken($color-alpha, 8%);
   @include font-size(14 * .9);
 
@@ -188,7 +189,7 @@
   }
 
   .format-dropdown {
-    @include wysiwyg-dropdown (2.1rem);
+    @include wysiwyg-dropdown (2.45rem);
     width: 14.5rem;
   }
 
@@ -197,13 +198,19 @@
         width: 13.5rem;
     }
 
+    .list-dropdown {
+      @include wysiwyg-dropdown (7.85rem);
+      width: 15.5rem;
+    }
+
   .align-dropdown {
-    @include wysiwyg-dropdown (21.35rem);
+    @include wysiwyg-dropdown (10.5rem);
     width: 13.25rem;
   }
 
+
   .table-dropdown {
-    @include wysiwyg-dropdown (24rem);
+    @include wysiwyg-dropdown (13.15rem);
     width: 13.5rem;
 
     .divide {
@@ -250,8 +257,13 @@
   }
 
   .media-dropdown {
-    @include wysiwyg-dropdown (26.5rem);
+    @include wysiwyg-dropdown (15.8rem);
     width: 10rem;
+  }
+
+  .code-dropdown {
+    @include wysiwyg-dropdown (18.5rem);
+    width: 12.85rem;
   }
 }
 

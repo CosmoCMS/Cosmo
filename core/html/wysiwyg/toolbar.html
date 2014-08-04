@@ -16,28 +16,8 @@
             </button>
         </li>
         <li>
-            <button ng-click="action('ol')">
-                <i class="fa fa-list-ol"></i>
-            </button>
-        </li>
-        <li>
-            <button ng-click="action('ul')">
-                <i class="fa fa-list-ul"></i>
-            </button>
-        </li>
-        <li>
-            <button ng-click="action('hr')">
-                <i class="fa fa-minus"></i>
-            </button>
-        </li>
-        <li class="indent">
-            <button ng-click="action('indent')">
-                <i class="fa fa-indent"></i>
-            </button>
-        </li>
-        <li class="outdent">
-            <button ng-click="action('outdent')">
-                <i class="fa fa-outdent"></i>
+            <button ng-mouseenter="list=true" ng-mouseleave="list=false">
+                <i class="fa fa-list-alt"></i>
             </button>
         </li>
         <li>
@@ -56,7 +36,7 @@
             </button>
         </li>
         <li>
-            <button ng-click="action('toggle')">
+            <button ng-mouseenter="code=true" ng-mouseleave="code=false">
                 <i class="fa fa-code"></i>
             </button>
         </li>
@@ -64,9 +44,8 @@
 
     <div class="type-dropdown" ng-show="format" ng-mouseenter="format=true" ng-mouseleave="format=false">
         <button class="wysiwyg-p" ng-click="action('p')">Paragraph</button>
-        <button class="wysiwyg-u" ng-click="action('unformat')">Unformatted</button>
-        <button class="wysiwyg-q" ng-click="action('unformat')">Block Quote</button>
-        <button class="wysiwyg-c" ng-click="action('unformat')">code</button>
+        <button class="wysiwyg-q" ng-click="action('blockquote')">Block Quote</button>
+        <button class="wysiwyg-c" ng-click="action('code')">code</button>
         <button class="wysiwyg-h1" ng-click="action('h1')">Header1</button>
         <button class="wysiwyg-h2" ng-click="action('h2')">Header2</button>
         <button class="wysiwyg-h3" ng-click="action('h3')">Header3</button>
@@ -87,15 +66,18 @@
         <button ng-click="action('underline')">
             <i class="fa fa-underline"></i>Underline
         </button>
+        <button class="wysiwyg-u" ng-click="action('unformat')">
+            <i class="fa fa-minus"></i>Unformat
+        </button>
     </div>
-    <div class="link-dropdown" ng-show="link" ng-mouseenter="link-true" ng-mouseleave="link-false">
-        <button ng-click="openModal('link')">
+    <div class="link-dropdown" ng-show="link" ng-mouseenter="link=true" ng-mouseleave="link=false">
+        <button ng-click="action('link')">
             <i class="fa fa-link"></i>Add Link
         </button>
         <button ng-click="action('unlink')">
             <i class="fa fa-chain-broken"></i>Remove Link
         </button>
-        <button ng-click="action('unlink')">
+        <button ng-click="action('externalLink')">
             <i class="fa fa-external-link"></i>External Link
         </button>
     </div>
@@ -106,12 +88,12 @@
         <button ng-click="action('justify')"><i class="fa fa-align-justify"></i>Justify Text</button>
     </div>
     <div class="table-dropdown" ng-show="table" ng-mouseenter="table=true" ng-mouseleave="table=false">
-        <button ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false" ng-click="action('table')"><i class="fa fa-table"></i>Insert Table</button>
-        <button class="divide"><i class="fa fa-table"></i>Paste Table</button>
+        <button ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false"><i class="fa fa-table"></i>Insert Table</button>
             <div ng-show="insertTable" ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false" ng-click="insertTable=false" class="table-dropdown--insert">
                 <button ng-repeat="cell in editor.tableRows" ng-class="{'cell-select--focus': selectedCell(cell.row, cell.col)}" class="cell-select" ng-mouseover="cellMouseover(cell.row, cell.col)" ng-click="createTable(cell.row, cell.col)"></button>
                 <p>{{mouseoverCol}} x {{mouseoverRow}}</p>
             </div>
+        <button class="divide" ng-click="action('table')"><i class="fa fa-table"></i>Paste Table</button>
         <button ng-click="action('addTableHeader')"><i class="fa fa-plus"></i>Table Head</button>
         <button class="divide" ng-click="action('removeTableHeader')"><i class="fa fa-minus"></i>Table Head</button>
         <button ng-click="action('addRowAbove')"><i class="fa fa-plus"></i>Row Above</button>
@@ -127,5 +109,16 @@
         <button ng-click="action('video')"><i class="fa fa-video-camera"></i>Video</button>
         <button ng-click="action('audio')"><i class="fa fa-volume-up"></i>Audio</button>
         <button ng-click="action('gallery')"><i class="fa fa-camera"></i>Gallery</button>
+    </div>
+    <div class="code-dropdown" ng-show="code" ng-mouseenter="code=true" ng-mouseleave="code=false">
+        <button ng-click="action('custom')"><i class="fa fa-code"></i>Directive</button>
+        <button ng-click="action('toggle')"><i class="fa fa-code"></i>Code View</button>
+    </div>
+    <div class="list-dropdown" ng-show="list" ng-mouseenter="list=true" ng-mouseleave="list=false">
+        <button ng-click="action('ol')"><i class="fa fa-list-ol"></i>Ordered List</button>
+        <button ng-click="action('ul')"><i class="fa fa-list-ul"></i>Unordered List</button>
+        <button ng-click="action('hr')"><i class="fa fa-minus"></i>Line Break</button>
+        <button ng-click="action('indent')"><i class="fa fa-indent"></i>Indent</button>
+        <button ng-click="action('outdent')"><i class="fa fa-outdent"></i>Outdent</button>
     </div>
 </div>

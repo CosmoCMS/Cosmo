@@ -655,7 +655,6 @@ $fa-var-linkedin: "\f0e1";
 $fa-var-linkedin-square: "\f08c";
 $fa-var-linux: "\f17c";
 $fa-var-list: "\f03a";
-$fa-var-list-alt: "\f022";
 $fa-var-list-ol: "\f0cb";
 $fa-var-list-ul: "\f0ca";
 $fa-var-location-arrow: "\f124";
@@ -1156,6 +1155,9 @@ $fa-var-youtube-square: "\f166";
 .fa-files-o:before {
   content: "\f0c5"; }
 
+.fa-list-alt:before {
+  content: "\f022"; }
+
 /*
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
@@ -1192,7 +1194,6 @@ $fa-var-youtube-square: "\f166";
 .fa-rotate-right:before,
 .fa-repeat:before { content: $fa-var-repeat; }
 .fa-refresh:before { content: $fa-var-refresh; }
-.fa-list-alt:before { content: $fa-var-list-alt; }
 .fa-lock:before { content: $fa-var-lock; }
 .fa-flag:before { content: $fa-var-flag; }
 .fa-headphones:before { content: $fa-var-headphones; }
@@ -2693,7 +2694,7 @@ $fa-var-youtube-square: "\f166";
   background-color: #e9eeef;
   display: block;
   height: 3em;
-  width: 33.25rem;
+  width: 22.25rem;
   border: 0.1em solid #d1dcde;
   font-size: 12.6px;
   line-height: 18.9px;
@@ -2772,6 +2773,7 @@ $fa-var-youtube-square: "\f166";
       margin-bottom: 0.625rem; }
       .cosmo-toolbar-large .type-dropdown button i {
         margin-right: 0.9375rem;
+        margin-top: -.2rem;
         vertical-align: middle; }
       .cosmo-toolbar-large .type-dropdown button:hover, .cosmo-toolbar-large .type-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .type-dropdown button.dropzone:active {
         background-color: transparent;
@@ -2854,7 +2856,7 @@ $fa-var-youtube-square: "\f166";
       line-height: 1.89rem; }
   .cosmo-toolbar-large .format-dropdown {
     position: relative;
-    left: 2.1rem;
+    left: 2.45rem;
     height: auto;
     border-top: 1px solid #bdcccf;
     border-right: 1px solid #bdcccf;
@@ -2885,6 +2887,7 @@ $fa-var-youtube-square: "\f166";
       margin-bottom: 0.625rem; }
       .cosmo-toolbar-large .format-dropdown button i {
         margin-right: 0.9375rem;
+        margin-top: -.2rem;
         vertical-align: middle; }
       .cosmo-toolbar-large .format-dropdown button:hover, .cosmo-toolbar-large .format-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .format-dropdown button.dropzone:active {
         background-color: transparent;
@@ -2925,6 +2928,7 @@ $fa-var-youtube-square: "\f166";
       margin-bottom: 0.625rem; }
       .cosmo-toolbar-large .link-dropdown button i {
         margin-right: 0.9375rem;
+        margin-top: -.2rem;
         vertical-align: middle; }
       .cosmo-toolbar-large .link-dropdown button:hover, .cosmo-toolbar-large .link-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .link-dropdown button.dropzone:active {
         background-color: transparent;
@@ -2932,9 +2936,50 @@ $fa-var-youtube-square: "\f166";
         .cosmo-toolbar-large .link-dropdown button:hover i, .cosmo-toolbar-large .link-dropdown .ngdialog-content button.dropzone:active i, .ngdialog-content .cosmo-toolbar-large .link-dropdown button.dropzone:active i {
           background-color: transparent;
           color: #70c8c4; }
+  .cosmo-toolbar-large .list-dropdown {
+    position: relative;
+    left: 7.85rem;
+    height: auto;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
+    background-color: #e9eeef;
+    padding: 0.25rem 0.625rem 0.625rem 0.625rem;
+    font-size: 13px;
+    line-height: 19.5px;
+    font-size: 1.3rem;
+    line-height: 1.95rem;
+    width: 14.5rem;
+    margin-top: -.5rem;
+    width: 15.5rem; }
+    .cosmo-toolbar-large .list-dropdown button {
+      font-family: quicksand, sans-serif;
+      outline: none;
+      margin: 0;
+      padding: 0.625rem;
+      padding-bottom: 0;
+      display: block;
+      text-align: center;
+      border-bottom: 0;
+      background-color: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 0.625rem; }
+      .cosmo-toolbar-large .list-dropdown button i {
+        margin-right: 0.9375rem;
+        margin-top: -.2rem;
+        vertical-align: middle; }
+      .cosmo-toolbar-large .list-dropdown button:hover, .cosmo-toolbar-large .list-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .list-dropdown button.dropzone:active {
+        background-color: transparent;
+        color: #70c8c4; }
+        .cosmo-toolbar-large .list-dropdown button:hover i, .cosmo-toolbar-large .list-dropdown .ngdialog-content button.dropzone:active i, .ngdialog-content .cosmo-toolbar-large .list-dropdown button.dropzone:active i {
+          background-color: transparent;
+          color: #70c8c4; }
   .cosmo-toolbar-large .align-dropdown {
     position: relative;
-    left: 21.35rem;
+    left: 10.5rem;
     height: auto;
     border-top: 1px solid #bdcccf;
     border-right: 1px solid #bdcccf;
@@ -2965,6 +3010,7 @@ $fa-var-youtube-square: "\f166";
       margin-bottom: 0.625rem; }
       .cosmo-toolbar-large .align-dropdown button i {
         margin-right: 0.9375rem;
+        margin-top: -.2rem;
         vertical-align: middle; }
       .cosmo-toolbar-large .align-dropdown button:hover, .cosmo-toolbar-large .align-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .align-dropdown button.dropzone:active {
         background-color: transparent;
@@ -2974,7 +3020,7 @@ $fa-var-youtube-square: "\f166";
           color: #70c8c4; }
   .cosmo-toolbar-large .table-dropdown {
     position: relative;
-    left: 24rem;
+    left: 13.15rem;
     height: auto;
     border-top: 1px solid #bdcccf;
     border-right: 1px solid #bdcccf;
@@ -3005,6 +3051,7 @@ $fa-var-youtube-square: "\f166";
       margin-bottom: 0.625rem; }
       .cosmo-toolbar-large .table-dropdown button i {
         margin-right: 0.9375rem;
+        margin-top: -.2rem;
         vertical-align: middle; }
       .cosmo-toolbar-large .table-dropdown button:hover, .cosmo-toolbar-large .table-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .table-dropdown button.dropzone:active {
         background-color: transparent;
@@ -3053,6 +3100,7 @@ $fa-var-youtube-square: "\f166";
       margin-bottom: 0.625rem; }
       .cosmo-toolbar-large .table-dropdown--insert button i {
         margin-right: 0.9375rem;
+        margin-top: -.2rem;
         vertical-align: middle; }
       .cosmo-toolbar-large .table-dropdown--insert button:hover, .cosmo-toolbar-large .table-dropdown--insert .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .table-dropdown--insert button.dropzone:active {
         background-color: transparent;
@@ -3085,7 +3133,7 @@ $fa-var-youtube-square: "\f166";
       border-left: 1px solid #4a6067; }
   .cosmo-toolbar-large .media-dropdown {
     position: relative;
-    left: 26.5rem;
+    left: 15.8rem;
     height: auto;
     border-top: 1px solid #bdcccf;
     border-right: 1px solid #bdcccf;
@@ -3116,11 +3164,53 @@ $fa-var-youtube-square: "\f166";
       margin-bottom: 0.625rem; }
       .cosmo-toolbar-large .media-dropdown button i {
         margin-right: 0.9375rem;
+        margin-top: -.2rem;
         vertical-align: middle; }
       .cosmo-toolbar-large .media-dropdown button:hover, .cosmo-toolbar-large .media-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .media-dropdown button.dropzone:active {
         background-color: transparent;
         color: #70c8c4; }
         .cosmo-toolbar-large .media-dropdown button:hover i, .cosmo-toolbar-large .media-dropdown .ngdialog-content button.dropzone:active i, .ngdialog-content .cosmo-toolbar-large .media-dropdown button.dropzone:active i {
+          background-color: transparent;
+          color: #70c8c4; }
+  .cosmo-toolbar-large .code-dropdown {
+    position: relative;
+    left: 18.5rem;
+    height: auto;
+    border-top: 1px solid #bdcccf;
+    border-right: 1px solid #bdcccf;
+    border-bottom: 1px solid #bdcccf;
+    border-left: 1px solid #bdcccf;
+    background-color: #e9eeef;
+    padding: 0.25rem 0.625rem 0.625rem 0.625rem;
+    font-size: 13px;
+    line-height: 19.5px;
+    font-size: 1.3rem;
+    line-height: 1.95rem;
+    width: 14.5rem;
+    margin-top: -.5rem;
+    width: 12.85rem; }
+    .cosmo-toolbar-large .code-dropdown button {
+      font-family: quicksand, sans-serif;
+      outline: none;
+      margin: 0;
+      padding: 0.625rem;
+      padding-bottom: 0;
+      display: block;
+      text-align: center;
+      border-bottom: 0;
+      background-color: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 0.625rem; }
+      .cosmo-toolbar-large .code-dropdown button i {
+        margin-right: 0.9375rem;
+        margin-top: -.2rem;
+        vertical-align: middle; }
+      .cosmo-toolbar-large .code-dropdown button:hover, .cosmo-toolbar-large .code-dropdown .ngdialog-content button.dropzone:active, .ngdialog-content .cosmo-toolbar-large .code-dropdown button.dropzone:active {
+        background-color: transparent;
+        color: #70c8c4; }
+        .cosmo-toolbar-large .code-dropdown button:hover i, .cosmo-toolbar-large .code-dropdown .ngdialog-content button.dropzone:active i, .ngdialog-content .cosmo-toolbar-large .code-dropdown button.dropzone:active i {
           background-color: transparent;
           color: #70c8c4; }
 
