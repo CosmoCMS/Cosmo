@@ -1,0 +1,20 @@
+.blk-disp-type {
+    display: inline-block;
+    margin-right: $pad-beta;
+}
+
+.blk-code {
+    @extend input;
+    @include border ($border-alpha-dark, top, right, bottom, left);
+    height: 50rem;
+    margin-bottom: $pad-epsilon;
+    overflow: scroll;
+}
+
+.blocks {
+    .formcase-border {
+        .cos-select {
+            margin-top: 0;
+        }
+    }
+}

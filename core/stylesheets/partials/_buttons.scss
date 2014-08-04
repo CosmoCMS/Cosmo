@@ -1,0 +1,86 @@
+// Mixin for standard action buttons
+
+@mixin icon {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    fill: $color-beta;
+}
+
+
+@mixin button ($color, $color-hover, $border-color) {
+    background-color: $color;
+    color: $color-beta;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 200;
+    margin-right: $pad-alpha;
+    outline: none;
+    padding: 0.65rem $pad-gamma 0.75rem $pad-gamma;
+    text-align: center;
+    text-transform: lowercase;
+    @include border ($border-beta, top, right, bottom, left);
+    @include font-size(13);
+    @include transition (all .25s ease-in-out);
+
+    &:focus {
+        background-color: darken($color, 10%);
+        @include fade-all;
+    }
+
+    &:hover {
+        background-color: $color-hover;
+        color: $color-alpha;
+        @include border ($border-color, top, right, bottom, left);
+    }
+}
+
+/* --------------------------------------- End Mixins --------------------------------------- */
+
+// Standard buttons
+
+.options-button {
+    @include button(transparent, $color-beta, $border-beta-dark);
+}
+
+.error-button {
+    @include button(transparent, $color-error, $border-error-dark);
+}
+
+.success-button {
+    @include button(transparent, $color-success, $border-success-dark);
+}
+
+// Container for buttons at top of sidebar
+
+.top-btncase {
+    @include border ($border-brand-blue-dark, bottom);
+    background-color: $color-brand-blue;
+    display: block;
+    height: 6rem;
+    margin-top: -6rem;
+    overflow: hidden;
+    padding: 0 4.5rem 0 $pad-epsilon;
+    width: 32rem;
+    z-index: 100;
+    position: fixed;
+
+    h1, h2 {
+        color: white;
+    }
+
+    i {
+        color: $color-alpha;
+        display: block;
+        position: absolute;
+        top: 2.25rem;
+
+        &:hover {
+            color: $color-beta;
+        }
+    }
+
+    .active {
+        color: $color-alert;
+  }
+}

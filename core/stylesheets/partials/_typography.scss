@@ -1,0 +1,118 @@
+html {
+    font-size: 62.5%;
+    font-family: $font-alpha;
+}
+
+body {
+  @include font-size(16);
+  color: $color-beta;
+  font-family: $font-alpha;
+  font-weight: $font-weight-alpha;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: none;
+}
+
+span {
+  font-family: $font-alpha;
+  letter-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-alpha;
+  color: $color-beta;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  @include font-size(20);
+  text-shadow: none;
+  display: inline;
+  font-weight: $font-weight-beta;
+  line-height: 5.75rem;
+  margin-left: $pad-delta;
+}
+
+h2 {
+  @include font-size(20);
+  font-weight: $font-weight-alpha;
+  text-shadow: none;
+  display: inline;
+  text-transform: none;
+  line-height: 5.75rem;
+  margin-left: $pad-alpha;
+}
+
+h3 {
+  @include font-size(18);
+  line-height: 1;
+  margin-bottom: $pad-delta;
+}
+
+h6 {
+    border-bottom: 0;
+    color: $color-beta;
+    font-family: $font-alpha;
+    font-weight: $font-weight-beta;
+    text-transform: uppercase;
+    @include font-size(14);
+    padding-bottom: 0;
+}
+
+label {
+    color: $color-brand-blue;
+    display: inline-block;
+    font-family: $font-alpha;
+    font-weight: $font-weight-alpha;
+    margin-bottom: $pad-delta;
+    margin-top: 0;
+    @include font-size(14);
+}
+
+p {
+  font-family: $font-alpha;
+  margin: 0 0;
+  margin-bottom: $pad-beta;
+  letter-spacing: 0;
+  @include font-size(15);
+  font-weight: $font-weight-alpha;
+
+  &:active, &:focus {
+    font-weight: $font-weight-alpha;
+  }
+}
+
+small {
+  display: block;
+  font-size: 85%;
+}
+
+a {
+  font-family: $font-alpha;
+  color: darken($color-alpha, 45%);
+  text-decoration: none;
+  @include transition(color 0.1s linear);
+  letter-spacing: 0;
+
+  &:hover {
+    color: $color-brand-blue;
+  }
+
+  &:active, &:focus {
+    font-weight: $font-weight-alpha;
+    color: $color-brand-blue;
+    outline: none;
+  }
+}
+
+hr {
+  border-bottom: .1rem solid darken($color-alpha, 10%);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+img {
+  margin: 0;
+  width: 100%;
+}

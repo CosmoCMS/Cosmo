@@ -1,0 +1,288 @@
+// Mixin for dropdowns used in the cosmo WYSIWYG editor
+@mixin wysiwyg-dropdown ($left) {
+  position: relative;
+  left: $left;
+  height: auto;
+  @include border ($border-alpha-dark, top, right, bottom, left);
+  background-color: $color-alpha;
+  padding: $pad-epsilon * .1 $pad-epsilon * .25 $pad-epsilon * .25 $pad-epsilon * .25;
+  @include font-size(13);
+  width: 14.5rem;
+  margin-top: -.5rem;
+
+  button {
+    font-family: $font-alpha;
+    outline: none;
+    margin: 0;
+    padding: $pad-epsilon * .25;
+    padding-bottom: 0;
+    display: block;
+    text-align: center;
+    border-bottom: 0;
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    text-align: left;
+    margin-bottom: $pad-epsilon * .25;
+
+    i {
+      margin-right: $pad-epsilon * .375;
+      vertical-align: middle;
+    }
+
+  &:hover {
+    background-color: transparent;
+    color: $color-brand-blue;
+
+    i {
+      background-color: transparent;
+      color: $color-brand-blue;
+      }
+    }
+  }
+}
+
+/* --------------------------------------- End Mixins --------------------------------------- */
+
+// Full Size Toolbar Editor
+.cosmo-toolbar-large {
+  margin-top: -$pad-epsilon * 2;
+  position: absolute;
+  display: none;
+  z-index: 10000;
+  cursor: pointer;
+  background-color: $color-alpha;
+  display: block;
+  height: 3em;
+  width: 33.25rem;
+  border: .1em solid darken($color-alpha, 8%);
+  @include font-size(14 * .9);
+
+  td,tr,hr {
+    border: .1em solid $color-beta;
+  }
+
+  i {
+    color: $color-beta;
+    display: inline-block;
+    font-size: 1.3rem;
+  }
+
+  ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 0;
+      display: inline-block;
+      padding-left: 0;
+      margin-right: 0;
+      border-bottom: 0;
+      width: 2.3rem;
+      height: 3rem;
+      margin-top: .5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      button {
+        outline: none;
+        height: 2.5rem;
+        margin: 0;
+        padding-right: 0;
+        padding-left: $pad-epsilon * .375;
+        padding-bottom: 0;
+        display: inline-block;
+        text-align: center;
+        border-bottom: 0;
+        background-color: transparent;
+        border: 0;
+
+        .text-alignment {
+          vertical-align: middle;
+          margin-top: -.3rem;
+        }
+
+        &:hover {
+
+          i {
+            color: $color-brand-blue;
+          }
+        }
+      }
+    }
+  }
+
+  .type-dropdown {
+    @include wysiwyg-dropdown (0);
+    width: 13rem;
+
+    .wysiwyg-p {
+      display: block;
+      font-weight: $font-weight-alpha;
+      @include font-size(14);
+    }
+
+    .wysiwyg-u {
+      display: block;
+      font-weight: $font-weight-alpha;
+      @include font-size(14);
+      font-family: monospace;
+    }
+
+    .wysiwyg-q {
+      display: block;
+      font-weight: $font-weight-alpha;
+      @include font-size(14);
+      font-style: italic;
+    }
+
+    .wysiwyg-c {
+      display: block;
+      font-weight: $font-weight-alpha;
+      @include font-size(14);
+      font-family: monospace;
+    }
+
+    .wysiwyg-h1 {
+      display: block;
+      font-weight: $font-weight-beta;
+      @include font-size(14 * 1.5);
+    }
+
+    .wysiwyg-h2 {
+      display: block;
+      font-weight: $font-weight-beta;
+      @include font-size(14 * 1.25);
+    }
+
+    .wysiwyg-h3 {
+      display: block;
+      font-weight: $font-weight-beta;
+      @include font-size(14 * 1.15);
+    }
+
+    .wysiwyg-h4 {
+      display: block;
+      font-weight: $font-weight-beta;
+      @include font-size(14 * 1.05);
+    }
+
+    .wysiwyg-h5 {
+      display: block;
+      font-weight: $font-weight-beta;
+      @include font-size(14 * 1.05);
+    }
+
+    .wysiwyg-h6 {
+      display: block;
+      font-weight: $font-weight-beta;
+      @include font-size(14 * .9);
+    }
+  }
+
+  .format-dropdown {
+    @include wysiwyg-dropdown (2.1rem);
+    width: 14.5rem;
+  }
+
+    .link-dropdown {
+        @include wysiwyg-dropdown (5rem);
+        width: 13.5rem;
+    }
+
+  .align-dropdown {
+    @include wysiwyg-dropdown (21.35rem);
+    width: 13.25rem;
+  }
+
+  .table-dropdown {
+    @include wysiwyg-dropdown (24rem);
+    width: 13.5rem;
+
+    .divide {
+      padding-bottom: $pad-epsilon * .5;
+      @include border ($border-alpha-dark, bottom);
+      margin-bottom: $pad-epsilon * .25;
+    }
+  }
+
+  .table-dropdown--insert {
+    @include wysiwyg-dropdown (-19rem);
+    margin-top: -3.5rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    position: absolute;
+    width: 19.5rem;
+
+    p {
+        margin: 0;
+    }
+
+    .cell-select {
+        @include border ($border-alpha-dark, top, right, bottom, left);
+        display: inline-block;
+        height: 1.5rem;
+        width: 1.5rem;
+        padding: 0;
+        margin: 0 .25rem .25rem 0;
+
+        &:nth-child(10) {
+            margin-right: 0;
+        }
+
+        &:hover {
+            background-color: lighten($color-alpha, 15%);
+        }
+    }
+
+    .cell-select--focus {
+        background-color: lighten($color-alpha, 15%);
+        display: inline-block;
+        @include border ($border-beta, top, right, bottom, left);
+    }
+  }
+
+  .media-dropdown {
+    @include wysiwyg-dropdown (26.5rem);
+    width: 10rem;
+  }
+}
+
+.cosmo-codeview {
+  font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+  background-color: darken($color-brand-blue, 15%);
+  outline: none;
+  border: .1em solid darken($color-alpha, 12%);
+  color: $color-alpha;
+}
+
+[contenteditable="true"] {
+  outline: .1rem solid $color-alpha;
+
+  img, iframe {
+    outline: .1rem solid $color-alpha;
+
+    &:hover {
+      outline: .1rem solid $color-beta;
+    }
+  }
+
+  &:hover {
+    outline: .1rem solid $color-beta;
+  }
+
+  &:focus {
+    outline: .1rem solid $color-beta;
+  }
+
+  &:active {
+    outline: .1rem solid $color-beta;
+  }
+}

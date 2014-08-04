@@ -14,7 +14,9 @@
                 <input type="password" ng-model="register.password"><label>Password</label>
                 <input type="password" ng-model="register.confirmPassword"><label>Confirm Password</label>
             </div>
-            <button class="success-button" ng-click="register()">Create User</button>
+            <div>
+                <button class="success-button" ng-click="register()">Create User</button>
+            </div>
         </div>
         <div class="formcase-border">
             <input placeholder="Username or Email" value="search" type="text" ng-model="users.search" ng-change="search()"><label>Search</label>
@@ -33,17 +35,20 @@
             <i class="fa fa-chevron-left " ng-click="selectedUser=false"></i>
             <h1>Manage</h1><h2>User</h2>
         </div>
-
-        <p><strong>Edit roles for {{selectedUser.username}}</strong></p>
-        <div class="formcase" ng-repeat="role in roles">
-            <input value="roles" id="roles" type="checkbox" ng-model="users.selectedRoles[$index]" ng-true-value="{{role.id}}" ng-checked="checkedRole[role.id]" ng-if="role.id"><label for="roles" ng-if="role.id">{{role.name}}</label>
+        <div class="formcase">
+            <h3>Edit roles for {{selectedUser.username}}</h3>
         </div>
-        <div class="btncase">
-            <div ng-show="confirm">
-                Are you sure you want to delete {{selectedUser.username}}? <a ng-click="delete()">Yes</a> <a ng-click="confirm=false">No</a>
+        <div class="formcase-border">
+            <div ng-repeat="role in roles">
+                <input value="roles" id="roles" type="checkbox" ng-model="users.selectedRoles[$index]" ng-true-value="{{role.id}}" ng-checked="checkedRole[role.id]" ng-if="role.id"><label for="roles" ng-if="role.id">{{role.name}}</label>
             </div>
-            <button class="error-button" ng-click="confirm=true">Delete</button>
-            <button class="success-button" ng-click="save()">Save</button>
         </div>
+            <div class="formcase-border" ng-show="confirm">
+                <p>Are you sure you want to delete {{selectedUser.username}}?</p> <button class="options-button" ng-click="delete()">Yes</button> <button class="options-button" ng-click="confirm=false">No</button>
+            </div>
+            <div class="formcase">
+                <button class="error-button" ng-click="confirm=true">Delete</button>
+                <button class="success-button" ng-click="save()">Save</button>
+            </div>
     </div>
 </div>
