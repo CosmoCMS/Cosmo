@@ -503,7 +503,6 @@ $fa-var-child: "\f1ae";
 $fa-var-circle: "\f111";
 $fa-var-circle-o: "\f10c";
 $fa-var-circle-o-notch: "\f1ce";
-$fa-var-circle-thin: "\f1db";
 $fa-var-clipboard: "\f0ea";
 $fa-var-clock-o: "\f017";
 $fa-var-cloud: "\f0c2";
@@ -1158,6 +1157,9 @@ $fa-var-youtube-square: "\f166";
 .fa-list-alt:before {
   content: "\f022"; }
 
+.fa-circle-thin:before {
+  content: "\f1db"; }
+
 /*
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
@@ -1635,7 +1637,6 @@ $fa-var-youtube-square: "\f166";
 .fa-send-o:before,
 .fa-paper-plane-o:before { content: $fa-var-paper-plane-o; }
 .fa-history:before { content: $fa-var-history; }
-.fa-circle-thin:before { content: $fa-var-circle-thin; }
 .fa-header:before { content: $fa-var-header; }
 .fa-paragraph:before { content: $fa-var-paragraph; }
 .fa-sliders:before { content: $fa-var-sliders; }
@@ -2267,6 +2268,14 @@ $fa-var-youtube-square: "\f166";
     background-image: none;
     color: #e9eeef; }
     .cosmo-default input[type=radio]:checked + label:before, .cosmo-default textarea[type=radio]:checked + label:before, .cosmo-default [type=radio].form-control:checked + label:before, .cosmo-default [type=radio].blk-code:checked + label:before {
+      content: "\f111";
+      font-family: "FontAwesome";
+      margin-right: 0.5rem; }
+  .cosmo-default input[type=radio].active + label, .cosmo-default textarea[type=radio].active + label, .cosmo-default [type=radio].active.form-control + label, .cosmo-default [type=radio].active.blk-code + label {
+    background-color: #4a6067;
+    background-image: none;
+    color: #e9eeef; }
+    .cosmo-default input[type=radio].active + label:before, .cosmo-default textarea[type=radio].active + label:before, .cosmo-default [type=radio].active.form-control + label:before, .cosmo-default [type=radio].active.blk-code + label:before {
       content: "\f111";
       font-family: "FontAwesome";
       margin-right: 0.5rem; }

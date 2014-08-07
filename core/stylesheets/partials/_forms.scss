@@ -181,6 +181,19 @@ input[type=radio]:checked + label {
 	}
 }
 
+input[type=radio].active + label {
+	background-color: $color-beta;
+	background-image: none;
+	color: $color-alpha;
+
+	&:before {
+		content: "\f111";
+		font-family: $font-beta;
+		margin-right: $pad-alpha;
+	}
+}
+
+
 
 // Hide radio button (the round disc) we will use just the label as the radio button
 input[type=checkbox] {
