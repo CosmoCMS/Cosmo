@@ -389,17 +389,29 @@ td,
 th {
   padding: 0; }
 
-/*
-alpha
-beta
-gamma
-delta
-epsilon
-zeta
-eta
-theta
-iota
-*/
+/* colors */
+/* brand light gray */
+/* brand dark blue */
+/* brand dark gray */
+/* brand bright blue */
+/* warning yellow */
+/* error red */
+/* success green */
+/* colors at .75 opacity */
+/* brand light gray */
+/* brand dark blue */
+/* brand dark gray */
+/* brand bright blue */
+/* warning yellow */
+/* error red */
+/* success green */
+/* padding and margins */
+/* fonts */
+/* breakpoints*/
+/* example breakpoint use: @media only screen and (max-width : 320px) */
+/* mixin for font conversion to pixels from rem */
+/* mixin for borders */
+/* border references */
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -1803,13 +1815,13 @@ $fa-var-youtube-square: "\f166";
   .cosmo-default .border-btm {
     border-bottom: 1px solid #bdcccf; }
   .cosmo-default .cosmosidebar {
+    background-color: #e9eeef;
     margin-top: 0;
     padding-top: 6rem;
     position: fixed;
     overflow-y: auto;
     width: 32rem;
     height: 100%;
-    background-color: #e9eeef;
     z-index: 9000;
     overflow-x: hidden;
     border-right: 1px solid #bdcccf;
@@ -1831,19 +1843,19 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
+    color: #e9eeef;
     position: fixed;
     z-index: 10000;
     display: block;
     padding: .8rem;
-    background-color: #e9eeef;
     height: 6.2rem;
     width: 6.2rem;
     left: -.1rem;
     top: -.1rem;
     -webkit-transition: left 0.3s;
     transition: left 0.3s;
-    -webkit-transition: opacity 0.2s linear;
-    transition: opacity 0.2s linear; }
+    -webkit-transition: all .25s ease;
+            transition: all .25s ease; }
     .cosmo-default .hamburger i.active {
       position: absolute;
       left: -32rem;
@@ -1859,8 +1871,8 @@ $fa-var-youtube-square: "\f166";
       width: 1.5rem; }
     .cosmo-default .hamburger:hover, .cosmo-default .ngdialog-content .hamburger.dropzone:active, .ngdialog-content .cosmo-default .hamburger.dropzone:active {
       background-color: #4a6067;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
       .cosmo-default .hamburger:hover i.inactive, .cosmo-default .ngdialog-content .hamburger.dropzone:active i.inactive, .ngdialog-content .cosmo-default .hamburger.dropzone:active i.inactive {
         color: #e9eeef; }
   .cosmo-default .hamburgeractive {
@@ -1882,14 +1894,14 @@ $fa-var-youtube-square: "\f166";
       margin-left: 1.3rem;
       margin-top: .65rem;
       width: 1.5rem;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
     .cosmo-default .hamburgeractive:hover, .cosmo-default .ngdialog-content .hamburgeractive.dropzone:active, .ngdialog-content .cosmo-default .hamburgeractive.dropzone:active {
       background-color: transparent; }
       .cosmo-default .hamburgeractive:hover i.active, .cosmo-default .ngdialog-content .hamburgeractive.dropzone:active i.active, .ngdialog-content .cosmo-default .hamburgeractive.dropzone:active i.active {
         color: #4a6067;
-        -webkit-transition: opacity 0.2s linear;
-        transition: opacity 0.2s linear; }
+        -webkit-transition: all .25s ease;
+                transition: all .25s ease; }
   .cosmo-default .prfl-qk-view {
     background-color: #70c8c4;
     border-bottom: 1px solid #41aaa5;
@@ -1928,6 +1940,7 @@ $fa-var-youtube-square: "\f166";
     padding: 0;
     margin: 0; }
     .cosmo-default ul li {
+      border-bottom: 0.1rem solid #dae3e4;
       padding: 1.5rem 2.5rem;
       overflow: hidden;
       text-overflow: ellipsis; }
@@ -2018,8 +2031,8 @@ $fa-var-youtube-square: "\f166";
     transition: all 0.25s ease-in-out; }
     .cosmo-default .options-button:focus {
       background-color: transparent;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
     .cosmo-default .options-button:hover, .cosmo-default .ngdialog-content .options-button.dropzone:active, .ngdialog-content .cosmo-default .options-button.dropzone:active {
       background-color: #4a6067;
       color: #e9eeef;
@@ -2050,8 +2063,8 @@ $fa-var-youtube-square: "\f166";
     transition: all 0.25s ease-in-out; }
     .cosmo-default .error-button:focus {
       background-color: transparent;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
     .cosmo-default .error-button:hover, .cosmo-default .ngdialog-content .error-button.dropzone:active, .ngdialog-content .cosmo-default .error-button.dropzone:active {
       background-color: #ea1d2c;
       color: #e9eeef;
@@ -2082,8 +2095,8 @@ $fa-var-youtube-square: "\f166";
     transition: all 0.25s ease-in-out; }
     .cosmo-default .success-button:focus {
       background-color: transparent;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
     .cosmo-default .success-button:hover, .cosmo-default .ngdialog-content .success-button.dropzone:active, .ngdialog-content .cosmo-default .success-button.dropzone:active {
       background-color: #20ba2c;
       color: #e9eeef;
@@ -2250,8 +2263,8 @@ $fa-var-youtube-square: "\f166";
     border-color: transparent; }
     .cosmo-default input[type=radio] + label:focus, .cosmo-default textarea[type=radio] + label:focus, .cosmo-default [type=radio].form-control + label:focus, .cosmo-default [type=radio].blk-code + label:focus {
       background-color: #cbd7da;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
     .cosmo-default input[type=radio] + label:hover, .cosmo-default textarea[type=radio] + label:hover, .cosmo-default [type=radio].form-control + label:hover, .cosmo-default [type=radio].blk-code + label:hover, .cosmo-default .ngdialog-content input[type=radio] + label.dropzone:active, .ngdialog-content .cosmo-default input[type=radio] + label.dropzone:active, .cosmo-default .ngdialog-content textarea[type=radio] + label.dropzone:active, .ngdialog-content .cosmo-default textarea[type=radio] + label.dropzone:active, .cosmo-default .ngdialog-content [type=radio].form-control + label.dropzone:active, .ngdialog-content .cosmo-default [type=radio].form-control + label.dropzone:active, .cosmo-default .ngdialog-content [type=radio].blk-code + label.dropzone:active, .ngdialog-content .cosmo-default [type=radio].blk-code + label.dropzone:active {
       background-color: #cbd7da;
       color: #e9eeef;
@@ -2305,13 +2318,13 @@ $fa-var-youtube-square: "\f166";
     transition: all 0.25s ease-in-out;
     padding: .7rem;
     color: #4a6067;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
     margin-right: 0;
     border-color: transparent; }
     .cosmo-default input[type=checkbox] + label:focus, .cosmo-default textarea[type=checkbox] + label:focus, .cosmo-default [type=checkbox].form-control + label:focus, .cosmo-default [type=checkbox].blk-code + label:focus {
       background-color: #cbd7da;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
     .cosmo-default input[type=checkbox] + label:hover, .cosmo-default textarea[type=checkbox] + label:hover, .cosmo-default [type=checkbox].form-control + label:hover, .cosmo-default [type=checkbox].blk-code + label:hover, .cosmo-default .ngdialog-content input[type=checkbox] + label.dropzone:active, .ngdialog-content .cosmo-default input[type=checkbox] + label.dropzone:active, .cosmo-default .ngdialog-content textarea[type=checkbox] + label.dropzone:active, .ngdialog-content .cosmo-default textarea[type=checkbox] + label.dropzone:active, .cosmo-default .ngdialog-content [type=checkbox].form-control + label.dropzone:active, .ngdialog-content .cosmo-default [type=checkbox].form-control + label.dropzone:active, .cosmo-default .ngdialog-content [type=checkbox].blk-code + label.dropzone:active, .ngdialog-content .cosmo-default [type=checkbox].blk-code + label.dropzone:active {
       background-color: #cbd7da;
       color: #e9eeef;
@@ -2374,52 +2387,10 @@ $fa-var-youtube-square: "\f166";
     background-color: transparent;
     display: block;
     height: 17rem; }
-  .cosmo-default .user-sidebar {
-    cursor: pointer;
-    background: url(https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-frc3/t1.0-9/421785_190632207708461_1083774919_n.jpg) no-repeat center center;
-    -webkit-background-size: cover cover;
-            background-size: cover;
-    height: 6.2rem;
-    width: 6.2rem;
-    border-top: 1px solid #bdcccf;
-    border-right: 1px solid #bdcccf;
-    border-bottom: 1px solid #bdcccf;
-    border-left: 1px solid #bdcccf;
-    position: fixed;
-    left: 41.86rem;
-    top: 6rem;
-    padding: 2.5rem;
-    z-index: 10000;
-    -webkit-transition: opacity 0.2s linear;
-    transition: opacity 0.2s linear; }
-    .cosmo-default .user-sidebar i {
-      color: #ffd32c;
-      position: absolute;
-      top: .5rem;
-      right: .5rem; }
-  .cosmo-default .users {
-    margin-top: 2.5rem; }
-    .cosmo-default .users .info {
-      border-bottom: 1px solid #bdcccf; }
-      .cosmo-default .users .info p {
-        font-weight: 700;
-        display: inline-block;
-        margin-left: 2.5rem; }
-        .cosmo-default .users .info p:last-child {
-          margin-left: 9rem; }
-    .cosmo-default .users .user-info {
-      display: inline-block;
-      width: 16rem;
-      margin-right: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; }
-      .cosmo-default .users .user-info:last-child {
-        margin-right: 0; }
-  .cosmo-default .permissions h3 {
+  .cosmo-default .users .cos-select, .cosmo-default .users .cos-select-half {
+    margin-top: 0; }
+  .cosmo-default .users li label:last-child {
     margin-bottom: 0; }
-  .cosmo-default .permissions .formcase-border {
-    padding-bottom: 2rem; }
   .cosmo-default .role-permissions p {
     display: block;
     margin: 0 0 2rem 0; }
@@ -2428,11 +2399,22 @@ $fa-var-youtube-square: "\f166";
   .cosmo-default button.create-table {
     margin-top: 2.5rem; }
   .cosmo-default .mod-name {
-    display: inline-block;
-    width: 18rem; }
+    display: block;
+    margin-bottom: 2rem;
+    margin-right: 0; }
   .cosmo-default .revisions button {
     display: block;
     margin-top: 2rem; }
+  .cosmo-default .revisions p.info {
+    font-size: 12px;
+    line-height: 18px;
+    font-size: 1.2rem;
+    line-height: 1.8rem; }
+    .cosmo-default .revisions p.info i {
+      font-size: 12px;
+      line-height: 18px;
+      font-size: 1.2rem;
+      line-height: 1.8rem; }
   .cosmo-default .themes img {
     margin-bottom: 2rem; }
   .cosmo-default .blk-disp-type {
@@ -2480,14 +2462,14 @@ $fa-var-youtube-square: "\f166";
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-transition: opacity 0.2s linear;
-    transition: opacity 0.2s linear; }
+    -webkit-transition: all .25s ease;
+            transition: all .25s ease; }
     .cosmo-default .nestedSortable-handle:hover, .cosmo-default .ngdialog-content .nestedSortable-handle.dropzone:active, .ngdialog-content .cosmo-default .nestedSortable-handle.dropzone:active {
       color: #70c8c4;
       background: #d1dcde;
       border-color: 0.1em solid #c9d5d7;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
       .cosmo-default .nestedSortable-handle:hover i, .cosmo-default .ngdialog-content .nestedSortable-handle.dropzone:active i, .ngdialog-content .cosmo-default .nestedSortable-handle.dropzone:active i {
         color: #70c8c4; }
   .cosmo-default .nestedSortable-placeholder {
@@ -2591,8 +2573,8 @@ $fa-var-youtube-square: "\f166";
       .cosmo-default .quickdate-button:hover i, .cosmo-default .ngdialog-content .quickdate-button.dropzone:active i, .ngdialog-content .cosmo-default .quickdate-button.dropzone:active i {
         text-decoration: none; }
   .cosmo-default .quickdate-popup {
+    color: #e9eeef;
     z-index: 10;
-    background-color: #e9eeef;
     text-align: center;
     display: none;
     position: absolute;
@@ -2602,7 +2584,7 @@ $fa-var-youtube-square: "\f166";
     line-height: 21px;
     font-size: 1.4rem;
     line-height: 2.1rem;
-    background-color: #e9eeef;
+    color: #e9eeef;
     border: solid 0.1rem #d1dcde;
     width: 100%;
     -webkit-box-shadow: none;
@@ -2618,8 +2600,8 @@ $fa-var-youtube-square: "\f166";
   .cosmo-default .quickdate-prev-month i {
     padding-right: 0.125rem; }
   .cosmo-default table.quickdate-calendar {
-    border: solid 0.1rem #d1dcde;
-    background-color: #e9eeef; }
+    color: #e9eeef;
+    border: solid 0.1rem #d1dcde; }
     .cosmo-default table.quickdate-calendar th, .cosmo-default table.quickdate-calendar table, .cosmo-default table.quickdate-calendar td {
       font-family: quicksand, sans-serif;
       border-right: 1px solid #bdcccf;
@@ -2681,8 +2663,8 @@ $fa-var-youtube-square: "\f166";
     margin-right: 0; }
     .cosmo-default .quickdate-clear:focus {
       background-color: #cbd7da;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
     .cosmo-default .quickdate-clear:hover, .cosmo-default .ngdialog-content .quickdate-clear.dropzone:active, .ngdialog-content .cosmo-default .quickdate-clear.dropzone:active {
       background-color: #ea1d2c;
       color: #e9eeef;
@@ -2700,7 +2682,7 @@ $fa-var-youtube-square: "\f166";
   display: none;
   z-index: 10000;
   cursor: pointer;
-  background-color: #e9eeef;
+  color: #e9eeef;
   display: block;
   height: 3em;
   width: 22.25rem;
@@ -2757,7 +2739,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -2871,7 +2853,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -2912,7 +2894,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -2953,7 +2935,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -2994,7 +2976,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -3035,7 +3017,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -3080,7 +3062,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -3148,7 +3130,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -3189,7 +3171,7 @@ $fa-var-youtube-square: "\f166";
     border-right: 1px solid #bdcccf;
     border-bottom: 1px solid #bdcccf;
     border-left: 1px solid #bdcccf;
-    background-color: #e9eeef;
+    color: #e9eeef;
     padding: 0.25rem 0.625rem 0.625rem 0.625rem;
     font-size: 13px;
     line-height: 19.5px;
@@ -3276,7 +3258,7 @@ input[type='file'], .cosmo-default textarea[type='file'], .cosmo-default [type='
     margin-right: 0; }
 
 .img-edit {
-  background-color: #e9eeef;
+  color: #e9eeef;
   overflow: hidden;
   padding-top: 2.5rem;
   position: fixed;
@@ -3389,8 +3371,8 @@ input[type='file'], .cosmo-default textarea[type='file'], .cosmo-default [type='
     margin-left: 1.3rem; }
   .hamburgeractive:hover, .ngdialog-content .hamburgeractive.dropzone:active {
     background-color: #4a6067;
-    -webkit-transition: opacity 0.2s linear;
-    transition: opacity 0.2s linear; }
+    -webkit-transition: all .25s ease;
+            transition: all .25s ease; }
     .hamburgeractive:hover i.active, .ngdialog-content .hamburgeractive.dropzone:active i.active {
       color: #e9eeef; }
 
@@ -3403,7 +3385,7 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
 .media-wrapper, .gallery-media-wrapper {
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: #e9eeef;
+  color: #e9eeef;
   position: absolute;
   top: 11rem;
   width: 100%; }
@@ -3427,7 +3409,7 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
   position: fixed;
   top: 6.1rem;
   display: block;
-  background-color: #e9eeef;
+  color: #e9eeef;
   width: 100%;
   margin: 0 2.5rem 2.5rem 2.5rem;
   padding: 2.5rem 5rem 1rem 0;
@@ -3551,7 +3533,7 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
 
 .ngdialog-overlay {
   position: fixed;
-  background-color: rgba(128, 130, 133, 0.9);
+  background-color: rgba(74, 96, 103, 0.75);
   top: 0;
   right: 0;
   bottom: 0;
@@ -3574,7 +3556,7 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
   margin: 0 auto;
   height: 100%;
   display: block;
-  background-color: #e9eeef;
+  color: #e9eeef;
   width: 91.5rem; }
   @media only screen and (min-width: 769px) and (max-width: 1024px) {
     .ngdialog-content {
@@ -3590,7 +3572,7 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
   .ngdialog-content .media-holder {
     padding: 2.5rem 2.5rem 0 2.5rem;
     overflow-y: scroll;
-    background-color: #e9eeef; }
+    color: #e9eeef; }
     .ngdialog-content .media-holder .media-tile {
       display: inline-block;
       width: 28rem;
@@ -3640,20 +3622,20 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
   .ngdialog-content .ng-file-over {
     background-color: #70c8c4 !important;
     border: 2px dashed #e9eeef !important;
-    -webkit-transition: opacity 0.2s linear;
-    transition: opacity 0.2s linear; }
+    -webkit-transition: all .25s ease;
+            transition: all .25s ease; }
   .ngdialog-content .dropzone {
     background-color: rgba(112, 200, 196, 0.75);
     height: 10rem;
     text-align: center;
     margin-top: 0;
     border: 0.2rem dashed #4a6067;
-    -webkit-transition: opacity 0.2s linear;
-    transition: opacity 0.2s linear; }
+    -webkit-transition: all .25s ease;
+            transition: all .25s ease; }
     .ngdialog-content .dropzone h4 {
       color: #4a6067;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear;
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease;
       left: 0;
       right: 0;
       margin-top: 3rem;
@@ -3663,13 +3645,13 @@ input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar
           margin-top: 1rem; } }
       .ngdialog-content .dropzone h4:hover, .ngdialog-content .dropzone h4.dropzone:active {
         color: #e9eeef;
-        -webkit-transition: opacity 0.2s linear;
-        transition: opacity 0.2s linear; }
+        -webkit-transition: all .25s ease;
+                transition: all .25s ease; }
     .ngdialog-content .dropzone:hover, .ngdialog-content .dropzone:active {
       background-color: #70c8c4;
       border: 0.2rem dashed #e9eeef;
-      -webkit-transition: opacity 0.2s linear;
-      transition: opacity 0.2s linear; }
+      -webkit-transition: all .25s ease;
+              transition: all .25s ease; }
       .ngdialog-content .dropzone:hover h4, .ngdialog-content .dropzone:active h4 {
         color: #e9eeef; }
 
@@ -3995,8 +3977,8 @@ THE SOFTWARE.
   border-right: 1px solid #bdcccf;
   border-bottom: 1px solid #bdcccf;
   border-left: 1px solid #bdcccf;
-  -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear; }
+  -webkit-transition: all .25s ease;
+          transition: all .25s ease; }
   .cosmo-growl-item i {
     color: #e9eeef;
     margin-right: 0.5rem; }
@@ -4010,8 +3992,8 @@ THE SOFTWARE.
   border-right: 1px solid #bdcccf;
   border-bottom: 1px solid #bdcccf;
   border-left: 1px solid #bdcccf;
-  -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear; }
+  -webkit-transition: all .25s ease;
+          transition: all .25s ease; }
   .alert-info i {
     color: #e9eeef;
     margin-right: 0.5rem; }
@@ -4025,8 +4007,8 @@ THE SOFTWARE.
   border-right: 1px solid #bdcccf;
   border-bottom: 1px solid #bdcccf;
   border-left: 1px solid #bdcccf;
-  -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear; }
+  -webkit-transition: all .25s ease;
+          transition: all .25s ease; }
   .alert-success i {
     color: #e9eeef;
     margin-right: 0.5rem; }
@@ -4040,8 +4022,8 @@ THE SOFTWARE.
   border-right: 1px solid #bdcccf;
   border-bottom: 1px solid #bdcccf;
   border-left: 1px solid #bdcccf;
-  -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear; }
+  -webkit-transition: all .25s ease;
+          transition: all .25s ease; }
   .alert-error i {
     color: #e9eeef;
     margin-right: 0.5rem; }
@@ -4055,15 +4037,15 @@ THE SOFTWARE.
   border-right: 1px solid #bdcccf;
   border-bottom: 1px solid #bdcccf;
   border-left: 1px solid #bdcccf;
-  -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear; }
+  -webkit-transition: all .25s ease;
+          transition: all .25s ease; }
   .alert-alert i {
     color: #e9eeef;
     margin-right: 0.5rem; }
 
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave {
-  -webkit-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear; }
+  -webkit-transition: all .25s ease;
+          transition: all .25s ease; }
 
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave.ng-leave-active {
   opacity: 0; }

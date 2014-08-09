@@ -46,7 +46,7 @@ input[type='file'] {
 }
 
 .img-edit {
-    background-color: $color-alpha;
+    @include color(color, light-gray);
     overflow: hidden;
     padding-top: $pad-epsilon;
     position: fixed;
@@ -59,7 +59,7 @@ input[type='file'] {
 
     .media-nav {
         display: block;
-        background-color: $color-brand-blue;
+        background-color: $color-delta;
         @include border ($border-alpha-dark, bottom);
         position: fixed;
         display: block;
@@ -201,9 +201,9 @@ input[type='file'] {
     background-color: $color-beta;
 
     i.active {
-      color: $color-alpha;
+      @include color(color, light-gray);
     }
-    @include fade-all;
+    transition: all .25s ease;
   }
 }
 
@@ -218,7 +218,7 @@ input.search-bar {
 .media-wrapper {
     overflow-x: hidden;
     overflow-y: scroll;
-    background-color: $color-alpha;
+    @include color(color, light-gray);
     position: absolute;
     top: 11rem;
     width: 100%;
@@ -253,7 +253,7 @@ input.search-bar {
     position: fixed;
     top: 6.1rem;
     display: block;
-    background-color: $color-alpha;
+    @include color(color, light-gray);
     width: 100%;
     margin: 0 $pad-epsilon $pad-epsilon $pad-epsilon;
     padding: $pad-epsilon $pad-epsilon * 2 $pad-beta 0;
@@ -279,7 +279,7 @@ input.search-bar {
 
 .media-nav {
     display: block;
-    background-color: $color-brand-blue;
+    background-color: $color-delta;
     padding: 0 0 $pad-alpha $pad-epsilon;
     position: fixed;
     display: block;
@@ -294,19 +294,19 @@ input.search-bar {
         margin-left: $pad-delta;
 
         ::-webkit-input-placeholder {
-           color: $color-alpha;
+           @include color(color, light-gray);
         }
 
         :-moz-placeholder { /* Firefox 18- */
-           color: $color-alpha;
+           @include color(color, light-gray);
         }
 
         ::-moz-placeholder {  /* Firefox 19+ */
-           color: $color-alpha;
+           @include color(color, light-gray);
         }
 
         :-ms-input-placeholder {
-           color: $color-alpha;
+           @include color(color, light-gray);
         }
 
         @media #{$bp-delta} {
@@ -352,7 +352,7 @@ input.search-bar {
     }
 
     i {
-        color: $color-alpha;
+        @include color(color, light-gray);
         display: block;
         position: absolute;
         top: 2.25rem;
@@ -430,7 +430,7 @@ input.search-bar {
 
   .ngdialog-overlay {
     position: fixed;
-    background-color: $color-beta-overlay;
+    background-color: $color-beta--two-third;
     top: 0;
     right: 0;
     bottom: 0;
@@ -455,7 +455,7 @@ input.search-bar {
     margin: 0 auto;
     height: 100%;
     display: block;
-    background-color: $color-alpha;
+    @include color(color, light-gray);
     width: 91.5rem;
 
     @media #{$bp-delta} {
@@ -471,13 +471,13 @@ input.search-bar {
     }
 
     .info {
-      color: $color-brand-blue;
+      color: $color-delta;
     }
 
     .media-holder {
       padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
       overflow-y: scroll;
-      background-color: $color-alpha;
+      @include color(color, light-gray);
 
 
       .media-tile {
@@ -551,22 +551,22 @@ input.search-bar {
     }
 
     .ng-file-over {
-        background-color: $color-brand-blue !important;
+        background-color: $color-delta !important;
         border: 2px dashed $color-alpha !important;
-        @include fade-all;
+        transition: all .25s ease;
     }
 
     .dropzone {
-      background-color: $color-brand-blue-overlay;
+      background-color: $color-delta--two-third;
       height: $pad-epsilon * 4;
       text-align: center;
       margin-top: 0;
       border: .2rem dashed $color-beta;
-      @include fade-all;
+      transition: all .25s ease;
 
       h4 {
         color: $color-beta;
-        @include fade-all;
+        transition: all .25s ease;
         left: 0;
         right: 0;
         margin-top: 3rem;
@@ -577,19 +577,19 @@ input.search-bar {
         }
 
         &:hover {
-            color: $color-alpha;
-            @include fade-all;
+            @include color(color, light-gray);
+            transition: all .25s ease;
         }
       }
 
       &:hover {
-        background-color: $color-brand-blue;
-        border: .2rem dashed $color-alpha;
-        @include fade-all;
+        background-color: $color-delta;
+        border: .2rem dashed map-get($colors, light-gray);
+        transition: all .25s ease;
 
 
         h4 {
-            color: $color-alpha;
+            @include color(color, light-gray);
         }
       }
 
@@ -636,7 +636,7 @@ input.search-bar {
         @include font-size(17.5);
         font-family: $font-beta;
         content: '\f00d';
-        color: $color-alpha;
+        @include color(color, light-gray);
         position: fixed;
         right: 2.5rem;
         top: 1.35rem;
@@ -716,24 +716,24 @@ input.search-bar {
 
 // Page Suggestions box for Link Adding
 .page-suggestions-triangle {
-  @include triangle(2rem, $color-brand-blue, up);
+  @include triangle(2rem, $color-delta, up);
   margin: -1.75rem 0 -.75rem .75rem;
 }
 
 .page-suggestions {
-  background-color: $color-brand-blue;
+  background-color: $color-delta;
   padding: $pad-alpha;
   margin-bottom: $pad-gamma;
 
   a {
     display: block;
-    font-weight: $font-weight-beta;
-    color: $color-alpha;
+    font-weight: 700;
+    @include color(color, light-gray);
   }
 
   &:hover {
     .Page {
-      background-color: lighten($color-brand-blue, 10%);
+      background-color: lighten($color-delta, 10%);
     }
   }
 }

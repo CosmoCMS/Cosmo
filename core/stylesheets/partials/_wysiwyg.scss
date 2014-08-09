@@ -4,7 +4,7 @@
   left: $left;
   height: auto;
   @include border ($border-alpha-dark, top, right, bottom, left);
-  background-color: $color-alpha;
+  @include color(color, light-gray);
   padding: $pad-epsilon * .1 $pad-epsilon * .25 $pad-epsilon * .25 $pad-epsilon * .25;
   @include font-size(13);
   width: 14.5rem;
@@ -33,11 +33,11 @@
 
   &:hover {
     background-color: transparent;
-    color: $color-brand-blue;
+    color: $color-delta;
 
     i {
       background-color: transparent;
-      color: $color-brand-blue;
+      color: $color-delta;
       }
     }
   }
@@ -52,7 +52,7 @@
   display: none;
   z-index: 10000;
   cursor: pointer;
-  background-color: $color-alpha;
+  @include color(color, light-gray);
   display: block;
   height: 3em;
   width: 22.25rem;
@@ -113,7 +113,7 @@
         &:hover {
 
           i {
-            color: $color-brand-blue;
+            color: $color-delta;
           }
         }
       }
@@ -126,64 +126,64 @@
 
     .wysiwyg-p {
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(14);
     }
 
     .wysiwyg-u {
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(14);
       font-family: monospace;
     }
 
     .wysiwyg-q {
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(14);
       font-style: italic;
     }
 
     .wysiwyg-c {
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(14);
       font-family: monospace;
     }
 
     .wysiwyg-h1 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.5);
     }
 
     .wysiwyg-h2 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.25);
     }
 
     .wysiwyg-h3 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.15);
     }
 
     .wysiwyg-h4 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.05);
     }
 
     .wysiwyg-h5 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.05);
     }
 
     .wysiwyg-h6 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * .9);
     }
   }
@@ -269,17 +269,17 @@
 
 .cosmo-codeview {
   font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
-  background-color: darken($color-brand-blue, 15%);
+  background-color: darken($color-delta, 15%);
   outline: none;
   border: .1em solid darken($color-alpha, 12%);
-  color: $color-alpha;
+  @include color(color, light-gray);
 }
 
 [contenteditable="true"] {
-  outline: .1rem solid $color-alpha;
+  outline: .1rem solid map-get($colors, light-gray);
 
   img, iframe {
-    outline: .1rem solid $color-alpha;
+    outline: .1rem solid map-get($colors, light-gray);
 
     &:hover {
       outline: .1rem solid $color-beta;

@@ -1,67 +1,63 @@
-// Colors
-$color-alpha: rgba(233, 238, 239, 1);
-$color-beta: rgba(74, 96, 103, 1);
-$color-gamma: rgba(190, 190, 191, 1);
+/* colors */
+$colors: (
+    light-gray: rgba(233, 238, 239, 1),
+    dark-gray: rgba(190, 190, 191, 1),
+    dark-blue: rgba(74, 96, 103, 1),
+    light-blue: rgba(112, 200, 196, 1),
+    warning: rgba(255, 211, 44, 1),
+    error: rgba(234, 29, 44, 1),
+    success: rgba(32, 186, 44, 1),
+);
 
-// Brand Based Colors
-$color-alert: rgba(255, 211, 44, 1);
-$color-error: rgba(234, 29, 44, 1);
-$color-success: rgba(32, 186, 44, 1);
-$color-brand-blue: rgba(112, 200, 196, 1);
+@mixin color($attribute: color, $color: dark-blue, $opacity: 1) {
+    #{$attribute}: map-get($colors, $color);
+    $opaque: opacify(map-get($colors, $color), $opacity);
+}
 
-// Overlay Colors
-$color-beta-overlay: rgba(128, 130, 133, .9);
-$color-brand-blue-overlay: rgba(112, 200, 196, .75);
+$color-beta: rgba(74, 96, 103, 1);  /* brand dark blue */
+$color-gamma: rgba(190, 190, 191, 1);  /* brand dark gray */
+$color-delta: rgba(112, 200, 196, 1); /* brand bright blue */
+$color-epsilon: rgba(255, 211, 44, 1);  /* warning yellow */
+$color-zeta: rgba(234, 29, 44, 1);  /* error red */
+$color-eta: rgba(32, 186, 44, 1); /* success green */
 
-// Padding & Margins
+
+/* colors at .75 opacity */
+$color-alpha--two-third: rgba(233, 238, 239, .75);  /* brand light gray */
+$color-beta--two-third: rgba(74, 96, 103, .75);  /* brand dark blue */
+$color-gamma--two-third: rgba(190, 190, 191, .75);  /* brand dark gray */
+$color-delta--two-third: rgba(112, 200, 196, .75); /* brand bright blue */
+$color-epsilon--two-third: rgba(255, 211, 44, .75);  /* warning yellow */
+$color-zeta--two-third: rgba(234, 29, 44, .75);  /* error red */
+$color-eta--two-third: rgba(32, 186, 44, .75); /* success green */
+
+/* padding and margins */
 $pad-alpha: .5rem;
 $pad-beta: 1rem;
 $pad-gamma: 1.5rem;
 $pad-delta: 2rem;
 $pad-epsilon: 2.5rem;
 
-// Fonts
+/* fonts */
 $font-alpha: quicksand, sans-serif;;
 $font-beta: 'FontAwesome';
-$font-weight-alpha: 200;
-$font-weight-beta: 700;
 
-// Breakpoints for media queries
-
+/* breakpoints*/
 $bp-alpha: "only screen and (max-width : 320px)";
 $bp-beta: "only screen and (max-width : 480px)";
 $bp-gamma: "only screen and (max-width : 768px)";
 $bp-delta: "only screen and (min-width : 769px) and (max-width: 1024px)";
+/* example breakpoint use: @media #{$bp-alpha} */
 
-// @media #{$bp-alpha}
-
-/*
-alpha
-beta
-gamma
-delta
-epsilon
-zeta
-eta
-theta
-iota
-*/
-
-
-// A mixin for font conversion to pixels from rem
+/* mixin for font conversion to pixels from rem */
 @mixin font-size($sizeValue: 1.6, $line: $sizeValue * 1.5) {
-  font-size: ($sizeValue * 1) + px;
-  line-height: ($line * 1) + px;
-  font-size: ($sizeValue / 10) + rem;
-  line-height: ($line / 10) + rem;
+    font-size: ($sizeValue * 1) + px;
+    line-height: ($line * 1) + px;
+    font-size: ($sizeValue / 10) + rem;
+    line-height: ($line / 10) + rem;
 }
 
-@mixin fade-all {
-  @include transition(opacity 0.2s linear);
-}
-
-// Mixin and Variables for borders
-
+/* mixin for borders */
 @mixin border ($style, $sides...) {
 
     @if ($style != "") {
@@ -88,18 +84,18 @@ iota
     }
 }
 
-$border-alpha: 1px solid $color-alpha;
-$border-alpha-dark: 1px solid darken($color-alpha, 15%);
+/* border references */
+$border-alpha: 1px solid map-get($colors, light-gray);
+$border-alpha-dark: 1px solid darken(map-get($colors, light-gray), 15%);
 $border-beta: 1px solid $color-beta;
 $border-beta-dark: 1px solid darken($color-beta, 15%);
 $border-gamma: 1px solid $color-gamma;
 $border-gamma-dark: 1px solid darken($color-gamma, 15%);
-$border-alert: 1px solid $color-alert;
-$border-alert-dark: 1px solid darken($color-alert, 15%);
-$border-error: 1px solid $color-error;
-$border-error-dark: 1px solid darken($color-error, 15%);
-$border-success: 1px solid $color-success;
-$border-success-dark: 1px solid darken($color-success, 15%);
-$border-brand-blue: 1px solid $color-brand-blue;
-$border-brand-blue-dark: 1px solid darken($color-brand-blue, 15%);
-// End Border Styling Variables
+$border-alert: 1px solid $color-epsilon;
+$border-alert-dark: 1px solid darken($color-epsilon, 15%);
+$border-error: 1px solid $color-zeta;
+$border-error-dark: 1px solid darken($color-zeta, 15%);
+$border-success: 1px solid $color-eta;
+$border-success-dark: 1px solid darken($color-eta, 15%);
+$border-brand-blue: 1px solid $color-delta;
+$border-brand-blue-dark: 1px solid darken($color-delta, 15%);

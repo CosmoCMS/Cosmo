@@ -5,7 +5,7 @@
     font-size: 110%;
     margin-top: -.6rem;
     text-decoration: none;
-    color: $color-brand-blue;
+    color: $color-delta;
 
     &:hover, &:visited {
         text-decoration: none;
@@ -70,7 +70,7 @@ table.quickdate-calendar td:hover {
   @include border ($border-error, top, right, bottom, left);
 
     &:focus {
-        outline-color: $color-error;
+        outline-color: $color-zeta;
     }
 }
 
@@ -94,8 +94,8 @@ input.quickdate-date-input, input.quickdate-time-input {
     background-color: $color-beta;
     margin-top: $pad-delta;
     width: 26.75rem;
-    color: $color-alpha;
-    font-weight: $font-weight-beta;
+    @include color(color, light-gray);
+    font-weight: 700;
     padding: $pad-epsilon * .5;
     display: inline-block;
     text-decoration: none;
@@ -105,7 +105,7 @@ input.quickdate-date-input, input.quickdate-time-input {
     }
 
     &:hover {
-        color: lighten($color-brand-blue, 30%);
+        color: lighten($color-delta, 30%);
 
         i {
             text-decoration:none
@@ -113,15 +113,15 @@ input.quickdate-date-input, input.quickdate-time-input {
     }
 }
 .quickdate-popup{
+    @include color(color, light-gray);
     z-index: 10;
-    background-color: $color-alpha;
     text-align: center;
     display: none;
     position: absolute;
     padding: $pad-epsilon * .25;
     color: $color-beta;
     @include font-size(14);
-    background-color: $color-alpha;
+    @include color(color, light-gray);
     border: solid .1rem darken($color-alpha, 8%);
     width: 100%;
     box-shadow: none;
@@ -133,7 +133,7 @@ input.quickdate-date-input, input.quickdate-time-input {
 }
 
 .quickdate-action-link:visited, &:hover{
-    color: $color-brand-blue;
+    color: $color-delta;
     text-decoration: none;
 }
 
@@ -147,8 +147,8 @@ input.quickdate-date-input, input.quickdate-time-input {
 
 
 table.quickdate-calendar {
+    @include color(color, light-gray);
     border: solid .1rem darken($color-alpha, 8%);
-    background-color: $color-alpha;
 
     th,table, td {
         font-family: $font-alpha;
@@ -158,7 +158,7 @@ table.quickdate-calendar {
     td.other-month {
         font-family: $font-alpha;
         background-color: $color-beta;
-        color: $color-alpha;
+        @include color(color, light-gray);
 
         &:hover {
             background-color: lighten($color-beta, 10%);
@@ -178,19 +178,19 @@ table.quickdate-calendar {
 
     td.selected{
         font-family: $font-alpha;
-        background-color: $color-brand-blue;
-        color: $color-alpha;
-        font-weight: $font-weight-beta;
+        background-color: $color-delta;
+        @include color(color, light-gray);
+        font-weight: 700;
     }
 
     td.is-today{
         font-family: $font-alpha;
-        color: lighten($color-brand-blue, 10%);
-        font-weight: $font-weight-beta;
+        color: lighten($color-delta, 10%);
+        font-weight: 700;
 
         .disabled-date{
             color: $color-beta;
-            font-weight:$font-weight-alpha;
+            font-weight:200;
         }
     }
 
@@ -201,7 +201,7 @@ table.quickdate-calendar {
 }
 
 .quickdate-clear {
-    @include button($color-alpha, $color-error, $border-error-dark);
+    @include button($color-alpha, $color-zeta, $border-error-dark);
     color: $color-beta;
     display: inline-block;
     text-decoration: none;
@@ -210,6 +210,6 @@ table.quickdate-calendar {
     margin-right: 0;
 
     &:hover {
-        color: $color-alpha;
+        @include color(color, light-gray);
     }
 }

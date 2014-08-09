@@ -499,10 +499,10 @@
                     <input id="type" value="type" type='checkbox' ng-model='block.selectedTypes[type]' ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
                     <label for="type">{{type | themeFiles}}</label>
                 </p>
-            </div>
-            <div class="formcase">
-                <button class="error-button" ng-click='deleteBlock()'>delete</button>
-                <button class="success-button" ng-click="saveBlock()">save</button>
+                <div>
+                    <button class="error-button" ng-click='deleteBlock()'>delete</button>
+                    <button class="success-button" ng-click="saveBlock()">save</button>
+                </div>
             </div>
         </div>
     </div>

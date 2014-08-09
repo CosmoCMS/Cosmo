@@ -25,22 +25,22 @@
   min-height: 2em;
   margin: $pad-alpha 0;
   padding: .8em 1.1em;
-  background: $color-alpha;
+  background: map-get($colors, light-gray);
   border: .1em solid darken($color-alpha, 8%);
-  color: $color-brand-blue;
+  color: $color-delta;
   text-decoration: none;
-  font-weight: $font-weight-beta;
+  font-weight: 700;
   @include box-sizing(border-box);
-  @include fade-all;
+  transition: all .25s ease;
 
   &:hover {
-    color: $color-brand-blue;
+    color: $color-delta;
     background: darken($color-alpha, 8%);
     border-color: .1em solid darken($color-alpha, 11%);
-    @include fade-all;
+    transition: all .25s ease;
 
     i {
-      color: $color-brand-blue;
+      color: $color-delta;
     }
   }
 }
@@ -50,7 +50,7 @@
   padding: 0;
   min-height: $pad-delta;
   background: darken($color-alpha, 8%);
-  border: .2em dashed $color-brand-blue;
+  border: .2em dashed $color-delta;
   @include box-sizing(border-box);
 }
 

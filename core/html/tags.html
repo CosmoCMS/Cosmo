@@ -12,9 +12,12 @@
             <a ng-click="tags.selectedTag=tag;tags.newTag=tag;">{{tag}}</a>
             <div ng-show="tags.selectedTag">
                 <div ng-if="tags.selectedTag==tag">
-                    <input value="text" type="text" ng-model="tags.newTag">
-                    <button class="error-button" ng-click="deleteTag()">delete</button>
-                    <button class="success-button" ng-click="updateTag()">update</button>
+                    <input id="edit-tag" value="text" type="text" ng-model="tags.newTag">
+                    <label for"edit-tag">Edit Tag</label>
+                    <div>
+                        <button class="error-button" ng-click="deleteTag()">delete</button>
+                        <button class="success-button" ng-click="updateTag()">update</button>
+                    </div>
                 </div>
             </div>
         </li>

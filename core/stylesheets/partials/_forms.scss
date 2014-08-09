@@ -22,7 +22,7 @@
 // Number count for things like titles, descriptions etc...
 .num-count {
 	float: right;
-	color: $color-brand-blue;
+	color: $color-delta;
 }
 
 // Case to adjust sides of form area
@@ -101,7 +101,7 @@ input {
 	color: lighten($color-beta, 20%);
 	display: inline-block;
 	font-family: $font-alpha;
-	font-weight: $font-weight-alpha;
+	font-weight: 200;
 	margin: 0;
 	outline: none;
 	padding: 0 0 $pad-alpha 0;
@@ -172,7 +172,7 @@ input[type=radio] + label {
 input[type=radio]:checked + label {
     background-color: $color-beta;
 	background-image: none;
-	color: $color-alpha;
+	@include color(color, light-gray);
 
 	&:before {
 		content: "\f111";
@@ -184,7 +184,7 @@ input[type=radio]:checked + label {
 input[type=radio].active + label {
 	background-color: $color-beta;
 	background-image: none;
-	color: $color-alpha;
+	@include color(color, light-gray);
 
 	&:before {
 		content: "\f111";
@@ -206,7 +206,7 @@ input[type=checkbox] + label {
 	@include button($color-alpha, darken($color-alpha, 10%), $border-alpha-dark);
 	padding: .7rem;
 	color: $color-beta;
-	margin-bottom: $pad-alpha;
+	margin-bottom: $pad-delta;
 	margin-right: 0;
 	border-color: transparent;
 
@@ -221,7 +221,7 @@ input[type=checkbox] + label {
 input[type=checkbox]:checked + label {
 	background-color: $color-beta;
 	background-image: none;
-	color: $color-alpha;
+	@include color(color, light-gray);
 }
 
 

@@ -1,7 +1,7 @@
 <div class="prfl-qk-view">
-    <img src="/core/img/no-user.svg">
+    <img ng-src="{{admin.photo}}" ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true">
     <div class="prfl-info">
-        <p>{{admin.username}}</p>
+        <p ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"> {{admin.username}}</p>
         <a ng-click="logout()">Log Out</a>
     </div>
 </div>
@@ -19,13 +19,7 @@
     <li ng-class="{active: active=='menus'}" ng-click="admin.sidebar='core/html/menu.html';active='menus';showAdminPanel=true"><a><i class="fa fa-sitemap "></i>Menus</a></li>
     <li ng-class="{active: active=='blocks'}" ng-click="admin.sidebar='core/html/blocks.html';active='blocks';showAdminPanel=true"><a><i class="fa fa-square-o "></i>Blocks</a></li>
     <li ng-class="{active: active=='theme'}" ng-click="admin.sidebar='core/html/theme.html';active='theme';showAdminPanel=true"><a><i class="fa fa-tint "></i>Theme</a></li>
-    <li ng-class="{active: active=='users'}">
-        <a ng-click="usersDropdown=!usersDropdown"><i class="fa fa-user "></i>Users</a>
-        <ul ng-show="usersDropdown">
-            <li ng-click="clearPage();admin.sidebar='core/html/users.html';active='users';showAdminPanel=true"><a><i class="fa fa-users "></i>Manage Users</a></li>
-            <li ng-click="admin.sidebar='core/html/roles.html';active='users';showAdminPanel=true"><a><i class="fa fa-tasks "></i>Roles</a></li>
-        </ul>
-    </li>
+    <li ng-class="{active: active=='users'}" ng-click="clearPage();admin.sidebar='core/html/users.html';active='users';showAdminPanel=true"><a><i class="fa fa-users "></i>Users</a></li>
     <li ng-class="{active: active=='modules'}" ng-click="admin.sidebar='core/html/modules.html';active='modules';showAdminPanel=true"><a><i class="fa fa-puzzle-piece "></i>Modules</a></li>
     <li ng-class="{active: active=='settings'}" ng-click="admin.sidebar='core/html/settings.html';active='settings';showAdminPanel=true"><a><i class="fa fa-gear "></i>Settings</a></li>
 </ul>
