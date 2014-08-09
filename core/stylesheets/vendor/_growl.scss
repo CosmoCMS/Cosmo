@@ -7,13 +7,13 @@
 @mixin alert-style ($background-color) {
     font-family: $font-alpha;
     background-color: $background-color;
-    color: $color-alpha;
+    @include color(color, light-gray);
     padding: $pad-epsilon * .5;
     @include border ($border-alpha-dark, top, right, bottom, left);
-    @include fade-all;
+    transition: all .25s ease;
 
     i {
-      color: $color-alpha;
+      @include color(color, light-gray);
       margin-right: $pad-alpha;
     }
 }
@@ -56,19 +56,19 @@
 }
 
 .alert-success {
-    @include alert-style($color-success);
+    @include alert-style($color-eta);
 }
 
 .alert-error {
-    @include alert-style($color-error);
+    @include alert-style($color-zeta);
 }
 
 .alert-alert {
-    @include alert-style($color-alert);
+    @include alert-style($color-epsilon);
 }
 
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave{
-  @include fade-all;
+  transition: all .25s ease;
 }
 
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave.ng-leave-active{

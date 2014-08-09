@@ -25,12 +25,12 @@
 
     &:focus {
         background-color: darken($color, 10%);
-        @include fade-all;
+        transition: all .25s ease;
     }
 
     &:hover {
         background-color: $color-hover;
-        color: $color-alpha;
+        @include color(color, light-gray);
         @include border ($border-color, top, right, bottom, left);
     }
 }
@@ -44,18 +44,18 @@
 }
 
 .error-button {
-    @include button(transparent, $color-error, $border-error-dark);
+    @include button(transparent, $color-zeta, $border-error-dark);
 }
 
 .success-button {
-    @include button(transparent, $color-success, $border-success-dark);
+    @include button(transparent, $color-eta, $border-success-dark);
 }
 
 // Container for buttons at top of sidebar
 
 .top-btncase {
     @include border ($border-brand-blue-dark, bottom);
-    background-color: $color-brand-blue;
+    background-color: $color-delta;
     display: block;
     height: 6rem;
     margin-top: -6rem;
@@ -70,7 +70,7 @@
     }
 
     i {
-        color: $color-alpha;
+        @include color(color, light-gray);
         display: block;
         position: absolute;
         top: 2.25rem;
@@ -81,6 +81,6 @@
     }
 
     .active {
-        color: $color-alert;
+        color: $color-epsilon;
   }
 }

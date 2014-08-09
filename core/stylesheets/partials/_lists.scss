@@ -3,6 +3,7 @@ ul {
   margin: 0;
 
   li {
+    border-bottom: .1rem solid darken($color-alpha, 5%);
     padding: $pad-gamma $pad-epsilon;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -23,14 +24,14 @@ ul {
     a {
       color: $color-beta;
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(15);
 
       &:hover {
           color: $color-beta;
 
           i {
-              color: $color-brand-blue;
+              color: $color-delta;
           }
       }
     }
@@ -52,7 +53,7 @@ ul {
     }
 
     .active {
-      background-color: $color-brand-blue;
+      background-color: $color-delta;
       color: $color-beta;
     }
 
@@ -60,7 +61,7 @@ ul {
         background-color: lighten($color-alpha, 2%);
 
         i {
-            color: $color-brand-blue;
+            color: $color-delta;
         }
     }
 
@@ -76,11 +77,11 @@ ul {
             background-color: $color-beta;
 
             a {
-                color: $color-alpha;
+                @include color(color, light-gray);
             }
 
             i {
-                color: $color-brand-blue;
+                color: $color-delta;
             }
         }
 

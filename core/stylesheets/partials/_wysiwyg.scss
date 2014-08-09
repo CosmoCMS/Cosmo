@@ -4,7 +4,7 @@
   left: $left;
   height: auto;
   @include border ($border-alpha-dark, top, right, bottom, left);
-  background-color: $color-alpha;
+  @include color(color, light-gray);
   padding: $pad-epsilon * .1 $pad-epsilon * .25 $pad-epsilon * .25 $pad-epsilon * .25;
   @include font-size(13);
   width: 14.5rem;
@@ -27,16 +27,17 @@
 
     i {
       margin-right: $pad-epsilon * .375;
+      margin-top: -.2rem;
       vertical-align: middle;
     }
 
   &:hover {
     background-color: transparent;
-    color: $color-brand-blue;
+    color: $color-delta;
 
     i {
       background-color: transparent;
-      color: $color-brand-blue;
+      color: $color-delta;
       }
     }
   }
@@ -51,10 +52,10 @@
   display: none;
   z-index: 10000;
   cursor: pointer;
-  background-color: $color-alpha;
+  @include color(color, light-gray);
   display: block;
   height: 3em;
-  width: 33.25rem;
+  width: 22.25rem;
   border: .1em solid darken($color-alpha, 8%);
   @include font-size(14 * .9);
 
@@ -112,7 +113,7 @@
         &:hover {
 
           i {
-            color: $color-brand-blue;
+            color: $color-delta;
           }
         }
       }
@@ -125,70 +126,70 @@
 
     .wysiwyg-p {
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(14);
     }
 
     .wysiwyg-u {
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(14);
       font-family: monospace;
     }
 
     .wysiwyg-q {
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(14);
       font-style: italic;
     }
 
     .wysiwyg-c {
       display: block;
-      font-weight: $font-weight-alpha;
+      font-weight: 200;
       @include font-size(14);
       font-family: monospace;
     }
 
     .wysiwyg-h1 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.5);
     }
 
     .wysiwyg-h2 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.25);
     }
 
     .wysiwyg-h3 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.15);
     }
 
     .wysiwyg-h4 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.05);
     }
 
     .wysiwyg-h5 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * 1.05);
     }
 
     .wysiwyg-h6 {
       display: block;
-      font-weight: $font-weight-beta;
+      font-weight: 700;
       @include font-size(14 * .9);
     }
   }
 
   .format-dropdown {
-    @include wysiwyg-dropdown (2.1rem);
+    @include wysiwyg-dropdown (2.45rem);
     width: 14.5rem;
   }
 
@@ -197,13 +198,19 @@
         width: 13.5rem;
     }
 
+    .list-dropdown {
+      @include wysiwyg-dropdown (7.85rem);
+      width: 15.5rem;
+    }
+
   .align-dropdown {
-    @include wysiwyg-dropdown (21.35rem);
+    @include wysiwyg-dropdown (10.5rem);
     width: 13.25rem;
   }
 
+
   .table-dropdown {
-    @include wysiwyg-dropdown (24rem);
+    @include wysiwyg-dropdown (13.15rem);
     width: 13.5rem;
 
     .divide {
@@ -250,24 +257,29 @@
   }
 
   .media-dropdown {
-    @include wysiwyg-dropdown (26.5rem);
+    @include wysiwyg-dropdown (15.8rem);
     width: 10rem;
+  }
+
+  .code-dropdown {
+    @include wysiwyg-dropdown (18.5rem);
+    width: 12.85rem;
   }
 }
 
 .cosmo-codeview {
   font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
-  background-color: darken($color-brand-blue, 15%);
+  background-color: darken($color-delta, 15%);
   outline: none;
   border: .1em solid darken($color-alpha, 12%);
-  color: $color-alpha;
+  @include color(color, light-gray);
 }
 
 [contenteditable="true"] {
-  outline: .1rem solid $color-alpha;
+  outline: .1rem solid map-get($colors, light-gray);
 
   img, iframe {
-    outline: .1rem solid $color-alpha;
+    outline: .1rem solid map-get($colors, light-gray);
 
     &:hover {
       outline: .1rem solid $color-beta;

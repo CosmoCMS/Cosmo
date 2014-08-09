@@ -4,17 +4,22 @@
         <h1>Search</h1><h2>Pages</h2>
     </div>
     <form class="formcase-border">
+        <input  id="all" type="radio" ng-model="content.onlySearch" value="all">
+        <label for="all" ng-click="content.onlySearch='all';searchBar()">All</label>
+
         <input  id="type" type="radio" ng-model="content.onlySearch" value="type">
-        <label for="type" ng-click="content.onlySearch='type'">Type</label>
+        <label for="type" ng-click="content.onlySearch='type';searchBar()">Type</label>
+
         <input  id="author" type="radio" ng-model="content.onlySearch" value="author">
-        <label for="author" ng-click="content.onlySearch='author'">Author</label>
+        <label for="author" ng-click="content.onlySearch='author';searchBar()">Author</label>
+
         <input  id="tags" type="radio" ng-model="content.onlySearch" value="tags">
-        <label for="tags" ng-click="content.onlySearch='tags'">Tags</label>
-        <input id="title" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="Search e.g., The Millenium">
-        <label for="title">Search</label>
+        <label for="tags" ng-click="content.onlySearch='tags';searchBar()">Tags</label>
+        <input id="search" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="e.g., The Millenium">
+        <label for="search">Search</label>
     </form>
     <ul>
-        <li class="border-btm" ng-repeat="page in pages | filter:search">
+        <li ng-repeat="page in pages | filter:search">
             <a ng-href="{{page.url}}">{{page.title | ellipses:45}}</a>
             <p class="page-type"><small><i class="fa fa-file-text"></i> {{page.type | themeFiles}}</small></p>
             <p><small><i alt="published" class="fa fa-check"></i> {{page.published}}</small></p>

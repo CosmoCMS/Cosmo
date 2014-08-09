@@ -13,12 +13,12 @@
             <h1>Page</h1><h2>Details:</h2>
         </div>
 
-        <div class="formcase-border">
-            <input  type="radio" id="Y" value="Y" ng-modal="page.publish">
+        <div class="pg-editor formcase">
+            <input  type="radio" ng-class="{active: page.publish=='Y'}" name="publish" id="Y" value="Y" ng-modal="page.publish">
             <label for="Y" ng-click="page.publish='Y'">Publish</label>
-            <input  type="radio" id="N" value="N" ng-modal="page.publish">
+            <input  type="radio" ng-class="{active: page.publish=='N'}" name="publish" id="N" value="N" ng-modal="page.publish">
             <label for="N" ng-click="page.publish='N'">Draft</label>
-            <input  type="radio" id="schedule" value="schedule" ng-modal="page.publish">
+            <input  type="radio" ng-class="{active: page.publish=='schedule'}" name="publish" id="schedule" value="schedule" ng-modal="page.publish">
             <label for="schedule" ng-click="page.publish='schedule'">Schedule</label>
             <div class="schedule-triangle" ng-show="page.publish=='schedule'"></div>
             <datepicker class="schedule radio-inline" ng-model="page.scheduleDate" ng-show="page.publish=='schedule'"></datepicker>
@@ -40,12 +40,11 @@
             <label for="tags">Tags</label>
             <input value="url" type='text' ng-model='page.url' ng-keyup="autoURL=false;urlChange()">
             <label for="url">URL</label>
-	</div>
-
-        <div class="formcase">
-            <button type="button" class="error-button" ng-click="deletePage()">delete</button>
-            <button type="button" class="options-button" ng-click="savePage(true)">duplicate</button>
-            <button type="button" class="success-button" ng-click="savePage()">save</button>
-        </div>
+            <div>
+                <button type="button" class="error-button" ng-click="deletePage()">delete</button>
+                <button type="button" class="options-button" ng-click="savePage(true)">duplicate</button>
+                <button type="button" class="success-button" ng-click="savePage()">save</button>
+            </div>
+	    </div>
     </div>
 </div>

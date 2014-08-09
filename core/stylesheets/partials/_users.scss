@@ -1,62 +1,16 @@
-.user-sidebar {
-  cursor: pointer;
-  background: url(https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-frc3/t1.0-9/421785_190632207708461_1083774919_n.jpg) no-repeat center center;
-  background-size: cover;
-  height: 6.2rem;
-  width: 6.2rem;
-  @include border ($border-alpha-dark, top, right, bottom, left);
-  position: fixed;
-  left: 41.86rem;
-  top: 6rem;
-  padding: $pad-epsilon;
-  z-index: 10000;
-  @include fade-all;
-
-  i {
-    color: $color-alert;
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
-  }
-}
-
 .users {
-  margin-top: $pad-epsilon;
 
-  .info {
-    @include border ($border-alpha-dark, bottom);
-
-    p {
-      font-weight: $font-weight-beta;
-      display: inline-block;
-      margin-left: $pad-epsilon;
-
-      &:last-child {
-        margin-left: $pad-delta * 4.5;
-      }
-    }
-  }
-  .user-info {
-    display: inline-block;
-    width: 16rem;
-    margin-right: $pad-beta;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    &:last-child {
-        margin-right: 0;
-    }
-  }
-}
-
-.permissions {
-
-    h3 {
-        margin-bottom: 0;
+    .cos-select {
+        margin-top: 0;
     }
 
-    .formcase-border {
-        padding-bottom: $pad-delta;
+    li {
+
+        label {
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
     }
 }

@@ -1,11 +1,11 @@
 .cosmosidebar {
+    @include color(background-color, light-gray);
   margin-top: 0;
   padding-top: $pad-delta * 3;
   position: fixed;
   overflow-y: auto;
   width: 32rem;
   height: 100%;
-  background-color: $color-alpha;
   z-index: 9000;
   overflow-x: hidden;
   @include border ($border-alpha-dark, right);
@@ -30,17 +30,17 @@
 // Hamburger Navigation
 .hamburger {
     @include border ($border-alpha-dark, top, right, bottom, left);
+    @include color(color, light-gray);
   position: fixed;
   z-index: 10000;
   display: block;
   padding: .8rem;
-  background-color: $color-alpha;
   height: 6.2rem;
   width: 6.2rem;
   left: -.1rem;
   top: -.1rem;
   @include transition (left .3s);
-  @include fade-all;
+  transition: all .25s ease;
 
   i.active {
     position: absolute;
@@ -61,10 +61,10 @@
 
   &:hover {
     background-color: $color-beta;
-    @include fade-all;
+    transition: all .25s ease;
 
     i.inactive {
-      color: $color-alpha;
+      @include color(color, light-gray);
     }
   }
 }
@@ -85,13 +85,13 @@
     position: absolute;
     left: 0;
     display: block;
-    color: $color-alpha;
+    @include color(color, light-gray);
     font-size: 1.75rem;
     height: 1.5rem;
     margin-left: 1.3rem;
     margin-top: .65rem;
     width: 1.5rem;
-    @include fade-all;
+    transition: all .25s ease;
   }
 
   &:hover {
@@ -99,13 +99,13 @@
 
       i.active {
           color: $color-beta;
-          @include fade-all;
+          transition: all .25s ease;
       }
   }
 }
 
 .prfl-qk-view {
-    background-color: $color-brand-blue;
+    background-color: $color-delta;
     @include border ($border-brand-blue-dark, bottom);
     height: 6rem;
     margin-top: -$pad-delta * 3;
@@ -133,7 +133,7 @@
         }
 
         a {
-            color: $color-alpha;
+            @include color(color, light-gray);
             @include font-size(12);
             font-weight: 700;
 

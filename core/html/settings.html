@@ -3,7 +3,7 @@
         <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
         <h1>Site</h1><h2>Settings</h2>
     </div>
-    <div class="formcase-border">
+    <div class="formcase">
         <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
         <label for="sitename">Site Name</label>
 
@@ -21,8 +21,8 @@
 
         <input type='checkbox' id="maintenance" ng-model='settings.maintenanceMode'>
         <label for="maintenance">Activate Maintenance Mode</label>
-    </div>
-    <div class="formcase">
-        <button class="success-button" ng-click='changeSettings()'>save</button>
+        <div>
+            <button class="success-button" ng-click='changeSettings()'>save</button>
+        </div>
     </div>
 </div>

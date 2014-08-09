@@ -7,7 +7,7 @@ body {
   @include font-size(16);
   color: $color-beta;
   font-family: $font-alpha;
-  font-weight: $font-weight-alpha;
+  font-weight: 200;
   -webkit-font-smoothing: antialiased;
   text-shadow: none;
 }
@@ -28,14 +28,14 @@ h1 {
   @include font-size(20);
   text-shadow: none;
   display: inline;
-  font-weight: $font-weight-beta;
+  font-weight: 700;
   line-height: 5.75rem;
   margin-left: $pad-delta;
 }
 
 h2 {
   @include font-size(20);
-  font-weight: $font-weight-alpha;
+  font-weight: 200;
   text-shadow: none;
   display: inline;
   text-transform: none;
@@ -53,17 +53,17 @@ h6 {
     border-bottom: 0;
     color: $color-beta;
     font-family: $font-alpha;
-    font-weight: $font-weight-beta;
+    font-weight: 700;
     text-transform: uppercase;
     @include font-size(14);
     padding-bottom: 0;
 }
 
 label {
-    color: $color-brand-blue;
+    color: $color-delta;
     display: inline-block;
     font-family: $font-alpha;
-    font-weight: $font-weight-alpha;
+    font-weight: 200;
     margin-bottom: $pad-delta;
     margin-top: 0;
     @include font-size(14);
@@ -75,10 +75,10 @@ p {
   margin-bottom: $pad-beta;
   letter-spacing: 0;
   @include font-size(15);
-  font-weight: $font-weight-alpha;
+  font-weight: 200;
 
   &:active, &:focus {
-    font-weight: $font-weight-alpha;
+    font-weight: 200;
   }
 }
 
@@ -95,12 +95,12 @@ a {
   letter-spacing: 0;
 
   &:hover {
-    color: $color-brand-blue;
+    color: $color-delta;
   }
 
   &:active, &:focus {
-    font-weight: $font-weight-alpha;
-    color: $color-brand-blue;
+    font-weight: 200;
+    color: $color-delta;
     outline: none;
   }
 }
