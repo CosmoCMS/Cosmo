@@ -1,0 +1,95 @@
+/* search bar for media modal*/
+input.search-bar {
+    width: 100%;
+}
+
+input[type='file'] {
+    float: left;
+    margin: -$pad-beta * 7 0 0 0;
+    opacity: 0;
+    padding: 3.75rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 439px) {
+        margin-top: -$pad-beta * 9;
+    }
+}
+
+.dropzone {
+    background-color: palette(blue, light);
+    border: .2rem dashed $color-beta;
+    height: $pad-epsilon * 4;
+    margin-top: 0;
+    text-align: center;
+    transition: all .25s ease;
+    @include opacity(background-color, .75);
+
+    &:hover {
+        border: .2rem dashed palette(gray, light);
+        color: palette(blue, light);
+        transition: all .25s ease;
+
+        h4 {
+            color: palette(gray, light);
+        }
+    }
+
+    &:active {
+      @extend :hover;
+    }
+
+    h4 {
+        color: palette(blue, dark);
+        left: 0;
+        bottom: 0;
+        margin-top: 3rem;
+        right: 0;
+        transition: all .25s ease;
+
+        @media only screen and (max-width: 439px) {
+            margin-top: $pad-beta;
+        }
+
+        &:hover {
+            color: palette(gray, light);
+            transition: all .25s ease;
+        }
+    }
+}
+
+.ng-file-over {
+    background-color: palette(blue, light);
+    border: 2px dashed palette(gray, light);
+    transition: all .25s ease;
+}
+
+.uploader {
+    padding: 0 $pad-epsilon $pad-epsilon $pad-epsilon;
+    position: relative;
+    top: 9rem;
+
+    button {
+        margin-right: 0;
+    }
+}
+
+.url {
+    margin-top: $pad-delta;
+}
+
+.url-uploader {
+    margin-bottom: $pad-beta;
+    width: 100%;
+
+    @media #{$bp-beta} {
+        margin-right: $pad-beta * 7;
+        width: 39rem;
+    }
+
+    @media #{$bp-gamma} {
+        width: 68rem;
+    }
+}

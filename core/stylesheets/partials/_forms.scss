@@ -1,0 +1,243 @@
+// Label with a fixed width for form styling
+.fw-label {
+	display: inline-block;
+	width: 12rem;
+
+	i {
+		margin-right: $pad-alpha;
+	}
+}
+
+.hide {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: .1rem;
+	margin: -.1rem;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: .1rem;
+}
+
+/* number count for things like titles, descriptions etc... */
+.num-count {
+	color: palette(blue, light);
+	float: right;
+}
+
+/* Case to adjust sides of form area */
+.formcase {
+	overflow-y: scroll;
+	padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
+
+	.block {
+		display: block;
+		margin: $pad-epsilon * .5 0;
+	}
+
+	.btncase {
+		margin: 0;
+	}
+}
+
+// Similar to formcase or btncase, but with a border at the bottom
+.formcase-border {
+	border-bottom: 1px solid palette(gray, mid);
+	padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
+
+	> div {
+
+		button {
+			margin-bottom: $pad-delta;
+		}
+	}
+
+	input {
+		border-bottom: 1px solid palette(gray, mid);
+	}
+}
+
+/* modified select style dropdown */
+.cos-select {
+	background: url(../img/arrows.svg) no-repeat transparent right;
+	background-size: 3.5rem 1.5rem;
+	border: 1px solid palette(gray, mid);
+	color: palette(blue, dark);
+	cursor: pointer;
+	font-family: $font-alpha;
+	height: 4rem;
+	margin-top: $pad-delta;
+	outline: none;
+	padding-left: 1rem;
+	width: 100%;
+
+	select {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		background: none;
+		cursor: pointer;
+		height: 4rem;
+		outline: 0;
+		padding-left: 0;
+		width: 100%;
+	}
+}
+
+.cos-select-half {
+	@extend .cos-select;
+	display: inline-block;
+	margin-right: $pad-beta;
+	width: 45%;
+}
+
+input {
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid palette(gray, mid);
+	box-shadow: none;
+	color: palette(blue, dark);
+	display: inline-block;
+	font-family: $font-alpha;
+	font-weight: 200;
+	margin: 0;
+	outline: none;
+	padding: 0 0 $pad-alpha 0;
+	width: 100%;
+	@include font-size(15);
+
+	&:focus {
+		background-color: transparent;
+		border: 0;
+		border-bottom: 1px solid palette(gray, dark);
+	}
+
+	&:hover {
+		background-color: transparent;
+		cursor: text;
+	}
+
+	span {
+		color: palette(blue, dark);
+	}
+}
+
+.label-case {
+	display: block;
+	margin-bottom: $pad-beta;
+}
+
+.schedule-triangle {
+	margin: 0 0 -2.75rem $pad-delta * 9;
+	@include triangle(2.8rem, $color-beta, up);
+}
+
+textarea {
+	@extend input;
+	min-height: 9rem;
+	resize: vertical;
+}
+
+/* styling for the drag/drop menu creator */
+.menu-creator {
+
+	i {
+		margin-right: $pad-epsilon * .25;
+	}
+}
+
+/* hide radio button (the round disc) we will use just the label as the radio button */
+input[type=radio] {
+    display:none;
+    margin: $pad-beta;
+}
+
+/* change the look of labels that are now covering the input button */
+input[type=radio] + label {
+	@extend %button;
+	background-color: palette(gray, light);
+	border-color: transparent;
+	color: palette(blue, dark);
+	padding: .7rem;
+	margin-bottom: $pad-alpha;
+	margin-right: 0;
+
+	&:before {
+		content: "\f10c";
+		font-family: $font-beta;
+		margin-right: $pad-alpha;
+	}
+
+	&:hover {
+		background-color: palette(gray, mid);
+		color: palette(blue, dark);
+	}
+}
+/* change background color for label to make it look selected */
+input[type=radio]:checked + label {
+    background-color: palette(blue, dark);
+	background-image: none;
+	color: palette(gray, light);
+
+	&:before {
+		content: "\f111";
+		font-family: $font-beta;
+		margin-right: $pad-alpha;
+	}
+}
+
+input[type=radio].active + label {
+	background-color: palette(blue, dark);
+	background-image: none;
+	color: palette(gray, light);
+
+	&:before {
+		content: "\f111";
+		font-family: $font-beta;
+		margin-right: $pad-alpha;
+	}
+}
+
+/* hide radio button (the round disc) we will use just the label as the radio button */
+input[type=checkbox] {
+	display:none;
+	margin: $pad-beta;
+}
+
+/* change the look of labels that are now covering the input button */
+input[type=checkbox] + label {
+	@extend %button;
+	background-color: palette(gray, light);
+	border-color: transparent;
+	color: palette(blue, dark);
+	margin-bottom: $pad-delta;
+	margin-right: 0;
+	padding: $pad-alpha + .2rem;
+
+	&:before {
+		content: "\f058";
+		font-family: $font-beta;
+		margin-right: $pad-alpha;
+	}
+}
+
+/* change background color for label to make it look selected */
+input[type=checkbox]:checked + label {
+	background-image: none;
+	color: palette(gray, light);
+}
+
+
+/* styling for link inserter, needs to be different than a standard input */
+.form-control {
+	@extend input;
+	min-height: 3.1rem;
+}
+
+.form-control-focus {
+	@extend input:focus;
+}
+
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+	color: palette(gray, mid);
+}

@@ -1,0 +1,106 @@
+ol {
+    margin: 0 $pad-delta;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+
+    .btncase {
+      margin-left: 0;
+      margin-top: $pad-beta;
+    }
+
+    li {
+        overflow: hidden;
+        padding: $pad-gamma $pad-epsilon;
+        text-overflow: ellipsis;
+        transition: color .1s ease;
+
+        &:hover {
+
+            a {
+                color: palette(blue, dark);
+            }
+
+            i {
+                color: palette(blue, light);
+            }
+        }
+
+        a {
+            color: palette(blue, dark);
+            display: block;
+            font-weight: 200;
+            @include font-size(14);
+        }
+
+        .active {
+            background-color: palette(blue, dark);
+            color: palette(blue, light);
+        }
+
+        .block {
+            display: block;
+        }
+
+        .cos-select-half {
+            margin-bottom: 0;
+        }
+
+        p {
+            display: inline-block;
+            margin-bottom: 0;
+            margin-right: $pad-beta;
+        }
+
+        i {
+            color: palette(blue, dark);
+            margin-right: $pad-beta + .25;
+            vertical-align: top;
+            @include font-size(15);
+        }
+
+        small {
+
+            i {
+                margin-right: $pad-alpha;
+                vertical-align: middle;
+                @include font-size(12.5);
+            }
+        }
+    }
+}
+
+ul li ul {
+    background-color: palette(gray, mid);
+    margin-left: -2.5rem;
+    width: 32rem;
+
+    li {
+        margin-right: -$pad-epsilon;
+        padding-left: $pad-beta * 5;
+        transition: all .1s ease;
+
+        &:first-child {
+            margin-top: $pad-gamma;
+        }
+
+        &:hover {
+            background-color: palette(blue, dark);
+
+            a {
+                color: palette(gray, light);
+            }
+
+            i {
+                color: palette(blue, light);
+            }
+        }
+
+        &:last-child {
+          margin-bottom: -$pad-gamma;
+        }
+    }
+}

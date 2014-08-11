@@ -1,0 +1,31 @@
+/* tag styling when editing or creating new pages */
+.tag-suggestions {
+    color: palette(blue, light);
+    padding: $pad-epsilon * .25;
+    margin-bottom: $pad-epsilon * .75;
+    max-height: 26rem;
+    overflow-y: scroll;
+
+    &:hover {
+        .tag {
+            background-color: palette(blue, light);
+        }
+    }
+
+    a {
+        color: palette(gray, light);
+        display: block;
+        font-weight: 700;
+        padding: .5rem 0;
+        @include font-size(14 * 1.25);
+
+        &:hover {
+            color: lighten($color-delta, 20%);
+        }
+    }
+}
+
+.tag-suggestions-triangle {
+    margin: -$pad-beta 0 -.7rem .7rem;
+    @include triangle(2.8rem, $color-delta, up);
+}

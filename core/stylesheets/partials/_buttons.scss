@@ -1,0 +1,104 @@
+%button {
+    background-color: transparent;
+    color: palette(blue, dark);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 200;
+    margin-right: $pad-alpha;
+    outline: none;
+    padding: 0.65rem $pad-gamma 0.75rem $pad-gamma;
+    text-align: center;
+    text-transform: lowercase;
+    transition: all .25s ease-in-out;
+    @include font-size(13);
+
+    &:focus {
+        color: palette(gray, white);
+        transition: all .25s ease;
+    }
+
+    &:hover {
+        color: palette(gray, light);
+    }
+}
+
+
+/* Standard buttons */
+
+.error-button {
+    @extend %button;
+    border: 1px solid palette(gray, mid);
+
+    &:focus {
+        background-color: palette(alert, error--dark);
+        border: 1px solid palette(alert, error--dark);
+    }
+
+    &:hover {
+        background-color: palette(alert, error);
+        border: 1px solid palette(alert, error--dark);
+    }
+
+}
+
+.options-button {
+    @extend %button;
+    border: 1px solid palette(gray, mid);
+
+    &:focus {
+        background-color: palette(blue, dark);
+        border: 1px solid palette(blue, dark);
+    }
+
+    &:hover {
+        background-color: palette(gray, mid);
+        border: 1px solid palette(blue, dark);
+        color: palette(blue, dark);
+    }
+}
+
+.success-button {
+    @extend %button;
+    border: 1px solid palette(gray, mid);
+
+    &:focus {
+        background-color: palette(alert, success--dark);
+        border: 1px solid palette(alert, success--dark);
+    }
+
+    &:hover {
+        background-color: palette(alert, success);
+        border: 1px solid palette(alert, success--dark);
+    }
+}
+
+/* Container for buttons at top of sidebar */
+
+.top-btncase {
+    background-color: palette(blue, light);
+    height: 6rem;
+    margin-top: -6rem;
+    overflow: hidden;
+    padding: 0 4.5rem 0 $pad-epsilon;
+    position: fixed;
+    width: 32rem;
+    z-index: 100;
+
+    h1, h2 {
+        color: palette(gray, white);
+    }
+
+    i {
+        color: palette(gray, light);
+        position: absolute;
+        top: 2.25rem;
+
+        &:hover {
+            color: palette(blue, dark);
+        }
+    }
+
+    .active {
+        color: palette(alert, warning);
+  }
+}

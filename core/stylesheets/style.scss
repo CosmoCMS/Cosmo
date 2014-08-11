@@ -1,0 +1,37 @@
+// Universal imports
+@import "partials/reset";
+@import "bourbon";
+@import "partials/mixins";
+@import "vendor/fontawesome/font-awesome";
+
+.cosmo-default {
+    @import "partials/typography";
+    @import "partials/angular-defaults";
+    @import "partials/browse";
+    @import "partials/login";
+    @import "partials/global";
+    @import "partials/sidebar";
+    @import "partials/input";
+    @import "partials/lists";
+    @import "partials/buttons";
+    @import "partials/forms";
+    @import "partials/tags";
+    @import "partials/page";
+    @import "partials/users";
+    @import "partials/roles";
+    @import "partials/tables";
+    @import "partials/modules";
+    @import "partials/revisions";
+    @import "partials/themes";
+    @import "partials/blocks";
+    @import "vendor/menus";
+    @import "vendor/calendar";
+}
+
+//Imports to be used outside of the cosmo sidebar
+@import "partials/wysiwyg";
+@import "vendor/growl";
+
+/* modal window */
+@import "modal/modal";
+@import "modal/modal-media";
