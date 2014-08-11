@@ -1,66 +1,61 @@
 html {
     font-size: 62.5%;
-    font-family: $font-alpha;
 }
 
 body {
-  @include font-size(16);
-  color: $color-beta;
-  font-family: $font-alpha;
-  font-weight: 200;
-  -webkit-font-smoothing: antialiased;
-  text-shadow: none;
+    color: palette(blue, dark);
+    font-smoothing: antialiased;
+    font-weight: 200;
+    text-shadow: none;
+    @include font-size(16);
 }
 
 span {
-  font-family: $font-alpha;
-  letter-spacing: 0;
+    letter-spacing: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-alpha;
-  color: $color-beta;
-  margin: 0;
-  letter-spacing: 0;
+    color: palette(blue, dark);
+    font-family: $font-alpha;
+    letter-spacing: 0;
+    margin: 0;
 }
 
 h1 {
-  @include font-size(20);
-  text-shadow: none;
-  display: inline;
-  font-weight: 700;
-  line-height: 5.75rem;
-  margin-left: $pad-delta;
+    @include font-size(20);
+    display: inline;
+    font-weight: 700;
+    line-height: 5.75rem;
+    margin-left: $pad-delta;
+    text-shadow: none;
 }
 
 h2 {
-  @include font-size(20);
-  font-weight: 200;
-  text-shadow: none;
-  display: inline;
-  text-transform: none;
-  line-height: 5.75rem;
-  margin-left: $pad-alpha;
+    @include font-size(20);
+    display: inline;
+    font-weight: 200;
+    line-height: 5.75rem;
+    margin-left: $pad-alpha;
+    text-shadow: none;
+    text-transform: none;
 }
 
 h3 {
-  @include font-size(18);
-  line-height: 1;
-  margin-bottom: $pad-delta;
+    @include font-size(18);
+    line-height: 1;
+    margin-bottom: $pad-delta;
 }
 
 h6 {
-    border-bottom: 0;
-    color: $color-beta;
-    font-family: $font-alpha;
+    color: palette(blue, dark);
     font-weight: 700;
+    padding-bottom: 0;
     text-transform: uppercase;
     @include font-size(14);
-    padding-bottom: 0;
 }
 
 label {
-    color: $color-delta;
+    color: palette(blue, light);
     display: inline-block;
     font-family: $font-alpha;
     font-weight: 200;
@@ -70,49 +65,48 @@ label {
 }
 
 p {
-  font-family: $font-alpha;
-  margin: 0 0;
-  margin-bottom: $pad-beta;
-  letter-spacing: 0;
-  @include font-size(15);
-  font-weight: 200;
-
-  &:active, &:focus {
+    font-family: $font-alpha;
     font-weight: 200;
+    margin: 0 0 $pad-beta 0;
+    @include font-size(15);
+
+    &:active, &:focus {
+        font-weight: 200;
   }
 }
 
 small {
-  display: block;
-  font-size: 85%;
+    display: block;
+    font-size: 85%;
 }
 
 a {
-  font-family: $font-alpha;
-  color: darken($color-alpha, 45%);
-  text-decoration: none;
-  @include transition(color 0.1s linear);
-  letter-spacing: 0;
+    color: palette(gray, dark);
+    font-family: $font-alpha;
+    letter-spacing: 0;
+    text-decoration: none;
+    transition: color .1s linear;
+    @include font-size(15);
 
-  &:hover {
-    color: $color-delta;
-  }
+    &:hover {
+        color: palette(blue, light);
+    }
 
-  &:active, &:focus {
-    font-weight: 200;
-    color: $color-delta;
-    outline: none;
-  }
+    &:active, &:focus {
+        color: palette(blue, light);
+        font-weight: 200;
+        outline: none;
+    }
 }
 
 hr {
-  border-bottom: .1rem solid darken($color-alpha, 10%);
-  border-left: none;
-  border-right: none;
-  border-top: none;
+    border-bottom: 1px solid palette(gray, mid);
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 
 img {
-  margin: 0;
-  width: 100%;
+    margin: 0;
+    width: 100%;
 }

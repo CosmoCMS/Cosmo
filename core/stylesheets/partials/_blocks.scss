@@ -5,7 +5,7 @@
 
 .blk-code {
     @extend input;
-    @include border ($border-alpha-dark, top, right, bottom, left);
+    border: 1px solid palette(gray, dark);
     height: 50rem;
     margin-bottom: $pad-epsilon;
     overflow: scroll;

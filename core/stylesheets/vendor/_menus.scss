@@ -1,62 +1,62 @@
 .nestedSortable-list {
-  display: block;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    display: block;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-  .nestedSortable-list {
-    padding-left: $pad-epsilon * .5;
-  }
+    .nestedSortable-list {
+        padding-left: $pad-epsilon * .5;
+    }
 }
 
 .nestedSortable-item, .nestedSortable-placeholder {
-  display: block;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  min-height: .5rem;
-  @include font-size(14);
+    display: block;
+    margin: 0;
+    min-height: .5rem;
+    padding: 0;
+    position: relative;
+    @include font-size(14);
 }
 
 .nestedSortable-handle {
-  cursor: move;
-  display: block;
-  min-height: 2em;
-  margin: $pad-alpha 0;
-  padding: .8em 1.1em;
-  background: map-get($colors, light-gray);
-  border: .1em solid darken($color-alpha, 8%);
-  color: $color-delta;
-  text-decoration: none;
-  font-weight: 700;
-  @include box-sizing(border-box);
-  transition: all .25s ease;
-
-  &:hover {
-    color: $color-delta;
-    background: darken($color-alpha, 8%);
-    border-color: .1em solid darken($color-alpha, 11%);
+    background-color: palette(gray, light);
+    border: .1em solid palette(gray, mid);
+    box-sizing: border-box;
+    color: palette(blue, light);
+    cursor: move;
+    display: block;
+    font-weight: 700;
+    margin: $pad-alpha 0;
+    min-height: 2em;
+    padding: .8em 1.1em;
+    text-decoration: none;
     transition: all .25s ease;
 
-    i {
-      color: $color-delta;
+    &:hover {
+        background-color: palette(gray, mid);
+        color: palette(blue, light);
+        border: .1em solid palette(gray, mid);
+        transition: all .25s ease;
+
+        i {
+            color: palette(blue, light);
+        }
     }
-  }
 }
 
 .nestedSortable-placeholder {
-  margin: $pad-alpha 0;
-  padding: 0;
-  min-height: $pad-delta;
-  background: darken($color-alpha, 8%);
-  border: .2em dashed $color-delta;
-  @include box-sizing(border-box);
+    background: palette(gray, mid);
+    border: .2em dashed palette(blue, light);
+    box-sizing: border-box;
+    margin: $pad-alpha 0;
+    min-height: $pad-delta;
+    padding: 0;
 }
 
 .nestedSortable-drag {
-  position: absolute;
-  pointer-events: none;
-  z-index: 999;
-  opacity: .8;
+    opacity: .8;
+    pointer-events: none;
+    position: absolute;
+    z-index: 999;
 }

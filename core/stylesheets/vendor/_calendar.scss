@@ -1,11 +1,11 @@
 .quickdate-close {
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
+    color: palette(blue, light);
     font-size: 110%;
     margin-top: -.6rem;
+    position: absolute;
+    right: .5rem;
     text-decoration: none;
-    color: $color-delta;
+    top: .5rem;
 
     &:hover, &:visited {
         text-decoration: none;
@@ -13,64 +13,64 @@
 }
 
 .quickdate-calendar-header {
-  display: block;
-  padding: .2rem 0;
-  margin-bottom: $pad-alpha;
-  text-align: center;
+    display: block;
+    margin-bottom: $pad-alpha;
+    padding: .2rem 0;
+    text-align: center;
 }
 
 .quickdate-month {
-  display: inline-block;
+    display: inline-block;
 }
 
 a.quickdate-prev-month {
-  float: left;
+    float: left;
 }
 
 a.quickdate-next-month {
-  float: right;
+    float: right;
 }
 
 .quickdate-text-inputs {
-  text-align: left;
-  margin-bottom: $pad-alpha;
+    margin-bottom: $pad-alpha;
+    text-align: left;
 }
 
 .quickdate-input-wrapper {
-  width: 48%;
-  display: inline-block;
+    display: inline-block;
+    width: 48%;
 }
 
 input.quickdate-date-input,
 input.quickdate-time-input {
-  width: 10rem;
-  margin: 0;
-  height: auto;
-  padding: .2rem .3rem;
+    height: auto;
+    margin: 0;
+    padding: .2rem .3rem;
+    width: 10rem;
 }
 table.quickdate-calendar {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  margin-top: $pad-epsilon * .25;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: $pad-epsilon * .25;
+    width: 100%;
 }
 table.quickdate-calendar th, table.quickdate-calendar td {
-  padding: $pad-alpha;
+    padding: $pad-alpha;
 }
 table.quickdate-calendar td:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .quickdate-popup-footer {
-  text-align: right;
-  display: block;
+    display: block;
+    text-align: right;
 }
 
 .quickdate-error {
-  @include border ($border-error, top, right, bottom, left);
+    border: 1px solid palette(alert, error);
 
     &:focus {
-        outline-color: $color-zeta;
+        outline-color: palette(alert, error);
     }
 }
 
@@ -91,41 +91,39 @@ input.quickdate-date-input, input.quickdate-time-input {
 }
 
 .quickdate-button{
-    background-color: $color-beta;
-    margin-top: $pad-delta;
-    width: 26.75rem;
-    @include color(color, light-gray);
-    font-weight: 700;
-    padding: $pad-epsilon * .5;
+    background-color: palette(blue, dark);
+    color: palette(gray, light);
     display: inline-block;
+    font-weight: 700;
+    margin-top: $pad-delta;
+    padding: $pad-epsilon * .5;
     text-decoration: none;
-
-    i {
-        padding-right: $pad-epsilon * .5;
-    }
+    width: 26.75rem;
 
     &:hover {
-        color: lighten($color-delta, 30%);
+        color: palette(blue, light);
 
         i {
             text-decoration:none
         }
     }
+
+    i {
+        padding-right: $pad-epsilon * .5;
+    }
 }
 .quickdate-popup{
-    @include color(color, light-gray);
-    z-index: 10;
-    text-align: center;
+    background-color: palette(gray, light);
+    border: 1px solid palette(gray, mid);
+    color: palette(blue, dark);
     display: none;
-    position: absolute;
-    padding: $pad-epsilon * .25;
-    color: $color-beta;
-    @include font-size(14);
-    @include color(color, light-gray);
-    border: solid .1rem darken($color-alpha, 8%);
-    width: 100%;
-    box-shadow: none;
     margin-top: -$pad-epsilon;
+    padding: $pad-epsilon * .25;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+    @include font-size(14);
 
     span {
         font-family: $font-alpha;
@@ -133,7 +131,7 @@ input.quickdate-date-input, input.quickdate-time-input {
 }
 
 .quickdate-action-link:visited, &:hover{
-    color: $color-delta;
+    color: palette(blue, light);
     text-decoration: none;
 }
 
@@ -147,18 +145,24 @@ input.quickdate-date-input, input.quickdate-time-input {
 
 
 table.quickdate-calendar {
-    @include color(color, light-gray);
-    border: solid .1rem darken($color-alpha, 8%);
+    border: 1px solid palette(gray, mid);
+    color: palette(gray, light);
 
-    th,table, td {
+    &:hover {
+        background-color: palette(gray, mid);
+        color: palette(blue, dark);
+    }
+
+    th, table, td {
+        border-bottom: 1px solid palette(gray, mid);
+        border-right: 1px solid palette(gray, mid);
         font-family: $font-alpha;
-        @include border ($border-alpha-dark, right, bottom);
     }
 
     td.other-month {
+        background-color: palette(blue, dark);
+        color: palette(gray, light);
         font-family: $font-alpha;
-        background-color: $color-beta;
-        @include color(color, light-gray);
 
         &:hover {
             background-color: lighten($color-beta, 10%);
@@ -166,9 +170,9 @@ table.quickdate-calendar {
     }
 
     td.disabled-date {
-        font-family: $font-alpha;
+        color: palette(blue, dark);
         background-color: inherit;
-        color: $color-beta;
+        font-family: $font-alpha;
 
         &:hover {
             background-color: inherit;
@@ -177,39 +181,32 @@ table.quickdate-calendar {
     }
 
     td.selected{
+        background-color: palette(blue, light);
+        color: palette(gray, light);
         font-family: $font-alpha;
-        background-color: $color-delta;
-        @include color(color, light-gray);
         font-weight: 700;
     }
 
     td.is-today{
+        color: palette(blue, light);
         font-family: $font-alpha;
-        color: lighten($color-delta, 10%);
         font-weight: 700;
 
         .disabled-date{
-            color: $color-beta;
+            color: palette(blue, dark);
             font-weight:200;
         }
-    }
-
-    &:hover {
-        background-color: darken($color-alpha, 5%);
-        color: $color-beta;
     }
 }
 
 .quickdate-clear {
-    @include button($color-alpha, $color-zeta, $border-error-dark);
-    color: $color-beta;
+    @extend %button;
+    color: palette(blue, dark);
     display: inline-block;
+    margin: $pad-epsilon * .1 0;
     text-decoration: none;
-    margin-top: $pad-epsilon * .1;
-    margin-bottom: $pad-epsilon * .1;
-    margin-right: 0;
 
     &:hover {
-        @include color(color, light-gray);
+        color: palette(gray, light);
     }
 }

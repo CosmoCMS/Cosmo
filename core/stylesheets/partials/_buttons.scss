@@ -1,16 +1,6 @@
-// Mixin for standard action buttons
-
-@mixin icon {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    fill: $color-beta;
-}
-
-
-@mixin button ($color, $color-hover, $border-color) {
-    background-color: $color;
-    color: $color-beta;
+%button {
+    background-color: transparent;
+    color: palette(blue, dark);
     cursor: pointer;
     display: inline-block;
     font-weight: 200;
@@ -19,68 +9,96 @@
     padding: 0.65rem $pad-gamma 0.75rem $pad-gamma;
     text-align: center;
     text-transform: lowercase;
-    @include border ($border-beta, top, right, bottom, left);
+    transition: all .25s ease-in-out;
     @include font-size(13);
-    @include transition (all .25s ease-in-out);
 
     &:focus {
-        background-color: darken($color, 10%);
+        color: palette(gray, white);
         transition: all .25s ease;
     }
 
     &:hover {
-        background-color: $color-hover;
-        @include color(color, light-gray);
-        @include border ($border-color, top, right, bottom, left);
+        color: palette(gray, light);
     }
 }
 
-/* --------------------------------------- End Mixins --------------------------------------- */
 
-// Standard buttons
-
-.options-button {
-    @include button(transparent, $color-beta, $border-beta-dark);
-}
+/* Standard buttons */
 
 .error-button {
-    @include button(transparent, $color-zeta, $border-error-dark);
+    @extend %button;
+    border: 1px solid palette(gray, mid);
+
+    &:focus {
+        background-color: palette(alert, error--dark);
+        border: 1px solid palette(alert, error--dark);
+    }
+
+    &:hover {
+        background-color: palette(alert, error);
+        border: 1px solid palette(alert, error--dark);
+    }
+
+}
+
+.options-button {
+    @extend %button;
+    border: 1px solid palette(gray, mid);
+
+    &:focus {
+        background-color: palette(blue, dark);
+        border: 1px solid palette(blue, dark);
+    }
+
+    &:hover {
+        background-color: palette(gray, mid);
+        border: 1px solid palette(blue, dark);
+        color: palette(blue, dark);
+    }
 }
 
 .success-button {
-    @include button(transparent, $color-eta, $border-success-dark);
+    @extend %button;
+    border: 1px solid palette(gray, mid);
+
+    &:focus {
+        background-color: palette(alert, success--dark);
+        border: 1px solid palette(alert, success--dark);
+    }
+
+    &:hover {
+        background-color: palette(alert, success);
+        border: 1px solid palette(alert, success--dark);
+    }
 }
 
-// Container for buttons at top of sidebar
+/* Container for buttons at top of sidebar */
 
 .top-btncase {
-    @include border ($border-brand-blue-dark, bottom);
-    background-color: $color-delta;
-    display: block;
+    background-color: palette(blue, light);
     height: 6rem;
     margin-top: -6rem;
     overflow: hidden;
     padding: 0 4.5rem 0 $pad-epsilon;
+    position: fixed;
     width: 32rem;
     z-index: 100;
-    position: fixed;
 
     h1, h2 {
-        color: white;
+        color: palette(gray, white);
     }
 
     i {
-        @include color(color, light-gray);
-        display: block;
+        color: palette(gray, light);
         position: absolute;
         top: 2.25rem;
 
         &:hover {
-            color: $color-beta;
+            color: palette(blue, dark);
         }
     }
 
     .active {
-        color: $color-epsilon;
+        color: palette(alert, warning);
   }
 }

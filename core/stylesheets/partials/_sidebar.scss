@@ -1,72 +1,71 @@
 .cosmosidebar {
-    @include color(background-color, light-gray);
-  margin-top: 0;
-  padding-top: $pad-delta * 3;
-  position: fixed;
-  overflow-y: auto;
-  width: 32rem;
-  height: 100%;
-  z-index: 9000;
-  overflow-x: hidden;
-  @include border ($border-alpha-dark, right);
-  @include transition (left .3s);
-  top: 0;
-  bottom: 0;
-  left: -32rem;
+    background-color: palette(gray, light);
+    border-right: 1px solid palette(gray, mid);
+    bottom: 0;
+    height: 100%;
+    left: -32rem;
+    margin-top: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: $pad-delta * 3;
+    position: fixed;
+    top: 0;
+    transition: left .3s;
+    width: 32rem;
+    z-index: 9000;
 }
 
 // Sidebar transition to reveal sidebar from the left side of the screen.
 .userSidebarSlideOut {
-  @include transition (left .3s);
-  left: 25.8rem;;
+    left: 25.8rem;
+    transition: left .3s;
 }
 
 // Sidebar transition to reveal sidebar from the left side of the screen.
 .adminSidebarSlideOut {
-  @include transition (left .3s);
-  left: 0;
+    left: 0;
+    transition: left .3s;
 }
 
 // Hamburger Navigation
 .hamburger {
-    @include border ($border-alpha-dark, top, right, bottom, left);
-    @include color(color, light-gray);
-  position: fixed;
-  z-index: 10000;
-  display: block;
-  padding: .8rem;
-  height: 6.2rem;
-  width: 6.2rem;
-  left: -.1rem;
-  top: -.1rem;
-  @include transition (left .3s);
-  transition: all .25s ease;
-
-  i.active {
-    position: absolute;
-    left: -32rem;
-    height: 1.5rem;
-    width: 1.5rem;
-  }
-
-  i.inactive {
-    left: -32rem;
-    color: $color-beta;
-    font-size: 2.1rem;
-    height: 1.5rem;
-    margin-top: 1rem;
-    margin-left: 1.3rem;
-    width: 1.5rem;
-  }
-
-  &:hover {
-    background-color: $color-beta;
+    background-color: palette(gray, light);
+    border: 1px solid palette(gray, mid);
+    height: 6.2rem;
+    left: -.1rem;
+    padding: .8rem;
+    position: fixed;
+    top: -.1rem;
     transition: all .25s ease;
+    width: 6.2rem;
+    z-index: 10000;
+
+    i.active {
+        position: absolute;
+        left: -32rem;
+        height: 1.5rem;
+        margin-top: 1.15rem;
+        width: 1.5rem;
+    }
 
     i.inactive {
-      @include color(color, light-gray);
+        color: palette(blue, dark);
+        font-size: 2.1rem;
+        height: 1.5rem;
+        left: -32rem;
+        margin-left: 1.3rem;
+        margin-top: 1rem;
+        width: 1.5rem;
     }
-  }
+
+    &:hover {
+        background-color: palette(blue, dark);
+        transition: all .25s ease;
+
+        i.inactive {
+            color: palette(gray, light);
+        }
+    }
 }
 
 .hamburgeractive {
@@ -75,70 +74,68 @@
     left: 26.5rem;
     position: fixed;
 
-  i.inactive {
-    display: none;
-    height: 1.5rem;
-    width: 1.5rem;
-  }
+    &:hover {
+        background-color: transparent;
 
-  i.active {
-    position: absolute;
-    left: 0;
-    display: block;
-    @include color(color, light-gray);
-    font-size: 1.75rem;
-    height: 1.5rem;
-    margin-left: 1.3rem;
-    margin-top: .65rem;
-    width: 1.5rem;
-    transition: all .25s ease;
-  }
+        i.active {
+            color: palette(blue, dark);
+            transition: all .25s ease;
+        }
+    }
 
-  &:hover {
-      background-color: transparent;
+    i.active {
+        color: palette(gray, light);
+        left: 0;
+        font-size: 1.75rem;
+        height: 1.5rem;
+        margin-left: 1.3rem;
+        position: absolute;
+        transition: all .25s ease;
+        width: 1.5rem;
+    }
 
-      i.active {
-          color: $color-beta;
-          transition: all .25s ease;
-      }
-  }
+    i.inactive {
+        display: none;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
 }
 
 .prfl-qk-view {
-    background-color: $color-delta;
-    @include border ($border-brand-blue-dark, bottom);
+    background-color: palette(blue, light);
+    border-bottom: 1px solid palette(blue, mid);
     height: 6rem;
-    margin-top: -$pad-delta * 3;
+    margin-top: -6rem;
     position: fixed;
     width: 32rem;
     z-index: 100;
 
     img {
         height: 6rem;
-        margin: -$pad-epsilon $pad-beta 0 0;
+        margin: -3.2rem $pad-beta 0 0;
         width: 6rem;
     }
 
     .prfl-info {
         display: inline-block;
         overflow: hidden;
-        padding: $pad-gamma $pad-delta * 2 0 0;
+        padding: $pad-beta $pad-delta * 2 0 0;
         width: 20rem;
 
         p {
-            color: white;
+            color: palette(gray, white);
+            line-height: 1rem;
             margin-bottom: 0;
             @include font-size(13);
-            line-height: 1rem;
         }
 
         a {
-            @include color(color, light-gray);
-            @include font-size(12);
+            color: palette(gray, light);
             font-weight: 700;
+            @include font-size(12);
 
             &:hover {
-                color: $color-beta;
+                color: palette(blue, dark);
             }
         }
     }

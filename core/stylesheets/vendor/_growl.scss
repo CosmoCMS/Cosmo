@@ -5,29 +5,27 @@
  */
 
 @mixin alert-style ($background-color) {
-    font-family: $font-alpha;
     background-color: $background-color;
-    @include color(color, light-gray);
+    border: 1px solid palette(gray, mid);
+    color: palette(gray, light);
+    font-family: $font-alpha;
     padding: $pad-epsilon * .5;
-    @include border ($border-alpha-dark, top, right, bottom, left);
     transition: all .25s ease;
 
     i {
-      @include color(color, light-gray);
+      color: palette(gray, light);
       margin-right: $pad-alpha;
     }
 }
 
 .growl {
-    display: block;
-    position: fixed;
-    top: .5rem;
     left: 0;
+    margin: 0 auto;
+    position: fixed;
     right: 0;
-    margin-right: auto;
-    margin-left: auto;
-    z-index: 99999;
+    top: .5rem;
     width: 35rem;
+    z-index: 99999;
 
 
     [ng-switch="message.enableHtml"] {
@@ -35,46 +33,46 @@
         padding-right: $pad-beta;
     }
 
-    .message {
-        display: inline-block;
-    }
-
     .close {
-        display: inline-block;
         background-color: transparent;
+        display: inline-block;
         outline: none;
         width: auto;
+    }
+
+    .message {
+        display: inline-block;
     }
 }
 
 .cosmo-growl-item {
-  @include alert-style($color-beta);
+    @include alert-style(palette(blue, dark));
 }
 
 .alert-info {
-    @include alert-style($color-beta);
+    @include alert-style(palette(blue, dark));
 }
 
 .alert-success {
-    @include alert-style($color-eta);
+    @include alert-style(palette(alert, success));
 }
 
 .alert-error {
-    @include alert-style($color-zeta);
+    @include alert-style(palette(alert, error));
 }
 
 .alert-alert {
-    @include alert-style($color-epsilon);
+    @include alert-style(palette(alert, warning));
 }
 
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave{
-  transition: all .25s ease;
+    transition: all .25s ease;
 }
 
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave.ng-leave-active{
-  opacity: 0;
+    opacity: 0;
 }
 
 .cosmo-growl-item.ng-leave, .growl-item.ng-enter.ng-enter-active{
-  opacity: 1;
+    opacity: 1;
 }

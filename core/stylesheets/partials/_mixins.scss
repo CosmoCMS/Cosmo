@@ -1,19 +1,52 @@
-/* colors */
-$colors: (
-    light-gray: rgba(233, 238, 239, 1),
-    dark-gray: rgba(190, 190, 191, 1),
-    dark-blue: rgba(74, 96, 103, 1),
-    light-blue: rgba(112, 200, 196, 1),
-    warning: rgba(255, 211, 44, 1),
-    error: rgba(234, 29, 44, 1),
-    success: rgba(32, 186, 44, 1),
-);
+/* fonts */
+$font-alpha: quicksand, sans-serif;;
+$font-beta: 'FontAwesome';
 
-@mixin color($attribute: color, $color: dark-blue, $opacity: 1) {
-    #{$attribute}: map-get($colors, $color);
-    $opaque: opacify(map-get($colors, $color), $opacity);
+/* mixin for font conversion to pixels from rem */
+@mixin font-size($sizeValue: 1.6, $line: $sizeValue * 1.5) {
+    font-size: ($sizeValue * 1) + px;
+    line-height: ($line * 1) + px;
+    font-size: ($sizeValue / 10) + rem;
+    line-height: ($line / 10) + rem;
 }
 
+/* colors */
+$colors: (
+    gray: (
+        light: rgba(233, 238, 239, 1),
+        mid: rgba(203, 215, 218, 1),
+        dark: rgba(190, 190, 191, 1),
+        white: rgba(255, 255, 255, 1),
+    ),
+
+    blue: (
+        light: rgba(112, 200, 196, 1),
+        mid: rgba(69, 158, 155, 1),
+        dark: rgba(74, 96, 103, 1),
+        dark--two-third: rgba(74, 96, 103, .75),
+    ),
+    alert: (
+        error: rgba(234, 29, 44, 1),
+        error--dark: rgba(184, 0, 11, 1),
+        success: rgba(32, 186, 44, 1),
+        success--dark: rgba(0, 136, 0, 1),
+        warning: rgba(255, 211, 44, 1),
+        warning--dark: rgba(215, 176, 0, 1),
+    ),
+);
+
+@mixin opacity ($attribute, $value: 0.5) {
+  opacity: $value;
+  filter: alpha(opacity= $value * 100);
+  zoom: 1;
+  #{$attribute}: $value;
+}
+
+@function palette($palette, $tone: 'base') {
+    @return map-get(map-get($colors, $palette), $tone);
+}
+
+/* example mixin @include color(color, light-gray, 1); */
 $color-beta: rgba(74, 96, 103, 1);  /* brand dark blue */
 $color-gamma: rgba(190, 190, 191, 1);  /* brand dark gray */
 $color-delta: rgba(112, 200, 196, 1); /* brand bright blue */
@@ -38,64 +71,12 @@ $pad-gamma: 1.5rem;
 $pad-delta: 2rem;
 $pad-epsilon: 2.5rem;
 
-/* fonts */
-$font-alpha: quicksand, sans-serif;;
-$font-beta: 'FontAwesome';
-
-/* breakpoints*/
-$bp-alpha: "only screen and (max-width : 320px)";
-$bp-beta: "only screen and (max-width : 480px)";
-$bp-gamma: "only screen and (max-width : 768px)";
-$bp-delta: "only screen and (min-width : 769px) and (max-width: 1024px)";
-/* example breakpoint use: @media #{$bp-alpha} */
-
-/* mixin for font conversion to pixels from rem */
-@mixin font-size($sizeValue: 1.6, $line: $sizeValue * 1.5) {
-    font-size: ($sizeValue * 1) + px;
-    line-height: ($line * 1) + px;
-    font-size: ($sizeValue / 10) + rem;
-    line-height: ($line / 10) + rem;
-}
-
-/* mixin for borders */
-@mixin border ($style, $sides...) {
-
-    @if ($style != "") {
-
-        @if ($sides == "") {
-            border: $style;
-        }
-
-        @else {
-
-            @each $side in $sides {
-
-                @if ($side == 'top' or
-                    $side == 'right' or
-                    $side == 'bottom' or
-                    $side == 'left')
-                {
-
-                border-#{$side}: $style;
-
-                }
-            }
-        }
-    }
-}
-
-/* border references */
-$border-alpha: 1px solid map-get($colors, light-gray);
-$border-alpha-dark: 1px solid darken(map-get($colors, light-gray), 15%);
-$border-beta: 1px solid $color-beta;
-$border-beta-dark: 1px solid darken($color-beta, 15%);
-$border-gamma: 1px solid $color-gamma;
-$border-gamma-dark: 1px solid darken($color-gamma, 15%);
-$border-alert: 1px solid $color-epsilon;
-$border-alert-dark: 1px solid darken($color-epsilon, 15%);
-$border-error: 1px solid $color-zeta;
-$border-error-dark: 1px solid darken($color-zeta, 15%);
-$border-success: 1px solid $color-eta;
-$border-success-dark: 1px solid darken($color-eta, 15%);
-$border-brand-blue: 1px solid $color-delta;
-$border-brand-blue-dark: 1px solid darken($color-delta, 15%);
+$bp-alpha: "only screen and (min-width : 480px)";
+$bp-alpha--end: "(max-width : 767px)";
+$bp-beta: "only screen and (min-width : 768px)";
+$bp-beta--end: "(max-width : 1023px)";
+$bp-gamma: "only screen and (min-width : 1024px)";
+$bp-gamma--end: "(max-width : 1170px)";
+$bp-delta: "only screen and (min-width: 1171px)";
+$bp-delta--end: "(max-width: 1223px)";
+$bp-epsilon: "only screen and (min-width : 1224px)";

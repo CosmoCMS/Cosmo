@@ -1,300 +1,307 @@
-// Mixin for dropdowns used in the cosmo WYSIWYG editor
-@mixin wysiwyg-dropdown ($left) {
-  position: relative;
-  left: $left;
-  height: auto;
-  @include border ($border-alpha-dark, top, right, bottom, left);
-  @include color(color, light-gray);
-  padding: $pad-epsilon * .1 $pad-epsilon * .25 $pad-epsilon * .25 $pad-epsilon * .25;
-  @include font-size(13);
-  width: 14.5rem;
-  margin-top: -.5rem;
-
-  button {
-    font-family: $font-alpha;
-    outline: none;
-    margin: 0;
-    padding: $pad-epsilon * .25;
-    padding-bottom: 0;
+/* for dropdowns used in the cosmo WYSIWYG editor */
+%wysiwyg-dropdown {
+    background-color: palette(gray, light);
+    border: 1px solid palette(gray, mid);
+    color: palette(blue, dark);
     display: block;
-    text-align: center;
-    border-bottom: 0;
-    background-color: transparent;
-    border: 0;
-    width: 100%;
-    text-align: left;
-    margin-bottom: $pad-epsilon * .25;
+    height: auto;
+    margin-top: -.44rem;
+    position: relative;
+    width: 14.5rem;
+    @include font-size(13);
 
-    i {
-      margin-right: $pad-epsilon * .375;
-      margin-top: -.2rem;
-      vertical-align: middle;
+    button {
+        background-color: transparent;
+        border: 0;
+        display: block;
+        font-family: $font-alpha;
+        margin: 0 0 $pad-epsilon * .25 0;
+        outline: none;
+        padding: $pad-epsilon * .25 $pad-epsilon * .25 0 $pad-epsilon * .5;
+        text-align: left;
+        width: 100%;
+
+        &:hover {
+
+            i {
+                background-color: transparent;
+                color: palette(blue, light);
+            }
+        }
+
+        i {
+            margin-right: $pad-epsilon * .375;
+            margin-top: -.2rem;
+            vertical-align: middle;
+        }
     }
-
-  &:hover {
-    background-color: transparent;
-    color: $color-delta;
-
-    i {
-      background-color: transparent;
-      color: $color-delta;
-      }
-    }
-  }
 }
 
 /* --------------------------------------- End Mixins --------------------------------------- */
 
 // Full Size Toolbar Editor
 .cosmo-toolbar-large {
-  margin-top: -$pad-epsilon * 2;
-  position: absolute;
-  display: none;
-  z-index: 10000;
-  cursor: pointer;
-  @include color(color, light-gray);
-  display: block;
-  height: 3em;
-  width: 22.25rem;
-  border: .1em solid darken($color-alpha, 8%);
-  @include font-size(14 * .9);
+    background-color: palette(gray, light);
+    border: 1px solid palette(gray, mid);
+    color: palette(gray, light);
+    cursor: pointer;
+    height: 3.35rem;
+    margin-top: -$pad-epsilon * 2;
+    position: absolute;
+    width: 21.75rem;
+    z-index: 10000;
+    @include font-size(14 * .9);
 
-  td,tr,hr {
-    border: .1em solid $color-beta;
-  }
+    td,tr,hr {
+        border: 1px solid palette(blue, dark);
+    }
 
-  i {
-    color: $color-beta;
-    display: inline-block;
-    font-size: 1.3rem;
-  }
-
-  ul {
-    display: block;
-    margin: 0;
-    padding: 0;
-
-    li {
-      padding: 0;
-      display: inline-block;
-      padding-left: 0;
-      margin-right: 0;
-      border-bottom: 0;
-      width: 2.3rem;
-      height: 3rem;
-      margin-top: .5rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      &:hover {
-        background-color: transparent;
-      }
-
-      button {
-        outline: none;
-        height: 2.5rem;
-        margin: 0;
-        padding-right: 0;
-        padding-left: $pad-epsilon * .375;
-        padding-bottom: 0;
+    i {
+        color: palette(blue, dark);
         display: inline-block;
-        text-align: center;
-        border-bottom: 0;
-        background-color: transparent;
-        border: 0;
-
-        .text-alignment {
-          vertical-align: middle;
-          margin-top: -.3rem;
-        }
+        font-size: 1.3rem;
 
         &:hover {
-
-          i {
-            color: $color-delta;
-          }
+            color: palette(blue, light);
         }
-      }
     }
-  }
 
-  .type-dropdown {
-    @include wysiwyg-dropdown (0);
+    ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            padding: 0;
+            border: 0;
+            height: 3rem;
+            margin-top: .5rem;
+            width: 2.3rem;
+
+            &:hover {
+                background-color: transparent;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            button {
+                background-color: transparent;
+                border: 0;
+                display: inline-block;
+                height: 2.5rem;
+                margin: 0;
+                outline: none;
+                padding-right: 0 0 0 $pad-epsilon * .375;
+                text-align: center;
+
+                &:hover {
+
+                    i {
+                        color: palette(blue, light);
+                    }
+                }
+
+                .text-alignment {
+                    margin-top: -.3rem;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+.type-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 0;
     width: 13rem;
 
+    button {
+
+        &:hover {
+            color: palette(blue, light);
+        }
+    }
+
     .wysiwyg-p {
-      display: block;
-      font-weight: 200;
-      @include font-size(14);
+        display: block;
+        font-weight: 200;
+        @include font-size(14);
     }
 
     .wysiwyg-u {
-      display: block;
-      font-weight: 200;
-      @include font-size(14);
-      font-family: monospace;
+        display: block;
+        font-family: monospace;
+        font-weight: 200;
+        @include font-size(14);
     }
 
     .wysiwyg-q {
-      display: block;
-      font-weight: 200;
-      @include font-size(14);
-      font-style: italic;
+        display: block;
+        font-style: italic;
+        font-weight: 200;
+        @include font-size(14);
     }
 
     .wysiwyg-c {
-      display: block;
-      font-weight: 200;
-      @include font-size(14);
-      font-family: monospace;
+        display: block;
+        font-family: monospace;
+        font-weight: 200;
+        @include font-size(14);
     }
 
     .wysiwyg-h1 {
-      display: block;
-      font-weight: 700;
-      @include font-size(14 * 1.5);
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.5);
     }
 
     .wysiwyg-h2 {
-      display: block;
-      font-weight: 700;
-      @include font-size(14 * 1.25);
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.25);
     }
 
     .wysiwyg-h3 {
-      display: block;
-      font-weight: 700;
-      @include font-size(14 * 1.15);
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.15);
     }
 
     .wysiwyg-h4 {
-      display: block;
-      font-weight: 700;
-      @include font-size(14 * 1.05);
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.05);
     }
 
     .wysiwyg-h5 {
-      display: block;
-      font-weight: 700;
-      @include font-size(14 * 1.05);
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.05);
     }
 
     .wysiwyg-h6 {
-      display: block;
-      font-weight: 700;
-      @include font-size(14 * .9);
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * .9);
     }
-  }
+}
 
-  .format-dropdown {
-    @include wysiwyg-dropdown (2.45rem);
+.format-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 2rem;
     width: 14.5rem;
-  }
+}
 
-    .link-dropdown {
-        @include wysiwyg-dropdown (5rem);
-        width: 13.5rem;
-    }
+.link-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 4.5rem;
+    width: 13.5rem;
+}
 
-    .list-dropdown {
-      @include wysiwyg-dropdown (7.85rem);
-      width: 15.5rem;
-    }
+.list-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 7.45rem;
+    width: 15.5rem;
+}
 
-  .align-dropdown {
-    @include wysiwyg-dropdown (10.5rem);
+.align-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 10.25rem;
     width: 13.25rem;
-  }
+}
 
 
-  .table-dropdown {
-    @include wysiwyg-dropdown (13.15rem);
+.table-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 12.85rem;
     width: 13.5rem;
 
     .divide {
-      padding-bottom: $pad-epsilon * .5;
-      @include border ($border-alpha-dark, bottom);
-      margin-bottom: $pad-epsilon * .25;
+        border-bottom: 1px solid palette(gray, mid);
+        margin-bottom: $pad-epsilon * .25;
+        padding-bottom: $pad-epsilon * .5;
     }
-  }
+}
 
-  .table-dropdown--insert {
-    @include wysiwyg-dropdown (-19rem);
-    margin-top: -3.5rem;
-    padding-left: 1rem;
-    padding-top: 1rem;
+.table-dropdown--insert {
+    @extend %wysiwyg-dropdown;
+    left: -19rem;
+    margin-top: -3.25rem;
+    padding: .75rem .25rem .25rem .75rem;
     position: absolute;
-    width: 19.5rem;
+    width: 19rem;
 
     p {
         margin: 0;
     }
 
     .cell-select {
-        @include border ($border-alpha-dark, top, right, bottom, left);
+        border: 1px solid palette(gray, mid);
         display: inline-block;
         height: 1.5rem;
-        width: 1.5rem;
-        padding: 0;
         margin: 0 .25rem .25rem 0;
+        padding: 0;
+        width: 1.5rem;
+
+        &:hover {
+            background-color: palette(blue, light);
+        }
 
         &:nth-child(10) {
             margin-right: 0;
         }
-
-        &:hover {
-            background-color: lighten($color-alpha, 15%);
-        }
     }
 
     .cell-select--focus {
-        background-color: lighten($color-alpha, 15%);
+        background-color: palette(blue, light);
+        border: 1px solid palette(gray, dark);
         display: inline-block;
-        @include border ($border-beta, top, right, bottom, left);
     }
-  }
-
-  .media-dropdown {
-    @include wysiwyg-dropdown (15.8rem);
-    width: 10rem;
-  }
-
-  .code-dropdown {
-    @include wysiwyg-dropdown (18.5rem);
-    width: 12.85rem;
-  }
 }
 
-.cosmo-codeview {
-  font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
-  background-color: darken($color-delta, 15%);
-  outline: none;
-  border: .1em solid darken($color-alpha, 12%);
-  @include color(color, light-gray);
+.media-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 15.45rem;
+    width: 10rem;
+}
+
+.code-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 18.35rem;
+    width: 12.85rem;
+}
+
+pre {
+    background-color: darken(palette(blue, dark), 15%);
+    border: 1px solid palette(gray, mid);
+    color: palette(gray, light);
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+    outline: none;
 }
 
 [contenteditable="true"] {
-  outline: .1rem solid map-get($colors, light-gray);
+    outline: 1px solid palette(gray, light);
 
-  img, iframe {
-    outline: .1rem solid map-get($colors, light-gray);
+    &:active {
+        outline: 1px solid $color-beta;
+    }
+
+    &:focus {
+        outline: 1px solid $color-beta;
+    }
 
     &:hover {
-      outline: .1rem solid $color-beta;
+        outline: 1px solid $color-beta;
     }
-  }
 
-  &:hover {
-    outline: .1rem solid $color-beta;
-  }
+    img, iframe {
+        outline: 1px solid palette(gray, light);
 
-  &:focus {
-    outline: .1rem solid $color-beta;
-  }
-
-  &:active {
-    outline: .1rem solid $color-beta;
-  }
+        &:hover {
+            outline: 1px solid $color-beta;
+        }
+    }
 }

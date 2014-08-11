@@ -1,31 +1,31 @@
-// Tag styling when editing or creating new pages
-.tag-suggestions-triangle {
-  @include triangle(2.8rem, $color-delta, up);
-  margin: -$pad-beta 0 -.7rem .7rem;
-}
-
+/* tag styling when editing or creating new pages */
 .tag-suggestions {
-  background-color: $color-delta;
-  padding: $pad-epsilon * .25;
-  margin-bottom: $pad-epsilon * .75;
-  max-height: 26rem;
-  overflow-y: scroll;
-
-  a {
-    @include font-size(14 * 1.25);
-    display: block;
-    padding: .5rem 0;
-    font-weight: 700;
-    @include color(color, light-gray);
+    color: palette(blue, light);
+    padding: $pad-epsilon * .25;
+    margin-bottom: $pad-epsilon * .75;
+    max-height: 26rem;
+    overflow-y: scroll;
 
     &:hover {
-        color: lighten($color-delta, 20%);
+        .tag {
+            background-color: palette(blue, light);
+        }
     }
-  }
 
-  &:hover {
-    .tag {
-      background-color: lighten($color-delta, 10%);
+    a {
+        color: palette(gray, light);
+        display: block;
+        font-weight: 700;
+        padding: .5rem 0;
+        @include font-size(14 * 1.25);
+
+        &:hover {
+            color: lighten($color-delta, 20%);
+        }
     }
-  }
+}
+
+.tag-suggestions-triangle {
+    margin: -$pad-beta 0 -.7rem .7rem;
+    @include triangle(2.8rem, $color-delta, up);
 }

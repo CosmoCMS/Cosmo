@@ -1,7 +1,7 @@
 // Label with a fixed width for form styling
 .fw-label {
-	width: 12rem;
 	display: inline-block;
+	width: 12rem;
 
 	i {
 		margin-right: $pad-alpha;
@@ -19,20 +19,20 @@
 	width: .1rem;
 }
 
-// Number count for things like titles, descriptions etc...
+/* number count for things like titles, descriptions etc... */
 .num-count {
+	color: palette(blue, light);
 	float: right;
-	color: $color-delta;
 }
 
-// Case to adjust sides of form area
+/* Case to adjust sides of form area */
 .formcase {
-	padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
 	overflow-y: scroll;
+	padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
 
 	.block {
-		margin: $pad-epsilon * .5 0;
 		display: block;
+		margin: $pad-epsilon * .5 0;
 	}
 
 	.btncase {
@@ -42,26 +42,27 @@
 
 // Similar to formcase or btncase, but with a border at the bottom
 .formcase-border {
-	@include border ($border-alpha-dark, bottom);
+	border-bottom: 1px solid palette(gray, mid);
 	padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
 
-	input {
-		@include border ($border-alpha-dark, bottom);
-	}
-
 	> div {
+
 		button {
 			margin-bottom: $pad-delta;
 		}
 	}
+
+	input {
+		border-bottom: 1px solid palette(gray, mid);
+	}
 }
 
-// Modified select style dropdown
+/* modified select style dropdown */
 .cos-select {
-	@include border ($border-beta, top, right, bottom, left);
 	background: url(../img/arrows.svg) no-repeat transparent right;
 	background-size: 3.5rem 1.5rem;
-	color: $color-beta;
+	border: 1px solid palette(gray, mid);
+	color: palette(blue, dark);
 	cursor: pointer;
 	font-family: $font-alpha;
 	height: 4rem;
@@ -71,8 +72,8 @@
 	width: 100%;
 
 	select {
-		-webkit-appearance: none;
 		-moz-appearance: none;
+		-webkit-appearance: none;
 		appearance: none;
 		background: none;
 		cursor: pointer;
@@ -91,14 +92,11 @@
 }
 
 input {
-	@include font-size(15);
 	background-color: transparent;
-	@include border ($border-alpha-dark, bottom);
-	border-left: none;
-	border-right: none;
-	border-top: none;
+	border: 0;
+	border-bottom: 1px solid palette(gray, mid);
 	box-shadow: none;
-	color: lighten($color-beta, 20%);
+	color: palette(blue, dark);
 	display: inline-block;
 	font-family: $font-alpha;
 	font-weight: 200;
@@ -106,9 +104,12 @@ input {
 	outline: none;
 	padding: 0 0 $pad-alpha 0;
 	width: 100%;
+	@include font-size(15);
 
-	span {
-		color: lighten($color-beta, 20%);
+	&:focus {
+		background-color: transparent;
+		border: 0;
+		border-bottom: 1px solid palette(gray, dark);
 	}
 
 	&:hover {
@@ -116,10 +117,8 @@ input {
 		cursor: text;
 	}
 
-	&:focus {
-		background-color: transparent;
-		border: 0;
-		@include border ($border-beta, bottom);
+	span {
+		color: palette(blue, dark);
 	}
 }
 
@@ -139,7 +138,7 @@ textarea {
 	resize: vertical;
 }
 
-// Styling for the drag/drop menu creator
+/* styling for the drag/drop menu creator */
 .menu-creator {
 
 	i {
@@ -147,32 +146,38 @@ textarea {
 	}
 }
 
-// Hide radio button (the round disc) we will use just the label as the radio button
+/* hide radio button (the round disc) we will use just the label as the radio button */
 input[type=radio] {
     display:none;
     margin: $pad-beta;
 }
 
-// Change the look of labels that are now covering the input button
+/* change the look of labels that are now covering the input button */
 input[type=radio] + label {
-	@include button($color-alpha, darken($color-alpha, 10%), $border-alpha-dark);
+	@extend %button;
+	background-color: palette(gray, light);
+	border-color: transparent;
+	color: palette(blue, dark);
 	padding: .7rem;
-	color: $color-beta;
 	margin-bottom: $pad-alpha;
 	margin-right: 0;
-	border-color: transparent;
 
 	&:before {
-		font-family: $font-beta;
 		content: "\f10c";
+		font-family: $font-beta;
 		margin-right: $pad-alpha;
 	}
+
+	&:hover {
+		background-color: palette(gray, mid);
+		color: palette(blue, dark);
+	}
 }
-// Change background color for label to make it look selected
+/* change background color for label to make it look selected */
 input[type=radio]:checked + label {
-    background-color: $color-beta;
+    background-color: palette(blue, dark);
 	background-image: none;
-	@include color(color, light-gray);
+	color: palette(gray, light);
 
 	&:before {
 		content: "\f111";
@@ -182,9 +187,9 @@ input[type=radio]:checked + label {
 }
 
 input[type=radio].active + label {
-	background-color: $color-beta;
+	background-color: palette(blue, dark);
 	background-image: none;
-	@include color(color, light-gray);
+	color: palette(gray, light);
 
 	&:before {
 		content: "\f111";
@@ -193,39 +198,37 @@ input[type=radio].active + label {
 	}
 }
 
-
-
-// Hide radio button (the round disc) we will use just the label as the radio button
+/* hide radio button (the round disc) we will use just the label as the radio button */
 input[type=checkbox] {
 	display:none;
 	margin: $pad-beta;
 }
 
-// Change the look of labels that are now covering the input button
+/* change the look of labels that are now covering the input button */
 input[type=checkbox] + label {
-	@include button($color-alpha, darken($color-alpha, 10%), $border-alpha-dark);
-	padding: .7rem;
-	color: $color-beta;
+	@extend %button;
+	background-color: palette(gray, light);
+	border-color: transparent;
+	color: palette(blue, dark);
 	margin-bottom: $pad-delta;
 	margin-right: 0;
-	border-color: transparent;
+	padding: $pad-alpha + .2rem;
 
 	&:before {
-		font-family: $font-beta;
 		content: "\f058";
+		font-family: $font-beta;
 		margin-right: $pad-alpha;
 	}
 }
 
-// Change background color for label to make it look selected
+/* change background color for label to make it look selected */
 input[type=checkbox]:checked + label {
-	background-color: $color-beta;
 	background-image: none;
-	@include color(color, light-gray);
+	color: palette(gray, light);
 }
 
 
-// Styling for link inserter, needs to be different than a standard input
+/* styling for link inserter, needs to be different than a standard input */
 .form-control {
 	@extend input;
 	min-height: 3.1rem;
@@ -236,5 +239,5 @@ input[type=checkbox]:checked + label {
 }
 
 ::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
-	color: $border-alpha-dark;
+	color: palette(gray, mid);
 }
