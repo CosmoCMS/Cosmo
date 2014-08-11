@@ -1,0 +1,307 @@
+/* for dropdowns used in the cosmo WYSIWYG editor */
+%wysiwyg-dropdown {
+    background-color: palette(gray, light);
+    border: 1px solid palette(gray, mid);
+    color: palette(blue, dark);
+    display: block;
+    height: auto;
+    margin-top: -.44rem;
+    position: relative;
+    width: 14.5rem;
+    @include font-size(13);
+
+    button {
+        background-color: transparent;
+        border: 0;
+        display: block;
+        font-family: $font-alpha;
+        margin: 0 0 $pad-epsilon * .25 0;
+        outline: none;
+        padding: $pad-epsilon * .25 $pad-epsilon * .25 0 $pad-epsilon * .5;
+        text-align: left;
+        width: 100%;
+
+        &:hover {
+
+            i {
+                background-color: transparent;
+                color: palette(blue, light);
+            }
+        }
+
+        i {
+            margin-right: $pad-epsilon * .375;
+            margin-top: -.2rem;
+            vertical-align: middle;
+        }
+    }
+}
+
+/* --------------------------------------- End Mixins --------------------------------------- */
+
+// Full Size Toolbar Editor
+.cosmo-toolbar-large {
+    background-color: palette(gray, light);
+    border: 1px solid palette(gray, mid);
+    color: palette(gray, light);
+    cursor: pointer;
+    height: 3.35rem;
+    margin-top: -$pad-epsilon * 2;
+    position: absolute;
+    width: 21.75rem;
+    z-index: 10000;
+    @include font-size(14 * .9);
+
+    td,tr,hr {
+        border: 1px solid palette(blue, dark);
+    }
+
+    i {
+        color: palette(blue, dark);
+        display: inline-block;
+        font-size: 1.3rem;
+
+        &:hover {
+            color: palette(blue, light);
+        }
+    }
+
+    ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            padding: 0;
+            border: 0;
+            height: 3rem;
+            margin-top: .5rem;
+            width: 2.3rem;
+
+            &:hover {
+                background-color: transparent;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            button {
+                background-color: transparent;
+                border: 0;
+                display: inline-block;
+                height: 2.5rem;
+                margin: 0;
+                outline: none;
+                padding-right: 0 0 0 $pad-epsilon * .375;
+                text-align: center;
+
+                &:hover {
+
+                    i {
+                        color: palette(blue, light);
+                    }
+                }
+
+                .text-alignment {
+                    margin-top: -.3rem;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+.type-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 0;
+    width: 13rem;
+
+    button {
+
+        &:hover {
+            color: palette(blue, light);
+        }
+    }
+
+    .wysiwyg-p {
+        display: block;
+        font-weight: 200;
+        @include font-size(14);
+    }
+
+    .wysiwyg-u {
+        display: block;
+        font-family: monospace;
+        font-weight: 200;
+        @include font-size(14);
+    }
+
+    .wysiwyg-q {
+        display: block;
+        font-style: italic;
+        font-weight: 200;
+        @include font-size(14);
+    }
+
+    .wysiwyg-c {
+        display: block;
+        font-family: monospace;
+        font-weight: 200;
+        @include font-size(14);
+    }
+
+    .wysiwyg-h1 {
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.5);
+    }
+
+    .wysiwyg-h2 {
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.25);
+    }
+
+    .wysiwyg-h3 {
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.15);
+    }
+
+    .wysiwyg-h4 {
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.05);
+    }
+
+    .wysiwyg-h5 {
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * 1.05);
+    }
+
+    .wysiwyg-h6 {
+        display: block;
+        font-weight: 700;
+        @include font-size(14 * .9);
+    }
+}
+
+.format-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 2rem;
+    width: 14.5rem;
+}
+
+.link-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 4.5rem;
+    width: 13.5rem;
+}
+
+.list-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 7.45rem;
+    width: 15.5rem;
+}
+
+.align-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 10.25rem;
+    width: 13.25rem;
+}
+
+
+.table-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 12.85rem;
+    width: 13.5rem;
+
+    .divide {
+        border-bottom: 1px solid palette(gray, mid);
+        margin-bottom: $pad-epsilon * .25;
+        padding-bottom: $pad-epsilon * .5;
+    }
+}
+
+.table-dropdown--insert {
+    @extend %wysiwyg-dropdown;
+    left: -19rem;
+    margin-top: -3.25rem;
+    padding: .75rem .25rem .25rem .75rem;
+    position: absolute;
+    width: 19rem;
+
+    p {
+        margin: 0;
+    }
+
+    .cell-select {
+        border: 1px solid palette(gray, mid);
+        display: inline-block;
+        height: 1.5rem;
+        margin: 0 .25rem .25rem 0;
+        padding: 0;
+        width: 1.5rem;
+
+        &:hover {
+            background-color: palette(blue, light);
+        }
+
+        &:nth-child(10) {
+            margin-right: 0;
+        }
+    }
+
+    .cell-select--focus {
+        background-color: palette(blue, light);
+        border: 1px solid palette(gray, dark);
+        display: inline-block;
+    }
+}
+
+.media-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 15.45rem;
+    width: 10rem;
+}
+
+.code-dropdown {
+    @extend %wysiwyg-dropdown;
+    left: 18.35rem;
+    width: 12.85rem;
+}
+
+pre {
+    background-color: darken(palette(blue, dark), 15%);
+    border: 1px solid palette(gray, mid);
+    color: palette(gray, light);
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+    outline: none;
+}
+
+[contenteditable="true"] {
+    outline: 1px solid palette(gray, light);
+
+    &:active {
+        outline: 1px solid $color-beta;
+    }
+
+    &:focus {
+        outline: 1px solid $color-beta;
+    }
+
+    &:hover {
+        outline: 1px solid $color-beta;
+    }
+
+    img, iframe {
+        outline: 1px solid palette(gray, light);
+
+        &:hover {
+            outline: 1px solid $color-beta;
+        }
+    }
+}

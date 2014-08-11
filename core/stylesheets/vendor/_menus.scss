@@ -1,0 +1,62 @@
+.nestedSortable-list {
+    display: block;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .nestedSortable-list {
+        padding-left: $pad-epsilon * .5;
+    }
+}
+
+.nestedSortable-item, .nestedSortable-placeholder {
+    display: block;
+    margin: 0;
+    min-height: .5rem;
+    padding: 0;
+    position: relative;
+    @include font-size(14);
+}
+
+.nestedSortable-handle {
+    background-color: palette(gray, light);
+    border: .1em solid palette(gray, mid);
+    box-sizing: border-box;
+    color: palette(blue, light);
+    cursor: move;
+    display: block;
+    font-weight: 700;
+    margin: $pad-alpha 0;
+    min-height: 2em;
+    padding: .8em 1.1em;
+    text-decoration: none;
+    transition: all .25s ease;
+
+    &:hover {
+        background-color: palette(gray, mid);
+        color: palette(blue, light);
+        border: .1em solid palette(gray, mid);
+        transition: all .25s ease;
+
+        i {
+            color: palette(blue, light);
+        }
+    }
+}
+
+.nestedSortable-placeholder {
+    background: palette(gray, mid);
+    border: .2em dashed palette(blue, light);
+    box-sizing: border-box;
+    margin: $pad-alpha 0;
+    min-height: $pad-delta;
+    padding: 0;
+}
+
+.nestedSortable-drag {
+    opacity: .8;
+    pointer-events: none;
+    position: absolute;
+    z-index: 999;
+}

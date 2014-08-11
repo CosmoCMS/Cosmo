@@ -1,0 +1,112 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    color: palette(blue, dark);
+    font-smoothing: antialiased;
+    font-weight: 200;
+    text-shadow: none;
+    @include font-size(16);
+}
+
+span {
+    letter-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: palette(blue, dark);
+    font-family: $font-alpha;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+h1 {
+    @include font-size(20);
+    display: inline;
+    font-weight: 700;
+    line-height: 5.75rem;
+    margin-left: $pad-delta;
+    text-shadow: none;
+}
+
+h2 {
+    @include font-size(20);
+    display: inline;
+    font-weight: 200;
+    line-height: 5.75rem;
+    margin-left: $pad-alpha;
+    text-shadow: none;
+    text-transform: none;
+}
+
+h3 {
+    @include font-size(18);
+    line-height: 1;
+    margin-bottom: $pad-delta;
+}
+
+h6 {
+    color: palette(blue, dark);
+    font-weight: 700;
+    padding-bottom: 0;
+    text-transform: uppercase;
+    @include font-size(14);
+}
+
+label {
+    color: palette(blue, light);
+    display: inline-block;
+    font-family: $font-alpha;
+    font-weight: 200;
+    margin-bottom: $pad-delta;
+    margin-top: 0;
+    @include font-size(14);
+}
+
+p {
+    font-family: $font-alpha;
+    font-weight: 200;
+    margin: 0 0 $pad-beta 0;
+    @include font-size(15);
+
+    &:active, &:focus {
+        font-weight: 200;
+  }
+}
+
+small {
+    display: block;
+    font-size: 85%;
+}
+
+a {
+    color: palette(gray, dark);
+    font-family: $font-alpha;
+    letter-spacing: 0;
+    text-decoration: none;
+    transition: color .1s linear;
+    @include font-size(15);
+
+    &:hover {
+        color: palette(blue, light);
+    }
+
+    &:active, &:focus {
+        color: palette(blue, light);
+        font-weight: 200;
+        outline: none;
+    }
+}
+
+hr {
+    border-bottom: 1px solid palette(gray, mid);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+img {
+    margin: 0;
+    width: 100%;
+}

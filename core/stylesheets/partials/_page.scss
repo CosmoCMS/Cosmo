@@ -1,0 +1,24 @@
+.new-version {
+    background-color: $color-epsilon;
+    margin-bottom: $pad-delta * 3;
+    margin-top: -$pad-delta * 3;
+    position: fixed;
+    width: 32rem;
+    z-index: 100001;
+
+    p {
+        color: palette(blue, dark);
+        padding: 1.75rem $pad-epsilon 0 $pad-epsilon;
+    }
+
+    .btn-case {
+        padding: 1.25em 0 $pad-epsilon $pad-epsilon;
+        margin-bottom: 0;
+    }
+}
+
+.push-down {
+    background-color: transparent;
+    display: block;
+    height: 17rem;
+}
