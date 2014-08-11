@@ -1,5 +1,5 @@
 <div ng-controller="usersCtrl">
-    <div class="users" ng-show="!selectedUser">
+    <div ng-show="!selectedUser">
 
         <div class="top-btncase">
             <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
@@ -8,15 +8,13 @@
 
         <div class="formcase-border">
             <div ng-controller="loginRegistrationCtrl">
-                <button class="options-button" ng-click="createUser=!createUser">Create user</button>
+                <h3 ng-click="createUser=!createUser"><span ng-if="!createUser">Create a new user</span><span ng-if="createUser">Close</span></h3>
                 <div ng-show="createUser">
                     <input type="text" ng-model="register.username"><label>Username</label>
                     <input type="text" ng-model="register.email"><label>Email</label>
                     <input type="password" ng-model="register.password"><label>Password</label>
                     <input type="password" ng-model="register.confirmPassword"><label>Confirm Password</label>
-                    <div>
-                        <button class="success-button" ng-click="register()">Create User</button>
-                    </div>
+                    <button class="success-button" ng-click="register()">Create User</button>
                 </div>
             </div>
         </div>
@@ -25,19 +23,15 @@
         </div>
         <ul>
             <li ng-repeat="user in users.data | filter:users.search">
-                <input id="username" ng-model="user.username" ng-keyup="updateUser(user)">
-                <label for="username">Username</label>
-                <input id="email" ng-model="user.email" ng-keyup="updateUser(user)">
-                <label for="email">Email Address</label>
-                <div class="cos-select">
-                    <select id="role" ng-model="user.role" ng-change="updateUser(user)">
-                        <option value="admin">admin</option>
-                        <option value="editor">editor</option>
-                        <option value="author">author</option>
-                        <option value="contributor">contributor</option>
-                    </select>
-                </div>
-                <label for="role">User Role</label>
+                <i class="fa fw fa-user "></i><input ng-model="user.username" ng-keyup="updateUser(user)">
+                Role: 
+                <select ng-model="user.role" ng-change="updateUser(user)">
+                    <option value="admin">admin</option>
+                    <option value="editor">editor</option>
+                    <option value="author">author</option>
+                    <option value="contributor">contributor</option>
+                </select><br />
+                <i class="fa fw fa-envelope"></i><input ng-model="user.email" ng-keyup="updateUser(user)">
             </li>
         </ul>
     </div>

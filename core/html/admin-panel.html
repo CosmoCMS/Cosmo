@@ -2,8 +2,11 @@
     <div class="cosmo-default">
         <a class="hamburger" ng-class="{hamburgeractive: active}" ng-click="showAdminPanel=!showAdminPanel;active=!active;">
             <i class="fa fa-bars inactive"></i>
-            <i class="fa fa-times active"></i>
+            <i class="fa fa-bars active"></i>
         </a>
+        <button class="user-logout fade" ng-show="showAdminPanel" ng-click="logout()">
+            <i class="fa fa-power-off"></i>
+        </button>
         <div class="cosmosidebar fade" ng-class="{adminSidebarSlideOut:showAdminPanel}">
             <div class="fade" ng-include="admin.sidebar"></div>
         </div>

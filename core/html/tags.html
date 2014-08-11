@@ -8,16 +8,13 @@
         <label>Search</label>
     </div>
     <ul>
-        <li class="tag-list" ng-repeat="tag in tags.tags | filter:tags.search">
-            <a ng-click="tags.selectedTag=tag;tags.newTag=tag;">{{tag}}</a>
+        <li class="tag-list" ng-repeat="tag in tags.tags | filter:tags.search" ng-click="tags.selectedTag=tag;tags.newTag=tag;">
+            <div ng-if="tags.selectedTag!=tag">{{tag}}</div>
             <div ng-show="tags.selectedTag">
                 <div ng-if="tags.selectedTag==tag">
-                    <input id="edit-tag" value="text" type="text" ng-model="tags.newTag">
-                    <label for"edit-tag">Edit Tag</label>
-                    <div>
-                        <button class="error-button" ng-click="deleteTag()">delete</button>
-                        <button class="success-button" ng-click="updateTag()">update</button>
-                    </div>
+                    <input value="text" type="text" ng-model="tags.newTag">
+                    <button class="error-button" ng-click="deleteTag()">delete</button>
+                    <button class="success-button" ng-click="updateTag()">update</button>
                 </div>
             </div>
         </li>

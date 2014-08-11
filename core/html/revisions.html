@@ -4,18 +4,18 @@
         <h1>PAGE</h1><h2>Revisions</h2>
     </div>
     <ul ng-repeat="revision in revisions">
+
         <li class="revisions">
             <a class="content-title" ng-click="getRevision($index)">
-                <div ng-if="revision.title">
-                    <p><strong>Title:</strong> {{revision.title}}</p>
+                <div ng-if="revision.title"><p><strong>TITLE: </strong></p>
+                    <p class="revisiontitle">{{revision.title}}</p>
                 </div>
-                <div ng-if="!revision.title">
-                    <p>N/A</p>
+                <div ng-if="!revision.title">N/A
                 </div>
             </a>
-            <p class="info" alt="author"><i class="fa fa-user"></i>{{revision.author}}</p>
-            <p class="info" alt="published"><i class="fa fa-check"></i>{{revision.published}}</p>
-            <p class="info" alt="published date"><i class="fa fa-calendar"></i>{{revision.timestamp | timestamp}}</p>
+            <p class="block"><strong>AUTHOR: </strong>{{revision.author}}</p>
+            <p><strong>PUBLISHED: </strong>{{revision.published}}</p>
+            <p><strong>DATE: </strong>{{revision.timestamp | timestamp}}</p>
             <button class="success-button" ng-click="revert($index)">Revert</button>
         </li>
     </ul>
