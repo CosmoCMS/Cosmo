@@ -5,13 +5,12 @@
             <h1>Edit</h1><h2>Blocks</h2>
         </div>
         <div class="formcase-border">
-            <input id="name" value="name" type='text' ng-model='block.newName' placeholder="e.g. My new custom block"><label for="name">Name</label>
-            <div>
-                <button class="success-button" ng-click='newBlock()'>add</button>
-            </div>
+            <label for="name">Name:</label>
+            <input id="name" value="name" type='text' ng-model='block.newName' placeholder="e.g. My new custom block">
+            <button class="success-button" ng-click='newBlock()'>add</button>
         </div>
         <div class="formcase-border">
-            <input type="text" ng-model="search" value="search" placeholder="Search: e.g. Footer"><label for="serach">Search</label>
+            <input type="text" ng-model="search" placeholder="Search: e.g. Footer">
         </div>
         <div>
             <ul ng-repeat='block in blocks | filter:search'>
@@ -247,14 +246,16 @@
     	</div>
     </div>
 
-    <div class="blocks" ng-show="block.panel==='edit'">
+    <div ng-show="block.panel==='edit'">
         <div class="top-btncase">
                 <i class="fa fa-chevron-left " ng-click="block.panel='manage'"></i>
             <h1>Editing:</h1><h2>{{block.name}}</h2>
         </div>
             <div class="formcase-border">
-    	        <input id="name" value="name" type='text' ng-model='block.name'><label for="name">Block Name</label>
-    	        <div class="blk-code" cosmo="none"></div>
+    	        <label for="name">Block Name:</label>
+    	        <input id="name" value="name" type='text' ng-model='block.name'>
+    	        <div class="blk-code" cosmo="none"></div><br/>
+    	        <label for="section">Section:</label>
                 <div class="cos-select">
         	        <select id="selection" value="section" ng-model="block.area">
         	            <option value="header">Header</option>
@@ -274,7 +275,7 @@
         	            <option value="block10">Block 10</option>
         	        </select>
                 </div>
-                <label for="section">Section</label>
+    	        <label for="priority">Priority:</label>
                 <div class="cos-select">
         	        <select id="priority" ng-model='block.priority'>
                             <option value="-100">-100</option>
@@ -480,7 +481,7 @@
                             <option value="100">100</option>
                     </select>
                 </div>
-                <label for="priority">Priority</label>
+                <label for="visibility">Page Visibility:</label>
                 <div class="cos-select">
                     <select id="visibility" ng-model='block.visibility'>
                         <option value="">Display on all pages</option>
@@ -488,21 +489,27 @@
                         <option value="invisible">All pages, except below</option>
                     </select>
                 </div>
-                <label for="visibility">Page Visibility</label>
                 <div ng-show="block.visibility">
                     <p>Use an asterisk (*) as a wildcard at the end of a page. e.g. /blog*</p>
                     <textarea ng-model='block.urls'></textarea>
                 </div>
-                <p>Show only for specific content type(s):
-                <small>*If no item is selected, there will be no limitation.</small></p>
-                <p class="blk-disp-type" ng-repeat="type in types" ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
-                    <input id="type" value="type" type='checkbox' ng-model='block.selectedTypes[type]' ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
-                    <label for="type">{{type | themeFiles}}</label>
-                </p>
-                <div>
-                    <button class="error-button" ng-click='deleteBlock()'>delete</button>
-                    <button class="success-button" ng-click="saveBlock()">save</button>
+            </div>
+        <div class="formcase">
+            <p>Show only for specific content type(s):
+            <small>*If no item is selected, there will be no limitation.</small></p>
+            <p class="blk-disp-type" ng-repeat="type in types" ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
+                <input id="type" value="type" type='checkbox' ng-model='block.selectedTypes[type]' ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
+                <label for="type">{{type | themeFiles}}</label>
+            </p>
+            </div>
+            <div class="btn-case-btm">
+                <div ng-show="confirm">
+                    Are you sure you want to delete this block?<br />
+                    <button class="error-button" ng-click='deleteBlock()'>Yes</button>
+                    <button class="error-button" ng-click='confirm=false'>No</button>
                 </div>
+                <button class="error-button" ng-click='confirm=true'>delete</button>
+                <button class="success-button" ng-click="saveBlock()">save</button>
             </div>
         </div>
     </div>

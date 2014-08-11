@@ -1,18 +1,17 @@
 <div ng-controller="menuCtrl">
     <div ng-show="menu.panel==='manage'">
         <div class="top-btncase">
-                <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+            <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1>Edit</h1><h2>Menus</h2>
-        </div>
-        <div class="formcase-border">
-            <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer"><label for="name">Add a Menu</label>
-            <div>
-                <button class="success-button" ng-click='newMenu()'>add</button>
-            </div>
         </div>
         <ul>
             <li ng-repeat='menu in menus'><a ng-click="selectMenu(menu)">{{menu.name}}</a></li>
         </ul>
+        <div class="formcase">
+            <label for="name">Add a Menu</label>
+            <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
+            <button class="success-button" ng-click='newMenu()'>add</button>
+        </div>
     </div>
     <div ng-show="menu.panel==='edit'">
         <div class="top-btncase">
@@ -20,8 +19,9 @@
             <h1>Editing</h1><h2>{{menu.name}}</h2>
         </div>
         <div class="formcase">
+            <label for="name">Name:</label>
             <input value="name" type="text" ng-model="menu.name">
-            <label for="name">Name</label>
+            <label for="area">Area:</label>
             <div class="cos-select">
                 <select value="area" ng-model="menu.area">
                     <option value="primary">Primary</option>
@@ -42,15 +42,15 @@
                     <option value="menu10">Menu 10</option>
                 </select>
             </div>
-            <label for="area">Area</label>
         </div>
-
+        
         <div class="nestedSortable-list">
             <div ui-tree>
                 <ol ui-tree-nodes="options" ng-model="list">
                     <li class="nestedSortable-handle" ng-repeat="item in list" ui-tree-node>
                         <div ui-tree-handle>
                             {{item.title}}
+                            <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=item;menu.editLinkText=item.title;menu.editLinkURL=item.url">Edit</a>
                             <a data-nodrag ng-click="remove(this)">Remove</a>
                             <a data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">Add Item</a>
                         </div>
@@ -58,6 +58,7 @@
                             <li ng-repeat="subItem in item.items" ui-tree-node>
                                 <div ui-tree-handle>
                                     {{subItem.title}}
+                                    <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem;menu.editLinkText=subItem.title;menu.editLinkURL=subItem.url">Edit</a>
                                     <a data-nodrag ng-click="remove(this)">Remove</a>
                                     <a data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">Add Item</a>
                                 </div>
@@ -65,6 +66,7 @@
                                     <li ng-repeat="subItem1 in subItem.items" ui-tree-node>
                                         <div ui-tree-handle>
                                             {{subItem1.title}}
+                                            <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem1;menu.editLinkText=subItem1.title;menu.editLinkURL=subItem1.url">Edit</a>
                                             <a data-nodrag ng-click="remove(this)">Remove</a>
                                         </div>
                                     </li>
@@ -75,20 +77,20 @@
                 </ol>
             </div>
         </div>
-
+        
         <div ng-show="menu.editLink">
-            <div class="formcase-border">
+            <div class="formcase">
+	            <label for="text">Edit Link Text</label>
 	            <input value="text" type="text" ng-model="menu.editLinkText"><br />
-                <label for="text">Edit Link Text</label>
+	            <label for="url">Edit Link URL</label>
 	            <input value="url" type="text" ng-model="menu.editLinkURL">
-                <label for="url">Edit Link URL</label>
-                <div>
+	           <div class="btncase">
                     <button class="error-button" ng-click="deleteLink()">delete link</button>
                     <button class="success-button" ng-click="updateLink()">update link</button>
                 </div>
             </div>
         </div>
-        <div class="formcase">
+        <div class="btn-case-btm">
             <button class="error-button" ng-click='deleteMenu()'>delete</button>
             <button class="success-button" ng-click="saveMenu()">save</button>
         </div>

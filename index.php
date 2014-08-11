@@ -14,7 +14,7 @@
             <script src="core/js/3rd-party/json2.js"></script>
             <br /><br />Your broswer is incompatible with this site. Please upgrade to a <a href="http://www.browsehappy.com">newer browser.</a>
         <![endif]-->
-
+        
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
         <!-- Meta Tags -->
@@ -27,20 +27,20 @@
 <?php if($content['extras']['featured']): ?>
         <meta property="og:image" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . explode('/', $_SERVER['REQUEST_URI'])[0] . json_decode($content['extras']['featured'])->src; ?>" />
 <?php endif; ?>
-
+        
         <base href="/" />
-
+        
         <script src="modules/KHP/js/jquery.min.js"></script>
-
+        
         <script src="<?php echo $minifyScripts; ?>"></script>
-
+        
         <link rel="stylesheet" type="text/css" href="<?php echo $minifyCSS; ?>">
-
+        
         <?php echo $scripts; ?>
         <?php echo $CSS; ?>
-
+        
         <script>
-
+            
             // Setup main module with HTML5 URLs for SEO
             angular.module('main', [
                 'cosmo',
@@ -53,16 +53,16 @@
                 'ngResource',
                 'ngDialog',
                 'ngTouch'<?php echo $angularModules; ?>
-
+                
             ])
-
+            
             .config(['$routeProvider', '$locationProvider', 'growlProvider', function($routeProvider, $locationProvider, growlProvider) {
                 // Configure standard URLs
                 $routeProvider.
-                    when('/admin', { controller: function(ngDialog){ ngDialog.open({ template: 'core/html/login.html' }); }, template: '<div></div>' }).
+                    when('/admin', { controller: function(ngDialog){ ngDialog.open({ template: 'core/html/login.html', showClose: false, closeByEscape: false, closeByDocument: false }); }, template: '<div></div>' }).
                     when('/reset/:userID/:token', { controller: 'resetModal', template: '<div></div>' }).
                     when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template"></div>' });
-
+                    
                 // Enable HTML5 urls
                 $locationProvider.html5Mode(true).hashPrefix('!');
 
@@ -70,50 +70,42 @@
                 growlProvider.globalTimeToLive(5000);
                 // growlProvider.globalEnableHtml(true);
             }])
-
+            
             // Initialize JS variables
             .run(['Users', '$http', '$templateCache', 'REST', '$rootScope', 'growl', 'Page', function(Users, $http, $templateCache, REST, $rootScope, growl, Page) {
-
+                
                 growl.addSuccessMessage('Message', { ttl: 999, classes: 'cosmo-default' });
-
+                
                 Users.username = '<?php echo $username; ?>';<?php if($usersID): ?>
-
+                
                 Users.id = <?php echo $usersID; ?>;<?php endif; ?><?php if($isUserAdmin): ?>
-
-                Users.admin = true;
+                
+                Users.role = '<?php echo $role; ?>';
+                
+                Users.admin = true;    
                 <?php endif; ?>
-
-                // Get the user's role
-                if(Users.id){
-                    REST.usersRoles.get({userID: Users.id}, function(data){
-
-                        Users.roles = data;
-
-                        // Check if the user is an administrator
-                        angular.forEach(data, function(role){
-                            if(role.toLowerCase() === 'admin')
-                                $rootScope.$broadcast('adminLogin');
-                        });
-                    });
-                }
-
+                
+                // If the user has permissions, show the sidebar.
+                if(Users.role === 'admin' || Users.role === 'editor' || Users.role === 'contributor')
+                    $rootScope.$broadcast('adminLogin');
+                
                 // Initialize headers for authorizing API calls
                 $http.defaults.headers.common['username'] = '<?php echo $username; ?>';
                 $http.defaults.headers.common['token'] = '<?php echo $token; ?>';
-
+                
                 // Load template
                 REST.settings.get({}, function(data){
                     Page.settings = data;
                     Page.theme = data.theme;
                     $rootScope.$broadcast('settingsGet', data);
                 });
-
+                
                 // Load menus
                 REST.menus.query({}, function(data){
                     Page.menus = data;
                     $rootScope.$broadcast('menusGet', data);
                 });
-
+                
                 // Cache all template pages
                 REST.themes.query({themeID: '<?php echo $theme; ?>'}, function(data){
                     angular.forEach(data, function(page){
@@ -121,9 +113,9 @@
                             $templateCache.put('themes/<?php echo $theme; ?>/'+page.type);
                     });
                 });
-
+                
             }]);
-
+            
         </script>
     </head>
     <body>
@@ -131,7 +123,7 @@
             <div adminpanel></div>
             <div wysiwyg></div>
         </div>
-
+        
         <div ng-include="'themes/KHP/partials/header.html'"></div>
         <div ng-view class="at-view-fade-in at-view-fade-out"><?php echo $content['body']; ?></div>
 
