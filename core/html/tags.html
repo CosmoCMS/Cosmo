@@ -9,10 +9,11 @@
     </div>
     <ul>
         <li class="tag-list" ng-repeat="tag in tags.tags | filter:tags.search" ng-click="tags.selectedTag=tag;tags.newTag=tag;">
-            <div ng-if="tags.selectedTag!=tag">{{tag}}</div>
+            <div ng-if="tags.selectedTag!=tag"><a>{{tag}}</a></div>
             <div ng-show="tags.selectedTag">
                 <div ng-if="tags.selectedTag==tag">
-                    <input value="text" type="text" ng-model="tags.newTag">
+                    <input id="tag" value="text" type="text" ng-model="tags.newTag">
+                    <label for="tag">Edit Tag</label>
                     <button class="error-button" ng-click="deleteTag()">delete</button>
                     <button class="success-button" ng-click="updateTag()">update</button>
                 </div>

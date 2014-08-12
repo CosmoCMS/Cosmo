@@ -1,0 +1,16 @@
+.users {
+
+    .cos-select {
+        margin-top: 0;
+    }
+
+    li {
+
+        label {
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

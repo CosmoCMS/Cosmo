@@ -6,13 +6,11 @@
         <h2 ng-show="!settingsFile">Manager</h2>
         <h2 ng-show="settingsFile">Settings</h2>
     </div>
-    
+
     <ul ng-repeat="module in modules" ng-if="!settingsFile">
         <li ng-class="{active: module.active=='Y'}" ng-if="module.module">
             <p class="mod-name">{{module.name}}</p>
-            <p ng-if="module.settings">
-                <a ng-click="goToSettings(module.folder,module.settings)">Settings</a>
-            </p>
+            <button class="options-button" ng-if="module.settings" ng-click="goToSettings(module.folder,module.settings)">Settings</button>
             <button class="success-button" ng-if="module.status=='uninstalled'" ng-click="install(module.folder, $index)">Install</button>
             <button class="success-button" ng-if="module.status=='inactive'" ng-click="activate(module.id, $index)">Activate</button>
             <button class="error-button" ng-if="module.status=='active'" ng-click="deactivate(module.id, $index)">Deactivate</button>
@@ -20,6 +18,6 @@
             <p ng-if="module.description">{{module.description}}</p>
         </li>
     </ul>
-    
+
     <div ng-include="settingsFile"></div>
 </div>

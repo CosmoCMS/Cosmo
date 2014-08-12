@@ -261,10 +261,11 @@
 }
 
 .media-wrapper {
+    background-color: palette(gray, light);
     overflow-x: hidden;
     overflow-y: scroll;
     position: absolute;
-    top: 11rem;
+    top: 14rem;
     width: 100%;
 
     @media #{$bp-beta} {
@@ -407,10 +408,10 @@
     display: inline-block;
     margin: 0 $pad-epsilon 2rem $pad-epsilon;
     vertical-align: top;
-    width: 33%;
+    width: auto;
 
     @media #{$bp-beta} {
-        width: auto;
+        width: 33%;
     }
 
     img {
@@ -421,21 +422,21 @@
 }
 
 .img-gallery-info {
-    display: inline-block;
-    margin: 0 0 $pad-delta 0;
-    vertical-align: top;
-    width: 61%;
+    margin-left: $pad-epsilon;
+    overflow: hidden;
+    padding-right: $pad-delta;
+    width: auto;
 
     @media #{$bp-beta} {
-        margin-left: $pad-epsilon;
-        overflow: hidden;
-        padding-right: $pad-delta;
-        width: auto;
+        display: inline-block;
+        margin: 0 0 $pad-delta 0;
+        vertical-align: top;
+        width: 53%;
     }
 
-    @media #{$bp-beta} {
+    @media #{$bp-gamma} {
         overflow: hidden;
-        width: 53%;
+        width: 61%;
     }
 
     p {
@@ -444,6 +445,7 @@
 
     .tag {
         background-color: palette(gray, mid);
+        color: palette(blue, dark);
         display: inline-block;
         height: auto;
         margin: 0 $pad-beta $pad-delta $pad-beta;
@@ -452,6 +454,11 @@
 
         &:first-child {
             margin-left: 0;
+        }
+
+        &:hover {
+            cursor: default;
+            color: palette(blue, dark);
         }
 
         .fa-tag {
@@ -477,7 +484,7 @@
     }
 
     @media #{$bp-gamma} {
-        height: 31rem;
+        height: 28rem;
     }
 
     i {

@@ -16,28 +16,8 @@
             </button>
         </li>
         <li>
-            <button ng-click="action('ol')">
-                <i class="fa fa-list-ol"></i>
-            </button>
-        </li>
-        <li>
-            <button ng-click="action('ul')">
-                <i class="fa fa-list-ul"></i>
-            </button>
-        </li>
-        <li>
-            <button ng-click="action('hr')">
-                <i class="fa fa-minus"></i>
-            </button>
-        </li>
-        <li class="indent">
-            <button ng-click="action('indent')">
-                <i class="fa fa-indent"></i>
-            </button>
-        </li>
-        <li class="outdent">
-            <button ng-click="action('outdent')">
-                <i class="fa fa-outdent"></i>
+            <button ng-mouseenter="list=true" ng-mouseleave="list=false">
+                <i class="fa fa-list-alt"></i>
             </button>
         </li>
         <li>
@@ -56,7 +36,7 @@
             </button>
         </li>
         <li>
-            <button ng-click="action('toggle')">
+            <button ng-mouseenter="code=true" ng-mouseleave="code=false">
                 <i class="fa fa-code"></i>
             </button>
         </li>
@@ -129,6 +109,16 @@
         <button ng-click="action('video')"><i class="fa fa-video-camera"></i>Video</button>
         <button ng-click="action('audio')"><i class="fa fa-volume-up"></i>Audio</button>
         <button ng-click="action('gallery')"><i class="fa fa-camera"></i>Gallery</button>
-        <button ng-click="action('custom')">Custom Directive</button>
+    </div>
+    <div class="code-dropdown" ng-show="code" ng-mouseenter="code=true" ng-mouseleave="code=false">
+        <button ng-click="action('custom')"><i class="fa fa-code"></i>Directive</button>
+        <button ng-click="action('toggle')"><i class="fa fa-code"></i>Code View</button>
+    </div>
+    <div class="list-dropdown" ng-show="list" ng-mouseenter="list=true" ng-mouseleave="list=false">
+        <button ng-click="action('ol')"><i class="fa fa-list-ol"></i>Ordered List</button>
+        <button ng-click="action('ul')"><i class="fa fa-list-ul"></i>Unordered List</button>
+        <button ng-click="action('hr')"><i class="fa fa-minus"></i>Line Break</button>
+        <button ng-click="action('indent')"><i class="fa fa-indent"></i>Indent</button>
+        <button ng-click="action('outdent')"><i class="fa fa-outdent"></i>Outdent</button>
     </div>
 </div>

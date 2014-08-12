@@ -283,18 +283,19 @@ pre {
 }
 
 [contenteditable="true"] {
-    outline: 1px solid palette(gray, light);
+    transition: border .2s ease;
 
     &:active {
-        outline: 1px solid $color-beta;
+        border: none;
     }
 
     &:focus {
-        outline: 1px solid $color-beta;
+        border: none;
+        outline: none;
     }
 
     &:hover {
-        outline: 1px solid $color-beta;
+        border: 0;
     }
 
     img, iframe {
