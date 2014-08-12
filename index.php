@@ -78,16 +78,15 @@
                 
                 Users.username = '<?php echo $username; ?>';<?php if($usersID): ?>
                 
-                Users.id = <?php echo $usersID; ?>;<?php endif; ?><?php if($isUserAdmin): ?>
+                Users.id = <?php echo $usersID; ?>;<?php endif; ?>
                 
                 Users.role = '<?php echo $role; ?>';
                 
-                Users.admin = true;    
-                <?php endif; ?>
-                
                 // If the user has permissions, show the sidebar.
-                if(Users.role === 'admin' || Users.role === 'editor' || Users.role === 'contributor')
+                if(Users.role === 'admin' || Users.role === 'editor' || Users.role === 'contributor'){
+                    Users.admin = true;
                     $rootScope.$broadcast('adminLogin');
+                }
                 
                 // Initialize headers for authorizing API calls
                 $http.defaults.headers.common['username'] = '<?php echo $username; ?>';

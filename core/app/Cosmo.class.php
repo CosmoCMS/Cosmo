@@ -421,21 +421,6 @@ class Cosmo {
             return FALSE;
     }
     
-    /**
-     * Save an html snapshot in the snapshots directory
-     * @param str $html HTML of the page
-     * @param str $url URL of the page
-     * @return Number of bytes written
-     */
-    public function snapshotSave($html, $url){
-        // Save html to snapshots directory
-        $fileLocation = $_SERVER['DOCUMENT_ROOT']  . "/snapshots/$url.html";
-        $file = fopen($fileLocation, "w");
-        $returnVar = fwrite($file,$html);
-        fclose($file);
-        return $returnVar;
-    }
-    
     ##################################################
     #              Content Extras                    #
     ##################################################
@@ -662,7 +647,7 @@ class Cosmo {
             // Make thumbnails
             $responsive = 'yes';
             foreach($this->thumbnailSizes as $size){
-                if(!self::makeThumbnail($tempPath, "$dir/uploads/$name-$size.$extension", $size, 0, 100))
+                if(!self::makeThumbnail($tempPath, "$dir/uploads/$nameParts[0]-$name-$size.$extension", $size, 0, 100))
                     $responsive = 'no';
             }
             
