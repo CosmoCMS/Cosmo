@@ -41,7 +41,12 @@
             <input value="url" type='text' ng-model='page.url' ng-keyup="autoURL=false;urlChange()">
             <label for="url">URL</label>
             <div>
-                <button type="button" class="error-button" ng-click="deletePage()">delete</button>
+                <div class="confirm" ng-show="confirm">
+                    <p>Are you sure you want to delete this page?</p>
+                    <button type="button" class="error-button" ng-click="deletePage()">Yes</button>
+                    <button type="button" class="success-button" ng-click="confirm=false">No</button>
+                </div>
+                <button type="button" class="error-button" ng-click="confirm=true">delete</button>
                 <button type="button" class="options-button" ng-click="savePage(true)">duplicate</button>
                 <button type="button" class="success-button" ng-click="savePage()">save</button>
             </div>

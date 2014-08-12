@@ -12,7 +12,18 @@
 }
 
 .blocks {
+
     .formcase-border {
+
+        button.marg {
+            margin-bottom: 2rem;
+        }
+
+        button.blk {
+            display: block;
+            margin-bottom: 2rem;
+        }
+
         .cos-select {
             margin-top: 0;
         }

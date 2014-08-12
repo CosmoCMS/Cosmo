@@ -4,6 +4,7 @@
 .#{$fa-css-prefix}-border {
   padding: .2em .25em .15em;
   border: solid .08em $fa-border-color;
+  border-radius: .1em;
 }
 
 .pull-right { float: right; }

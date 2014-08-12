@@ -1,3 +1,41 @@
 .border-btm {
     border-bottom: 1px solid palette(gray, mid);
 }
+
+label {
+    display: block;
+}
+
+.new {
+    background-color: palette(gray, light);
+    margin-bottom: 2.5rem;
+    text-align: left;
+    text-transform: lowercase;
+    width: auto;
+    z-index: 100000;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+
+        i {
+            color: palette(blue, light);
+        }
+    }
+
+    i {
+        color: palette(blue, dark);
+        margin-right: $pad-alpha;
+        transition: color .15s ease-in;
+        vertical-align: middle;
+        @include font-size(13);
+    }
+
+    p {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+
+}
