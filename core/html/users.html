@@ -8,12 +8,23 @@
 
         <div class="formcase-border">
             <div ng-controller="loginRegistrationCtrl">
-                <h3 ng-click="createUser=!createUser"><span ng-if="!createUser">Create a new user</span><span ng-if="createUser">Close</span></h3>
+                <button class="new" ng-click="createUser=!createUser">
+                    <div ng-if="!createUser">
+                        <i class="fa fa-plus"></i><p>New User</p>
+                    </div>
+                    <div ng-if="createUser">
+                        <i class="fa fa-times-circle-o"></i><p>Close</p>
+                    </div>
+                </button>
                 <div ng-show="createUser">
-                    <input type="text" ng-model="register.username"><label>Username</label>
-                    <input type="text" ng-model="register.email"><label>Email</label>
-                    <input type="password" ng-model="register.password"><label>Password</label>
-                    <input type="password" ng-model="register.confirmPassword"><label>Confirm Password</label>
+                    <input id="username" type="text" ng-model="register.username">
+                    <label for="username">Username</label>
+                    <input id="email" type="text" ng-model="register.email">
+                    <label for="email">Email</label>
+                    <input id="password" type="password" ng-model="register.password">
+                    <label for="password">Password</label>
+                    <input id="confirm-password"type="password" ng-model="register.confirmPassword">
+                    <label for="confirm-password">Confirm Password</label>
                     <button class="success-button" ng-click="register()">Create User</button>
                 </div>
             </div>
@@ -23,15 +34,19 @@
         </div>
         <ul>
             <li ng-repeat="user in users.data | filter:users.search">
-                <i class="fa fw fa-user "></i><input ng-model="user.username" ng-keyup="updateUser(user)">
-                Role: 
-                <select ng-model="user.role" ng-change="updateUser(user)">
-                    <option value="admin">admin</option>
-                    <option value="editor">editor</option>
-                    <option value="author">author</option>
-                    <option value="contributor">contributor</option>
-                </select><br />
-                <i class="fa fw fa-envelope"></i><input ng-model="user.email" ng-keyup="updateUser(user)">
+                <input id="username" ng-model="user.username" ng-keyup="updateUser(user)">
+                <label for="username">Username</label>
+                <div class="cos-select">
+                    <select id="role" ng-model="user.role" ng-change="updateUser(user)">
+                        <option value="admin">admin</option>
+                        <option value="editor">editor</option>
+                        <option value="author">author</option>
+                        <option value="contributor">contributor</option>
+                    </select>
+                </div>
+                <label for="role">Role</label>
+                <input id="email" ng-model="user.email" ng-keyup="updateUser(user)">
+                <label for="email">Email</label>
             </li>
         </ul>
     </div>

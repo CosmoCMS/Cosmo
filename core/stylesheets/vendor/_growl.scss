@@ -4,27 +4,24 @@
  * Copyright (c) 2013 Marco Rinck; Licensed MIT
  */
 
-@mixin alert-style ($background-color) {
-    background-color: $background-color;
-    border: 1px solid palette(gray, mid);
-    color: palette(gray, light);
+@mixin alert-style ($border-color) {
+    background-color: palette(gray, light);
+    border-left: 5px solid palette(alert, $border-color);
+    color: palette(blue, dark);
     font-family: $font-alpha;
     padding: $pad-epsilon * .5;
     transition: all .25s ease;
 
     i {
-      color: palette(gray, light);
-      margin-right: $pad-alpha;
+        color: palette(blue, mid);
+        margin-right: $pad-alpha;
     }
 }
 
 .growl {
-    left: 0;
-    margin: 0 auto;
     position: fixed;
-    right: 0;
+    right: .5rem;
     top: .5rem;
-    width: 35rem;
     z-index: 99999;
 
 
