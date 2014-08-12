@@ -1,111 +1,10 @@
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
 
-// Icons used in cosmo sidebar
-.#{$fa-css-prefix}-calendar:before { content: $fa-var-calendar; }
-.#{$fa-css-prefix}-file-text-o:before { content: $fa-var-file-text-o; }
-.#{$fa-css-prefix}-file-text:before { content: $fa-var-file-text; }
-.#{$fa-css-prefix}-check:before { content: $fa-var-check; }
-.#{$fa-css-prefix}-sitemap:before { content: $fa-var-sitemap; }
-.#{$fa-css-prefix}-square-o:before { content: $fa-var-square-o; }
-.#{$fa-css-prefix}-tint:before { content: $fa-var-tint; }
-.#{$fa-css-prefix}-user:before { content: $fa-var-user; }
-.#{$fa-css-prefix}-puzzle-piece:before { content: $fa-var-puzzle-piece; }
-.#{$fa-css-prefix}-cog:before { content: $fa-var-cog; }
-.#{$fa-css-prefix}-bars:before { content: $fa-var-bars; }
-.#{$fa-css-prefix}-file-o:before { content: $fa-var-file-o; }
-.#{$fa-css-prefix}-eye:before { content: $fa-var-eye; }
-.#{$fa-css-prefix}-pencil-square-o:before { content: $fa-var-pencil-square-o; }
-.#{$fa-css-prefix}-terminal:before { content: $fa-var-terminal; }
-.#{$fa-css-prefix}-tags:before { content: $fa-var-tags; }
-.#{$fa-css-prefix}-users:before { content: $fa-var-users; }
-.#{$fa-css-prefix}-tasks:before { content: $fa-var-tasks; }
-.#{$fa-css-prefix}-chevron-left:before { content: $fa-var-chevron-left; }
-.#{$fa-css-prefix}-exclamation-circle:before { content: $fa-var-exclamation-circle; }
-.#{$fa-css-prefix}-gear:before,
-.#{$fa-css-prefix}-cogs:before { content: $fa-var-cogs; }
-.#{$fa-css-prefix}-arrow-up:before { content: $fa-var-arrow-up; }
-.#{$fa-css-prefix}-arrow-down:before { content: $fa-var-arrow-down; }
-.#{$fa-css-prefix}-tag:before { content: $fa-var-tag; }
-.#{$fa-css-prefix}-trash-o:before { content: $fa-var-trash-o; }
-.#{$fa-css-prefix}-power-off:before { content: $fa-var-power-off; }
-.#{$fa-css-prefix}-edit:before,
-.#{$fa-css-prefix}-share-square-o:before { content: $fa-var-share-square-o; }
-.#{$fa-css-prefix}-info-circle:before { content: $fa-var-info-circle; }
-.#{$fa-css-prefix}-check-circle:before { content: $fa-var-check-circle; }
-.#{$fa-css-prefix}-check-circle-o:before { content: $fa-var-check-circle-o; }
-.#{$fa-css-prefix}-circle-o:before { content: $fa-var-circle-o; }
-.#{$fa-css-prefix}-circle:before { content: $fa-var-circle; }
-.#{$fa-css-prefix}-times:before { content: $fa-var-times; } //close icon
-.#{$fa-css-prefix}-search:before { content: $fa-var-search; }
-.#{$fa-css-prefix}-chevron-down:before { content: $fa-var-chevron-down; }
-.#{$fa-css-prefix}-envelope:before { content: $fa-var-envelope; }
-.#{$fa-css-prefix}-external-link:before { content: $fa-var-external-link; }
-
-// Icons for WYSIWG
-
-.#{$fa-css-prefix}-list-ul:before { content: $fa-var-list-ul; }
-.#{$fa-css-prefix}-list-ol:before { content: $fa-var-list-ol; }
-.#{$fa-css-prefix}-strikethrough:before { content: $fa-var-strikethrough; }
-.#{$fa-css-prefix}-underline:before { content: $fa-var-underline; }
-.#{$fa-css-prefix}-table:before { content: $fa-var-table; }
-.#{$fa-css-prefix}-code:before { content: $fa-var-code; }
-.#{$fa-css-prefix}-camera:before { content: $fa-var-camera; }
-.#{$fa-css-prefix}-font:before { content: $fa-var-font; }
-.#{$fa-css-prefix}-bold:before { content: $fa-var-bold; }
-.#{$fa-css-prefix}-italic:before { content: $fa-var-italic; }
-.#{$fa-css-prefix}-align-left:before { content: $fa-var-align-left; }
-.#{$fa-css-prefix}-align-center:before { content: $fa-var-align-center; }
-.#{$fa-css-prefix}-align-right:before { content: $fa-var-align-right; }
-.#{$fa-css-prefix}-align-justify:before { content: $fa-var-align-justify; }
-.#{$fa-css-prefix}-list:before { content: $fa-var-list; }
-.#{$fa-css-prefix}-link:before { content: $fa-var-link; }
-.#{$fa-css-prefix}-chain-broken:before { content: $fa-var-chain-broken; }
-.#{$fa-css-prefix}-arrows-h:before { content: $fa-var-arrows-h; }
-.#{$fa-css-prefix}-dedent:before,
-.#{$fa-css-prefix}-outdent:before { content: $fa-var-outdent; }
-.#{$fa-css-prefix}-indent:before { content: $fa-var-indent; }
-.#{$fa-css-prefix}-video-camera:before { content: $fa-var-video-camera; }
-.#{$fa-css-prefix}-picture-o:before { content: $fa-var-picture-o; }
-.#{$fa-css-prefix}-camera-retro:before { content: $fa-var-camera-retro; }
-.#{$fa-css-prefix}-plus:before { content: $fa-var-plus; }
-.#{$fa-css-prefix}-minus:before { content: $fa-var-minus; }
-.#{$fa-css-prefix}-exclamation:before { content: $fa-var-exclamation; }
-.#{$fa-css-prefix}-volume-up:before { content: $fa-var-volume-up; }
-.#{$fa-css-prefix}-file:before { content: $fa-var-file; }
-.#{$fa-css-prefix}-file-pdf-o:before { content: $fa-var-file-pdf-o; }
-.#{$fa-css-prefix}-file-excel-o:before { content: $fa-var-file-excel-o; }
-.#{$fa-css-prefix}-file-word-o:before { content: $fa-var-file-word-o; }
-.#{$fa-css-prefix}-file-powerpoint-o:before { content: $fa-var-file-powerpoint-o; }
-.#{$fa-css-prefix}-file-photo-o:before,
-.#{$fa-css-prefix}-file-picture-o:before,
-.#{$fa-css-prefix}-file-image-o:before { content: $fa-var-file-image-o; }
-.#{$fa-css-prefix}-file-zip-o:before,
-.#{$fa-css-prefix}-file-archive-o:before { content: $fa-var-file-archive-o; }
-.#{$fa-css-prefix}-file-sound-o:before,
-.#{$fa-css-prefix}-file-audio-o:before { content: $fa-var-file-audio-o; }
-.#{$fa-css-prefix}-file-movie-o:before,
-.#{$fa-css-prefix}-file-video-o:before { content: $fa-var-file-video-o; }
-.#{$fa-css-prefix}-file-code-o:before { content: $fa-var-file-code-o; }
-.#{$fa-css-prefix}-file:before { content: $fa-var-file; }
-.#{$fa-css-prefix}-file-text:before { content: $fa-var-file-text; }
-.#{$fa-css-prefix}-file-text-o:before { content: $fa-var-file-text-o; }
-.#{$fa-css-prefix}-file-o:before { content: $fa-var-file-o; }
-.#{$fa-css-prefix}-files-o:before { content: $fa-var-files-o; }
-.#{$fa-css-prefix}-list-alt:before { content: $fa-var-list-alt; }
-
-
-// Icon used for gallery modal
-.#{$fa-css-prefix}-circle-thin:before { content: $fa-var-circle-thin; }
-
-/*
-/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-   readers do not read off random characters that represent icons */
-/*
-.#{$fa-css-prefix}-envelope-o:before { content: $fa-var-envelope-o; }
 .#{$fa-css-prefix}-glass:before { content: $fa-var-glass; }
 .#{$fa-css-prefix}-music:before { content: $fa-var-music; }
 .#{$fa-css-prefix}-search:before { content: $fa-var-search; }
+.#{$fa-css-prefix}-envelope-o:before { content: $fa-var-envelope-o; }
 .#{$fa-css-prefix}-heart:before { content: $fa-var-heart; }
 .#{$fa-css-prefix}-star:before { content: $fa-var-star; }
 .#{$fa-css-prefix}-star-o:before { content: $fa-var-star-o; }
@@ -124,6 +23,7 @@
 .#{$fa-css-prefix}-cog:before { content: $fa-var-cog; }
 .#{$fa-css-prefix}-trash-o:before { content: $fa-var-trash-o; }
 .#{$fa-css-prefix}-home:before { content: $fa-var-home; }
+.#{$fa-css-prefix}-file-o:before { content: $fa-var-file-o; }
 .#{$fa-css-prefix}-clock-o:before { content: $fa-var-clock-o; }
 .#{$fa-css-prefix}-road:before { content: $fa-var-road; }
 .#{$fa-css-prefix}-download:before { content: $fa-var-download; }
@@ -134,6 +34,7 @@
 .#{$fa-css-prefix}-rotate-right:before,
 .#{$fa-css-prefix}-repeat:before { content: $fa-var-repeat; }
 .#{$fa-css-prefix}-refresh:before { content: $fa-var-refresh; }
+.#{$fa-css-prefix}-list-alt:before { content: $fa-var-list-alt; }
 .#{$fa-css-prefix}-lock:before { content: $fa-var-lock; }
 .#{$fa-css-prefix}-flag:before { content: $fa-var-flag; }
 .#{$fa-css-prefix}-headphones:before { content: $fa-var-headphones; }
@@ -216,6 +117,7 @@
 .#{$fa-css-prefix}-warning:before,
 .#{$fa-css-prefix}-exclamation-triangle:before { content: $fa-var-exclamation-triangle; }
 .#{$fa-css-prefix}-plane:before { content: $fa-var-plane; }
+.#{$fa-css-prefix}-calendar:before { content: $fa-var-calendar; }
 .#{$fa-css-prefix}-random:before { content: $fa-var-random; }
 .#{$fa-css-prefix}-comment:before { content: $fa-var-comment; }
 .#{$fa-css-prefix}-magnet:before { content: $fa-var-magnet; }
@@ -242,6 +144,7 @@
 .#{$fa-css-prefix}-sign-out:before { content: $fa-var-sign-out; }
 .#{$fa-css-prefix}-linkedin-square:before { content: $fa-var-linkedin-square; }
 .#{$fa-css-prefix}-thumb-tack:before { content: $fa-var-thumb-tack; }
+.#{$fa-css-prefix}-external-link:before { content: $fa-var-external-link; }
 .#{$fa-css-prefix}-sign-in:before { content: $fa-var-sign-in; }
 .#{$fa-css-prefix}-trophy:before { content: $fa-var-trophy; }
 .#{$fa-css-prefix}-github-square:before { content: $fa-var-github-square; }
@@ -284,6 +187,7 @@
 .#{$fa-css-prefix}-cut:before,
 .#{$fa-css-prefix}-scissors:before { content: $fa-var-scissors; }
 .#{$fa-css-prefix}-copy:before,
+.#{$fa-css-prefix}-files-o:before { content: $fa-var-files-o; }
 .#{$fa-css-prefix}-paperclip:before { content: $fa-var-paperclip; }
 .#{$fa-css-prefix}-save:before,
 .#{$fa-css-prefix}-floppy-o:before { content: $fa-var-floppy-o; }
@@ -314,6 +218,7 @@
 .#{$fa-css-prefix}-sort-desc:before { content: $fa-var-sort-desc; }
 .#{$fa-css-prefix}-sort-up:before,
 .#{$fa-css-prefix}-sort-asc:before { content: $fa-var-sort-asc; }
+.#{$fa-css-prefix}-envelope:before { content: $fa-var-envelope; }
 .#{$fa-css-prefix}-linkedin:before { content: $fa-var-linkedin; }
 .#{$fa-css-prefix}-rotate-left:before,
 .#{$fa-css-prefix}-undo:before { content: $fa-var-undo; }
@@ -339,6 +244,7 @@
 .#{$fa-css-prefix}-bell-o:before { content: $fa-var-bell-o; }
 .#{$fa-css-prefix}-coffee:before { content: $fa-var-coffee; }
 .#{$fa-css-prefix}-cutlery:before { content: $fa-var-cutlery; }
+.#{$fa-css-prefix}-file-text-o:before { content: $fa-var-file-text-o; }
 .#{$fa-css-prefix}-building-o:before { content: $fa-var-building-o; }
 .#{$fa-css-prefix}-hospital-o:before { content: $fa-var-hospital-o; }
 .#{$fa-css-prefix}-ambulance:before { content: $fa-var-ambulance; }
@@ -450,6 +356,8 @@
 .#{$fa-css-prefix}-krw:before { content: $fa-var-krw; }
 .#{$fa-css-prefix}-bitcoin:before,
 .#{$fa-css-prefix}-btc:before { content: $fa-var-btc; }
+.#{$fa-css-prefix}-file:before { content: $fa-var-file; }
+.#{$fa-css-prefix}-file-text:before { content: $fa-var-file-text; }
 .#{$fa-css-prefix}-sort-alpha-asc:before { content: $fa-var-sort-alpha-asc; }
 .#{$fa-css-prefix}-sort-alpha-desc:before { content: $fa-var-sort-alpha-desc; }
 .#{$fa-css-prefix}-sort-amount-asc:before { content: $fa-var-sort-amount-asc; }
@@ -551,6 +459,20 @@
 .#{$fa-css-prefix}-deviantart:before { content: $fa-var-deviantart; }
 .#{$fa-css-prefix}-soundcloud:before { content: $fa-var-soundcloud; }
 .#{$fa-css-prefix}-database:before { content: $fa-var-database; }
+.#{$fa-css-prefix}-file-pdf-o:before { content: $fa-var-file-pdf-o; }
+.#{$fa-css-prefix}-file-word-o:before { content: $fa-var-file-word-o; }
+.#{$fa-css-prefix}-file-excel-o:before { content: $fa-var-file-excel-o; }
+.#{$fa-css-prefix}-file-powerpoint-o:before { content: $fa-var-file-powerpoint-o; }
+.#{$fa-css-prefix}-file-photo-o:before,
+.#{$fa-css-prefix}-file-picture-o:before,
+.#{$fa-css-prefix}-file-image-o:before { content: $fa-var-file-image-o; }
+.#{$fa-css-prefix}-file-zip-o:before,
+.#{$fa-css-prefix}-file-archive-o:before { content: $fa-var-file-archive-o; }
+.#{$fa-css-prefix}-file-sound-o:before,
+.#{$fa-css-prefix}-file-audio-o:before { content: $fa-var-file-audio-o; }
+.#{$fa-css-prefix}-file-movie-o:before,
+.#{$fa-css-prefix}-file-video-o:before { content: $fa-var-file-video-o; }
+.#{$fa-css-prefix}-file-code-o:before { content: $fa-var-file-code-o; }
 .#{$fa-css-prefix}-vine:before { content: $fa-var-vine; }
 .#{$fa-css-prefix}-codepen:before { content: $fa-var-codepen; }
 .#{$fa-css-prefix}-jsfiddle:before { content: $fa-var-jsfiddle; }
@@ -575,10 +497,10 @@
 .#{$fa-css-prefix}-send-o:before,
 .#{$fa-css-prefix}-paper-plane-o:before { content: $fa-var-paper-plane-o; }
 .#{$fa-css-prefix}-history:before { content: $fa-var-history; }
+.#{$fa-css-prefix}-circle-thin:before { content: $fa-var-circle-thin; }
 .#{$fa-css-prefix}-header:before { content: $fa-var-header; }
 .#{$fa-css-prefix}-paragraph:before { content: $fa-var-paragraph; }
 .#{$fa-css-prefix}-sliders:before { content: $fa-var-sliders; }
 .#{$fa-css-prefix}-share-alt:before { content: $fa-var-share-alt; }
 .#{$fa-css-prefix}-share-alt-square:before { content: $fa-var-share-alt-square; }
 .#{$fa-css-prefix}-bomb:before { content: $fa-var-bomb; }
-*/

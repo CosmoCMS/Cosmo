@@ -3,9 +3,9 @@
         <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
         <h1>Available</h1><h2>Themes</h2>
     </div>
-	<ul class="themes">
+    <ul>
         <li ng-repeat="theme in themes">
-            <h3>{{theme.name}}</h3>
+            <a>{{theme.name}}</a>
             <img ng-src="themes/{{theme.name}}/preview.jpg">
             <button class="success-button" ng-click="changeTheme(theme.name)">select</button>
         </li>

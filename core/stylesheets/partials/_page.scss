@@ -15,6 +15,24 @@
         padding: 1.25em 0 $pad-epsilon $pad-epsilon;
         margin-bottom: 0;
     }
+
+    button {
+        border: 1px solid palette(blue, dark);
+    }
+}
+
+.confirm {
+    background-color: palette(alert, warning);
+    margin: 0 -2.5rem $pad-delta -2.5rem ;
+    padding: 2.5rem;
+
+    button {
+        border: 1px solid palette(blue, dark);
+    }
+
+    p {
+        @include font-size(14);
+    }
 }
 
 .push-down {

@@ -630,7 +630,7 @@ class Cosmo {
             $nameParts = explode('.', $originalName);
             $extension = end($nameParts);
             $name = uniqid();
-            $filename = $name . '.' . $extension;
+            $filename =  $nameParts[0] .'-'. $name . '.' . $extension;
             $tempPath = $_FILES[ 'file' ][ 'tmp_name' ];
             $dir = dirname( __FILE__ );
             $dir = str_replace('/core/app', '', $dir);
@@ -811,7 +811,22 @@ class Cosmo {
         // and places it at endfile (path/to/thumb.jpg).
         
         // Load image and get image size.
-        $img = imagecreatefromjpeg($sourcefile);
+        $type = exif_imagetype($sourcefile); // [] if you don't have exif you could use getImageSize() 
+        switch ($type) { 
+            case 1 : 
+                $img = imageCreateFromGif($sourcefile); 
+            break; 
+            case 2 : 
+                $img = imageCreateFromJpeg($sourcefile); 
+            break; 
+            case 3 : 
+                $img = imageCreateFromPng($sourcefile); 
+            break; 
+            case 6 : 
+                $img = imageCreateFromBmp($sourcefile); 
+            break; 
+        }
+        
         $width = imagesx($img);
         $height = imagesy($img);
         
@@ -889,7 +904,6 @@ class Cosmo {
             while($row = $stmt->fetch())
                 $tags[] = $row['tag'];
         }
-        
         return $tags;
     }
     
@@ -1245,129 +1259,6 @@ class Cosmo {
         return FALSE;
     }
     
-    ##################################################
-    #                   Permissions                  #
-    ##################################################
-    
-    /**
-     * Assign a new permission to a role
-     * @param string $role Role you want to create
-     * @return mixed Returns id on insert. False if there was an error
-     */
-    public function permissionsCreate($roleID, $resource, $permission)
-    {
-        $stmt = $this->pdo->prepare('INSERT INTO roles_permissions (roles_id, resource, permission) VALUES (?,?,?)');
-        $data = array($roleID, $resource, $permission);
-        if($stmt->execute($data))
-            return $this->pdo->lastInsertId();
-        else
-            return FALSE;
-    }
-    
-    /**
-     * List all permissions for a specific role
-     * @param INT $rolesID Role ID
-     * @return array Returns an array of all the permissions ('resource' and 'permission') for the given role
-     */
-    public function permissionsRead($rolesID)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM roles_permissions WHERE roles_id=?');
-        $data = array($rolesID);
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        while($row = $stmt->fetch())
-            $permissions[] = array('resource' => $row['resource'], 'permission' => $row['permission']);
-        
-        return $permissions;
-    }
-    
-    /**
-     * Update permission
-     * @param int $permissionID Permission ID
-     * @param int $roleID Role ID
-     * @param string $resource Resource. e.g. 'users', 'content', etc.
-     * @param string $permission Permission. e.g. 'create', 'read', 'update', 'delete'
-     * @return boolean
-     */
-    public function permissionsUpdate($permissionID, $roleID, $resource, $permission)
-    {   
-        // Insert new record
-        return self::permissionsCreate($roleID, $resource, $permission);
-    }
-    
-    /**
-     * Delete a permission
-     * @param INT $permissionID The permission's ID
-     * @return boolean Returns true on successful delete, false on error
-     */
-    public function permissionsDelete($roleID)
-    {
-        $stmt = $this->pdo->prepare('DELETE FROM roles_permissions WHERE roles_id=?');
-        $data = array($roleID);
-        return $stmt->execute($data);
-    }
-    
-    /**
-     * Verify that a user has the required permissions to login
-     * @param string $userID User's ID
-     * @param string $permission Required permission. e.g. 'delete content'
-     * @return boolean Returns true if the user has the required permissions, false if they do not.
-     */
-    public function permissionsVerify($username, $auth_token, $method, $resource)
-    {
-        // Get the user's id
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE username=?');
-        $data = array($username);
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $row = $stmt->fetch();
-        $userID = $row['id'];
-
-        // Make sure token is valid
-        if($this->tokenValidate($username, $auth_token))
-        {
-            // Get user's permissions
-            $roleIDs = $this->rolesUsersRead($userID);
-            foreach($roleIDs as $roleID)
-                $permissions[] = $this->permissionsRead($roleID);
-        }
-
-        // Go through each role
-        foreach($permissions as $permission)
-        {
-            // Go through each permission for this role
-            foreach($permission as $permission2)
-            {
-                if($permission2['resource'] === $resource)
-                {
-                    switch($method)
-                    {
-                        case 'GET':
-                            $action = 'read';
-                            break;
-
-                        case 'POST':
-                            $action = 'write';
-                            break;
-
-                        case 'PUT':
-                            $action = 'update';
-                            break;
-
-                        case 'DELETE':
-                            $action = 'delete';
-                            break;
-                    }
-
-                    if($action === $permission2['permission'])
-                        return TRUE;
-                }
-            }
-        }
-        
-        return FALSE;
-    }
-    
     /**
      * Check if the user is an administrator or not
      * @param string Username
@@ -1388,7 +1279,7 @@ class Cosmo {
         if($this->tokenValidate($username, $auth_token))
         {
             // Get user's permissions. See if it is the admin role '1'
-            if(in_array(1, $this->rolesUsersRead($userID)))
+            if($this->usersRead(null, $username)==='admin')
                 return TRUE;
         }
         
@@ -1530,95 +1421,6 @@ class Cosmo {
     }
     
     ##################################################
-    #                 Role Management                #
-    ##################################################
-    
-    /**
-     * Assign a new role
-     * @param string $role Role you want to create
-     * @return mixed Returns id on insert. False if there was an error
-     */
-    public function roleCreate($role)
-    {
-        $stmt = $this->pdo->prepare('INSERT INTO roles (role) VALUES (?)');
-        $data = array($role);
-        if($stmt->execute($data))
-            return $this->pdo->lastInsertId();
-        else
-            return FALSE;
-    }
-    
-    /**
-     * Get a list of all roles, or the name of a specific role.
-     * @return array Returns an array of all the roles, or the name of a specific role
-     */
-    public function roleRead($roleID=NULL)
-    {
-        if($roleID) // Get a specific role's name
-        {
-            $stmt = $this->pdo->prepare('SELECT * FROM roles WHERE id=?');
-            $data = array($roleID);
-            $stmt->execute($data);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $row = $stmt->fetch();
-            $roles = $row['role'];
-        } else { // List all roles
-            $stmt = $this->pdo->prepare('SELECT * FROM roles');
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            while($row = $stmt->fetch())
-                $roles[] = array('id' => $row['id'], 'name' => $row['role']);
-        }
-        
-        return $roles;
-    }
-    
-    /**
-     * Change a role's name
-     * @param INT $roleID Role ID to be updated
-     * @param string $newRoleName Updated role name
-     * @return boolean Returns true on successful update, false on error
-     */
-    public function roleUpdate($roleID, $newRoleName)
-    {
-        $stmt = $this->pdo->prepare('UPDATE roles SET role=? WHERE id=?');
-        $data = array($newRoleName, $roleID);
-        return $stmt->execute($data);
-    }
-    
-    /**
-     * Delete a role
-     * @param INT $roleID Role's ID
-     * @return boolean Returns true on successful delete, false on error
-     */
-    public function roleDelete($roleID)
-    {
-        $stmt = $this->pdo->prepare('DELETE FROM roles WHERE id=?');
-        $data = array($roleID);
-        return $stmt->execute($data);
-    }
-    
-    ##################################################
-    #             Roles/Users Lookup                 #
-    ##################################################
-    
-    /**
-     * List all Roles a user has
-     * @param int $usersID User's id
-     * @return array Array of id's of the roles
-     */
-    public function rolesUsersRead($usersID)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM roles_users WHERE users_id=?');
-        $data = array($usersID);
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        while($row = $stmt->fetch())
-            $roles[] = $row['roles_id'];
-        return $roles;
-    }
-    
-    ##################################################
     #                  Settings                      #
     ##################################################
     
@@ -1639,15 +1441,16 @@ class Cosmo {
      * @param str $siteName Site's name
      * @param str $slogan Site's slogan
      * @param str $logo URL for the logo
+     * @param str $favicon URL for the favicon
      * @param str $email Email address
      * @param str $maintenanceURL Maintenance URL
      * @param str $maintenanceMode Maintenece Mode. 'true' or 'false'
      * return boolean
      */
-    public function settingsUpdate($siteName, $slogan, $logo, $email, $maintenanceURL, $maintenanceMode)
+    public function settingsUpdate($siteName, $slogan, $logo, $favicon, $email, $maintenanceURL, $maintenanceMode)
     {
-        $stmt = $this->pdo->prepare('UPDATE settings SET site_name=?, slogan=?, logo=?, email=?, maintenance_url=?, maintenance_mode=?');
-        $data = array($siteName, $slogan, $logo, $email, $maintenanceURL, $maintenanceMode);
+        $stmt = $this->pdo->prepare('UPDATE settings SET site_name=?, slogan=?, logo=?, favicon=?, email=?, maintenance_url=?, maintenance_mode=?');
+        $data = array($siteName, $slogan, $logo, $favicon, $email, $maintenanceURL, $maintenanceMode);
         return $stmt->execute($data);
     }
     
@@ -1789,21 +1592,51 @@ class Cosmo {
      * List all users
      * @return array Array of all users' info
      */
-    public function usersRead($keyword = null)
+    public function usersRead($keyword=null, $username=null, $userID=null)
     {
-        if($keyword) {
+        if($userID)
+        {
+            $stmt = $this->pdo->prepare('SELECT * FROM users WHERE id=?');
+            $stmt->execute(array($userID));
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch();
+            $users = array(
+                'username'=>$row['username'],
+                'photo'=>$row['photo'],
+                'facebook'=>$row['facebook'],
+                'twitter'=>$row['twitter'],
+                'role'=>$row['role'],
+                'email'=>$row['email']
+            );
+        } else if($keyword)
+        {
             $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username LIKE ? OR email LIKE ? LIMIT 250");
             $data = array('%' . $keyword . '%', '%' . $keyword . '%');
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while($row = $stmt->fetch())
-                $users[] = array('id'=>$row['id'], 'username'=>$row['username'], 'email'=>$row['email']);
-        } else {
+                $users[] = array('id'=>$row['id'], 'username'=>$row['username'], 'email'=>$row['email'], 'role'=>$row['role']);
+        } else if($username) // Get user's role
+        {
+            $stmt = $this->pdo->prepare('SELECT * FROM users WHERE username=?');
+            $stmt->execute(array($username));
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch();
+            $users = $row['role'];
+        } else 
+        {
             $stmt = $this->pdo->prepare('SELECT * FROM users LIMIT 250');
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while($row = $stmt->fetch())
-                $users[] = array('id'=>$row['id'], 'username'=>$row['username'], 'email'=>$row['email']);
+                $users[] = array(
+                    'username'=>$row['username'],
+                    'photo'=>$row['photo'],
+                    'facebook'=>$row['facebook'],
+                    'twitter'=>$row['twitter'],
+                    'role'=>$row['role'],
+                    'email'=>$row['email']
+                );
         }
         
         return $users;
@@ -1900,23 +1733,28 @@ class Cosmo {
                 'id' => $userID,
                 'username' => strtolower($username),
                 'token' => $this->tokenSave($username),
-                'roles' => $this->usersRoleRead($userID)
+                'role' => $this->usersRead(null, $username)
             );
         } else
             return FALSE;
     }
     
     /**
-     * Change a user's username, email or password
+     * Change a user's username, email, role, or password
      * @param INT $userID User's ID to be updated
      * @param string $username New username
+     * @param string $role User's role
      * @param string $email New email
      * @param string $password New password
      * @return boolean Returns true on successful update, false on error
      */
-    public function userUpdate($userID, $username=NULL, $email=NULL, $password=NULL)
+    public function userUpdate($userID, $username=NULL, $photo=NULL, $facebook=NULL, $twitter=NULL, $role=NULL, $email=NULL, $password=NULL)
     {
-        if(!empty($username))
+        if(!empty($username) && !empty($role) && !empty($email)){
+            $stmt = $this->pdo->prepare('UPDATE users SET username=?, photo=?, facebook=?, twitter=?, role=?, email=? WHERE id=?');
+            $data = array($username, $photo, $facebook, $twitter, $role, $email, $userID);
+            return $stmt->execute($data);
+        }else if(!empty($username))
         {
             $stmt = $this->pdo->prepare('UPDATE users SET username=? WHERE id=?');
             $data = array($username, $userID);
@@ -1942,54 +1780,6 @@ class Cosmo {
     public function userDelete($userID)
     {
         $stmt = $this->pdo->prepare('DELETE FROM users WHERE id=?');
-        $data = array($userID);
-        return $stmt->execute($data);
-    }
-    
-    ##################################################
-    #                  Users' Roles                  #
-    ##################################################
-    
-    /**
-     * Assign a new role to a user
-     * @param INT $userID User's ID to add a new role to
-     * @param INT $roleID Role ID you want to add
-     * @return mixed Returns id on insert. False if there was an error
-     */
-    public function usersRoleCreate($userID, $roleID)
-    {
-        $stmt = $this->pdo->prepare('INSERT INTO roles_users (users_id, roles_id) VALUES (?,?)');
-        $data = array($userID, $roleID);
-        if($stmt->execute($data))
-            return $this->pdo->lastInsertId();
-        else
-            return FALSE;
-    }
-    
-    /**
-     * Get a list of all roles for a given user
-     * @param INT $userID User's ID
-     * @return array Returns an array of all the role IDs the user has
-     */
-    public function usersRoleRead($userID)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM roles_users WHERE users_id=?');
-        $data = array($userID);
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        while($row = $stmt->fetch())
-            $roles[] = $this->roleRead($row['roles_id']);
-        return $roles;
-    }
-    
-    /**
-     * Delete all roles for a specific user
-     * @param INT $roleID Roles_users table's ID
-     * @return boolean Returns true on successful delete, false on error
-     */
-    public function usersRoleDelete($userID)
-    {
-        $stmt = $this->pdo->prepare('DELETE FROM roles_users WHERE users_id=?');
         $data = array($userID);
         return $stmt->execute($data);
     }

@@ -158,6 +158,7 @@ input[type=radio] + label {
 	background-color: palette(gray, light);
 	border-color: transparent;
 	color: palette(blue, dark);
+	display: inline-block;
 	padding: .7rem;
 	margin-bottom: $pad-alpha;
 	margin-right: 0;
@@ -178,6 +179,7 @@ input[type=radio]:checked + label {
     background-color: palette(blue, dark);
 	background-image: none;
 	color: palette(gray, light);
+	display: inline-block;
 
 	&:before {
 		content: "\f111";
@@ -190,6 +192,7 @@ input[type=radio].active + label {
 	background-color: palette(blue, dark);
 	background-image: none;
 	color: palette(gray, light);
+	display: inline-block;
 
 	&:before {
 		content: "\f111";
@@ -210,6 +213,7 @@ input[type=checkbox] + label {
 	background-color: palette(gray, light);
 	border-color: transparent;
 	color: palette(blue, dark);
+	display: inline-block;
 	margin-bottom: $pad-delta;
 	margin-right: 0;
 	padding: $pad-alpha + .2rem;
@@ -225,6 +229,7 @@ input[type=checkbox] + label {
 input[type=checkbox]:checked + label {
 	background-image: none;
 	color: palette(gray, light);
+	display: inline-block;
 }
 
 

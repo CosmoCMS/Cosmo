@@ -5,11 +5,9 @@
             <h1>Roles</h1><h2>Management</h2>
         </div>
         <div class="formcase-border">
-            <input value="name" type='text' ng-model='role.newName' placeholder="e.g., manager, publisher, editor">
-            <label for="name">Add A New Role</label>
-            <div>
-                <button class="success-button" ng-click='newRole()'>Create Role</button>
-            </div>
+            <label for="name">Add a new role:</label>
+            <input value="name" type='text' ng-model='role.newName' placeholder="e.g., manager, publisher, editor, intern">
+            <button class="success-button" ng-click='newRole()'>Create</button>
         </div>
         <ul>
             <li ng-repeat='role in roles'><a href='' ng-click='selectRole(role)' ng-if="role.name">{{role.name}}</a></li>
@@ -20,25 +18,25 @@
             <i class="fa fa-chevron-left " ng-click="rolePanel='manage'"></i>
             <h1>Edit</h1><h2>{{role.name}}</h2>
         </div>
-            <div class="formcase-border">
+            <div class="formcase">
+                <label for="name">Edit Role Name:</label>
                 <input type='text' ng-model='role.name'>
-                <label for="name">Edit Role Name</label>
-                <h3>Permissions</h3>
-                <button type="button" class="error-button" ng-click='deleteRole()'>Delete</button>
-                <button type="button" class="success-button" ng-click="saveRoles()">Save</button>
             </div>
-            <ul>
-                <li class="role-permissions" ng-repeat="permission in role.permissions">
-                    <p>{{permission.name}}</p>
-                    <input id="read" type="checkbox" ng-model="role.permissions[$index].read">
-                    <label for="read">read</label>
-                    <input id="write" type="checkbox" ng-model="role.permissions[$index].write">
-                    <label for="write">write</label>
-                    <input id="update" type="checkbox" ng-model="role.permissions[$index].update">
-                    <label for="update">update</label>
-                    <input id="delete" type="checkbox" ng-model="role.permissions[$index].delete">
-                    <label for="delete">delete</label>
-                </li>
-            </ul>
+            <label class="role-label">Permissions:</label>
+            <div class="role-permissions" ng-repeat="permission in role.permissions">
+                <p>{{permission.name}}</p>
+                <input id="read" type="checkbox" ng-model="role.permissions[$index].read">
+                <label for="read">read</label>
+                <input id="write" type="checkbox" ng-model="role.permissions[$index].write">
+                <label for="write">write</label>
+                <input id="update" type="checkbox" ng-model="role.permissions[$index].update">
+                <label for="update">update</label>
+                <input id="delete" type="checkbox" ng-model="role.permissions[$index].delete">
+                <label for="delete">delete</label>
+            </div>
+        <div class="btn-case-btm">
+            <button type="button" class="error-button" ng-click='deleteRole()'>Delete</button>
+            <button type="button" class="success-button" ng-click="saveRoles()">Save</button>
+        </div>
     </div>
 </div>
