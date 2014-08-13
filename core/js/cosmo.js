@@ -1080,10 +1080,10 @@ angular.module('cosmo', [])
                 else if(Users.admin)
                     scope.rows = [['', '']];
                 
-                if(typeof Page.misc[attrs.cosmoTable].tableHeader !== 'undefined')
-                    Page.extras[attrs.cosmoTable].tableHeader = Page.misc[attrs.cosmoTable].tableHeader;
+                if(typeof Page.misc[attrs.cosmoTable + '-header'] === 'undefined')
+                    Page.extras[attrs.cosmoTable + '-header'] = Page.misc[attrs.cosmoTable].tableHeader;
                 
-                scope.tableHeader = Page.misc[attrs.cosmoTable].tableHeader;
+                scope.tableHeader = Page.extras[attrs.cosmoTable + '-header'];
             };
             updateCosmoTable();
             
@@ -2070,9 +2070,8 @@ angular.module('cosmo', [])
     // Open modal window
     if($scope.$parent.ngDialogData.gallery){
         $scope.images = $scope.$parent.ngDialogData.images;
-        for(var i=0; i<$scope.images.length; i++){
+        for(var i=0; i<$scope.images.length; i++)
             $scope.images[i].url = $sce.trustAsResourceUrl($scope.images[i].url);
-        }
         $scope.files.gallery = true;
         $scope.editingGallery = true;
     }else {
@@ -2084,13 +2083,19 @@ angular.module('cosmo', [])
     
     // Get files for the media library
     function getFiles(justUploaded){
+        
         REST.files.query({}, function(data){
             $scope.media = [];
             angular.forEach(data, function(value){
-                if(value.responsive==='yes')
-                    var filename = Hooks.imageHookNotify(Responsive.resize(value.filename, 'small'));
-                else
-                    var filename = Hooks.imageHookNotify(value.filename);
+                // Don't do anything to an image that was just uploaded (so modules don't cache images that haven't been uploaded yet)
+                if(justUploaded && data[0]===value)
+                    var filename = value.filename;
+                else {
+                    if(value.responsive==='yes')
+                        var filename = Hooks.imageHookNotify(Responsive.resize(value.filename, 'small'));
+                    else
+                        var filename = Hooks.imageHookNotify(value.filename);
+                }
                 
                 $scope.media.push({
                     alt: value.alt,
