@@ -11,7 +11,7 @@ $minifyScripts = $prefix . 'min/?f=';
 $minifyCSS = $prefix . 'min/?f=';
 $scripts = '';
 $CSS = '';
-$developerMode = TRUE;
+$developerMode = FALSE;
 
 // Log user in if they have a cookie
 if($_COOKIE['username'] && $_COOKIE['token'])
@@ -31,22 +31,28 @@ if($_COOKIE['username'] && $_COOKIE['token'])
         //setcookie('token', $token, time()+60*60*24*90); // Set cookie to expire in 90 days
         $isUserAdmin = $Cosmo->isUserAdmin($username, $token);
         
-        $minifyScripts .= $prefix."core/js/angular-file-upload-shim.min.js,"; // Breaks IE9, so only load it for admins
+        $minifyScripts .= $prefix."core/js/3rd-party/angular-file-upload-shim.min.js,"; // Breaks IE9, so only load it for admins
     }
 }
 
-$minifyScripts .= $prefix."core/js/angular.min.js,";
-$minifyScripts .= $prefix."core/js/angular-route.min.js,";
-$minifyScripts .= $prefix."core/js/angular-file-upload.min.js,";
-$minifyScripts .= $prefix."core/js/angular-growl.min.js,";
-$minifyScripts .= $prefix."core/js/diff_match_patch.js,";
-$minifyScripts .= $prefix."core/js/angular-resource.min.js,";
-$minifyScripts .= $prefix."core/js/ngDialog.min.js,";
-$minifyScripts .= $prefix."core/js/ng-quick-date.min.js,";
-$minifyScripts .= $prefix."core/js/angular-ui-tree.min.js,";
+// Load official Angular files
+$minifyScripts .= $prefix."core/js/angular/angular.min.js,";
+$minifyScripts .= $prefix."core/js/angular/angular-animate.min.js,";
+$minifyScripts .= $prefix."core/js/angular/angular-touch.min.js,";
+$minifyScripts .= $prefix."core/js/angular/angular-route.min.js,";
+$minifyScripts .= $prefix."core/js/angular/angular-resource.min.js,";
+
+// Load the Cosmo file
 $minifyScripts .= $prefix."core/js/cosmo.js,";
-$minifyScripts .= $prefix."core/js/angular-animate.min.js,";
-$minifyScripts .= $prefix."core/js/angular-touch.min.js";
+
+// 3rd party scripts
+$minifyScripts .= $prefix."core/js/3rd-party/angular-file-upload.min.js,";
+$minifyScripts .= $prefix."core/js/3rd-party/angular-growl.min.js,";
+$minifyScripts .= $prefix."core/js/3rd-party/diff_match_patch.js,";
+$minifyScripts .= $prefix."core/js/3rd-party/ngDialog.min.js,";
+$minifyScripts .= $prefix."core/js/3rd-party/ng-quick-date.min.js,";
+$minifyScripts .= $prefix."core/js/3rd-party/angular-ui-tree.min.js";
+
 
 $minifyCSS .= $prefix.'core/css/cosmo-default-style.minify.css';
 
@@ -58,6 +64,9 @@ $theme = $settings['theme'];
 if(file_exists("themes/$theme/cosmo.json"))
 {
     $themeJSON = json_decode(file_get_contents("themes/$theme/cosmo.json"));
+    
+    if($themeJSON->module)
+        $angularModules .= ",\n\t\t'". $themeJSON->module ."'";
     
     // Check if there is are Javascript files for this theme
     if($themeJSON->scripts){

@@ -15,6 +15,10 @@
             <br /><br />Your broswer is incompatible with this site. Please upgrade to a <a href="http://www.browsehappy.com">newer browser.</a>
         <![endif]-->
         
+        <!--
+        <link REL="SHORTCUT ICON" HREF="http://www.davesite.com/webstation/html/favicon.ico">
+        <link rel="icon" type="image/png" href="img/logo.png">
+        -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
         <!-- Meta Tags -->
@@ -29,8 +33,6 @@
 <?php endif; ?>
         
         <base href="/" />
-        
-        <script src="modules/KHP/js/jquery.min.js"></script>
         
         <script src="<?php echo $minifyScripts; ?>"></script>
         
@@ -61,11 +63,12 @@
                 $routeProvider.
                     when('/admin', { controller: function(ngDialog){ ngDialog.open({ template: 'core/html/login.html', showClose: false, closeByEscape: false, closeByDocument: false }); }, template: '<div></div>' }).
                     when('/reset/:userID/:token', { controller: 'resetModal', template: '<div></div>' }).
+                    when('/', { controller: 'urlCtrl', template: '<div ng-include="template"></div>' }).
                     when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template"></div>' });
                     
                 // Enable HTML5 urls
                 $locationProvider.html5Mode(true).hashPrefix('!');
-
+                
                 // Timeout messages after 5 seconds
                 growlProvider.globalTimeToLive(5000);
                 // growlProvider.globalEnableHtml(true);
@@ -108,6 +111,7 @@
                 // Cache all template pages
                 REST.themes.query({themeID: '<?php echo $theme; ?>'}, function(data){
                     angular.forEach(data, function(page){
+                        Page.templatePages.push(page.type);
                         if(page.type)
                             $templateCache.put('themes/<?php echo $theme; ?>/'+page.type);
                     });
@@ -123,9 +127,9 @@
             <div wysiwyg></div>
         </div>
         
-        <div ng-include="'themes/KHP/partials/header.html'"></div>
-        <div ng-view class="at-view-fade-in at-view-fade-out"><?php echo $content['body']; ?></div>
-
+        <!--<div ng-include="'themes/KHP/partials/header.html'"></div>-->
+        <div ng-view class="at-view-fade-in at-view-fade-out cosmo-theme"><?php echo $content['body']; ?></div>
+        
         <div growl></div>
     </body>
 </html>

@@ -73,7 +73,10 @@ angular.module('cosmo', [])
             Page.tags = data.tags;
         else
             Page.tags = [];
-        Page.type = data.type;
+        if(data.type)
+            Page.type = data.type;
+        else
+            Page.type = Page.templatePages[0];
         Page.publish = data.published;
         Page.scheduleDate = data.published_date;
         Page.timestamp = data.timestamp;
@@ -113,6 +116,15 @@ angular.module('cosmo', [])
     $scope.$on('contentGet', function(data){
         changeTheme();
     });
+    
+    // Watch for shortcut keypresses
+    if(Users.admin){
+        angular.element(document).on('keydown', function(event){
+            // Switch from edit to view mode (if applicable)
+            if(event.keyCode === 91 && event.shiftKey)
+                $rootScope.$broadcast('switchViewMode');
+        });
+    }
 }])
 
 /****************************************************************************************************
@@ -610,27 +622,34 @@ angular.module('cosmo', [])
 
 .directive('movie', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
     return {
-        template: '<video ng-src="{{data}}" ng-click="clicked()"></video>',
+        template: '<video autoplay loop ng-click="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
         replace: true,
         link: function(scope, elm, attrs, ctrl) {
             
             if(Page.extras[attrs.movie])
-                scope.data = Page.extras[attrs.movie];
+                scope.videos = Page.extras[attrs.movie];
             else if(Users.admin)
-                scope.data = 'img/video.svg';
+                scope.videos = [{ src: 'img/image.svg', type: 'video' }];
             
             // Check if user is an admin
             if(Users.admin) {
                 scope.clicked = function(){
                     scope.lastClicked = attrs.movie;
-                    ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.movie }) });
+                    // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.movie }) });
+                    
+                    ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({
+                            id: attrs.movie,
+                            gallery: true,
+                            images: scope.videos // Page.extras[attrs.movie]
+                        })
+                    });
                 };
                 
                 // Save edits/selection of the movie
-                scope.$on('choseFile', function(event, data){
+                scope.$on('choseGalleryFile', function(event, data){
                     if(data.id === scope.lastClicked){
-                        Page.extras[scope.lastClicked] = data.name;
-                        scope.data = data.name;
+                        Page.extras[scope.lastClicked] = data.data;
+                        scope.videos = data.data;
                         if(data.class)
                             elm.addClass(data.class);
                     }
@@ -905,6 +924,7 @@ angular.module('cosmo', [])
         prefix: '',
         published: '',
         published_date: '',
+        templatePages: [],
         timestamp: '',
         extras: [],
         misc: {}
@@ -1071,17 +1091,11 @@ angular.module('cosmo', [])
         scope: {},
         link: function(scope, elm, attrs) {
             
-            if(!Page.misc[attrs.cosmoTable])
-                Page.misc[attrs.cosmoTable] = {};
-                
             var updateCosmoTable = function(){
                 if(Page.extras[attrs.cosmoTable])
                     scope.rows = angular.fromJson(Page.extras[attrs.cosmoTable]);
                 else if(Users.admin)
                     scope.rows = [['', '']];
-                
-                if(typeof Page.misc[attrs.cosmoTable + '-header'] === 'undefined')
-                    Page.extras[attrs.cosmoTable + '-header'] = Page.misc[attrs.cosmoTable].tableHeader;
                 
                 scope.tableHeader = Page.extras[attrs.cosmoTable + '-header'];
             };
@@ -1138,13 +1152,13 @@ angular.module('cosmo', [])
                 
                 // Add table header
                 scope.$on('addTableHeader', function(){
-                    Page.misc[attrs.cosmoTable].tableHeader = true;
+                    Page.extras[attrs.cosmoTable + '-header'] = true;
                     scope.tableHeader = true;
                 });
                 
                 // Remove table header
                 scope.$on('removeTableHeader', function(){
-                    Page.misc[attrs.cosmoTable].tableHeader = false;
+                    Page.extras[attrs.cosmoTable + '-header'] = false;
                     scope.tableHeader = false;
                 });
                 
@@ -1605,12 +1619,19 @@ angular.module('cosmo', [])
                 var remX = (data.pageX / 10) - 16; // -16 centers toolbar
                 var remY = (data.pageY / 10); // Go directly above click. CSS margin pushes this above mouse
                 
+                // Make sure the toolbar isn't too far to the left (where it cuts off toolbar items)
                 if((data.pageX - 150) < 0)
                     remX = 0;
                 
+                // Make sure the toolbar isn't too far to the right (where it cuts off toolbar items)
                 if((data.pageX + 250) > window.innerWidth)
                     remX = (window.innerWidth - 400) / 10;
                 
+                // Make sure the toolbar isn't too far down (where it cuts off the dropdowns)
+                if((data.clientY + 100) > window.innerHeight)
+                    remY = (data.pageY - 100) / 10;
+                
+                console.log(data);
                 elm.css('top', remY + 'rem');
                 elm.css('left', remX + 'rem');
             });
@@ -1771,6 +1792,10 @@ angular.module('cosmo', [])
                         document.execCommand('insertHTML', false, '<div image="'+ new Date().getTime() +'"></div>');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
+                    case 'bgimage':
+                        document.execCommand('insertHTML', false, '<div bgimage="'+ new Date().getTime() +'"></div>');
+                        $rootScope.$broadcast('saveAndRefresh');
+                        break;
                     case 'audio':
                         document.execCommand('insertHTML', false, '<div audio="'+ new Date().getTime() +'"></div>');
                         $rootScope.$broadcast('saveAndRefresh');
@@ -1782,6 +1807,11 @@ angular.module('cosmo', [])
                     case 'gallery':
                         document.execCommand('insertHTML', false, '<img gallery="'+ new Date().getTime() +'"></img>');
                         $rootScope.$broadcast('saveAndRefresh');
+                        break;
+                    case 'div':
+                        var classes = prompt("CSS classes:");
+                        if(classes)
+                            document.execCommand('insertHTML', false, '<div class="'+ classes +'"></div>');
                         break;
                     case 'custom':
                         var directive = prompt("Directive:");
@@ -2940,8 +2970,10 @@ angular.module('cosmo', [])
 
 .controller('profileCtrl', ['$scope', 'REST', 'growl', 'ngDialog', 'Users', function($scope, REST, growl, ngDialog, Users){
     
+    // Initialize variables
     $scope.profile = {};
     
+    // Get the User's profile photo
     REST.users.get({userID: Users.id}, function(data){
         $scope.profile = data;
         if(!$scope.profile.photo)
@@ -2962,7 +2994,7 @@ angular.module('cosmo', [])
     // Update the profile
     $scope.updateProfile = function(){
         REST.users.update({
-            userID: $scope.profile.id,
+            userID: Users.id,
             username: $scope.profile.username,
             photo: $scope.profile.photo,
             facebook: $scope.profile.facebook,

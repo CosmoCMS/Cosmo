@@ -14,6 +14,7 @@
                     <img ng-if="image.type==='image'" ng-src="{{image.url}}">
                     <iframe ng-if="image.type==='youtube'" width="100%" height="266" ng-src="{{image.url}}" frameborder="0" allowfullscreen></iframe>
                     <iframe ng-if="image.type==='vimeo'" ng-src="{{image.url}}" width="100%" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <video ng-if="image.type==='video'" ng-src="{{image.url}}"></video>
                     <i ng-if="image.type==='pdf'" class="fa fa-file-pdf-o"></i>
                     <i ng-if="image.type==='doc'" class="fa fa-file-text-o"></i>
                     <i ng-if="image.type==='ppt'" class="fa fa-file-powerpoint-o"></i>
@@ -70,7 +71,7 @@
                     <iframe ng-if="files.type==='youtube'" width="100%" height="264" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
                     <iframe ng-if="files.type==='vimeo'" ng-src="{{selectedFile}}" width="100%" height="188" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     <iframe ng-if="files.type==='youtube'" width="100%" height="140" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
-                    <iframe ng-if="files.type==='vimeo'" ng-src="{{selectedFile}}" width="100%" height="140" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <video ng-if="files.type==='video'" ng-src="{{selectedFile}}"></video>
                     <i ng-if="files.type==='pdf'" class="fa fa-file-pdf-o"></i>
                     <i ng-if="files.type==='doc'" class="fa fa-file-text-o"></i>
                     <i ng-if="files.type==='ppt'" class="fa fa-file-powerpoint-o"></i>
@@ -90,6 +91,10 @@
                         </div>
                     </div>
                   </div>
+                    <div class="media-info" ng-if="files.type==='video'">
+                        <input type="checkbox" ng-model="files.autoload" value="Y"> Autoload<br />
+                        <input type="checkbox" ng-model="files.loop" value="Y"> Loop<br />
+                    </div>
                     <div class="media-info">
                         <div class="img-info">
                             <input type="text" ng-model="files.title">
@@ -123,6 +128,9 @@
                       </div>
                       <div ng-if="file.type==='youtube' || file.type==='vimeo'">
                           <iframe width="100%" height="140" ng-src="{{file.filename}}" frameborder="0" allowfullscreen></iframe><button class="options-button">Edit Video</button>
+                      </div>
+                      <div ng-if="file.type==='video'">
+                          <video ng-src="{{file.filename}}"></video>
                       </div>
                       <div class="file-prev" ng-if="file.type==='pdf'">
                           <i class="fa fa-file-pdf-o"></i>
