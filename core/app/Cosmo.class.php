@@ -1178,7 +1178,7 @@ class Cosmo {
         $dbPassword = $row['password'];
         
         // Check if the password was encrypted with blowfish
-        if(strpos($password, '$2y$') === 0 || strpos($password, '$2a$') === 0)
+        if(strpos($dbPassword, '$2y$') === 0 || strpos($dbPassword, '$2a$') === 0)
         {
             // Check which version of blowfish we should use depending on the PHP version
             if(version_compare(PHP_VERSION, '5.3.7') >= 0)
