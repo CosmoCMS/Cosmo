@@ -1,11 +1,12 @@
 // Universal imports
 @import "partials/reset";
 @import "vendor/fontawesome/font-awesome";
+
+
+@import "global/media-queries"; /* media queries used for the modal */
+@import "global/fonts"; /* load fonts and variables */
+@import "global/color"; /* color maps */
 @import "global/_z-index"; /* sass map and mixin for easy z-indexing */
-@import "partials/mixins";
-
-
-
 
 
 
@@ -29,6 +30,9 @@
     @import "partials/revisions";
     @import "partials/themes";
     @import "partials/blocks";
+
+
+
     @import "vendor/menus";
     @import "vendor/calendar";
 }
@@ -38,5 +42,5 @@
 
 @import "partials/wysiwyg";
 @import "vendor/growl";
-@import "modal/modal";
-@import "modal/modal-media";
+@import "vendor/modal";
+@import "partials/modal-media";

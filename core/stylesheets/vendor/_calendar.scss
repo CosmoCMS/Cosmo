@@ -77,11 +77,6 @@ table.quickdate-calendar td:hover {
 .quickdate{
     display: inline-block;
     vertical-align: bottom;
-    @include font-size(14);
-
-    input, select {
-        @include font-size(14 * .8);
-    }
 }
 
 input.quickdate-date-input, input.quickdate-time-input {
@@ -123,7 +118,6 @@ input.quickdate-date-input, input.quickdate-time-input {
     text-align: center;
     width: 100%;
     z-index: 10;
-    @include font-size(14);
 
     span {
         font-family: $font-alpha;
@@ -165,7 +159,7 @@ table.quickdate-calendar {
         font-family: $font-alpha;
 
         &:hover {
-            background-color: lighten($color-beta, 10%);
+            background-color: palette(blue, mid);
         }
     }
 

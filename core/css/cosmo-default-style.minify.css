@@ -2428,8 +2428,9 @@ th {
 .fa-bomb:before {
   content: "\f1e2"; }
 
-/* colors */
-/* sass map and mixin for easy z-indexing */
+/* media queries used for the modal */
+/* fonts */
+/* load quicksand font */
 @font-face {
   font-family: 'quicksand';
   src: url("../fonts/quicksand-bold-webfont.eot");
@@ -2466,25 +2467,12 @@ th {
   src: url("../fonts/quicksand-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quicksand-regular-webfont.woff") format("woff"), url("../fonts/quicksand-regular-webfont.ttf") format("truetype"), url("../fonts/quicksand-regular-webfont.svg#quicksandregular") format("svg");
   font-weight: 400;
   font-style: normal; }
-/* fonts */
-/* mixin for font conversion to pixels from rem */
+/* load fonts and variables */
 /* colors */
-/* example mixin @include color(color, light-gray, 1); */
-/* brand dark blue */
-/* brand dark gray */
-/* brand bright blue */
-/* warning yellow */
-/* error red */
-/* success green */
-/* colors at .75 opacity */
-/* brand light gray */
-/* brand dark blue */
-/* brand dark gray */
-/* brand bright blue */
-/* warning yellow */
-/* error red */
-/* success green */
-/* line 12, ../stylesheets/style.scss */
+/* color maps */
+/* colors */
+/* sass map and mixin for easy z-indexing */
+/* line 13, ../stylesheets/style.scss */
 .cosmo-default {
   /* section to add a new block/menu etc... */
   /* sidebar for all of cosmo editing outside of the live editing done on page */
@@ -2517,20 +2505,16 @@ th {
     font-family: "quicksand", sans-serif;
     font-smoothing: antialiased;
     font-weight: 200;
-    text-shadow: none;
-    font-size: 16px;
-    line-height: 24px;
-    font-size: 1.6rem;
-    line-height: 2.4rem; }
-  /* line 10, ../stylesheets/partials/_typography.scss */
+    text-shadow: none; }
+  /* line 9, ../stylesheets/partials/_typography.scss */
   .cosmo-default span {
     letter-spacing: 0; }
-  /* line 14, ../stylesheets/partials/_typography.scss */
+  /* line 13, ../stylesheets/partials/_typography.scss */
   .cosmo-default h1, .cosmo-default h2, .cosmo-default h3, .cosmo-default h4, .cosmo-default h5, .cosmo-default h6 {
     color: #4a6067;
     font-family: "quicksand", sans-serif;
     margin: 0; }
-  /* line 20, ../stylesheets/partials/_typography.scss */
+  /* line 19, ../stylesheets/partials/_typography.scss */
   .cosmo-default h1 {
     color: #e9eeef;
     display: inline;
@@ -2538,7 +2522,7 @@ th {
     font-weight: 700;
     line-height: 3em;
     margin-left: 2rem; }
-  /* line 29, ../stylesheets/partials/_typography.scss */
+  /* line 28, ../stylesheets/partials/_typography.scss */
   .cosmo-default h2 {
     color: #e9eeef;
     display: inline;
@@ -2546,18 +2530,18 @@ th {
     font-weight: 200;
     line-height: 3em;
     margin-left: .313rem; }
-  /* line 38, ../stylesheets/partials/_typography.scss */
+  /* line 37, ../stylesheets/partials/_typography.scss */
   .cosmo-default h3 {
     font-size: 1.125em;
     line-height: 1;
     margin-bottom: 2rem; }
-  /* line 44, ../stylesheets/partials/_typography.scss */
+  /* line 43, ../stylesheets/partials/_typography.scss */
   .cosmo-default h6 {
     color: #4a6067;
     font-size: 1em;
     font-weight: 700;
     text-transform: uppercase; }
-  /* line 51, ../stylesheets/partials/_typography.scss */
+  /* line 50, ../stylesheets/partials/_typography.scss */
   .cosmo-default label {
     color: #70c8c4;
     display: inline-block;
@@ -2566,42 +2550,42 @@ th {
     font-weight: 200;
     margin-bottom: 1.5rem;
     margin-top: 0; }
-  /* line 61, ../stylesheets/partials/_typography.scss */
+  /* line 60, ../stylesheets/partials/_typography.scss */
   .cosmo-default p {
     font-size: 1em;
     font-family: "quicksand", sans-serif;
     font-weight: 200;
     line-height: 1.5;
     margin: 0 0 .625rem 0; }
-    /* line 68, ../stylesheets/partials/_typography.scss */
+    /* line 67, ../stylesheets/partials/_typography.scss */
     .cosmo-default p:active, .cosmo-default p:focus {
       font-weight: 200; }
-  /* line 73, ../stylesheets/partials/_typography.scss */
+  /* line 72, ../stylesheets/partials/_typography.scss */
   .cosmo-default small {
     display: block;
     font-size: 85%; }
-  /* line 78, ../stylesheets/partials/_typography.scss */
+  /* line 77, ../stylesheets/partials/_typography.scss */
   .cosmo-default a {
     color: #bebebf;
     font-family: "quicksand", sans-serif;
     text-decoration: none;
     -webkit-transition: color .1s linear;
             transition: color .1s linear; }
-    /* line 84, ../stylesheets/partials/_typography.scss */
+    /* line 83, ../stylesheets/partials/_typography.scss */
     .cosmo-default a:hover, .cosmo-default a.dropzone:active {
       color: #70c8c4; }
-    /* line 88, ../stylesheets/partials/_typography.scss */
+    /* line 87, ../stylesheets/partials/_typography.scss */
     .cosmo-default a:active, .cosmo-default a:focus {
       color: #70c8c4;
       font-weight: 200;
       outline: none; }
-  /* line 95, ../stylesheets/partials/_typography.scss */
+  /* line 94, ../stylesheets/partials/_typography.scss */
   .cosmo-default hr {
     border-bottom: 1px solid #cbd7da;
     border-left: none;
     border-right: none;
     border-top: none; }
-  /* line 102, ../stylesheets/partials/_typography.scss */
+  /* line 101, ../stylesheets/partials/_typography.scss */
   .cosmo-default img {
     margin: 0;
     width: 100%; }
@@ -2989,21 +2973,17 @@ th {
       margin-right: .313rem;
       -webkit-transition: color .15s ease-in;
               transition: color .15s ease-in;
-      vertical-align: middle;
-      font-size: 12px;
-      line-height: 18px;
-      font-size: 1.2rem;
-      line-height: 1.8rem; }
-    /* line 105, ../stylesheets/partials/_buttons.scss */
+      vertical-align: middle; }
+    /* line 104, ../stylesheets/partials/_buttons.scss */
     .cosmo-default .new p {
       display: inline-block;
       margin-bottom: 0; }
-  /* line 112, ../stylesheets/partials/_buttons.scss */
+  /* line 111, ../stylesheets/partials/_buttons.scss */
   .cosmo-default .new.ng-hide-add.ng-hide-add-active,
   .cosmo-default .new.ng-hide-remove.ng-hide-remove-active {
     -webkit-transition: all linear 0.5s;
             transition: all linear 0.5s; }
-  /* line 117, ../stylesheets/partials/_buttons.scss */
+  /* line 116, ../stylesheets/partials/_buttons.scss */
   .cosmo-default .new.ng-hide {
     opacity: 0; }
   /* line 2, ../stylesheets/partials/_forms.scss */
@@ -3440,23 +3420,13 @@ th {
   /* line 77, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate {
     display: inline-block;
-    vertical-align: bottom;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
-    /* line 82, ../stylesheets/vendor/_calendar.scss */
-    .cosmo-default .quickdate input, .cosmo-default .quickdate textarea, .cosmo-default .quickdate .form-control, .cosmo-default .quickdate .blocks .blk-code, .cosmo-default .blocks .quickdate .blk-code, .cosmo-default .quickdate select {
-      font-size: 11.2px;
-      line-height: 16.8px;
-      font-size: 1.12rem;
-      line-height: 1.68rem; }
-  /* line 87, ../stylesheets/vendor/_calendar.scss */
+    vertical-align: bottom; }
+  /* line 82, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default input.quickdate-date-input, .cosmo-default textarea.quickdate-date-input, .cosmo-default .quickdate-date-input.form-control, .cosmo-default .blocks .quickdate-date-input.blk-code, .cosmo-default input.quickdate-time-input, .cosmo-default textarea.quickdate-time-input, .cosmo-default .quickdate-time-input.form-control, .cosmo-default .blocks .quickdate-time-input.blk-code {
     width: 7rem;
     height: auto;
     padding: 0.7815rem 0; }
-  /* line 93, ../stylesheets/vendor/_calendar.scss */
+  /* line 88, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-button {
     background-color: #4a6067;
     color: #e9eeef;
@@ -3466,16 +3436,16 @@ th {
     padding: 0.7815rem;
     text-decoration: none;
     width: 26.75rem; }
-    /* line 103, ../stylesheets/vendor/_calendar.scss */
+    /* line 98, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-button:hover, .cosmo-default .quickdate-button.dropzone:active {
       color: #70c8c4; }
-      /* line 106, ../stylesheets/vendor/_calendar.scss */
+      /* line 101, ../stylesheets/vendor/_calendar.scss */
       .cosmo-default .quickdate-button:hover i, .cosmo-default .quickdate-button.dropzone:active i {
         text-decoration: none; }
-    /* line 111, ../stylesheets/vendor/_calendar.scss */
+    /* line 106, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-button i {
       padding-right: 0.7815rem; }
-  /* line 115, ../stylesheets/vendor/_calendar.scss */
+  /* line 110, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-popup {
     background-color: #e9eeef;
     border: 1px solid #cbd7da;
@@ -3486,76 +3456,72 @@ th {
     position: absolute;
     text-align: center;
     width: 100%;
-    z-index: 10;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
-    /* line 128, ../stylesheets/vendor/_calendar.scss */
+    z-index: 10; }
+    /* line 122, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-popup span {
       font-family: "quicksand", sans-serif; }
-  /* line 133, ../stylesheets/vendor/_calendar.scss */
+  /* line 127, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-action-link:visited {
     color: #70c8c4;
     text-decoration: none; }
-  /* line 138, ../stylesheets/vendor/_calendar.scss */
+  /* line 132, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-next-month i {
     padding-left: 0.07815rem; }
-  /* line 142, ../stylesheets/vendor/_calendar.scss */
+  /* line 136, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-prev-month i {
     padding-right: 0.07815rem; }
-  /* line 147, ../stylesheets/vendor/_calendar.scss */
+  /* line 141, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default table.quickdate-calendar {
     border: 1px solid #cbd7da;
     color: #e9eeef; }
-    /* line 151, ../stylesheets/vendor/_calendar.scss */
+    /* line 145, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar:hover, .cosmo-default table.quickdate-calendar.dropzone:active {
       background-color: #cbd7da;
       color: #4a6067; }
-    /* line 156, ../stylesheets/vendor/_calendar.scss */
+    /* line 150, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar th, .cosmo-default table.quickdate-calendar table, .cosmo-default table.quickdate-calendar td {
       border-bottom: 1px solid #cbd7da;
       border-right: 1px solid #cbd7da;
       font-family: "quicksand", sans-serif; }
-    /* line 162, ../stylesheets/vendor/_calendar.scss */
+    /* line 156, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar td.other-month {
       background-color: #4a6067;
       color: #e9eeef;
       font-family: "quicksand", sans-serif; }
-      /* line 167, ../stylesheets/vendor/_calendar.scss */
+      /* line 161, ../stylesheets/vendor/_calendar.scss */
       .cosmo-default table.quickdate-calendar td.other-month:hover, .cosmo-default table.quickdate-calendar td.other-month.dropzone:active {
-        background-color: #5f7c85; }
-    /* line 172, ../stylesheets/vendor/_calendar.scss */
+        background-color: #459e9b; }
+    /* line 166, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar td.disabled-date {
       color: #4a6067;
       background-color: inherit;
       font-family: "quicksand", sans-serif; }
-      /* line 177, ../stylesheets/vendor/_calendar.scss */
+      /* line 171, ../stylesheets/vendor/_calendar.scss */
       .cosmo-default table.quickdate-calendar td.disabled-date:hover, .cosmo-default table.quickdate-calendar td.disabled-date.dropzone:active {
         background-color: inherit;
         cursor: default; }
-    /* line 183, ../stylesheets/vendor/_calendar.scss */
+    /* line 177, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar td.selected {
       background-color: #70c8c4;
       color: #e9eeef;
       font-family: "quicksand", sans-serif;
       font-weight: 700; }
-    /* line 190, ../stylesheets/vendor/_calendar.scss */
+    /* line 184, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar td.is-today {
       color: #70c8c4;
       font-family: "quicksand", sans-serif;
       font-weight: 700; }
-      /* line 195, ../stylesheets/vendor/_calendar.scss */
+      /* line 189, ../stylesheets/vendor/_calendar.scss */
       .cosmo-default table.quickdate-calendar td.is-today .disabled-date {
         color: #4a6067;
         font-weight: 200; }
-  /* line 202, ../stylesheets/vendor/_calendar.scss */
+  /* line 196, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-clear {
     color: #4a6067;
     display: inline-block;
     margin: 0.1563rem 0;
     text-decoration: none; }
-    /* line 209, ../stylesheets/vendor/_calendar.scss */
+    /* line 203, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-clear:hover, .cosmo-default .quickdate-clear.dropzone:active {
       color: #e9eeef; }
 
@@ -3790,27 +3756,27 @@ pre {
  * https://github.com/marcorinck/angular-growl
  * Copyright (c) 2013 Marco Rinck; Licensed MIT
  */
-/* line 22, ../stylesheets/vendor/_growl.scss */
+/* line 21, ../stylesheets/vendor/_growl.scss */
 .growl {
   position: fixed;
   right: .313rem;
   top: .313rem;
   z-index: 99999; }
-  /* line 29, ../stylesheets/vendor/_growl.scss */
+  /* line 28, ../stylesheets/vendor/_growl.scss */
   .growl [ng-switch="message.enableHtml"] {
     display: inline-block;
     padding-right: .625rem; }
-  /* line 34, ../stylesheets/vendor/_growl.scss */
+  /* line 33, ../stylesheets/vendor/_growl.scss */
   .growl .close {
     background-color: transparent;
     display: inline-block;
     outline: none;
     width: auto; }
-  /* line 41, ../stylesheets/vendor/_growl.scss */
+  /* line 40, ../stylesheets/vendor/_growl.scss */
   .growl .message {
     display: inline-block; }
 
-/* line 46, ../stylesheets/vendor/_growl.scss */
+/* line 45, ../stylesheets/vendor/_growl.scss */
 .cosmo-growl-item {
   background-color: #e9eeef;
   border-left: 5px solid;
@@ -3818,17 +3784,13 @@ pre {
   font-family: "quicksand", sans-serif;
   padding: 0.7815rem;
   -webkit-transition: all .25s ease;
-          transition: all .25s ease;
-  font-size: 14px;
-  line-height: 21px;
-  font-size: 1.4rem;
-  line-height: 2.1rem; }
-  /* line 16, ../stylesheets/vendor/_growl.scss */
+          transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .cosmo-growl-item i {
     color: #459e9b;
     margin-right: .313rem; }
 
-/* line 50, ../stylesheets/vendor/_growl.scss */
+/* line 49, ../stylesheets/vendor/_growl.scss */
 .alert-info {
   background-color: #e9eeef;
   border-left: 5px solid;
@@ -3836,17 +3798,13 @@ pre {
   font-family: "quicksand", sans-serif;
   padding: 0.7815rem;
   -webkit-transition: all .25s ease;
-          transition: all .25s ease;
-  font-size: 14px;
-  line-height: 21px;
-  font-size: 1.4rem;
-  line-height: 2.1rem; }
-  /* line 16, ../stylesheets/vendor/_growl.scss */
+          transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .alert-info i {
     color: #459e9b;
     margin-right: .313rem; }
 
-/* line 54, ../stylesheets/vendor/_growl.scss */
+/* line 53, ../stylesheets/vendor/_growl.scss */
 .alert-success {
   background-color: #e9eeef;
   border-left: 5px solid;
@@ -3854,17 +3812,13 @@ pre {
   font-family: "quicksand", sans-serif;
   padding: 0.7815rem;
   -webkit-transition: all .25s ease;
-          transition: all .25s ease;
-  font-size: 14px;
-  line-height: 21px;
-  font-size: 1.4rem;
-  line-height: 2.1rem; }
-  /* line 16, ../stylesheets/vendor/_growl.scss */
+          transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .alert-success i {
     color: #459e9b;
     margin-right: .313rem; }
 
-/* line 58, ../stylesheets/vendor/_growl.scss */
+/* line 57, ../stylesheets/vendor/_growl.scss */
 .alert-error {
   background-color: #e9eeef;
   border-left: 5px solid;
@@ -3872,17 +3826,13 @@ pre {
   font-family: "quicksand", sans-serif;
   padding: 0.7815rem;
   -webkit-transition: all .25s ease;
-          transition: all .25s ease;
-  font-size: 14px;
-  line-height: 21px;
-  font-size: 1.4rem;
-  line-height: 2.1rem; }
-  /* line 16, ../stylesheets/vendor/_growl.scss */
+          transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .alert-error i {
     color: #459e9b;
     margin-right: .313rem; }
 
-/* line 62, ../stylesheets/vendor/_growl.scss */
+/* line 61, ../stylesheets/vendor/_growl.scss */
 .alert-alert {
   background-color: #e9eeef;
   border-left: 5px solid;
@@ -3890,77 +3840,73 @@ pre {
   font-family: "quicksand", sans-serif;
   padding: 0.7815rem;
   -webkit-transition: all .25s ease;
-          transition: all .25s ease;
-  font-size: 14px;
-  line-height: 21px;
-  font-size: 1.4rem;
-  line-height: 2.1rem; }
-  /* line 16, ../stylesheets/vendor/_growl.scss */
+          transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .alert-alert i {
     color: #459e9b;
     margin-right: .313rem; }
 
-/* line 66, ../stylesheets/vendor/_growl.scss */
+/* line 65, ../stylesheets/vendor/_growl.scss */
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave {
   -webkit-transition: all .25s ease;
           transition: all .25s ease; }
 
-/* line 70, ../stylesheets/vendor/_growl.scss */
+/* line 69, ../stylesheets/vendor/_growl.scss */
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave.ng-leave-active {
   opacity: 0; }
 
-/* line 74, ../stylesheets/vendor/_growl.scss */
+/* line 73, ../stylesheets/vendor/_growl.scss */
 .cosmo-growl-item.ng-leave, .growl-item.ng-enter.ng-enter-active {
   opacity: 1; }
 
 /* animations for fade in and fade out of modal */
 @-webkit-keyframes ngdialog-fadeout {
-  /* line 4, ../stylesheets/modal/_modal.scss */
+  /* line 4, ../stylesheets/vendor/_modal.scss */
   0% {
     opacity: 1; }
 
-  /* line 8, ../stylesheets/modal/_modal.scss */
+  /* line 8, ../stylesheets/vendor/_modal.scss */
   100% {
     opacity: 0; } }
 @keyframes ngdialog-fadeout {
-  /* line 4, ../stylesheets/modal/_modal.scss */
+  /* line 4, ../stylesheets/vendor/_modal.scss */
   0% {
     opacity: 1; }
 
-  /* line 8, ../stylesheets/modal/_modal.scss */
+  /* line 8, ../stylesheets/vendor/_modal.scss */
   100% {
     opacity: 0; } }
 @-webkit-keyframes ngdialog-fadein {
-  /* line 14, ../stylesheets/modal/_modal.scss */
+  /* line 14, ../stylesheets/vendor/_modal.scss */
   0% {
     opacity: 0; }
 
-  /* line 18, ../stylesheets/modal/_modal.scss */
+  /* line 18, ../stylesheets/vendor/_modal.scss */
   100% {
     opacity: 1; } }
 @keyframes ngdialog-fadein {
-  /* line 14, ../stylesheets/modal/_modal.scss */
+  /* line 14, ../stylesheets/vendor/_modal.scss */
   0% {
     opacity: 0; }
 
-  /* line 18, ../stylesheets/modal/_modal.scss */
+  /* line 18, ../stylesheets/vendor/_modal.scss */
   100% {
     opacity: 1; } }
-/* line 23, ../stylesheets/modal/_modal.scss */
+/* line 23, ../stylesheets/vendor/_modal.scss */
 h1.no-marg {
   margin-left: 0; }
 
-/* line 27, ../stylesheets/modal/_modal.scss */
+/* line 27, ../stylesheets/vendor/_modal.scss */
 .no-line {
   border-bottom: 0; }
 
-/* line 31, ../stylesheets/modal/_modal.scss */
+/* line 31, ../stylesheets/vendor/_modal.scss */
 .ngdialog, .ngdialog *, .ngdialog *:before, .ngdialog *:after {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box; }
 
-/* line 35, ../stylesheets/modal/_modal.scss */
+/* line 35, ../stylesheets/vendor/_modal.scss */
 .ngdialog {
   bottom: 0;
   left: 0;
@@ -3971,10 +3917,10 @@ h1.no-marg {
   top: 0;
   z-index: 100002; }
 
-/* line 46, ../stylesheets/modal/_modal.scss */
+/* line 46, ../stylesheets/vendor/_modal.scss */
 .ngdialog-close {
   cursor: pointer; }
-  /* line 49, ../stylesheets/modal/_modal.scss */
+  /* line 49, ../stylesheets/vendor/_modal.scss */
   .ngdialog-close:after {
     color: #4a6067;
     content: '\f00d';
@@ -3984,27 +3930,27 @@ h1.no-marg {
     top: 1.35rem;
     z-index: 100002; }
     @media only screen and (min-width: 768px) {
-      /* line 49, ../stylesheets/modal/_modal.scss */
+      /* line 49, ../stylesheets/vendor/_modal.scss */
       .ngdialog-close:after {
         color: #e9eeef; } }
 
-/* line 64, ../stylesheets/modal/_modal.scss */
+/* line 64, ../stylesheets/vendor/_modal.scss */
 .ngdialog.ngdialog-closing .ngdialog-overlay {
   -webkit-animation: ngdialog-fadeout 0.5s;
           animation: ngdialog-fadeout 0.5s; }
 
-/* line 70, ../stylesheets/modal/_modal.scss */
+/* line 70, ../stylesheets/vendor/_modal.scss */
 .ngdialog.ngdialog-closing .ngdialog-content {
   -webkit-animation: ngdialog-fadeout 0.5s;
           animation: ngdialog-fadeout 0.5s;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden; }
 
-/* line 75, ../stylesheets/modal/_modal.scss */
+/* line 75, ../stylesheets/vendor/_modal.scss */
 body.ngdialog-open {
   overflow: hidden; }
 
-/* line 79, ../stylesheets/modal/_modal.scss */
+/* line 79, ../stylesheets/vendor/_modal.scss */
 .ngdialog-content {
   -webkit-animation: ngdialog-fadein 0.5s;
           animation: ngdialog-fadein 0.5s;
@@ -4018,32 +3964,32 @@ body.ngdialog-open {
   position: relative;
   width: 100%; }
   @media only screen and (min-width: 768px) {
-    /* line 79, ../stylesheets/modal/_modal.scss */
+    /* line 79, ../stylesheets/vendor/_modal.scss */
     .ngdialog-content {
       left: auto;
       width: 43.75rem; } }
   @media only screen and (min-width: 1024px) {
-    /* line 79, ../stylesheets/modal/_modal.scss */
+    /* line 79, ../stylesheets/vendor/_modal.scss */
     .ngdialog-content {
       width: 59.375rem; } }
-  /* line 99, ../stylesheets/modal/_modal.scss */
+  /* line 99, ../stylesheets/vendor/_modal.scss */
   .ngdialog-content button {
     margin-bottom: 1.17225rem; }
-  /* line 103, ../stylesheets/modal/_modal.scss */
+  /* line 103, ../stylesheets/vendor/_modal.scss */
   .ngdialog-content .btncase {
     margin-left: 0; }
-    /* line 106, ../stylesheets/modal/_modal.scss */
+    /* line 106, ../stylesheets/vendor/_modal.scss */
     .ngdialog-content .btncase button {
       width: 100%;
       margin-right: 0; }
-  /* line 112, ../stylesheets/modal/_modal.scss */
+  /* line 112, ../stylesheets/vendor/_modal.scss */
   .ngdialog-content .info {
     color: #70c8c4; }
-  /* line 116, ../stylesheets/modal/_modal.scss */
+  /* line 116, ../stylesheets/vendor/_modal.scss */
   .ngdialog-content p {
     margin-bottom: 1.563rem; }
 
-/* line 122, ../stylesheets/modal/_modal.scss */
+/* line 122, ../stylesheets/vendor/_modal.scss */
 .ngdialog-overlay {
   -webkit-animation: ngdialog-fadein 0.5s;
           animation: ngdialog-fadein 0.5s;
@@ -4055,7 +4001,7 @@ body.ngdialog-open {
   right: 0;
   top: 0; }
 
-/* line 1, ../stylesheets/modal/_modal-media.scss */
+/* line 1, ../stylesheets/partials/_modal-media.scss */
 .modal--bar-top {
   background-color: #70c8c4;
   height: auto;
@@ -4065,44 +4011,44 @@ body.ngdialog-open {
   width: 100%;
   z-index: 100000; }
   @media only screen and (min-width: 768px) {
-    /* line 1, ../stylesheets/modal/_modal-media.scss */
+    /* line 1, ../stylesheets/partials/_modal-media.scss */
     .modal--bar-top {
       width: 43.75rem; } }
   @media only screen and (min-width: 1024px) {
-    /* line 1, ../stylesheets/modal/_modal-media.scss */
+    /* line 1, ../stylesheets/partials/_modal-media.scss */
     .modal--bar-top {
       width: 59.375rem; } }
-  /* line 18, ../stylesheets/modal/_modal-media.scss */
+  /* line 18, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top h1, .modal--bar-top h2 {
     color: white; }
-  /* line 22, ../stylesheets/modal/_modal-media.scss */
+  /* line 22, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top h1 {
     margin-left: .313rem; }
-  /* line 26, ../stylesheets/modal/_modal-media.scss */
+  /* line 26, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top i {
     color: #e9eeef; }
-    /* line 29, ../stylesheets/modal/_modal-media.scss */
+    /* line 29, ../stylesheets/partials/_modal-media.scss */
     .modal--bar-top i:hover, .modal--bar-top .cosmo-default i.dropzone:active, .cosmo-default .modal--bar-top i.dropzone:active {
       color: #4a6067; }
-  /* line 34, ../stylesheets/modal/_modal-media.scss */
+  /* line 34, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top .no-marg {
     margin-bottom: 0; }
-  /* line 38, ../stylesheets/modal/_modal-media.scss */
+  /* line 38, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top .options-button {
     border: 1px solid #4a6067; }
-    /* line 41, ../stylesheets/modal/_modal-media.scss */
+    /* line 41, ../stylesheets/partials/_modal-media.scss */
     .modal--bar-top .options-button:focus {
       background-color: #4a6067;
       color: #e9eeef; }
-    /* line 46, ../stylesheets/modal/_modal-media.scss */
+    /* line 46, ../stylesheets/partials/_modal-media.scss */
     .modal--bar-top .options-button:hover, .modal--bar-top .cosmo-default .options-button.dropzone:active, .cosmo-default .modal--bar-top .options-button.dropzone:active {
       background-color: #459e9b;
       color: #e9eeef; }
-  /* line 52, ../stylesheets/modal/_modal-media.scss */
+  /* line 52, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top .success-button, .modal--bar-top .error-button {
     border: 1px solid #4a6067; }
 
-/* line 58, ../stylesheets/modal/_modal-media.scss */
+/* line 58, ../stylesheets/partials/_modal-media.scss */
 .modal--bar-top input.search-bar, .modal--bar-top .cosmo-default textarea.search-bar, .cosmo-default .modal--bar-top textarea.search-bar, .modal--bar-top .cosmo-default .search-bar.form-control, .cosmo-default .modal--bar-top .search-bar.form-control, .modal--bar-top .cosmo-default .blocks .search-bar.blk-code, .cosmo-default .blocks .modal--bar-top .search-bar.blk-code {
   border: 0;
   border-bottom: 1px solid #e9eeef;
@@ -4110,43 +4056,43 @@ body.ngdialog-open {
   width: 91%;
   margin-bottom: .625rem; }
   @media only screen and (min-width: 768px) {
-    /* line 58, ../stylesheets/modal/_modal-media.scss */
+    /* line 58, ../stylesheets/partials/_modal-media.scss */
     .modal--bar-top input.search-bar, .modal--bar-top .cosmo-default textarea.search-bar, .cosmo-default .modal--bar-top textarea.search-bar, .modal--bar-top .cosmo-default .search-bar.form-control, .cosmo-default .modal--bar-top .search-bar.form-control, .modal--bar-top .cosmo-default .blocks .search-bar.blk-code, .cosmo-default .blocks .modal--bar-top .search-bar.blk-code {
       width: 35.625rem; } }
   @media only screen and (min-width: 1024px) {
-    /* line 58, ../stylesheets/modal/_modal-media.scss */
+    /* line 58, ../stylesheets/partials/_modal-media.scss */
     .modal--bar-top input.search-bar, .modal--bar-top .cosmo-default textarea.search-bar, .cosmo-default .modal--bar-top textarea.search-bar, .modal--bar-top .cosmo-default .search-bar.form-control, .cosmo-default .modal--bar-top .search-bar.form-control, .modal--bar-top .cosmo-default .blocks .search-bar.blk-code, .cosmo-default .blocks .modal--bar-top .search-bar.blk-code {
       margin-top: 1.5rem;
       width: 14rem; } }
 
-/* line 75, ../stylesheets/modal/_modal-media.scss */
+/* line 75, ../stylesheets/partials/_modal-media.scss */
 .modal--bar-top .options {
   display: block;
   margin-left: 0; }
   @media only screen and (min-width: 480px) {
-    /* line 75, ../stylesheets/modal/_modal-media.scss */
+    /* line 75, ../stylesheets/partials/_modal-media.scss */
     .modal--bar-top .options {
       display: inline-block;
       margin-left: 1.5rem; } }
-  /* line 84, ../stylesheets/modal/_modal-media.scss */
+  /* line 84, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top .options button {
     margin-bottom: .625rem; }
-  /* line 88, ../stylesheets/modal/_modal-media.scss */
+  /* line 88, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top .options ::-webkit-input-placeholder {
     color: #e9eeef; }
-  /* line 92, ../stylesheets/modal/_modal-media.scss */
+  /* line 92, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top .options :-moz-placeholder {
     /* Firefox 18- */
     color: #e9eeef; }
-  /* line 96, ../stylesheets/modal/_modal-media.scss */
+  /* line 96, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top .options ::-moz-placeholder {
     /* Firefox 19+ */
     color: #e9eeef; }
-  /* line 100, ../stylesheets/modal/_modal-media.scss */
+  /* line 100, ../stylesheets/partials/_modal-media.scss */
   .modal--bar-top .options :-ms-input-placeholder {
     color: #e9eeef; }
 
-/* line 105, ../stylesheets/modal/_modal-media.scss */
+/* line 105, ../stylesheets/partials/_modal-media.scss */
 .img-edit {
   background-color: #e9eeef;
   height: 100%;
@@ -4156,90 +4102,91 @@ body.ngdialog-open {
   top: 0;
   width: 100%; }
   @media only screen and (min-width: 768px) {
-    /* line 105, ../stylesheets/modal/_modal-media.scss */
+    /* line 105, ../stylesheets/partials/_modal-media.scss */
     .img-edit {
       height: auto;
       left: auto;
       margin-left: -1.563rem;
       width: 43.75rem; } }
   @media only screen and (min-width: 1024px) {
-    /* line 105, ../stylesheets/modal/_modal-media.scss */
+    /* line 105, ../stylesheets/partials/_modal-media.scss */
     .img-edit {
       width: 59.375rem; } }
-  /* line 125, ../stylesheets/modal/_modal-media.scss */
+  /* line 125, ../stylesheets/partials/_modal-media.scss */
   .img-edit input, .img-edit .cosmo-default textarea, .cosmo-default .img-edit textarea, .img-edit .cosmo-default .form-control, .cosmo-default .img-edit .form-control, .img-edit .cosmo-default .blocks .blk-code, .cosmo-default .blocks .img-edit .blk-code {
     margin-bottom: 0; }
-  /* line 129, ../stylesheets/modal/_modal-media.scss */
+  /* line 129, ../stylesheets/partials/_modal-media.scss */
   .img-edit label {
     margin-right: .313rem; }
-  /* line 133, ../stylesheets/modal/_modal-media.scss */
+  /* line 133, ../stylesheets/partials/_modal-media.scss */
   .img-edit .modal--bar-top {
     padding-bottom: 0; }
     @media only screen and (min-width: 768px) {
-      /* line 133, ../stylesheets/modal/_modal-media.scss */
+      /* line 133, ../stylesheets/partials/_modal-media.scss */
       .img-edit .modal--bar-top {
         margin: 0; } }
 
-/* line 142, ../stylesheets/modal/_modal-media.scss */
+/* line 142, ../stylesheets/partials/_modal-media.scss */
 .img-edit .img-prev {
   display: inline-block;
   height: auto;
+  margin-bottom: 1.5rem;
   margin-top: 5.7rem;
   vertical-align: top;
   width: 100%; }
   @media only screen and (min-width: 480px) {
-    /* line 142, ../stylesheets/modal/_modal-media.scss */
+    /* line 142, ../stylesheets/partials/_modal-media.scss */
     .img-edit .img-prev {
       margin-top: 2.6rem; } }
   @media only screen and (min-width: 768px) {
-    /* line 142, ../stylesheets/modal/_modal-media.scss */
+    /* line 142, ../stylesheets/partials/_modal-media.scss */
     .img-edit .img-prev {
       padding-left: 1.563rem;
       margin-top: 5.1rem; } }
-  /* line 158, ../stylesheets/modal/_modal-media.scss */
+  /* line 159, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-prev .img-size {
     padding: 0 .625rem;
     width: 100%; }
     @media only screen and (min-width: 768px) {
-      /* line 158, ../stylesheets/modal/_modal-media.scss */
+      /* line 159, ../stylesheets/partials/_modal-media.scss */
       .img-edit .img-prev .img-size {
         display: inline-block;
         margin-left: .625rem;
         width: 47%;
         vertical-align: top; } }
-    /* line 169, ../stylesheets/modal/_modal-media.scss */
+    /* line 170, ../stylesheets/partials/_modal-media.scss */
     .img-edit .img-prev .img-size input[type=radio] + label, .img-edit .img-prev .img-size .cosmo-default textarea[type=radio] + label, .cosmo-default .img-edit .img-prev .img-size textarea[type=radio] + label, .img-edit .img-prev .img-size .cosmo-default [type=radio].form-control + label, .cosmo-default .img-edit .img-prev .img-size [type=radio].form-control + label, .img-edit .img-prev .img-size .cosmo-default .blocks [type=radio].blk-code + label, .cosmo-default .blocks .img-edit .img-prev .img-size [type=radio].blk-code + label {
       display: block;
       text-align: left; }
-  /* line 175, ../stylesheets/modal/_modal-media.scss */
+  /* line 176, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-prev img, .img-edit .img-prev iframe {
     width: 100%; }
     @media only screen and (min-width: 768px) {
-      /* line 175, ../stylesheets/modal/_modal-media.scss */
+      /* line 176, ../stylesheets/partials/_modal-media.scss */
       .img-edit .img-prev img, .img-edit .img-prev iframe {
         width: 47%; } }
 
-/* line 184, ../stylesheets/modal/_modal-media.scss */
+/* line 185, ../stylesheets/partials/_modal-media.scss */
 .img-edit .img-info {
   display: inline-block;
   margin-right: 1.563rem;
   vertical-align: top;
   width: 100%; }
   @media only screen and (min-width: 768px) {
-    /* line 184, ../stylesheets/modal/_modal-media.scss */
+    /* line 185, ../stylesheets/partials/_modal-media.scss */
     .img-edit .img-info {
       width: 47%; } }
-  /* line 194, ../stylesheets/modal/_modal-media.scss */
+  /* line 195, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-info input, .img-edit .img-info .cosmo-default textarea, .cosmo-default .img-edit .img-info textarea, .img-edit .img-info .cosmo-default .form-control, .cosmo-default .img-edit .img-info .form-control, .img-edit .img-info .cosmo-default .blocks .blk-code, .cosmo-default .blocks .img-edit .img-info .blk-code {
     width: 100%; }
-  /* line 198, ../stylesheets/modal/_modal-media.scss */
+  /* line 199, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-info label {
     display: block; }
-  /* line 202, ../stylesheets/modal/_modal-media.scss */
+  /* line 203, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-info:last-child {
     margin-right: 0; }
 
-/* line 207, ../stylesheets/modal/_modal-media.scss */
+/* line 208, ../stylesheets/partials/_modal-media.scss */
 .media-wrapper, .gallery-media-wrapper {
   background-color: #e9eeef;
   overflow-x: hidden;
@@ -4248,26 +4195,26 @@ body.ngdialog-open {
   top: 14rem;
   width: 100%; }
   @media only screen and (min-width: 768px) {
-    /* line 207, ../stylesheets/modal/_modal-media.scss */
+    /* line 208, ../stylesheets/partials/_modal-media.scss */
     .media-wrapper, .gallery-media-wrapper {
       top: 7.813rem; } }
-  /* line 219, ../stylesheets/modal/_modal-media.scss */
+  /* line 220, ../stylesheets/partials/_modal-media.scss */
   .media-wrapper .success-button, .gallery-media-wrapper .success-button {
     margin-bottom: 0; }
 
-/* line 225, ../stylesheets/modal/_modal-media.scss */
+/* line 226, ../stylesheets/partials/_modal-media.scss */
 .gallery-media-wrapper {
   top: 12.5rem; }
   @media only screen and (min-width: 480px) {
-    /* line 225, ../stylesheets/modal/_modal-media.scss */
+    /* line 226, ../stylesheets/partials/_modal-media.scss */
     .gallery-media-wrapper {
       top: 9.688rem; } }
   @media only screen and (min-width: 1024px) {
-    /* line 225, ../stylesheets/modal/_modal-media.scss */
+    /* line 226, ../stylesheets/partials/_modal-media.scss */
     .gallery-media-wrapper {
       top: 4.5rem; } }
 
-/* line 238, ../stylesheets/modal/_modal-media.scss */
+/* line 239, ../stylesheets/partials/_modal-media.scss */
 .media-search {
   border-bottom: 1px solid #cbd7da;
   color: #e9eeef;
@@ -4277,27 +4224,27 @@ body.ngdialog-open {
   top: 6.1rem;
   width: 100%;
   z-index: 100000; }
-  /* line 248, ../stylesheets/modal/_modal-media.scss */
+  /* line 249, ../stylesheets/partials/_modal-media.scss */
   .media-search button {
     margin-bottom: .313rem; }
-  /* line 252, ../stylesheets/modal/_modal-media.scss */
+  /* line 253, ../stylesheets/partials/_modal-media.scss */
   .media-search .search-bar {
     display: inline-block; }
-    /* line 255, ../stylesheets/modal/_modal-media.scss */
+    /* line 256, ../stylesheets/partials/_modal-media.scss */
     .media-search .search-bar input, .media-search .search-bar .cosmo-default textarea, .cosmo-default .media-search .search-bar textarea, .media-search .search-bar .cosmo-default .form-control, .cosmo-default .media-search .search-bar .form-control, .media-search .search-bar .cosmo-default .blocks .blk-code, .cosmo-default .blocks .media-search .search-bar .blk-code {
       width: 24rem; }
-    /* line 259, ../stylesheets/modal/_modal-media.scss */
+    /* line 260, ../stylesheets/partials/_modal-media.scss */
     .media-search .search-bar label {
       margin-right: .313rem; }
 
-/* line 265, ../stylesheets/modal/_modal-media.scss */
+/* line 266, ../stylesheets/partials/_modal-media.scss */
 .media-holder {
   background-color: #e9eeef;
   margin-top: -.1rem;
   overflow-y: scroll;
   padding: 1.563rem 1.563rem 0 1.563rem; }
 
-/* line 272, ../stylesheets/modal/_modal-media.scss */
+/* line 273, ../stylesheets/partials/_modal-media.scss */
 .media-tile {
   display: inline-block;
   margin: 0 0.7815rem 0.7815rem 0;
@@ -4305,42 +4252,42 @@ body.ngdialog-open {
   vertical-align: top;
   width: 100%; }
   @media only screen and (min-width: 768px) {
-    /* line 272, ../stylesheets/modal/_modal-media.scss */
+    /* line 273, ../stylesheets/partials/_modal-media.scss */
     .media-tile {
       height: 13.55rem;
       overflow: hidden;
       width: 48.5%; }
-      /* line 284, ../stylesheets/modal/_modal-media.scss */
+      /* line 285, ../stylesheets/partials/_modal-media.scss */
       .media-tile:nth-child(even) {
         margin-right: 0; }
-      /* line 288, ../stylesheets/modal/_modal-media.scss */
+      /* line 289, ../stylesheets/partials/_modal-media.scss */
       .media-tile:nth-child(odd) {
         margin-right: 1.2rem; } }
   @media only screen and (min-width: 1024px) {
-    /* line 272, ../stylesheets/modal/_modal-media.scss */
+    /* line 273, ../stylesheets/partials/_modal-media.scss */
     .media-tile {
       height: 19rem; }
-      /* line 296, ../stylesheets/modal/_modal-media.scss */
+      /* line 297, ../stylesheets/partials/_modal-media.scss */
       .media-tile:nth-child(odd) {
         margin-right: 1.563rem; } }
-  /* line 301, ../stylesheets/modal/_modal-media.scss */
+  /* line 302, ../stylesheets/partials/_modal-media.scss */
   .media-tile i {
     color: #4a6067;
     font-size: 10em;
     margin-top: .938rem; }
     @media only screen and (min-width: 768px) {
-      /* line 301, ../stylesheets/modal/_modal-media.scss */
+      /* line 302, ../stylesheets/partials/_modal-media.scss */
       .media-tile i {
         font-size: 7.5em;
         margin-top: 0; } }
-  /* line 312, ../stylesheets/modal/_modal-media.scss */
+  /* line 313, ../stylesheets/partials/_modal-media.scss */
   .media-tile img {
     height: auto; }
 
-/* line 318, ../stylesheets/modal/_modal-media.scss */
+/* line 319, ../stylesheets/partials/_modal-media.scss */
 .info-close {
   cursor: pointer; }
-  /* line 321, ../stylesheets/modal/_modal-media.scss */
+  /* line 322, ../stylesheets/partials/_modal-media.scss */
   .info-close:after {
     color: #4a6067;
     content: '\f00d';
@@ -4350,60 +4297,60 @@ body.ngdialog-open {
     top: 2rem;
     z-index: 100001; }
     @media only screen and (min-width: 768px) {
-      /* line 321, ../stylesheets/modal/_modal-media.scss */
+      /* line 322, ../stylesheets/partials/_modal-media.scss */
       .info-close:after {
         left: 34.688rem; } }
     @media only screen and (min-width: 768px) {
-      /* line 321, ../stylesheets/modal/_modal-media.scss */
+      /* line 322, ../stylesheets/partials/_modal-media.scss */
       .info-close:after {
         display: none; } }
 
-/* line 340, ../stylesheets/modal/_modal-media.scss */
+/* line 341, ../stylesheets/partials/_modal-media.scss */
 .media-info {
   display: inline-block;
   padding: 0 1.563rem;
   width: 100%; }
-  /* line 345, ../stylesheets/modal/_modal-media.scss */
+  /* line 346, ../stylesheets/partials/_modal-media.scss */
   .media-info .blk {
     margin-bottom: 1.563rem; }
 
-/* line 350, ../stylesheets/modal/_modal-media.scss */
+/* line 351, ../stylesheets/partials/_modal-media.scss */
 .img-gallery {
   display: inline-block;
   margin: 0 1.563rem 2rem 1.563rem;
   vertical-align: top;
   width: auto; }
   @media only screen and (min-width: 768px) {
-    /* line 350, ../stylesheets/modal/_modal-media.scss */
+    /* line 351, ../stylesheets/partials/_modal-media.scss */
     .img-gallery {
       width: 33%; } }
   @media only screen and (min-width: 768px) {
-    /* line 360, ../stylesheets/modal/_modal-media.scss */
+    /* line 361, ../stylesheets/partials/_modal-media.scss */
     .img-gallery img {
       width: 100%; } }
 
-/* line 367, ../stylesheets/modal/_modal-media.scss */
+/* line 368, ../stylesheets/partials/_modal-media.scss */
 .img-gallery-info {
   margin-left: 1.563rem;
   overflow: hidden;
   padding-right: 2rem;
   width: auto; }
   @media only screen and (min-width: 768px) {
-    /* line 367, ../stylesheets/modal/_modal-media.scss */
+    /* line 368, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info {
       display: inline-block;
       margin: 0 0 2rem 0;
       vertical-align: top;
       width: 53%; } }
   @media only screen and (min-width: 1024px) {
-    /* line 367, ../stylesheets/modal/_modal-media.scss */
+    /* line 368, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info {
       overflow: hidden;
       width: 61%; } }
-  /* line 385, ../stylesheets/modal/_modal-media.scss */
+  /* line 386, ../stylesheets/partials/_modal-media.scss */
   .img-gallery-info p {
     margin-bottom: 0; }
-  /* line 389, ../stylesheets/modal/_modal-media.scss */
+  /* line 390, ../stylesheets/partials/_modal-media.scss */
   .img-gallery-info .tag {
     background-color: #cbd7da;
     color: #4a6067;
@@ -4412,19 +4359,19 @@ body.ngdialog-open {
     margin: 0 .625rem 2rem .625rem;
     padding: .313rem .625rem .75rem .625rem;
     width: auto; }
-    /* line 398, ../stylesheets/modal/_modal-media.scss */
+    /* line 399, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info .tag:first-child {
       margin-left: 0; }
-    /* line 402, ../stylesheets/modal/_modal-media.scss */
+    /* line 403, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info .tag:hover, .img-gallery-info .cosmo-default .tag.dropzone:active, .cosmo-default .img-gallery-info .tag.dropzone:active {
       cursor: default;
       color: #4a6067; }
-    /* line 407, ../stylesheets/modal/_modal-media.scss */
+    /* line 408, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info .tag .fa-tag {
       margin-right: .313rem;
       vertical-align: middle; }
 
-/* line 414, ../stylesheets/modal/_modal-media.scss */
+/* line 415, ../stylesheets/partials/_modal-media.scss */
 .file-prev {
   background-color: #cbd7da;
   display: table;
@@ -4432,43 +4379,43 @@ body.ngdialog-open {
   margin: 0 auto;
   width: 100%; }
   @media only screen and (min-width: 768px) {
-    /* line 414, ../stylesheets/modal/_modal-media.scss */
+    /* line 415, ../stylesheets/partials/_modal-media.scss */
     .file-prev {
       height: 18rem; }
-      /* line 424, ../stylesheets/modal/_modal-media.scss */
+      /* line 425, ../stylesheets/partials/_modal-media.scss */
       .file-prev i {
         vertical-align: top; } }
   @media only screen and (min-width: 1024px) {
-    /* line 414, ../stylesheets/modal/_modal-media.scss */
+    /* line 415, ../stylesheets/partials/_modal-media.scss */
     .file-prev {
       height: 28rem; } }
-  /* line 433, ../stylesheets/modal/_modal-media.scss */
+  /* line 434, ../stylesheets/partials/_modal-media.scss */
   .file-prev i {
     color: #4a6067;
     display: table-cell;
     font-size: 6.25em;
     vertical-align: middle; }
 
-/* line 441, ../stylesheets/modal/_modal-media.scss */
+/* line 442, ../stylesheets/partials/_modal-media.scss */
 .nav {
   display: block;
   margin-top: 0;
   padding-right: 0; }
   @media only screen and (min-width: 480px) {
-    /* line 441, ../stylesheets/modal/_modal-media.scss */
+    /* line 442, ../stylesheets/partials/_modal-media.scss */
     .nav {
       display: inline-block;
       margin-left: .313rem;
       margin-top: .65rem;
       padding-right: 1.563rem; }
-      /* line 452, ../stylesheets/modal/_modal-media.scss */
+      /* line 453, ../stylesheets/partials/_modal-media.scss */
       .nav .options-button {
         margin-bottom: 0; } }
   @media only screen and (min-width: 768px) {
-    /* line 441, ../stylesheets/modal/_modal-media.scss */
+    /* line 442, ../stylesheets/partials/_modal-media.scss */
     .nav {
       float: right; } }
-  /* line 463, ../stylesheets/modal/_modal-media.scss */
+  /* line 464, ../stylesheets/partials/_modal-media.scss */
   .nav .options-button:last-child {
     margin-right: 0; }
 
