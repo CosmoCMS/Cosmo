@@ -20,7 +20,7 @@ input[type='file'] {
 
 .dropzone {
     background-color: palette(blue, light);
-    border: 2px dashed $color-beta;
+    border: 2px dashed palette(blue, dark);
     height: 3.9063rem;
     margin-top: 1.5rem;
     text-align: center;
