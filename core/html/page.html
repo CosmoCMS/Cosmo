@@ -32,7 +32,7 @@
             <label for="description">Description</label> <span class="num-count">{{page.description.length}}</span>
             <input value="tags" type="text" ng-list ng-model="page.tags" ng-change="autocompleteTags()" placeholder="about, restaurant, food, nyc">
             <div class="tag-suggestions-triangle" ng-show="page.suggestions"></div>
-            <div class="tag-suggestions" ng-show="page.suggestions">
+            <div class="tag-suggestions" ng-show="page.suggestions.length">
                 <div ng-repeat="tag in page.suggestions | limitTo:10">
                     <a ng-click="selectSuggestion(tag)">{{tag | titlecase}}</a>
                 </div>

@@ -487,18 +487,19 @@ switch($segments[0])
                 break;
                 
             case 'PUT':
-                if($_PUT['token']){ // Update your password
-                    if($Cosmo->passwordResetVerify($segments[1], $_PUT['token']))
-                        $response = $Cosmo->userUpdate($segments[1], NULL, NULL, NULL, $_PUT['password']);
-                    else
-                        $response = FALSE;
-                } else if($segments[1]) { // Edit username, email, role, or password
+                if($segments[1]) { // Edit username, email, role, or password
                     if($username === $_PUT['username'])
                         $response = $Cosmo->userUpdate($segments[1], $_PUT['username'], $_PUT['photo'], $_PUT['facebook'], $_PUT['twitter'], $_PUT['role'], $_PUT['email'], $_PUT['password']);
                 } else if($_PUT['username']) // Reset password
                     $response['token'] = $Cosmo->passwordReset($_PUT['username']);
+                else if($_PUT['token']){ // Update your password
+                    if($Cosmo->passwordResetVerify($segments[1], $_PUT['token']))
+                        $response = $Cosmo->userUpdate($segments[1], NULL, NULL, NULL, $_PUT['password']);
+                    else
+                        $response = FALSE;
+                }
                 break;
-
+                
             case 'DELETE':
                 if($role === 'admin')
                 {
