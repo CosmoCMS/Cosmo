@@ -8,7 +8,7 @@
         </div>
     </div>
     <div>
-        <div class="top-btncase">
+        <div class="bar-top">
             <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1>Page</h1><h2>Details:</h2>
         </div>
@@ -27,11 +27,12 @@
             </div>
             <label for="type">Type</label>
             <input type='text' ng-model="page.title" ng-keyup="titleChange()" placeholder="about us, contact us">
-            <label>Title</label> <span class="num-count">{{page.title.length}}</span>
+            <span class="num-count">{{page.title.length}}</span>
+            <label>Title</label>
             <textarea value="description" ng-model="page.description" ng-keyup="descriptionChange()" placeholder="Tom's Restaurant is a diner located at 2880 Broadway (on the corner of 112th Street) in the Morningside Heights neighborhood of Manhattan in New York City."></textarea>
-            <label for="description">Description</label> <span class="num-count">{{page.description.length}}</span>
+            <span class="num-count">{{page.description.length}}</span>
+            <label for="description">Description</label>
             <input value="tags" type="text" ng-list ng-model="page.tags" ng-change="autocompleteTags()" placeholder="about, restaurant, food, nyc">
-            <div class="tag-suggestions-triangle" ng-show="page.suggestions"></div>
             <div class="tag-suggestions" ng-show="page.suggestions">
                 <div ng-repeat="tag in page.suggestions | limitTo:10">
                     <a ng-click="selectSuggestion(tag)">{{tag | titlecase}}</a>

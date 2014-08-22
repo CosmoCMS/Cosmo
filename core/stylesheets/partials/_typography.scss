@@ -1,9 +1,6 @@
-html {
-    font-size: 62.5%;
-}
-
 body {
     color: palette(blue, dark);
+    font-family: $font-alpha;
     font-smoothing: antialiased;
     font-weight: 200;
     text-shadow: none;
@@ -17,59 +14,56 @@ span {
 h1, h2, h3, h4, h5, h6 {
     color: palette(blue, dark);
     font-family: $font-alpha;
-    letter-spacing: 0;
     margin: 0;
 }
 
 h1 {
-    @include font-size(20);
+    color: palette(gray, light);
     display: inline;
+    font-size: 1.25em;
     font-weight: 700;
-    line-height: 5.75rem;
-    margin-left: $pad-delta;
-    text-shadow: none;
+    line-height: 3em;
+    margin-left: 2rem;
 }
 
 h2 {
-    @include font-size(20);
+    color: palette(gray, light);
     display: inline;
+    font-size: 1.25em;
     font-weight: 200;
-    line-height: 5.75rem;
-    margin-left: $pad-alpha;
-    text-shadow: none;
-    text-transform: none;
+    line-height: 3em;
+    margin-left: .313rem;
 }
 
 h3 {
-    @include font-size(18);
+    font-size: 1.125em;
     line-height: 1;
-    margin-bottom: $pad-delta;
+    margin-bottom: 2rem;
 }
 
 h6 {
-    border-bottom: 0;
     color: palette(blue, dark);
+    font-size: 1em;
     font-weight: 700;
-    padding-bottom: 0;
     text-transform: uppercase;
-    @include font-size(14);
 }
 
 label {
     color: palette(blue, light);
     display: inline-block;
     font-family: $font-alpha;
+    font-size: 1em;
     font-weight: 200;
-    margin-bottom: $pad-delta;
+    margin-bottom: 1.5rem;
     margin-top: 0;
-    @include font-size(14);
 }
 
 p {
+    font-size: 1em;
     font-family: $font-alpha;
     font-weight: 200;
-    margin: 0 0 $pad-beta 0;
-    @include font-size(15);
+    line-height: 1.5;
+    margin: 0 0 .625rem 0;
 
     &:active, &:focus {
         font-weight: 200;
@@ -84,10 +78,8 @@ small {
 a {
     color: palette(gray, dark);
     font-family: $font-alpha;
-    letter-spacing: 0;
     text-decoration: none;
     transition: color .1s linear;
-    @include font-size(15);
 
     &:hover {
         color: palette(blue, light);
