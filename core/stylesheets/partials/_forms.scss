@@ -4,7 +4,7 @@
 	width: 12rem;
 
 	i {
-		margin-right: $pad-alpha;
+		margin-right: .313rem;
 	}
 }
 
@@ -22,33 +22,26 @@
 /* number count for things like titles, descriptions etc... */
 .num-count {
 	color: palette(blue, light);
+	font-size: .85em;
+	font-weight: 300;
 	float: right;
 }
 
 /* Case to adjust sides of form area */
 .formcase {
 	overflow-y: scroll;
-	padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
-
-	.block {
-		display: block;
-		margin: $pad-epsilon * .5 0;
-	}
-
-	.btncase {
-		margin: 0;
-	}
+	padding: 1.563rem 1.563rem 0 1.563rem;
 }
 
 // Similar to formcase or btncase, but with a border at the bottom
 .formcase-border {
 	border-bottom: 1px solid palette(gray, mid);
-	padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
+	padding: 1.563rem;
 
 	> div {
 
 		button {
-			margin-bottom: $pad-delta;
+			margin-bottom: 2rem;
 		}
 	}
 
@@ -60,15 +53,16 @@
 /* modified select style dropdown */
 .cos-select {
 	background: url(../img/arrows.svg) no-repeat transparent right;
-	background-size: 3.5rem 1.5rem;
+	background-size: 1.5rem .938rem;
 	border: 1px solid palette(gray, mid);
+	box-sizing: border-box;
 	color: palette(blue, dark);
 	cursor: pointer;
 	font-family: $font-alpha;
-	height: 4rem;
-	margin-top: $pad-delta;
+	height: 3rem;
+	margin-top: 1.5rem;
 	outline: none;
-	padding-left: 1rem;
+	padding-left: .5rem;
 	width: 100%;
 
 	select {
@@ -76,8 +70,9 @@
 		-webkit-appearance: none;
 		appearance: none;
 		background: none;
+		border: 0;
 		cursor: pointer;
-		height: 4rem;
+		height: 3rem;
 		outline: 0;
 		padding-left: 0;
 		width: 100%;
@@ -87,8 +82,12 @@
 .cos-select-half {
 	@extend .cos-select;
 	display: inline-block;
-	margin-right: $pad-beta;
-	width: 45%;
+	margin-right: .625rem;
+	width: 8rem;
+
+	&:last-child {
+		margin-right: 0;
+	}
 }
 
 input {
@@ -102,9 +101,8 @@ input {
 	font-weight: 200;
 	margin: 0;
 	outline: none;
-	padding: 0 0 $pad-alpha 0;
+	padding: 0 0 .313rem 0;
 	width: 100%;
-	@include font-size(15);
 
 	&:focus {
 		background-color: transparent;
@@ -124,12 +122,15 @@ input {
 
 .label-case {
 	display: block;
-	margin-bottom: $pad-beta;
+	margin-bottom: .625rem;
 }
 
 .schedule-triangle {
-	margin: 0 0 -2.75rem $pad-delta * 9;
-	@include triangle(2.8rem, $color-beta, up);
+	border-bottom: 8px solid palette(blue, dark);
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	height: 0;
+	width: 0;
 }
 
 textarea {
@@ -142,14 +143,14 @@ textarea {
 .menu-creator {
 
 	i {
-		margin-right: $pad-epsilon * .25;
+		margin-right: 1.563rem * .25;
 	}
 }
 
 /* hide radio button (the round disc) we will use just the label as the radio button */
 input[type=radio] {
     display:none;
-    margin: $pad-beta;
+    margin: .625rem;
 }
 
 /* change the look of labels that are now covering the input button */
@@ -160,13 +161,13 @@ input[type=radio] + label {
 	color: palette(blue, dark);
 	display: inline-block;
 	padding: .7rem;
-	margin-bottom: $pad-alpha;
+	margin-bottom: .313rem;
 	margin-right: 0;
 
 	&:before {
 		content: "\f10c";
 		font-family: $font-beta;
-		margin-right: $pad-alpha;
+		margin-right: .313rem;
 	}
 
 	&:hover {
@@ -184,7 +185,7 @@ input[type=radio]:checked + label {
 	&:before {
 		content: "\f111";
 		font-family: $font-beta;
-		margin-right: $pad-alpha;
+		margin-right: .313rem;
 	}
 }
 
@@ -197,14 +198,14 @@ input[type=radio].active + label {
 	&:before {
 		content: "\f111";
 		font-family: $font-beta;
-		margin-right: $pad-alpha;
+		margin-right: .313rem;
 	}
 }
 
 /* hide radio button (the round disc) we will use just the label as the radio button */
 input[type=checkbox] {
 	display:none;
-	margin: $pad-beta;
+	margin: .625rem;
 }
 
 /* change the look of labels that are now covering the input button */
@@ -214,19 +215,25 @@ input[type=checkbox] + label {
 	border-color: transparent;
 	color: palette(blue, dark);
 	display: inline-block;
-	margin-bottom: $pad-delta;
+	margin-bottom: 2rem;
 	margin-right: 0;
-	padding: $pad-alpha + .2rem;
+	padding: .313rem + .2rem;
 
 	&:before {
 		content: "\f058";
 		font-family: $font-beta;
-		margin-right: $pad-alpha;
+		margin-right: .313rem;
+	}
+
+	&:hover {
+		background-color: palette(gray, mid);
+		color: palette(blue, dark);
 	}
 }
 
 /* change background color for label to make it look selected */
 input[type=checkbox]:checked + label {
+	background-color: palette(blue, dark);
 	background-image: none;
 	color: palette(gray, light);
 	display: inline-block;
@@ -241,8 +248,4 @@ input[type=checkbox]:checked + label {
 
 .form-control-focus {
 	@extend input:focus;
-}
-
-::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
-	color: palette(gray, mid);
 }

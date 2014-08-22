@@ -1,69 +1,30 @@
-.img-edit {
-    background-color: palette(gray, light);
-    height: 100%;
-    left: 0;
-    overflow-y: scroll;
-    position: fixed;
-    top: 0;
-    width: 100%;
-
-    @media #{$bp-beta} {
-        height: 50rem;
-        left: auto;
-        margin-left: -2.5rem;
-        width: 62.3rem;
-    }
-
-    @media #{$bp-gamma} {
-        height: 59rem;
-        margin-left: -$pad-epsilon;
-        overflow: hidden;
-        width: 91.5rem;
-    }
-
-    input {
-        margin-bottom: 0;
-    }
-
-    label {
-        margin-right: $pad-alpha;
-    }
-
-    .media-nav {
-        padding-bottom: 0;
-
-        @media #{$bp-beta} {
-            margin: 0;
-        }
-    }
-}
-
-.media-nav {
+.modal--bar-top {
     background-color: palette(blue, light);
     height: auto;
     margin: 0 auto;
-    padding: 0 0 $pad-alpha $pad-epsilon;
+    padding: 0 0 .313rem 1.563rem;
     position: fixed;
     width: 100%;
     z-index: 100000;
 
     @media #{$bp-beta} {
-        width: 62.3rem;
+        width: 43.75rem;
     }
 
     @media #{$bp-gamma} {
-        width: 91.5rem;
+        width: 59.375rem;
     }
 
     h1, h2 {
         color: palette(gray, white);
     }
 
+    h1 {
+        margin-left: .313rem;
+    }
+
     i {
         color: palette(gray, light);
-        display: block;
-        position: absolute;
-        top: 2.25rem;
 
         &:hover {
             color: palette(blue, dark);
@@ -75,7 +36,7 @@
     }
 
     .options-button {
-        border: 1px solid palette(blue, mid);
+        border: 1px solid palette(blue, dark);
 
         &:focus {
             background-color: palette(blue, dark);
@@ -89,42 +50,39 @@
     }
 
     .success-button, .error-button {
-        border: 1px solid palette(blue, mid);
+        border: 1px solid palette(blue, dark);
     }
 }
 
 
-.media-nav input.search-bar {
+.modal--bar-top input.search-bar {
     border: 0;
     border-bottom: 1px solid palette(gray, light);
     color: palette(gray, white);
     width: 91%;
-    margin-bottom: $pad-beta;
+    margin-bottom: .625rem;
 
     @media #{$bp-beta} {
-        width: 57rem;
+        width: 35.625rem;
     }
 
     @media #{$bp-gamma} {
-        width: 86.5rem;
+        margin-top: 1.5rem;
+        width: 14rem;
     }
 }
 
-.media-nav .options {
+.modal--bar-top .options {
     display: block;
     margin-left: 0;
 
-    @media #{$bp-delta} {
-        display: inline;
-        margin-left: $pad-delta;
+    @media #{$bp-alpha} {
+        display: inline-block;
+        margin-left: 1.5rem;
     }
 
     button {
-        margin-bottom: $pad-beta;
-
-        @media #{$bp-delta} {
-            margin-bottom: 2.5rem;
-        }
+        margin-bottom: .625rem;
     }
 
     ::-webkit-input-placeholder {
@@ -144,42 +102,67 @@
     }
 }
 
+.img-edit {
+    background-color: palette(gray, light);
+    height: 100%;
+    left: 0;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    @media #{$bp-beta} {
+        height: auto;
+        left: auto;
+        margin-left: -1.563rem;
+        width: 43.75rem;
+    }
+
+    @media #{$bp-gamma} {
+        width: 59.375rem;
+    }
+
+    input {
+        margin-bottom: 0;
+    }
+
+    label {
+        margin-right: .313rem;
+    }
+
+    .modal--bar-top {
+        padding-bottom: 0;
+
+        @media #{$bp-beta} {
+            margin: 0;
+        }
+    }
+}
+
 .img-edit .img-prev {
     display: inline-block;
     height: auto;
-    margin-top: 11rem;
+    margin-bottom: 1.5rem;
+    margin-top: 5.7rem;
     vertical-align: top;
     width: 100%;
 
     @media #{$bp-alpha} {
-        margin-top: 5.7rem;
+        margin-top: 2.6rem;
     }
 
     @media #{$bp-beta} {
-        height: 20rem;
-        padding-left: 2.5rem;
-        margin-top: 7.25rem;
-        overflow: hidden;
-    }
-
-    @media #{$bp-gamma} {
-        height: 28rem;
-    }
-
-    button {
-
-        &:last-child {
-            margin-right: 0;
-        }
+        padding-left: 1.563rem;
+        margin-top: 5.1rem;
     }
 
     .img-size {
-        padding: 0 $pad-delta;
+        padding: 0 .625rem;
         width: 100%;
 
         @media #{$bp-beta} {
             display: inline-block;
-            margin-left: $pad-beta;
+            margin-left: .625rem;
             width: 47%;
             vertical-align: top;
         }
@@ -187,59 +170,21 @@
         input[type=radio] + label {
             display: block;
             text-align: left;
-
-            @media #{$bp-beta} {
-                display: inline-block;
-            }
-        }
-
-        .blk {
-            display: block;
-            margin-bottom: $pad-alpha;
-        }
-    }
-
-    i {
-        background-color: palette(gray, mid);
-        color: palette(blue, dark);
-        display: block;
-        font-size: 10rem;
-        margin-bottom: 3rem;
-        margin-top: -2.2rem;
-        padding: $pad-delta * 2 0;
-        position: relative;
-        text-align: center;
-        width: 100%;
-
-        @media #{$bp-beta} {
-            display: inline-block;
-            width: 47%;
-        }
-
-        @media #{$bp-gamma} {
-            height: 28rem;
-            padding: 9rem;
         }
     }
 
     img, iframe {
-        padding-bottom: $pad-epsilon * .5;
-        vertical-align: top;
         width: 100%;
 
         @media #{$bp-beta} {
             width: 47%;
         }
-    }
-
-    p {
-        display: inline-block;
     }
 }
 
 .img-edit .img-info {
     display: inline-block;
-    margin-right: $pad-delta;
+    margin-right: 1.563rem;
     vertical-align: top;
     width: 100%;
 
@@ -269,7 +214,7 @@
     width: 100%;
 
     @media #{$bp-beta} {
-        top: 12.5rem;
+        top: 7.813rem;
     }
 
     .success-button {
@@ -280,29 +225,29 @@
 
 .gallery-media-wrapper {
     @extend .media-wrapper;
-    top: 19.5rem;
+    top: 12.5rem;
 
     @media #{$bp-alpha} {
-        top: 15.5rem;
+        top: 9.688rem;
     }
 
-    @media #{$bp-epsilon} {
-        top: 12.5rem;
+    @media #{$bp-gamma} {
+        top: 4.5rem;
     }
 }
 
 .media-search {
     border-bottom: 1px solid palette(gray, mid);
     color: palette(gray, light);
-    margin: 0 $pad-epsilon $pad-epsilon $pad-epsilon;
-    padding: $pad-epsilon $pad-epsilon * 2 $pad-beta 0;
+    margin: 0 1.563rem 1.563rem 1.563rem;
+    padding: 1.563rem 1.563rem * 2 .625rem 0;
     position: fixed;
     top: 6.1rem;
     width: 100%;
     z-index: 100000;
 
     button {
-        margin-bottom: $pad-alpha;
+        margin-bottom: .313rem;
     }
 
     .search-bar{
@@ -313,7 +258,7 @@
         }
 
         label {
-            margin-right: $pad-alpha;
+            margin-right: .313rem;
         }
     }
 }
@@ -322,18 +267,18 @@
     background-color: palette(gray, light);
     margin-top: -.1rem;
     overflow-y: scroll;
-    padding: $pad-epsilon $pad-epsilon 0 $pad-epsilon;
+    padding: 1.563rem 1.563rem 0 1.563rem;
 }
 
 .media-tile {
     display: inline-block;
-    margin: 0 $pad-epsilon * .5 $pad-epsilon * .5 0;
+    margin: 0 1.563rem * .5 1.563rem * .5 0;
     text-align: center;
     vertical-align: top;
     width: 100%;
 
     @media #{$bp-beta} {
-        height: 18rem;
+        height: 13.55rem;
         overflow: hidden;
         width: 48.5%;
 
@@ -342,25 +287,25 @@
         }
 
         &:nth-child(odd) {
-            margin-right: 1.7rem;
+            margin-right: 1.2rem;
         }
     }
 
     @media #{$bp-gamma} {
-        height: 28rem;
+        height: 19rem;
 
         &:nth-child(odd) {
-            margin-right: 2.5rem;
+            margin-right: 1.563rem;
         }
     }
 
     i {
         color: palette(blue, dark);
-        font-size: 16rem;
-        margin-top: 1.5rem;
+        font-size: 10em;
+        margin-top: .938rem;
 
         @media #{$bp-beta} {
-            font-size: 12rem;
+            font-size: 7.5em;
             margin-top: 0;
         }
     }
@@ -378,14 +323,13 @@
         color: palette(blue, dark);
         content: '\f00d';
         font-family: $font-beta;
-        left: 84.75rem;
+        left: 52.969rem;
         position: absolute;
         top: 2rem;
         z-index: 100001;
-        @include font-size(17.5);
 
         @media #{$bp-beta} {
-            left: 55.5rem;
+            left: 34.688rem;
         }
 
         @media #{$bp-beta} {
@@ -396,17 +340,17 @@
 
 .media-info {
     display: inline-block;
-    padding: 0 2.5rem;
+    padding: 0 1.563rem;
     width: 100%;
 
     .blk {
-        margin-bottom: $pad-epsilon;
+        margin-bottom: 1.563rem;
     }
 }
 
 .img-gallery {
     display: inline-block;
-    margin: 0 $pad-epsilon 2rem $pad-epsilon;
+    margin: 0 1.563rem 2rem 1.563rem;
     vertical-align: top;
     width: auto;
 
@@ -422,14 +366,14 @@
 }
 
 .img-gallery-info {
-    margin-left: $pad-epsilon;
+    margin-left: 1.563rem;
     overflow: hidden;
-    padding-right: $pad-delta;
+    padding-right: 2rem;
     width: auto;
 
     @media #{$bp-beta} {
         display: inline-block;
-        margin: 0 0 $pad-delta 0;
+        margin: 0 0 2rem 0;
         vertical-align: top;
         width: 53%;
     }
@@ -448,8 +392,8 @@
         color: palette(blue, dark);
         display: inline-block;
         height: auto;
-        margin: 0 $pad-beta $pad-delta $pad-beta;
-        padding: $pad-alpha $pad-beta .75rem $pad-beta;
+        margin: 0 .625rem 2rem .625rem;
+        padding: .313rem .625rem .75rem .625rem;
         width: auto;
 
         &:first-child {
@@ -462,7 +406,7 @@
         }
 
         .fa-tag {
-            margin-right: $pad-alpha;
+            margin-right: .313rem;
             vertical-align: middle;
         }
     }
@@ -490,7 +434,7 @@
     i {
         color: palette(blue, dark);
         display: table-cell;
-        font-size: 10rem;
+        font-size: 6.25em;
         vertical-align: middle;
     }
 }
@@ -500,11 +444,11 @@
     margin-top: 0;
     padding-right: 0;
 
-    @media #{$bp-alpha} and #{$bp-alpha--end} {
+    @media #{$bp-alpha} {
         display: inline-block;
-        margin-left: .5rem;
-        margin-top: 1.15rem;
-        padding-right: 5rem;
+        margin-left: .313rem;
+        margin-top: .65rem;
+        padding-right: 1.563rem;
 
         .options-button {
             margin-bottom: 0;
@@ -512,14 +456,7 @@
     }
 
     @media #{$bp-beta} {
-        display: inline-block;
         float: right;
-        margin-top: 1.15rem;
-        padding-right: 5rem;
-
-        .options-button {
-            margin-bottom: 0;
-        }
     }
 
     .options-button {

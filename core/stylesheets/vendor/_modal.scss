@@ -20,30 +20,6 @@
     }
 }
 
-@keyframes ngdialog-flyin {
-    0% {
-        opacity: 0;
-        transform: translateY(-40px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes ngdialog-flyout {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-40px);
-    }
-}
-
 h1.no-marg {
     margin-left: 0;
 }
@@ -64,7 +40,7 @@ h1.no-marg {
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 11000;
+    z-index: z(modal);
 }
 
 .ngdialog-close {
@@ -75,10 +51,9 @@ h1.no-marg {
         content: '\f00d';
         font-family: $font-beta;
         position: fixed;
-        right: 2.5rem;
+        right: 1.1rem;
         top: 1.35rem;
-        z-index: 100001;
-        @include font-size(17.5);
+        z-index: z(modal);
 
         @media #{$bp-beta} {
             color: palette(gray, light);
@@ -114,15 +89,15 @@ body.ngdialog-open {
 
     @media #{$bp-beta} {
         left: auto;
-        width: 62.3rem;
+        width: 43.75rem;
     }
 
     @media #{$bp-gamma} {
-        width: 91.5rem;
+        width: 59.375rem;
     }
 
     button {
-        margin-bottom: $pad-epsilon * .75;
+        margin-bottom: 1.563rem * .75;
     }
 
     .btncase {
@@ -139,7 +114,7 @@ body.ngdialog-open {
     }
 
     p {
-        margin-bottom: $pad-epsilon;
+        margin-bottom: 1.563rem;
     }
 }
 
@@ -153,29 +128,4 @@ body.ngdialog-open {
     position: fixed;
     right: 0;
     top: 0;
-}
-
-/* page suggestions box for link adding */
-.page-suggestions {
-    color: palette(blue, light);
-    margin-bottom: $pad-gamma;
-    padding: $pad-alpha;
-
-    &:hover {
-
-        .Page {
-            color: palette(blue, light);
-        }
-    }
-
-    a {
-        color: palette(gray, light);
-        display: block;
-        font-weight: 700;
-    }
-}
-
-.page-suggestions-triangle {
-    margin: -1.75rem 0 -.75rem .75rem;
-    @include triangle(2rem, $color-delta, up);
 }

@@ -4,6 +4,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
+/* line 9, ../stylesheets/partials/_reset.scss */
 html {
   font-family: sans-serif;
   /* 1 */
@@ -15,6 +16,7 @@ html {
 /**
  * Remove default margin.
  */
+/* line 19, ../stylesheets/partials/_reset.scss */
 body {
   margin: 0; }
 
@@ -23,6 +25,7 @@ body {
 /**
  * Correct `block` display not defined in IE 8/9.
  */
+/* line 30, ../stylesheets/partials/_reset.scss */
 article,
 aside,
 details,
@@ -41,6 +44,7 @@ summary {
  * 1. Correct `inline-block` display not defined in IE 8/9.
  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
  */
+/* line 50, ../stylesheets/partials/_reset.scss */
 audio,
 canvas,
 progress,
@@ -54,6 +58,7 @@ video {
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
+/* line 63, ../stylesheets/partials/_reset.scss */
 audio:not([controls]) {
   display: none;
   height: 0; }
@@ -62,6 +67,7 @@ audio:not([controls]) {
  * Address `[hidden]` styling not present in IE 8/9.
  * Hide the `template` element in IE, Safari, and Firefox < 22.
  */
+/* line 73, ../stylesheets/partials/_reset.scss */
 [hidden],
 template {
   display: none; }
@@ -71,12 +77,14 @@ template {
 /**
  * Remove the gray background color from active links in IE 10.
  */
+/* line 85, ../stylesheets/partials/_reset.scss */
 a {
   background: transparent; }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
+/* line 93, ../stylesheets/partials/_reset.scss */
 a:active,
 a:hover,
 .cosmo-default a.dropzone:active {
@@ -87,12 +95,14 @@ a:hover,
 /**
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
  */
+/* line 105, ../stylesheets/partials/_reset.scss */
 abbr[title] {
   border-bottom: 1px dotted; }
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
+/* line 113, ../stylesheets/partials/_reset.scss */
 b,
 strong {
   font-weight: bold; }
@@ -100,6 +110,7 @@ strong {
 /**
  * Address styling not present in Safari 5 and Chrome.
  */
+/* line 122, ../stylesheets/partials/_reset.scss */
 dfn {
   font-style: italic; }
 
@@ -107,6 +118,7 @@ dfn {
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
+/* line 131, ../stylesheets/partials/_reset.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0; }
@@ -114,6 +126,7 @@ h1 {
 /**
  * Address styling not present in IE 8/9.
  */
+/* line 140, ../stylesheets/partials/_reset.scss */
 mark {
   background: #ff0;
   color: #000; }
@@ -121,12 +134,14 @@ mark {
 /**
  * Address inconsistent and variable font size in all browsers.
  */
+/* line 149, ../stylesheets/partials/_reset.scss */
 small {
   font-size: 80%; }
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
+/* line 157, ../stylesheets/partials/_reset.scss */
 sub,
 sup {
   font-size: 75%;
@@ -134,9 +149,11 @@ sup {
   position: relative;
   vertical-align: baseline; }
 
+/* line 165, ../stylesheets/partials/_reset.scss */
 sup {
   top: -0.5em; }
 
+/* line 169, ../stylesheets/partials/_reset.scss */
 sub {
   bottom: -0.25em; }
 
@@ -145,12 +162,14 @@ sub {
 /**
  * Remove border when inside `a` element in IE 8/9.
  */
+/* line 180, ../stylesheets/partials/_reset.scss */
 img {
   border: 0; }
 
 /**
  * Correct overflow displayed oddly in IE 9.
  */
+/* line 188, ../stylesheets/partials/_reset.scss */
 svg:not(:root) {
   overflow: hidden; }
 
@@ -159,12 +178,14 @@ svg:not(:root) {
 /**
  * Address margin not present in IE 8/9 and Safari 5.
  */
+/* line 199, ../stylesheets/partials/_reset.scss */
 figure {
   margin: 1em 40px; }
 
 /**
  * Address differences between Firefox and other browsers.
  */
+/* line 207, ../stylesheets/partials/_reset.scss */
 hr {
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -174,12 +195,14 @@ hr {
 /**
  * Contain overflow in all browsers.
  */
+/* line 217, ../stylesheets/partials/_reset.scss */
 pre {
   overflow: auto; }
 
 /**
  * Address odd `em`-unit font size rendering in all browsers.
  */
+/* line 225, ../stylesheets/partials/_reset.scss */
 code,
 kbd,
 pre,
@@ -199,11 +222,12 @@ samp {
  * 2. Correct font properties not being inherited.
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
+/* line 248, ../stylesheets/partials/_reset.scss */
 button,
 input,
 .cosmo-default textarea,
 .cosmo-default .form-control,
-.cosmo-default .blk-code,
+.cosmo-default .blocks .blk-code,
 optgroup,
 select,
 textarea {
@@ -217,7 +241,9 @@ textarea {
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10.
  */
+/* line 262, ../stylesheets/partials/_reset.scss */
 button {
+  border: 0;
   overflow: visible; }
 
 /**
@@ -226,6 +252,7 @@ button {
  * Correct `button` style inheritance in Firefox, IE 8+, and Opera
  * Correct `select` style inheritance in Firefox.
  */
+/* line 274, ../stylesheets/partials/_reset.scss */
 button,
 select {
   text-transform: none; }
@@ -237,22 +264,23 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
+/* line 287, ../stylesheets/partials/_reset.scss */
 button,
 html input[type="button"],
 html .cosmo-default textarea[type="button"],
 .cosmo-default html textarea[type="button"],
 html .cosmo-default [type="button"].form-control,
 .cosmo-default html [type="button"].form-control,
-html .cosmo-default [type="button"].blk-code,
-.cosmo-default html [type="button"].blk-code,
+html .cosmo-default .blocks [type="button"].blk-code,
+.cosmo-default .blocks html [type="button"].blk-code,
 input[type="reset"],
 .cosmo-default textarea[type="reset"],
 .cosmo-default [type="reset"].form-control,
-.cosmo-default [type="reset"].blk-code,
+.cosmo-default .blocks [type="reset"].blk-code,
 input[type="submit"],
 .cosmo-default textarea[type="submit"],
 .cosmo-default [type="submit"].form-control,
-.cosmo-default [type="submit"].blk-code {
+.cosmo-default .blocks [type="submit"].blk-code {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -261,24 +289,26 @@ input[type="submit"],
 /**
  * Re-set default cursor for disabled elements.
  */
+/* line 299, ../stylesheets/partials/_reset.scss */
 button[disabled],
 html input[disabled],
 html .cosmo-default textarea[disabled],
 .cosmo-default html textarea[disabled],
 html .cosmo-default [disabled].form-control,
 .cosmo-default html [disabled].form-control,
-html .cosmo-default [disabled].blk-code,
-.cosmo-default html [disabled].blk-code {
+html .cosmo-default .blocks [disabled].blk-code,
+.cosmo-default .blocks html [disabled].blk-code {
   cursor: default; }
 
 /**
  * Remove inner padding and border in Firefox 4+.
  */
+/* line 308, ../stylesheets/partials/_reset.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner,
 .cosmo-default textarea::-moz-focus-inner,
 .cosmo-default .form-control::-moz-focus-inner,
-.cosmo-default .blk-code::-moz-focus-inner {
+.cosmo-default .blocks .blk-code::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
@@ -286,7 +316,8 @@ input::-moz-focus-inner,
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-input, .cosmo-default textarea, .cosmo-default .form-control, .cosmo-default .blk-code {
+/* line 319, ../stylesheets/partials/_reset.scss */
+input, .cosmo-default textarea, .cosmo-default .form-control, .cosmo-default .blocks .blk-code {
   line-height: normal; }
 
 /**
@@ -296,11 +327,12 @@ input, .cosmo-default textarea, .cosmo-default .form-control, .cosmo-default .bl
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
  */
-input[type="checkbox"], .cosmo-default textarea[type="checkbox"], .cosmo-default [type="checkbox"].form-control, .cosmo-default [type="checkbox"].blk-code,
+/* line 331, ../stylesheets/partials/_reset.scss */
+input[type="checkbox"], .cosmo-default textarea[type="checkbox"], .cosmo-default [type="checkbox"].form-control, .cosmo-default .blocks [type="checkbox"].blk-code,
 input[type="radio"],
 .cosmo-default textarea[type="radio"],
 .cosmo-default [type="radio"].form-control,
-.cosmo-default [type="radio"].blk-code {
+.cosmo-default .blocks [type="radio"].blk-code {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -313,11 +345,12 @@ input[type="radio"],
  * `font-size` values of the `input`, it causes the cursor style of the
  * decrement button to change from `default` to `text`.
  */
-input[type="number"]::-webkit-inner-spin-button, .cosmo-default textarea[type="number"]::-webkit-inner-spin-button, .cosmo-default [type="number"].form-control::-webkit-inner-spin-button, .cosmo-default [type="number"].blk-code::-webkit-inner-spin-button,
+/* line 343, ../stylesheets/partials/_reset.scss */
+input[type="number"]::-webkit-inner-spin-button, .cosmo-default textarea[type="number"]::-webkit-inner-spin-button, .cosmo-default [type="number"].form-control::-webkit-inner-spin-button, .cosmo-default .blocks [type="number"].blk-code::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button,
 .cosmo-default textarea[type="number"]::-webkit-outer-spin-button,
 .cosmo-default [type="number"].form-control::-webkit-outer-spin-button,
-.cosmo-default [type="number"].blk-code::-webkit-outer-spin-button {
+.cosmo-default .blocks [type="number"].blk-code::-webkit-outer-spin-button {
   height: auto; }
 
 /**
@@ -325,7 +358,8 @@ input[type="number"]::-webkit-outer-spin-button,
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-input[type="search"], .cosmo-default textarea[type="search"], .cosmo-default [type="search"].form-control, .cosmo-default [type="search"].blk-code {
+/* line 354, ../stylesheets/partials/_reset.scss */
+input[type="search"], .cosmo-default textarea[type="search"], .cosmo-default [type="search"].form-control, .cosmo-default .blocks [type="search"].blk-code {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
@@ -338,16 +372,18 @@ input[type="search"], .cosmo-default textarea[type="search"], .cosmo-default [ty
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-input[type="search"]::-webkit-search-cancel-button, .cosmo-default textarea[type="search"]::-webkit-search-cancel-button, .cosmo-default [type="search"].form-control::-webkit-search-cancel-button, .cosmo-default [type="search"].blk-code::-webkit-search-cancel-button,
+/* line 367, ../stylesheets/partials/_reset.scss */
+input[type="search"]::-webkit-search-cancel-button, .cosmo-default textarea[type="search"]::-webkit-search-cancel-button, .cosmo-default [type="search"].form-control::-webkit-search-cancel-button, .cosmo-default .blocks [type="search"].blk-code::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration,
 .cosmo-default textarea[type="search"]::-webkit-search-decoration,
 .cosmo-default [type="search"].form-control::-webkit-search-decoration,
-.cosmo-default [type="search"].blk-code::-webkit-search-decoration {
+.cosmo-default .blocks [type="search"].blk-code::-webkit-search-decoration {
   -webkit-appearance: none; }
 
 /**
  * Define consistent border, margin, and padding.
  */
+/* line 376, ../stylesheets/partials/_reset.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
@@ -357,6 +393,7 @@ fieldset {
  * 1. Correct `color` not being inherited in IE 8/9.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
+/* line 387, ../stylesheets/partials/_reset.scss */
 legend {
   border: 0;
   /* 1 */
@@ -366,6 +403,7 @@ legend {
 /**
  * Remove default vertical scrollbar in IE 8/9.
  */
+/* line 396, ../stylesheets/partials/_reset.scss */
 textarea {
   overflow: auto; }
 
@@ -373,6 +411,7 @@ textarea {
  * Don't inherit the `font-weight` (applied by a rule above).
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
+/* line 405, ../stylesheets/partials/_reset.scss */
 optgroup {
   font-weight: bold; }
 
@@ -381,33 +420,16 @@ optgroup {
 /**
  * Remove most spacing between table cells.
  */
+/* line 416, ../stylesheets/partials/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/* line 421, ../stylesheets/partials/_reset.scss */
 td,
 th {
   padding: 0; }
 
-/* fonts */
-/* mixin for font conversion to pixels from rem */
-/* colors */
-/* example mixin @include color(color, light-gray, 1); */
-/* brand dark blue */
-/* brand dark gray */
-/* brand bright blue */
-/* warning yellow */
-/* error red */
-/* success green */
-/* colors at .75 opacity */
-/* brand light gray */
-/* brand dark blue */
-/* brand dark gray */
-/* brand bright blue */
-/* warning yellow */
-/* error red */
-/* success green */
-/* padding and margins */
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -420,6 +442,7 @@ th {
   src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff?v=4.1.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.1.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+/* line 4, ../stylesheets/vendor/fontawesome/_core.scss */
 .fa {
   display: inline-block;
   font-family: FontAwesome;
@@ -430,106 +453,132 @@ th {
   -moz-osx-font-smoothing: grayscale; }
 
 /* makes the font 33% larger relative to the icon container */
+/* line 5, ../stylesheets/vendor/fontawesome/_larger.scss */
 .fa-lg {
   font-size: 1.33333em;
   line-height: 0.75em;
   vertical-align: -15%; }
 
+/* line 10, ../stylesheets/vendor/fontawesome/_larger.scss */
 .fa-2x {
   font-size: 2em; }
 
+/* line 11, ../stylesheets/vendor/fontawesome/_larger.scss */
 .fa-3x {
   font-size: 3em; }
 
+/* line 12, ../stylesheets/vendor/fontawesome/_larger.scss */
 .fa-4x {
   font-size: 4em; }
 
+/* line 13, ../stylesheets/vendor/fontawesome/_larger.scss */
 .fa-5x {
   font-size: 5em; }
 
+/* line 3, ../stylesheets/vendor/fontawesome/_fixed-width.scss */
 .fa-fw {
   width: 1.28571em;
   text-align: center; }
 
+/* line 4, ../stylesheets/vendor/fontawesome/_list.scss */
 .fa-ul {
   padding-left: 0;
   margin-left: 2.14286em;
   list-style-type: none; }
+  /* line 8, ../stylesheets/vendor/fontawesome/_list.scss */
   .fa-ul > li {
     position: relative; }
 
+/* line 10, ../stylesheets/vendor/fontawesome/_list.scss */
 .fa-li {
   position: absolute;
   left: -2.14286em;
   width: 2.14286em;
   top: 0.14286em;
   text-align: center; }
+  /* line 16, ../stylesheets/vendor/fontawesome/_list.scss */
   .fa-li.fa-lg {
     left: -1.85714em; }
 
+/* line 4, ../stylesheets/vendor/fontawesome/_bordered-pulled.scss */
 .fa-border {
   padding: .2em .25em .15em;
   border: solid 0.08em #eeeeee;
   border-radius: .1em; }
 
+/* line 10, ../stylesheets/vendor/fontawesome/_bordered-pulled.scss */
 .pull-right {
   float: right; }
 
+/* line 11, ../stylesheets/vendor/fontawesome/_bordered-pulled.scss */
 .pull-left {
   float: left; }
 
+/* line 14, ../stylesheets/vendor/fontawesome/_bordered-pulled.scss */
 .fa.pull-left {
   margin-right: .3em; }
+/* line 15, ../stylesheets/vendor/fontawesome/_bordered-pulled.scss */
 .fa.pull-right {
   margin-left: .3em; }
 
+/* line 4, ../stylesheets/vendor/fontawesome/_spinning.scss */
 .fa-spin {
   -webkit-animation: spin 2s infinite linear;
   animation: spin 2s infinite linear; }
 @-webkit-keyframes spin {
+  /* line 16, ../stylesheets/vendor/fontawesome/_spinning.scss */
   0% {
     -webkit-transform: rotate(0deg); }
 
+  /* line 17, ../stylesheets/vendor/fontawesome/_spinning.scss */
   100% {
     -webkit-transform: rotate(359deg); } }
 @keyframes spin {
+  /* line 24, ../stylesheets/vendor/fontawesome/_spinning.scss */
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg); }
 
+  /* line 28, ../stylesheets/vendor/fontawesome/_spinning.scss */
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
+/* line 4, ../stylesheets/vendor/fontawesome/_rotated-flipped.scss */
 .fa-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg); }
 
+/* line 5, ../stylesheets/vendor/fontawesome/_rotated-flipped.scss */
 .fa-rotate-180 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
 
+/* line 6, ../stylesheets/vendor/fontawesome/_rotated-flipped.scss */
 .fa-rotate-270 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg); }
 
+/* line 8, ../stylesheets/vendor/fontawesome/_rotated-flipped.scss */
 .fa-flip-horizontal {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1); }
 
+/* line 9, ../stylesheets/vendor/fontawesome/_rotated-flipped.scss */
 .fa-flip-vertical {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1); }
 
+/* line 4, ../stylesheets/vendor/fontawesome/_stacked.scss */
 .fa-stack {
   position: relative;
   display: inline-block;
@@ -538,1408 +587,1906 @@ th {
   line-height: 2em;
   vertical-align: middle; }
 
+/* line 12, ../stylesheets/vendor/fontawesome/_stacked.scss */
 .fa-stack-1x, .fa-stack-2x {
   position: absolute;
   left: 0;
   width: 100%;
   text-align: center; }
 
+/* line 18, ../stylesheets/vendor/fontawesome/_stacked.scss */
 .fa-stack-1x {
   line-height: inherit; }
 
+/* line 19, ../stylesheets/vendor/fontawesome/_stacked.scss */
 .fa-stack-2x {
   font-size: 2em; }
 
+/* line 20, ../stylesheets/vendor/fontawesome/_stacked.scss */
 .fa-inverse {
   color: white; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
+/* line 4, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-glass:before {
   content: "\f000"; }
 
+/* line 5, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-music:before {
   content: "\f001"; }
 
+/* line 6, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-search:before {
   content: "\f002"; }
 
+/* line 7, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-envelope-o:before {
   content: "\f003"; }
 
+/* line 8, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-heart:before {
   content: "\f004"; }
 
+/* line 9, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-star:before {
   content: "\f005"; }
 
+/* line 10, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-star-o:before {
   content: "\f006"; }
 
+/* line 11, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-user:before {
   content: "\f007"; }
 
+/* line 12, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-film:before {
   content: "\f008"; }
 
+/* line 13, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-th-large:before {
   content: "\f009"; }
 
+/* line 14, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-th:before {
   content: "\f00a"; }
 
+/* line 15, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-th-list:before {
   content: "\f00b"; }
 
+/* line 16, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-check:before {
   content: "\f00c"; }
 
+/* line 17, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-times:before {
   content: "\f00d"; }
 
+/* line 18, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-search-plus:before {
   content: "\f00e"; }
 
+/* line 19, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-search-minus:before {
   content: "\f010"; }
 
+/* line 20, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-power-off:before {
   content: "\f011"; }
 
+/* line 21, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-signal:before {
   content: "\f012"; }
 
+/* line 22, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-gear:before,
 .fa-cog:before {
   content: "\f013"; }
 
+/* line 24, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-trash-o:before {
   content: "\f014"; }
 
+/* line 25, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-home:before {
   content: "\f015"; }
 
+/* line 26, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-o:before {
   content: "\f016"; }
 
+/* line 27, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-clock-o:before {
   content: "\f017"; }
 
+/* line 28, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-road:before {
   content: "\f018"; }
 
+/* line 29, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-download:before {
   content: "\f019"; }
 
+/* line 30, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-circle-o-down:before {
   content: "\f01a"; }
 
+/* line 31, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-circle-o-up:before {
   content: "\f01b"; }
 
+/* line 32, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-inbox:before {
   content: "\f01c"; }
 
+/* line 33, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-play-circle-o:before {
   content: "\f01d"; }
 
+/* line 34, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-rotate-right:before,
 .fa-repeat:before {
   content: "\f01e"; }
 
+/* line 36, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-refresh:before {
   content: "\f021"; }
 
+/* line 37, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-list-alt:before {
   content: "\f022"; }
 
+/* line 38, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-lock:before {
   content: "\f023"; }
 
+/* line 39, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-flag:before {
   content: "\f024"; }
 
+/* line 40, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-headphones:before {
   content: "\f025"; }
 
+/* line 41, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-volume-off:before {
   content: "\f026"; }
 
+/* line 42, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-volume-down:before {
   content: "\f027"; }
 
+/* line 43, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-volume-up:before {
   content: "\f028"; }
 
+/* line 44, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-qrcode:before {
   content: "\f029"; }
 
+/* line 45, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-barcode:before {
   content: "\f02a"; }
 
+/* line 46, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tag:before {
   content: "\f02b"; }
 
+/* line 47, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tags:before {
   content: "\f02c"; }
 
+/* line 48, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-book:before {
   content: "\f02d"; }
 
+/* line 49, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bookmark:before {
   content: "\f02e"; }
 
+/* line 50, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-print:before {
   content: "\f02f"; }
 
+/* line 51, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-camera:before {
   content: "\f030"; }
 
+/* line 52, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-font:before {
   content: "\f031"; }
 
+/* line 53, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bold:before {
   content: "\f032"; }
 
+/* line 54, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-italic:before {
   content: "\f033"; }
 
+/* line 55, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-text-height:before {
   content: "\f034"; }
 
+/* line 56, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-text-width:before {
   content: "\f035"; }
 
+/* line 57, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-align-left:before {
   content: "\f036"; }
 
+/* line 58, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-align-center:before {
   content: "\f037"; }
 
+/* line 59, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-align-right:before {
   content: "\f038"; }
 
+/* line 60, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-align-justify:before {
   content: "\f039"; }
 
+/* line 61, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-list:before {
   content: "\f03a"; }
 
+/* line 62, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-dedent:before,
 .fa-outdent:before {
   content: "\f03b"; }
 
+/* line 64, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-indent:before {
   content: "\f03c"; }
 
+/* line 65, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-video-camera:before {
   content: "\f03d"; }
 
+/* line 66, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-photo:before,
 .fa-image:before,
 .fa-picture-o:before {
   content: "\f03e"; }
 
+/* line 69, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-pencil:before {
   content: "\f040"; }
 
+/* line 70, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-map-marker:before {
   content: "\f041"; }
 
+/* line 71, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-adjust:before {
   content: "\f042"; }
 
+/* line 72, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tint:before {
   content: "\f043"; }
 
+/* line 73, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-edit:before,
 .fa-pencil-square-o:before {
   content: "\f044"; }
 
+/* line 75, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-share-square-o:before {
   content: "\f045"; }
 
+/* line 76, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-check-square-o:before {
   content: "\f046"; }
 
+/* line 77, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrows:before {
   content: "\f047"; }
 
+/* line 78, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-step-backward:before {
   content: "\f048"; }
 
+/* line 79, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-fast-backward:before {
   content: "\f049"; }
 
+/* line 80, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-backward:before {
   content: "\f04a"; }
 
+/* line 81, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-play:before {
   content: "\f04b"; }
 
+/* line 82, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-pause:before {
   content: "\f04c"; }
 
+/* line 83, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-stop:before {
   content: "\f04d"; }
 
+/* line 84, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-forward:before {
   content: "\f04e"; }
 
+/* line 85, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-fast-forward:before {
   content: "\f050"; }
 
+/* line 86, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-step-forward:before {
   content: "\f051"; }
 
+/* line 87, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-eject:before {
   content: "\f052"; }
 
+/* line 88, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chevron-left:before {
   content: "\f053"; }
 
+/* line 89, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chevron-right:before {
   content: "\f054"; }
 
+/* line 90, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-plus-circle:before {
   content: "\f055"; }
 
+/* line 91, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-minus-circle:before {
   content: "\f056"; }
 
+/* line 92, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-times-circle:before {
   content: "\f057"; }
 
+/* line 93, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-check-circle:before {
   content: "\f058"; }
 
+/* line 94, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-question-circle:before {
   content: "\f059"; }
 
+/* line 95, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-info-circle:before {
   content: "\f05a"; }
 
+/* line 96, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-crosshairs:before {
   content: "\f05b"; }
 
+/* line 97, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-times-circle-o:before {
   content: "\f05c"; }
 
+/* line 98, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-check-circle-o:before {
   content: "\f05d"; }
 
+/* line 99, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-ban:before {
   content: "\f05e"; }
 
+/* line 100, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-left:before {
   content: "\f060"; }
 
+/* line 101, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-right:before {
   content: "\f061"; }
 
+/* line 102, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-up:before {
   content: "\f062"; }
 
+/* line 103, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-down:before {
   content: "\f063"; }
 
+/* line 104, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-mail-forward:before,
 .fa-share:before {
   content: "\f064"; }
 
+/* line 106, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-expand:before {
   content: "\f065"; }
 
+/* line 107, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-compress:before {
   content: "\f066"; }
 
+/* line 108, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-plus:before {
   content: "\f067"; }
 
+/* line 109, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-minus:before {
   content: "\f068"; }
 
+/* line 110, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-asterisk:before {
   content: "\f069"; }
 
+/* line 111, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-exclamation-circle:before {
   content: "\f06a"; }
 
+/* line 112, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-gift:before {
   content: "\f06b"; }
 
+/* line 113, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-leaf:before {
   content: "\f06c"; }
 
+/* line 114, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-fire:before {
   content: "\f06d"; }
 
+/* line 115, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-eye:before {
   content: "\f06e"; }
 
+/* line 116, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-eye-slash:before {
   content: "\f070"; }
 
+/* line 117, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-warning:before,
 .fa-exclamation-triangle:before {
   content: "\f071"; }
 
+/* line 119, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-plane:before {
   content: "\f072"; }
 
+/* line 120, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-calendar:before {
   content: "\f073"; }
 
+/* line 121, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-random:before {
   content: "\f074"; }
 
+/* line 122, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-comment:before {
   content: "\f075"; }
 
+/* line 123, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-magnet:before {
   content: "\f076"; }
 
+/* line 124, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chevron-up:before {
   content: "\f077"; }
 
+/* line 125, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chevron-down:before {
   content: "\f078"; }
 
+/* line 126, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-retweet:before {
   content: "\f079"; }
 
+/* line 127, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-shopping-cart:before {
   content: "\f07a"; }
 
+/* line 128, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-folder:before {
   content: "\f07b"; }
 
+/* line 129, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-folder-open:before {
   content: "\f07c"; }
 
+/* line 130, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrows-v:before {
   content: "\f07d"; }
 
+/* line 131, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrows-h:before {
   content: "\f07e"; }
 
+/* line 132, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bar-chart-o:before {
   content: "\f080"; }
 
+/* line 133, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-twitter-square:before {
   content: "\f081"; }
 
+/* line 134, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-facebook-square:before {
   content: "\f082"; }
 
+/* line 135, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-camera-retro:before {
   content: "\f083"; }
 
+/* line 136, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-key:before {
   content: "\f084"; }
 
+/* line 137, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-gears:before,
 .fa-cogs:before {
   content: "\f085"; }
 
+/* line 139, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-comments:before {
   content: "\f086"; }
 
+/* line 140, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-thumbs-o-up:before {
   content: "\f087"; }
 
+/* line 141, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-thumbs-o-down:before {
   content: "\f088"; }
 
+/* line 142, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-star-half:before {
   content: "\f089"; }
 
+/* line 143, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-heart-o:before {
   content: "\f08a"; }
 
+/* line 144, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sign-out:before {
   content: "\f08b"; }
 
+/* line 145, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-linkedin-square:before {
   content: "\f08c"; }
 
+/* line 146, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-thumb-tack:before {
   content: "\f08d"; }
 
+/* line 147, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-external-link:before {
   content: "\f08e"; }
 
+/* line 148, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sign-in:before {
   content: "\f090"; }
 
+/* line 149, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-trophy:before {
   content: "\f091"; }
 
+/* line 150, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-github-square:before {
   content: "\f092"; }
 
+/* line 151, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-upload:before {
   content: "\f093"; }
 
+/* line 152, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-lemon-o:before {
   content: "\f094"; }
 
+/* line 153, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-phone:before {
   content: "\f095"; }
 
+/* line 154, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-square-o:before {
   content: "\f096"; }
 
+/* line 155, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bookmark-o:before {
   content: "\f097"; }
 
+/* line 156, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-phone-square:before {
   content: "\f098"; }
 
+/* line 157, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-twitter:before {
   content: "\f099"; }
 
+/* line 158, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-facebook:before {
   content: "\f09a"; }
 
+/* line 159, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-github:before {
   content: "\f09b"; }
 
+/* line 160, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-unlock:before {
   content: "\f09c"; }
 
+/* line 161, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-credit-card:before {
   content: "\f09d"; }
 
+/* line 162, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-rss:before {
   content: "\f09e"; }
 
+/* line 163, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-hdd-o:before {
   content: "\f0a0"; }
 
+/* line 164, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bullhorn:before {
   content: "\f0a1"; }
 
+/* line 165, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bell:before {
   content: "\f0f3"; }
 
+/* line 166, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-certificate:before {
   content: "\f0a3"; }
 
+/* line 167, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-hand-o-right:before {
   content: "\f0a4"; }
 
+/* line 168, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-hand-o-left:before {
   content: "\f0a5"; }
 
+/* line 169, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-hand-o-up:before {
   content: "\f0a6"; }
 
+/* line 170, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-hand-o-down:before {
   content: "\f0a7"; }
 
+/* line 171, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-circle-left:before {
   content: "\f0a8"; }
 
+/* line 172, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-circle-right:before {
   content: "\f0a9"; }
 
+/* line 173, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-circle-up:before {
   content: "\f0aa"; }
 
+/* line 174, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-circle-down:before {
   content: "\f0ab"; }
 
+/* line 175, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-globe:before {
   content: "\f0ac"; }
 
+/* line 176, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-wrench:before {
   content: "\f0ad"; }
 
+/* line 177, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tasks:before {
   content: "\f0ae"; }
 
+/* line 178, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-filter:before {
   content: "\f0b0"; }
 
+/* line 179, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-briefcase:before {
   content: "\f0b1"; }
 
+/* line 180, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrows-alt:before {
   content: "\f0b2"; }
 
+/* line 181, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-group:before,
 .fa-users:before {
   content: "\f0c0"; }
 
+/* line 183, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chain:before,
 .fa-link:before {
   content: "\f0c1"; }
 
+/* line 185, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cloud:before {
   content: "\f0c2"; }
 
+/* line 186, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-flask:before {
   content: "\f0c3"; }
 
+/* line 187, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cut:before,
 .fa-scissors:before {
   content: "\f0c4"; }
 
+/* line 189, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-copy:before,
 .fa-files-o:before {
   content: "\f0c5"; }
 
+/* line 191, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-paperclip:before {
   content: "\f0c6"; }
 
+/* line 192, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-save:before,
 .fa-floppy-o:before {
   content: "\f0c7"; }
 
+/* line 194, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-square:before {
   content: "\f0c8"; }
 
+/* line 195, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-navicon:before,
 .fa-reorder:before,
 .fa-bars:before {
   content: "\f0c9"; }
 
+/* line 198, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-list-ul:before {
   content: "\f0ca"; }
 
+/* line 199, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-list-ol:before {
   content: "\f0cb"; }
 
+/* line 200, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-strikethrough:before {
   content: "\f0cc"; }
 
+/* line 201, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-underline:before {
   content: "\f0cd"; }
 
+/* line 202, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-table:before {
   content: "\f0ce"; }
 
+/* line 203, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-magic:before {
   content: "\f0d0"; }
 
+/* line 204, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-truck:before {
   content: "\f0d1"; }
 
+/* line 205, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-pinterest:before {
   content: "\f0d2"; }
 
+/* line 206, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-pinterest-square:before {
   content: "\f0d3"; }
 
+/* line 207, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-google-plus-square:before {
   content: "\f0d4"; }
 
+/* line 208, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-google-plus:before {
   content: "\f0d5"; }
 
+/* line 209, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-money:before {
   content: "\f0d6"; }
 
+/* line 210, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-caret-down:before {
   content: "\f0d7"; }
 
+/* line 211, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-caret-up:before {
   content: "\f0d8"; }
 
+/* line 212, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-caret-left:before {
   content: "\f0d9"; }
 
+/* line 213, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-caret-right:before {
   content: "\f0da"; }
 
+/* line 214, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-columns:before {
   content: "\f0db"; }
 
+/* line 215, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-unsorted:before,
 .fa-sort:before {
   content: "\f0dc"; }
 
+/* line 217, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sort-down:before,
 .fa-sort-desc:before {
   content: "\f0dd"; }
 
+/* line 219, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sort-up:before,
 .fa-sort-asc:before {
   content: "\f0de"; }
 
+/* line 221, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-envelope:before {
   content: "\f0e0"; }
 
+/* line 222, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-linkedin:before {
   content: "\f0e1"; }
 
+/* line 223, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-rotate-left:before,
 .fa-undo:before {
   content: "\f0e2"; }
 
+/* line 225, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-legal:before,
 .fa-gavel:before {
   content: "\f0e3"; }
 
+/* line 227, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-dashboard:before,
 .fa-tachometer:before {
   content: "\f0e4"; }
 
+/* line 229, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-comment-o:before {
   content: "\f0e5"; }
 
+/* line 230, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-comments-o:before {
   content: "\f0e6"; }
 
+/* line 231, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-flash:before,
 .fa-bolt:before {
   content: "\f0e7"; }
 
+/* line 233, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sitemap:before {
   content: "\f0e8"; }
 
+/* line 234, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-umbrella:before {
   content: "\f0e9"; }
 
+/* line 235, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-paste:before,
 .fa-clipboard:before {
   content: "\f0ea"; }
 
+/* line 237, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-lightbulb-o:before {
   content: "\f0eb"; }
 
+/* line 238, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-exchange:before {
   content: "\f0ec"; }
 
+/* line 239, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cloud-download:before {
   content: "\f0ed"; }
 
+/* line 240, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cloud-upload:before {
   content: "\f0ee"; }
 
+/* line 241, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-user-md:before {
   content: "\f0f0"; }
 
+/* line 242, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-stethoscope:before {
   content: "\f0f1"; }
 
+/* line 243, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-suitcase:before {
   content: "\f0f2"; }
 
+/* line 244, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bell-o:before {
   content: "\f0a2"; }
 
+/* line 245, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-coffee:before {
   content: "\f0f4"; }
 
+/* line 246, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cutlery:before {
   content: "\f0f5"; }
 
+/* line 247, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-text-o:before {
   content: "\f0f6"; }
 
+/* line 248, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-building-o:before {
   content: "\f0f7"; }
 
+/* line 249, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-hospital-o:before {
   content: "\f0f8"; }
 
+/* line 250, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-ambulance:before {
   content: "\f0f9"; }
 
+/* line 251, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-medkit:before {
   content: "\f0fa"; }
 
+/* line 252, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-fighter-jet:before {
   content: "\f0fb"; }
 
+/* line 253, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-beer:before {
   content: "\f0fc"; }
 
+/* line 254, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-h-square:before {
   content: "\f0fd"; }
 
+/* line 255, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-plus-square:before {
   content: "\f0fe"; }
 
+/* line 256, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-angle-double-left:before {
   content: "\f100"; }
 
+/* line 257, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-angle-double-right:before {
   content: "\f101"; }
 
+/* line 258, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-angle-double-up:before {
   content: "\f102"; }
 
+/* line 259, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-angle-double-down:before {
   content: "\f103"; }
 
+/* line 260, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-angle-left:before {
   content: "\f104"; }
 
+/* line 261, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-angle-right:before {
   content: "\f105"; }
 
+/* line 262, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-angle-up:before {
   content: "\f106"; }
 
+/* line 263, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-angle-down:before {
   content: "\f107"; }
 
+/* line 264, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-desktop:before {
   content: "\f108"; }
 
+/* line 265, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-laptop:before {
   content: "\f109"; }
 
+/* line 266, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tablet:before {
   content: "\f10a"; }
 
+/* line 267, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-mobile-phone:before,
 .fa-mobile:before {
   content: "\f10b"; }
 
+/* line 269, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-circle-o:before {
   content: "\f10c"; }
 
+/* line 270, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-quote-left:before {
   content: "\f10d"; }
 
+/* line 271, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-quote-right:before {
   content: "\f10e"; }
 
+/* line 272, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-spinner:before {
   content: "\f110"; }
 
+/* line 273, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-circle:before {
   content: "\f111"; }
 
+/* line 274, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-mail-reply:before,
 .fa-reply:before {
   content: "\f112"; }
 
+/* line 276, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-github-alt:before {
   content: "\f113"; }
 
+/* line 277, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-folder-o:before {
   content: "\f114"; }
 
+/* line 278, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-folder-open-o:before {
   content: "\f115"; }
 
+/* line 279, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-smile-o:before {
   content: "\f118"; }
 
+/* line 280, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-frown-o:before {
   content: "\f119"; }
 
+/* line 281, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-meh-o:before {
   content: "\f11a"; }
 
+/* line 282, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-gamepad:before {
   content: "\f11b"; }
 
+/* line 283, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-keyboard-o:before {
   content: "\f11c"; }
 
+/* line 284, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-flag-o:before {
   content: "\f11d"; }
 
+/* line 285, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-flag-checkered:before {
   content: "\f11e"; }
 
+/* line 286, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-terminal:before {
   content: "\f120"; }
 
+/* line 287, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-code:before {
   content: "\f121"; }
 
+/* line 288, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-mail-reply-all:before,
 .fa-reply-all:before {
   content: "\f122"; }
 
+/* line 290, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-star-half-empty:before,
 .fa-star-half-full:before,
 .fa-star-half-o:before {
   content: "\f123"; }
 
+/* line 293, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-location-arrow:before {
   content: "\f124"; }
 
+/* line 294, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-crop:before {
   content: "\f125"; }
 
+/* line 295, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-code-fork:before {
   content: "\f126"; }
 
+/* line 296, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-unlink:before,
 .fa-chain-broken:before {
   content: "\f127"; }
 
+/* line 298, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-question:before {
   content: "\f128"; }
 
+/* line 299, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-info:before {
   content: "\f129"; }
 
+/* line 300, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-exclamation:before {
   content: "\f12a"; }
 
+/* line 301, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-superscript:before {
   content: "\f12b"; }
 
+/* line 302, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-subscript:before {
   content: "\f12c"; }
 
+/* line 303, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-eraser:before {
   content: "\f12d"; }
 
+/* line 304, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-puzzle-piece:before {
   content: "\f12e"; }
 
+/* line 305, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-microphone:before {
   content: "\f130"; }
 
+/* line 306, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-microphone-slash:before {
   content: "\f131"; }
 
+/* line 307, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-shield:before {
   content: "\f132"; }
 
+/* line 308, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-calendar-o:before {
   content: "\f133"; }
 
+/* line 309, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-fire-extinguisher:before {
   content: "\f134"; }
 
+/* line 310, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-rocket:before {
   content: "\f135"; }
 
+/* line 311, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-maxcdn:before {
   content: "\f136"; }
 
+/* line 312, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chevron-circle-left:before {
   content: "\f137"; }
 
+/* line 313, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chevron-circle-right:before {
   content: "\f138"; }
 
+/* line 314, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chevron-circle-up:before {
   content: "\f139"; }
 
+/* line 315, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-chevron-circle-down:before {
   content: "\f13a"; }
 
+/* line 316, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-html5:before {
   content: "\f13b"; }
 
+/* line 317, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-css3:before {
   content: "\f13c"; }
 
+/* line 318, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-anchor:before {
   content: "\f13d"; }
 
+/* line 319, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-unlock-alt:before {
   content: "\f13e"; }
 
+/* line 320, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bullseye:before {
   content: "\f140"; }
 
+/* line 321, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-ellipsis-h:before {
   content: "\f141"; }
 
+/* line 322, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-ellipsis-v:before {
   content: "\f142"; }
 
+/* line 323, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-rss-square:before {
   content: "\f143"; }
 
+/* line 324, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-play-circle:before {
   content: "\f144"; }
 
+/* line 325, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-ticket:before {
   content: "\f145"; }
 
+/* line 326, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-minus-square:before {
   content: "\f146"; }
 
+/* line 327, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-minus-square-o:before {
   content: "\f147"; }
 
+/* line 328, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-level-up:before {
   content: "\f148"; }
 
+/* line 329, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-level-down:before {
   content: "\f149"; }
 
+/* line 330, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-check-square:before {
   content: "\f14a"; }
 
+/* line 331, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-pencil-square:before {
   content: "\f14b"; }
 
+/* line 332, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-external-link-square:before {
   content: "\f14c"; }
 
+/* line 333, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-share-square:before {
   content: "\f14d"; }
 
+/* line 334, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-compass:before {
   content: "\f14e"; }
 
+/* line 335, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-toggle-down:before,
 .fa-caret-square-o-down:before {
   content: "\f150"; }
 
+/* line 337, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-toggle-up:before,
 .fa-caret-square-o-up:before {
   content: "\f151"; }
 
+/* line 339, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-toggle-right:before,
 .fa-caret-square-o-right:before {
   content: "\f152"; }
 
+/* line 341, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-euro:before,
 .fa-eur:before {
   content: "\f153"; }
 
+/* line 343, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-gbp:before {
   content: "\f154"; }
 
+/* line 344, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-dollar:before,
 .fa-usd:before {
   content: "\f155"; }
 
+/* line 346, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-rupee:before,
 .fa-inr:before {
   content: "\f156"; }
 
+/* line 348, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cny:before,
 .fa-rmb:before,
 .fa-yen:before,
 .fa-jpy:before {
   content: "\f157"; }
 
+/* line 352, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-ruble:before,
 .fa-rouble:before,
 .fa-rub:before {
   content: "\f158"; }
 
+/* line 355, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-won:before,
 .fa-krw:before {
   content: "\f159"; }
 
+/* line 357, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bitcoin:before,
 .fa-btc:before {
   content: "\f15a"; }
 
+/* line 359, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file:before {
   content: "\f15b"; }
 
+/* line 360, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-text:before {
   content: "\f15c"; }
 
+/* line 361, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sort-alpha-asc:before {
   content: "\f15d"; }
 
+/* line 362, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sort-alpha-desc:before {
   content: "\f15e"; }
 
+/* line 363, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sort-amount-asc:before {
   content: "\f160"; }
 
+/* line 364, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sort-amount-desc:before {
   content: "\f161"; }
 
+/* line 365, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sort-numeric-asc:before {
   content: "\f162"; }
 
+/* line 366, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sort-numeric-desc:before {
   content: "\f163"; }
 
+/* line 367, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-thumbs-up:before {
   content: "\f164"; }
 
+/* line 368, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-thumbs-down:before {
   content: "\f165"; }
 
+/* line 369, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-youtube-square:before {
   content: "\f166"; }
 
+/* line 370, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-youtube:before {
   content: "\f167"; }
 
+/* line 371, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-xing:before {
   content: "\f168"; }
 
+/* line 372, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-xing-square:before {
   content: "\f169"; }
 
+/* line 373, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-youtube-play:before {
   content: "\f16a"; }
 
+/* line 374, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-dropbox:before {
   content: "\f16b"; }
 
+/* line 375, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-stack-overflow:before {
   content: "\f16c"; }
 
+/* line 376, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-instagram:before {
   content: "\f16d"; }
 
+/* line 377, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-flickr:before {
   content: "\f16e"; }
 
+/* line 378, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-adn:before {
   content: "\f170"; }
 
+/* line 379, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bitbucket:before {
   content: "\f171"; }
 
+/* line 380, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bitbucket-square:before {
   content: "\f172"; }
 
+/* line 381, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tumblr:before {
   content: "\f173"; }
 
+/* line 382, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tumblr-square:before {
   content: "\f174"; }
 
+/* line 383, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-long-arrow-down:before {
   content: "\f175"; }
 
+/* line 384, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-long-arrow-up:before {
   content: "\f176"; }
 
+/* line 385, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-long-arrow-left:before {
   content: "\f177"; }
 
+/* line 386, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-long-arrow-right:before {
   content: "\f178"; }
 
+/* line 387, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-apple:before {
   content: "\f179"; }
 
+/* line 388, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-windows:before {
   content: "\f17a"; }
 
+/* line 389, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-android:before {
   content: "\f17b"; }
 
+/* line 390, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-linux:before {
   content: "\f17c"; }
 
+/* line 391, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-dribbble:before {
   content: "\f17d"; }
 
+/* line 392, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-skype:before {
   content: "\f17e"; }
 
+/* line 393, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-foursquare:before {
   content: "\f180"; }
 
+/* line 394, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-trello:before {
   content: "\f181"; }
 
+/* line 395, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-female:before {
   content: "\f182"; }
 
+/* line 396, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-male:before {
   content: "\f183"; }
 
+/* line 397, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-gittip:before {
   content: "\f184"; }
 
+/* line 398, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sun-o:before {
   content: "\f185"; }
 
+/* line 399, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-moon-o:before {
   content: "\f186"; }
 
+/* line 400, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-archive:before {
   content: "\f187"; }
 
+/* line 401, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bug:before {
   content: "\f188"; }
 
+/* line 402, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-vk:before {
   content: "\f189"; }
 
+/* line 403, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-weibo:before {
   content: "\f18a"; }
 
+/* line 404, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-renren:before {
   content: "\f18b"; }
 
+/* line 405, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-pagelines:before {
   content: "\f18c"; }
 
+/* line 406, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-stack-exchange:before {
   content: "\f18d"; }
 
+/* line 407, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-circle-o-right:before {
   content: "\f18e"; }
 
+/* line 408, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-arrow-circle-o-left:before {
   content: "\f190"; }
 
+/* line 409, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-toggle-left:before,
 .fa-caret-square-o-left:before {
   content: "\f191"; }
 
+/* line 411, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-dot-circle-o:before {
   content: "\f192"; }
 
+/* line 412, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-wheelchair:before {
   content: "\f193"; }
 
+/* line 413, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-vimeo-square:before {
   content: "\f194"; }
 
+/* line 414, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-turkish-lira:before,
 .fa-try:before {
   content: "\f195"; }
 
+/* line 416, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-plus-square-o:before {
   content: "\f196"; }
 
+/* line 417, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-space-shuttle:before {
   content: "\f197"; }
 
+/* line 418, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-slack:before {
   content: "\f198"; }
 
+/* line 419, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-envelope-square:before {
   content: "\f199"; }
 
+/* line 420, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-wordpress:before {
   content: "\f19a"; }
 
+/* line 421, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-openid:before {
   content: "\f19b"; }
 
+/* line 422, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-institution:before,
 .fa-bank:before,
 .fa-university:before {
   content: "\f19c"; }
 
+/* line 425, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-mortar-board:before,
 .fa-graduation-cap:before {
   content: "\f19d"; }
 
+/* line 427, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-yahoo:before {
   content: "\f19e"; }
 
+/* line 428, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-google:before {
   content: "\f1a0"; }
 
+/* line 429, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-reddit:before {
   content: "\f1a1"; }
 
+/* line 430, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-reddit-square:before {
   content: "\f1a2"; }
 
+/* line 431, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-stumbleupon-circle:before {
   content: "\f1a3"; }
 
+/* line 432, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-stumbleupon:before {
   content: "\f1a4"; }
 
+/* line 433, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-delicious:before {
   content: "\f1a5"; }
 
+/* line 434, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-digg:before {
   content: "\f1a6"; }
 
+/* line 435, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-pied-piper-square:before,
 .fa-pied-piper:before {
   content: "\f1a7"; }
 
+/* line 437, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-pied-piper-alt:before {
   content: "\f1a8"; }
 
+/* line 438, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-drupal:before {
   content: "\f1a9"; }
 
+/* line 439, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-joomla:before {
   content: "\f1aa"; }
 
+/* line 440, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-language:before {
   content: "\f1ab"; }
 
+/* line 441, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-fax:before {
   content: "\f1ac"; }
 
+/* line 442, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-building:before {
   content: "\f1ad"; }
 
+/* line 443, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-child:before {
   content: "\f1ae"; }
 
+/* line 444, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-paw:before {
   content: "\f1b0"; }
 
+/* line 445, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-spoon:before {
   content: "\f1b1"; }
 
+/* line 446, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cube:before {
   content: "\f1b2"; }
 
+/* line 447, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cubes:before {
   content: "\f1b3"; }
 
+/* line 448, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-behance:before {
   content: "\f1b4"; }
 
+/* line 449, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-behance-square:before {
   content: "\f1b5"; }
 
+/* line 450, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-steam:before {
   content: "\f1b6"; }
 
+/* line 451, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-steam-square:before {
   content: "\f1b7"; }
 
+/* line 452, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-recycle:before {
   content: "\f1b8"; }
 
+/* line 453, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-automobile:before,
 .fa-car:before {
   content: "\f1b9"; }
 
+/* line 455, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-cab:before,
 .fa-taxi:before {
   content: "\f1ba"; }
 
+/* line 457, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tree:before {
   content: "\f1bb"; }
 
+/* line 458, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-spotify:before {
   content: "\f1bc"; }
 
+/* line 459, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-deviantart:before {
   content: "\f1bd"; }
 
+/* line 460, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-soundcloud:before {
   content: "\f1be"; }
 
+/* line 461, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-database:before {
   content: "\f1c0"; }
 
+/* line 462, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-pdf-o:before {
   content: "\f1c1"; }
 
+/* line 463, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-word-o:before {
   content: "\f1c2"; }
 
+/* line 464, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-excel-o:before {
   content: "\f1c3"; }
 
+/* line 465, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-powerpoint-o:before {
   content: "\f1c4"; }
 
+/* line 466, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-photo-o:before,
 .fa-file-picture-o:before,
 .fa-file-image-o:before {
   content: "\f1c5"; }
 
+/* line 469, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-zip-o:before,
 .fa-file-archive-o:before {
   content: "\f1c6"; }
 
+/* line 471, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-sound-o:before,
 .fa-file-audio-o:before {
   content: "\f1c7"; }
 
+/* line 473, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-movie-o:before,
 .fa-file-video-o:before {
   content: "\f1c8"; }
 
+/* line 475, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-file-code-o:before {
   content: "\f1c9"; }
 
+/* line 476, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-vine:before {
   content: "\f1ca"; }
 
+/* line 477, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-codepen:before {
   content: "\f1cb"; }
 
+/* line 478, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-jsfiddle:before {
   content: "\f1cc"; }
 
+/* line 479, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-life-bouy:before,
 .fa-life-saver:before,
 .fa-support:before,
 .fa-life-ring:before {
   content: "\f1cd"; }
 
+/* line 483, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-circle-o-notch:before {
   content: "\f1ce"; }
 
+/* line 484, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-ra:before,
 .fa-rebel:before {
   content: "\f1d0"; }
 
+/* line 486, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-ge:before,
 .fa-empire:before {
   content: "\f1d1"; }
 
+/* line 488, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-git-square:before {
   content: "\f1d2"; }
 
+/* line 489, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-git:before {
   content: "\f1d3"; }
 
+/* line 490, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-hacker-news:before {
   content: "\f1d4"; }
 
+/* line 491, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-tencent-weibo:before {
   content: "\f1d5"; }
 
+/* line 492, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-qq:before {
   content: "\f1d6"; }
 
+/* line 493, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-wechat:before,
 .fa-weixin:before {
   content: "\f1d7"; }
 
+/* line 495, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-send:before,
 .fa-paper-plane:before {
   content: "\f1d8"; }
 
+/* line 497, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-send-o:before,
 .fa-paper-plane-o:before {
   content: "\f1d9"; }
 
+/* line 499, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-history:before {
   content: "\f1da"; }
 
+/* line 500, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-circle-thin:before {
   content: "\f1db"; }
 
+/* line 501, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-header:before {
   content: "\f1dc"; }
 
+/* line 502, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-paragraph:before {
   content: "\f1dd"; }
 
+/* line 503, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-sliders:before {
   content: "\f1de"; }
 
+/* line 504, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-share-alt:before {
   content: "\f1e0"; }
 
+/* line 505, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-share-alt-square:before {
   content: "\f1e1"; }
 
+/* line 506, ../stylesheets/vendor/fontawesome/_icons.scss */
 .fa-bomb:before {
   content: "\f1e2"; }
 
+/* media queries used for the modal */
+/* fonts */
+/* load quicksand font */
+@font-face {
+  font-family: 'quicksand';
+  src: url("../fonts/quicksand-bold-webfont.eot");
+  src: url("../fonts/quicksand-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quicksand-bold-webfont.woff") format("woff"), url("../fonts/quicksand-bold-webfont.ttf") format("truetype"), url("../fonts/quicksand-bold-webfont.svg#quicksandbold") format("svg");
+  font-weight: 600;
+  font-style: normal; }
+@font-face {
+  font-family: 'quicksand';
+  src: url("../fonts/quicksand-bolditalic-webfont.eot");
+  src: url("../fonts/quicksand-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quicksand-bolditalic-webfont.woff") format("woff"), url("../fonts/quicksand-bolditalic-webfont.ttf") format("truetype"), url("../fonts/quicksand-bolditalic-webfont.svg#quicksandbold_italic") format("svg");
+  font-weight: 600;
+  font-style: italic; }
+@font-face {
+  font-family: 'quicksand';
+  src: url("../fonts/quicksand-italic-webfont.eot");
+  src: url("../fonts/quicksand-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quicksand-italic-webfont.woff") format("woff"), url("../fonts/quicksand-italic-webfont.ttf") format("truetype"), url("../fonts/quicksand-italic-webfont.svg#quicksanditalic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+@font-face {
+  font-family: 'quicksand';
+  src: url("../fonts/quicksand-light-webfont.eot");
+  src: url("../fonts/quicksand-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quicksand-light-webfont.woff") format("woff"), url("../fonts/quicksand-light-webfont.ttf") format("truetype"), url("../fonts/quicksand-light-webfont.svg#quicksandlight") format("svg");
+  font-weight: 300;
+  font-style: normal; }
+@font-face {
+  font-family: 'quicksand';
+  src: url("../fonts/quicksand-lightitalic-webfont.eot");
+  src: url("../fonts/quicksand-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quicksand-lightitalic-webfont.woff") format("woff"), url("../fonts/quicksand-lightitalic-webfont.ttf") format("truetype"), url("../fonts/quicksand-lightitalic-webfont.svg#quicksandlight_italic") format("svg");
+  font-weight: 300;
+  font-style: italic; }
+@font-face {
+  font-family: 'quicksand';
+  src: url("../fonts/quicksand-regular-webfont.eot");
+  src: url("../fonts/quicksand-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quicksand-regular-webfont.woff") format("woff"), url("../fonts/quicksand-regular-webfont.ttf") format("truetype"), url("../fonts/quicksand-regular-webfont.svg#quicksandregular") format("svg");
+  font-weight: 400;
+  font-style: normal; }
+/* load fonts and variables */
+/* colors */
+/* color maps */
+/* colors */
+/* sass map and mixin for easy z-indexing */
+/* line 13, ../stylesheets/style.scss */
 .cosmo-default {
+  /* section to add a new block/menu etc... */
+  /* sidebar for all of cosmo editing outside of the live editing done on page */
+  /* Sidebar transition to reveal sidebar from the left side of the screen. */
+  /**NEED TO CHANGE **/
+  /* Sidebar transition to reveal sidebar from the left side of the screen. */
+  /**NEED TO CHANGE **/
+  /* active hamburger navigation before you open the sidebar */
+  /**NEED TO CHANGE **/
+  /* bar to be used at the top of each area of the sidebar */
+  /* username and logout styling for prfl-qk-view */
   /* search bar for media modal*/
+  /* animations for dropdowns within cosmo */
   /* Standard buttons */
-  /* Container for buttons at top of sidebar */
   /* number count for things like titles, descriptions etc... */
   /* Case to adjust sides of form area */
   /* modified select style dropdown */
@@ -1952,493 +2499,501 @@ th {
   /* change background color for label to make it look selected */
   /* styling for link inserter, needs to be different than a standard input */
   /* tag styling when editing or creating new pages */ }
-  .cosmo-default html {
-    font-size: 62.5%; }
+  /* line 1, ../stylesheets/partials/_typography.scss */
   .cosmo-default body {
     color: #4a6067;
+    font-family: "quicksand", sans-serif;
     font-smoothing: antialiased;
     font-weight: 200;
-    text-shadow: none;
-    font-size: 16px;
-    line-height: 24px;
-    font-size: 1.6rem;
-    line-height: 2.4rem; }
+    text-shadow: none; }
+  /* line 9, ../stylesheets/partials/_typography.scss */
   .cosmo-default span {
     letter-spacing: 0; }
+  /* line 13, ../stylesheets/partials/_typography.scss */
   .cosmo-default h1, .cosmo-default h2, .cosmo-default h3, .cosmo-default h4, .cosmo-default h5, .cosmo-default h6 {
     color: #4a6067;
-    font-family: quicksand, sans-serif;
-    letter-spacing: 0;
+    font-family: "quicksand", sans-serif;
     margin: 0; }
+  /* line 19, ../stylesheets/partials/_typography.scss */
   .cosmo-default h1 {
-    font-size: 20px;
-    line-height: 30px;
-    font-size: 2rem;
-    line-height: 3rem;
+    color: #e9eeef;
     display: inline;
+    font-size: 1.25em;
     font-weight: 700;
-    line-height: 5.75rem;
-    margin-left: 2rem;
-    text-shadow: none; }
+    line-height: 3em;
+    margin-left: 2rem; }
+  /* line 28, ../stylesheets/partials/_typography.scss */
   .cosmo-default h2 {
-    font-size: 20px;
-    line-height: 30px;
-    font-size: 2rem;
-    line-height: 3rem;
+    color: #e9eeef;
     display: inline;
+    font-size: 1.25em;
     font-weight: 200;
-    line-height: 5.75rem;
-    margin-left: 0.5rem;
-    text-shadow: none;
-    text-transform: none; }
+    line-height: 3em;
+    margin-left: .313rem; }
+  /* line 37, ../stylesheets/partials/_typography.scss */
   .cosmo-default h3 {
-    font-size: 18px;
-    line-height: 27px;
-    font-size: 1.8rem;
-    line-height: 2.7rem;
+    font-size: 1.125em;
     line-height: 1;
     margin-bottom: 2rem; }
+  /* line 43, ../stylesheets/partials/_typography.scss */
   .cosmo-default h6 {
-    border-bottom: 0;
     color: #4a6067;
+    font-size: 1em;
     font-weight: 700;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
+    text-transform: uppercase; }
+  /* line 50, ../stylesheets/partials/_typography.scss */
   .cosmo-default label {
     color: #70c8c4;
     display: inline-block;
-    font-family: quicksand, sans-serif;
+    font-family: "quicksand", sans-serif;
+    font-size: 1em;
     font-weight: 200;
-    margin-bottom: 2rem;
-    margin-top: 0;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
+    margin-bottom: 1.5rem;
+    margin-top: 0; }
+  /* line 60, ../stylesheets/partials/_typography.scss */
   .cosmo-default p {
-    font-family: quicksand, sans-serif;
+    font-size: 1em;
+    font-family: "quicksand", sans-serif;
     font-weight: 200;
-    margin: 0 0 1rem 0;
-    font-size: 15px;
-    line-height: 22.5px;
-    font-size: 1.5rem;
-    line-height: 2.25rem; }
+    line-height: 1.5;
+    margin: 0 0 .625rem 0; }
+    /* line 67, ../stylesheets/partials/_typography.scss */
     .cosmo-default p:active, .cosmo-default p:focus {
       font-weight: 200; }
+  /* line 72, ../stylesheets/partials/_typography.scss */
   .cosmo-default small {
     display: block;
     font-size: 85%; }
+  /* line 77, ../stylesheets/partials/_typography.scss */
   .cosmo-default a {
     color: #bebebf;
-    font-family: quicksand, sans-serif;
-    letter-spacing: 0;
+    font-family: "quicksand", sans-serif;
     text-decoration: none;
     -webkit-transition: color .1s linear;
-            transition: color .1s linear;
-    font-size: 15px;
-    line-height: 22.5px;
-    font-size: 1.5rem;
-    line-height: 2.25rem; }
+            transition: color .1s linear; }
+    /* line 83, ../stylesheets/partials/_typography.scss */
     .cosmo-default a:hover, .cosmo-default a.dropzone:active {
       color: #70c8c4; }
+    /* line 87, ../stylesheets/partials/_typography.scss */
     .cosmo-default a:active, .cosmo-default a:focus {
       color: #70c8c4;
       font-weight: 200;
       outline: none; }
+  /* line 94, ../stylesheets/partials/_typography.scss */
   .cosmo-default hr {
     border-bottom: 1px solid #cbd7da;
     border-left: none;
     border-right: none;
     border-top: none; }
+  /* line 101, ../stylesheets/partials/_typography.scss */
   .cosmo-default img {
     margin: 0;
     width: 100%; }
+  /* line 1, ../stylesheets/partials/_angular-defaults.scss */
   .cosmo-default [ng-click] {
     cursor: pointer; }
+  /* line 5, ../stylesheets/partials/_angular-defaults.scss */
   .cosmo-default [ng-href] {
     cursor: pointer; }
+  /* line 2, ../stylesheets/partials/_login.scss */
   .cosmo-default .login .formcase {
-    padding: 8.5rem 2.5rem 0 2.5rem; }
+    padding: 8.5rem 1.563rem 0 1.563rem; }
+    /* line 5, ../stylesheets/partials/_login.scss */
     .cosmo-default .login .formcase button {
       margin-bottom: 0; }
+    /* line 9, ../stylesheets/partials/_login.scss */
     .cosmo-default .login .formcase div.form {
       width: 43rem;
       display: inline-block; }
       @media only screen and (min-width: 1171px) {
+        /* line 9, ../stylesheets/partials/_login.scss */
         .cosmo-default .login .formcase div.form {
           width: 28.4rem; } }
       @media only screen and (min-width: 1024px) {
+        /* line 9, ../stylesheets/partials/_login.scss */
         .cosmo-default .login .formcase div.form {
           width: 49.5%; } }
       @media only screen and (min-width: 768px) {
+        /* line 9, ../stylesheets/partials/_login.scss */
         .cosmo-default .login .formcase div.form {
           display: block;
           width: 100%; } }
+  /* line 1, ../stylesheets/partials/_global.scss */
   .cosmo-default .border-btm {
     border-bottom: 1px solid #cbd7da; }
+  /* line 5, ../stylesheets/partials/_global.scss */
   .cosmo-default label {
     display: block; }
-  .cosmo-default .new {
-    background-color: #e9eeef;
-    margin-bottom: 2.5rem;
-    text-align: left;
-    text-transform: lowercase;
-    width: auto;
-    z-index: 100000; }
-    .cosmo-default .new:focus {
-      outline: none; }
-    .cosmo-default .new:hover i, .cosmo-default .new.dropzone:active i {
-      color: #70c8c4; }
-    .cosmo-default .new i {
-      color: #4a6067;
-      margin-right: 0.5rem;
-      -webkit-transition: color .15s ease-in;
-              transition: color .15s ease-in;
-      vertical-align: middle;
-      font-size: 13px;
-      line-height: 19.5px;
-      font-size: 1.3rem;
-      line-height: 1.95rem; }
-    .cosmo-default .new p {
-      display: inline-block;
+  /* line 9, ../stylesheets/partials/_global.scss */
+  .cosmo-default ::-webkit-input-placeholder, .cosmo-default :-moz-placeholder, .cosmo-default ::-moz-placeholder, .cosmo-default :-ms-input-placeholder {
+    color: #cbd7da; }
+  /* line 14, ../stylesheets/partials/_global.scss */
+  .cosmo-default .add-new {
+    margin-top: 1.5rem; }
+    /* line 17, ../stylesheets/partials/_global.scss */
+    .cosmo-default .add-new .success-button {
       margin-bottom: 0; }
-  .cosmo-default .cosmosidebar {
+  /* line 2, ../stylesheets/partials/_sidebar.scss */
+  .cosmo-default .sidebar {
     background-color: #e9eeef;
-    border-right: 1px solid #cbd7da;
     bottom: 0;
     height: 100%;
-    left: -32rem;
+    left: -24rem;
     margin-top: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-top: 6rem;
+    padding-top: 3.9rem;
     position: fixed;
     top: 0;
-    -webkit-transition: left .3s;
-            transition: left .3s;
-    width: 32rem;
-    z-index: 9000; }
+    -webkit-transition: left .3s ease;
+            transition: left .3s ease;
+    width: 20rem;
+    z-index: 100000; }
+  /* line 20, ../stylesheets/partials/_sidebar.scss */
   .cosmo-default .userSidebarSlideOut {
-    left: 25.8rem;
-    -webkit-transition: left .3s;
-            transition: left .3s; }
+    left: 16.125rem; }
+  /* line 26, ../stylesheets/partials/_sidebar.scss */
   .cosmo-default .adminSidebarSlideOut {
-    left: 0;
-    -webkit-transition: left .3s;
-            transition: left .3s; }
+    left: 0; }
+  /* line 32, ../stylesheets/partials/_sidebar.scss */
   .cosmo-default .hamburger {
-    background-color: #e9eeef;
-    border: 1px solid #cbd7da;
-    height: 6.2rem;
-    left: -.1rem;
-    padding: .8rem;
     position: fixed;
-    top: -.1rem;
-    -webkit-transition: all .25s ease;
-            transition: all .25s ease;
-    width: 6.2rem;
-    z-index: 10000; }
-    .cosmo-default .hamburger i.active {
-      position: absolute;
-      left: -32rem;
-      height: 1.5rem;
-      margin-top: 1.15rem;
-      width: 1.5rem; }
-    .cosmo-default .hamburger i.inactive {
+    top: 0;
+    -webkit-transition: left .3s ease;
+            transition: left .3s ease;
+    z-index: 100001; }
+    /* line 38, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .hamburger i.hamburger {
+      background-color: #e9eeef;
+      border-bottom: 1px solid #cbd7da;
+      border-right: 1px solid #cbd7da;
       color: #4a6067;
-      font-size: 2.1rem;
-      height: 1.5rem;
-      left: -32rem;
-      margin-left: 1.3rem;
-      margin-top: 1rem;
-      width: 1.5rem; }
-    .cosmo-default .hamburger:hover, .cosmo-default .hamburger.dropzone:active {
-      background-color: #4a6067;
-      -webkit-transition: all .25s ease;
-              transition: all .25s ease; }
-      .cosmo-default .hamburger:hover i.inactive, .cosmo-default .hamburger.dropzone:active i.inactive {
-        color: #e9eeef; }
-  .cosmo-default .hamburgeractive {
-    background-color: transparent;
-    border: 0;
-    left: 26.5rem;
-    position: fixed; }
-    .cosmo-default .hamburgeractive:hover, .cosmo-default .hamburgeractive.dropzone:active {
-      background-color: transparent; }
-      .cosmo-default .hamburgeractive:hover i.active, .cosmo-default .hamburgeractive.dropzone:active i.active {
-        color: #4a6067;
+      font-size: 1.313rem;
+      padding: 1.219rem 1.219rem; }
+      /* line 46, ../stylesheets/partials/_sidebar.scss */
+      .cosmo-default .hamburger i.hamburger:hover, .cosmo-default .hamburger i.hamburger.dropzone:active {
+        background-color: #4a6067;
+        color: #e9eeef;
         -webkit-transition: all .25s ease;
                 transition: all .25s ease; }
-    .cosmo-default .hamburgeractive i.active {
+    /* line 53, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .hamburger i.close {
+      margin-left: -16.25rem; }
+  /* line 59, ../stylesheets/partials/_sidebar.scss */
+  .cosmo-default .hamburgeractive {
+    font-size: 1.094rem;
+    left: 16.25rem; }
+    /* line 63, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .hamburgeractive i.close {
       color: #e9eeef;
-      left: 0;
-      font-size: 1.75rem;
-      height: 1.5rem;
-      margin-left: 2.3rem;
-      margin-top: 1.35rem;
-      position: absolute;
-      -webkit-transition: all .25s ease;
-              transition: all .25s ease;
-      width: 1.5rem; }
-    .cosmo-default .hamburgeractive i.inactive {
-      display: none;
-      height: 1.5rem;
-      width: 1.5rem; }
-  .cosmo-default .prfl-qk-view {
+      margin-left: 0;
+      padding: 1.313rem 1.469rem;
+      -webkit-transition: all .3s ease;
+              transition: all .3s ease;
+      z-index: 100000; }
+    /* line 71, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .hamburgeractive i.hamburger {
+      left: -22.5rem; }
+  /* line 77, ../stylesheets/partials/_sidebar.scss */
+  .cosmo-default .bar-top {
     background-color: #70c8c4;
-    border-bottom: 1px solid #459e9b;
-    height: 6rem;
-    margin-top: -6rem;
+    height: 3.75rem;
+    margin-top: -3.9rem;
+    overflow: hidden;
     position: fixed;
-    width: 32rem;
-    z-index: 100; }
-    .cosmo-default .prfl-qk-view img {
-      height: 6rem;
-      margin: -3.2rem 1rem 0 0;
-      width: 6rem; }
-    .cosmo-default .prfl-qk-view .prfl-info {
-      display: inline-block;
-      overflow: hidden;
-      padding: 1rem 4rem 0 0;
-      width: 20rem; }
-      .cosmo-default .prfl-qk-view .prfl-info p {
-        color: white;
-        line-height: 1rem;
-        margin-bottom: 0;
-        font-size: 13px;
-        line-height: 19.5px;
-        font-size: 1.3rem;
-        line-height: 1.95rem; }
-      .cosmo-default .prfl-qk-view .prfl-info a {
-        color: #e9eeef;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 18px;
-        font-size: 1.2rem;
-        line-height: 1.8rem; }
-        .cosmo-default .prfl-qk-view .prfl-info a:hover, .cosmo-default .prfl-qk-view .prfl-info a.dropzone:active {
-          color: #4a6067; }
-  .cosmo-default input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar.form-control, .cosmo-default .search-bar.blk-code {
+    width: 20rem; }
+    /* line 85, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .bar-top h1 {
+      color: white;
+      margin-left: .313rem; }
+    /* line 90, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .bar-top h2 {
+      color: white;
+      width: 9.375rem; }
+    /* line 95, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .bar-top i {
+      color: #e9eeef;
+      margin-left: 1.563rem; }
+      /* line 99, ../stylesheets/partials/_sidebar.scss */
+      .cosmo-default .bar-top i:hover, .cosmo-default .bar-top i.dropzone:active {
+        color: #4a6067; }
+    /* line 104, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .bar-top img {
+      height: 3.75rem;
+      width: 3.75rem; }
+    /* line 109, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .bar-top .active {
+      color: #ffd32c; }
+  /* line 115, ../stylesheets/partials/_sidebar.scss */
+  .cosmo-default .prfl-info {
+    display: inline-block;
+    font-size: .85rem;
+    height: 3.125rem;
+    margin-left: .313rem;
+    overflow: hidden;
+    width: 7.813rem; }
+    /* line 123, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .prfl-info p {
+      color: white;
+      margin-bottom: 0; }
+    /* line 128, ../stylesheets/partials/_sidebar.scss */
+    .cosmo-default .prfl-info a {
+      color: #e9eeef;
+      font-weight: 700; }
+      /* line 132, ../stylesheets/partials/_sidebar.scss */
+      .cosmo-default .prfl-info a:hover, .cosmo-default .prfl-info a.dropzone:active {
+        color: #4a6067; }
+  /* line 2, ../stylesheets/partials/_input.scss */
+  .cosmo-default input.search-bar, .cosmo-default textarea.search-bar, .cosmo-default .search-bar.form-control, .cosmo-default .blocks .search-bar.blk-code {
     width: 100%; }
-  .cosmo-default input[type='file'], .cosmo-default textarea[type='file'], .cosmo-default [type='file'].form-control, .cosmo-default [type='file'].blk-code {
+  /* line 6, ../stylesheets/partials/_input.scss */
+  .cosmo-default input[type='file'], .cosmo-default textarea[type='file'], .cosmo-default [type='file'].form-control, .cosmo-default .blocks [type='file'].blk-code {
     float: left;
-    margin: -7rem 0 0 0;
+    margin: -4.375rem 0 0 0;
     opacity: 0;
-    padding: 3.75rem; }
-    .cosmo-default input[type='file']:hover, .cosmo-default input[type='file'].dropzone:active, .cosmo-default textarea[type='file'].dropzone:active, .cosmo-default [type='file'].dropzone.form-control:active, .cosmo-default [type='file'].dropzone.blk-code:active, .cosmo-default textarea[type='file']:hover, .cosmo-default [type='file'].form-control:hover, .cosmo-default [type='file'].blk-code:hover {
+    padding: 1.465rem; }
+    /* line 12, ../stylesheets/partials/_input.scss */
+    .cosmo-default input[type='file']:hover, .cosmo-default input[type='file'].dropzone:active, .cosmo-default textarea[type='file'].dropzone:active, .cosmo-default [type='file'].dropzone.form-control:active, .cosmo-default .blocks [type='file'].dropzone.blk-code:active, .cosmo-default textarea[type='file']:hover, .cosmo-default [type='file'].form-control:hover, .cosmo-default .blocks [type='file'].blk-code:hover {
       cursor: pointer; }
     @media only screen and (max-width: 439px) {
-      .cosmo-default input[type='file'], .cosmo-default textarea[type='file'], .cosmo-default [type='file'].form-control, .cosmo-default [type='file'].blk-code {
-        margin-top: -9rem; } }
+      /* line 6, ../stylesheets/partials/_input.scss */
+      .cosmo-default input[type='file'], .cosmo-default textarea[type='file'], .cosmo-default [type='file'].form-control, .cosmo-default .blocks [type='file'].blk-code {
+        margin-top: -5.625rem; } }
+  /* line 21, ../stylesheets/partials/_input.scss */
   .cosmo-default .dropzone {
     background-color: #70c8c4;
-    border: 0.2rem dashed #4a6067;
-    height: 10rem;
-    margin-top: 0;
+    border: 2px dashed #4a6067;
+    height: 3.9063rem;
+    margin-top: 1.5rem;
     text-align: center;
     -webkit-transition: all .25s ease;
-            transition: all .25s ease;
-    opacity: 0.75;
-    filter: alpha(opacity=75);
-    zoom: 1;
-    background-color: 0.75; }
+            transition: all .25s ease; }
+    /* line 29, ../stylesheets/partials/_input.scss */
     .cosmo-default .dropzone:hover, .cosmo-default .dropzone:active {
-      border: 0.2rem dashed #e9eeef;
+      border: 2px dashed #e9eeef;
       color: #70c8c4;
       -webkit-transition: all .25s ease;
               transition: all .25s ease; }
-      .cosmo-default .dropzone:hover h4, .cosmo-default .dropzone:active h4 {
-        color: #e9eeef; }
-    .cosmo-default .dropzone h4 {
-      color: #4a6067;
-      left: 0;
-      bottom: 0;
-      margin-top: 3rem;
-      right: 0;
-      -webkit-transition: all .25s ease;
-              transition: all .25s ease; }
-      @media only screen and (max-width: 439px) {
-        .cosmo-default .dropzone h4 {
-          margin-top: 1rem; } }
-      .cosmo-default .dropzone h4:hover, .cosmo-default .dropzone h4.dropzone:active {
-        color: #e9eeef;
-        -webkit-transition: all .25s ease;
-                transition: all .25s ease; }
+  /* line 40, ../stylesheets/partials/_input.scss */
   .cosmo-default .ng-file-over {
     background-color: #70c8c4;
     border: 2px dashed #e9eeef;
     -webkit-transition: all .25s ease;
             transition: all .25s ease; }
+  /* line 46, ../stylesheets/partials/_input.scss */
   .cosmo-default .uploader {
-    padding: 0 2.5rem 2.5rem 2.5rem;
+    padding: 0 1.563rem 1.563rem 1.563rem;
     position: relative;
-    top: 9rem; }
+    top: 6rem; }
+    /* line 51, ../stylesheets/partials/_input.scss */
     .cosmo-default .uploader button {
       margin-right: 0; }
+  /* line 56, ../stylesheets/partials/_input.scss */
   .cosmo-default .url {
     margin-top: 2rem; }
+    /* line 59, ../stylesheets/partials/_input.scss */
+    .cosmo-default .url p {
+      margin: 0; }
+  /* line 64, ../stylesheets/partials/_input.scss */
   .cosmo-default .url-uploader {
-    margin-bottom: 1rem;
+    margin-bottom: .625rem;
     width: 100%; }
     @media only screen and (min-width: 768px) {
+      /* line 64, ../stylesheets/partials/_input.scss */
       .cosmo-default .url-uploader {
-        margin-right: 7rem;
-        width: 39rem; } }
+        width: 33.5rem; } }
     @media only screen and (min-width: 1024px) {
+      /* line 64, ../stylesheets/partials/_input.scss */
       .cosmo-default .url-uploader {
-        width: 68rem; } }
+        width: 49.063rem; } }
+  /* line 3, ../stylesheets/partials/_settings.scss */
   .cosmo-default .settings button {
     margin-bottom: 2rem; }
+  /* line 1, ../stylesheets/partials/_lists.scss */
   .cosmo-default ol {
-    margin: 0 2rem;
+    list-style: none;
+    margin: 0;
     padding: 0; }
+  /* line 7, ../stylesheets/partials/_lists.scss */
   .cosmo-default ul {
     margin: 0;
     padding: 0; }
-    .cosmo-default ul .btncase {
-      margin-left: 0;
-      margin-top: 1rem; }
+    /* line 11, ../stylesheets/partials/_lists.scss */
     .cosmo-default ul li {
       overflow: hidden;
-      padding: 1.5rem 2.5rem;
+      padding: 1rem 1.563rem;
       text-overflow: ellipsis;
       -webkit-transition: all .1s ease;
-              transition: all .1s ease; }
+              transition: all .1s ease;
+      /**NEED TO CHANGE **/ }
+      /* line 17, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li:hover, .cosmo-default ul li.dropzone:active {
         background-color: rgba(255, 255, 255, 0.5); }
+        /* line 20, ../stylesheets/partials/_lists.scss */
         .cosmo-default ul li:hover a, .cosmo-default ul li.dropzone:active a {
           color: #4a6067; }
+        /* line 24, ../stylesheets/partials/_lists.scss */
         .cosmo-default ul li:hover i, .cosmo-default ul li.dropzone:active i {
           color: #70c8c4; }
+      /* line 29, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li a {
         color: #4a6067;
-        display: block;
-        font-weight: 200;
-        font-size: 14px;
-        line-height: 21px;
-        font-size: 1.4rem;
-        line-height: 2.1rem; }
+        display: block; }
+      /* line 34, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li .active {
         background-color: #4a6067;
         color: #70c8c4; }
-      .cosmo-default ul li .block {
-        display: block; }
+      /* line 39, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li .cos-select-half {
         margin-bottom: 0; }
+      /* line 43, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li p {
         display: inline-block;
-        margin-bottom: 0;
-        margin-right: 1rem; }
+        margin-bottom: 0; }
+      /* line 48, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li i {
         color: #4a6067;
-        margin-right: 1.25rem;
-        vertical-align: top;
-        font-size: 15px;
-        line-height: 22.5px;
-        font-size: 1.5rem;
-        line-height: 2.25rem; }
+        margin-right: .75rem; }
+      /* line 55, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li small i {
-        margin-right: 0.5rem;
-        vertical-align: middle;
-        font-size: 12.5px;
-        line-height: 18.75px;
-        font-size: 1.25rem;
-        line-height: 1.875rem; }
+        margin-right: .313rem;
+        vertical-align: middle; }
+  /* line 63, ../stylesheets/partials/_lists.scss */
   .cosmo-default ul li ul {
     background-color: #cbd7da;
     margin-left: -2.5rem;
-    width: 32rem; }
+    width: 21rem; }
+    /* line 68, ../stylesheets/partials/_lists.scss */
     .cosmo-default ul li ul li {
-      margin-right: -2.5rem;
-      padding-left: 5rem;
+      padding-left: 4.3rem;
       -webkit-transition: all .1s ease;
               transition: all .1s ease; }
+      /* line 72, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li ul li:first-child {
-        margin-top: 1.5rem; }
+        margin-top: 1rem; }
+      /* line 76, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li ul li:hover, .cosmo-default ul li ul li.dropzone:active {
         background-color: #4a6067; }
+        /* line 79, ../stylesheets/partials/_lists.scss */
         .cosmo-default ul li ul li:hover a, .cosmo-default ul li ul li.dropzone:active a {
           color: #e9eeef; }
+        /* line 83, ../stylesheets/partials/_lists.scss */
         .cosmo-default ul li ul li:hover i, .cosmo-default ul li ul li.dropzone:active i {
           color: #70c8c4; }
+      /* line 88, ../stylesheets/partials/_lists.scss */
       .cosmo-default ul li ul li:last-child {
-        margin-bottom: -1.5rem; }
-  .cosmo-default .error-button, .cosmo-default .options-button, .cosmo-default .success-button, .cosmo-default input[type=radio] + label, .cosmo-default textarea[type=radio] + label, .cosmo-default [type=radio].form-control + label, .cosmo-default [type=radio].blk-code + label, .cosmo-default input[type=checkbox] + label, .cosmo-default textarea[type=checkbox] + label, .cosmo-default [type=checkbox].form-control + label, .cosmo-default [type=checkbox].blk-code + label, .cosmo-default .quickdate-clear {
+        margin-bottom: -1rem; }
+  /* line 95, ../stylesheets/partials/_lists.scss */
+  .cosmo-default ul.ng-hide-add.ng-hide-add-active, .cosmo-default ul.ng-hide-remove,
+  .cosmo-default ul.ng-hide-remove.ng-hide-remove-active, .cosmo-default ul.ng-leave {
+    opacity: 1;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+    -webkit-transition: opacity linear 0.25s;
+            transition: opacity linear 0.25s; }
+  /* line 102, ../stylesheets/partials/_lists.scss */
+  .cosmo-default ul.ng-hide, .cosmo-default ul.ng-leave-active, .cosmo-default ul.ng-hide-add.ng-hide-add-active {
+    opacity: 0; }
+  /* line 1, ../stylesheets/partials/_buttons.scss */
+  .cosmo-default .error-button, .cosmo-default .options-button, .cosmo-default .success-button, .cosmo-default input[type=radio] + label, .cosmo-default textarea[type=radio] + label, .cosmo-default [type=radio].form-control + label, .cosmo-default .blocks [type=radio].blk-code + label, .cosmo-default input[type=checkbox] + label, .cosmo-default textarea[type=checkbox] + label, .cosmo-default [type=checkbox].form-control + label, .cosmo-default .blocks [type=checkbox].blk-code + label, .cosmo-default .quickdate-clear {
     background-color: transparent;
     color: #4a6067;
     cursor: pointer;
     display: inline-block;
+    font-size: .813em;
     font-weight: 200;
-    margin-right: 0.5rem;
+    margin: 0 .313rem .65rem 0;
     outline: none;
-    padding: 0.65rem 1.5rem 0.75rem 1.5rem;
+    padding: 0.65rem 1rem 0.75rem 1rem;
     text-align: center;
     text-transform: lowercase;
     -webkit-transition: all .25s ease-in-out;
-            transition: all .25s ease-in-out;
-    font-size: 13px;
-    line-height: 19.5px;
-    font-size: 1.3rem;
-    line-height: 1.95rem; }
-    .cosmo-default .error-button:focus, .cosmo-default .options-button:focus, .cosmo-default .success-button:focus, .cosmo-default input[type=radio] + label:focus, .cosmo-default textarea[type=radio] + label:focus, .cosmo-default [type=radio].form-control + label:focus, .cosmo-default [type=radio].blk-code + label:focus, .cosmo-default input[type=checkbox] + label:focus, .cosmo-default textarea[type=checkbox] + label:focus, .cosmo-default [type=checkbox].form-control + label:focus, .cosmo-default [type=checkbox].blk-code + label:focus, .cosmo-default .quickdate-clear:focus {
-      color: white;
-      -webkit-transition: all .25s ease;
-              transition: all .25s ease; }
-    .cosmo-default .dropzone.error-button:active, .cosmo-default .dropzone.options-button:active, .cosmo-default .dropzone.success-button:active, .cosmo-default input[type=radio] + label.dropzone:active, .cosmo-default textarea[type=radio] + label.dropzone:active, .cosmo-default [type=radio].form-control + label.dropzone:active, .cosmo-default [type=radio].blk-code + label.dropzone:active, .cosmo-default input[type=checkbox] + label.dropzone:active, .cosmo-default textarea[type=checkbox] + label.dropzone:active, .cosmo-default [type=checkbox].form-control + label.dropzone:active, .cosmo-default [type=checkbox].blk-code + label.dropzone:active, .cosmo-default .dropzone.quickdate-clear:active, .cosmo-default .error-button:hover, .cosmo-default .options-button:hover, .cosmo-default .success-button:hover, .cosmo-default input[type=radio] + label:hover, .cosmo-default textarea[type=radio] + label:hover, .cosmo-default [type=radio].form-control + label:hover, .cosmo-default [type=radio].blk-code + label:hover, .cosmo-default input[type=checkbox] + label:hover, .cosmo-default textarea[type=checkbox] + label:hover, .cosmo-default [type=checkbox].form-control + label:hover, .cosmo-default [type=checkbox].blk-code + label:hover, .cosmo-default .quickdate-clear:hover {
+            transition: all .25s ease-in-out; }
+    /* line 15, ../stylesheets/partials/_buttons.scss */
+    .cosmo-default .error-button:focus, .cosmo-default .options-button:focus, .cosmo-default .success-button:focus, .cosmo-default input[type=radio] + label:focus, .cosmo-default textarea[type=radio] + label:focus, .cosmo-default [type=radio].form-control + label:focus, .cosmo-default .blocks [type=radio].blk-code + label:focus, .cosmo-default input[type=checkbox] + label:focus, .cosmo-default textarea[type=checkbox] + label:focus, .cosmo-default [type=checkbox].form-control + label:focus, .cosmo-default .blocks [type=checkbox].blk-code + label:focus, .cosmo-default .quickdate-clear:focus {
+      color: white; }
+    /* line 19, ../stylesheets/partials/_buttons.scss */
+    .cosmo-default .dropzone.error-button:active, .cosmo-default .dropzone.options-button:active, .cosmo-default .dropzone.success-button:active, .cosmo-default input[type=radio] + label.dropzone:active, .cosmo-default textarea[type=radio] + label.dropzone:active, .cosmo-default [type=radio].form-control + label.dropzone:active, .cosmo-default .blocks [type=radio].blk-code + label.dropzone:active, .cosmo-default input[type=checkbox] + label.dropzone:active, .cosmo-default textarea[type=checkbox] + label.dropzone:active, .cosmo-default [type=checkbox].form-control + label.dropzone:active, .cosmo-default .blocks [type=checkbox].blk-code + label.dropzone:active, .cosmo-default .dropzone.quickdate-clear:active, .cosmo-default .error-button:hover, .cosmo-default .options-button:hover, .cosmo-default .success-button:hover, .cosmo-default input[type=radio] + label:hover, .cosmo-default textarea[type=radio] + label:hover, .cosmo-default [type=radio].form-control + label:hover, .cosmo-default .blocks [type=radio].blk-code + label:hover, .cosmo-default input[type=checkbox] + label:hover, .cosmo-default textarea[type=checkbox] + label:hover, .cosmo-default [type=checkbox].form-control + label:hover, .cosmo-default .blocks [type=checkbox].blk-code + label:hover, .cosmo-default .quickdate-clear:hover {
       color: #e9eeef; }
+    /* line 23, ../stylesheets/partials/_buttons.scss */
+    .cosmo-default .error-button:last-child, .cosmo-default .options-button:last-child, .cosmo-default .success-button:last-child, .cosmo-default input[type=radio] + label:last-child, .cosmo-default textarea[type=radio] + label:last-child, .cosmo-default [type=radio].form-control + label:last-child, .cosmo-default .blocks [type=radio].blk-code + label:last-child, .cosmo-default input[type=checkbox] + label:last-child, .cosmo-default textarea[type=checkbox] + label:last-child, .cosmo-default [type=checkbox].form-control + label:last-child, .cosmo-default .blocks [type=checkbox].blk-code + label:last-child, .cosmo-default .quickdate-clear:last-child {
+      margin-right: 0; }
+  /* line 31, ../stylesheets/partials/_buttons.scss */
   .cosmo-default .error-button {
     border: 1px solid #cbd7da; }
+    /* line 35, ../stylesheets/partials/_buttons.scss */
     .cosmo-default .error-button:focus {
       background-color: #b8000b;
       border: 1px solid #b8000b; }
+    /* line 40, ../stylesheets/partials/_buttons.scss */
     .cosmo-default .error-button:hover, .cosmo-default .error-button.dropzone:active {
       background-color: #ea1d2c;
       border: 1px solid #b8000b; }
+  /* line 47, ../stylesheets/partials/_buttons.scss */
   .cosmo-default .options-button {
     border: 1px solid #cbd7da; }
+    /* line 51, ../stylesheets/partials/_buttons.scss */
     .cosmo-default .options-button:focus {
       background-color: #4a6067;
       border: 1px solid #4a6067; }
+    /* line 56, ../stylesheets/partials/_buttons.scss */
     .cosmo-default .options-button:hover, .cosmo-default .options-button.dropzone:active {
       background-color: #cbd7da;
       border: 1px solid #4a6067;
       color: #4a6067; }
+  /* line 63, ../stylesheets/partials/_buttons.scss */
   .cosmo-default .success-button {
     border: 1px solid #cbd7da; }
+    /* line 67, ../stylesheets/partials/_buttons.scss */
     .cosmo-default .success-button:focus {
       background-color: #008800;
       border: 1px solid #008800; }
+    /* line 72, ../stylesheets/partials/_buttons.scss */
     .cosmo-default .success-button:hover, .cosmo-default .success-button.dropzone:active {
       background-color: #20ba2c;
       border: 1px solid #008800; }
-  .cosmo-default .top-btncase {
-    background-color: #70c8c4;
-    height: 6rem;
-    margin-top: -6rem;
-    overflow: hidden;
-    padding: 0 4.5rem 0 2.5rem;
-    position: fixed;
-    width: 32rem;
-    z-index: 100; }
-    .cosmo-default .top-btncase h1, .cosmo-default .top-btncase h2 {
-      color: white; }
-    .cosmo-default .top-btncase i {
-      color: #e9eeef;
-      position: absolute;
-      top: 2.35rem; }
-      .cosmo-default .top-btncase i:hover, .cosmo-default .top-btncase i.dropzone:active {
-        color: #4a6067; }
-    .cosmo-default .top-btncase .active {
-      color: #ffd32c; }
+  /* line 78, ../stylesheets/partials/_buttons.scss */
+  .cosmo-default .new {
+    background-color: #e9eeef;
+    opacity: 1;
+    text-align: left;
+    text-transform: lowercase;
+    width: auto;
+    z-index: 100000; }
+    /* line 86, ../stylesheets/partials/_buttons.scss */
+    .cosmo-default .new:focus {
+      outline: none; }
+    /* line 92, ../stylesheets/partials/_buttons.scss */
+    .cosmo-default .new:hover i, .cosmo-default .new.dropzone:active i {
+      color: #70c8c4; }
+    /* line 97, ../stylesheets/partials/_buttons.scss */
+    .cosmo-default .new i {
+      color: #4a6067;
+      margin-right: .313rem;
+      -webkit-transition: color .15s ease-in;
+              transition: color .15s ease-in;
+      vertical-align: middle; }
+    /* line 104, ../stylesheets/partials/_buttons.scss */
+    .cosmo-default .new p {
+      display: inline-block;
+      margin-bottom: 0; }
+  /* line 111, ../stylesheets/partials/_buttons.scss */
+  .cosmo-default .new.ng-hide-add.ng-hide-add-active,
+  .cosmo-default .new.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition: all linear 0.5s;
+            transition: all linear 0.5s; }
+  /* line 116, ../stylesheets/partials/_buttons.scss */
+  .cosmo-default .new.ng-hide {
+    opacity: 0; }
+  /* line 2, ../stylesheets/partials/_forms.scss */
   .cosmo-default .fw-label {
     display: inline-block;
     width: 12rem; }
+    /* line 6, ../stylesheets/partials/_forms.scss */
     .cosmo-default .fw-label i {
-      margin-right: 0.5rem; }
+      margin-right: .313rem; }
+  /* line 11, ../stylesheets/partials/_forms.scss */
   .cosmo-default .hide {
     border: 0;
     clip: rect(0 0 0 0);
@@ -2448,52 +3003,65 @@ th {
     padding: 0;
     position: absolute;
     width: .1rem; }
+  /* line 23, ../stylesheets/partials/_forms.scss */
   .cosmo-default .num-count {
     color: #70c8c4;
+    font-size: .85em;
+    font-weight: 300;
     float: right; }
+  /* line 31, ../stylesheets/partials/_forms.scss */
   .cosmo-default .formcase {
     overflow-y: scroll;
-    padding: 2.5rem 2.5rem 0 2.5rem; }
-    .cosmo-default .formcase .block {
-      display: block;
-      margin: 1.25rem 0; }
-    .cosmo-default .formcase .btncase {
-      margin: 0; }
+    padding: 1.563rem 1.563rem 0 1.563rem; }
+  /* line 37, ../stylesheets/partials/_forms.scss */
   .cosmo-default .formcase-border {
     border-bottom: 1px solid #cbd7da;
-    padding: 2.5rem 2.5rem 0 2.5rem; }
+    padding: 1.563rem; }
+    /* line 43, ../stylesheets/partials/_forms.scss */
     .cosmo-default .formcase-border > div button {
       margin-bottom: 2rem; }
-    .cosmo-default .formcase-border input, .cosmo-default .formcase-border textarea, .cosmo-default .formcase-border .form-control, .cosmo-default .formcase-border .blk-code {
+    /* line 48, ../stylesheets/partials/_forms.scss */
+    .cosmo-default .formcase-border input, .cosmo-default .formcase-border textarea, .cosmo-default .formcase-border .form-control, .cosmo-default .formcase-border .blocks .blk-code, .cosmo-default .blocks .formcase-border .blk-code {
       border-bottom: 1px solid #cbd7da; }
+  /* line 54, ../stylesheets/partials/_forms.scss */
   .cosmo-default .cos-select, .cosmo-default .cos-select-half {
     background: url(../img/arrows.svg) no-repeat transparent right;
-    -webkit-background-size: 3.5rem 1.5rem;
-            background-size: 3.5rem 1.5rem;
+    -webkit-background-size: 1.5rem .938rem;
+            background-size: 1.5rem .938rem;
     border: 1px solid #cbd7da;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
     color: #4a6067;
     cursor: pointer;
-    font-family: quicksand, sans-serif;
-    height: 4rem;
-    margin-top: 2rem;
+    font-family: "quicksand", sans-serif;
+    height: 3rem;
+    margin-top: 1.5rem;
     outline: none;
-    padding-left: 1rem;
+    padding-left: .5rem;
     width: 100%; }
+    /* line 68, ../stylesheets/partials/_forms.scss */
     .cosmo-default .cos-select select, .cosmo-default .cos-select-half select {
       -moz-appearance: none;
       -webkit-appearance: none;
       appearance: none;
       background: none;
+      border: 0;
       cursor: pointer;
-      height: 4rem;
+      height: 3rem;
       outline: 0;
       padding-left: 0;
       width: 100%; }
+  /* line 82, ../stylesheets/partials/_forms.scss */
   .cosmo-default .cos-select-half {
     display: inline-block;
-    margin-right: 1rem;
-    width: 45%; }
-  .cosmo-default input, .cosmo-default textarea, .cosmo-default .form-control, .cosmo-default .blk-code {
+    margin-right: .625rem;
+    width: 8rem; }
+    /* line 88, ../stylesheets/partials/_forms.scss */
+    .cosmo-default .cos-select-half:last-child {
+      margin-right: 0; }
+  /* line 93, ../stylesheets/partials/_forms.scss */
+  .cosmo-default input, .cosmo-default textarea, .cosmo-default .form-control, .cosmo-default .blocks .blk-code {
     background-color: transparent;
     border: 0;
     border-bottom: 1px solid #cbd7da;
@@ -2501,205 +3069,223 @@ th {
             box-shadow: none;
     color: #4a6067;
     display: inline-block;
-    font-family: quicksand, sans-serif;
+    font-family: "quicksand", sans-serif;
     font-weight: 200;
     margin: 0;
     outline: none;
-    padding: 0 0 0.5rem 0;
-    width: 100%;
-    font-size: 15px;
-    line-height: 22.5px;
-    font-size: 1.5rem;
-    line-height: 2.25rem; }
-    .cosmo-default input:focus, .cosmo-default textarea:focus, .cosmo-default .form-control:focus, .cosmo-default .form-control-focus, .cosmo-default .blk-code:focus {
+    padding: 0 0 .313rem 0;
+    width: 100%; }
+    /* line 107, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input:focus, .cosmo-default textarea:focus, .cosmo-default .form-control:focus, .cosmo-default .form-control-focus, .cosmo-default .blocks .blk-code:focus {
       background-color: transparent;
       border: 0;
       border-bottom: 1px solid #bebebf; }
-    .cosmo-default input:hover, .cosmo-default input.dropzone:active, .cosmo-default textarea.dropzone:active, .cosmo-default .dropzone.form-control:active, .cosmo-default .dropzone.blk-code:active, .cosmo-default textarea:hover, .cosmo-default .form-control:hover, .cosmo-default .blk-code:hover {
+    /* line 113, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input:hover, .cosmo-default input.dropzone:active, .cosmo-default textarea.dropzone:active, .cosmo-default .dropzone.form-control:active, .cosmo-default .blocks .dropzone.blk-code:active, .cosmo-default textarea:hover, .cosmo-default .form-control:hover, .cosmo-default .blocks .blk-code:hover {
       background-color: transparent;
       cursor: text; }
-    .cosmo-default input span, .cosmo-default textarea span, .cosmo-default .form-control span, .cosmo-default .blk-code span {
+    /* line 118, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input span, .cosmo-default textarea span, .cosmo-default .form-control span, .cosmo-default .blocks .blk-code span {
       color: #4a6067; }
+  /* line 123, ../stylesheets/partials/_forms.scss */
   .cosmo-default .label-case {
     display: block;
-    margin-bottom: 1rem; }
+    margin-bottom: .625rem; }
+  /* line 128, ../stylesheets/partials/_forms.scss */
   .cosmo-default .schedule-triangle {
-    margin: 0 0 -2.75rem 18rem;
+    border-bottom: 8px solid #4a6067;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
     height: 0;
-    width: 0;
-    border-left: 1.4rem solid transparent;
-    border-right: 1.4rem solid transparent;
-    border-bottom: 1.4rem solid #4a6067; }
+    width: 0; }
+  /* line 136, ../stylesheets/partials/_forms.scss */
   .cosmo-default textarea {
     min-height: 9rem;
     resize: vertical; }
+  /* line 145, ../stylesheets/partials/_forms.scss */
   .cosmo-default .menu-creator i {
-    margin-right: 0.625rem; }
-  .cosmo-default input[type=radio], .cosmo-default textarea[type=radio], .cosmo-default [type=radio].form-control, .cosmo-default [type=radio].blk-code {
+    margin-right: 0.39075rem; }
+  /* line 151, ../stylesheets/partials/_forms.scss */
+  .cosmo-default input[type=radio], .cosmo-default textarea[type=radio], .cosmo-default [type=radio].form-control, .cosmo-default .blocks [type=radio].blk-code {
     display: none;
-    margin: 1rem; }
-  .cosmo-default input[type=radio] + label, .cosmo-default textarea[type=radio] + label, .cosmo-default [type=radio].form-control + label, .cosmo-default [type=radio].blk-code + label {
+    margin: .625rem; }
+  /* line 157, ../stylesheets/partials/_forms.scss */
+  .cosmo-default input[type=radio] + label, .cosmo-default textarea[type=radio] + label, .cosmo-default [type=radio].form-control + label, .cosmo-default .blocks [type=radio].blk-code + label {
     background-color: #e9eeef;
     border-color: transparent;
     color: #4a6067;
     display: inline-block;
     padding: .7rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: .313rem;
     margin-right: 0; }
-    .cosmo-default input[type=radio] + label:before, .cosmo-default textarea[type=radio] + label:before, .cosmo-default [type=radio].form-control + label:before, .cosmo-default [type=radio].blk-code + label:before {
+    /* line 167, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input[type=radio] + label:before, .cosmo-default textarea[type=radio] + label:before, .cosmo-default [type=radio].form-control + label:before, .cosmo-default .blocks [type=radio].blk-code + label:before {
       content: "\f10c";
       font-family: "FontAwesome";
-      margin-right: 0.5rem; }
-    .cosmo-default input[type=radio] + label:hover, .cosmo-default textarea[type=radio] + label:hover, .cosmo-default [type=radio].form-control + label:hover, .cosmo-default [type=radio].blk-code + label:hover, .cosmo-default input[type=radio] + label.dropzone:active, .cosmo-default textarea[type=radio] + label.dropzone:active, .cosmo-default [type=radio].form-control + label.dropzone:active, .cosmo-default [type=radio].blk-code + label.dropzone:active {
+      margin-right: .313rem; }
+    /* line 173, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input[type=radio] + label:hover, .cosmo-default textarea[type=radio] + label:hover, .cosmo-default [type=radio].form-control + label:hover, .cosmo-default .blocks [type=radio].blk-code + label:hover, .cosmo-default input[type=radio] + label.dropzone:active, .cosmo-default textarea[type=radio] + label.dropzone:active, .cosmo-default [type=radio].form-control + label.dropzone:active, .cosmo-default .blocks [type=radio].blk-code + label.dropzone:active {
       background-color: #cbd7da;
       color: #4a6067; }
-  .cosmo-default input[type=radio]:checked + label, .cosmo-default textarea[type=radio]:checked + label, .cosmo-default [type=radio].form-control:checked + label, .cosmo-default [type=radio].blk-code:checked + label {
+  /* line 179, ../stylesheets/partials/_forms.scss */
+  .cosmo-default input[type=radio]:checked + label, .cosmo-default textarea[type=radio]:checked + label, .cosmo-default [type=radio].form-control:checked + label, .cosmo-default .blocks [type=radio].blk-code:checked + label {
     background-color: #4a6067;
     background-image: none;
     color: #e9eeef;
     display: inline-block; }
-    .cosmo-default input[type=radio]:checked + label:before, .cosmo-default textarea[type=radio]:checked + label:before, .cosmo-default [type=radio].form-control:checked + label:before, .cosmo-default [type=radio].blk-code:checked + label:before {
+    /* line 185, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input[type=radio]:checked + label:before, .cosmo-default textarea[type=radio]:checked + label:before, .cosmo-default [type=radio].form-control:checked + label:before, .cosmo-default .blocks [type=radio].blk-code:checked + label:before {
       content: "\f111";
       font-family: "FontAwesome";
-      margin-right: 0.5rem; }
-  .cosmo-default input[type=radio].active + label, .cosmo-default textarea[type=radio].active + label, .cosmo-default [type=radio].active.form-control + label, .cosmo-default [type=radio].active.blk-code + label {
+      margin-right: .313rem; }
+  /* line 192, ../stylesheets/partials/_forms.scss */
+  .cosmo-default input[type=radio].active + label, .cosmo-default textarea[type=radio].active + label, .cosmo-default [type=radio].active.form-control + label, .cosmo-default .blocks [type=radio].active.blk-code + label {
     background-color: #4a6067;
     background-image: none;
     color: #e9eeef;
     display: inline-block; }
-    .cosmo-default input[type=radio].active + label:before, .cosmo-default textarea[type=radio].active + label:before, .cosmo-default [type=radio].active.form-control + label:before, .cosmo-default [type=radio].active.blk-code + label:before {
+    /* line 198, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input[type=radio].active + label:before, .cosmo-default textarea[type=radio].active + label:before, .cosmo-default [type=radio].active.form-control + label:before, .cosmo-default .blocks [type=radio].active.blk-code + label:before {
       content: "\f111";
       font-family: "FontAwesome";
-      margin-right: 0.5rem; }
-  .cosmo-default input[type=checkbox], .cosmo-default textarea[type=checkbox], .cosmo-default [type=checkbox].form-control, .cosmo-default [type=checkbox].blk-code {
+      margin-right: .313rem; }
+  /* line 206, ../stylesheets/partials/_forms.scss */
+  .cosmo-default input[type=checkbox], .cosmo-default textarea[type=checkbox], .cosmo-default [type=checkbox].form-control, .cosmo-default .blocks [type=checkbox].blk-code {
     display: none;
-    margin: 1rem; }
-  .cosmo-default input[type=checkbox] + label, .cosmo-default textarea[type=checkbox] + label, .cosmo-default [type=checkbox].form-control + label, .cosmo-default [type=checkbox].blk-code + label {
+    margin: .625rem; }
+  /* line 212, ../stylesheets/partials/_forms.scss */
+  .cosmo-default input[type=checkbox] + label, .cosmo-default textarea[type=checkbox] + label, .cosmo-default [type=checkbox].form-control + label, .cosmo-default .blocks [type=checkbox].blk-code + label {
     background-color: #e9eeef;
     border-color: transparent;
     color: #4a6067;
     display: inline-block;
     margin-bottom: 2rem;
     margin-right: 0;
-    padding: 0.7rem; }
-    .cosmo-default input[type=checkbox] + label:before, .cosmo-default textarea[type=checkbox] + label:before, .cosmo-default [type=checkbox].form-control + label:before, .cosmo-default [type=checkbox].blk-code + label:before {
+    padding: 0.513rem; }
+    /* line 222, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input[type=checkbox] + label:before, .cosmo-default textarea[type=checkbox] + label:before, .cosmo-default [type=checkbox].form-control + label:before, .cosmo-default .blocks [type=checkbox].blk-code + label:before {
       content: "\f058";
       font-family: "FontAwesome";
-      margin-right: 0.5rem; }
-  .cosmo-default input[type=checkbox]:checked + label, .cosmo-default textarea[type=checkbox]:checked + label, .cosmo-default [type=checkbox].form-control:checked + label, .cosmo-default [type=checkbox].blk-code:checked + label {
+      margin-right: .313rem; }
+    /* line 228, ../stylesheets/partials/_forms.scss */
+    .cosmo-default input[type=checkbox] + label:hover, .cosmo-default textarea[type=checkbox] + label:hover, .cosmo-default [type=checkbox].form-control + label:hover, .cosmo-default .blocks [type=checkbox].blk-code + label:hover, .cosmo-default input[type=checkbox] + label.dropzone:active, .cosmo-default textarea[type=checkbox] + label.dropzone:active, .cosmo-default [type=checkbox].form-control + label.dropzone:active, .cosmo-default .blocks [type=checkbox].blk-code + label.dropzone:active {
+      background-color: #cbd7da;
+      color: #4a6067; }
+  /* line 235, ../stylesheets/partials/_forms.scss */
+  .cosmo-default input[type=checkbox]:checked + label, .cosmo-default textarea[type=checkbox]:checked + label, .cosmo-default [type=checkbox].form-control:checked + label, .cosmo-default .blocks [type=checkbox].blk-code:checked + label {
+    background-color: #4a6067;
     background-image: none;
     color: #e9eeef;
     display: inline-block; }
+  /* line 244, ../stylesheets/partials/_forms.scss */
   .cosmo-default .form-control {
     min-height: 3.1rem; }
-  .cosmo-default ::-webkit-input-placeholder, .cosmo-default :-moz-placeholder, .cosmo-default ::-moz-placeholder, .cosmo-default :-ms-input-placeholder {
-    color: #cbd7da; }
+  /* line 2, ../stylesheets/partials/_tags.scss */
   .cosmo-default .tag-suggestions {
-    color: #70c8c4;
-    padding: 0.625rem;
-    margin-bottom: 1.875rem;
-    max-height: 26rem;
+    background-color: #cbd7da;
+    padding: 0.39075rem;
     overflow-y: scroll; }
-    .cosmo-default .tag-suggestions:hover .tag, .cosmo-default .tag-suggestions.dropzone:active .tag {
-      background-color: #70c8c4; }
+    /* line 7, ../stylesheets/partials/_tags.scss */
     .cosmo-default .tag-suggestions a {
-      color: #e9eeef;
+      color: #4a6067;
       display: block;
       font-weight: 700;
-      padding: .5rem 0;
-      font-size: 17.5px;
-      line-height: 26.25px;
-      font-size: 1.75rem;
-      line-height: 2.625rem; }
+      padding: .313rem 0; }
+      /* line 13, ../stylesheets/partials/_tags.scss */
       .cosmo-default .tag-suggestions a:hover, .cosmo-default .tag-suggestions a.dropzone:active {
-        color: #bae4e2; }
-  .cosmo-default .tag-suggestions-triangle {
-    margin: -1rem 0 -0.7rem 0.7rem;
-    height: 0;
-    width: 0;
-    border-left: 1.4rem solid transparent;
-    border-right: 1.4rem solid transparent;
-    border-bottom: 1.4rem solid #70c8c4; }
+        color: #e9eeef; }
+  /* line 1, ../stylesheets/partials/_page.scss */
   .cosmo-default .new-version {
     background-color: #ffd32c;
-    margin-bottom: 6rem;
-    margin-top: -6rem;
+    margin-top: -4rem;
     position: fixed;
-    width: 32rem;
-    z-index: 100001; }
+    width: 20rem;
+    z-index: 100000; }
+    /* line 8, ../stylesheets/partials/_page.scss */
     .cosmo-default .new-version p {
       color: #4a6067;
-      padding: 1.75rem 2.5rem 0 2.5rem; }
+      padding: 1.75rem 1.563rem 0 1.563rem; }
+    /* line 13, ../stylesheets/partials/_page.scss */
     .cosmo-default .new-version .btn-case {
-      padding: 1.25em 0 2.5rem 2.5rem;
+      padding: 1.25em 0 1.563rem 1.563rem;
       margin-bottom: 0; }
+    /* line 18, ../stylesheets/partials/_page.scss */
     .cosmo-default .new-version button {
       border: 1px solid #4a6067; }
+  /* line 23, ../stylesheets/partials/_page.scss */
   .cosmo-default .confirm {
     background-color: #ffd32c;
-    margin: 0 -2.5rem 2rem -2.5rem;
-    padding: 2.5rem; }
+    margin: 0 -1.563rem 1.5rem -1.563rem;
+    padding: 1.563rem; }
+    /* line 28, ../stylesheets/partials/_page.scss */
     .cosmo-default .confirm button {
       border: 1px solid #4a6067; }
-    .cosmo-default .confirm p {
-      font-size: 14px;
-      line-height: 21px;
-      font-size: 1.4rem;
-      line-height: 2.1rem; }
+  /* line 33, ../stylesheets/partials/_page.scss */
   .cosmo-default .push-down {
     background-color: transparent;
     display: block;
     height: 17rem; }
+  /* line 3, ../stylesheets/partials/_users.scss */
   .cosmo-default .users .cos-select, .cosmo-default .users .cos-select-half {
     margin-top: 0; }
+  /* line 11, ../stylesheets/partials/_users.scss */
   .cosmo-default .users li label:last-child {
     margin-bottom: 0; }
+  /* line 2, ../stylesheets/partials/_roles.scss */
   .cosmo-default .role-permissions p {
     display: block;
     margin: 0 0 2rem 0; }
+  /* line 1, ../stylesheets/partials/_tables.scss */
   .cosmo-default .tables {
-    padding-top: 9rem; }
+    padding-top: 5.625rem; }
+  /* line 5, ../stylesheets/partials/_tables.scss */
   .cosmo-default button.create-table {
-    margin-top: 2.5rem; }
+    margin-top: 1.563rem; }
+  /* line 1, ../stylesheets/partials/_modules.scss */
   .cosmo-default .mod-name {
     display: block;
     margin-bottom: 2rem;
     margin-right: 0; }
+  /* line 3, ../stylesheets/partials/_revisions.scss */
   .cosmo-default .revisions button {
     display: block;
-    margin-top: 2rem; }
+    margin-top: 1.5rem; }
+  /* line 8, ../stylesheets/partials/_revisions.scss */
   .cosmo-default .revisions p.info {
-    font-size: 12px;
-    line-height: 18px;
-    font-size: 1.2rem;
-    line-height: 1.8rem; }
+    font-size: .875em;
+    margin-right: 1rem; }
+    /* line 12, ../stylesheets/partials/_revisions.scss */
     .cosmo-default .revisions p.info i {
-      font-size: 12px;
-      line-height: 18px;
-      font-size: 1.2rem;
-      line-height: 1.8rem; }
+      font-size: .875em;
+      margin-right: .5rem; }
+  /* line 3, ../stylesheets/partials/_themes.scss */
   .cosmo-default .themes img {
     margin-bottom: 2rem; }
-  .cosmo-default .blk-disp-type {
-    display: inline-block;
-    margin-right: 1rem; }
-  .cosmo-default .blk-code {
+  /* line 3, ../stylesheets/partials/_blocks.scss */
+  .cosmo-default .blocks .blk-code {
     border: 1px solid #bebebf;
-    height: 50rem;
-    margin-bottom: 2.5rem;
+    height: 31.25rem;
     overflow: scroll; }
-  .cosmo-default .blocks .formcase-border button.marg {
-    margin-bottom: 2rem; }
-  .cosmo-default .blocks .formcase-border button.blk {
-    display: block;
-    margin-bottom: 2rem; }
-  .cosmo-default .blocks .formcase-border .cos-select, .cosmo-default .blocks .formcase-border .cos-select-half {
-    margin-top: 0; }
+  /* line 12, ../stylesheets/partials/_blocks.scss */
+  .cosmo-default .blocks .formcase button {
+    margin-top: 1.5rem; }
+  /* line 17, ../stylesheets/partials/_blocks.scss */
+  .cosmo-default .blocks .page-select {
+    display: inline-block;
+    margin-right: .625rem; }
+    /* line 21, ../stylesheets/partials/_blocks.scss */
+    .cosmo-default .blocks .page-select label {
+      margin-bottom: 0; }
+  /* line 26, ../stylesheets/partials/_blocks.scss */
+  .cosmo-default .blocks .search {
+    margin-bottom: 0; }
+  /* line 1, ../stylesheets/vendor/_menus.scss */
   .cosmo-default .nestedSortable-drag {
     opacity: .8;
     pointer-events: none;
     position: absolute;
     z-index: 999; }
+  /* line 8, ../stylesheets/vendor/_menus.scss */
   .cosmo-default .nestedSortable-handle {
     background: #e9eeef;
     border: 1px solid #cbd7da;
@@ -2708,612 +3294,619 @@ th {
             box-sizing: border-box;
     color: #4a6067;
     cursor: move;
-    font-weight: 700;
+    font-family: "quicksand", sans-serif;
+    font-weight: 200;
     display: block;
-    margin: 0.5rem 0;
+    margin: .313rem 0;
     min-height: 2em;
     padding: .8em 1.1em;
     text-decoration: none;
     -webkit-transition: all .25s ease;
             transition: all .25s ease; }
-    .cosmo-default .nestedSortable-handle a {
-      color: #459e9b; }
+    /* line 23, ../stylesheets/vendor/_menus.scss */
     .cosmo-default .nestedSortable-handle:hover, .cosmo-default .nestedSortable-handle.dropzone:active {
-      background: #459e9b;
+      background: #4a6067;
       border-color: 1px solid #4a6067;
       color: #e9eeef;
       -webkit-transition: all .25s ease;
               transition: all .25s ease; }
+      /* line 29, ../stylesheets/vendor/_menus.scss */
       .cosmo-default .nestedSortable-handle:hover a, .cosmo-default .nestedSortable-handle.dropzone:active a {
         color: #cbd7da; }
+      /* line 33, ../stylesheets/vendor/_menus.scss */
+      .cosmo-default .nestedSortable-handle:hover h6, .cosmo-default .nestedSortable-handle.dropzone:active h6 {
+        color: #e9eeef; }
+      /* line 37, ../stylesheets/vendor/_menus.scss */
       .cosmo-default .nestedSortable-handle:hover i, .cosmo-default .nestedSortable-handle.dropzone:active i {
         color: #70c8c4; }
+    /* line 42, ../stylesheets/vendor/_menus.scss */
+    .cosmo-default .nestedSortable-handle a {
+      color: #459e9b; }
+  /* line 47, ../stylesheets/vendor/_menus.scss */
   .cosmo-default .nestedSortable-item, .cosmo-default .nestedSortable-placeholder {
     display: block;
     margin: 0;
-    min-height: .5rem;
+    min-height: .313rem;
     padding: 0;
-    position: relative;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
+    position: relative; }
+  /* line 55, ../stylesheets/vendor/_menus.scss */
   .cosmo-default .nestedSortable-list {
+    background: #cbd7da;
     display: block;
     margin: 0;
     list-style: none;
     padding: 0;
     position: relative; }
+    /* line 63, ../stylesheets/vendor/_menus.scss */
     .cosmo-default .nestedSortable-list .nestedSortable-list {
-      padding-left: 1.25rem; }
+      padding-left: 0.7815rem; }
+  /* line 68, ../stylesheets/vendor/_menus.scss */
   .cosmo-default .nestedSortable-placeholder {
+    background: #cbd7da;
     border: 2px dashed #bebebf;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
-    margin: 0.5rem 0;
+    margin: .313rem 0;
     min-height: 2rem;
     padding: 0; }
+  /* line 1, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-close {
     color: #70c8c4;
     font-size: 110%;
     margin-top: -.6rem;
     position: absolute;
-    right: .5rem;
+    right: .313rem;
     text-decoration: none;
-    top: .5rem; }
+    top: .313rem; }
+    /* line 10, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-close:hover, .cosmo-default .quickdate-close.dropzone:active, .cosmo-default .quickdate-close:visited {
       text-decoration: none; }
+  /* line 15, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-calendar-header {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: .313rem;
     padding: .2rem 0;
     text-align: center; }
+  /* line 22, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-month {
     display: inline-block; }
+  /* line 26, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default a.quickdate-prev-month {
     float: left; }
+  /* line 30, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default a.quickdate-next-month {
     float: right; }
+  /* line 34, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-text-inputs {
-    margin-bottom: 0.5rem;
+    margin-bottom: .313rem;
     text-align: left; }
+  /* line 39, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-input-wrapper {
     display: inline-block;
     width: 48%; }
-  .cosmo-default input.quickdate-date-input, .cosmo-default textarea.quickdate-date-input, .cosmo-default .quickdate-date-input.form-control, .cosmo-default .quickdate-date-input.blk-code,
+  /* line 44, ../stylesheets/vendor/_calendar.scss */
+  .cosmo-default input.quickdate-date-input, .cosmo-default textarea.quickdate-date-input, .cosmo-default .quickdate-date-input.form-control, .cosmo-default .blocks .quickdate-date-input.blk-code,
   .cosmo-default input.quickdate-time-input,
   .cosmo-default textarea.quickdate-time-input,
   .cosmo-default .quickdate-time-input.form-control,
-  .cosmo-default .quickdate-time-input.blk-code {
+  .cosmo-default .blocks .quickdate-time-input.blk-code {
     height: auto;
     margin: 0;
     padding: .2rem .3rem;
     width: 10rem; }
+  /* line 51, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default table.quickdate-calendar {
     border-collapse: collapse;
     border-spacing: 0;
-    margin-top: 0.625rem;
+    margin-top: 0.39075rem;
     width: 100%; }
+  /* line 57, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default table.quickdate-calendar th, .cosmo-default table.quickdate-calendar td {
-    padding: 0.5rem; }
+    padding: .313rem; }
+  /* line 60, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default table.quickdate-calendar td:hover, .cosmo-default table.quickdate-calendar td.dropzone:active {
     cursor: pointer; }
+  /* line 64, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-popup-footer {
     display: block;
     text-align: right; }
+  /* line 69, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-error {
     border: 1px solid #ea1d2c; }
+    /* line 72, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-error:focus {
       outline-color: #ea1d2c; }
+  /* line 77, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate {
     display: inline-block;
-    vertical-align: bottom;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
-    .cosmo-default .quickdate input, .cosmo-default .quickdate textarea, .cosmo-default .quickdate .form-control, .cosmo-default .quickdate .blk-code, .cosmo-default .quickdate select {
-      font-size: 11.2px;
-      line-height: 16.8px;
-      font-size: 1.12rem;
-      line-height: 1.68rem; }
-  .cosmo-default input.quickdate-date-input, .cosmo-default textarea.quickdate-date-input, .cosmo-default .quickdate-date-input.form-control, .cosmo-default .quickdate-date-input.blk-code, .cosmo-default input.quickdate-time-input, .cosmo-default textarea.quickdate-time-input, .cosmo-default .quickdate-time-input.form-control, .cosmo-default .quickdate-time-input.blk-code {
+    vertical-align: bottom; }
+  /* line 82, ../stylesheets/vendor/_calendar.scss */
+  .cosmo-default input.quickdate-date-input, .cosmo-default textarea.quickdate-date-input, .cosmo-default .quickdate-date-input.form-control, .cosmo-default .blocks .quickdate-date-input.blk-code, .cosmo-default input.quickdate-time-input, .cosmo-default textarea.quickdate-time-input, .cosmo-default .quickdate-time-input.form-control, .cosmo-default .blocks .quickdate-time-input.blk-code {
     width: 7rem;
     height: auto;
-    padding: 1.25rem 0; }
+    padding: 0.7815rem 0; }
+  /* line 88, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-button {
     background-color: #4a6067;
     color: #e9eeef;
     display: inline-block;
     font-weight: 700;
     margin-top: 2rem;
-    padding: 1.25rem;
+    padding: 0.7815rem;
     text-decoration: none;
     width: 26.75rem; }
+    /* line 98, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-button:hover, .cosmo-default .quickdate-button.dropzone:active {
       color: #70c8c4; }
+      /* line 101, ../stylesheets/vendor/_calendar.scss */
       .cosmo-default .quickdate-button:hover i, .cosmo-default .quickdate-button.dropzone:active i {
         text-decoration: none; }
+    /* line 106, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-button i {
-      padding-right: 1.25rem; }
+      padding-right: 0.7815rem; }
+  /* line 110, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-popup {
     background-color: #e9eeef;
     border: 1px solid #cbd7da;
     color: #4a6067;
     display: none;
-    margin-top: -2.5rem;
-    padding: 0.625rem;
+    margin-top: -1.563rem;
+    padding: 0.39075rem;
     position: absolute;
     text-align: center;
     width: 100%;
-    z-index: 10;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
+    z-index: 10; }
+    /* line 122, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-popup span {
-      font-family: quicksand, sans-serif; }
-  .cosmo-default .quickdate-action-link:visited, .cosmo-default:hover, .cosmo-default .cosmo-default.dropzone:active {
+      font-family: "quicksand", sans-serif; }
+  /* line 127, ../stylesheets/vendor/_calendar.scss */
+  .cosmo-default .quickdate-action-link:visited {
     color: #70c8c4;
     text-decoration: none; }
+  /* line 132, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-next-month i {
-    padding-left: 0.125rem; }
+    padding-left: 0.07815rem; }
+  /* line 136, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-prev-month i {
-    padding-right: 0.125rem; }
+    padding-right: 0.07815rem; }
+  /* line 141, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default table.quickdate-calendar {
     border: 1px solid #cbd7da;
     color: #e9eeef; }
+    /* line 145, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar:hover, .cosmo-default table.quickdate-calendar.dropzone:active {
       background-color: #cbd7da;
       color: #4a6067; }
+    /* line 150, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar th, .cosmo-default table.quickdate-calendar table, .cosmo-default table.quickdate-calendar td {
       border-bottom: 1px solid #cbd7da;
       border-right: 1px solid #cbd7da;
-      font-family: quicksand, sans-serif; }
+      font-family: "quicksand", sans-serif; }
+    /* line 156, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar td.other-month {
       background-color: #4a6067;
       color: #e9eeef;
-      font-family: quicksand, sans-serif; }
+      font-family: "quicksand", sans-serif; }
+      /* line 161, ../stylesheets/vendor/_calendar.scss */
       .cosmo-default table.quickdate-calendar td.other-month:hover, .cosmo-default table.quickdate-calendar td.other-month.dropzone:active {
-        background-color: #5f7c85; }
+        background-color: #459e9b; }
+    /* line 166, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar td.disabled-date {
       color: #4a6067;
       background-color: inherit;
-      font-family: quicksand, sans-serif; }
+      font-family: "quicksand", sans-serif; }
+      /* line 171, ../stylesheets/vendor/_calendar.scss */
       .cosmo-default table.quickdate-calendar td.disabled-date:hover, .cosmo-default table.quickdate-calendar td.disabled-date.dropzone:active {
         background-color: inherit;
         cursor: default; }
+    /* line 177, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar td.selected {
       background-color: #70c8c4;
       color: #e9eeef;
-      font-family: quicksand, sans-serif;
+      font-family: "quicksand", sans-serif;
       font-weight: 700; }
+    /* line 184, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default table.quickdate-calendar td.is-today {
       color: #70c8c4;
-      font-family: quicksand, sans-serif;
+      font-family: "quicksand", sans-serif;
       font-weight: 700; }
+      /* line 189, ../stylesheets/vendor/_calendar.scss */
       .cosmo-default table.quickdate-calendar td.is-today .disabled-date {
         color: #4a6067;
         font-weight: 200; }
+  /* line 196, ../stylesheets/vendor/_calendar.scss */
   .cosmo-default .quickdate-clear {
     color: #4a6067;
     display: inline-block;
-    margin: 0.25rem 0;
+    margin: 0.1563rem 0;
     text-decoration: none; }
+    /* line 203, ../stylesheets/vendor/_calendar.scss */
     .cosmo-default .quickdate-clear:hover, .cosmo-default .quickdate-clear.dropzone:active {
       color: #e9eeef; }
 
 /* for dropdowns used in the cosmo WYSIWYG editor */
+/* line 2, ../stylesheets/partials/_wysiwyg.scss */
 .type-dropdown, .format-dropdown, .link-dropdown, .list-dropdown, .align-dropdown, .table-dropdown, .table-dropdown--insert, .media-dropdown, .code-dropdown {
   background-color: #e9eeef;
   border: 1px solid #cbd7da;
   color: #4a6067;
   display: block;
   height: auto;
-  margin-top: -.44rem;
+  margin-top: .22rem;
   position: relative;
-  width: 14.5rem;
-  font-size: 13px;
-  line-height: 19.5px;
-  font-size: 1.3rem;
-  line-height: 1.95rem; }
+  width: 14.5rem; }
+  /* line 12, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown button, .format-dropdown button, .link-dropdown button, .list-dropdown button, .align-dropdown button, .table-dropdown button, .table-dropdown--insert button, .media-dropdown button, .code-dropdown button {
     background-color: transparent;
     border: 0;
     display: block;
-    font-family: quicksand, sans-serif;
-    margin: 0 0 0.625rem 0;
+    font-family: "quicksand", sans-serif;
+    margin: 0 0 .39075rem 0;
     outline: none;
-    padding: 0.625rem 0.625rem 0 1.25rem;
+    padding: .39075rem .39075rem 0 .7815rem;
     text-align: left;
     width: 100%; }
+    /* line 25, ../stylesheets/partials/_wysiwyg.scss */
     .type-dropdown button:hover i, .format-dropdown button:hover i, .link-dropdown button:hover i, .list-dropdown button:hover i, .align-dropdown button:hover i, .table-dropdown button:hover i, .table-dropdown--insert button:hover i, .media-dropdown button:hover i, .code-dropdown button:hover i, .type-dropdown .cosmo-default button.dropzone:active i, .cosmo-default .type-dropdown button.dropzone:active i, .format-dropdown .cosmo-default button.dropzone:active i, .cosmo-default .format-dropdown button.dropzone:active i, .link-dropdown .cosmo-default button.dropzone:active i, .cosmo-default .link-dropdown button.dropzone:active i, .list-dropdown .cosmo-default button.dropzone:active i, .cosmo-default .list-dropdown button.dropzone:active i, .align-dropdown .cosmo-default button.dropzone:active i, .cosmo-default .align-dropdown button.dropzone:active i, .table-dropdown .cosmo-default button.dropzone:active i, .cosmo-default .table-dropdown button.dropzone:active i, .table-dropdown--insert .cosmo-default button.dropzone:active i, .cosmo-default .table-dropdown--insert button.dropzone:active i, .media-dropdown .cosmo-default button.dropzone:active i, .cosmo-default .media-dropdown button.dropzone:active i, .code-dropdown .cosmo-default button.dropzone:active i, .cosmo-default .code-dropdown button.dropzone:active i {
       background-color: transparent;
       color: #70c8c4; }
+    /* line 31, ../stylesheets/partials/_wysiwyg.scss */
     .type-dropdown button i, .format-dropdown button i, .link-dropdown button i, .list-dropdown button i, .align-dropdown button i, .table-dropdown button i, .table-dropdown--insert button i, .media-dropdown button i, .code-dropdown button i {
-      margin-right: 0.9375rem;
+      margin-right: 0.58613rem;
       margin-top: -.2rem;
       vertical-align: middle; }
 
 /* --------------------------------------- End Mixins --------------------------------------- */
+/* line 42, ../stylesheets/partials/_wysiwyg.scss */
 .cosmo-toolbar-large {
   background-color: #e9eeef;
   border: 1px solid #cbd7da;
   color: #e9eeef;
   cursor: pointer;
-  height: 3.35rem;
-  margin-top: -5rem;
+  font-size: .787em;
+  height: 2.094rem;
   position: absolute;
-  width: 21.75rem;
-  z-index: 10000;
-  font-size: 12.6px;
-  line-height: 18.9px;
-  font-size: 1.26rem;
-  line-height: 1.89rem; }
+  width: 13.594rem;
+  z-index: 100001; }
+  /* line 53, ../stylesheets/partials/_wysiwyg.scss */
   .cosmo-toolbar-large td, .cosmo-toolbar-large tr, .cosmo-toolbar-large hr {
     border: 1px solid #4a6067; }
+  /* line 57, ../stylesheets/partials/_wysiwyg.scss */
   .cosmo-toolbar-large i {
     color: #4a6067;
     display: inline-block;
-    font-size: 1.3rem; }
+    font-size: .813rem;
+    vertical-align: middle; }
+    /* line 63, ../stylesheets/partials/_wysiwyg.scss */
     .cosmo-toolbar-large i:hover, .cosmo-toolbar-large .cosmo-default i.dropzone:active, .cosmo-default .cosmo-toolbar-large i.dropzone:active {
       color: #70c8c4; }
+  /* line 68, ../stylesheets/partials/_wysiwyg.scss */
   .cosmo-toolbar-large ul {
     display: block;
     margin: 0;
     padding: 0; }
+    /* line 73, ../stylesheets/partials/_wysiwyg.scss */
     .cosmo-toolbar-large ul li {
       display: inline-block;
       padding: 0;
       border: 0;
-      height: 3rem;
-      margin-top: .5rem;
-      width: 2.3rem; }
+      height: 1.875rem;
+      width: 1.438rem; }
+      /* line 80, ../stylesheets/partials/_wysiwyg.scss */
+      .cosmo-toolbar-large ul li:after, .cosmo-toolbar-large ul li:before {
+        display: none; }
+      /* line 84, ../stylesheets/partials/_wysiwyg.scss */
       .cosmo-toolbar-large ul li:hover, .cosmo-toolbar-large ul .cosmo-default li.dropzone:active, .cosmo-default .cosmo-toolbar-large ul li.dropzone:active {
         background-color: transparent; }
+      /* line 88, ../stylesheets/partials/_wysiwyg.scss */
       .cosmo-toolbar-large ul li:last-child {
         margin-bottom: 0; }
+      /* line 92, ../stylesheets/partials/_wysiwyg.scss */
       .cosmo-toolbar-large ul li button {
         background-color: transparent;
         border: 0;
         display: inline-block;
-        height: 2.5rem;
+        height: 2.094rem;
         margin: 0;
         outline: none;
-        padding-right: 0 0 0 0.9375rem;
+        padding-right: 0 0 0 .366rem;
         text-align: center; }
+        /* line 104, ../stylesheets/partials/_wysiwyg.scss */
         .cosmo-toolbar-large ul li button:hover i, .cosmo-toolbar-large ul li .cosmo-default button.dropzone:active i, .cosmo-default .cosmo-toolbar-large ul li button.dropzone:active i {
           color: #70c8c4; }
+        /* line 109, ../stylesheets/partials/_wysiwyg.scss */
         .cosmo-toolbar-large ul li button .text-alignment {
-          margin-top: -.3rem;
-          vertical-align: middle; }
+          margin-top: -.25rem; }
 
+/* line 117, ../stylesheets/partials/_wysiwyg.scss */
 .type-dropdown {
   left: 0;
-  width: 13rem; }
+  width: 8.125rem; }
+  /* line 124, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown button:hover, .type-dropdown .cosmo-default button.dropzone:active, .cosmo-default .type-dropdown button.dropzone:active {
     color: #70c8c4; }
-  .type-dropdown .wysiwyg-p {
-    display: block;
-    font-weight: 200;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
+  /* line 130, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-u {
-    display: block;
-    font-family: monospace;
-    font-weight: 200;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
+    font-family: monospace; }
+  /* line 134, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-q {
-    display: block;
-    font-style: italic;
-    font-weight: 200;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
+    font-style: italic; }
+  /* line 138, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-c {
-    display: block;
-    font-family: monospace;
-    font-weight: 200;
-    font-size: 14px;
-    line-height: 21px;
-    font-size: 1.4rem;
-    line-height: 2.1rem; }
+    font-family: monospace; }
+  /* line 142, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-h1 {
-    display: block;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 31.5px;
-    font-size: 2.1rem;
-    line-height: 3.15rem; }
+    font-size: 1.5em;
+    font-weight: 600; }
+  /* line 147, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-h2 {
-    display: block;
-    font-weight: 700;
-    font-size: 17.5px;
-    line-height: 26.25px;
-    font-size: 1.75rem;
-    line-height: 2.625rem; }
+    font-size: 1.4em;
+    font-weight: 600; }
+  /* line 152, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-h3 {
-    display: block;
-    font-weight: 700;
-    font-size: 16.1px;
-    line-height: 24.15px;
-    font-size: 1.61rem;
-    line-height: 2.415rem; }
+    font-size: 1.3em;
+    font-weight: 600; }
+  /* line 157, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-h4 {
-    display: block;
-    font-weight: 700;
-    font-size: 14.7px;
-    line-height: 22.05px;
-    font-size: 1.47rem;
-    line-height: 2.205rem; }
+    font-size: 1.2em;
+    font-weight: 600; }
+  /* line 162, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-h5 {
-    display: block;
-    font-weight: 700;
-    font-size: 14.7px;
-    line-height: 22.05px;
-    font-size: 1.47rem;
-    line-height: 2.205rem; }
+    font-size: 1.1em;
+    font-weight: 600; }
+  /* line 167, ../stylesheets/partials/_wysiwyg.scss */
   .type-dropdown .wysiwyg-h6 {
-    display: block;
-    font-weight: 700;
-    font-size: 12.6px;
-    line-height: 18.9px;
-    font-size: 1.26rem;
-    line-height: 1.89rem; }
+    font-size: 1em;
+    font-weight: 600; }
 
+/* line 173, ../stylesheets/partials/_wysiwyg.scss */
 .format-dropdown {
-  left: 2rem;
-  width: 14.5rem; }
+  left: 1.25rem;
+  width: 9.063rem; }
 
+/* line 179, ../stylesheets/partials/_wysiwyg.scss */
 .link-dropdown {
-  left: 4.5rem;
-  width: 13.5rem; }
+  left: 2.813rem;
+  width: 8.438rem; }
 
+/* line 185, ../stylesheets/partials/_wysiwyg.scss */
 .list-dropdown {
-  left: 7.45rem;
-  width: 15.5rem; }
+  left: 4.656rem;
+  width: 9.6888rem; }
 
+/* line 191, ../stylesheets/partials/_wysiwyg.scss */
 .align-dropdown {
-  left: 10.25rem;
-  width: 13.25rem; }
+  left: 6.406rem;
+  width: 8.281rem; }
 
+/* line 198, ../stylesheets/partials/_wysiwyg.scss */
 .table-dropdown {
-  left: 12.85rem;
-  width: 13.5rem; }
+  left: 8.031rem;
+  width: 8.438rem; }
+  /* line 203, ../stylesheets/partials/_wysiwyg.scss */
   .table-dropdown .divide {
     border-bottom: 1px solid #cbd7da;
-    margin-bottom: 0.625rem;
-    padding-bottom: 1.25rem; }
+    margin-bottom: .39075rem;
+    padding-bottom: .7815rem; }
 
+/* line 210, ../stylesheets/partials/_wysiwyg.scss */
 .table-dropdown--insert {
-  left: -19rem;
-  margin-top: -3.25rem;
-  padding: .75rem .25rem .25rem .75rem;
+  left: -11.5rem;
+  margin-top: -1.8rem;
+  padding: .469rem .156rem .156rem .469rem;
   position: absolute;
-  width: 19rem; }
+  width: 10.75rem; }
+  /* line 218, ../stylesheets/partials/_wysiwyg.scss */
   .table-dropdown--insert p {
     margin: 0; }
+  /* line 222, ../stylesheets/partials/_wysiwyg.scss */
   .table-dropdown--insert .cell-select {
     border: 1px solid #cbd7da;
     display: inline-block;
-    height: 1.5rem;
-    margin: 0 .25rem .25rem 0;
+    height: .9rem;
+    margin: 0 .156rem .156rem 0;
     padding: 0;
-    width: 1.5rem; }
+    width: .9rem; }
+    /* line 230, ../stylesheets/partials/_wysiwyg.scss */
     .table-dropdown--insert .cell-select:hover, .table-dropdown--insert .cosmo-default .cell-select.dropzone:active, .cosmo-default .table-dropdown--insert .cell-select.dropzone:active {
       background-color: #70c8c4; }
+    /* line 234, ../stylesheets/partials/_wysiwyg.scss */
     .table-dropdown--insert .cell-select:nth-child(10) {
       margin-right: 0; }
+  /* line 239, ../stylesheets/partials/_wysiwyg.scss */
   .table-dropdown--insert .cell-select--focus {
     background-color: #70c8c4;
     border: 1px solid #bebebf;
     display: inline-block; }
 
+/* line 246, ../stylesheets/partials/_wysiwyg.scss */
 .media-dropdown {
-  left: 15.45rem;
-  width: 10rem; }
+  left: 9.656rem;
+  width: 8.125rem; }
 
+/* line 252, ../stylesheets/partials/_wysiwyg.scss */
 .code-dropdown {
-  left: 18.35rem;
-  width: 12.85rem; }
+  left: 11.469rem;
+  width: 8.031rem; }
 
+/* line 258, ../stylesheets/partials/_wysiwyg.scss */
 pre {
   background-color: #2a373a;
   border: 1px solid #cbd7da;
   color: #e9eeef;
-  font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+  font-family: Consolas, Monaco, Lucida Console, Courier New;
   outline: none; }
 
+/* line 266, ../stylesheets/partials/_wysiwyg.scss */
 [contenteditable="true"] {
-  -webkit-transition: border .2s ease;
-          transition: border .2s ease; }
-  [contenteditable="true"]:active {
-    border: none; }
-  [contenteditable="true"]:focus {
-    border: none;
-    outline: none; }
+  border: 0;
+  outline: 0;
+  -webkit-transition: outline .2s ease;
+          transition: outline .2s ease; }
+  /* line 271, ../stylesheets/partials/_wysiwyg.scss */
   [contenteditable="true"]:hover, .cosmo-default [contenteditable="true"].dropzone:active {
-    border: 0; }
-  [contenteditable="true"] img, [contenteditable="true"] iframe {
-    outline: 1px solid #e9eeef; }
-    [contenteditable="true"] img:hover, [contenteditable="true"] .cosmo-default img.dropzone:active, .cosmo-default [contenteditable="true"] img.dropzone:active, [contenteditable="true"] iframe:hover, [contenteditable="true"] .cosmo-default iframe.dropzone:active, .cosmo-default [contenteditable="true"] iframe.dropzone:active {
-      outline: 1px solid #4a6067; }
+    outline: 1px solid #cbd7da; }
+  /* line 277, ../stylesheets/partials/_wysiwyg.scss */
+  [contenteditable="true"] img:hover, [contenteditable="true"] .cosmo-default img.dropzone:active, .cosmo-default [contenteditable="true"] img.dropzone:active, [contenteditable="true"] iframe:hover, [contenteditable="true"] .cosmo-default iframe.dropzone:active, .cosmo-default [contenteditable="true"] iframe.dropzone:active {
+    outline: 1px solid #cbd7da; }
 
 /**
  * angular-growl - v0.3.1 - 2013-10-01
  * https://github.com/marcorinck/angular-growl
  * Copyright (c) 2013 Marco Rinck; Licensed MIT
  */
+/* line 21, ../stylesheets/vendor/_growl.scss */
 .growl {
   position: fixed;
-  right: .5rem;
-  top: .5rem;
+  right: .313rem;
+  top: .313rem;
   z-index: 99999; }
+  /* line 28, ../stylesheets/vendor/_growl.scss */
   .growl [ng-switch="message.enableHtml"] {
     display: inline-block;
-    padding-right: 1rem; }
+    padding-right: .625rem; }
+  /* line 33, ../stylesheets/vendor/_growl.scss */
   .growl .close {
     background-color: transparent;
     display: inline-block;
     outline: none;
     width: auto; }
+  /* line 40, ../stylesheets/vendor/_growl.scss */
   .growl .message {
     display: inline-block; }
 
+/* line 45, ../stylesheets/vendor/_growl.scss */
 .cosmo-growl-item {
   background-color: #e9eeef;
   border-left: 5px solid;
   color: #4a6067;
-  font-family: quicksand, sans-serif;
-  padding: 1.25rem;
+  font-family: "quicksand", sans-serif;
+  padding: 0.7815rem;
   -webkit-transition: all .25s ease;
           transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .cosmo-growl-item i {
     color: #459e9b;
-    margin-right: 0.5rem; }
+    margin-right: .313rem; }
 
+/* line 49, ../stylesheets/vendor/_growl.scss */
 .alert-info {
   background-color: #e9eeef;
   border-left: 5px solid;
   color: #4a6067;
-  font-family: quicksand, sans-serif;
-  padding: 1.25rem;
+  font-family: "quicksand", sans-serif;
+  padding: 0.7815rem;
   -webkit-transition: all .25s ease;
           transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .alert-info i {
     color: #459e9b;
-    margin-right: 0.5rem; }
+    margin-right: .313rem; }
 
+/* line 53, ../stylesheets/vendor/_growl.scss */
 .alert-success {
   background-color: #e9eeef;
   border-left: 5px solid;
   color: #4a6067;
-  font-family: quicksand, sans-serif;
-  padding: 1.25rem;
+  font-family: "quicksand", sans-serif;
+  padding: 0.7815rem;
   -webkit-transition: all .25s ease;
           transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .alert-success i {
     color: #459e9b;
-    margin-right: 0.5rem; }
+    margin-right: .313rem; }
 
+/* line 57, ../stylesheets/vendor/_growl.scss */
 .alert-error {
   background-color: #e9eeef;
   border-left: 5px solid;
   color: #4a6067;
-  font-family: quicksand, sans-serif;
-  padding: 1.25rem;
+  font-family: "quicksand", sans-serif;
+  padding: 0.7815rem;
   -webkit-transition: all .25s ease;
           transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .alert-error i {
     color: #459e9b;
-    margin-right: 0.5rem; }
+    margin-right: .313rem; }
 
+/* line 61, ../stylesheets/vendor/_growl.scss */
 .alert-alert {
   background-color: #e9eeef;
   border-left: 5px solid;
   color: #4a6067;
-  font-family: quicksand, sans-serif;
-  padding: 1.25rem;
+  font-family: "quicksand", sans-serif;
+  padding: 0.7815rem;
   -webkit-transition: all .25s ease;
           transition: all .25s ease; }
+  /* line 15, ../stylesheets/vendor/_growl.scss */
   .alert-alert i {
     color: #459e9b;
-    margin-right: 0.5rem; }
+    margin-right: .313rem; }
 
+/* line 65, ../stylesheets/vendor/_growl.scss */
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave {
   -webkit-transition: all .25s ease;
           transition: all .25s ease; }
 
+/* line 69, ../stylesheets/vendor/_growl.scss */
 .cosmo-growl-item.ng-enter, .growl-item.ng-leave.ng-leave-active {
   opacity: 0; }
 
+/* line 73, ../stylesheets/vendor/_growl.scss */
 .cosmo-growl-item.ng-leave, .growl-item.ng-enter.ng-enter-active {
   opacity: 1; }
 
-/* modal window */
 /* animations for fade in and fade out of modal */
 @-webkit-keyframes ngdialog-fadeout {
+  /* line 4, ../stylesheets/vendor/_modal.scss */
   0% {
     opacity: 1; }
 
+  /* line 8, ../stylesheets/vendor/_modal.scss */
   100% {
     opacity: 0; } }
 @keyframes ngdialog-fadeout {
+  /* line 4, ../stylesheets/vendor/_modal.scss */
   0% {
     opacity: 1; }
 
+  /* line 8, ../stylesheets/vendor/_modal.scss */
   100% {
     opacity: 0; } }
 @-webkit-keyframes ngdialog-fadein {
+  /* line 14, ../stylesheets/vendor/_modal.scss */
   0% {
     opacity: 0; }
 
+  /* line 18, ../stylesheets/vendor/_modal.scss */
   100% {
     opacity: 1; } }
 @keyframes ngdialog-fadein {
+  /* line 14, ../stylesheets/vendor/_modal.scss */
   0% {
     opacity: 0; }
 
+  /* line 18, ../stylesheets/vendor/_modal.scss */
   100% {
     opacity: 1; } }
-@-webkit-keyframes ngdialog-flyin {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px); }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0); } }
-@keyframes ngdialog-flyin {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px); }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0); } }
-@-webkit-keyframes ngdialog-flyout {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px); } }
-@keyframes ngdialog-flyout {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(-40px);
-            transform: translateY(-40px); } }
+/* line 23, ../stylesheets/vendor/_modal.scss */
 h1.no-marg {
   margin-left: 0; }
 
+/* line 27, ../stylesheets/vendor/_modal.scss */
 .no-line {
   border-bottom: 0; }
 
+/* line 31, ../stylesheets/vendor/_modal.scss */
 .ngdialog, .ngdialog *, .ngdialog *:before, .ngdialog *:after {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box; }
 
+/* line 35, ../stylesheets/vendor/_modal.scss */
 .ngdialog {
   bottom: 0;
   left: 0;
@@ -3322,39 +3915,42 @@ h1.no-marg {
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 11000; }
+  z-index: 100002; }
 
+/* line 46, ../stylesheets/vendor/_modal.scss */
 .ngdialog-close {
   cursor: pointer; }
+  /* line 49, ../stylesheets/vendor/_modal.scss */
   .ngdialog-close:after {
     color: #4a6067;
     content: '\f00d';
     font-family: "FontAwesome";
     position: fixed;
-    right: 2.5rem;
+    right: 1.1rem;
     top: 1.35rem;
-    z-index: 100001;
-    font-size: 17.5px;
-    line-height: 26.25px;
-    font-size: 1.75rem;
-    line-height: 2.625rem; }
+    z-index: 100002; }
     @media only screen and (min-width: 768px) {
+      /* line 49, ../stylesheets/vendor/_modal.scss */
       .ngdialog-close:after {
         color: #e9eeef; } }
 
+/* line 64, ../stylesheets/vendor/_modal.scss */
 .ngdialog.ngdialog-closing .ngdialog-overlay {
   -webkit-animation: ngdialog-fadeout 0.5s;
           animation: ngdialog-fadeout 0.5s; }
 
+/* line 70, ../stylesheets/vendor/_modal.scss */
 .ngdialog.ngdialog-closing .ngdialog-content {
   -webkit-animation: ngdialog-fadeout 0.5s;
           animation: ngdialog-fadeout 0.5s;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden; }
 
+/* line 75, ../stylesheets/vendor/_modal.scss */
 body.ngdialog-open {
   overflow: hidden; }
 
+/* line 79, ../stylesheets/vendor/_modal.scss */
 .ngdialog-content {
   -webkit-animation: ngdialog-fadein 0.5s;
           animation: ngdialog-fadein 0.5s;
@@ -3368,24 +3964,32 @@ body.ngdialog-open {
   position: relative;
   width: 100%; }
   @media only screen and (min-width: 768px) {
+    /* line 79, ../stylesheets/vendor/_modal.scss */
     .ngdialog-content {
       left: auto;
-      width: 62.3rem; } }
+      width: 43.75rem; } }
   @media only screen and (min-width: 1024px) {
+    /* line 79, ../stylesheets/vendor/_modal.scss */
     .ngdialog-content {
-      width: 91.5rem; } }
+      width: 59.375rem; } }
+  /* line 99, ../stylesheets/vendor/_modal.scss */
   .ngdialog-content button {
-    margin-bottom: 1.875rem; }
+    margin-bottom: 1.17225rem; }
+  /* line 103, ../stylesheets/vendor/_modal.scss */
   .ngdialog-content .btncase {
     margin-left: 0; }
+    /* line 106, ../stylesheets/vendor/_modal.scss */
     .ngdialog-content .btncase button {
       width: 100%;
       margin-right: 0; }
+  /* line 112, ../stylesheets/vendor/_modal.scss */
   .ngdialog-content .info {
     color: #70c8c4; }
+  /* line 116, ../stylesheets/vendor/_modal.scss */
   .ngdialog-content p {
-    margin-bottom: 2.5rem; }
+    margin-bottom: 1.563rem; }
 
+/* line 122, ../stylesheets/vendor/_modal.scss */
 .ngdialog-overlay {
   -webkit-animation: ngdialog-fadein 0.5s;
           animation: ngdialog-fadein 0.5s;
@@ -3397,26 +4001,98 @@ body.ngdialog-open {
   right: 0;
   top: 0; }
 
-/* page suggestions box for link adding */
-.page-suggestions {
-  color: #70c8c4;
-  margin-bottom: 1.5rem;
-  padding: 0.5rem; }
-  .page-suggestions:hover .Page, .cosmo-default .page-suggestions.dropzone:active .Page {
-    color: #70c8c4; }
-  .page-suggestions a {
-    color: #e9eeef;
-    display: block;
-    font-weight: 700; }
+/* line 1, ../stylesheets/partials/_modal-media.scss */
+.modal--bar-top {
+  background-color: #70c8c4;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 0 .313rem 1.563rem;
+  position: fixed;
+  width: 100%;
+  z-index: 100000; }
+  @media only screen and (min-width: 768px) {
+    /* line 1, ../stylesheets/partials/_modal-media.scss */
+    .modal--bar-top {
+      width: 43.75rem; } }
+  @media only screen and (min-width: 1024px) {
+    /* line 1, ../stylesheets/partials/_modal-media.scss */
+    .modal--bar-top {
+      width: 59.375rem; } }
+  /* line 18, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top h1, .modal--bar-top h2 {
+    color: white; }
+  /* line 22, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top h1 {
+    margin-left: .313rem; }
+  /* line 26, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top i {
+    color: #e9eeef; }
+    /* line 29, ../stylesheets/partials/_modal-media.scss */
+    .modal--bar-top i:hover, .modal--bar-top .cosmo-default i.dropzone:active, .cosmo-default .modal--bar-top i.dropzone:active {
+      color: #4a6067; }
+  /* line 34, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top .no-marg {
+    margin-bottom: 0; }
+  /* line 38, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top .options-button {
+    border: 1px solid #4a6067; }
+    /* line 41, ../stylesheets/partials/_modal-media.scss */
+    .modal--bar-top .options-button:focus {
+      background-color: #4a6067;
+      color: #e9eeef; }
+    /* line 46, ../stylesheets/partials/_modal-media.scss */
+    .modal--bar-top .options-button:hover, .modal--bar-top .cosmo-default .options-button.dropzone:active, .cosmo-default .modal--bar-top .options-button.dropzone:active {
+      background-color: #459e9b;
+      color: #e9eeef; }
+  /* line 52, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top .success-button, .modal--bar-top .error-button {
+    border: 1px solid #4a6067; }
 
-.page-suggestions-triangle {
-  margin: -1.75rem 0 -.75rem .75rem;
-  height: 0;
-  width: 0;
-  border-left: 1rem solid transparent;
-  border-right: 1rem solid transparent;
-  border-bottom: 1rem solid #70c8c4; }
+/* line 58, ../stylesheets/partials/_modal-media.scss */
+.modal--bar-top input.search-bar, .modal--bar-top .cosmo-default textarea.search-bar, .cosmo-default .modal--bar-top textarea.search-bar, .modal--bar-top .cosmo-default .search-bar.form-control, .cosmo-default .modal--bar-top .search-bar.form-control, .modal--bar-top .cosmo-default .blocks .search-bar.blk-code, .cosmo-default .blocks .modal--bar-top .search-bar.blk-code {
+  border: 0;
+  border-bottom: 1px solid #e9eeef;
+  color: white;
+  width: 91%;
+  margin-bottom: .625rem; }
+  @media only screen and (min-width: 768px) {
+    /* line 58, ../stylesheets/partials/_modal-media.scss */
+    .modal--bar-top input.search-bar, .modal--bar-top .cosmo-default textarea.search-bar, .cosmo-default .modal--bar-top textarea.search-bar, .modal--bar-top .cosmo-default .search-bar.form-control, .cosmo-default .modal--bar-top .search-bar.form-control, .modal--bar-top .cosmo-default .blocks .search-bar.blk-code, .cosmo-default .blocks .modal--bar-top .search-bar.blk-code {
+      width: 35.625rem; } }
+  @media only screen and (min-width: 1024px) {
+    /* line 58, ../stylesheets/partials/_modal-media.scss */
+    .modal--bar-top input.search-bar, .modal--bar-top .cosmo-default textarea.search-bar, .cosmo-default .modal--bar-top textarea.search-bar, .modal--bar-top .cosmo-default .search-bar.form-control, .cosmo-default .modal--bar-top .search-bar.form-control, .modal--bar-top .cosmo-default .blocks .search-bar.blk-code, .cosmo-default .blocks .modal--bar-top .search-bar.blk-code {
+      margin-top: 1.5rem;
+      width: 14rem; } }
 
+/* line 75, ../stylesheets/partials/_modal-media.scss */
+.modal--bar-top .options {
+  display: block;
+  margin-left: 0; }
+  @media only screen and (min-width: 480px) {
+    /* line 75, ../stylesheets/partials/_modal-media.scss */
+    .modal--bar-top .options {
+      display: inline-block;
+      margin-left: 1.5rem; } }
+  /* line 84, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top .options button {
+    margin-bottom: .625rem; }
+  /* line 88, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top .options ::-webkit-input-placeholder {
+    color: #e9eeef; }
+  /* line 92, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top .options :-moz-placeholder {
+    /* Firefox 18- */
+    color: #e9eeef; }
+  /* line 96, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top .options ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #e9eeef; }
+  /* line 100, ../stylesheets/partials/_modal-media.scss */
+  .modal--bar-top .options :-ms-input-placeholder {
+    color: #e9eeef; }
+
+/* line 105, ../stylesheets/partials/_modal-media.scss */
 .img-edit {
   background-color: #e9eeef;
   height: 100%;
@@ -3426,181 +4102,91 @@ body.ngdialog-open {
   top: 0;
   width: 100%; }
   @media only screen and (min-width: 768px) {
+    /* line 105, ../stylesheets/partials/_modal-media.scss */
     .img-edit {
-      height: 50rem;
+      height: auto;
       left: auto;
-      margin-left: -2.5rem;
-      width: 62.3rem; } }
+      margin-left: -1.563rem;
+      width: 43.75rem; } }
   @media only screen and (min-width: 1024px) {
+    /* line 105, ../stylesheets/partials/_modal-media.scss */
     .img-edit {
-      height: 59rem;
-      margin-left: -2.5rem;
-      overflow: hidden;
-      width: 91.5rem; } }
-  .img-edit input, .img-edit .cosmo-default textarea, .cosmo-default .img-edit textarea, .img-edit .cosmo-default .form-control, .cosmo-default .img-edit .form-control, .img-edit .cosmo-default .blk-code, .cosmo-default .img-edit .blk-code {
+      width: 59.375rem; } }
+  /* line 125, ../stylesheets/partials/_modal-media.scss */
+  .img-edit input, .img-edit .cosmo-default textarea, .cosmo-default .img-edit textarea, .img-edit .cosmo-default .form-control, .cosmo-default .img-edit .form-control, .img-edit .cosmo-default .blocks .blk-code, .cosmo-default .blocks .img-edit .blk-code {
     margin-bottom: 0; }
+  /* line 129, ../stylesheets/partials/_modal-media.scss */
   .img-edit label {
-    margin-right: 0.5rem; }
-  .img-edit .media-nav {
+    margin-right: .313rem; }
+  /* line 133, ../stylesheets/partials/_modal-media.scss */
+  .img-edit .modal--bar-top {
     padding-bottom: 0; }
     @media only screen and (min-width: 768px) {
-      .img-edit .media-nav {
+      /* line 133, ../stylesheets/partials/_modal-media.scss */
+      .img-edit .modal--bar-top {
         margin: 0; } }
 
-.media-nav {
-  background-color: #70c8c4;
-  height: auto;
-  margin: 0 auto;
-  padding: 0 0 0.5rem 2.5rem;
-  position: fixed;
-  width: 100%;
-  z-index: 100000; }
-  @media only screen and (min-width: 768px) {
-    .media-nav {
-      width: 62.3rem; } }
-  @media only screen and (min-width: 1024px) {
-    .media-nav {
-      width: 91.5rem; } }
-  .media-nav h1, .media-nav h2 {
-    color: white; }
-  .media-nav i {
-    color: #e9eeef;
-    display: block;
-    position: absolute;
-    top: 2.25rem; }
-    .media-nav i:hover, .media-nav .cosmo-default i.dropzone:active, .cosmo-default .media-nav i.dropzone:active {
-      color: #4a6067; }
-  .media-nav .no-marg {
-    margin-bottom: 0; }
-  .media-nav .options-button {
-    border: 1px solid #459e9b; }
-    .media-nav .options-button:focus {
-      background-color: #4a6067;
-      color: #e9eeef; }
-    .media-nav .options-button:hover, .media-nav .cosmo-default .options-button.dropzone:active, .cosmo-default .media-nav .options-button.dropzone:active {
-      background-color: #459e9b;
-      color: #e9eeef; }
-  .media-nav .success-button, .media-nav .error-button {
-    border: 1px solid #459e9b; }
-
-.media-nav input.search-bar, .media-nav .cosmo-default textarea.search-bar, .cosmo-default .media-nav textarea.search-bar, .media-nav .cosmo-default .search-bar.form-control, .cosmo-default .media-nav .search-bar.form-control, .media-nav .cosmo-default .search-bar.blk-code, .cosmo-default .media-nav .search-bar.blk-code {
-  border: 0;
-  border-bottom: 1px solid #e9eeef;
-  color: white;
-  width: 91%;
-  margin-bottom: 1rem; }
-  @media only screen and (min-width: 768px) {
-    .media-nav input.search-bar, .media-nav .cosmo-default textarea.search-bar, .cosmo-default .media-nav textarea.search-bar, .media-nav .cosmo-default .search-bar.form-control, .cosmo-default .media-nav .search-bar.form-control, .media-nav .cosmo-default .search-bar.blk-code, .cosmo-default .media-nav .search-bar.blk-code {
-      width: 57rem; } }
-  @media only screen and (min-width: 1024px) {
-    .media-nav input.search-bar, .media-nav .cosmo-default textarea.search-bar, .cosmo-default .media-nav textarea.search-bar, .media-nav .cosmo-default .search-bar.form-control, .cosmo-default .media-nav .search-bar.form-control, .media-nav .cosmo-default .search-bar.blk-code, .cosmo-default .media-nav .search-bar.blk-code {
-      width: 86.5rem; } }
-
-.media-nav .options {
-  display: block;
-  margin-left: 0; }
-  @media only screen and (min-width: 1171px) {
-    .media-nav .options {
-      display: inline;
-      margin-left: 2rem; } }
-  .media-nav .options button {
-    margin-bottom: 1rem; }
-    @media only screen and (min-width: 1171px) {
-      .media-nav .options button {
-        margin-bottom: 2.5rem; } }
-  .media-nav .options ::-webkit-input-placeholder {
-    color: #e9eeef; }
-  .media-nav .options :-moz-placeholder {
-    /* Firefox 18- */
-    color: #e9eeef; }
-  .media-nav .options ::-moz-placeholder {
-    /* Firefox 19+ */
-    color: #e9eeef; }
-  .media-nav .options :-ms-input-placeholder {
-    color: #e9eeef; }
-
+/* line 142, ../stylesheets/partials/_modal-media.scss */
 .img-edit .img-prev {
   display: inline-block;
   height: auto;
-  margin-top: 11rem;
+  margin-bottom: 1.5rem;
+  margin-top: 5.7rem;
   vertical-align: top;
   width: 100%; }
   @media only screen and (min-width: 480px) {
+    /* line 142, ../stylesheets/partials/_modal-media.scss */
     .img-edit .img-prev {
-      margin-top: 5.7rem; } }
+      margin-top: 2.6rem; } }
   @media only screen and (min-width: 768px) {
+    /* line 142, ../stylesheets/partials/_modal-media.scss */
     .img-edit .img-prev {
-      height: 20rem;
-      padding-left: 2.5rem;
-      margin-top: 7.25rem;
-      overflow: hidden; } }
-  @media only screen and (min-width: 1024px) {
-    .img-edit .img-prev {
-      height: 28rem; } }
-  .img-edit .img-prev button:last-child {
-    margin-right: 0; }
+      padding-left: 1.563rem;
+      margin-top: 5.1rem; } }
+  /* line 159, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-prev .img-size {
-    padding: 0 2rem;
+    padding: 0 .625rem;
     width: 100%; }
     @media only screen and (min-width: 768px) {
+      /* line 159, ../stylesheets/partials/_modal-media.scss */
       .img-edit .img-prev .img-size {
         display: inline-block;
-        margin-left: 1rem;
+        margin-left: .625rem;
         width: 47%;
         vertical-align: top; } }
-    .img-edit .img-prev .img-size input[type=radio] + label, .img-edit .img-prev .img-size .cosmo-default textarea[type=radio] + label, .cosmo-default .img-edit .img-prev .img-size textarea[type=radio] + label, .img-edit .img-prev .img-size .cosmo-default [type=radio].form-control + label, .cosmo-default .img-edit .img-prev .img-size [type=radio].form-control + label, .img-edit .img-prev .img-size .cosmo-default [type=radio].blk-code + label, .cosmo-default .img-edit .img-prev .img-size [type=radio].blk-code + label {
+    /* line 170, ../stylesheets/partials/_modal-media.scss */
+    .img-edit .img-prev .img-size input[type=radio] + label, .img-edit .img-prev .img-size .cosmo-default textarea[type=radio] + label, .cosmo-default .img-edit .img-prev .img-size textarea[type=radio] + label, .img-edit .img-prev .img-size .cosmo-default [type=radio].form-control + label, .cosmo-default .img-edit .img-prev .img-size [type=radio].form-control + label, .img-edit .img-prev .img-size .cosmo-default .blocks [type=radio].blk-code + label, .cosmo-default .blocks .img-edit .img-prev .img-size [type=radio].blk-code + label {
       display: block;
       text-align: left; }
-      @media only screen and (min-width: 768px) {
-        .img-edit .img-prev .img-size input[type=radio] + label, .img-edit .img-prev .img-size .cosmo-default textarea[type=radio] + label, .cosmo-default .img-edit .img-prev .img-size textarea[type=radio] + label, .img-edit .img-prev .img-size .cosmo-default [type=radio].form-control + label, .cosmo-default .img-edit .img-prev .img-size [type=radio].form-control + label, .img-edit .img-prev .img-size .cosmo-default [type=radio].blk-code + label, .cosmo-default .img-edit .img-prev .img-size [type=radio].blk-code + label {
-          display: inline-block; } }
-    .img-edit .img-prev .img-size .blk {
-      display: block;
-      margin-bottom: 0.5rem; }
-  .img-edit .img-prev i {
-    background-color: #cbd7da;
-    color: #4a6067;
-    display: block;
-    font-size: 10rem;
-    margin-bottom: 3rem;
-    margin-top: -2.2rem;
-    padding: 4rem 0;
-    position: relative;
-    text-align: center;
-    width: 100%; }
-    @media only screen and (min-width: 768px) {
-      .img-edit .img-prev i {
-        display: inline-block;
-        width: 47%; } }
-    @media only screen and (min-width: 1024px) {
-      .img-edit .img-prev i {
-        height: 28rem;
-        padding: 9rem; } }
+  /* line 176, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-prev img, .img-edit .img-prev iframe {
-    padding-bottom: 1.25rem;
-    vertical-align: top;
     width: 100%; }
     @media only screen and (min-width: 768px) {
+      /* line 176, ../stylesheets/partials/_modal-media.scss */
       .img-edit .img-prev img, .img-edit .img-prev iframe {
         width: 47%; } }
-  .img-edit .img-prev p {
-    display: inline-block; }
 
+/* line 185, ../stylesheets/partials/_modal-media.scss */
 .img-edit .img-info {
   display: inline-block;
-  margin-right: 2rem;
+  margin-right: 1.563rem;
   vertical-align: top;
   width: 100%; }
   @media only screen and (min-width: 768px) {
+    /* line 185, ../stylesheets/partials/_modal-media.scss */
     .img-edit .img-info {
       width: 47%; } }
-  .img-edit .img-info input, .img-edit .img-info .cosmo-default textarea, .cosmo-default .img-edit .img-info textarea, .img-edit .img-info .cosmo-default .form-control, .cosmo-default .img-edit .img-info .form-control, .img-edit .img-info .cosmo-default .blk-code, .cosmo-default .img-edit .img-info .blk-code {
+  /* line 195, ../stylesheets/partials/_modal-media.scss */
+  .img-edit .img-info input, .img-edit .img-info .cosmo-default textarea, .cosmo-default .img-edit .img-info textarea, .img-edit .img-info .cosmo-default .form-control, .cosmo-default .img-edit .img-info .form-control, .img-edit .img-info .cosmo-default .blocks .blk-code, .cosmo-default .blocks .img-edit .img-info .blk-code {
     width: 100%; }
+  /* line 199, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-info label {
     display: block; }
+  /* line 203, ../stylesheets/partials/_modal-media.scss */
   .img-edit .img-info:last-child {
     margin-right: 0; }
 
+/* line 208, ../stylesheets/partials/_modal-media.scss */
 .media-wrapper, .gallery-media-wrapper {
   background-color: #e9eeef;
   overflow-x: hidden;
@@ -3609,149 +4195,183 @@ body.ngdialog-open {
   top: 14rem;
   width: 100%; }
   @media only screen and (min-width: 768px) {
+    /* line 208, ../stylesheets/partials/_modal-media.scss */
     .media-wrapper, .gallery-media-wrapper {
-      top: 12.5rem; } }
+      top: 7.813rem; } }
+  /* line 220, ../stylesheets/partials/_modal-media.scss */
   .media-wrapper .success-button, .gallery-media-wrapper .success-button {
     margin-bottom: 0; }
 
+/* line 226, ../stylesheets/partials/_modal-media.scss */
 .gallery-media-wrapper {
-  top: 19.5rem; }
+  top: 12.5rem; }
   @media only screen and (min-width: 480px) {
+    /* line 226, ../stylesheets/partials/_modal-media.scss */
     .gallery-media-wrapper {
-      top: 15.5rem; } }
-  @media only screen and (min-width: 1224px) {
+      top: 9.688rem; } }
+  @media only screen and (min-width: 1024px) {
+    /* line 226, ../stylesheets/partials/_modal-media.scss */
     .gallery-media-wrapper {
-      top: 12.5rem; } }
+      top: 4.5rem; } }
 
+/* line 239, ../stylesheets/partials/_modal-media.scss */
 .media-search {
   border-bottom: 1px solid #cbd7da;
   color: #e9eeef;
-  margin: 0 2.5rem 2.5rem 2.5rem;
-  padding: 2.5rem 5rem 1rem 0;
+  margin: 0 1.563rem 1.563rem 1.563rem;
+  padding: 1.563rem 3.126rem 0.625rem 0;
   position: fixed;
   top: 6.1rem;
   width: 100%;
   z-index: 100000; }
+  /* line 249, ../stylesheets/partials/_modal-media.scss */
   .media-search button {
-    margin-bottom: 0.5rem; }
+    margin-bottom: .313rem; }
+  /* line 253, ../stylesheets/partials/_modal-media.scss */
   .media-search .search-bar {
     display: inline-block; }
-    .media-search .search-bar input, .media-search .search-bar .cosmo-default textarea, .cosmo-default .media-search .search-bar textarea, .media-search .search-bar .cosmo-default .form-control, .cosmo-default .media-search .search-bar .form-control, .media-search .search-bar .cosmo-default .blk-code, .cosmo-default .media-search .search-bar .blk-code {
+    /* line 256, ../stylesheets/partials/_modal-media.scss */
+    .media-search .search-bar input, .media-search .search-bar .cosmo-default textarea, .cosmo-default .media-search .search-bar textarea, .media-search .search-bar .cosmo-default .form-control, .cosmo-default .media-search .search-bar .form-control, .media-search .search-bar .cosmo-default .blocks .blk-code, .cosmo-default .blocks .media-search .search-bar .blk-code {
       width: 24rem; }
+    /* line 260, ../stylesheets/partials/_modal-media.scss */
     .media-search .search-bar label {
-      margin-right: 0.5rem; }
+      margin-right: .313rem; }
 
+/* line 266, ../stylesheets/partials/_modal-media.scss */
 .media-holder {
   background-color: #e9eeef;
   margin-top: -.1rem;
   overflow-y: scroll;
-  padding: 2.5rem 2.5rem 0 2.5rem; }
+  padding: 1.563rem 1.563rem 0 1.563rem; }
 
+/* line 273, ../stylesheets/partials/_modal-media.scss */
 .media-tile {
   display: inline-block;
-  margin: 0 1.25rem 1.25rem 0;
+  margin: 0 0.7815rem 0.7815rem 0;
   text-align: center;
   vertical-align: top;
   width: 100%; }
   @media only screen and (min-width: 768px) {
+    /* line 273, ../stylesheets/partials/_modal-media.scss */
     .media-tile {
-      height: 18rem;
+      height: 13.55rem;
       overflow: hidden;
       width: 48.5%; }
+      /* line 285, ../stylesheets/partials/_modal-media.scss */
       .media-tile:nth-child(even) {
         margin-right: 0; }
+      /* line 289, ../stylesheets/partials/_modal-media.scss */
       .media-tile:nth-child(odd) {
-        margin-right: 1.7rem; } }
+        margin-right: 1.2rem; } }
   @media only screen and (min-width: 1024px) {
+    /* line 273, ../stylesheets/partials/_modal-media.scss */
     .media-tile {
-      height: 28rem; }
+      height: 19rem; }
+      /* line 297, ../stylesheets/partials/_modal-media.scss */
       .media-tile:nth-child(odd) {
-        margin-right: 2.5rem; } }
+        margin-right: 1.563rem; } }
+  /* line 302, ../stylesheets/partials/_modal-media.scss */
   .media-tile i {
     color: #4a6067;
-    font-size: 16rem;
-    margin-top: 1.5rem; }
+    font-size: 10em;
+    margin-top: .938rem; }
     @media only screen and (min-width: 768px) {
+      /* line 302, ../stylesheets/partials/_modal-media.scss */
       .media-tile i {
-        font-size: 12rem;
+        font-size: 7.5em;
         margin-top: 0; } }
+  /* line 313, ../stylesheets/partials/_modal-media.scss */
   .media-tile img {
     height: auto; }
 
+/* line 319, ../stylesheets/partials/_modal-media.scss */
 .info-close {
   cursor: pointer; }
+  /* line 322, ../stylesheets/partials/_modal-media.scss */
   .info-close:after {
     color: #4a6067;
     content: '\f00d';
     font-family: "FontAwesome";
-    left: 84.75rem;
+    left: 52.969rem;
     position: absolute;
     top: 2rem;
-    z-index: 100001;
-    font-size: 17.5px;
-    line-height: 26.25px;
-    font-size: 1.75rem;
-    line-height: 2.625rem; }
+    z-index: 100001; }
     @media only screen and (min-width: 768px) {
+      /* line 322, ../stylesheets/partials/_modal-media.scss */
       .info-close:after {
-        left: 55.5rem; } }
+        left: 34.688rem; } }
     @media only screen and (min-width: 768px) {
+      /* line 322, ../stylesheets/partials/_modal-media.scss */
       .info-close:after {
         display: none; } }
 
+/* line 341, ../stylesheets/partials/_modal-media.scss */
 .media-info {
   display: inline-block;
-  padding: 0 2.5rem;
+  padding: 0 1.563rem;
   width: 100%; }
+  /* line 346, ../stylesheets/partials/_modal-media.scss */
   .media-info .blk {
-    margin-bottom: 2.5rem; }
+    margin-bottom: 1.563rem; }
 
+/* line 351, ../stylesheets/partials/_modal-media.scss */
 .img-gallery {
   display: inline-block;
-  margin: 0 2.5rem 2rem 2.5rem;
+  margin: 0 1.563rem 2rem 1.563rem;
   vertical-align: top;
   width: auto; }
   @media only screen and (min-width: 768px) {
+    /* line 351, ../stylesheets/partials/_modal-media.scss */
     .img-gallery {
       width: 33%; } }
   @media only screen and (min-width: 768px) {
+    /* line 361, ../stylesheets/partials/_modal-media.scss */
     .img-gallery img {
       width: 100%; } }
 
+/* line 368, ../stylesheets/partials/_modal-media.scss */
 .img-gallery-info {
-  margin-left: 2.5rem;
+  margin-left: 1.563rem;
   overflow: hidden;
   padding-right: 2rem;
   width: auto; }
   @media only screen and (min-width: 768px) {
+    /* line 368, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info {
       display: inline-block;
       margin: 0 0 2rem 0;
       vertical-align: top;
       width: 53%; } }
   @media only screen and (min-width: 1024px) {
+    /* line 368, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info {
       overflow: hidden;
       width: 61%; } }
+  /* line 386, ../stylesheets/partials/_modal-media.scss */
   .img-gallery-info p {
     margin-bottom: 0; }
+  /* line 390, ../stylesheets/partials/_modal-media.scss */
   .img-gallery-info .tag {
     background-color: #cbd7da;
     color: #4a6067;
     display: inline-block;
     height: auto;
-    margin: 0 1rem 2rem 1rem;
-    padding: 0.5rem 1rem 0.75rem 1rem;
+    margin: 0 .625rem 2rem .625rem;
+    padding: .313rem .625rem .75rem .625rem;
     width: auto; }
+    /* line 399, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info .tag:first-child {
       margin-left: 0; }
+    /* line 403, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info .tag:hover, .img-gallery-info .cosmo-default .tag.dropzone:active, .cosmo-default .img-gallery-info .tag.dropzone:active {
       cursor: default;
       color: #4a6067; }
+    /* line 408, ../stylesheets/partials/_modal-media.scss */
     .img-gallery-info .tag .fa-tag {
-      margin-right: 0.5rem;
+      margin-right: .313rem;
       vertical-align: middle; }
 
+/* line 415, ../stylesheets/partials/_modal-media.scss */
 .file-prev {
   background-color: #cbd7da;
   display: table;
@@ -3759,39 +4379,43 @@ body.ngdialog-open {
   margin: 0 auto;
   width: 100%; }
   @media only screen and (min-width: 768px) {
+    /* line 415, ../stylesheets/partials/_modal-media.scss */
     .file-prev {
       height: 18rem; }
+      /* line 425, ../stylesheets/partials/_modal-media.scss */
       .file-prev i {
         vertical-align: top; } }
   @media only screen and (min-width: 1024px) {
+    /* line 415, ../stylesheets/partials/_modal-media.scss */
     .file-prev {
       height: 28rem; } }
+  /* line 434, ../stylesheets/partials/_modal-media.scss */
   .file-prev i {
     color: #4a6067;
     display: table-cell;
-    font-size: 10rem;
+    font-size: 6.25em;
     vertical-align: middle; }
 
+/* line 442, ../stylesheets/partials/_modal-media.scss */
 .nav {
   display: block;
   margin-top: 0;
   padding-right: 0; }
-  @media only screen and (min-width: 480px) and (max-width: 767px) {
+  @media only screen and (min-width: 480px) {
+    /* line 442, ../stylesheets/partials/_modal-media.scss */
     .nav {
       display: inline-block;
-      margin-left: .5rem;
-      margin-top: 1.15rem;
-      padding-right: 5rem; }
+      margin-left: .313rem;
+      margin-top: .65rem;
+      padding-right: 1.563rem; }
+      /* line 453, ../stylesheets/partials/_modal-media.scss */
       .nav .options-button {
         margin-bottom: 0; } }
   @media only screen and (min-width: 768px) {
+    /* line 442, ../stylesheets/partials/_modal-media.scss */
     .nav {
-      display: inline-block;
-      float: right;
-      margin-top: 1.15rem;
-      padding-right: 5rem; }
-      .nav .options-button {
-        margin-bottom: 0; } }
+      float: right; } }
+  /* line 464, ../stylesheets/partials/_modal-media.scss */
   .nav .options-button:last-child {
     margin-right: 0; }
 

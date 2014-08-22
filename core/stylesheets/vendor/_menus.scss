@@ -11,20 +11,17 @@
     box-sizing: border-box;
     color: palette(blue, dark);
     cursor: move;
-    font-weight: 700;
+    font-family: $font-alpha;
+    font-weight: 200;
     display: block;
-    margin: $pad-alpha 0;
+    margin: .313rem 0;
     min-height: 2em;
     padding: .8em 1.1em;
     text-decoration: none;
     transition: all .25s ease;
 
-    a {
-        color: palette(blue, mid);
-    }
-
     &:hover {
-        background: palette(blue, mid);
+        background: palette(blue, dark);
         border-color: 1px solid palette(blue, dark);
         color: palette(gray, light);
         transition: all .25s ease;
@@ -33,22 +30,30 @@
             color: palette(gray, mid);
         }
 
+        h6 {
+            color: palette(gray, light);
+        }
+
         i {
             color: palette(blue, light);
         }
+    }
+
+    a {
+        color: palette(blue, mid);
     }
 }
 
 .nestedSortable-item, .nestedSortable-placeholder {
     display: block;
     margin: 0;
-    min-height: .5rem;
+    min-height: .313rem;
     padding: 0;
     position: relative;
-    @include font-size(14);
 }
 
 .nestedSortable-list {
+    background: palette(gray, mid);
     display: block;
     margin: 0;
     list-style: none;
@@ -56,14 +61,15 @@
     position: relative;
 
     .nestedSortable-list {
-        padding-left: $pad-epsilon * .5;
+        padding-left: 1.563rem * .5;
     }
 }
 
 .nestedSortable-placeholder {
+    background: palette(gray, mid);
     border: 2px dashed palette(gray, dark);
     box-sizing: border-box;
-    margin: $pad-alpha 0;
-    min-height: $pad-delta;
+    margin: .313rem 0;
+    min-height: 2rem;
     padding: 0;
 }

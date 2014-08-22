@@ -5,58 +5,35 @@ input.search-bar {
 
 input[type='file'] {
     float: left;
-    margin: -$pad-beta * 7 0 0 0;
+    margin: -.625rem * 7 0 0 0;
     opacity: 0;
-    padding: 3.75rem;
+    padding: 1.465rem;
 
     &:hover {
         cursor: pointer;
     }
 
     @media only screen and (max-width: 439px) {
-        margin-top: -$pad-beta * 9;
+        margin-top: -.625rem * 9;
     }
 }
 
 .dropzone {
     background-color: palette(blue, light);
-    border: .2rem dashed $color-beta;
-    height: $pad-epsilon * 4;
-    margin-top: 0;
+    border: 2px dashed palette(blue, dark);
+    height: 3.9063rem;
+    margin-top: 1.5rem;
     text-align: center;
     transition: all .25s ease;
-    @include opacity(background-color, .75);
 
     &:hover {
-        border: .2rem dashed palette(gray, light);
+        border: 2px dashed palette(gray, light);
         color: palette(blue, light);
         transition: all .25s ease;
-
-        h4 {
-            color: palette(gray, light);
-        }
     }
 
     &:active {
       @extend :hover;
-    }
-
-    h4 {
-        color: palette(blue, dark);
-        left: 0;
-        bottom: 0;
-        margin-top: 3rem;
-        right: 0;
-        transition: all .25s ease;
-
-        @media only screen and (max-width: 439px) {
-            margin-top: $pad-beta;
-        }
-
-        &:hover {
-            color: palette(gray, light);
-            transition: all .25s ease;
-        }
     }
 }
 
@@ -67,9 +44,9 @@ input[type='file'] {
 }
 
 .uploader {
-    padding: 0 $pad-epsilon $pad-epsilon $pad-epsilon;
+    padding: 0 1.563rem 1.563rem 1.563rem;
     position: relative;
-    top: 9rem;
+    top: 6rem;
 
     button {
         margin-right: 0;
@@ -77,19 +54,22 @@ input[type='file'] {
 }
 
 .url {
-    margin-top: $pad-delta;
+    margin-top: 2rem;
+
+    p {
+        margin: 0;
+    }
 }
 
 .url-uploader {
-    margin-bottom: $pad-beta;
+    margin-bottom: .625rem;
     width: 100%;
 
     @media #{$bp-beta} {
-        margin-right: $pad-beta * 7;
-        width: 39rem;
+        width: 33.5rem;
     }
 
     @media #{$bp-gamma} {
-        width: 68rem;
+        width: 49.063rem;
     }
 }

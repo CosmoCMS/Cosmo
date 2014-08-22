@@ -1,8 +1,14 @@
 // Universal imports
 @import "partials/reset";
-@import "bourbon";
-@import "partials/mixins";
 @import "vendor/fontawesome/font-awesome";
+
+
+@import "global/media-queries"; /* media queries used for the modal */
+@import "global/fonts"; /* load fonts and variables */
+@import "global/color"; /* color maps */
+@import "global/_z-index"; /* sass map and mixin for easy z-indexing */
+
+
 
 .cosmo-default {
     @import "partials/typography";
@@ -24,14 +30,17 @@
     @import "partials/revisions";
     @import "partials/themes";
     @import "partials/blocks";
+
+
+
     @import "vendor/menus";
     @import "vendor/calendar";
 }
 
-//Imports to be used outside of the cosmo sidebar
+
+
+
 @import "partials/wysiwyg";
 @import "vendor/growl";
-
-/* modal window */
-@import "modal/modal";
-@import "modal/modal-media";
+@import "vendor/modal";
+@import "partials/modal-media";

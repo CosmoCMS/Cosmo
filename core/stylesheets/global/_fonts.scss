@@ -1,0 +1,70 @@
+/* fonts */
+$font-alpha: 'quicksand', sans-serif;
+$font-beta: 'FontAwesome';
+
+/* load quicksand font */
+@font-face {
+    font-family: 'quicksand';
+    src: url('../fonts/quicksand-bold-webfont.eot');
+    src: url('../fonts/quicksand-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/quicksand-bold-webfont.woff') format('woff'),
+         url('../fonts/quicksand-bold-webfont.ttf') format('truetype'),
+         url('../fonts/quicksand-bold-webfont.svg#quicksandbold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'quicksand';
+    src: url('../fonts/quicksand-bolditalic-webfont.eot');
+    src: url('../fonts/quicksand-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/quicksand-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/quicksand-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/quicksand-bolditalic-webfont.svg#quicksandbold_italic') format('svg');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'quicksand';
+    src: url('../fonts/quicksand-italic-webfont.eot');
+    src: url('../fonts/quicksand-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/quicksand-italic-webfont.woff') format('woff'),
+         url('../fonts/quicksand-italic-webfont.ttf') format('truetype'),
+         url('../fonts/quicksand-italic-webfont.svg#quicksanditalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'quicksand';
+    src: url('../fonts/quicksand-light-webfont.eot');
+    src: url('../fonts/quicksand-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/quicksand-light-webfont.woff') format('woff'),
+         url('../fonts/quicksand-light-webfont.ttf') format('truetype'),
+         url('../fonts/quicksand-light-webfont.svg#quicksandlight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'quicksand';
+    src: url('../fonts/quicksand-lightitalic-webfont.eot');
+    src: url('../fonts/quicksand-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/quicksand-lightitalic-webfont.woff') format('woff'),
+         url('../fonts/quicksand-lightitalic-webfont.ttf') format('truetype'),
+         url('../fonts/quicksand-lightitalic-webfont.svg#quicksandlight_italic') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'quicksand';
+    src: url('../fonts/quicksand-regular-webfont.eot');
+    src: url('../fonts/quicksand-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/quicksand-regular-webfont.woff') format('woff'),
+         url('../fonts/quicksand-regular-webfont.ttf') format('truetype'),
+         url('../fonts/quicksand-regular-webfont.svg#quicksandregular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
