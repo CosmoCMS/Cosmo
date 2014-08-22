@@ -6,36 +6,15 @@ label {
     display: block;
 }
 
-.new {
-    background-color: palette(gray, light);
-    margin-bottom: 2.5rem;
-    text-align: left;
-    text-transform: lowercase;
-    width: auto;
-    z-index: 100000;
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+    color: palette(gray, mid);
+}
 
-    &:focus {
-        outline: none;
-    }
+/* section to add a new block/menu etc... */
+.add-new {
+    margin-top: 1.5rem;
 
-    &:hover {
-
-        i {
-            color: palette(blue, light);
-        }
-    }
-
-    i {
-        color: palette(blue, dark);
-        margin-right: $pad-alpha;
-        transition: color .15s ease-in;
-        vertical-align: middle;
-        @include font-size(13);
-    }
-
-    p {
-        display: inline-block;
+    .success-button {
         margin-bottom: 0;
     }
-
 }

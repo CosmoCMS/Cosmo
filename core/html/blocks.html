@@ -1,6 +1,6 @@
 <div class="blocks" ng-controller="blockCtrl">
     <div ng-show="block.panel==='manage'">
-        <div class="top-btncase">
+        <div class="bar-top">
                 <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1>Edit</h1><h2>Blocks</h2>
         </div>
@@ -13,14 +13,14 @@
                     <i class="fa fa-times-circle-o"></i><p>Close</p>
                 </div>
             </button>
-            <div ng-show="createBlock">
+            <div class="add-new" ng-show="createBlock">
                 <input id="name" value="name" type='text' ng-model='block.newName' placeholder="e.g. My new custom block">
                 <label for="name">Name</label>
-                <button class="blk success-button" ng-click='newBlock()'>add</button>
+                <button class="success-button" ng-click='newBlock()'>add</button>
             </div>
         </div>
         <div class="formcase-border">
-            <input id="search" type="text" ng-model="search" placeholder="Search: e.g. Footer"><label for="search">Search</label>
+            <input id="search" type="text" ng-model="search" placeholder="Search: e.g. Footer"><label class="search" for="search">Search</label>
         </div>
         <div>
             <ul ng-repeat='block in blocks | filter:search'>
@@ -257,11 +257,11 @@
     </div>
 
     <div ng-show="block.panel==='edit'">
-        <div class="top-btncase">
+        <div class="bar-top">
                 <i class="fa fa-chevron-left " ng-click="block.panel='manage'"></i>
             <h1>Editing</h1><h2>{{block.name}}</h2>
         </div>
-            <div class="formcase-border">
+            <div class="formcase">
     	        <input id="name" value="name" type='text' ng-model='block.name'>
                 <label for="name">Block Name</label>
     	        <div class="blk-code" cosmo="none"></div><br/>
@@ -503,11 +503,9 @@
                     <p>Use an asterisk (*) as a wildcard at the end of a page. e.g. /blog*</p>
                     <textarea ng-model='block.urls'></textarea>
                 </div>
-            </div>
-            <div class="formcase-border">
                 <p>Show only for specific content type(s):
                 <small>*If no item is selected, there will be no limitation.</small></p>
-                <p class="blk-disp-type" ng-repeat="type in types" ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
+                <p class="page-select" ng-repeat="type in types" ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
                     <input id="type" value="type" type='checkbox' ng-model='block.selectedTypes[type]' ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
                     <label for="type">{{type | themeFiles}}</label>
                 </p>

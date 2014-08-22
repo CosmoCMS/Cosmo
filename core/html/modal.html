@@ -1,7 +1,7 @@
 <div class="cosmo-default" ng-controller="filesCtrl">
     <div ng-show='files.gallery'>
         <!-- Gallery Area -->
-        <div class="media-nav">
+        <div class="modal--bar-top">
             <h1 class="no-marg">Media</h1><h2>Gallery</h2>
             <div class="options">
                 <button class="options-button no-marg" ng-click="files.gallery=false">Add Media</button>
@@ -45,7 +45,7 @@
     <!-- Media Selection Area -->
     <div ng-show="!files.gallery">
         <div ng-show='!upload'>
-            <div class="media-nav" id="top-anchor">
+            <div class="modal--bar-top" id="top-anchor">
                     <i class="fa fa-chevron-left" ng-click="files.gallery=true"></i>
                 <h1>Search</h1><h2>Media</h2>
                 <div class="options">
@@ -55,19 +55,15 @@
                     <button  class="options-button" ng-click="page.media.type='audio'">Audio</button>
                     <button  class="options-button" ng-click="page.media.type='files'">Files</button>
                     <button class="success-button"  ng-click="upload=!upload">Upload</button>
-                    <input class="search-bar" placeholder="Search: (e.g. vimeo, lifestyle, outdoors)" value="search" type="text" ng-model="search.$">
+                    <input class="search-bar" placeholder="Search" value="search" type="text" ng-model="search.$">
                 </div>
                 <div ng-show="selectedFile" class="img-edit">
-                    <div class="media-nav">
+                    <div class="modal--bar-top">
                         <i class="fa fa-chevron-left" ng-click="selectedFile = ! selectedFile"></i><h1>Image</h1><h2>Information</h2>
                         <div class="nav">
                             <button class="options-button" ng-click="prev()" ng-show="!search&&!page.media.type">Previous</button>
                             <button class="options-button" ng-click="next()" ng-show="!search&&!page.media.type">Next</button>
                         </div>
-                    </div>
-                    <div>
-                        <a ng-click="prev()" ng-show="!search&&!page.media.type">Previous</a>
-                        <a ng-click="next()" ng-show="!search&&!page.media.type">Next</a>
                     </div>
                   <div class="img-prev">
                     <img ng-if="files.type==='image'" ng-src="{{selectedFile}}">
@@ -83,14 +79,14 @@
                     <i ng-if="files.type==='file'" class="fa fa-file-text-o"></i>
                     <i ng-if="files.type==='audio'" class="fa fa-file-audio-o"></i>
                     <div class="img-size">
-                        <label class="blk" for="sizes">Image Size: </label>
                         <input type="radio" ng-model="files.size" id="responsive" value="responsive"> <label for="responsive" ng-click="files.size='responsive'">Responsive</label>
                         <input type="radio" ng-model="files.size" id="320" value="small"> <label for="320" ng-click="files.size='small'">Small (320px)</label>
                         <input type="radio" ng-model="files.size" id="512" value="medium"> <label for="512" ng-click="files.size='medium'">Medium (512px)</label>
                         <input type="radio" ng-model="files.size" id="1024" value="large"> <label for="1024" ng-click="files.size='large'">Large (1024px)</label>
                         <input type="radio" ng-model="files.size" id="nonresponsive" value="nonresponsive"> <label for="nonresponsive" ng-click="files.size='nonresponsive'">Non-responsive</label>
                         <div class="url">
-                            <label>URL</label><p>{{origFilename}}</p>
+                            <p>{{origFilename}}</p>
+                            <label>URL</label>
                         </div>
                     </div>
                   </div>
@@ -101,7 +97,6 @@
                             <input type="text" ng-model="files.class">
                             <label for="classes">CSS Classes (space separated)</label>
                             <input ng-list type="text" ng-model="files.tags" ng-change="autocompleteTags()">
-                            <div class="tag-suggestions-triangle" ng-show="files.suggestions"></div>
                                 <div class="tag-suggestions" ng-show="files.suggestions">
                                     <div ng-repeat="tag in files.suggestions | limitTo:10">
                                         <a ng-click="selectSuggestion(tag)">{{tag | titlecase}}</a>
@@ -179,7 +174,7 @@
         </div>
         <!-- Upload Content Area -->
         <div ng-show='upload'>
-            <div class="media-nav">
+            <div class="modal--bar-top">
                     <i class="fa fa-chevron-left" ng-click="upload=!upload"></i>
                 <h1>Upload</h1><h2>A File</h2>
             </div>
@@ -195,7 +190,7 @@
                     {{progress}}
                 </div>
                 <div class="dropzone" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="ng-file-over" ng-show="dropSupported" class="fileDropZone">
-                    <h4>Click or Drag files to upload</h4>
+                    <h2>Click or Drag files</h2>
                     <input class="custom-form" type="file" ng-file-select="onFileSelect($files)" multiple>
                 </div>
                 <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!

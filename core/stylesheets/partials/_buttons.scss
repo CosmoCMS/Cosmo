@@ -3,22 +3,25 @@
     color: palette(blue, dark);
     cursor: pointer;
     display: inline-block;
+    font-size: .813em;
     font-weight: 200;
-    margin-right: $pad-alpha;
+    margin: 0 .313rem .65rem 0;
     outline: none;
-    padding: 0.65rem $pad-gamma 0.75rem $pad-gamma;
+    padding: 0.65rem 1rem 0.75rem 1rem;
     text-align: center;
     text-transform: lowercase;
     transition: all .25s ease-in-out;
-    @include font-size(13);
 
     &:focus {
         color: palette(gray, white);
-        transition: all .25s ease;
     }
 
     &:hover {
         color: palette(gray, light);
+    }
+
+    &:last-child {
+        margin-right: 0;
     }
 }
 
@@ -72,33 +75,45 @@
     }
 }
 
-/* Container for buttons at top of sidebar */
+.new {
+    background-color: palette(gray, light);
+    opacity: 1;
+    text-align: left;
+    text-transform: lowercase;
+    width: auto;
+    z-index: 100000;
 
-.top-btncase {
-    background-color: palette(blue, light);
-    height: 6rem;
-    margin-top: -6rem;
-    overflow: hidden;
-    padding: 0 4.5rem 0 $pad-epsilon;
-    position: fixed;
-    width: 32rem;
-    z-index: 100;
-
-    h1, h2 {
-        color: palette(gray, white);
+    &:focus {
+        outline: none;
     }
 
-    i {
-        color: palette(gray, light);
-        position: absolute;
-        top: 2.35rem;
+    &:hover {
 
-        &:hover {
-            color: palette(blue, dark);
+        i {
+            color: palette(blue, light);
         }
     }
 
-    .active {
-        color: palette(alert, warning);
-  }
+    i {
+        color: palette(blue, dark);
+        margin-right: .313rem;
+        transition: color .15s ease-in;
+        vertical-align: middle;
+        @include font-size(12);
+    }
+
+    p {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+
+}
+
+.new.ng-hide-add.ng-hide-add-active,
+.new.ng-hide-remove.ng-hide-remove-active {
+    transition: all linear 0.5s;
+}
+
+.new.ng-hide {
+    opacity: 0;
 }

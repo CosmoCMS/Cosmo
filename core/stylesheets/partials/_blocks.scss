@@ -1,31 +1,29 @@
-.blk-disp-type {
-    display: inline-block;
-    margin-right: $pad-beta;
-}
-
-.blk-code {
-    @extend input;
-    border: 1px solid palette(gray, dark);
-    height: 50rem;
-    margin-bottom: $pad-epsilon;
-    overflow: scroll;
-}
-
 .blocks {
 
-    .formcase-border {
+    .blk-code {
+        @extend input;
+        border: 1px solid palette(gray, dark);
+        height: 31.25rem;
+        overflow: scroll;
+    }
 
-        button.marg {
-            margin-bottom: 2rem;
-        }
+    .formcase {
 
-        button.blk {
-            display: block;
-            margin-bottom: 2rem;
+        button {
+            margin-top: 1.5rem;
         }
+    }
 
-        .cos-select {
-            margin-top: 0;
+    .page-select{
+        display: inline-block;
+        margin-right: .625rem;
+
+        label {
+            margin-bottom: 0;
         }
+    }
+
+    .search {
+        margin-bottom: 0;
     }
 }

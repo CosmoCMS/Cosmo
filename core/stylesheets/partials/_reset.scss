@@ -250,9 +250,9 @@ input,
 optgroup,
 select,
 textarea {
-  color: inherit; /* 1 */
-  font: inherit; /* 2 */
-  margin: 0; /* 3 */
+    color: inherit; /* 1 */
+    font: inherit; /* 2 */
+    margin: 0; /* 3 */
 }
 
 /**
@@ -260,7 +260,8 @@ textarea {
  */
 
 button {
-  overflow: visible;
+    border: 0;
+    overflow: visible;
 }
 
 /**
