@@ -1,10 +1,11 @@
-body {
-    color: palette(blue, dark);
-    font-family: $font-alpha;
-    font-smoothing: antialiased;
-    font-weight: 200;
-    text-shadow: none;
-}
+/*
+*
+**
+*** type setup throughout cosmo
+***
+**
+*
+*/
 
 span {
     letter-spacing: 0;
@@ -47,14 +48,21 @@ h6 {
     text-transform: uppercase;
 }
 
-label {
-    color: palette(blue, light);
-    display: inline-block;
+a {
+    color: palette(gray, dark);
     font-family: $font-alpha;
-    font-size: 1em;
-    font-weight: 200;
-    margin-bottom: 1.5rem;
-    margin-top: 0;
+    text-decoration: none;
+    transition: color .1s linear;
+
+    &:hover {
+        color: palette(blue, light);
+    }
+
+    &:active, &:focus {
+        color: palette(blue, light);
+        font-weight: 200;
+        outline: none;
+    }
 }
 
 p {
@@ -74,31 +82,24 @@ small {
     font-size: 85%;
 }
 
-a {
-    color: palette(gray, dark);
-    font-family: $font-alpha;
-    text-decoration: none;
-    transition: color .1s linear;
-
-    &:hover {
-        color: palette(blue, light);
-    }
-
-    &:active, &:focus {
-        color: palette(blue, light);
-        font-weight: 200;
-        outline: none;
-    }
-}
-
-hr {
-    border-bottom: 1px solid palette(gray, mid);
-    border-left: none;
-    border-right: none;
-    border-top: none;
-}
+/*
+*
+**
+*** generic styling set up throughout cosmo
+***
+**
+*
+*/
 
 img {
     margin: 0;
     width: 100%;
+}
+
+[ng-click] {
+    cursor: pointer;
+}
+
+[ng-href] {
+    cursor: pointer;
 }

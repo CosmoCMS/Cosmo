@@ -9,7 +9,7 @@
     border-left: 5px solid palette(alert, $border-color);
     color: palette(blue, dark);
     font-family: $font-alpha;
-    padding: 1.563rem * .5;
+    padding: .625rem;
     transition: all .25s ease;
 
     i {
@@ -22,7 +22,7 @@
     position: fixed;
     right: .313rem;
     top: .313rem;
-    z-index: 99999;
+    z-index: z(modal);
 
 
     [ng-switch="message.enableHtml"] {

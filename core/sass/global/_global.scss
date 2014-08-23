@@ -6,7 +6,7 @@ label {
     display: block;
 }
 
-::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+@include placeholder {
     color: palette(gray, mid);
 }
 

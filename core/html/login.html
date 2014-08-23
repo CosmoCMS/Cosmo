@@ -4,15 +4,23 @@
             <i class="fa fa-chevron-left" ng-click="panel='login'"></i>
             <h1>Register</h1><h2>For Cosmo</h2>
         </div>
-        <div class="formcase">
-            <input id="username" type="text" ng-model="register.username" class="ng-valid ng-dirty">
-            <label>Username</label>
-            <input id="email" type="email" ng-model="register.email" class="ng-valid ng-dirty">
-            <label>Email Address</label>
-            <input id="password" type="password" ng-model="register.password" class="ng-valid ng-dirty">
-            <label>Password</label>
-            <input id="confirm your password" type="password" ng-model="register.confirmPassword" class="ng-valid ng-dirty">
-            <label>Confirm Password</label>
+        <div class="form-case">
+            <div class="form">
+                <input id="username" type="text" ng-model="register.username" class="ng-valid ng-dirty">
+                <label>Username</label>
+            </div>
+            <div class="form">
+                <input id="email" type="email" ng-model="register.email" class="ng-valid ng-dirty">
+                <label>Email Address</label>
+            </div>
+            <div class="form">
+                <input id="password" type="password" ng-model="register.password" class="ng-valid ng-dirty">
+                <label>Password</label>
+            </div>
+            <div class="form">
+                <input id="confirm your password" type="password" ng-model="register.confirmPassword" class="ng-valid ng-dirty">
+                <label>Confirm Password</label>
+            </div>
             <div>
                 <button type="button" class="success-button" ng-click="register()">create account</button>
             </div>
@@ -22,7 +30,7 @@
         <div class="modal--bar-top">
             <h1 class="no-marg">Sign</h1><h2>In</h2>
         </div>
-        <div class="formcase">
+        <div class="form-case">
             <div class="form">
                 <input id="username" type="text" ng-model="login.username" class="ng-valid ng-dirty">
                 <label>Username</label>

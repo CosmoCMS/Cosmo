@@ -1,0 +1,93 @@
+input {
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid palette(gray, mid);
+	box-shadow: none;
+	color: palette(blue, dark);
+	display: inline-block;
+	font-family: $font-alpha;
+	font-weight: 200;
+	margin: 0;
+	outline: none;
+	padding: 0 0 .313rem 0;
+	width: 100%;
+
+	&:focus {
+		background-color: transparent;
+		border: 0;
+		border-bottom: 1px solid palette(gray, dark);
+	}
+
+	&:hover {
+		background-color: transparent;
+		cursor: text;
+	}
+
+	span {
+		color: palette(blue, dark);
+	}
+}
+
+textarea {
+	@extend input;
+	min-height: 9rem;
+	resize: vertical;
+}
+
+label {
+	color: palette(blue, light);
+	display: inline-block;
+	font-family: $font-alpha;
+	font-weight: 200;
+	margin-bottom: 1.5rem;
+	margin-top: 0;
+}
+
+/* number count for things like titles, descriptions etc... */
+.num-count {
+	color: palette(blue, light);
+	font-size: .85em;
+	font-weight: 300;
+	float: right;
+}
+
+/* modified select style dropdown wrap standard <select> with <div class="cos-select"> to add the style*/
+.cos-select {
+	background: url(../img/arrows.svg) no-repeat transparent right;
+	background-size: 1.5rem .938rem;
+	border: 1px solid palette(gray, mid);
+	box-sizing: border-box;
+	color: palette(blue, dark);
+	cursor: pointer;
+	font-family: $font-alpha;
+	height: 3rem;
+	margin-top: 1.5rem;
+	outline: none;
+	padding-left: .5rem;
+	width: 100%;
+
+	select {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		background: none;
+		border: 0;
+		cursor: pointer;
+		height: 3rem;
+		outline: 0;
+		padding-left: 0;
+		width: 100%;
+	}
+}
+
+/* same as .cos-select just half width in order to have 2 up */
+.cos-select--half {
+	@extend .cos-select;
+	display: inline-block;
+	margin-right: .625rem;
+	width: 8rem;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}

@@ -86,14 +86,15 @@ input.quickdate-date-input, input.quickdate-time-input {
 }
 
 .quickdate-button{
-    background-color: palette(blue, dark);
-    color: palette(gray, light);
+    background-color: palette(gray, mid);
+    box-sizing: border-box;
+    color: palette(blue, dark);
     display: inline-block;
     font-weight: 700;
-    margin-top: 2rem;
+    margin-top: .25rem;
     padding: 1.563rem * .5;
     text-decoration: none;
-    width: 26.75rem;
+    width: 16.85rem;
 
     &:hover {
         color: palette(blue, light);

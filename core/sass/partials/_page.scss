@@ -1,3 +1,4 @@
+/* alert when a newer version of the page has been saved */
 .new-version {
     background-color: palette(alert, warning);
     margin-top: -4rem;
@@ -20,6 +21,7 @@
     }
 }
 
+/* confirmation on if you want to delete the page or not */
 .confirm {
     background-color: palette(alert, warning);
     margin: 0 -1.563rem 1.5rem -1.563rem ;
@@ -28,10 +30,4 @@
     button {
         border: 1px solid palette(blue, dark);
     }
-}
-
-.push-down {
-    background-color: transparent;
-    display: block;
-    height: 17rem;
 }
