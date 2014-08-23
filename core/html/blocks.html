@@ -4,7 +4,7 @@
                 <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1>Edit</h1><h2>Blocks</h2>
         </div>
-        <div class="formcase-border">
+        <div class="form-case--border">
             <button class="new" ng-click="createBlock=!createBlock">
                 <div ng-if="!createBlock">
                     <i class="fa fa-plus"></i><p>New Block</p>
@@ -19,14 +19,14 @@
                 <button class="success-button" ng-click='newBlock()'>add</button>
             </div>
         </div>
-        <div class="formcase-border">
+        <div class="form-case--border">
             <input id="search" type="text" ng-model="search" placeholder="Search: e.g. Footer"><label class="search" for="search">Search</label>
         </div>
         <div>
             <ul ng-repeat='block in blocks | filter:search'>
                 <li>
                     <a href='' ><h6 ng-click='selectBlock(block)'>{{block.name}}</h6></a>
-                    <div class="cos-select-half">
+                    <div class="cos-select--half">
                         <select value="section" ng-model="block.area" ng-change="updateBlock(block)">
                             <option value="header">Header</option>
                             <option value="footer">Footer</option>
@@ -45,7 +45,7 @@
                             <option value="block10">Block 10</option>
                         </select>
                     </div>
-                    <div class="cos-select-half">
+                    <div class="cos-select--half">
                         <select ng-model='block.priority' ng-change="updateBlock(block)">
                             <option value="-100">-100</option>
                             <option value="-99">-99</option>
@@ -261,7 +261,7 @@
                 <i class="fa fa-chevron-left " ng-click="block.panel='manage'"></i>
             <h1>Editing</h1><h2>{{block.name}}</h2>
         </div>
-            <div class="formcase">
+            <div class="form-case">
     	        <input id="name" value="name" type='text' ng-model='block.name'>
                 <label for="name">Block Name</label>
     	        <div class="blk-code" cosmo="none"></div><br/>

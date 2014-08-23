@@ -134,3 +134,26 @@
         }
     }
 }
+
+/* case to adjust sides within the sidebar */
+.form-case {
+    overflow-y: scroll;
+    padding: 1.563rem 1.563rem 0 1.563rem;
+}
+
+/* similar to .form-case, but with a border at the bottom */
+.form-case--border {
+    border-bottom: 1px solid palette(gray, mid);
+    padding: 1.563rem;
+
+    > div {
+
+        button {
+            margin-bottom: 2rem;
+        }
+    }
+
+    input {
+        border-bottom: 1px solid palette(gray, mid);
+    }
+}

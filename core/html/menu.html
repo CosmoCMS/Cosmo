@@ -4,7 +4,7 @@
             <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1>Edit</h1><h2>Menus</h2>
         </div>
-        <div class="formcase-border">
+        <div class="form-case--border">
             <button class="new" ng-click="createMenu=!createMenu">
                 <div ng-if="!createMenu">
                     <i class="fa fa-plus"></i><p>New Menu</p>
@@ -28,7 +28,7 @@
             <i class="fa fa-chevron-left " ng-click="menu.panel='manage'"></i>
             <h1>Editing</h1><h2>{{menu.name}}</h2>
         </div>
-        <div class="formcase">
+        <div class="form-case">
             <input value="name" type="text" ng-model="menu.name">
             <label for="name">Name:</label>
             <div class="cos-select">

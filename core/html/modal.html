@@ -1,5 +1,8 @@
 <div class="cosmo-default" ng-controller="filesCtrl">
     <div ng-show='files.gallery'>
+
+
+
         <!-- Gallery Area -->
         <div class="modal--bar-top">
             <h1 class="no-marg">Media</h1><h2>Gallery</h2>
@@ -8,6 +11,9 @@
                 <button class="success-button no-marg" ng-click="saveGallery()">Update Gallery</button>
             </div>
         </div>
+
+
+
         <div class="media-wrapper">
             <div ng-repeat="image in images">
                 <div class="img-gallery">
@@ -43,6 +49,11 @@
              </div>
          </div>
     </div>
+
+
+
+
+
     <!-- Media Selection Area -->
     <div ng-show="!files.gallery">
         <div ng-show='!upload'>
@@ -58,42 +69,51 @@
                     <button class="success-button"  ng-click="upload=!upload">Upload</button>
                     <input class="search-bar" placeholder="Search" value="search" type="text" ng-model="search.$">
                 </div>
+            </div>
+
+
+
+
+                <!-- image preview and editing area -->
                 <div ng-show="selectedFile" class="img-edit">
                     <div class="modal--bar-top">
-                        <i class="fa fa-chevron-left" ng-click="selectedFile = ! selectedFile"></i><h1>Image</h1><h2>Information</h2>
+                        <i class="fa fa-chevron-left" ng-click="selectedFile = ! selectedFile"></i>
+                        <h1>Image</h1><h2>Information</h2>
                         <div class="nav">
                             <button class="options-button" ng-click="prev()" ng-show="!search&&!page.media.type">Previous</button>
                             <button class="options-button" ng-click="next()" ng-show="!search&&!page.media.type">Next</button>
                         </div>
                     </div>
-                  <div class="img-prev">
-                    <img ng-if="files.type==='image'" ng-src="{{selectedFile}}">
-                    <iframe ng-if="files.type==='youtube'" width="100%" height="264" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
-                    <iframe ng-if="files.type==='vimeo'" ng-src="{{selectedFile}}" width="100%" height="188" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    <iframe ng-if="files.type==='youtube'" width="100%" height="140" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
-                    <video ng-if="files.type==='video'" ng-src="{{selectedFile}}"></video>
-                    <i ng-if="files.type==='pdf'" class="fa fa-file-pdf-o"></i>
-                    <i ng-if="files.type==='doc'" class="fa fa-file-text-o"></i>
-                    <i ng-if="files.type==='ppt'" class="fa fa-file-powerpoint-o"></i>
-                    <i ng-if="files.type==='spreadsheet'" class="fa fa-file-excel-o"></i>
-                    <i ng-if="files.type==='compressed'" class="fa fa-file-archive-o"></i>
-                    <i ng-if="files.type==='file'" class="fa fa-file-text-o"></i>
-                    <i ng-if="files.type==='audio'" class="fa fa-file-audio-o"></i>
-                    <div class="img-size">
-                        <input type="radio" ng-model="files.size" id="responsive" value="responsive"> <label for="responsive" ng-click="files.size='responsive'">Responsive</label>
-                        <input type="radio" ng-model="files.size" id="320" value="small"> <label for="320" ng-click="files.size='small'">Small (320px)</label>
-                        <input type="radio" ng-model="files.size" id="512" value="medium"> <label for="512" ng-click="files.size='medium'">Medium (512px)</label>
-                        <input type="radio" ng-model="files.size" id="1024" value="large"> <label for="1024" ng-click="files.size='large'">Large (1024px)</label>
-                        <input type="radio" ng-model="files.size" id="nonresponsive" value="nonresponsive"> <label for="nonresponsive" ng-click="files.size='nonresponsive'">Non-responsive</label>
-                        <div class="url">
-                            <p>{{origFilename}}</p>
-                            <label>URL</label>
+                    <div class="img-prev">
+                        <img ng-if="files.type==='image'" ng-src="{{selectedFile}}">
+                        <iframe ng-if="files.type==='youtube'" width="100%" height="264" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
+                        <iframe ng-if="files.type==='vimeo'" ng-src="{{selectedFile}}" width="100%" height="188" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <iframe ng-if="files.type==='youtube'" width="100%" height="140" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
+                        <video ng-if="files.type==='video'" ng-src="{{selectedFile}}"></video>
+                        <i ng-if="files.type==='pdf'" class="fa fa-file-pdf-o"></i>
+                        <i ng-if="files.type==='doc'" class="fa fa-file-text-o"></i>
+                        <i ng-if="files.type==='ppt'" class="fa fa-file-powerpoint-o"></i>
+                        <i ng-if="files.type==='spreadsheet'" class="fa fa-file-excel-o"></i>
+                        <i ng-if="files.type==='compressed'" class="fa fa-file-archive-o"></i>
+                        <i ng-if="files.type==='file'" class="fa fa-file-text-o"></i>
+                        <i ng-if="files.type==='audio'" class="fa fa-file-audio-o"></i>
+                        <div class="img-size">
+                            <input type="radio" ng-model="files.size" id="responsive" value="responsive"> <label for="responsive" ng-click="files.size='responsive'">Responsive</label>
+                            <input type="radio" ng-model="files.size" id="320" value="small"> <label for="320" ng-click="files.size='small'">Small (320px)</label>
+                            <input type="radio" ng-model="files.size" id="512" value="medium"> <label for="512" ng-click="files.size='medium'">Medium (512px)</label>
+                            <input type="radio" ng-model="files.size" id="1024" value="large"> <label for="1024" ng-click="files.size='large'">Large (1024px)</label>
+                            <input type="radio" ng-model="files.size" id="nonresponsive" value="nonresponsive"> <label for="nonresponsive" ng-click="files.size='nonresponsive'">Non-responsive</label>
+                            <div class="url">
+                                <p>{{origFilename}}</p>
+                                <label>URL</label>
+                            </div>
                         </div>
                     </div>
-                  </div>
                     <div class="media-info" ng-if="files.type==='video'">
-                        <input type="checkbox" ng-model="files.autoload" value="Y"> Autoload<br />
-                        <input type="checkbox" ng-model="files.loop" value="Y"> Loop<br />
+                        <input id="autoload" type="checkbox" ng-model="files.autoload" value="Y">
+                        <label for="autoload">Autoload</label>
+                        <input id="loop" type="checkbox" ng-model="files.loop" value="Y">
+                        <label for="loop">Loop</label>
                     </div>
                     <div class="media-info">
                         <div class="img-info">
@@ -102,13 +122,13 @@
                             <input type="text" ng-model="files.class">
                             <label for="classes">CSS Classes (space separated)</label>
                             <input ng-list type="text" ng-model="files.tags" ng-change="autocompleteTags()">
-                                <div class="tag-suggestions" ng-show="files.suggestions">
-                                    <div ng-repeat="tag in files.suggestions | limitTo:10">
-                                        <a ng-click="selectSuggestion(tag)">{{tag | titlecase}}</a>
-                                    </div>
+                            <div class="tag-suggestions" ng-show="files.suggestions">
+                                <div ng-repeat="tag in files.suggestions | limitTo:10">
+                                    <a ng-click="selectSuggestion(tag)">{{tag | titlecase}}</a>
                                 </div>
-                                <label for="tags">Tags (comma separated) </label>
                             </div>
+                            <label for="tags">Tags (comma separated) </label>
+                        </div>
                         <div class="img-info">
                             <input type="text" ng-model="files.alt">
                             <label for="alttext">Alt Text </label>
@@ -120,7 +140,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- browse media area -->
                 <div class="media-holder gallery-media-wrapper">
                   <div class="media-tile" ng-repeat="file in media | filter:search | filter:page.media.type | limitTo:numFiles" ng-click="viewFile(file, $index)">
                       <div ng-if="file.type==='image'">
@@ -175,11 +196,14 @@
                           <i class="fa fa-file-audio-o"></i>
                       </div>
                   </div>
-                  <div class="btncase">
-                    <button class="options-button" ng-click="numFiles=numFiles+12">View More</button>
-                  </div>
+                  <button class="options-button" ng-click="numFiles=numFiles+12">View More</button>
                 </div>
         </div>
+
+
+
+
+
         <!-- Upload Content Area -->
         <div ng-show='upload'>
             <div class="modal--bar-top">

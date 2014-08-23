@@ -1,0 +1,184 @@
+/*
+*
+**
+***
+*** image editing / previewing area
+***
+**
+*
+*/
+
+/* holder for prev/next selection in the image preview/edit area */
+.nav {
+    display: block;
+    margin-top: 0;
+    padding-right: 0;
+
+    .options-button {
+        @extend %modal--options-button;
+    }
+
+    @media #{$bp-alpha} {
+        display: inline-block;
+        margin-left: .313rem;
+        margin-top: .65rem;
+        padding-right: 1.563rem;
+
+        .options-button {
+            margin-bottom: 0;
+        }
+    }
+
+    @media #{$bp-beta} {
+        float: right;
+    }
+
+    .options-button {
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+/* editing image information once an image has been selected */
+.img-edit {
+    background-color: palette(gray, light);
+    height: 100%;
+    left: 0;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: z(minimal);
+
+    @media #{$bp-beta} {
+        height: auto;
+        left: auto;
+        width: 43.75rem;
+    }
+
+    @media #{$bp-gamma} {
+        width: 59.375rem;
+    }
+
+    input {
+        margin-bottom: 0;
+    }
+
+    label {
+        margin-right: .313rem;
+    }
+
+    .modal--bar-top {
+        padding-bottom: 0;
+
+        @media #{$bp-beta} {
+            margin: 0;
+        }
+    }
+}
+
+/* preview of the image within the editing area */
+.img-edit .img-prev {
+    display: inline-block;
+    height: auto;
+    margin-bottom: 1.5rem;
+    margin-top: 5.7rem;
+    vertical-align: top;
+    width: 100%;
+
+    @media #{$bp-alpha} {
+        margin-top: 2.6rem;
+    }
+
+    @media #{$bp-beta} {
+        padding-left: 1.563rem;
+        margin-top: 5.1rem;
+    }
+
+    .img-size {
+        padding: 0 1.563rem;
+        width: 100%;
+
+        @media #{$bp-beta} {
+            display: inline-block;
+            margin-left: .625rem;
+            padding: 0 .625rem;
+            width: 47%;
+            vertical-align: top;
+        }
+
+        input[type=radio] + label {
+            display: block;
+            text-align: left;
+        }
+    }
+
+    img, iframe {
+        width: 100%;
+
+        @media #{$bp-beta} {
+            width: 47%;
+        }
+    }
+}
+
+/* text input area below the image preview */
+.img-edit .img-info {
+    display: inline-block;
+    margin-right: 1.563rem;
+    vertical-align: top;
+    width: 100%;
+
+    @media #{$bp-beta} {
+        width: 47%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    label {
+        display: block;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+/* holder for information to input in the img-edit area */
+.media-info {
+    display: inline-block;
+    padding: 0 1.563rem;
+    width: 100%;
+}
+
+/* holder for file icons in the preview/edit view */
+.file-prev {
+    background-color: palette(gray, mid);
+    display: table;
+    height: 16rem;
+    margin: 0 auto;
+    width: 100%;
+
+    @media #{$bp-beta} {
+        height: 18rem;
+
+        i {
+            vertical-align: top;
+        }
+    }
+
+    @media #{$bp-gamma} {
+        height: 28rem;
+    }
+
+    i {
+        color: palette(blue, dark);
+        display: table-cell;
+        font-size: 6.25em;
+        vertical-align: middle;
+    }
+}

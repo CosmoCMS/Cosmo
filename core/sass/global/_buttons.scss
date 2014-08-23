@@ -26,8 +26,7 @@
 }
 
 
-/* Standard buttons */
-
+/* error button, generally used for "delete" */
 .error-button {
     @extend %button;
     border: 1px solid palette(gray, mid);
@@ -44,6 +43,7 @@
 
 }
 
+/* general button used */
 .options-button {
     @extend %button;
     border: 1px solid palette(gray, mid);
@@ -60,6 +60,7 @@
     }
 }
 
+/* save/success style button */
 .success-button {
     @extend %button;
     border: 1px solid palette(gray, mid);
@@ -75,6 +76,7 @@
     }
 }
 
+/* holder for button needed to add a new menu/block etc... */
 .new {
     background-color: palette(gray, light);
     opacity: 1;
@@ -106,13 +108,4 @@
         margin-bottom: 0;
     }
 
-}
-
-.new.ng-hide-add.ng-hide-add-active,
-.new.ng-hide-remove.ng-hide-remove-active {
-    transition: all linear 0.5s;
-}
-
-.new.ng-hide {
-    opacity: 0;
 }

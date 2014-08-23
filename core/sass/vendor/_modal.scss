@@ -20,18 +20,22 @@
     }
 }
 
-h1.no-marg {
-    margin-left: 0;
+.ngdialog.ngdialog-closing .ngdialog-overlay {
+    animation: ngdialog-fadeout 0.5s;
 }
 
-.no-line {
-    border-bottom: 0;
+.ngdialog.ngdialog-closing .ngdialog-content {
+    animation: ngdialog-fadeout 0.5s;
+    backface-visibility: hidden;
 }
 
+
+/* box-sizing */
 .ngdialog, .ngdialog *, .ngdialog *:before, .ngdialog *:after {
     box-sizing: border-box;
 }
 
+/* setting up the modal window */
 .ngdialog {
     bottom: 0;
     left: 0;
@@ -43,6 +47,12 @@ h1.no-marg {
     z-index: z(modal);
 }
 
+/* make sure there's no weird scrolling once the modal is open */
+body.ngdialog-open {
+    overflow: hidden;
+}
+
+/* the "x" to close the modal */
 .ngdialog-close {
     cursor: pointer;
 
@@ -61,21 +71,7 @@ h1.no-marg {
     }
 }
 
-.ngdialog.ngdialog-closing .ngdialog-overlay {
-    animation: ngdialog-fadeout 0.5s;
-}
-
-
-
-.ngdialog.ngdialog-closing .ngdialog-content {
-    animation: ngdialog-fadeout 0.5s;
-    backface-visibility: hidden;
-}
-
-body.ngdialog-open {
-    overflow: hidden;
-}
-
+/* actual background and content holder for the modal */
 .ngdialog-content {
     animation: ngdialog-fadein 0.5s;
     backface-visibility: hidden;
@@ -100,15 +96,6 @@ body.ngdialog-open {
         margin-bottom: 1.563rem * .75;
     }
 
-    .btncase {
-        margin-left: 0;
-
-        button {
-            width: 100%;
-            margin-right: 0;
-        }
-    }
-
     .info {
         color: palette(blue, light);
     }
@@ -118,7 +105,7 @@ body.ngdialog-open {
     }
 }
 
-
+/* background for the modal window to hide the content beneath it */
 .ngdialog-overlay {
     animation: ngdialog-fadein 0.5s;
     background-color: palette(blue, dark--two-third);

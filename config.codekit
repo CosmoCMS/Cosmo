@@ -99,60 +99,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/core\/fonts\/quicksand-bold-demo.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/fonts\/quicksand-bold-demo.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/core\/fonts\/quicksand-bolditalic-demo.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/fonts\/quicksand-bolditalic-demo.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/core\/fonts\/quicksand-italic-demo.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/fonts\/quicksand-italic-demo.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/core\/fonts\/quicksand-light-demo.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/fonts\/quicksand-light-demo.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/core\/fonts\/quicksand-lightitalic-demo.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/fonts\/quicksand-lightitalic-demo.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/core\/fonts\/quicksand-regular-demo.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/fonts\/quicksand-regular-demo.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/core\/html\/admin-panel.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -176,15 +122,6 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/core\/html\/blocks.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/core\/html\/contact.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/html\/contact.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -378,28 +315,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/core\/js\/3rd-party\/angular-animate.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/js\/3rd-party\/angular-animate.min.js",
-		"outputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/angular-animate.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/core\/js\/3rd-party\/angular-cookies.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/js\/3rd-party\/angular-cookies.min.js",
-		"outputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/angular-cookies.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/core\/js\/3rd-party\/angular-file-upload-shim.min.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -444,56 +359,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/core\/js\/3rd-party\/angular-resource.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/js\/3rd-party\/angular-resource.min.js",
-		"outputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/angular-resource.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/core\/js\/3rd-party\/angular-route.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/js\/3rd-party\/angular-route.min.js",
-		"outputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/angular-route.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/core\/js\/3rd-party\/angular-touch.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/js\/3rd-party\/angular-touch.min.js",
-		"outputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/angular-touch.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/core\/js\/3rd-party\/angular-ui-tree.min.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/core\/js\/3rd-party\/angular-ui-tree.min.js",
 		"outputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/angular-ui-tree.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/core\/js\/3rd-party\/angular.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/js\/3rd-party\/angular.min.js",
-		"outputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/angular.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -554,17 +425,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/core\/js\/3rd-party\/min\/angular-growl.min-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/angular-growl.min-min.js",
-		"outputAbbreviatedPath": "\/core\/js\/3rd-party\/min\/min\/angular-growl.min-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/core\/js\/3rd-party\/ng-quick-date.min.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -598,6 +458,61 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/core\/js\/angular\/angular-animate.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/js\/angular\/angular-animate.min.js",
+		"outputAbbreviatedPath": "\/core\/js\/angular\/min\/angular-animate.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/core\/js\/angular\/angular-resource.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/js\/angular\/angular-resource.min.js",
+		"outputAbbreviatedPath": "\/core\/js\/angular\/min\/angular-resource.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/core\/js\/angular\/angular-route.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/js\/angular\/angular-route.min.js",
+		"outputAbbreviatedPath": "\/core\/js\/angular\/min\/angular-route.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/core\/js\/angular\/angular-touch.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/js\/angular\/angular-touch.min.js",
+		"outputAbbreviatedPath": "\/core\/js\/angular\/min\/angular-touch.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/core\/js\/angular\/angular.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/js\/angular\/angular.min.js",
+		"outputAbbreviatedPath": "\/core\/js\/angular\/min\/angular.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/core\/js\/cosmo.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -609,15 +524,15 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
-	"\/core\/stylesheets\/global\/_color.scss": {
+	"\/core\/sass\/global\/_buttons.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/global\/_color.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_color.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_buttons.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_buttons.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -625,15 +540,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/global\/_fonts.scss": {
+	"\/core\/sass\/global\/_color.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/global\/_fonts.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_fonts.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_color.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_color.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -641,15 +556,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/global\/_media-queries.scss": {
+	"\/core\/sass\/global\/_fonts.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/global\/_media-queries.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_media-queries.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_fonts.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_fonts.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -657,15 +572,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/global\/_z-index.scss": {
+	"\/core\/sass\/global\/_forms.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/global\/_z-index.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_z-index.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_forms.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_forms.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -673,15 +588,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_angular-defaults.scss": {
+	"\/core\/sass\/global\/_global.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_angular-defaults.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_angular-defaults.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_global.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_global.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -689,15 +604,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_blocks.scss": {
+	"\/core\/sass\/global\/_input.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_blocks.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_blocks.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_input.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_input.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -705,15 +620,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_buttons.scss": {
+	"\/core\/sass\/global\/_lists.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_buttons.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_buttons.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_lists.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_lists.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -721,15 +636,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_forms.scss": {
+	"\/core\/sass\/global\/_media-queries.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_forms.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_forms.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_media-queries.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_media-queries.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -737,15 +652,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_global.scss": {
+	"\/core\/sass\/global\/_radio-checkbox.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_global.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_global.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_radio-checkbox.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_radio-checkbox.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -753,15 +668,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_input.scss": {
+	"\/core\/sass\/global\/_reset.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_input.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_input.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_reset.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_reset.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -769,15 +684,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_lists.scss": {
+	"\/core\/sass\/global\/_tables.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_lists.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_lists.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_tables.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_tables.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -785,15 +700,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_login.scss": {
+	"\/core\/sass\/global\/_type.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_login.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_login.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_type.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_type.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -801,15 +716,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_modal-media.scss": {
+	"\/core\/sass\/global\/_z-index.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_modal-media.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_modal-media.css",
+		"inputAbbreviatedPath": "\/core\/sass\/global\/_z-index.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_z-index.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -817,15 +732,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_modules.scss": {
+	"\/core\/sass\/partials\/_blocks.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_modules.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_modules.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_blocks.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_blocks.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -833,15 +748,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_page.scss": {
+	"\/core\/sass\/partials\/_gallery--edit.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_page.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_page.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_gallery--edit.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_gallery--edit.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -849,15 +764,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_reset.scss": {
+	"\/core\/sass\/partials\/_gallery--upload.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_reset.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_reset.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_gallery--upload.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_gallery--upload.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -865,15 +780,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_revisions.scss": {
+	"\/core\/sass\/partials\/_gallery.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_revisions.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_revisions.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_gallery.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_gallery.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -881,15 +796,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_roles.scss": {
+	"\/core\/sass\/partials\/_login.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_roles.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_roles.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_login.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_login.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -897,15 +812,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_settings.scss": {
+	"\/core\/sass\/partials\/_modules.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_settings.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_settings.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_modules.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_modules.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -913,15 +828,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_sidebar.scss": {
+	"\/core\/sass\/partials\/_page.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_sidebar.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_sidebar.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_page.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_page.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -929,15 +844,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_tables.scss": {
+	"\/core\/sass\/partials\/_revisions.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_tables.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_tables.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_revisions.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_revisions.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -945,15 +860,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_tags.scss": {
+	"\/core\/sass\/partials\/_roles.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_tags.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_tags.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_roles.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_roles.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -961,15 +876,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_themes.scss": {
+	"\/core\/sass\/partials\/_settings.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_themes.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_themes.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_settings.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_settings.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -977,15 +892,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_typography.scss": {
+	"\/core\/sass\/partials\/_sidebar.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_typography.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_typography.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_sidebar.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_sidebar.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -993,15 +908,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_users.scss": {
+	"\/core\/sass\/partials\/_tags.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_users.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_users.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_tags.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_tags.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1009,15 +924,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/partials\/_wysiwyg.scss": {
+	"\/core\/sass\/partials\/_themes.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/partials\/_wysiwyg.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_wysiwyg.css",
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_themes.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_themes.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1025,31 +940,63 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/style.scss": {
-		"createSourceMap": 1,
-		"debugStyle": 1,
+	"\/core\/sass\/partials\/_users.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 5,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_users.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_users.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/core\/sass\/partials\/_wysiwyg.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 5,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/sass\/partials\/_wysiwyg.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_wysiwyg.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/core\/sass\/style.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/style.scss",
+		"inputAbbreviatedPath": "\/core\/sass\/style.scss",
 		"outputAbbreviatedPath": "\/core\/css\/cosmo-default-style.minify.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 1,
-		"shouldRunBless": 0,
+		"shouldRunBless": 1,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/_calendar.scss": {
+	"\/core\/sass\/vendor\/_calendar.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/_calendar.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_calendar.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/_calendar.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_calendar.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1057,15 +1004,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/_growl.scss": {
+	"\/core\/sass\/vendor\/_growl.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/_growl.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_growl.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/_growl.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_growl.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1073,15 +1020,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/_menus.scss": {
+	"\/core\/sass\/vendor\/_menus.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/_menus.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_menus.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/_menus.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_menus.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1089,15 +1036,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/_modal.scss": {
+	"\/core\/sass\/vendor\/_modal.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/_modal.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/css\/_modal.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/_modal.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/css\/_modal.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1105,15 +1052,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_bordered-pulled.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_bordered-pulled.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_bordered-pulled.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_bordered-pulled.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_bordered-pulled.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_bordered-pulled.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1121,15 +1068,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_core.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_core.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_core.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_core.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_core.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_core.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1137,15 +1084,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_fixed-width.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_fixed-width.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_fixed-width.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_fixed-width.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_fixed-width.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_fixed-width.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1153,15 +1100,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_icons.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_icons.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_icons.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_icons.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_icons.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_icons.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1169,15 +1116,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_larger.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_larger.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_larger.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_larger.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_larger.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_larger.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1185,15 +1132,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_list.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_list.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_list.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_list.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_list.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_list.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1201,15 +1148,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_mixins.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_mixins.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_mixins.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_mixins.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_mixins.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_mixins.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1217,15 +1164,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_path.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_path.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_path.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_path.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_path.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_path.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1233,15 +1180,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_rotated-flipped.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_rotated-flipped.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_rotated-flipped.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_rotated-flipped.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_rotated-flipped.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_rotated-flipped.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1249,15 +1196,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_spinning.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_spinning.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_spinning.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_spinning.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_spinning.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_spinning.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1265,15 +1212,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_stacked.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_stacked.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_stacked.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_stacked.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_stacked.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_stacked.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1281,15 +1228,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/_variables.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/_variables.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/_variables.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/_variables.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/_variables.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/_variables.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1297,15 +1244,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/core\/stylesheets\/vendor\/fontawesome\/font-awesome.scss": {
+	"\/core\/sass\/vendor\/fontawesome\/font-awesome.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 5,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/stylesheets\/vendor\/fontawesome\/font-awesome.scss",
-		"outputAbbreviatedPath": "\/core\/stylesheets\/vendor\/css\/font-awesome.css",
+		"inputAbbreviatedPath": "\/core\/sass\/vendor\/fontawesome\/font-awesome.scss",
+		"outputAbbreviatedPath": "\/core\/sass\/vendor\/css\/font-awesome.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
