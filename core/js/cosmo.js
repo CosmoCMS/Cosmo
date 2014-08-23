@@ -684,6 +684,67 @@ angular.module('cosmo', [])
     };
 }])
 
+/**************************************************
+ *               Modal Directive                  *
+ **************************************************/
+/*
+.directive('modal', [function(){
+    return {
+        templateUrl: 'core/html/modal.html',
+        replace: true,
+        link: function(scope, elm, attrs){
+            
+            // Open the modal
+            scope.$on('modalOpen', function(data){
+                scope.showModal = true;
+            });
+            
+            // Close the modal
+            scope.$on('modalClose', function(data){
+                scope.showModal = false;
+            });
+        }
+    };
+}])
+*/
+
+/**************************************************
+ *              Notify Directive                  *
+ **************************************************/
+
+.directive('notification', ['$timeout', function($timeout){
+    return {
+        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false">x</a>{{message}}</div>',
+        replace: true,
+        link: function(scope, elm, attrs){
+            
+            scope.showNotification = true;
+            scope.message = 'Hi there!';
+            scope.classes = 'alert-alert';
+            
+            scope.$on('notify', function(data){
+                scope.showNotification = true;
+                scope.message = data.message;
+                
+                // Default class is alert-alert
+                if(!data.classes)
+                    scope.classes = 'alert-alert';
+                else
+                    scope.classes = data.classes;
+                
+                // Default duration is 5 seconds
+                if(!data.duration)
+                    data.duration = 5000;
+                
+                // Disappear after 5 seconds
+                $timeout(function(){
+                    scope.showNotification = false;
+                }, data.duration);
+            });
+        }
+    };
+}])
+
 // Control meta tags
 .controller('HTMLCtrl', ['$scope', 'Page', 'Hooks', '$rootScope', 'Users', function($scope, Page, Hooks, $rootScope, Users){
     
