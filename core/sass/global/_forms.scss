@@ -1,25 +1,22 @@
 input {
-	background-color: transparent;
-	border: 0;
-	border-bottom: 1px solid palette(gray, mid);
-	box-shadow: none;
+	background-color: palette(gray, white--half);
+	border: 1px solid palette(gray, mid--dark);
+	box-sizing: border-box;
 	color: palette(blue, dark);
 	display: inline-block;
 	font-family: $font-alpha;
 	font-weight: 200;
-	margin: 0;
+	margin-bottom: 1.5rem;
 	outline: none;
-	padding: 0 0 .313rem 0;
+	padding: .838rem;
+	transition: background-color .15s ease-in;
 	width: 100%;
 
 	&:focus {
-		background-color: transparent;
-		border: 0;
-		border-bottom: 1px solid palette(gray, dark);
+		background-color: palette(gray, white);
 	}
 
 	&:hover {
-		background-color: transparent;
 		cursor: text;
 	}
 
@@ -35,12 +32,13 @@ textarea {
 }
 
 label {
-	color: palette(blue, light);
+	color: palette(blue, dark);
 	display: inline-block;
 	font-family: $font-alpha;
-	font-weight: 200;
-	margin-bottom: 1.5rem;
+	font-size: .9em;
+	font-weight: 600;
 	margin-top: 0;
+	text-transform: uppercase;
 }
 
 /* number count for things like titles, descriptions etc... */
@@ -55,13 +53,13 @@ label {
 .cos-select {
 	background: url(../img/arrows.svg) no-repeat transparent right;
 	background-size: 1.5rem .938rem;
-	border: 1px solid palette(gray, mid);
+	border: 1px solid palette(gray, mid--dark);
 	box-sizing: border-box;
 	color: palette(blue, dark);
 	cursor: pointer;
 	font-family: $font-alpha;
 	height: 3rem;
-	margin-top: 1.5rem;
+	margin: 1.5rem 0;
 	outline: none;
 	padding-left: .5rem;
 	width: 100%;

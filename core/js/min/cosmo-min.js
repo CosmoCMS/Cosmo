@@ -714,7 +714,7 @@ angular.module('cosmo', [])
 
 .directive('notification', ['$timeout', function($timeout){
     return {
-        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false">x</a>{{message}}</div>',
+        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false"><i class="fa fa-times"></i></a>{{message}}</div>',
         replace: true,
         link: function(scope, elm, attrs){
 

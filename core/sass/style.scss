@@ -4,18 +4,19 @@
 @import "global/fonts"; /* load fonts and variables */
 @import "global/color"; /* color maps */
 @import "global/_z-index"; /* sass map and mixin for easy z-indexing */
+@import "global/alerts"; /* alert notifications used for saved pages, errors etc.. */
 
 
 
 /* vendor styles, may be fully altered or untouched from original styling */
 @import "vendor/fontawesome/font-awesome"; /* font awesome fonts --fontawesome.io--*/
-@import "vendor/growl"; /* growl notifications used for saved pages, errors etc.. */
 @import "vendor/modal"; /* modal window used for the gallery */
 
 
 
 /* cosmo elements needed to be outside of the cosmo-default tag */
 @import "partials/wysiwyg"; /* wysiwyg editor */
+
 
 
 .cosmo-default {

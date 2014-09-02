@@ -29,7 +29,7 @@
 /* error button, generally used for "delete" */
 .error-button {
     @extend %button;
-    border: 1px solid palette(gray, mid);
+    border: 1px solid palette(gray, mid--dark);
 
     &:focus {
         background-color: palette(alert, error--dark);
@@ -46,7 +46,7 @@
 /* general button used */
 .options-button {
     @extend %button;
-    border: 1px solid palette(gray, mid);
+    border: 1px solid palette(gray, mid--dark);
 
     &:focus {
         background-color: palette(blue, dark);
@@ -54,7 +54,7 @@
     }
 
     &:hover {
-        background-color: palette(gray, mid);
+        background-color: palette(gray, mid--dark);
         border: 1px solid palette(blue, dark);
         color: palette(blue, dark);
     }
@@ -63,7 +63,7 @@
 /* save/success style button */
 .success-button {
     @extend %button;
-    border: 1px solid palette(gray, mid);
+    border: 1px solid palette(gray, mid--dark);
 
     &:focus {
         background-color: palette(alert, success--dark);
