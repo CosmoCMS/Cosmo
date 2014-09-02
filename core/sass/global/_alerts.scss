@@ -1,0 +1,43 @@
+%alert-style {
+    background-color: palette(gray, light);
+    border-left: 5px solid;
+    color: palette(blue, dark);
+    font-family: $font-alpha;
+    padding: .625rem;
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    transition: all .25s ease;
+    z-index: z(modal);
+
+    i {
+        color: palette(blue, dark);
+        margin-right: 1rem;
+        transition: color .15s ease-in;
+
+        &:hover{
+            color: palette(gray, dark);
+            cursor: pointer;
+        }
+    }
+}
+
+.alert-warning {
+    @extend %alert-style;
+    border-color: palette(alert, warning);
+}
+
+.alert-success {
+    @extend %alert-style;
+    border-color: palette(alert, success);
+}
+
+.alert-error {
+    @extend %alert-style;
+    border-color: palette(alert, error);
+}
+
+.alert-alert {
+    @extend %alert-style;
+    border-color: palette(blue, dark);
+}

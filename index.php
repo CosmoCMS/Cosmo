@@ -122,7 +122,6 @@
             <div wysiwyg></div>
         </div>
 
-        <!--<div ng-include="'themes/KHP/partials/header.html'"></div>-->
         <div ng-view class="at-view-fade-in at-view-fade-out cosmo-theme"><?php echo $content['body']; ?></div>
 
         <div notification></div>
