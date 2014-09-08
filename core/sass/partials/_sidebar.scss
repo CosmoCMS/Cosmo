@@ -7,18 +7,11 @@
     margin-top: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-top: 3.9rem;
     position: fixed;
     top: 0;
     transition: left .3s ease;
     width: 20rem;
     z-index: z(sidebar);
-}
-
-/* Sidebar transition to reveal sidebar from the left side of the screen. */
-/**NEED TO CHANGE **/
-.userSidebarSlideOut {
-    left: 16.125rem;
 }
 
 /* Sidebar transition to reveal sidebar from the left side of the screen. */
@@ -35,40 +28,50 @@
     transition: left .3s ease;
     z-index: z(hamburger);
 
-    i.hamburger {
+    .hamburger {
         background-color: palette(gray, light);
-        border-bottom: 1px solid palette(gray, mid);
-        border-right: 1px solid palette(gray, mid);
-        color: palette(blue, dark);
-        font-size: 1.313rem;
-        padding: 1.219rem 1.219rem;
+        border-bottom: 1px solid palette(gray, dark);
+        border-right: 1px solid palette(gray, dark);
+        outline: none;
+        padding: .61rem;
+        transition: background-color .15s ease, color .15s ease;
 
         &:hover {
             background-color: palette(blue, dark);
             color: palette(gray, light);
-            transition: all .25s ease;
+
+            .icon {
+                fill: palette(gray, light);
+            }
+        }
+
+        svg {
+            height: 2.5rem;
+            vertical-align: middle;
+            width: 2.5rem;
+
         }
     }
 
-    i.close {
-        margin-left: -16.25rem;
+    .close {
+        color: palette(gray, light);
+        margin-left: 0;
+        padding: 1.313rem 1.469rem;
+        position: absolute;
+        left: -22rem;
+        transition: left .3s ease;
+        z-index: z(sidebar);
     }
 }
 
 /**NEED TO CHANGE **/
 .hamburgeractive {
-    font-size: 1.094rem;
-    left: 16.25rem;
 
-    i.close {
-        color: palette(gray, light);
-        margin-left: 0;
-        padding: 1.313rem 1.469rem;
-        transition: all .3s ease;
-        z-index: z(sidebar);
+    .close {
+        left: 16.25rem;
     }
 
-    i.hamburger {
+    .hamburger {
         left: -22.5rem;
     }
 }
@@ -77,9 +80,7 @@
 .bar-top {
     background-color: palette(blue, light);
     height: 3.75rem;
-    margin-top: -3.9rem;
     overflow: hidden;
-    position: fixed;
     width: 20rem;
 
     h1 {
@@ -143,17 +144,6 @@
 
 /* similar to .form-case, but with a border at the bottom */
 .form-case--border {
-    border-bottom: 1px solid palette(gray, mid);
+    border-bottom: 1px solid palette(gray, mid--dark);
     padding: 1.563rem;
-
-    > div {
-
-        button {
-            margin-bottom: 2rem;
-        }
-    }
-
-    input {
-        border-bottom: 1px solid palette(gray, mid);
-    }
 }

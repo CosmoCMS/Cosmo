@@ -39,7 +39,7 @@ input[type=radio] + label {
 input[type=checkbox] + label {
     @extend %button;
     @extend %radio-check;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     padding: .313rem + .2rem;
 
     &:before {

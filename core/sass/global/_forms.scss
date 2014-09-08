@@ -8,7 +8,7 @@ input {
 	font-weight: 200;
 	margin-bottom: 1.5rem;
 	outline: none;
-	padding: .838rem;
+	padding: .56rem;
 	transition: background-color .15s ease-in;
 	width: 100%;
 
@@ -35,7 +35,7 @@ label {
 	color: palette(blue, dark);
 	display: inline-block;
 	font-family: $font-alpha;
-	font-size: .9em;
+	font-size: .85em;
 	font-weight: 600;
 	margin-top: 0;
 	text-transform: uppercase;
@@ -52,16 +52,16 @@ label {
 /* modified select style dropdown wrap standard <select> with <div class="cos-select"> to add the style*/
 .cos-select {
 	background: url(../img/arrows.svg) no-repeat transparent right;
-	background-size: 1.5rem .938rem;
+	background-size: 2.25rem .938rem;
 	border: 1px solid palette(gray, mid--dark);
 	box-sizing: border-box;
 	color: palette(blue, dark);
 	cursor: pointer;
 	font-family: $font-alpha;
 	height: 3rem;
-	margin: 1.5rem 0;
+	margin-bottom: 1.5rem;
 	outline: none;
-	padding-left: .5rem;
+	padding-left: .838rem;
 	width: 100%;
 
 	select {
@@ -82,7 +82,7 @@ label {
 .cos-select--half {
 	@extend .cos-select;
 	display: inline-block;
-	margin-right: .625rem;
+	margin-right: .313rem;
 	width: 8rem;
 
 	&:last-child {

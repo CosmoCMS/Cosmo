@@ -38,6 +38,11 @@ input[type='file'] {
     transition: all .25s ease;
 }
 
+.upload {
+    height: 100%;
+    overflow-y: auto;
+}
+
 .uploader {
     padding: 0 1.563rem 1.563rem 1.563rem;
     position: relative;

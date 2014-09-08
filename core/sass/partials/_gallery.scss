@@ -28,7 +28,7 @@
     background-color: palette(blue, light);
     height: auto;
     margin: 0 auto;
-    padding: 0 0 .313rem 1.563rem;
+    padding: 0 1.563rem;
     position: fixed;
     width: 100%;
     z-index: z(minimal);
@@ -68,23 +68,20 @@
 
 /* search bar*/
 .modal--bar-top input.search-bar {
-    border: 0;
-    border-bottom: 1px solid palette(gray, light);
+    @include placeholder { color: palette(blue, light); }
+    background-color: palette(gray, white);
+    border: 1px solid palette(blue, mid);
+    box-sizing: border-box;
     color: palette(gray, white);
-    width: 91%;
-    margin-bottom: .625rem;
+    margin-bottom: 0;
+    width: 100%%;
 
-    @include placeholder {
-       color: palette(gray, light);
+    &:focus {
+        color: palette(blue, dark);
     }
 
     @media #{$bp-beta} {
-        width: 35.625rem;
-    }
-
-    @media #{$bp-gamma} {
-        margin-top: 1.5rem;
-        width: 14rem;
+        width: 15rem;
     }
 }
 
@@ -93,7 +90,7 @@
     display: block;
     margin-left: 0;
 
-    @media #{$bp-alpha} {
+    @media #{$bp-beta} {
         display: inline-block;
         margin-left: 1.5rem;
     }
@@ -102,25 +99,40 @@
         margin-bottom: .625rem;
     }
 
-    .options-button {
-        @extend %modal--options-button;
-    }
-
     .success-button, .error-button {
         border: 1px solid palette(blue, dark);
     }
 
-    input.search-bar {
-        background-color: palette(gray, white);
-        border: 1px solid palette(blue, mid);
-        margin: 0;
+    .upload {
+        display: block;
+        margin-top: 1.5rem;
+        width: 100%;
 
-        &:focus {
-            color: palette(blue, dark);
+        @media #{$bp-beta} {
+            display: inline-block;
+            margin: 0;
+            position: absolute;
+            right: 2rem;
+            top: .8rem;
+            width: auto;
+        }
+    }
+
+    .cos-select {
+        border-color: palette(blue, mid);
+        display: inline-block;
+        height: 2.4rem;
+        margin-bottom: 0;
+        margin-top: 1.5rem;
+        width: 100%;
+
+        select {
+            height: 2.3rem;
         }
 
-        @include placeholder {
-           color: palette(blue, light);
+        @media #{$bp-beta} {
+            margin-top: -.4rem;
+            width: 8rem;
         }
     }
 }
@@ -146,14 +158,10 @@
 /* wrapper to hold elements and push down below the bar-top within .media-wrapper */
 .gallery-media-wrapper {
     @extend .media-wrapper;
-    top: 12.5rem;
+    top: 15rem;
 
-    @media #{$bp-alpha} {
-        top: 9.688rem;
-    }
-
-    @media #{$bp-gamma} {
-        top: 4.5rem;
+    @media #{$bp-beta} {
+        top: 4rem;
     }
 
     button.options-button {
@@ -264,7 +272,7 @@
     }
 
     p {
-        margin-bottom: 0;
+        margin-bottom: 1.5rem;
     }
 
     .tag {

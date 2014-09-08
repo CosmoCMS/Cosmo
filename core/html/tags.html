@@ -4,8 +4,8 @@
         <h1>Edit</h1><h2>Tags</h2>
     </div>
     <div class="form-case--border">
-        <input type="text" ng-model="tags.search" placeholder="e.g., company, soccer, big salad">
         <label>Search</label>
+        <input type="text" ng-model="tags.search" placeholder="e.g., company, soccer, big salad">
     </div>
     <ul>
         <li class="tag-list" ng-repeat="tag in tags.tags | filter:tags.search" ng-click="tags.selectedTag=tag;tags.newTag=tag;">

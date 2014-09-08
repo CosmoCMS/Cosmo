@@ -46,6 +46,7 @@
     background-color: palette(gray, light);
     height: 100%;
     left: 0;
+    overflow-x: hidden;
     overflow-y: scroll;
     position: fixed;
     top: 0;
@@ -54,27 +55,12 @@
 
     @media #{$bp-beta} {
         left: auto;
+        margin-left: -1.55rem;
         width: 43.75rem;
     }
 
     @media #{$bp-gamma} {
         width: 59.375rem;
-    }
-
-    input {
-        margin-bottom: 0;
-    }
-
-    label {
-        margin-right: .313rem;
-    }
-
-    .modal--bar-top {
-        padding-bottom: 0;
-
-        @media #{$bp-beta} {
-            margin: 0;
-        }
     }
 }
 
@@ -114,7 +100,7 @@
         }
     }
 
-    img, iframe {
+    img, iframe, video {
         width: 100%;
 
         @media #{$bp-beta} {
