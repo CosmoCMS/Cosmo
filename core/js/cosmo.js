@@ -765,6 +765,7 @@ angular.module('cosmo', [])
 }])
 
 /**************************************************
+<<<<<<< HEAD
  *              Notify Directive                  *
  *            Manage notifications                *
  **************************************************/
@@ -778,6 +779,48 @@ angular.module('cosmo', [])
             scope.$on('notify', function(event, data){
                 scope.showNotification = true;
                 scope.message = $sce.trustAsHtml(data.message);
+=======
+ *               Modal Directive                  *
+ **************************************************/
+/*
+.directive('modal', [function(){
+    return {
+        templateUrl: 'core/html/modal.html',
+        replace: true,
+        link: function(scope, elm, attrs){
+            
+            // Open the modal
+            scope.$on('modalOpen', function(data){
+                scope.showModal = true;
+            });
+            
+            // Close the modal
+            scope.$on('modalClose', function(data){
+                scope.showModal = false;
+            });
+        }
+    };
+}])
+*/
+
+/**************************************************
+ *              Notify Directive                  *
+ **************************************************/
+
+.directive('notification', ['$timeout', function($timeout){
+    return {
+        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false">x</a>{{message}}</div>',
+        replace: true,
+        link: function(scope, elm, attrs){
+            
+            scope.showNotification = true;
+            scope.message = 'Hi there!';
+            scope.classes = 'alert-alert';
+            
+            scope.$on('notify', function(data){
+                scope.showNotification = true;
+                scope.message = data.message;
+>>>>>>> back-end
                 
                 // Default class is alert-alert
                 if(!data.classes)
@@ -798,11 +841,15 @@ angular.module('cosmo', [])
     };
 }])
 
+<<<<<<< HEAD
 /**************************************************
  *              HTML Controller                   *
  *              Manage Meta-tags                  *
  **************************************************/
  
+=======
+// Control meta tags
+>>>>>>> back-end
 .controller('HTMLCtrl', ['$scope', 'Page', 'Hooks', '$rootScope', 'Users', function($scope, Page, Hooks, $rootScope, Users){
 
     if(Users.admin)

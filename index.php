@@ -123,7 +123,6 @@
         </div>
 
         <div ng-view class="at-view-fade-in at-view-fade-out cosmo-theme"><?php echo $content['body']; ?></div>
-
         <div notification></div>
     </body>
 </html>
