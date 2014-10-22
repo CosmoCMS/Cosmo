@@ -1,4 +1,4 @@
-/* colors */
+// colors 
 $colors: (
     gray: (
         light: rgba(243, 246, 246, 1),
@@ -35,11 +35,11 @@ $colors: (
         @content;
     }
 
-    &:-moz-placeholder { /* Firefox 18- */
+    &:-moz-placeholder { // Firefox 18- 
         @content;
     }
 
-    &::-moz-placeholder {  /* Firefox 19+ */
+    &::-moz-placeholder {  // Firefox 19+ 
         @content;
     }
 

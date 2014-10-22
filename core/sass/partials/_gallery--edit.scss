@@ -1,14 +1,7 @@
-/*
-*
-**
-***
-*** image editing / previewing area
-***
-**
-*
-*/
+// image editing / previewing area
 
-/* holder for prev/next selection in the image preview/edit area */
+
+// holder for prev/next selection in the image preview/edit area
 .nav {
     display: block;
     margin-top: 0;
@@ -41,7 +34,7 @@
     }
 }
 
-/* editing image information once an image has been selected */
+// editing image information once an image has been selected
 .img-edit {
     background-color: palette(gray, light);
     height: 100%;
@@ -64,7 +57,7 @@
     }
 }
 
-/* preview of the image within the editing area */
+// preview of the image within the editing area
 .img-edit .img-prev {
     display: inline-block;
     height: auto;
@@ -109,7 +102,7 @@
     }
 }
 
-/* text input area below the image preview */
+// text input area below the image preview
 .img-edit .img-info {
     display: inline-block;
     margin-right: size(25);
@@ -133,14 +126,14 @@
     }
 }
 
-/* holder for information to input in the img-edit area */
+// holder for information to input in the img-edit area
 .media-info {
     display: inline-block;
     padding: 0 size(25);
     width: 100%;
 }
 
-/* holder for file icons in the preview/edit view */
+// holder for file icons in the preview/edit view
 .file-prev {
     background-color: palette(gray, mid);
     display: table;

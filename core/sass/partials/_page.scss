@@ -2,7 +2,7 @@ label.type {
     margin-top: 1.5rem;
 }
 
-/* alert when a newer version of the page has been saved */
+// alert when a newer version of the page has been saved 
 .new-version {
     background-color: palette(alert, warning);
     position: fixed;
@@ -28,7 +28,7 @@ label.type {
     }
 }
 
-/* confirmation on if you want to delete the page or not */
+// confirmation on if you want to delete the page or not 
 .confirm {
     background-color: palette(alert, warning);
     margin: 0 -1.563rem 1.5rem -1.563rem;

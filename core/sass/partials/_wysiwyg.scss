@@ -1,4 +1,4 @@
-/* for dropdowns used in the cosmo WYSIWYG editor */
+// for dropdowns used in the cosmo WYSIWYG editor 
 %wysiwyg-dropdown {
     background-color: palette(gray, light);
     border: 1px solid palette(gray, mid);
@@ -36,9 +36,9 @@
     }
 }
 
-/* --------------------------------------- End Mixins --------------------------------------- */
+// --------------------------------------- End Mixins --------------------------------------- 
 
-/* full length bar for wysiwyg */
+// full length bar for wysiwyg 
 .cosmo-toolbar-large {
     background-color: palette(gray, light);
     border: 1px solid palette(gray, mid);

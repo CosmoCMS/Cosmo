@@ -16,14 +16,14 @@
     }
 }
 
-/* hide the round disc and generic check button, we will use just the label as the radio button */
+// hide the round disc and generic check button, we will use just the label as the radio button 
 input[type=radio], input[type=checkbox] {
     display:none;
     margin: size(10);
 }
 
 
-/* change the look of labels that are now covering the input button */
+// change the look of labels that are now covering the input button 
 input[type=radio] + label {
     @extend %button;
     @extend %radio-check;
@@ -35,7 +35,7 @@ input[type=radio] + label {
     }
 }
 
-/* change the look of checkbox labels */
+// change the look of checkbox labels 
 input[type=checkbox] + label {
     @extend %button;
     @extend %radio-check;
@@ -47,7 +47,7 @@ input[type=checkbox] + label {
     }
 }
 
-/* change background color for label to make it look selected */
+// change background color for label to make it look selected 
 input[type=radio]:checked + label, input[type=radio].active + label {
     background-color: palette(blue, dark);
     background-image: none;
@@ -59,7 +59,7 @@ input[type=radio]:checked + label, input[type=radio].active + label {
     }
 }
 
-/* change background color for checkbox label to make it look selected */
+// change background color for checkbox label to make it look selected 
 input[type=checkbox]:checked + label {
     background-color: palette(blue, dark);
     background-image: none;

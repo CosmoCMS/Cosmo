@@ -41,7 +41,7 @@ label {
 	text-transform: uppercase;
 }
 
-/* number count for things like titles, descriptions etc... */
+// number count for things like titles, descriptions etc... 
 .num-count {
 	color: palette(blue, light);
 	font-size: .85em;
@@ -49,7 +49,7 @@ label {
 	float: right;
 }
 
-/* modified select style dropdown wrap standard <select> with <div class="cos-select"> to add the style*/
+// modified select style dropdown wrap standard <select> with <div class="cos-select"> to add the style
 .cos-select {
 	background: url(../img/arrows.svg) no-repeat transparent right;
 	background-size: 2.25rem size(15);
@@ -78,7 +78,7 @@ label {
 	}
 }
 
-/* same as .cos-select just half width in order to have 2 up */
+// same as .cos-select just half width in order to have 2 up 
 .cos-select--half {
 	@extend .cos-select;
 	display: inline-block;

@@ -1,4 +1,4 @@
-/* sidebar for all of cosmo editing outside of the live editing done on page */
+// sidebar for all of cosmo editing outside of the live editing done on page
 .sidebar {
     background-color: palette(gray, light);
     bottom: 0;
@@ -19,14 +19,14 @@
     }
 }
 
-/* Sidebar transition to reveal sidebar from the left side of the screen. */
-/**NEED TO CHANGE **/
+// Sidebar transition to reveal sidebar from the left side of the screen.
+//NEED TO CHANGE
 .adminSidebarSlideOut {
     left: 0;
 }
 
 
-/* active hamburger navigation before you open the sidebar */
+// active hamburger navigation before you open the sidebar
 .hamburger {
     position: fixed;
     top: 25%;
@@ -71,7 +71,7 @@
     }
 }
 
-/**NEED TO CHANGE **/
+//NEED TO CHANGE *
 .hamburgeractive {
     top: 0;
 
@@ -92,7 +92,7 @@
     }
 }
 
-/* bar to be used at the top of each area of the sidebar */
+// bar to be used at the top of each area of the sidebar
 .bar-top {
     background-color: palette(blue, light);
     height: 3.75rem;
@@ -132,7 +132,7 @@
   }
 }
 
-/* username and logout styling for prfl-qk-view */
+// username and logout styling for prfl-qk-view
 .prfl-info {
     display: inline-block;
     font-size: .85rem;
@@ -156,13 +156,13 @@
     }
 }
 
-/* case to adjust sides within the sidebar */
+// case to adjust sides within the sidebar
 .form-case {
     overflow-y: scroll;
     padding: size(25) size(25) 0 size(25);
 }
 
-/* similar to .form-case, but with a border at the bottom */
+// similar to .form-case, but with a border at the bottom
 .form-case--border {
     border-bottom: 1px solid palette(gray, mid--dark);
     padding: size(25);

@@ -25,7 +25,7 @@
     }
 }
 
-/* save/success style button */
+// save/success style button 
 .btn-success {
     @extend %button;
     border: 1px solid palette(gray, mid--dark);
@@ -41,7 +41,7 @@
     }
 }
 
-/* error button, generally used for "delete" */
+// error button, generally used for "delete" 
 .btn-error {
     @extend %button;
     border: 1px solid palette(gray, mid--dark);
@@ -58,7 +58,7 @@
 
 }
 
-/* general button used */
+// general button used 
 .btn-options {
     @extend %button;
     border: 1px solid palette(gray, mid--dark);
@@ -75,7 +75,7 @@
     }
 }
 
-/* holder for button needed to add a new menu/block etc... */
+// holder for button needed to add a new menu/block etc... 
 .new {
     background-color: palette(gray, light);
     opacity: 1;
