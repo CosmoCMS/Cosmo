@@ -5,7 +5,7 @@
     color: palette(blue, dark);
     display: block;
     height: auto;
-    margin-top: .22rem;
+    margin-top: .08rem;
     position: relative;
     width: 14.5rem;
 
@@ -29,7 +29,7 @@
         }
 
         i {
-            margin-right: 1.563rem * .375;
+            margin-right: .59rem;
             margin-top: -.2rem;
             vertical-align: middle;
         }
@@ -74,7 +74,7 @@
             display: inline-block;
             padding: 0;
             border: 0;
-            height: 1.875rem;
+            height: size(30);
             width: 1.438rem;
 
             &:after, &:before {
@@ -172,7 +172,7 @@
 
 .format-dropdown {
     @extend %wysiwyg-dropdown;
-    left: 1.25rem;
+    left: size(20);
     width: 9.063rem;
 }
 
@@ -265,6 +265,7 @@ pre {
 
 [contenteditable="true"] {
     border: 0;
+    min-height: 2rem;
     outline: 0;
     transition: outline .2s ease;
 

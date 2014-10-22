@@ -5,7 +5,7 @@
     display: inline-block;
     font-size: .813em;
     font-weight: 200;
-    margin: 0 .313rem .65rem 0;
+    margin: 0 size(5) .65rem 0;
     outline: none;
     padding: 0.65rem 1rem 0.75rem 1rem;
     text-align: center;
@@ -25,9 +25,24 @@
     }
 }
 
+/* save/success style button */
+.btn-success {
+    @extend %button;
+    border: 1px solid palette(gray, mid--dark);
+
+    &:focus {
+        background-color: palette(alert, success--dark);
+        border: 1px solid palette(alert, success--dark);
+    }
+
+    &:hover {
+        background-color: palette(alert, success);
+        border: 1px solid palette(alert, success--dark);
+    }
+}
 
 /* error button, generally used for "delete" */
-.error-button {
+.btn-error {
     @extend %button;
     border: 1px solid palette(gray, mid--dark);
 
@@ -44,7 +59,7 @@
 }
 
 /* general button used */
-.options-button {
+.btn-options {
     @extend %button;
     border: 1px solid palette(gray, mid--dark);
 
@@ -57,22 +72,6 @@
         background-color: palette(gray, mid--dark);
         border: 1px solid palette(blue, dark);
         color: palette(blue, dark);
-    }
-}
-
-/* save/success style button */
-.success-button {
-    @extend %button;
-    border: 1px solid palette(gray, mid--dark);
-
-    &:focus {
-        background-color: palette(alert, success--dark);
-        border: 1px solid palette(alert, success--dark);
-    }
-
-    &:hover {
-        background-color: palette(alert, success);
-        border: 1px solid palette(alert, success--dark);
     }
 }
 
@@ -98,7 +97,7 @@
 
     i {
         color: palette(blue, dark);
-        margin-right: .313rem;
+        margin-right: size(5);
         transition: color .15s ease-in;
         vertical-align: middle;
     }

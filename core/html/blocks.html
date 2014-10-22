@@ -16,7 +16,7 @@
             <div class="add-new" ng-show="createBlock">
                 <label for="name">Name</label>
                 <input id="name" value="name" type='text' ng-model='block.newName' placeholder="e.g. My new custom block">
-                <button class="success-button" ng-click='newBlock()'>add</button>
+                <button class="btn-success" ng-click='newBlock()'>add</button>
             </div>
         </div>
         <div class="form-case--border">
@@ -265,7 +265,7 @@
             <label for="name">Block Name</label>
 	        <input id="name" value="name" type='text' ng-model='block.name'>
             <label for="code">Code</label>
-	        <div id="code" class="blk-code" cosmo="none"></div>
+	        <div id="code" class="blk-code" cs-content="none"></div>
             <label for="section">Section</label>
             <div class="cos-select">
     	        <select id="selection" value="section" ng-model="block.area">
@@ -512,12 +512,12 @@
             </p>
             <div class="confirm" ng-show="confirm">
                 <p>Are you sure you want to delete this page?</p>
-                <button class="error-button" ng-click='deleteBlock()'>Yes</button>
-                <button class="success-button" ng-click='confirm=false'>No</button>
+                <button class="btn-error" ng-click='deleteBlock()'>Yes</button>
+                <button class="btn-success" ng-click='confirm=false'>No</button>
             </div>
             <div>
-                <button class="marg error-button" ng-click='confirm=true'>delete</button>
-                <button class="marg success-button" ng-click="saveBlock()">save</button>
+                <button class="marg btn-error" ng-click='confirm=true'>delete</button>
+                <button class="marg btn-success" ng-click="saveBlock()">save</button>
             </div>
         </div>
     </div>

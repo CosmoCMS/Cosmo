@@ -16,7 +16,7 @@
             <div class="add-new" ng-show="createMenu">
                 <label for="name">Add a Menu</label>
                 <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
-                <button class="success-button" ng-click='newMenu()'>add</button>
+                <button class="btn-success" ng-click='newMenu()'>add</button>
             </div>
         </div>
         <ul>
@@ -92,10 +92,10 @@
                 <label for="url">Edit Link URL</label>
                 <input value="url" type="text" ng-model="menu.editLinkURL">
 
-                <button class="error-button" ng-click="deleteLink()">delete link</button>
-                <button class="success-button" ng-click="updateLink()">update link</button>
-                <button class="error-button" ng-click='deleteMenu()'>delete</button>
-                <button class="success-button" ng-click="saveMenu()">save</button>
+                <button class="btn-error" ng-click="deleteLink()">delete link</button>
+                <button class="btn-success" ng-click="updateLink()">update link</button>
+                <button class="btn-error" ng-click='deleteMenu()'>delete</button>
+                <button class="btn-success" ng-click="saveMenu()">save</button>
             </div>
         </div>
     </div>

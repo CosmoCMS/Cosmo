@@ -52,7 +52,7 @@ label {
 /* modified select style dropdown wrap standard <select> with <div class="cos-select"> to add the style*/
 .cos-select {
 	background: url(../img/arrows.svg) no-repeat transparent right;
-	background-size: 2.25rem .938rem;
+	background-size: 2.25rem size(15);
 	border: 1px solid palette(gray, mid--dark);
 	box-sizing: border-box;
 	color: palette(blue, dark);
@@ -82,7 +82,7 @@ label {
 .cos-select--half {
 	@extend .cos-select;
 	display: inline-block;
-	margin-right: .313rem;
+	margin-right: size(5);
 	width: 8rem;
 
 	&:last-child {

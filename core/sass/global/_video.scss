@@ -1,0 +1,18 @@
+video {
+    width: 100%;
+}
+
+.fluidvids {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+
+    iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}

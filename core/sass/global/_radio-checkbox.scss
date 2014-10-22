@@ -7,7 +7,7 @@
 
     &:before {
         font-family: $font-beta;
-        margin-right: .313rem;
+        margin-right: size(5);
     }
 
     &:hover {
@@ -19,7 +19,7 @@
 /* hide the round disc and generic check button, we will use just the label as the radio button */
 input[type=radio], input[type=checkbox] {
     display:none;
-    margin: .625rem;
+    margin: size(10);
 }
 
 
@@ -28,7 +28,7 @@ input[type=radio] + label {
     @extend %button;
     @extend %radio-check;
     padding: .7rem;
-    margin-bottom: .313rem;
+    margin-bottom: size(5);
 
     &:before {
         content: "\f10c";
@@ -40,7 +40,7 @@ input[type=checkbox] + label {
     @extend %button;
     @extend %radio-check;
     margin-bottom: 1.5rem;
-    padding: .313rem + .2rem;
+    padding: size(5) + .2rem;
 
     &:before {
         content: "\f058";

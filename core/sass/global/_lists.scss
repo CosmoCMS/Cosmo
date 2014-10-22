@@ -10,7 +10,7 @@ ul {
 
     li {
         overflow: hidden;
-        padding: 1rem 1.563rem;
+        padding: 1rem size(25);
         text-overflow: ellipsis;
         transition: all .1s ease;
 
@@ -53,7 +53,7 @@ ul {
         small {
 
             i {
-                margin-right: .313rem;
+                margin-right: size(5);
                 vertical-align: middle;
             }
         }
@@ -63,7 +63,11 @@ ul {
 ul li ul {
     background-color: palette(gray, mid);
     margin-left: -2.5rem;
-    width: 21rem;
+    width: 130%;
+
+    @media #{$bp-beta} {
+        width: 31rem;
+    }
 
     li {
         padding-left: 4.3rem;

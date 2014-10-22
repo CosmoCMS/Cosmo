@@ -2,9 +2,9 @@
     <div class="new-version" ng-show="newerVersion">
         <p>There's a newer version of this document you didn't save. Would you like to use that instead?</p>
         <div class="btn-case">
-            <button class="error-button" type="button" ng-click="deleteNewerVersion()">discard</button>
-            <button class="options-button" type="button" ng-click='localVersion()'>compare</button>
-            <button class="success-button" type="button" ng-click='localVersion()'>use</button>
+            <button class="btn-error" type="button" ng-click="deleteNewerVersion()">discard</button>
+            <button class="btn-options" type="button" ng-click='localVersion()'>compare</button>
+            <button class="btn-success" type="button" ng-click='localVersion()'>use</button>
         </div>
     </div>
     <div class="bar-top">
@@ -24,7 +24,7 @@
 
         <label class="type" for="type">Type</label>
         <div class="cos-select">
-            <select value="type" ng-change="updatePageType()" ng-model="page.type" ng-options="(themePage.name | themeFiles ) for themePage in page.themePages" required></select>
+            <select value="type" ng-change="updatePageType()" ng-model="page.type" ng-options="(themePage | themeFiles ) for themePage in page.themePages" required></select>
         </div>
 
         <span class="num-count">{{page.title.length}}</span>
@@ -50,11 +50,11 @@
 
         <div class="confirm" ng-show="confirm">
             <p>Are you sure you want to delete this page?</p>
-            <button type="button" class="error-button" ng-click="deletePage()">Yes</button>
-            <button type="button" class="success-button" ng-click="confirm=false">No</button>
+            <button type="button" class="btn-error" ng-click="deletePage()">Yes</button>
+            <button type="button" class="btn-success" ng-click="confirm=false">No</button>
         </div>
-        <button type="button" class="error-button" ng-click="confirm=true">delete</button>
-        <button type="button" class="options-button" ng-click="savePage(true)">duplicate</button>
-        <button type="button" class="success-button" ng-click="savePage()">save</button>
+        <button type="button" class="btn-error" ng-click="confirm=true">delete</button>
+        <button type="button" class="btn-options" ng-click="savePage(true)">duplicate</button>
+        <button type="button" class="btn-success" ng-click="savePage()">save</button>
     </div>
 </div>

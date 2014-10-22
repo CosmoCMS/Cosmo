@@ -7,7 +7,7 @@
         <div class="form-case--border">
             <label for="name">Add a new role:</label>
             <input value="name" type='text' ng-model='role.newName' placeholder="e.g., manager, publisher, editor, intern">
-            <button class="success-button" ng-click='newRole()'>Create</button>
+            <button class="btn-success" ng-click='newRole()'>Create</button>
         </div>
         <ul>
             <li ng-repeat='role in roles'><a href='' ng-click='selectRole(role)' ng-if="role.name">{{role.name}}</a></li>
@@ -35,8 +35,8 @@
                 <label for="delete">delete</label>
             </div>
         <div class="btn-case-btm">
-            <button type="button" class="error-button" ng-click='deleteRole()'>Delete</button>
-            <button type="button" class="success-button" ng-click="saveRoles()">Save</button>
+            <button type="button" class="btn-error" ng-click='deleteRole()'>Delete</button>
+            <button type="button" class="btn-success" ng-click="saveRoles()">Save</button>
         </div>
     </div>
 </div>

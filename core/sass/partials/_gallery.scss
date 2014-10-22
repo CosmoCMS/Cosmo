@@ -28,7 +28,7 @@
     background-color: palette(blue, light);
     height: auto;
     margin: 0 auto;
-    padding: 0 1.563rem;
+    padding: 0 size(25);
     position: fixed;
     width: 100%;
     z-index: z(minimal);
@@ -46,7 +46,7 @@
     }
 
     h1 {
-        margin-left: .313rem;
+        margin-left: size(5);
     }
 
     h1.no-marg {
@@ -74,7 +74,7 @@
     box-sizing: border-box;
     color: palette(gray, white);
     margin-bottom: 0;
-    width: 100%%;
+    width: 100%;
 
     &:focus {
         color: palette(blue, dark);
@@ -96,7 +96,7 @@
     }
 
     button {
-        margin-bottom: .625rem;
+        margin-bottom: size(10);
     }
 
     .success-button, .error-button {
@@ -174,7 +174,7 @@
 .media-holder {
     background-color: palette(gray, light);
     overflow-y: scroll;
-    padding: 1.563rem;
+    padding: size(25);
 }
 
 /*
@@ -190,7 +190,7 @@
 /* styling to keep each image/video at correct proportions */
 .media-tile {
     display: inline-block;
-    margin: 0 1.563rem * .5 1.563rem * .5 0;
+    margin: 0 size(25) * .5 size(25) * .5 0;
     text-align: center;
     vertical-align: top;
     width: 100%;
@@ -213,14 +213,14 @@
         height: 19rem;
 
         &:nth-child(odd) {
-            margin-right: 1.563rem;
+            margin-right: size(25);
         }
     }
 
     i {
         color: palette(blue, dark);
         font-size: 10em;
-        margin-top: .938rem;
+        margin-top: size(15);
 
         @media #{$bp-beta} {
             font-size: 7.5em;
@@ -231,13 +231,21 @@
     img {
         height: auto;
 
+        @media #{$bp-beta} {
+            min-height: 13.55rem;
+            min-width: 100%;
+        }
+
+        @media #{$bp-gamma} {
+            min-height: 19rem;
+        }
     }
 }
 
 /* preview of files currently being used as a single image or in the gallery */
 .img-gallery {
     display: inline-block;
-    margin: 0 1.563rem 2rem 1.563rem;
+    margin: 0 size(25) 2rem size(25);
     vertical-align: top;
     width: auto;
 
@@ -254,7 +262,7 @@
 
 /* holder for info (css classes, links etc..) related to .img-gallery */
 .img-gallery-info {
-    margin-left: 1.563rem;
+    margin-left: size(25);
     overflow: hidden;
     padding-right: 2rem;
     width: auto;
@@ -280,8 +288,8 @@
         color: palette(blue, dark);
         display: inline-block;
         height: auto;
-        margin: 0 .625rem 2rem .625rem;
-        padding: .313rem .625rem .75rem .625rem;
+        margin: 0 size(10) 2rem size(10);
+        padding: size(5) size(10) .75rem size(10);
         width: auto;
 
         &:first-child {
@@ -294,7 +302,7 @@
         }
 
         .fa-tag {
-            margin-right: .313rem;
+            margin-right: size(5);
             vertical-align: middle;
         }
     }
