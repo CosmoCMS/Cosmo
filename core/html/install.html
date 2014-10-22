@@ -1,0 +1,75 @@
+<div class="cosmo-default" ng-controller="installationCtrl">
+    <div class="modal--bar-top">
+        <h1 class="no-marg">Install</h1><h2>cosmo</h2>
+    </div>
+    <div class="login">
+        <div class="form-case">
+            <p class="error" ng-if="uploadsPermissions!=='0777'">
+                Error: /uploads/ folder permissions are not set to 777. Please change them and refresh.
+            </p>
+            <p class="error" ng-if="autoloadPermissions!=='0777'">
+                Error: File core/app/autoload.php permissions are not set to 777. Please change them and refresh.
+            </p>
+            <p class="error" ng-if="!htaccess">
+                Error: File .htaccess does not exist. Please upload and refresh.
+            </p>
+            <p class="error" ng-if="finished">
+                Your installation is complete.<br />
+                Delete install.php file and change permissions of core/app/autoload.php to 644.<br />
+                You can view your home page now or go to /admin to login.
+            </p>
+            <p class="error" ng-if="error">
+                There was an error installing Cosmo.<br />
+                {{error}}
+            </p>
+            <h3>Database Info</h3>
+            <div class="form">
+                <label>Host <small>(you probably won't have to change this)</small></label>
+                <input type="text" name="host" value="localhost">
+            </div>
+            <div class="form">
+                <label>Database name</label>
+                <input type="text" ng-model="install.dbname" name="name">
+            </div>
+            <div class="form">
+                <label>Username</label>
+                <input type="text" ng-model="install.username" name="username"><br />
+            </div>
+            <div class="form">
+                <label>Password</label>
+                <input type="password" ng-model="install.password" name="password"><br />
+            </div>
+
+            <div class="form">
+                <label>Prefix <small>(if you want multiple installations on the same database, change this)</small></label>
+                <input type="text" ng-model="install.prefix" name="prefix" value="cosmo_">
+            </div>
+            <div class="form">
+                <label>Folder <small>(if you aren't putting this in the main directory (e.g. subfolder/ ))</small></label>
+                <input type="text" ng-model="install.folder" name="folder" value="">
+            </div>
+
+            <h3>Site Info</h3>
+            <div class="form">
+                <label>Site Title</label>
+                <input type="text" ng-model="install.title" name="title" value="My Cosmo Site">
+            </div>
+            <div class="form">
+                <label>Username</label>
+                <input type="text" ng-model="install.adminUsername" value="admin">
+            </div>
+            <div class="form">
+                <label>Password</label>
+                <input type="password" ng-model="install.adminPassword" name="adminPassword">
+            </div>
+            <div class="form">
+                <label>Confirm Password</label>
+                <input type="password" ng-model="install.adminPassword2" name="adminPassword2">
+            </div>
+            <div class="form">
+                <label>Email</label>
+                <input type="text" ng-model="install.email" name="email" value="admin@example.com">
+            </div>
+            <button class="btn-success" ng-click="submit()">Submit</button>
+    </div>
+</div>

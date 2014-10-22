@@ -1,16 +1,14 @@
 .users {
 
-    .cos-select {
-        margin-top: 0;
+    .search {
+        margin-bottom: 0;
     }
 
-    li {
+    .new-user {
+        margin-top: 1.5rem;
 
-        label {
-
-            &:last-child {
-                margin-bottom: 0;
-            }
+        button {
+            margin-bottom: 0;
         }
     }
 }

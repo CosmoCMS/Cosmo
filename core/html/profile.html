@@ -1,4 +1,4 @@
-<div ng-controller="profileCtrl">
+<div class="profile" ng-controller="profileCtrl">
 
     <div class="bar-top">
         <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
@@ -6,17 +6,24 @@
     </div>
 
     <div class="form-case">
-        <input id="facebook" ng-model="profile.facebook">
+        <label for="name">Name</label>
+        <input id="name" ng-model="profile.name">
+        
+        <label for="bio">Bio</label>
+        <textarea id="bio" ng-model="profile.bio"></textarea>
+        
         <label for="facebook">Facebook</label>
+        <input id="facebook" ng-model="profile.facebook">
 
-        <input id="twitter" ng-model="profile.twitter">
         <label for="twitter">Twitter</label>
+        <input id="twitter" ng-model="profile.twitter">
 
-        <img ng-src="{{profile.photo}}" ng-click="addProfilePhoto()">
         <label for="photo">Profile Photo</label>
+        <img ng-src="{{profile.photo}}" ng-click="addProfilePhoto()">
+
 
         <div>
-            <button class="success-button" ng-click="updateProfile()">Save</button>
+            <button class="btn-success" ng-click="updateProfile()">Save</button>
         </div>
     </div>
 

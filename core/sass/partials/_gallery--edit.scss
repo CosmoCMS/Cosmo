@@ -20,9 +20,9 @@
 
     @media #{$bp-alpha} {
         display: inline-block;
-        margin-left: .313rem;
+        margin-left: size(5);
         margin-top: .65rem;
-        padding-right: 1.563rem;
+        padding-right: size(25);
 
         .options-button {
             margin-bottom: 0;
@@ -46,6 +46,7 @@
     background-color: palette(gray, light);
     height: 100%;
     left: 0;
+    overflow-x: hidden;
     overflow-y: scroll;
     position: fixed;
     top: 0;
@@ -54,27 +55,12 @@
 
     @media #{$bp-beta} {
         left: auto;
+        margin-left: -1.55rem;
         width: 43.75rem;
     }
 
     @media #{$bp-gamma} {
         width: 59.375rem;
-    }
-
-    input {
-        margin-bottom: 0;
-    }
-
-    label {
-        margin-right: .313rem;
-    }
-
-    .modal--bar-top {
-        padding-bottom: 0;
-
-        @media #{$bp-beta} {
-            margin: 0;
-        }
     }
 }
 
@@ -92,18 +78,18 @@
     }
 
     @media #{$bp-beta} {
-        padding-left: 1.563rem;
+        padding-left: size(25);
         margin-top: 5.1rem;
     }
 
     .img-size {
-        padding: 0 1.563rem;
+        padding: 0 size(25);
         width: 100%;
 
         @media #{$bp-beta} {
             display: inline-block;
-            margin-left: .625rem;
-            padding: 0 .625rem;
+            margin-left: size(10);
+            padding: 0 size(10);
             width: 47%;
             vertical-align: top;
         }
@@ -114,7 +100,7 @@
         }
     }
 
-    img, iframe {
+    img, iframe, video {
         width: 100%;
 
         @media #{$bp-beta} {
@@ -126,7 +112,7 @@
 /* text input area below the image preview */
 .img-edit .img-info {
     display: inline-block;
-    margin-right: 1.563rem;
+    margin-right: size(25);
     vertical-align: top;
     width: 100%;
 
@@ -150,7 +136,7 @@
 /* holder for information to input in the img-edit area */
 .media-info {
     display: inline-block;
-    padding: 0 1.563rem;
+    padding: 0 size(25);
     width: 100%;
 }
 

@@ -1,6 +1,6 @@
 input[type='file'] {
     float: left;
-    margin: -.625rem * 7 0 0 0;
+    margin: -4.375rem 0 0 0;
     opacity: 0;
     padding: 1.465rem;
 
@@ -9,7 +9,7 @@ input[type='file'] {
     }
 
     @media only screen and (max-width: 439px) {
-        margin-top: -.625rem * 9;
+        margin-top: -5.625rem;
     }
 }
 
@@ -39,7 +39,7 @@ input[type='file'] {
 }
 
 .uploader {
-    padding: 0 1.563rem 1.563rem 1.563rem;
+    padding: 0 size(25) size(25) size(25);
     position: relative;
     top: 6rem;
 
@@ -57,7 +57,7 @@ input[type='file'] {
 }
 
 .url-uploader {
-    margin-bottom: .625rem;
+    margin-bottom: size(10);
     width: 100%;
 
     @media #{$bp-beta} {

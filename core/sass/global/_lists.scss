@@ -10,7 +10,7 @@ ul {
 
     li {
         overflow: hidden;
-        padding: 1rem 1.563rem;
+        padding: 1rem size(25);
         text-overflow: ellipsis;
         transition: all .1s ease;
 
@@ -53,7 +53,7 @@ ul {
         small {
 
             i {
-                margin-right: .313rem;
+                margin-right: size(5);
                 vertical-align: middle;
             }
         }
@@ -63,7 +63,11 @@ ul {
 ul li ul {
     background-color: palette(gray, mid);
     margin-left: -2.5rem;
-    width: 21rem;
+    width: 130%;
+
+    @media #{$bp-beta} {
+        width: 31rem;
+    }
 
     li {
         padding-left: 4.3rem;
@@ -95,8 +99,7 @@ ul li ul {
 ul.ng-hide-add.ng-hide-add-active, ul.ng-hide-remove,
 ul.ng-hide-remove.ng-hide-remove-active, ul.ng-leave {
     opacity: 1;
-    transform: none;
-    transition: opacity linear 0.25s;
+    transition: linear 0.25s;
 }
 
 ul.ng-hide, ul.ng-leave-active, ul.ng-hide-add.ng-hide-add-active {

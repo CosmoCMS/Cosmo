@@ -3,20 +3,13 @@
     .blk-code {
         @extend input;
         border: 1px solid palette(gray, dark);
-        height: 31.25rem;
+        height: 3size(20);
         overflow: scroll;
-    }
-
-    .formcase {
-
-        button {
-            margin-top: 1.5rem;
-        }
     }
 
     .page-select{
         display: inline-block;
-        margin-right: .625rem;
+        margin-right: size(10);
 
         label {
             margin-bottom: 0;

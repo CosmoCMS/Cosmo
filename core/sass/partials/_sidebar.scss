@@ -3,22 +3,20 @@
     background-color: palette(gray, light);
     bottom: 0;
     height: 100%;
-    left: -24rem;
+    left: -100%;
     margin-top: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-top: 3.9rem;
     position: fixed;
     top: 0;
     transition: left .3s ease;
-    width: 20rem;
+    width: 100%;
     z-index: z(sidebar);
-}
 
-/* Sidebar transition to reveal sidebar from the left side of the screen. */
-/**NEED TO CHANGE **/
-.userSidebarSlideOut {
-    left: 16.125rem;
+    @media #{$bp-beta} {
+        left: -34rem;
+        width: 30rem;
+    }
 }
 
 /* Sidebar transition to reveal sidebar from the left side of the screen. */
@@ -31,45 +29,66 @@
 /* active hamburger navigation before you open the sidebar */
 .hamburger {
     position: fixed;
-    top: 0;
-    transition: left .3s ease;
+    top: 25%;
     z-index: z(hamburger);
 
-    i.hamburger {
-        background-color: palette(gray, light);
-        border-bottom: 1px solid palette(gray, mid);
-        border-right: 1px solid palette(gray, mid);
-        color: palette(blue, dark);
-        font-size: 1.313rem;
-        padding: 1.219rem 1.219rem;
+    .hamburger {
+        background-color: palette(blue, light);
+        border-radius: 100%;
+        left: 1rem;
+        outline: none;
+        padding: .7rem .75rem .7rem .9rem;
+        transition: background-color .15s ease, color .15s ease;
 
         &:hover {
             background-color: palette(blue, dark);
             color: palette(gray, light);
-            transition: all .25s ease;
+
+            .icon {
+                fill: palette(gray, light);
+            }
+        }
+
+        svg {
+            height: 2.5rem;
+            vertical-align: middle;
+            width: 2.5rem;
         }
     }
 
-    i.close {
-        margin-left: -16.25rem;
+    .close {
+        color: palette(gray, light);
+        left: -100%;
+        opacity: 0;
+        padding: 1size(5) 1.469rem;
+        position: fixed;
+        transition: opacity .3s ease .3s;
+        z-index: z(sidebar);
+
+        @media #{$bp-beta} {
+            left: -28rem;
+        }
     }
 }
 
 /**NEED TO CHANGE **/
 .hamburgeractive {
-    font-size: 1.094rem;
-    left: 16.25rem;
+    top: 0;
 
-    i.close {
-        color: palette(gray, light);
-        margin-left: 0;
-        padding: 1.313rem 1.469rem;
-        transition: all .3s ease;
-        z-index: z(sidebar);
+    .close {
+        left: auto;
+        opacity: 1;
+        right: 1.25rem;
+        top: 1.25rem;
+
+        @media #{$bp-beta} {
+            left: 27.25rem;
+            right: auto;
+        }
     }
 
-    i.hamburger {
-        left: -22.5rem;
+    .hamburger {
+        left: -28.5rem;
     }
 }
 
@@ -77,14 +96,16 @@
 .bar-top {
     background-color: palette(blue, light);
     height: 3.75rem;
-    margin-top: -3.9rem;
     overflow: hidden;
-    position: fixed;
-    width: 20rem;
+    width: 100%;
+
+    @media #{$bp-beta} {
+        width: 30rem;
+    }
 
     h1 {
         color: palette(gray, white);
-        margin-left: .313rem;
+        margin-left: size(5);
     }
 
     h2 {
@@ -94,7 +115,7 @@
 
     i {
         color: palette(gray, light);
-        margin-left: 1.563rem;
+        margin-left: size(25);
 
         &:hover {
             color: palette(blue, dark);
@@ -116,7 +137,7 @@
     display: inline-block;
     font-size: .85rem;
     height: 3.125rem;
-    margin-left: .313rem;
+    margin-left: size(5);
     overflow: hidden;
     width: 7.813rem;
 
@@ -138,22 +159,11 @@
 /* case to adjust sides within the sidebar */
 .form-case {
     overflow-y: scroll;
-    padding: 1.563rem 1.563rem 0 1.563rem;
+    padding: size(25) size(25) 0 size(25);
 }
 
 /* similar to .form-case, but with a border at the bottom */
 .form-case--border {
-    border-bottom: 1px solid palette(gray, mid);
-    padding: 1.563rem;
-
-    > div {
-
-        button {
-            margin-bottom: 2rem;
-        }
-    }
-
-    input {
-        border-bottom: 1px solid palette(gray, mid);
-    }
+    border-bottom: 1px solid palette(gray, mid--dark);
+    padding: size(25);
 }

@@ -1,7 +1,19 @@
-.tables {
-    padding-top: .625rem * 9;
+table {
+    display: block;
+    margin: 2rem 0;
+    overflow-x: scroll;
+    width: 100%;
 }
 
-button.create-table {
-    margin-top: 1.563rem;
+td {
+    border: 1px solid palette(gray, mid);
+    height: auto;
+    overflow: auto;
+    padding: size(15);
+    text-align: left;
+}
+
+tr {
+    height: auto;
+    overflow-x: scroll;
 }

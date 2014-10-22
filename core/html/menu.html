@@ -14,9 +14,9 @@
                 </div>
             </button>
             <div class="add-new" ng-show="createMenu">
-                <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
                 <label for="name">Add a Menu</label>
-                <button class="success-button" ng-click='newMenu()'>add</button>
+                <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
+                <button class="btn-success" ng-click='newMenu()'>add</button>
             </div>
         </div>
         <ul>
@@ -29,8 +29,9 @@
             <h1>Editing</h1><h2>{{menu.name}}</h2>
         </div>
         <div class="form-case">
-            <input value="name" type="text" ng-model="menu.name">
             <label for="name">Name:</label>
+            <input value="name" type="text" ng-model="menu.name">
+            <label for="area">Area:</label>
             <div class="cos-select">
                 <select value="area" ng-model="menu.area">
                     <option value="primary">Primary</option>
@@ -51,7 +52,6 @@
                     <option value="menu10">Menu 10</option>
                 </select>
             </div>
-            <label for="area">Area:</label>
             <div class="nestedSortable-list">
                 <div ui-tree>
                     <ol ui-tree-nodes="options" ng-model="list">
@@ -87,14 +87,15 @@
             </div>
 
             <div ng-show="menu.editLink">
-                <input value="text" type="text" ng-model="menu.editLinkText">
                 <label for="text">Edit Link Text</label>
-                <input value="url" type="text" ng-model="menu.editLinkURL">
+                <input value="text" type="text" ng-model="menu.editLinkText">
                 <label for="url">Edit Link URL</label>
-                <button class="error-button" ng-click="deleteLink()">delete link</button>
-                <button class="success-button" ng-click="updateLink()">update link</button>
-                <button class="error-button" ng-click='deleteMenu()'>delete</button>
-                <button class="success-button" ng-click="saveMenu()">save</button>
+                <input value="url" type="text" ng-model="menu.editLinkURL">
+
+                <button class="btn-error" ng-click="deleteLink()">delete link</button>
+                <button class="btn-success" ng-click="updateLink()">update link</button>
+                <button class="btn-error" ng-click='deleteMenu()'>delete</button>
+                <button class="btn-success" ng-click="saveMenu()">save</button>
             </div>
         </div>
     </div>

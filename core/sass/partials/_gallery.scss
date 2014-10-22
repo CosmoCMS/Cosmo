@@ -28,7 +28,7 @@
     background-color: palette(blue, light);
     height: auto;
     margin: 0 auto;
-    padding: 0 0 .313rem 1.563rem;
+    padding: 0 size(25);
     position: fixed;
     width: 100%;
     z-index: z(minimal);
@@ -46,7 +46,7 @@
     }
 
     h1 {
-        margin-left: .313rem;
+        margin-left: size(5);
     }
 
     h1.no-marg {
@@ -68,23 +68,20 @@
 
 /* search bar*/
 .modal--bar-top input.search-bar {
-    border: 0;
-    border-bottom: 1px solid palette(gray, light);
+    @include placeholder { color: palette(blue, light); }
+    background-color: palette(gray, white);
+    border: 1px solid palette(blue, mid);
+    box-sizing: border-box;
     color: palette(gray, white);
-    width: 91%;
-    margin-bottom: .625rem;
+    margin-bottom: 0;
+    width: 100%;
 
-    @include placeholder {
-       color: palette(gray, light);
+    &:focus {
+        color: palette(blue, dark);
     }
 
     @media #{$bp-beta} {
-        width: 35.625rem;
-    }
-
-    @media #{$bp-gamma} {
-        margin-top: 1.5rem;
-        width: 14rem;
+        width: 15rem;
     }
 }
 
@@ -93,34 +90,49 @@
     display: block;
     margin-left: 0;
 
-    @media #{$bp-alpha} {
+    @media #{$bp-beta} {
         display: inline-block;
         margin-left: 1.5rem;
     }
 
     button {
-        margin-bottom: .625rem;
-    }
-
-    .options-button {
-        @extend %modal--options-button;
+        margin-bottom: size(10);
     }
 
     .success-button, .error-button {
         border: 1px solid palette(blue, dark);
     }
 
-    input.search-bar {
-        background-color: palette(gray, white);
-        border: 1px solid palette(blue, mid);
-        margin: 0;
+    .upload {
+        display: block;
+        margin-top: 1.5rem;
+        width: 100%;
 
-        &:focus {
-            color: palette(blue, dark);
+        @media #{$bp-beta} {
+            display: inline-block;
+            margin: 0;
+            position: absolute;
+            right: 2rem;
+            top: .8rem;
+            width: auto;
+        }
+    }
+
+    .cos-select {
+        border-color: palette(blue, mid);
+        display: inline-block;
+        height: 2.4rem;
+        margin-bottom: 0;
+        margin-top: 1.5rem;
+        width: 100%;
+
+        select {
+            height: 2.3rem;
         }
 
-        @include placeholder {
-           color: palette(blue, light);
+        @media #{$bp-beta} {
+            margin-top: -.4rem;
+            width: 8rem;
         }
     }
 }
@@ -146,14 +158,10 @@
 /* wrapper to hold elements and push down below the bar-top within .media-wrapper */
 .gallery-media-wrapper {
     @extend .media-wrapper;
-    top: 12.5rem;
+    top: 15rem;
 
-    @media #{$bp-alpha} {
-        top: 9.688rem;
-    }
-
-    @media #{$bp-gamma} {
-        top: 4.5rem;
+    @media #{$bp-beta} {
+        top: 4rem;
     }
 
     button.options-button {
@@ -166,7 +174,7 @@
 .media-holder {
     background-color: palette(gray, light);
     overflow-y: scroll;
-    padding: 1.563rem;
+    padding: size(25);
 }
 
 /*
@@ -182,7 +190,7 @@
 /* styling to keep each image/video at correct proportions */
 .media-tile {
     display: inline-block;
-    margin: 0 1.563rem * .5 1.563rem * .5 0;
+    margin: 0 size(25) * .5 size(25) * .5 0;
     text-align: center;
     vertical-align: top;
     width: 100%;
@@ -205,14 +213,14 @@
         height: 19rem;
 
         &:nth-child(odd) {
-            margin-right: 1.563rem;
+            margin-right: size(25);
         }
     }
 
     i {
         color: palette(blue, dark);
         font-size: 10em;
-        margin-top: .938rem;
+        margin-top: size(15);
 
         @media #{$bp-beta} {
             font-size: 7.5em;
@@ -223,13 +231,21 @@
     img {
         height: auto;
 
+        @media #{$bp-beta} {
+            min-height: 13.55rem;
+            min-width: 100%;
+        }
+
+        @media #{$bp-gamma} {
+            min-height: 19rem;
+        }
     }
 }
 
 /* preview of files currently being used as a single image or in the gallery */
 .img-gallery {
     display: inline-block;
-    margin: 0 1.563rem 2rem 1.563rem;
+    margin: 0 size(25) 2rem size(25);
     vertical-align: top;
     width: auto;
 
@@ -246,7 +262,7 @@
 
 /* holder for info (css classes, links etc..) related to .img-gallery */
 .img-gallery-info {
-    margin-left: 1.563rem;
+    margin-left: size(25);
     overflow: hidden;
     padding-right: 2rem;
     width: auto;
@@ -264,7 +280,7 @@
     }
 
     p {
-        margin-bottom: 0;
+        margin-bottom: 1.5rem;
     }
 
     .tag {
@@ -272,8 +288,8 @@
         color: palette(blue, dark);
         display: inline-block;
         height: auto;
-        margin: 0 .625rem 2rem .625rem;
-        padding: .313rem .625rem .75rem .625rem;
+        margin: 0 size(10) 2rem size(10);
+        padding: size(5) size(10) .75rem size(10);
         width: auto;
 
         &:first-child {
@@ -286,7 +302,7 @@
         }
 
         .fa-tag {
-            margin-right: .313rem;
+            margin-right: size(5);
             vertical-align: middle;
         }
     }

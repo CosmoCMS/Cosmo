@@ -10,26 +10,14 @@ angular.module('cosmo', [])
 
 
 /**************************************************
- *              Search Controller                 *
- **************************************************
-
-.controller('searchCtrl', ['$scope', '$http', 'Page', '$rootScope', '$location', function($scope, $http, Page, $rootScope, $location){
-    $scope.search = function(){
-        $http.query('search.cosmo.io', { q: $scope.search }, function(data){
-            $scope.results = data;
-            $location.path('/results');
-        });
-    };
-}])
-*/
-
-/**************************************************
  *              URL Controller                    *
+ *      Get the current page information          *
  **************************************************/
 
 .controller('urlCtrl', ['$scope', '$routeParams', 'Page', '$rootScope', 'REST', '$location', 'Users', function($scope, $routeParams, Page, $rootScope, REST, $location, Users){
-
+    
     // Reset variables while new page loads
+    $scope.page = {};
     Page.title = '';
     Page.description = '';
     Page.header = '';
@@ -42,27 +30,29 @@ angular.module('cosmo', [])
     Page.scheduleDate = '';
     Page.timestamp = '';
     Page.extras = {};
-
+    
     // Get content
     REST.content.get({ url: $location.path() }, function(data, headers){
-
+        
         // Check if the site is under maintenence
         if(Page.settings){
-            if(Page.settings.maintenance_mode && Page.settings.maintenance_url && !Users.admin){
+            if(Page.settings.maintenance_mode === 'true' && Page.settings.maintenance_url && !Users.admin){
                 Page.menus = []; // Don't show menus, since those pages are disabled
                 $location.path(Page.settings.maintenance_url).replace();
                 if(data.redirect) // Don't double redirect if this is a redirected URL
                     return false;
             }
         }
-
+        
         // If the URL has changed, redirect the user to the new URL
         if(data.redirect){
             $location.path(data.redirect).replace();
             return false;
         }
-
+        
         Page.id = data.id;
+        Page.author = data.author;
+        $scope.page.author = data.author;
         Page.title = data.title;
         Page.description = data.description;
         Page.header = data.header;
@@ -73,50 +63,63 @@ angular.module('cosmo', [])
             Page.tags = data.tags;
         else
             Page.tags = [];
+        $scope.page.tags = Page.tags;
         if(data.type)
             Page.type = data.type;
         else
-            Page.type = Page.templatePages[0];
+            Page.type = Page.themePages[0];
         Page.publish = data.published;
         Page.scheduleDate = data.published_date;
+        $scope.page.published_date = data.published_date * 1000; // Convert unix timestamp to milliseconds
         Page.timestamp = data.timestamp;
         if(data.extras)
             Page.extras = data.extras;
         else
             Page.extras = {};
-
+        
         if(Page.theme)
-            $scope.template = Page.prefix + 'themes/' + Page.theme + '/' + Page.type;
-
+            $scope.template = 'themes/' + Page.theme + '/' + Page.type;
+        
         $rootScope.$broadcast('contentGet', data);
-
+        
         // Get blocks
         REST.blocks.query({ type: Page.type, url: $location.path() }, function(data){
             Page.blocks = data;
             $rootScope.$broadcast('blocksGet', data);
         });
-
+        
+        // Get comments for this page
+        REST.comments.query({ id: Page.id }, function(data){
+            // Parse comment path from 1/3/2 (first comment, third reply, second reply) into array
+            angular.forEach(data, function(comment){
+                if(comment.path)
+                    comment.path = comment.path.split('/');
+            });
+            $scope.page.comments = data;
+            $scope.page.commentsNum = $scope.page.comments.length;
+        });
+        
     }, function(data){ // Page not found
-        $location.path(Page.prefix + 'error').replace();
+        $location.path('error').replace();
     });
-
+    
     // Update the theme if it's been changed
     var changeTheme = function(){
-        if($scope.template !== Page.prefix + '/themes/' + Page.theme + '/' + Page.type && Page.theme && Page.type)
-            $scope.template = Page.prefix + '/themes/' + Page.theme + '/' + Page.type;
+        if($scope.template !== 'themes/' + Page.theme + '/' + Page.type && Page.theme && Page.type)
+            $scope.template = 'themes/' + Page.theme + '/' + Page.type;
     };
     changeTheme();
-
+    
     // Update the theme
     $scope.$on('settingsGet', function(data){
         changeTheme();
     });
-
+    
     // Update the theme
     $scope.$on('contentGet', function(data){
         changeTheme();
     });
-
+    
     // Watch for shortcut keypresses
     if(Users.admin){
         angular.element(document).on('keydown', function(event){
@@ -125,6 +128,46 @@ angular.module('cosmo', [])
                 $rootScope.$broadcast('switchViewMode');
         });
     }
+}])
+
+/**************************************************
+ *             Content Controller                 *
+ *          Get all posts and pages               *
+ **************************************************/
+
+.controller('contentCtrl', ['$scope', 'REST', function($scope, REST){
+    // Get all pages
+    REST.content.query({}, function(data){
+        $scope.posts = data;
+    });
+}])
+
+/**************************************************
+ *            Comments Controller                 *
+ **************************************************/
+ 
+ .controller('commentsCtrl', ['$scope', 'REST', 'Page', 'Users', '$rootScope', function($scope, REST, Page, Users, $rootScope){
+    
+    $scope.comment = {};
+    // See if the user is logged in
+    if(!Users.username)
+        $scope.guest = true;
+    
+    // Post a new comment
+    $scope.submit = function(){
+        REST.comments.save({ 
+            content_id: Page.id,
+            path: $scope.comment.path,
+            name: Users.username,
+            email: Users.email,
+            comment: $scope.comment.message
+        }, function(data){
+            $rootScope.$broadcast('notify', { message: 'Comment Added' });
+        }, function(){
+            $rootScope.$broadcast('notify', { message: 'There was an error submitting your comment' });
+        });
+    };
+    
 }])
 
 /****************************************************************************************************
@@ -139,25 +182,24 @@ angular.module('cosmo', [])
  *              Block Directive                   *
  **************************************************/
 
-.directive('block', ['Page', '$compile', function(Page, $compile) {
+.directive('csBlock', ['Page', '$compile', function(Page, $compile) {
     return {
         link: function(scope, elm, attrs, ctrl) {
-
+            
             var updateBlocks = function() {
                 // Match the block(s) to the right location
                 if(Page.blocks) {
                     var blockHTML = '';
                     angular.forEach(Page.blocks, function(data){
-                        if(data.area === attrs.block) {
+                        if(data.area === attrs.csBlock)
                             blockHTML += data.block;
-                        }
                     });
                     elm.html(blockHTML);
                     $compile(elm.contents())(scope);
                 }
             };
             updateBlocks();
-
+            
             scope.$on('blocksGet', function(){
                 updateBlocks();
             });
@@ -166,51 +208,53 @@ angular.module('cosmo', [])
 }])
 
 /**************************************************
- *              Cosmo Directive                   *
+ *             Content Directive                  *
+ *        Content directive for headers,          *
+ *          subheaders, body, etc.                *
  **************************************************/
 
-.directive('cosmo', ['Page', '$routeParams', '$sce', '$rootScope', 'growl', '$compile', 'Users', function(Page, $routeParams, $sce, $rootScope, growl, $compile, Users) {
+.directive('csContent', ['Page', '$routeParams', '$sce', '$rootScope', '$compile', 'Users', function(Page, $routeParams, $sce, $rootScope, $compile, Users) {
     return {
         priority: 100,
         link: function(scope, elm, attrs, ctrl) {
-
+            
             scope.editor = {};
             scope.editor.codeEditor = false;
-
+            
             var updateCosmo = function(){
-
-                if(Page[attrs.cosmo])
-                    var content = Page[attrs.cosmo];
-                else if(Page.extras[attrs.cosmo])
-                    var content = Page.extras[attrs.cosmo];
+                
+                if(Page[attrs.csContent])
+                    var content = Page[attrs.csContent];
+                else if(Page.extras[attrs.csContent])
+                    var content = Page.extras[attrs.csContent];
                 else if(attrs.prepopulate && Users.admin)
                     var content = attrs.prepopulate;
                 else
                     var content = ' ';
-
+                
                 if(content)
                     content = content.toString();
-
+                
                 // Remove HTML tags if this is a text only area
                 if(attrs.type === 'text')
                     content = content.replace(/<[^<]+?>/g, '');
-
+                
                 if(content){
                     elm.html(content);
                     if(attrs.type !== 'text')
                         $compile(elm.contents())(scope);
                 }
-
+                
             };
             updateCosmo();
-
+            
             scope.$on('contentGet', function(){
                 updateCosmo();
             });
 
             // Display the WYSIWYG toolbar
             elm.on('mousedown', function(event) {
-                scope.currentBlock = attrs.cosmo;
+                scope.currentBlock = attrs.csContent;
                 if(attrs.type !== 'text')
                     $rootScope.$broadcast('activateWYSIWYG', event);
             });
@@ -225,7 +269,10 @@ angular.module('cosmo', [])
                         event.preventDefault();
                     } else if(!scope.editor.codeEditor){ // Strip out HTML tags from text pasted into the WYSIWYG editor
                         event.preventDefault();
-                        var pastedText = event.originalEvent.clipboardData.getData('text/plain');
+                        if(event.clipboardData.getData('text/plain'))
+                            var pastedText = event.clipboardData.getData('text/plain');
+                        else
+                            var pastedText = event.originalEvent.clipboardData.getData('text/plain');
                         document.execCommand("insertHTML", false, pastedText.replace(/<[^<]+?>/g, ''));
                     }
                 });
@@ -233,34 +280,34 @@ angular.module('cosmo', [])
                 // Watch for edits to the page and save them
                 elm.on('keyup focusout', function(event) {
                     // Open quick-save option
-                    // growl.addSuccessMessage('<a ng-controller="pageCtrl" ng-click="savePage()">Quick Save</a>');
-
+                    // $rootScope.$broadcast('notify', {message: '<a ng-controller="pageCtrl" ng-click="savePage()">Quick Save</a>', duration: 99999});
+                    
                     // Make sure we aren't saving escaped HTML
                     if(scope.editor.codeEditor)
                         var html = scope.unescapeHTML(elm.html());
                     else
                         var html = elm.html();
-
+                    
                     // Don't save the fields marked 'none'
-                    if(attrs.cosmo === 'none') {
+                    if(attrs.csContent === 'none') {
                         $rootScope.$broadcast('wysiwygEdit', { html: html });
                     } else
                     {
                         // Save changes to Page factory
-                        if(attrs.cosmo !== 'header' && attrs.cosmo !== 'subheader' && attrs.cosmo !== 'body')
+                        if(attrs.csContent !== 'header' && attrs.csContent !== 'subheader' && attrs.csContent !== 'body')
                             if(attrs.type === 'text')
-                                Page.extras[attrs.cosmo] = html.replace(/<[^<]+?>/g, '');
+                                Page.extras[attrs.csContent] = html.replace(/<[^<]+?>/g, '');
                             else
-                                Page.extras[attrs.cosmo] = html;
+                                Page.extras[attrs.csContent] = html;
                         else{
                             if(attrs.type === 'text')
-                                Page[attrs.cosmo] = html.replace(/<[^<]+?>/g, '');
+                                Page[attrs.csContent] = html.replace(/<[^<]+?>/g, '');
                             else
-                                Page[attrs.cosmo] = html;
+                                Page[attrs.csContent] = html;
                         }
 
                         // Save to local storage
-                        localStorage.setItem($routeParams.url + attrs.cosmo, html);
+                        localStorage.setItem($routeParams.url + attrs.csContent, html);
                     }
                 });
 
@@ -275,7 +322,7 @@ angular.module('cosmo', [])
                 // View HTML code
                 scope.$on('toggleHTMLEditor', function(){
                     // Make sure to only edit the selected block
-                    if(scope.currentBlock === attrs.cosmo){
+                    if(scope.currentBlock === attrs.csContent){
                         scope.editor.codeEditor = !scope.editor.codeEditor;
                         if(scope.editor.codeEditor)
                             elm.html(scope.escapeHTML(elm.html()));
@@ -293,16 +340,18 @@ angular.module('cosmo', [])
                         var html = elm.html();
 
                     // Save changes to Page factory
-                    if(attrs.cosmo !== 'header' && attrs.cosmo !== 'subheader' && attrs.cosmo !== 'body')
+                    if(attrs.csContent === 'none')
+                        $rootScope.$broadcast('wysiwygEdit', { html: html });
+                    if(attrs.csContent !== 'header' && attrs.csContent !== 'subheader' && attrs.csContent !== 'body')
                         if(attrs.type === 'text')
-                            Page.extras[attrs.cosmo] = html.replace(/<[^<]+?>/g, '');
+                            Page.extras[attrs.csContent] = html.replace(/<[^<]+?>/g, '');
                         else
-                            Page.extras[attrs.cosmo] = html;
+                            Page.extras[attrs.csContent] = html;
                     else {
                         if(attrs.type === 'text')
-                            Page[attrs.cosmo] = html.replace(/<[^<]+?>/g, '');
+                            Page[attrs.csContent] = html.replace(/<[^<]+?>/g, '');
                         else
-                            Page[attrs.cosmo] = html;
+                            Page[attrs.csContent] = html;
                     }
 
                     setTimeout(function(){
@@ -324,9 +373,10 @@ angular.module('cosmo', [])
 
                 // Revert to normal text from HTML
                 scope.unescapeHTML = function(str) {
-                    // Remove <pre> formating
-                    if(str.indexOf('<pre') === 0)
-                        str = str.slice(str.indexOf('>') + 1, str.length - 6);
+                    // Remove <pre> formating tags
+                    str = str.replace(/<pre>/g, '');
+                    str = str.replace(/<pre[^>]+?>/g, '');
+                    str = str.replace(/<\/pre>/g, '');
 
                     return String(str)
                         .replace(/\n/g, '')
@@ -343,27 +393,43 @@ angular.module('cosmo', [])
 }])
 
 /**************************************************
+ *            Fluidvids Directive                 * 
+ *          Make videos responsive                *
+ **************************************************/
+ // Borrowed from http://toddmotto.com/creating-an-angularjs-directive-from-one-of-your-existing-plugins-scripts/
+ 
+.directive('fluidvids', ['$sce', function($sce){
+    return {
+        replace: true,
+        scope: {},
+        template: '<div class="fluidvids"><iframe ng-src="{{video}}"></iframe></div>',
+        link: function (scope, element, attrs) {
+            scope.video = $sce.trustAsResourceUrl(attrs.video);
+            var ratio = (attrs.height / attrs.width) * 100;
+            element[0].style.paddingTop = ratio + '%';
+        }
+    };
+}])
+
+/**************************************************
  *             BGImage Directive                  *
+ *             Background images                  *
  **************************************************/
 
-.directive('bgimage', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', 'Responsive', 'Hooks', function(Page, $routeParams, $rootScope, ngDialog, Users, Responsive, Hooks) {
+.directive('csBgImage', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', 'Responsive', 'Hooks', function(Page, $routeParams, $rootScope, ngDialog, Users, Responsive, Hooks) {
     return {
         link: function(scope, elm, attrs, ctrl) {
-
+            
             function updateBGImage(){
-                if(Page.extras[attrs.bgimage]){
-                    Page.extras[attrs.bgimage] = angular.fromJson(Page.extras[attrs.bgimage]);
-                    if(Page.extras[attrs.bgimage].responsive === 'yes')
-                        var imageURL = Hooks.imageHookNotify(Responsive.resize(Page.extras[attrs.bgimage].src, Page.extras[attrs.bgimage].size));
+                if(Page.extras[attrs.csBgImage]){
+                    Page.extras[attrs.csBgImage] = angular.fromJson(Page.extras[attrs.csBgImage]);
+                    if(Page.extras[attrs.csBgImage].responsive === 'yes')
+                        var imageURL = Hooks.imageHookNotify(Responsive.resize(Page.extras[attrs.csBgImage].src, Page.extras[attrs.csBgImage].size));
                     else
-                        var imageURL = Hooks.imageHookNotify(Page.extras[attrs.bgimage].src);
-                    elm.css('background', 'url('+ imageURL +') center no-repeat');
-                    elm.css('-webkit-background-size', 'cover');
-                    elm.css('-moz-background-size', 'cover');
-                    elm.css('-o-background-size', 'cover');
-                    elm.css('background-size', 'cover');
+                        var imageURL = Hooks.imageHookNotify(Page.extras[attrs.csBgImage].src);
+                    elm.css('background-image', 'url('+ imageURL +')');
                 } else if(Users.admin) {
-                    elm.css('background', 'url(img/image.svg) center no-repeat');
+                    elm.css('background-image', 'url(core/img/image.svg)');
                     elm.css('-webkit-background-size', 'cover');
                     elm.css('-moz-background-size', 'cover');
                     elm.css('-o-background-size', 'cover');
@@ -371,29 +437,24 @@ angular.module('cosmo', [])
                 }
             }
             updateBGImage();
-
+            
             scope.$on('contentGet', function(){
                 updateBGImage();
             });
-
+            
             // Check if user is an admin
             if(Users.admin) {
-
-                // Edit photo when double clicked
-                scope.clicked = function(){
-                    scope.lastClicked = attrs.bgimage;
-                    ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.bgimage }) });
-                };
-
+                
+                // Double click image to edit
+                elm.on('dblclick', function(){
+                   ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csBgImage }) });
+                });
+                
                 // Update page when another image is chosen
                 scope.$on('choseFile', function(event, data){
-                    if(data.id === scope.lastClicked){
-                        Page.extras[scope.lastClicked] = data;
-                        elm.css('background', 'url('+ data.src +') center no-repeat');
-                        elm.css('-webkit-background-size', 'cover');
-                        elm.css('-moz-background-size', 'cover');
-                        elm.css('-o-background-size', 'cover');
-                        elm.css('background-size', 'cover');
+                    if(data.id === attrs.csBgImage){
+                        Page.extras[attrs.csBgImage] = data;
+                        elm.css('background-image', 'url('+ data.src +')');
                     }
                 });
             }
@@ -405,58 +466,65 @@ angular.module('cosmo', [])
  *              Image Directive                   *
  **************************************************/
 
-.directive('image', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', function(Page, $routeParams, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks){
+.directive('csImage', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', function(Page, $routeParams, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks){
     return {
-        scope: {
-            image: '@'
-        },
-        template: '<img ng-src="{{src}}" class="{{image.class}}" alt="{{image.alt}}" title="{{image.title}}" size="{{image.size}}" />',
+        scope: {},
+        template: '<img ng-src="{{src}}" alt="{{image.alt}}" title="{{image.title}}" size="{{image.size}}" />',
         replace: true,
-        compile: function(scope, elm, attrs, ctrl) {
+        compile: function(scope, elm, attrs) {
             return {
                 pre: function(scope, elm, attrs){
                     attrs.ngSrc = '{{src}}';
+                    attrs.class = '{{image.class}}';
+                    attrs.alt = '{{image.alt}}';
+                    attrs.title = '{{image.title}}';
+                    attrs.size = '{{image.size}}';
                 },
                 post: function(scope, elm, attrs){
-
+                    
                     scope.image = {};
-
+                    
                     // Initialize the image data
-                    if(Page.extras[attrs.image]){
-                        Page.extras[attrs.image] = angular.fromJson(Page.extras[attrs.image]);
-                        scope.image.class = Page.extras[attrs.image].class;
-                        scope.image.alt = Page.extras[attrs.image].alt;
-                        scope.image.title = Page.extras[attrs.image].title;
-                        scope.image.size = Page.extras[attrs.image].size;
-
+                    if(Page.extras[attrs.csImage]){
+                        Page.extras[attrs.csImage] = angular.fromJson(Page.extras[attrs.csImage]);
+                        scope.image.class = Page.extras[attrs.csImage].class;
+                        elm.attr('class', Page.extras[attrs.csImage].class);
+                        scope.image.alt = Page.extras[attrs.csImage].alt;
+                        scope.image.title = Page.extras[attrs.csImage].title;
+                        scope.image.size = Page.extras[attrs.csImage].size;
+                        
                         // Get responsive URL for the image
-                        if(Page.extras[attrs.image].responsive === 'yes')
-                            scope.src = Hooks.imageHookNotify(Responsive.resize(Page.extras[attrs.image].src, Page.extras[attrs.image].size));
+                        if(Page.extras[attrs.csImage].responsive === 'yes')
+                            scope.src = Hooks.imageHookNotify(Responsive.resize(Page.extras[attrs.csImage].src, Page.extras[attrs.csImage].size));
                         else
-                            scope.src = Hooks.imageHookNotify(Page.extras[attrs.image].src);
+                            scope.src = Hooks.imageHookNotify(Page.extras[attrs.csImage].src);
 
                         // Check if this image should be linked
-                        if(Page.extras[attrs.image].href)
-                            elm.wrap('<a href="'+ Page.extras[attrs.image].href +'"></a>');
+                        if(Page.extras[attrs.csImage].href)
+                            elm.wrap('<a href="'+ Page.extras[attrs.csImage].href +'"></a>');
 
                     } else if(Users.admin)
-                        scope.src = 'img/image.svg';
-
+                        scope.src = 'core/img/image.svg';
+                    
                     // Check if user is an admin
                     if(Users.admin) {
                         // Open image editing modal
                         elm.on('click', function(){
-                            scope.lastClicked = attrs.image;
-                            ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.image }) });
+                            ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csImage }) });
                         });
-
+                        
                         // Save edits to the image
                         scope.$on('choseFile', function(event, data){
-                            if(data.id === scope.lastClicked){
-                                Page.extras[scope.lastClicked] = data;
+                            if(data.id === attrs.csImage){
                                 scope.image = data;
+                                Page.extras[attrs.csImage] = data;
+                                elm.addClass(data.class);
+                                
                                 // Get responsive URL for the image
-                                scope.src = Responsive.resize(Page.extras[attrs.image].src, Page.extras[attrs.image].size);
+                                if(data.responsive === 'yes')
+                                    scope.src = Responsive.resize(Page.extras[attrs.csImage].src, Page.extras[attrs.csImage].size);
+                                else
+                                    scope.src = Page.extras[attrs.csImage].src;
                             }
                         });
                     }
@@ -468,19 +536,20 @@ angular.module('cosmo', [])
 
 /**************************************************
  *           Image Gallery Directive              *
+ *   Create repeating images wrapped in a div     *
  **************************************************/
 
-.directive('gallery', ['Page', '$rootScope', 'REST', '$timeout', 'ngDialog', 'Users', '$sce', 'Responsive', 'Hooks', function(Page, $rootScope, REST, $timeout, ngDialog, Users, $sce, Responsive, Hooks){
+.directive('csGallery', ['Page', '$rootScope', 'REST', '$timeout', 'ngDialog', 'Users', '$sce', 'Responsive', 'Hooks', function(Page, $rootScope, REST, $timeout, ngDialog, Users, $sce, Responsive, Hooks){
     return {
-        template: '<img ng-src="{{image.url}}" ng-repeat="image in images | filter:search" ng-hide="$index!==currentIndex && showOnlyOne" ng-click="clickedGallery($index)">',
+        template: '<div class="cs-gallery"><img ng-src="{{image.url}}" ng-repeat="image in images | filter:search" ng-hide="$index!==currentIndex && showOnlyOne" ng-click="clickedGallery($index)"></div>',
         replace: true,
         link: function(scope, elm, attrs){
-
+            
             function updateGallery(){
                 // Get images
-                if(Page.extras[attrs.gallery]){
-                    Page.extras[attrs.gallery] = angular.fromJson(Page.extras[attrs.gallery]);
-                    var gallery = angular.copy(Page.extras[attrs.gallery]);
+                if(Page.extras[attrs.csGallery]){
+                    Page.extras[attrs.csGallery] = angular.fromJson(Page.extras[attrs.csGallery]);
+                    var gallery = angular.copy(Page.extras[attrs.csGallery]);
                     // Make all images responsive
                     angular.forEach(gallery, function(image){
                         if(image.responsive === 'yes')
@@ -490,14 +559,14 @@ angular.module('cosmo', [])
                     });
                     scope.images = gallery;
                 } else if(Users.admin) {
-                    Page.extras[attrs.gallery] = [{ url: 'img/image.svg', type: 'image' }];
-                    scope.images = [{ url: 'img/image.svg', type: 'image' }];
+                    Page.extras[attrs.csGallery] = [{ url: 'core/img/image.svg', type: 'image' }];
+                    scope.images = [{ url: 'core/img/image.svg', type: 'image' }];
                 }
-                $rootScope.$broadcast(attrs.gallery, scope.images);
+                $rootScope.$broadcast(attrs.csGallery, scope.images);
             }
             updateGallery();
-
-            scope.$on('contentGet', function(){
+            
+            scope.$on('contentGet', function(data){
                 updateGallery();
             });
 
@@ -512,7 +581,7 @@ angular.module('cosmo', [])
             if(attrs.type === 'slider'){
                 scope.showOnlyOne = true;
                 scope.currentIndex = 0;
-                scope.$on(attrs.gallery + '-changeIndex', function(event, data){
+                scope.$on(attrs.csGallery + '-changeIndex', function(event, data){
                     scope.currentIndex = data.index;
                 });
             } else
@@ -522,18 +591,17 @@ angular.module('cosmo', [])
             if(Users.admin) {
                 // When clicked, open a modal window to edit
                 scope.clickedGallery = function(index){
-                    scope.lastClicked = attrs.gallery;
                     ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({
-                            id: attrs.gallery,
+                            id: attrs.csGallery,
                             gallery: true,
-                            images: Page.extras[attrs.gallery]
+                            images: Page.extras[attrs.csGallery]
                         })
                     });
                 };
-
+                
                 // Watch for edits to the gallery
                 scope.$on('choseGalleryFile', function(event, data){
-                    if(data.id === scope.lastClicked){
+                    if(data.id === attrs.csGallery){
                         // Get raw URL
                         var records = [];
                         angular.forEach(data.data, function(item){
@@ -552,8 +620,8 @@ angular.module('cosmo', [])
                                 });
                             }
                         });
-                        Page.extras[scope.lastClicked] = records;
                         scope.images = data.data;
+                        Page.extras[attrs.csGallery] = scope.images;
                         if(data.class)
                             elm.addClass(data.class);
 
@@ -569,7 +637,7 @@ angular.module('cosmo', [])
  *                Link Directive                  *
  **************************************************/
 
-.directive('link', ['Page', 'ngDialog', 'Users', function(Page, ngDialog, Users){
+.directive('csLink', ['Page', 'ngDialog', 'Users', function(Page, ngDialog, Users){
     return {
         scope: {
             link: '@'
@@ -579,8 +647,8 @@ angular.module('cosmo', [])
         controller: 'linkCtrl',
         link: function(scope, elm, attrs){
 
-            if(Page.extras[attrs.link]){
-                var linkArr = Page.extras[attrs.link].split(';;');
+            if(Page.extras[attrs.csLink]){
+                var linkArr = Page.extras[attrs.csLink].split(';;');
                 scope.data = { text: linkArr[0], url: linkArr[1] };
             } else if(Users.admin)
                 scope.data = { text: 'Add a Link', url: '' };
@@ -597,7 +665,7 @@ angular.module('cosmo', [])
                 scope.$on('editedLink', function(event, obj){
                     scope.data.text = obj.text;
                     scope.data.url = obj.url;
-                    Page.extras[attrs.link] = obj.text + ';;' + obj.url;
+                    Page.extras[attrs.csLink] = obj.text + ';;' + obj.url;
                 });
             }
 
@@ -617,39 +685,51 @@ angular.module('cosmo', [])
 }])
 
 /**************************************************
- *              Movie Directive                   *
+ *               Logo Directive                   *
  **************************************************/
 
-.directive('movie', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
+.directive('csLogo', ['Page', function(Page){
+    return {
+        template: '<img ng-src="{{url}}" />',
+        replace: true,
+        link: function(scope, elm, attrs){
+            scope.url = Page.settings.logo;
+        }
+    };
+}])
+
+/**************************************************
+ *              Movie Directive                   *
+ *               HTML5 Videos                     *
+ **************************************************/
+
+.directive('csMovie', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
     return {
         template: '<video autoplay loop ng-click="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
         replace: true,
         link: function(scope, elm, attrs, ctrl) {
-
-            if(Page.extras[attrs.movie])
-                scope.videos = Page.extras[attrs.movie];
+            
+            if(Page.extras[attrs.csMovie])
+                scope.videos = angular.fromJson(Page.extras[attrs.csMovie]);
             else if(Users.admin)
-                scope.videos = [{ src: 'img/image.svg', type: 'video' }];
-
+                scope.videos = [{ src: 'core/img/image.svg', type: 'video' }];
+            
             // Check if user is an admin
             if(Users.admin) {
                 scope.clicked = function(){
-                    scope.lastClicked = attrs.movie;
-                    // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.movie }) });
-
                     ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({
-                            id: attrs.movie,
+                            id: attrs.csMovie,
                             gallery: true,
-                            images: scope.videos // Page.extras[attrs.movie]
+                            images: scope.videos
                         })
                     });
                 };
-
+                
                 // Save edits/selection of the movie
                 scope.$on('choseGalleryFile', function(event, data){
-                    if(data.id === scope.lastClicked){
-                        Page.extras[scope.lastClicked] = data.data;
+                    if(data.id === attrs.csMovie){
                         scope.videos = data.data;
+                        Page.extras[attrs.csMovie] = scope.videos;
                         if(data.class)
                             elm.addClass(data.class);
                     }
@@ -663,7 +743,7 @@ angular.module('cosmo', [])
  *              Menus Directive                   *
  **************************************************/
 
-.directive('menu', ['Page', '$compile', function(Page, $compile) {
+.directive('csMenu', ['Page', '$compile', function(Page, $compile) {
     return {
         templateUrl: 'core/html/partials/menu-links.html',
         replace: true,
@@ -671,7 +751,7 @@ angular.module('cosmo', [])
             // Match the menu to the right location
             var updateMenus = function(){
                 angular.forEach(Page.menus, function(data){
-                    if(data.area === attrs.menu && data.menu)
+                    if(data.area === attrs.csMenu && data.menu)
                         scope.list = angular.fromJson(data.menu);
                 });
             };
@@ -685,57 +765,30 @@ angular.module('cosmo', [])
 }])
 
 /**************************************************
- *               Modal Directive                  *
- **************************************************/
-/*
-.directive('modal', [function(){
-    return {
-        templateUrl: 'core/html/modal.html',
-        replace: true,
-        link: function(scope, elm, attrs){
-
-            // Open the modal
-            scope.$on('modalOpen', function(data){
-                scope.showModal = true;
-            });
-
-            // Close the modal
-            scope.$on('modalClose', function(data){
-                scope.showModal = false;
-            });
-        }
-    };
-}])
-*/
-
-/**************************************************
  *              Notify Directive                  *
+ *            Manage notifications                *
  **************************************************/
 
-.directive('notification', ['$timeout', function($timeout){
+.directive('csNotification', ['$timeout', '$sce', function($timeout, $sce){
     return {
-        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false"><i class="fa fa-times"></i></a>{{message}}</div>',
+        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false"><i class="fa fa-times"></i></a><span ng-bind-html="message"></span></div>',
         replace: true,
         link: function(scope, elm, attrs){
-
-            scope.showNotification = true;
-            scope.message = 'Hi there!';
-            scope.classes = 'alert-alert';
-
-            scope.$on('notify', function(data){
+            // Watch for notifications
+            scope.$on('notify', function(event, data){
                 scope.showNotification = true;
-                scope.message = data.message;
-
+                scope.message = $sce.trustAsHtml(data.message);
+                
                 // Default class is alert-alert
                 if(!data.classes)
                     scope.classes = 'alert-alert';
                 else
                     scope.classes = data.classes;
-
+                
                 // Default duration is 5 seconds
                 if(!data.duration)
                     data.duration = 5000;
-
+                
                 // Disappear after 5 seconds
                 $timeout(function(){
                     scope.showNotification = false;
@@ -745,7 +798,11 @@ angular.module('cosmo', [])
     };
 }])
 
-// Control meta tags
+/**************************************************
+ *              HTML Controller                   *
+ *              Manage Meta-tags                  *
+ **************************************************/
+ 
 .controller('HTMLCtrl', ['$scope', 'Page', 'Hooks', '$rootScope', 'Users', function($scope, Page, Hooks, $rootScope, Users){
 
     if(Users.admin)
@@ -776,7 +833,7 @@ angular.module('cosmo', [])
 }])
 
 // Create a login box
-.directive('login', function() {
+.directive('csLogin', function() {
     return {
         templateUrl: 'core/html/partials/user-login.html',
         replace: true,
@@ -785,7 +842,7 @@ angular.module('cosmo', [])
 })
 
 // Create a registration box
-.directive('registration', function() {
+.directive('csRegistration', function() {
     return {
         templateUrl: 'core/html/partials/user-registration.html',
         replace: true,
@@ -793,8 +850,12 @@ angular.module('cosmo', [])
     };
 })
 
-// Login/Registration Controller
-.controller('loginRegistrationCtrl', ['$scope', 'REST', '$http', 'ngDialog', '$location', '$rootScope', 'Users', 'Page', 'growl', function($scope, REST, $http, ngDialog, $location, $rootScope, Users, Page, growl){
+
+/**************************************************
+ *      Login / Registration Controller           *
+ **************************************************/
+
+.controller('loginRegistrationCtrl', ['$scope', 'REST', '$http', 'ngDialog', '$location', '$rootScope', 'Users', 'Page', '$timeout', function($scope, REST, $http, ngDialog, $location, $rootScope, Users, Page, $timeout){
 
     // Initialize panel to show
     $scope.panel = 'login';
@@ -810,11 +871,11 @@ angular.module('cosmo', [])
                 email: $scope.register.email,
                 password: $scope.register.password
             }, function(data){ // Success
-                growl.addSuccessMessage("Account created");
+                $rootScope.$broadcast('notify', {message: 'Account created'});
                 ngDialog.close();
                 $location.path('/');
             }, function(){ // Error
-                growl.addErrorMessage("Username/Email is already in use");
+                $rootScope.$broadcast('notify', {message: 'Username/email is already in use'});
             });
         } else {
             alert("Passwords don't match");
@@ -825,55 +886,58 @@ angular.module('cosmo', [])
     // Login
     $scope.login = function(){
         REST.users.get({ username: $scope.login.username, password: $scope.login.password, dontcache: new Date().getTime() }, function(data){
-            if(data.token){
-                // Set cookie and headers with username and auth token
-                var expdate = new Date();
-                expdate.setDate(expdate.getDate() + 90); // 90 days in the future
-                document.cookie= "usersID=" + data.id + ";expires=" + expdate.toGMTString();
-                document.cookie= "username=" + $scope.login.username.toLowerCase() + ";expires=" + expdate.toGMTString();
-                document.cookie= "token=" + data.token + ";expires=" + expdate.toGMTString();
-                document.cookie= "role=" + data.role + ";expires=" + expdate.toGMTString();
 
-                $http.defaults.headers.common['username'] = $scope.login.username.toLowerCase();
-                $http.defaults.headers.common['token'] = data.token;
+            // Set cookie and headers with username and auth token
+            var expdate = new Date();
+            expdate.setDate(expdate.getDate() + 90); // 90 days in the future
+            document.cookie= "usersID=" + data.id + ";expires=" + expdate.toGMTString();
+            document.cookie= "username=" + $scope.login.username.toLowerCase() + ";expires=" + expdate.toGMTString();
+            document.cookie= "token=" + data.token + ";expires=" + expdate.toGMTString();
+            document.cookie= "role=" + data.role + ";expires=" + expdate.toGMTString();
+            
+            $http.defaults.headers.common['username'] = $scope.login.username.toLowerCase();
+            $http.defaults.headers.common['token'] = data.token;
+            
+            Users.id = data.id;
+            Users.username = $scope.login.username.toLowerCase();
+            Users.role = data.role;
+            
+            // Check if the user is an administrator
+            if(data.role === 'admin')
+                $rootScope.$broadcast('adminLogin');
+            
+            $scope.login.username = '';
+            $scope.login.password = '';
+            ngDialog.close();
+            $location.path('/');
 
-                Users.id = data.id;
-                Users.username = $scope.login.username.toLowerCase();
-                Users.role = data.role;
-
-                // Check if the user is an administrator
-                if(data.role === 'admin')
-                    $rootScope.$broadcast('adminLogin');
-
-                $scope.login.username = '';
-                $scope.login.password = '';
-                ngDialog.close();
-                $location.path('/');
-
-                $rootScope.$broadcast('loggedIn');
-            } else
-                alert('Wrong Username/Password');
+            $rootScope.$broadcast('loggedIn');
+        }, function(){
+            alert('Wrong Username/Password');
         });
     };
 
     // Log the user out
     $scope.logout = function(){
         // Delete cookies
-        document.cookie = 'username=null; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        document.cookie = 'usersID=null; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        document.cookie = 'token=null; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'username=null;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'usersID=null;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'token=null;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         Users.id = '';
         Users.username = '';
         $http.defaults.headers.common['username'] = '';
         $http.defaults.headers.common['token'] = '';
-        location.reload(); // Refresh the page
+        $location.path('/');
+        $timeout(function(){
+            location.reload();
+        }, 1000);
     };
-
+    
     // Reset password
     $scope.resetPassword = function(){
         if($scope.login.username){
             REST.users.update({ username: $scope.login.username }, function(data){
-                growl.addSuccessMessage("Check your email for password reset instructions");
+                $rootScope.$broadcast('notify', {message: 'Check your password reset for instructions'});
             });
         } else
             alert('Error: You must enter your username to reset your password');
@@ -882,21 +946,21 @@ angular.module('cosmo', [])
     // Change Username
     $scope.changeUsername = function(){
         REST.users.update({ userID: Users.id, username: $scope.username }, function(){
-            growl.addSuccessMessage("Username Updated");
+            $rootScope.$broadcast('notify', {message: 'Username updated'});
         });
     };
 
     // Change email address
     $scope.changeEmail = function(){
         REST.users.update({ userID: Users.id, email: $scope.email }, function(data){
-            growl.addSuccessMessage("Email Updated");
+            $rootScope.$broadcast('notify', {message: 'Email updated'});
         });
     };
 
     // Change password
     $scope.changePassword = function(){
         REST.users.update({ userID: Users.id, password: $scope.password }, function(){
-            growl.addSuccessMessage("Password Updated");
+            $rootScope.$broadcast('notify', {message: 'Password updated'});
         });
     };
 
@@ -917,14 +981,20 @@ angular.module('cosmo', [])
 // Forgotten password reset
 .controller('resetModal', ['ngDialog', function(ngDialog){
     // Open modal
-    ngDialog.open({ template: 'themes/KHP/partials/forgotpassword.html', controller: 'resetPasswordCtrl' });
+    ngDialog.open({ 
+        template: 'core/html/partials/password-reset.html', 
+        controller: 'resetPasswordCtrl', 
+        showClose: false, 
+        closeByEscape: false, 
+        closeByDocument: false 
+    });
 }])
 
 // Forgotten password reset
 .controller('resetPasswordCtrl', ['$routeParams', '$scope', 'ngDialog', 'REST', '$location', function($routeParams, $scope, ngDialog, REST, $location){
-
+    
     $scope.reset = {};
-
+    
     // Reset password
     $scope.reset = function(){
         if($scope.reset.password === $scope.reset.password2){
@@ -945,7 +1015,7 @@ angular.module('cosmo', [])
 }])
 
 // Search directive
-.directive('search', function() {
+.directive('csSearch', function() {
     return {
         template: '<input type=text"" placeholder="Search..." ng-model="search">',
         controller: 'searchCtrl',
@@ -956,7 +1026,7 @@ angular.module('cosmo', [])
 })
 
 // Search results page
-.directive('results', ['Page', function(Page) {
+.directive('csResults', ['Page', function(Page) {
     return {
         templateUrl: 'core/html/partials/results.html',
         link: function(scope, elm, attrs, ctrl) {
@@ -965,13 +1035,41 @@ angular.module('cosmo', [])
     };
 }])
 
+/**************************************************
+ *              Slogan Directive                  *
+ **************************************************/
+
+.directive('csSlogan', ['Page', function(Page){
+    return {
+        link: function(scope, elm, attrs){
+            elm.html(Page.settings.slogan);
+        }
+    };
+}])
+
+/**************************************************
+ *              Title Directive                   *
+ **************************************************/
+
+.directive('csTitle', ['Page', function(Page){
+    return {
+        link: function(scope, elm, attrs){
+            elm.html('<a href="/">'+Page.settings.site_name+'</a>');
+        }
+    };
+}])
 
 /****************************************************************************************************
  *                                               Factories                                          *
  ****************************************************************************************************/
 
 
-// Create Page factory to store page variables globally
+/**************************************************
+ *                Page Factory                    *
+ *       Create Page factory to store             *
+ *          page variables globally               *
+ **************************************************/
+// 
 .factory('Page', function(){
     return {
         id: 0,
@@ -982,25 +1080,28 @@ angular.module('cosmo', [])
         body: '',
         url: '',
         type: '',
-        prefix: '',
         published: '',
         published_date: '',
-        templatePages: [],
+        themePages: [],
         timestamp: '',
         extras: [],
         misc: {}
     };
 })
 
-// Factory for responsive images
+/**************************************************
+ *            Responsive Factory                  *
+ *         Handles responsive images              *
+ **************************************************/
+
 .factory('Responsive', ['$http', function($http){
     return {
         resize: function(imageURL, maxSize){
-
+            
             // Make sure the image URL is a string, responsive feature isn't disabled, and the image isn't already a smaller size.
             if(!angular.isString(imageURL) || maxSize === 'nonresponsive' || imageURL.indexOf('-2048') > 0 || imageURL.indexOf('-1024.') > 0 || imageURL.indexOf('-512.') > 0 || imageURL.indexOf('-320.') > 0)
                 return imageURL;
-
+            
             // Check screen size for responsive images
             if(window.innerWidth >= 2048)
                 var quality = 2048;
@@ -1010,7 +1111,7 @@ angular.module('cosmo', [])
                 var quality = 512;
             else
                 var quality = 320;
-
+            
             // Make sure the image isn't larger than the max size
             if(maxSize){
                 switch(maxSize){
@@ -1036,7 +1137,11 @@ angular.module('cosmo', [])
     };
 }])
 
-// Register all Hooks
+/**************************************************
+ *               Hooks Factory                    *
+ * Allow modules to hook into core functionality  *
+ **************************************************/
+
 .factory('Hooks', function(){
 
     // Initialize all hooks
@@ -1083,29 +1188,37 @@ angular.module('cosmo', [])
     };
 })
 
-// Control RESTful operations
-.factory('REST', ['$resource', 'Page', function($resource, Page) {
+/**************************************************
+ *                 REST Factory                   *
+ *       Communicate with RESTful backend         *
+ **************************************************/
 
+.factory('REST', ['$resource', 'Page', function($resource, Page) {
     return {
-        'blocks': $resource(Page.prefix +'api/blocks/:blockID', { blockID: '@blockID'},{ update: { method: 'PUT' } }),
-        'blocksRequirements': $resource(Page.prefix +'api/blocks/:blockID/requirements/:requirementID', { blockID: '@blockID', requirementID: '@requirementID'},{ update: { method: 'PUT' } }),
-        'content': $resource(Page.prefix +'api/content/:contentID', { contentID: '@contentID'},{ update: { method: 'PUT' } }),
-        'contentExtras': $resource(Page.prefix +'api/content/:contentID/extras/', { contentID: '@contentID'}),
-        'contentRevisions': $resource(Page.prefix +'api/content/:contentID/revisions/:revisionID', { contentID: '@contentID', revisionID: '@revisionID'}, {update: { method: 'PUT' } }),
-        'contentRevisionsExtras': $resource(Page.prefix +'api/content/:contentID/revisions/:revisionID/extras/:extraID', { revisionID: '@revisionID', contentID: '@contentID', extraID: '@extraID'}),
-        'contentTags': $resource(Page.prefix +'api/content/:contentID/tags/', { contentID: '@contentID'}),
-        'files': $resource(Page.prefix +'api/files/:fileID', { fileID: '@fileID'},{ update: { method: 'PUT' } }),
-        'filesTags': $resource(Page.prefix +'api/files/:fileID/tag/:tag', { fileID: '@fileID', tag: '@tag'},{ update: { method: 'PUT' } }),
-        'menus': $resource(Page.prefix +'api/menus/:menuID', { menuID: '@menuID'},{ update: { method: 'PUT' } }),
-        'modules': $resource(Page.prefix +'api/modules/:moduleID', { moduleID: '@moduleID'},{ update: { method: 'PUT' } }),
-        'sitemaps': $resource(Page.prefix +'api/sitemaps/'),
-        'themes': $resource(Page.prefix +'api/themes/:themeID', { themeID: '@themeID' }, { update: { method: 'PUT' } }),
-        'settings': $resource(Page.prefix +'api/settings/',{}, { update: { method: 'PUT' } }),
-        'users': $resource(Page.prefix +'api/users/:userID', { userID: '@userID' }, { update: { method: 'PUT' } })
+        'blocks': $resource('api/blocks/:blockID', { blockID: '@blockID'},{ update: { method: 'PUT' } }),
+        'blocksRequirements': $resource('api/blocks/:blockID/requirements/:requirementID', { blockID: '@blockID', requirementID: '@requirementID'},{ update: { method: 'PUT' } }),
+        'comments': $resource('api/comments/:commentID', { commentID: '@commentID'},{ update: { method: 'PUT' } }),
+        'content': $resource('api/content/:contentID', { contentID: '@contentID'},{ update: { method: 'PUT' } }),
+        'contentExtras': $resource('api/content/:contentID/extras/', { contentID: '@contentID'}),
+        'contentRevisions': $resource('api/content/:contentID/revisions/:revisionID', { contentID: '@contentID', revisionID: '@revisionID'}, {update: { method: 'PUT' } }),
+        'contentRevisionsExtras': $resource('api/content/:contentID/revisions/:revisionID/extras/:extraID', { revisionID: '@revisionID', contentID: '@contentID', extraID: '@extraID'}),
+        'contentTags': $resource('api/content/:contentID/tags/', { contentID: '@contentID'}),
+        'files': $resource('api/files/:fileID', { fileID: '@fileID'},{ update: { method: 'PUT' } }),
+        'filesTags': $resource('api/files/:fileID/tag/:tag', { fileID: '@fileID', tag: '@tag'},{ update: { method: 'PUT' } }),
+        'menus': $resource('api/menus/:menuID', { menuID: '@menuID'},{ update: { method: 'PUT' } }),
+        'modules': $resource('api/modules/:moduleID', { moduleID: '@moduleID'},{ update: { method: 'PUT' } }),
+        'sitemaps': $resource('api/sitemaps/'),
+        'themes': $resource('api/themes/:themeID', { themeID: '@themeID' }, { update: { method: 'PUT' } }),
+        'settings': $resource('api/settings/',{}, { update: { method: 'PUT' } }),
+        'users': $resource('api/users/:userID', { userID: '@userID' }, { update: { method: 'PUT' } })
     };
 }])
 
-// Create Page factory to store page variables globally
+/**************************************************
+ *               Users Factory                    *
+ *      Store data about the current user         *
+ **************************************************/
+
 .factory('Users', function() {
     return {
         email: '',
@@ -1116,7 +1229,11 @@ angular.module('cosmo', [])
     };
 })
 
-// Filter out html
+/**************************************************
+ *              Plaintext Filter                  *
+ *   Filter out any HTML and return plain text    *
+ **************************************************/
+
 .filter('plaintext', function(){
     return function(input){
         if(input){
@@ -1126,6 +1243,10 @@ angular.module('cosmo', [])
     };
 })
 
+/**************************************************
+ *             Titlecase Filter                   *
+ *           Make text Title Case                 *
+ **************************************************/
 .filter('titlecase', function(){
     return function(input){
         if(typeof input === 'string' && input){
@@ -1143,9 +1264,10 @@ angular.module('cosmo', [])
 
 /**************************************************
  *              Table Directive                   *
+ *             Make HTML tables                   *
  **************************************************/
 
-.directive('cosmoTable', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', '$timeout', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce, $timeout) {
+.directive('csTable', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', '$timeout', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce, $timeout) {
     return {
         template: '<table><tr ng-repeat="row in rows track by $index" ng-click="clickedRow({{$index}})" ng-init="isFirst=$first"><th ng-if="isFirst&&tableHeader" ng-repeat="col in row track by $index" ng-click="clickedCol({{$index}})">{{col}}</th><td ng-if="!isFirst||!tableHeader" ng-repeat="col in row track by $index" ng-click="clickedCol({{$index}})">{{col}}</td></tr></table>',
         replace: true,
@@ -1153,12 +1275,12 @@ angular.module('cosmo', [])
         link: function(scope, elm, attrs) {
 
             var updateCosmoTable = function(){
-                if(Page.extras[attrs.cosmoTable])
-                    scope.rows = angular.fromJson(Page.extras[attrs.cosmoTable]);
+                if(Page.extras[attrs.csTable])
+                    scope.rows = angular.fromJson(Page.extras[attrs.csTable]);
                 else if(Users.admin)
                     scope.rows = [['', '']];
 
-                scope.tableHeader = Page.extras[attrs.cosmoTable + '-header'];
+                scope.tableHeader = Page.extras[attrs.csTable + '-header'];
             };
             updateCosmoTable();
 
@@ -1169,10 +1291,8 @@ angular.module('cosmo', [])
 
             // Keep track of the last clicked row
             scope.clickedRow = function(index){
-                // scope.selectedRow = index;
                 Page.misc.selectedRow = index;
-                // scope.selectedTable = attrs.cosmoTable;
-                Page.misc.selectedTable = attrs.cosmoTable;
+                Page.misc.selectedTable = attrs.csTable;
             };
 
             // Keep track of the last clicked column
@@ -1207,33 +1327,31 @@ angular.module('cosmo', [])
                             }
                         }
                         if(numRows !== numEmptyRows && numRows > 0)
-                            Page.extras[attrs.cosmoTable] = rows;
+                            Page.extras[attrs.csTable] = rows;
                     });
                 });
-
+                
                 // Add table header
                 scope.$on('addTableHeader', function(){
-                    Page.extras[attrs.cosmoTable + '-header'] = true;
+                    Page.extras[attrs.csTable + '-header'] = true;
                     scope.tableHeader = true;
                 });
-
+                
                 // Remove table header
                 scope.$on('removeTableHeader', function(){
-                    Page.extras[attrs.cosmoTable + '-header'] = false;
+                    Page.extras[attrs.csTable + '-header'] = false;
                     scope.tableHeader = false;
                 });
 
                 // Add a row above the selected row
                 scope.$on('addRowAbove', function(event, data){
-                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.cosmoTable){
+                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.csTable){
                         var columns = [];
                         angular.forEach(scope.rows[0], function(){
                             columns.push('');
                         });
-
-                        //scope.rows.splice(scope.selectedRow, 0, columns);
-                        Page.extras[attrs.cosmoTable].splice(Page.misc.selectedRow, 0, columns);
-                        // Page.extras[attrs.cosmoTable] = angular.toJson(scope.rows);
+                        
+                        Page.extras[attrs.csTable].splice(Page.misc.selectedRow, 0, columns);
                         updateCosmoTable();
                         Page.misc.lastChange = data;
                     }
@@ -1241,7 +1359,7 @@ angular.module('cosmo', [])
 
                 // Add a row below the selected row
                 scope.$on('addRowBelow', function(event, data){
-                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.cosmoTable){
+                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.csTable){
 
                         var columns = [];
                         angular.forEach(scope.rows[0], function(){
@@ -1250,11 +1368,10 @@ angular.module('cosmo', [])
 
                         // Check if this is the last row
                         if(scope.rows.length === Page.misc.selectedRow + 1)
-                            Page.extras[attrs.cosmoTable].push(columns); // scope.rows.push(columns);
+                            Page.extras[attrs.csTable].push(columns); // scope.rows.push(columns);
                         else
-                            Page.extras[attrs.cosmoTable].splice(Page.misc.selectedRow+1, 0, columns); // scope.rows.splice(scope.selectedRow, 0, columns);
-
-                        // Page.extras[attrs.cosmoTable] = angular.toJson(scope.rows);
+                            Page.extras[attrs.csTable].splice(Page.misc.selectedRow+1, 0, columns); // scope.rows.splice(scope.selectedRow, 0, columns);
+                        
                         updateCosmoTable();
                         Page.misc.lastChange = data;
                     }
@@ -1262,10 +1379,9 @@ angular.module('cosmo', [])
 
                 // Delete row
                 scope.$on('deleteRow', function(event, data){
-                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.cosmoTable){
+                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.csTable){
                         // scope.rows.splice(scope.selectedRow, 1);
-                        Page.extras[attrs.cosmoTable].splice(Page.misc.selectedRow, 1);
-                        // Page.extras[attrs.cosmoTable] = angular.toJson(scope.rows);
+                        Page.extras[attrs.csTable].splice(Page.misc.selectedRow, 1);
                         updateCosmoTable();
                         Page.misc.lastChange = data;
                     }
@@ -1273,15 +1389,15 @@ angular.module('cosmo', [])
 
                 // Add a column to the right of the selected column
                 scope.$on('addColRight', function(event, data){
-                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.cosmoTable){
+                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.csTable){
                         // Iterate through all rows
-                        var tempTable = angular.copy(Page.extras[attrs.cosmoTable]);
+                        var tempTable = angular.copy(Page.extras[attrs.csTable]);
                         for(var i=0; i<tempTable.length; i++){
                             // Add a blank column (string) in the desired location
                             // scope.rows[i].splice(scope.selectedCol + 1, 0, '');
                             tempTable[i].splice(Page.misc.selectedCol + 1, 0, '');
                         }
-                        Page.extras[attrs.cosmoTable] = tempTable; //scope.rows;
+                        Page.extras[attrs.csTable] = tempTable; //scope.rows;
                         updateCosmoTable();
                         Page.misc.lastChange = data;
                     }
@@ -1289,15 +1405,15 @@ angular.module('cosmo', [])
 
                 // Add a column to the left of the selected column
                 scope.$on('addColLeft', function(event, data){
-                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.cosmoTable){
+                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.csTable){
                         // Iterate through all rows
-                        var tempTable = angular.copy(Page.extras[attrs.cosmoTable]);
+                        var tempTable = angular.copy(Page.extras[attrs.csTable]);
                         for(var i=0; i<tempTable.length; i++){
                             // Add a blank column (string) in the desired location
                             // scope.rows[i].splice(scope.selectedCol, 0, '');
                             tempTable[i].splice(Page.misc.selectedCol, 0, '');
                         }
-                        Page.extras[attrs.cosmoTable] = tempTable; // scope.rows;
+                        Page.extras[attrs.csTable] = tempTable; // scope.rows;
                         updateCosmoTable();
                         Page.misc.lastChange = data;
                     }
@@ -1305,22 +1421,22 @@ angular.module('cosmo', [])
 
                 // Delete a column
                 scope.$on('deleteCol', function(event, data){
-                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.cosmoTable){
+                    if(Page.misc.lastChange !== data && Page.misc.selectedTable === attrs.csTable){
                         // Iterate through all rows
                         for(var i=0; i<scope.rows.length; i++){
                             // Delete the column in the desired location
                             // scope.rows[i].splice(scope.selectedCol, 1);
-                            Page.extras[attrs.cosmoTable][i].splice(Page.misc.selectedCol, 1);
+                            Page.extras[attrs.csTable][i].splice(Page.misc.selectedCol, 1);
                             Page.misc.lastChange = data;
                         }
-                        // Page.extras[attrs.cosmoTable] = scope.rows;
+                        
                         updateCosmoTable();
                     }
                 });
 
                 // Delete this table
                 scope.$on('deleteTable', function(){
-                    if(Page.misc.selectedTable === attrs.cosmoTable)
+                    if(Page.misc.selectedTable === attrs.csTable)
                         elm.remove();
                 });
             }
@@ -1329,7 +1445,7 @@ angular.module('cosmo', [])
 }])
 
 // Create/click an anchor link
-.directive('anchor', ['$anchorScroll', '$location', function($anchorScroll, $location){
+.directive('csAnchor', ['$anchorScroll', '$location', function($anchorScroll, $location){
     return {
         link: function(scope, elm, attr){
             $anchorScroll();
@@ -1361,7 +1477,10 @@ angular.module('cosmo', [])
 
     // Watch for pasted text
     angular.element(document).on('paste', function(event){
-        var pastedText = event.originalEvent.clipboardData.getData('text/plain');
+        if(event.clipboardData.getData('text/plain'))
+            var pastedText = event.clipboardData.getData('text/plain');
+        else
+            var pastedText = event.originalEvent.clipboardData.getData('text/plain');
 
         // Check if they are in the table modal
         if($scope.pastingTable === true){
@@ -1380,13 +1499,13 @@ angular.module('cosmo', [])
 
     // Watch all keypresses
     angular.element(document).on('keydown', function(event){
-
+        
         // If the modal is open, log keypresses to the modal instead of the window
         if(Page.misc.wysiwyg.modalOpen){
             // Watch for paste commands
             if(($scope.lastKeyPress === 91 || $scope.lastKeyPress === 17) && event.keyCode === 86)
                 return true;
-
+            
             if(event.keyCode === 8) { // delete key
                 $scope.editor.letter = $scope.editor.letter-1;
                 $scope.editor[$scope.editor.selected].splice($scope.editor.letter, 1);
@@ -1562,7 +1681,7 @@ angular.module('cosmo', [])
     // Check the URL to activate the open in new tab box automatically
     $scope.urlChanged = function() {
         // Check if it's a file from the uploads folder. e.g. PDF files
-        if($scope.editor.url.indexOf('/uploads/') === 0)
+        if($scope.editor.url.indexOf('uploads/') === 0)
             $scope.editor.newTab = true;
     };
 
@@ -1615,26 +1734,27 @@ angular.module('cosmo', [])
 
         Page.extras[timestamp] = angular.toJson(rows);
 
-        document.execCommand('insertHTML', false, '<div cosmo-table="'+ timestamp +'"></div>');
+        document.execCommand('insertHTML', false, '<div cs-table="'+ timestamp +'"></div>');
         ngDialog.close();
         $rootScope.$broadcast('saveAndRefresh');
     };
-
+    
 }])
 
-.directive('wysiwyg', ['ngDialog', '$rootScope', 'Page', '$compile', '$timeout', function(ngDialog, $rootScope, Page, $compile, $timeout){
+.directive('csWysiwyg', ['ngDialog', '$rootScope', 'Page', '$compile', '$timeout', function(ngDialog, $rootScope, Page, $compile, $timeout){
     return {
-        templateUrl: 'core/html/wysiwyg/toolbar.html',
+        templateUrl: 'core/html/toolbar.html',
         replace: true,
         scope: {},
         link: function(scope, elm, attr){
-
+            
             scope.editor = {};
             scope.editor.codeEditor = false;
             scope.editor.showToolbar = false;
             scope.editor.tableRows = [];
+            scope.editor.directives = Page.directives;
             Page.misc.wysiwyg = {};
-
+            
             // Populate 100 table rows
             for(var i=1; i<=10; i++){
                 for(var j=1; j<=10; j++){
@@ -1666,7 +1786,7 @@ angular.module('cosmo', [])
                     tempRows.push(tempCols);
                 var tempTimestamp = new Date().getTime();
                 Page.extras[tempTimestamp] = tempRows;
-                document.execCommand('insertHTML', false, '<table cosmo-table="'+ tempTimestamp +'"></table>');
+                document.execCommand('insertHTML', false, '<table cs-table="'+ tempTimestamp +'"></table>');
                 $rootScope.$broadcast('saveAndRefresh');
             };
 
@@ -1677,24 +1797,23 @@ angular.module('cosmo', [])
                 $timeout(function(){
                     scope.editor.showToolbar = true;
                 });
-                var remX = (data.pageX / 10) - 16; // -16 centers toolbar
-                var remY = (data.pageY / 10); // Go directly above click. CSS margin pushes this above mouse
-
+                var pageX = data.pageX - 120; // -120 centers toolbar
+                var pageY = data.pageY - 75; // Go directly above click. CSS margin pushes this above mouse
+                
                 // Make sure the toolbar isn't too far to the left (where it cuts off toolbar items)
-                if((data.pageX - 150) < 0)
-                    remX = 0;
+                if((pageX - 50) < 0)
+                    pageX = 0;
 
                 // Make sure the toolbar isn't too far to the right (where it cuts off toolbar items)
-                if((data.pageX + 250) > window.innerWidth)
-                    remX = (window.innerWidth - 400) / 10;
+                if((pageX + 250) > window.innerWidth)
+                    pageX = window.innerWidth - 300;
 
                 // Make sure the toolbar isn't too far down (where it cuts off the dropdowns)
                 if((data.clientY + 100) > window.innerHeight)
-                    remY = (data.pageY - 100) / 10;
-
-                console.log(data);
-                elm.css('top', remY + 'rem');
-                elm.css('left', remX + 'rem');
+                    pageY = pageY - 100;
+                
+                elm.css('top', pageY + 'px');
+                elm.css('left', pageX + 'px');
             });
 
             // Hide the toolbar
@@ -1713,7 +1832,7 @@ angular.module('cosmo', [])
             };
 
             // User clicked a button on the toolbar
-            scope.action = function(action){
+            scope.action = function(action, premade, premadeDesc){
 
                 switch(action){
                     case 'bold':
@@ -1845,28 +1964,33 @@ angular.module('cosmo', [])
                                     rows.push(cellData);
                             });
                             Page.extras[timestamp] = angular.toJson(rows);
-                            document.execCommand('insertHTML', false, '<div cosmo-table="'+ timestamp +'"></div>');
+                            document.execCommand('insertHTML', false, '<div cs-table="'+ timestamp +'"></div>');
                             $rootScope.$broadcast('saveAndRefresh');
                         }
                         break;
                     case 'photo':
-                        document.execCommand('insertHTML', false, '<div image="'+ new Date().getTime() +'"></div>');
+                        document.execCommand('insertHTML', false, '<div cs-image="'+ new Date().getTime() +'"></div>');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'bgimage':
-                        document.execCommand('insertHTML', false, '<div bgimage="'+ new Date().getTime() +'"></div>');
+                        document.execCommand('insertHTML', false, '<div cs-bg-image="'+ new Date().getTime() +'"></div>');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'audio':
-                        document.execCommand('insertHTML', false, '<div audio="'+ new Date().getTime() +'"></div>');
+                        document.execCommand('insertHTML', false, '<div cs-audio="'+ new Date().getTime() +'"></div>');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'video':
-                        document.execCommand('insertHTML', false, '<div movie="'+ new Date().getTime() +'"></div>');
+                        document.execCommand('insertHTML', false, '<div cs-movie="'+ new Date().getTime() +'"></div>');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
+                    case 'videourl':
+                        var url = prompt("Video embed URL:\ne.g. http://www.youtube.com/embed/JMl8cQjBfqk");
+                        if(url)
+                            document.execCommand('insertHTML', false, '<div video="'+ url +'" height="315" width="560" fluidvids></div>');
+                        break;
                     case 'gallery':
-                        document.execCommand('insertHTML', false, '<img gallery="'+ new Date().getTime() +'"></img>');
+                        document.execCommand('insertHTML', false, '<img cs-gallery="'+ new Date().getTime() +'"></img>');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'div':
@@ -1874,10 +1998,23 @@ angular.module('cosmo', [])
                         if(classes)
                             document.execCommand('insertHTML', false, '<div class="'+ classes +'"></div>');
                         break;
+                    case 'html':
+                        var snippet = prompt("HTML Snippet:");
+                        if(snippet)
+                            document.execCommand('insertHTML', false, snippet);
+                        break;
                     case 'custom':
                         var directive = prompt("Directive:");
                         if(directive)
                             document.execCommand('insertHTML', false, '<div '+ directive +'></div>');
+                        break;
+                     case 'premade':
+                        // If there's a description, prompt user for a value
+                        if(premadeDesc){
+                            var directive = prompt(premadeDesc);
+                            document.execCommand('insertHTML', false, '<div '+ premade +'="'+ directive +'"></div>');
+                        } else
+                            document.execCommand('insertHTML', false, '<div '+ premade +'></div>');
                         break;
                     case 'toggle':
                         var toggle = true;
@@ -1928,58 +2065,67 @@ angular.module('cosmo', [])
 
 /**************************************************
  *             Admin Panel Controller             *
+ *           Control the admin sidebar            *
  **************************************************/
 
-.controller('adminPanelCtrl', ['$scope', 'Users', 'REST', function($scope, Users, REST){
+.controller('adminPanelCtrl', ['$scope', 'Users', 'REST', '$location', '$timeout', function($scope, Users, REST, $location, $timeout){
 
     $scope.admin = {};
     $scope.admin.sidebar = 'core/html/sidebar.html';
     $scope.admin.username = Users.username;
-
+    
     REST.users.get({userID: Users.id}, function(data){
         if(data.photo)
             $scope.admin.photo = data.photo;
         else
-            $scope.admin.photo = 'img/image.svg';
+            $scope.admin.photo = 'core/img/image.svg';
     });
 
     $scope.sidebar = '';
     $scope.showAdminPanel = false; // Initialize sidebar as hidden
-
+    
+    // Go to the new page
+    $scope.navigate = function(){
+        $location.path('new');
+    };
+    
     // todo: Depreciate. Remove from admin-panel.html and use loginRegistrationCtrl instead
     $scope.logout = function(){
         // Delete cookies
-        document.cookie = 'username=null; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        document.cookie = 'token=null; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        location.reload(); // Refresh the page
+        document.cookie = 'username=null;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'usersID=null;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'token=null;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        Users.id = '';
+        Users.username = '';
+        $http.defaults.headers.common['username'] = '';
+        $http.defaults.headers.common['token'] = '';
+        $location.path('/');
+        $timeout(function(){
+            location.reload();
+        }, 1000);
     };
 }])
 
 /**************************************************
  *             Block Controller                   *
+ *       Manage the sidebar block editor          *
  **************************************************/
 
-.controller('blockCtrl', ['$scope', 'REST', 'growl', 'Page', '$rootScope', function($scope, REST, growl, Page, $rootScope){
+.controller('blockCtrl', ['$scope', 'REST', 'Page', '$rootScope', function($scope, REST, Page, $rootScope){
 
-    var lastClicked;
     $scope.block = {};
     $scope.block.panel = 'manage';
     $scope.types = [];
     $scope.block.selectedTypes = {};
-
+    
     // Get all available blocks
     REST.blocks.query({}, function(data){
         $scope.blocks = data;
     });
-
-    // Get the page types available
-    REST.themes.query({ themeID: Page.theme }, function(data){
-        angular.forEach(data, function(data2){
-            if(data2.type)
-                $scope.types.push(data2.type);
-        });
-    });
-
+    
+    // Get the page types availabl
+    $scope.types = Page.themePages;
+    
     $scope.$on('wysiwygEdit', function(event, data){
         $scope.block.html = data.html;
     });
@@ -2025,7 +2171,7 @@ angular.module('cosmo', [])
                 $scope.blocks = [{ id: data.data, name: $scope.block.newName }];
 
             $scope.block.newName = '';
-            growl.addSuccessMessage("New Block Added");
+            $rootScope.$broadcast('notify', {message: 'New block added'});
         });
     };
 
@@ -2038,7 +2184,7 @@ angular.module('cosmo', [])
                         $scope.blocks.splice(i,1);
                 }
                 $scope.block.name = '';
-                growl.addSuccessMessage("Block Deleted");
+                $rootScope.$broadcast('notify', {message: 'Block deleted'});
             }
         });
     };
@@ -2052,13 +2198,12 @@ angular.module('cosmo', [])
             area: block.area,
             priority: parseInt(block.priority)
         }, function(data){
-            growl.addSuccessMessage("Block Updated");
+            $rootScope.$broadcast('notify', {message: 'Block updated'});
         });
     };
 
     // Save the addition/edits to the block
     $scope.saveBlock = function(){
-
         // Save block to database
         REST.blocks.update({
             blockID: $scope.block.id,
@@ -2107,7 +2252,7 @@ angular.module('cosmo', [])
                 area: $scope.block.area,
                 priority: $scope.block.priority
             });
-            growl.addSuccessMessage("Block Updated");
+            $rootScope.$broadcast('notify', {message: 'Block updated'});
             $rootScope.$broadcast('blocksGet');
         });
     };
@@ -2115,11 +2260,14 @@ angular.module('cosmo', [])
 
 /**************************************************
  *          Content List Controller               *
+ *             Search content                     *
  **************************************************/
 
-.controller('contentListCtrl', ['$scope', 'REST', function($scope, REST){
+.controller('contentListCtrl', ['$scope', 'REST', 'Hooks', 'Responsive', function($scope, REST, Hooks, Responsive){
 
     $scope.search = {};
+    $scope.exclude = {};
+    $scope.exclude.tags = '!exclude';
     $scope.content = {};
 
     // Search
@@ -2140,68 +2288,75 @@ angular.module('cosmo', [])
                 break;
         }
     };
-
+    
     // Fetch content
     REST.content.query({}, function(data){
+        angular.forEach(data, function(data2){
+            data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured, 'small'));
+        });
         $scope.pages = data;
     });
 }])
 
 /**************************************************
  *              File Controller                   *
+ *             Upload/edit files                  *
  **************************************************/
 
-.controller('filesCtrl', ['$scope', '$upload', 'REST', '$rootScope', '$sce', 'ngDialog', 'growl', 'Hooks', 'Responsive', function($scope, $upload, REST, $rootScope, $sce, ngDialog, growl, Hooks, Responsive){
-
+.controller('filesCtrl', ['$scope', '$upload', 'REST', '$rootScope', '$sce', 'ngDialog', 'Hooks', 'Responsive', function($scope, $upload, REST, $rootScope, $sce, ngDialog, Hooks, Responsive){
+    
     $scope.files = {};
-    $scope.files.classes = '';
+    $scope.files.class = '';
     $scope.files.size = 'responsive';
     $scope.numFiles = 12;
-
+    
     // Open modal window
     if($scope.$parent.ngDialogData.gallery){
         $scope.images = $scope.$parent.ngDialogData.images;
         for(var i=0; i<$scope.images.length; i++)
-            $scope.images[i].url = $sce.trustAsResourceUrl($scope.images[i].url);
+            $scope.images[i].url = $sce.trustAsResourceUrl($scope.images[i].src);
         $scope.files.gallery = true;
         $scope.editingGallery = true;
     }else {
         $scope.files.gallery = false;
         $scope.editingGallery = false;
     }
-
+    
     $scope.id = $scope.$parent.ngDialogData.id;
-
+    
     // Get files for the media library
     function getFiles(justUploaded){
-
+        
         REST.files.query({}, function(data){
             $scope.media = [];
             angular.forEach(data, function(value){
                 // Don't do anything to an image that was just uploaded (so modules don't cache images that haven't been uploaded yet)
-                if(justUploaded && data[0]===value)
-                    var filename = value.filename;
-                else {
+                if(justUploaded) {
+                    if(value.responsive==='yes')
+                        var filename = Responsive.resize(value.filename, 'small');
+                    else
+                        var filename = value.filename;
+                } else {
                     if(value.responsive==='yes')
                         var filename = Hooks.imageHookNotify(Responsive.resize(value.filename, 'small'));
                     else
                         var filename = Hooks.imageHookNotify(value.filename);
                 }
-
+                
                 $scope.media.push({
                     alt: value.alt,
                     class: value.class,
-                    filename: $sce.trustAsResourceUrl(filename),
-                    origFilename: value.filename,
                     href: value.href,
                     id: value.id,
+                    origFilename: value.filename,
+                    src: $sce.trustAsResourceUrl(filename),
                     title: value.title,
                     tags: value.tags,
                     type: value.type,
                     responsive: value.responsive
                 });
             });
-
+            
             if(justUploaded){
                 $scope.viewFile($scope.media[0]);
                 $rootScope.$broadcast('imageSaved', data[0]);
@@ -2209,36 +2364,14 @@ angular.module('cosmo', [])
         });
     }
     getFiles();
-
-    // Autocomplete tags
-    $scope.autocompleteTags = function(){
-        var tag = $scope.files.tags[$scope.files.tags.length - 1];
-        if(tag){
-            REST.filesTags.query({ tag: tag }, function(data){
-                $scope.files.suggestions = data;
-            }, function(){ // error
-                $scope.files.suggestions = [];
-            });
-        } else
-            $scope.files.suggestions = [];
-    };
-
-    // Select tag from autocomplete
-    $scope.selectSuggestion = function(tag){
-        var tags = angular.copy($scope.files.tags);
-        tags[tags.length - 1] = tag;
-        tags[tags.length] = '';
-        $scope.files.tags = tags;
-        $scope.files.suggestions = [];
-    };
-
+    
     // Upload files
     $scope.onFileSelect = function($files) {
         //$files: an array of files selected, each file has name, size, and type.
         for (var i = 0; i < $files.length; i++) {
             var $file = $files[i];
             $scope.upload = $upload.upload({
-                url: 'api/files', //upload.php script, node.js route, or servlet url
+                url: 'api/files', // upload.php script, node.js route, or servlet url
                 method: 'POST',
                 // headers: {'headerKey': 'headerValue'}, withCredential: true,
                 data: {myObj: $scope.myModelObj},
@@ -2246,7 +2379,7 @@ angular.module('cosmo', [])
                 //(optional) set 'Content-Desposition' formData name for file
                 //fileFormDataName: myFile,
                 progress: function(evt) {
-
+                    
                 }
             }).progress(function(evt) {
                 $scope.progress = parseInt(100.0 * evt.loaded / evt.total) + '% Uploaded';
@@ -2269,11 +2402,11 @@ angular.module('cosmo', [])
     // Update the image viewer
     $scope.updateCurrentImage = function(){
         // Check if coming from a gallery
-        if(!$scope.media[$scope.currentIndex].filename)
-           $scope.media[$scope.currentIndex].filename = $scope.media[$scope.currentIndex].url;
-
+        if(!$scope.media[$scope.currentIndex].src)
+           $scope.media[$scope.currentIndex].src = $scope.media[$scope.currentIndex].url;
+        
         $scope.selectedId = $scope.media[$scope.currentIndex].id;
-        $scope.selectedFile = $scope.media[$scope.currentIndex].filename;
+        $scope.selectedFile = $scope.media[$scope.currentIndex].src;
         $scope.origFilename = $scope.media[$scope.currentIndex].origFilename;
         $scope.files.title = $scope.media[$scope.currentIndex].title;
         $scope.files.href = $scope.media[$scope.currentIndex].href;
@@ -2283,11 +2416,11 @@ angular.module('cosmo', [])
         $scope.files.type = $scope.media[$scope.currentIndex].type;
         $scope.files.responsive = $scope.media[$scope.currentIndex].responsive;
     };
-
+    
     // View this media info
     $scope.viewFile = function(file, index){
         $scope.selectedId = file.id;
-        $scope.selectedFile = file.filename;
+        $scope.selectedFile = file.src;
         $scope.origFilename = file.origFilename;
         $scope.files.title = file.title;
         $scope.files.href = file.href;
@@ -2296,7 +2429,7 @@ angular.module('cosmo', [])
         $scope.files.tags = file.tags;
         $scope.files.type = file.type;
         $scope.files.responsive = file.responsive;
-
+        
         $scope.currentIndex = index;
         // $scope.updateCurrentImage();
     };
@@ -2315,6 +2448,7 @@ angular.module('cosmo', [])
 
     // Save title/tags to the file
     $scope.save = function(){
+        /*
         // Save file elements
         REST.files.update({
             fileID: $scope.selectedId,
@@ -2323,9 +2457,9 @@ angular.module('cosmo', [])
             alt: $scope.files.alt,
             class: $scope.files.class
         }, function(data){
-            growl.addSuccessMessage("File Updated");
+            $rootScope.$broadcast('notify', {message: 'File updated'});
         });
-
+        */
         // Delete old tags
         REST.filesTags.delete({ fileID: $scope.selectedId });
 
@@ -2372,7 +2506,7 @@ angular.module('cosmo', [])
                 alt: $scope.files.alt,
                 src: $scope.origFilename,
                 href: $scope.files.href,
-                class: $scope.files.classes,
+                class: $scope.files.class,
                 tags: $scope.files.tags,
                 type: $scope.files.type,
                 size: $scope.files.size,
@@ -2386,7 +2520,7 @@ angular.module('cosmo', [])
                 alt: $scope.files.alt,
                 src: $scope.origFilename,
                 href: $scope.files.href,
-                class: $scope.files.classes,
+                class: $scope.files.class,
                 size: $scope.files.size,
                 responsive: $scope.files.responsive
             });
@@ -2398,11 +2532,11 @@ angular.module('cosmo', [])
 
 /**************************************************
  *              Menu Controller                   *
+ *     Manage admin sidebar menu editor           *
  **************************************************/
 
-.controller('menuCtrl', ['$scope', 'REST', 'growl', function($scope, REST, growl){
+.controller('menuCtrl', ['$scope', 'REST', '$rootScope', function($scope, REST, $rootScope){
 
-    var lastClicked;
     $scope.menu = {};
     $scope.menu.panel = 'manage';
     $scope.menu.editLink = true;
@@ -2411,7 +2545,7 @@ angular.module('cosmo', [])
     REST.menus.query({}, function(data){
         $scope.menus = data;
     });
-
+    
     $scope.remove = function(scope) {
         if($scope.list.length>1){
             var index = scope.$index;
@@ -2421,7 +2555,7 @@ angular.module('cosmo', [])
         } else
             alert("You cannot have an empty menu");
     };
-
+    
     $scope.newSubItem = function(scope) {
         var nodeData = scope.$modelValue;
         nodeData.items.push({
@@ -2431,7 +2565,7 @@ angular.module('cosmo', [])
             items: []
         });
     };
-
+    
     // Select a menu
     $scope.selectMenu = function(menu){
         $scope.menu.id = menu.id;
@@ -2468,7 +2602,7 @@ angular.module('cosmo', [])
                 $scope.menus = [{ id: data, name: $scope.menu.newName }];
 
             $scope.menu.newName = '';
-            growl.addSuccessMessage('Menu Created', { classes: 'cosmo-default' });
+            $rootScope.$broadcast('notify', {message: 'Menu created'});
         });
     };
 
@@ -2494,7 +2628,7 @@ angular.module('cosmo', [])
                         $scope.menus.splice(i,1);
                 }
                 $scope.menu.name = '';
-                growl.addErrorMessage('Menu Deleted', { classes: 'cosmo-default' });
+                $rootScope.$broadcast('notify', {message: 'Menu deleted'});
             }
         });
     };
@@ -2527,58 +2661,60 @@ angular.module('cosmo', [])
     $scope.saveMenu = function(){
         // Save menu
         REST.menus.update({ menuID: $scope.menu.id, name: $scope.menu.name, menu: angular.toJson($scope.list), area: $scope.menu.area }, function(data){
-            growl.addSuccessMessage("Menu Saved", { classes: 'cosmo-default' });
+            $rootScope.$broadcast('notify', {message: 'Menu saved'});
         });
     };
 }])
 
 /**************************************************
  *              Module Controller                 *
+ *      Manage the admin sidebar modules          *
  **************************************************/
 
-.controller('moduleCtrl', ['$scope', 'REST', 'growl', '$http', function($scope, REST, growl, $http){
-
+.controller('moduleCtrl', ['$scope', 'REST', '$rootScope', '$http', function($scope, REST, $rootScope, $http){
+    
     // Get modules
     REST.modules.query({}, function(data){
         $scope.modules = data;
     });
-
+    
     // Install Module
     $scope.install = function(module, index){
         REST.modules.save({ module: module }, function(data){
             $scope.modules[index]['status'] = 'active';
-
+            
             // Check for an installation file and run it
             if($scope.modules[index]['install'])
-                $http.get('modules/'+ module +'/'+ $scope.modules[index]['install']);
-
+                $http.get('modules/'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['install']);
+            
             // Success Message
-            growl.addSuccessMessage('Module Installed');
+            $rootScope.$broadcast('notify', { message: 'Module installed' });
         });
     };
-
+    
     // Uninstall Module
     $scope.uninstall = function(moduleID, index){
         REST.modules.delete({ moduleID: moduleID }, function(data){
+            
             // Check for an uninstallation file and run it
             if($scope.modules[index]['uninstall'])
-                $http.get('modules'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['uninstall']);
-
+                $http.get('modules/'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['uninstall']);
+            
             // Remove module from sidebar
             $scope.modules[index] = null;
-
+            
             // Success Message
-            growl.addSuccessMessage('Module Uninstalled');
+            $rootScope.$broadcast('notify', {message: 'Module uninstalled'});
         });
     };
-
+    
     // Activate Module
     $scope.activate = function(moduleID, index){
         REST.modules.update({ moduleID: moduleID, status: 'active' }, function(data){
             $scope.modules[index]['status'] = 'active';
-
+            
             // Success Message
-            growl.addSuccessMessage('Module Activated');
+            $rootScope.$broadcast('notify', {message: 'Module activated'});
         });
     };
 
@@ -2588,7 +2724,7 @@ angular.module('cosmo', [])
             $scope.modules[index]['status'] = 'inactive';
 
             // Success Message
-            growl.addSuccessMessage('Module Deactivated');
+            $rootScope.$broadcast('notify', {message: 'Module deactivated'});
         });
     };
 
@@ -2601,9 +2737,10 @@ angular.module('cosmo', [])
 
 /**************************************************
  *              Page Controller                   *
+ *      Make new pages and edit old pages.        *
  **************************************************/
 
-.controller('pageCtrl', ['$scope', 'REST', '$location', 'Page', '$rootScope', 'growl', '$routeParams', '$upload', 'Users', function($scope, REST, $location, Page, $rootScope, growl, $routeParams, $upload, Users){
+.controller('pageCtrl', ['$scope', 'REST', '$location', 'Page', '$rootScope', '$routeParams', '$upload', 'Users', function($scope, REST, $location, Page, $rootScope, $routeParams, $upload, Users){
 
     // Initialize variables
     $scope.page = {
@@ -2617,33 +2754,29 @@ angular.module('cosmo', [])
         type: Page.type,
         themePages: []
     };
-
+    
     // Set the date to today if no date was set
     if(!$scope.page.scheduleDate || $location.path() === '/new')
-        $scope.page.scheduleDate = Math.round(+new Date()/1000);
-
+        $scope.page.scheduleDate = Math.round(+new Date().getTime()/1000);
+    
     // Initialize schedule date
     var date = new Date($scope.page.scheduleDate * 1000);
     var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
     var ampm = date.getHours() > 12 ? 'PM' : 'AM';
     var formattedDate = date.getMonth() + 1 +'/'+ date.getDate() +'/'+ date.getFullYear() +' '+ hours +':'+ date.getMinutes() +' '+ ampm;
     $scope.page.scheduleDate = formattedDate;
-
+    
     // Get the pages available to this theme
-    REST.themes.query({ themeID: Page.theme }, function(data){
-        var index = 0;
-        for(var i=0; i<data.length; i++){
-            if(data[i].type){
-                $scope.page.themePages.push({ name: data[i].type});
-                if(data[i].type === Page.type)
-                    index = i;
-            }
-        }
-        $scope.page.type = $scope.page.themePages[index];
-    });
-
+    $scope.page.themePages = Page.themePages;
+    
+    // Initialize the page type
+    if(Page.type)
+        $scope.page.type = Page.type;
+    else
+        $scope.page.type = $scope.page.themePages[0];
+    
     // todo: Save Page.extras save locally too
-
+    
     // Check if there's an unsaved version from a previous session
     var elements = ['title', 'description', 'publish', 'scheduleDate', 'header', 'subheader', 'body', 'url'];
     if($location.path() !== '/new'){ // Don't apply this to new pages
@@ -2684,7 +2817,7 @@ angular.module('cosmo', [])
     $scope.deletePage = function(){
         REST.content.delete({ contentID: $scope.page.id }, function(data){
             // Success message
-            growl.addSuccessMessage("Deleted");
+            $rootScope.$broadcast('notify', {message: 'Deleted'});
         });
 
         // Delete all revisions of this page
@@ -2707,8 +2840,7 @@ angular.module('cosmo', [])
         $scope.page.title = Page.title;
         $scope.page.description = Page.description;
         $scope.page.url = Page.url;
-        if($scope.page.type)
-            $scope.page.type.name = Page.type;
+        $scope.page.type = Page.type;
         $scope.page.tags = Page.tags;
     };
     updatePage();
@@ -2719,7 +2851,7 @@ angular.module('cosmo', [])
 
     // Update the page type
     $scope.updatePageType = function(){
-        Page.type = $scope.page.type.name;
+        Page.type = $scope.page.type;
         $rootScope.$broadcast('settingsGet');
     };
 
@@ -2728,14 +2860,14 @@ angular.module('cosmo', [])
 
         // Log changes to the Page object
         Page.title = $scope.page.title;
-
+        
         // Only auto-generate urls for new pages
-        if($scope.page.url === '/new' || $scope.page.url === '')
+        if($scope.page.url === '/new' || $scope.page.url === 'new' || !$scope.page.url)
             $scope.autoURL = true;
 
         if($scope.autoURL){
             // Change spaces to hyphens, convert to lowercase, and remove punctuation
-            $scope.page.url = $scope.page.title.toLowerCase().replace(/ /g, '-').replace(/[\.,\/#!$%\^&\*;:{}=_'~()]/g, '');
+            $scope.page.url = $scope.page.title.toLowerCase().replace(/ /g, '-').replace(/[\.,\/#!$%\^&\*;:{}=_'~()\?]/g, '');
             Page.url = $scope.page.url;
         }
     };
@@ -2755,7 +2887,7 @@ angular.module('cosmo', [])
         Page.title = $scope.page.title;
         Page.description = $scope.page.description;
         Page.url = $scope.page.url;
-        Page.type = $scope.page.type.name;
+        Page.type = $scope.page.type;
 
         // Save to local Storage
         localStorage.setItem($routeParams.url + 'title', Page.title);
@@ -2790,75 +2922,82 @@ angular.module('cosmo', [])
 
     // Save the page
     $scope.savePage = function(duplicate){
-
+        
         // Check for duplicate URL
         if(duplicate && $scope.page.url === Page.url){
-            growl.addErrorMessage('Error: URL must be different to duplicate a page');
+            $rootScope.$broadcast('notify', {message: 'Error: URL must be different to duplicate a page', classes: 'alert-error'});
             return;
         }
-
+        
         // Make sure there is a page type
-        if(!$scope.page.type.name){
-            growl.addErrorMessage('No page type selected');
+        if(!$scope.page.type){
+            $rootScope.$broadcast('notify', {message: 'No page type selected', classes: 'alert-error'});
             return;
         }
-
+        
         // If there's no custom title tag, use the header
         if($scope.page.title){
             if($scope.page.title.length === 0)
                 $scope.page.title = Page.header;
         }
-
+        
         // If there's no custom url, use the title
         if($scope.page.url.length === 0 || $scope.page.url === '/new'){
             var title = $scope.page.title.replace(/ /g, '-').toLowerCase;
             $scope.page.url = title;
         }
-
+        
         // Get the scheduled date to publish
         var scheduleDate;
         if($scope.page.publish === 'Y' && Page.publish === 'Y') // If this was already published, don't update the published date
             scheduleDate = Page.scheduleDate;
         else if($scope.page.publish === 'Y') // If publishing now, set the publish date to the current time
-            scheduleDate = Math.round(+new Date()/1000);
+            scheduleDate = Math.round(+new Date().getTime()/1000);
         else if($scope.page.publish === 'schedule'){
-            scheduleDate = Date.parse($scope.page.scheduleDate)/1000;
+            scheduleDate = Date.parse($scope.page.scheduleDate).getTime()/1000;
             // Check if this is back dated
-            if(Date.parse($scope.page.scheduleDate) < Math.round(+new Date()))
+            if(Date.parse($scope.page.scheduleDate).getTime() < Math.round(+new Date().getTime()))
                 $scope.page.publish = 'Y';
             else
                 $scope.page.publish = 'N';
         }
-
+        
+        // Get the featured image URL
+        if(Page.extras.featured)
+            var featured = Page.extras.featured.src;
+        else
+            var featured = null;
+        
         // Create a new page or a duplicate
         if($location.path() === '/new' || duplicate){
-
+            
             // Save content
             REST.content.save({
                 title: $scope.page.title,
                 description: $scope.page.description,
                 header: Page.header,
                 subheader: Page.subheader,
+                featured: featured,
                 body: Page.body,
                 url: $scope.page.url,
-                type: $scope.page.type.name,
+                type: $scope.page.type,
                 published: $scope.page.publish,
                 published_date: scheduleDate,
-                author: Users.username
+                author: Users.id
             }, function(data){
                 var contentID = data.id;
-
+                
                 // Reset variables to edit page instead of create a new page
                 $scope.page.id = contentID;
                 $scope.autoURL = false;
-
+                
                 // Save new tags
                 if($scope.page.tags){
                     angular.forEach($scope.page.tags, function(value){
                         REST.contentTags.save({ contentID: contentID, tag: value });
                     });
                 }
-
+                
                 // Save page as a revision
                 REST.contentRevisions.save({
                     contentID: contentID,
@@ -2866,12 +3005,13 @@ angular.module('cosmo', [])
                     description: $scope.page.description,
                     header: Page.header,
                     subheader: Page.subheader,
+                    featured: featured,
                     body: Page.body,
                     url: $scope.page.url,
-                    type: $scope.page.type.name,
+                    type: $scope.page.type,
                     published: $scope.page.publish,
                     published_date: scheduleDate,
-                    author: Users.username
+                    author: Users.id
                 }, function(data){
                     revisionID = data.id;
                     var i = 1;
@@ -2879,7 +3019,7 @@ angular.module('cosmo', [])
                     // Save additional data if there is any
                     if(Object.keys(Page.extras).length === 0){
                         // Success message
-                        growl.addSuccessMessage("Saved", { classes: 'cosmo-growl-item message' });
+                        $rootScope.$broadcast('notify', {message: 'Saved'});
                         // Redirect to new page
                         $location.path($scope.page.url);
                     } else {
@@ -2897,7 +3037,7 @@ angular.module('cosmo', [])
                                 // Wait for the last extra to be saved, then redirect the user
                                 if(i === Object.keys(Page.extras).length){
                                     // Success message
-                                    growl.addSuccessMessage("Saved", { classes: 'cosmo-growl-item message' });
+                                    $rootScope.$broadcast('notify', {message: 'Saved'});
                                     // Redirect to new page
                                     $location.path($scope.page.url);
                                 } else
@@ -2906,7 +3046,7 @@ angular.module('cosmo', [])
                                 // Wait for the last extra to be saved, then redirect the user
                                 if(i === Object.keys(Page.extras).length){
                                     // Success message
-                                    growl.addSuccessMessage("Saved", { classes: 'cosmo-growl-item message' });
+                                    $rootScope.$broadcast('notify', {message: 'Saved'});
                                     // Redirect to new page
                                     $location.path($scope.page.url);
                                 } else
@@ -2922,9 +3062,10 @@ angular.module('cosmo', [])
                             });
                         };
                     }
+                    $rootScope.$broadcast('notify', {message: 'Page Created'});
                 });
             }, function(){ // Error
-                growl.addErrorMessage('Error saving page. Possible duplicate URL');
+                $rootScope.$broadcast('notify', {message: 'Error saving page. Possible duplicate URL', classes: 'alert-error'});
             });
         } else { // Update existing page
 
@@ -2936,14 +3077,15 @@ angular.module('cosmo', [])
                 description: $scope.page.description,
                 header: Page.header,
                 subheader: Page.subheader,
+                featured: featured,
                 body: Page.body,
                 url: $scope.page.url,
-                type: $scope.page.type.name,
+                type: $scope.page.type,
                 published: $scope.page.publish,
                 published_date: scheduleDate,
-                author: Users.username
+                author: Users.id
             }, function(data){
-
+                
                 // Delete old tags
                 REST.contentTags.delete({ contentID: $scope.page.id }, function(){
                     // Save new tags
@@ -2951,7 +3093,7 @@ angular.module('cosmo', [])
                         REST.contentTags.save({ contentID: $scope.page.id, tag: value });
                     });
                 });
-
+                
                 // Save page as a revision
                 REST.contentRevisions.save({
                     contentID: $scope.page.id,
@@ -2959,16 +3101,17 @@ angular.module('cosmo', [])
                     description: $scope.page.description,
                     header: Page.header,
                     subheader: Page.subheader,
+                    featured: featured,
                     body: Page.body,
                     url: $scope.page.url,
-                    type: $scope.page.type.name,
+                    type: $scope.page.type,
                     published: $scope.page.publish,
                     published_date: $scope.page.scheduleDate,
-                    author: Users.username
+                    author: Users.id
                 }, function(data){
                     revisionID = data.id;
                     var i = 1;
-
+                    
                     // Delete old extras
                     REST.contentExtras.delete({ contentID: $scope.page.id }, function(){
                         // Save additional data
@@ -2988,7 +3131,7 @@ angular.module('cosmo', [])
                                     // Wait for the last extra to be saved, then redirect the user
                                     if(i === Object.keys(Page.extras).length){
                                         // Success message
-                                        growl.addSuccessMessage("Page Updated", { classes: 'cosmo-growl-item message' });
+                                        $rootScope.$broadcast('notify', {message: 'Page updated'});
                                         // Redirect to new page
                                         $location.path($scope.page.url);
                                     } else
@@ -2997,7 +3140,7 @@ angular.module('cosmo', [])
                                     // Wait for the last extra to be saved, then redirect the user
                                     if(i === Object.keys(Page.extras).length){
                                         // Success message
-                                        growl.addSuccessMessage("Page Updated", { classes: 'cosmo-growl-item message' });
+                                        $rootScope.$broadcast('notify', {message: 'Page updated'});
                                         // Redirect to new page
                                         $location.path($scope.page.url);
                                     } else
@@ -3013,11 +3156,11 @@ angular.module('cosmo', [])
                                 });
                             }
                         }
+                        $rootScope.$broadcast('notify', {message: 'Page Updated'});
                     });
                 });
             }, function(data){ // Error
-                console.log(data);
-                growl.addErrorMessage('Error updating page');
+                $rootScope.$broadcast('notify', {message: 'Error updating page', classes: 'alert-error'});
             });
         }
 
@@ -3027,9 +3170,10 @@ angular.module('cosmo', [])
 
 /**************************************************
  *              Profile Controller                *
+ *              Edit your profile                 *
  **************************************************/
 
-.controller('profileCtrl', ['$scope', 'REST', 'growl', 'ngDialog', 'Users', function($scope, REST, growl, ngDialog, Users){
+.controller('profileCtrl', ['$scope', 'REST', '$rootScope', 'ngDialog', 'Users', function($scope, REST, $rootScope, ngDialog, Users){
 
     // Initialize variables
     $scope.profile = {};
@@ -3038,7 +3182,7 @@ angular.module('cosmo', [])
     REST.users.get({userID: Users.id}, function(data){
         $scope.profile = data;
         if(!$scope.profile.photo)
-            $scope.profile.photo = 'img/image.svg'; // Placeholder image
+            $scope.profile.photo = 'core/img/image.svg'; // Placeholder image
     });
 
     // Add a profile photo
@@ -3057,13 +3201,17 @@ angular.module('cosmo', [])
         REST.users.update({
             userID: Users.id,
             username: $scope.profile.username,
+            name: $scope.profile.name,
             photo: $scope.profile.photo,
+            bio: $scope.profile.bio,
             facebook: $scope.profile.facebook,
             twitter: $scope.profile.twitter,
             role: $scope.profile.role,
             email: $scope.profile.email
         }, function(){
-            growl.addSuccessMessage('Profile info updated');
+            $rootScope.$broadcast('notify', { message: 'Profile info updated' });
+        }, function(){
+            $rootScope.$broadcast('notify', { message: 'There was an error updating your profile' });
         });
     };
 
@@ -3071,6 +3219,7 @@ angular.module('cosmo', [])
 
 /**************************************************
  *            Revisions Controller                *
+ *         Check the revision history             *
  **************************************************/
 
 .controller('revisionsCtrl', ['$scope', 'REST', 'Page', '$rootScope', function($scope, REST, Page, $rootScope){
@@ -3110,7 +3259,7 @@ angular.module('cosmo', [])
     // Revert to previous edition
     $scope.revert = function(index){
         REST.contentRevisions.save({ contentID: Page.id, revisionID: $scope.revisions[index].id }, function(){
-            growl.addSuccessMessage("Content has been revised");
+            $rootScope.$broadcast('notify', {message: 'Content has been revised'});
         });
     };
 
@@ -3118,9 +3267,10 @@ angular.module('cosmo', [])
 
 /**************************************************
  *             Settings Controller                *
+ *        Manage the settings of the site         *
  **************************************************/
 
-.controller('settingsCtrl', ['$scope', 'REST', 'growl', 'Page', 'ngDialog', function($scope, REST, growl, Page, ngDialog){
+.controller('settingsCtrl', ['$scope', 'REST', '$rootScope', 'Page', 'ngDialog', function($scope, REST, $rootScope, Page, ngDialog){
 
     $scope.settings = {};
     $scope.settings.siteName = Page.settings.site_name;
@@ -3134,9 +3284,9 @@ angular.module('cosmo', [])
 
     // Default if no custom images were set
     if(!$scope.settings.logo)
-        $scope.settings.logo = 'img/image.svg';
+        $scope.settings.logo = 'core/img/image.svg';
     if(!$scope.settings.favicon)
-        $scope.settings.favicon = 'img/image.svg';
+        $scope.settings.favicon = 'core/img/image.svg';
 
     // Add a profile photo
     $scope.uploadPhoto = function(type){
@@ -3162,22 +3312,23 @@ angular.module('cosmo', [])
             maintenanceURL: $scope.settings.maintenanceURL,
             maintenanceMode: $scope.settings.maintenanceMode
         }, function(data){
-            growl.addSuccessMessage("Settings Updated");
+            $rootScope.$broadcast('notify', {message: 'Settings updated'});
         });
     };
 
 }])
 
 /**************************************************
- *              Tags Controller                   *
+ *        Tags Controller (Depreciated?)          *
+ *          Manage the tags for a page            *
  **************************************************/
 
-.controller('tagsCtrl', ['$scope', 'REST', 'growl', function($scope, REST, growl){
+.controller('tagsCtrl', ['$scope', 'REST', function($scope, REST){
 
     $scope.tags = {};
     $scope.tags.tags = [];
 
-    // Get all available menus
+    // Get all available tags
     $scope.getTags = function(){
         REST.filesTags.query({}, function(data){
             $scope.tags.tags = data;
@@ -3185,14 +3336,14 @@ angular.module('cosmo', [])
     };
     $scope.getTags();
 
-    // Edit a menu's name
+    // Edit a tag's name
     $scope.updateTag = function(){
         REST.filesTags.update({ tag: $scope.tags.selectedTags, newTag: $scope.tags.newTag }, function(data){
             $scope.getTags();
         });
     };
 
-    // Delete menu
+    // Delete tag
     $scope.deleteTag = function(){
         $scope.tags.selectedTag;
         $scope.tags.newTag;
@@ -3205,6 +3356,7 @@ angular.module('cosmo', [])
 
 /**************************************************
  *              Themes Controller                 *
+ *              Edit the theme                    *
  **************************************************/
 
 .controller('themeCtrl', ['$scope', 'REST', '$http', function($scope, REST, $http){
@@ -3225,9 +3377,10 @@ angular.module('cosmo', [])
 
 /**************************************************
  *               Users Controller                 *
+ *               Manage all users                 *
  **************************************************/
 
-.controller('usersCtrl', ['$scope', 'REST', 'growl', 'ngDialog', function($scope, REST, growl, ngDialog){
+.controller('usersCtrl', ['$scope', 'REST', '$rootScope', 'ngDialog', function($scope, REST, $rootScope, ngDialog){
 
     // Initialize variables
     $scope.users = {};
@@ -3248,7 +3401,7 @@ angular.module('cosmo', [])
             role: user.role,
             email: user.email
         }, function(){
-            growl.addSuccessMessage('User info updated');
+            $rootScope.$broadcast('notify', {message: 'User info updated'});
         });
     };
 
@@ -3257,10 +3410,10 @@ angular.module('cosmo', [])
         // Delete user
         REST.users.delete({ userID: $scope.selectedUser.id }, function(){
             // Show success message
-            growl.addSuccessMessage('User Deleted');
+            $rootScope.$broadcast('notify', {message: 'User deleted'});
         }, function(){
             // Show error message
-            growl.addErrorMessage('Error Deleting User');
+            $rootScope.$broadcast('notify', {message: 'Error deleting user', classes: 'alert-error'});
         });
     };
 
@@ -3284,15 +3437,15 @@ angular.module('cosmo', [])
 
 /**************************************************
  *           Admin Panel Directive                *
- **************************************************/
-
-.directive('adminpanel', function(){
+ **************************************************
+depreciated
+.directive('csAdminPanel', function(){
     return {
         templateUrl: 'core/html/admin-panel.html'
     };
 })
 
-
+*/
 
 
 
@@ -3302,14 +3455,20 @@ angular.module('cosmo', [])
 
 
 
-
-// Format theme html files into user-friendly page options
+/**************************************************
+ *           Admin Panel Directive                *
+ *        Format theme html files into            *
+ *        user-friendly page options              *
+ **************************************************/
+ 
 .filter('themeFiles', function(){
     return function(input){
-
         if(input){
+            // Don't include folders in the name
+            var parts = input.split('/');
+            var output = parts[parts.length-1];
             // Remove .html extension
-            var output = input.replace(/\.html/g,' ');
+            output = output.replace(/\.html/g,' ');
             // Replace hyphens with spaces
             output = output.replace(/\-/g,' ');
             // Capitalize the first letter of every word
