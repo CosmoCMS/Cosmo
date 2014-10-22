@@ -1,0 +1,71 @@
+{
+    "name": "Pendant",
+    "module": "pendant",
+    "css": [
+        "css/style.minify.css",
+        "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800",
+        "http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+    ],
+    "classes": [
+        "img--lrg"
+    ],
+    "directives": [
+        {
+            "name": "Pendant Single Row Post",
+            "directive": "pendant-one-post",
+            "description": "Tag you want to pull from:"
+        },
+        {
+            "name": "Pendant Left Row",
+            "directive": "pendant-row-left",
+            "description": "Tag you want to pull from:"
+        },
+        {
+            "name": "Pendant Right Row",
+            "directive": "pendant-row-right",
+            "description": "Tag you want to pull from:"
+        },
+        {
+            "name": "Pendant 3 Posts, Text Below",
+            "directive": "pendant-three-posts",
+            "description": "Tag you want to pull from:"
+        },
+        {
+            "name": "Pendant 3 Post, Block Format",
+            "directive": "pendant-three-block",
+            "description": "Tag you want to pull from:"
+        },
+        {
+            "name": "Pendant 3 Posts, text Inside",
+            "directive": "pendant-three-uniform",
+            "description": "Tag you want to pull from:"
+        },
+        {
+            "name": "Pendant Small Left Image",
+            "directive": "caption-left-small"
+        },
+        {
+            "name": "Pendant Small Right Image",
+            "directive": "caption-right-small"
+        },
+        {
+            "name": "Pendant Med Left Image",
+            "directive": "caption-left-medium"
+        },
+        {
+            "name": "Pendant Med Right Image",
+            "directive": "caption-right-medium"
+        }
+    ],
+    "pages": [
+        "blog-post.html",
+        "blog-post-large-banner.html",
+        "blog-post-without-image.html",
+        "index.html",
+        "index-without-banner.html"
+    ],
+    "scripts": [
+        "js/pendant.minify.js"
+    ],
+    "version": "1.0.0"
+}

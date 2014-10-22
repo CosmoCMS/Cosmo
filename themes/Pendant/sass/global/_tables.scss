@@ -1,0 +1,26 @@
+.table {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+td {
+    border: 1px solid palette(gray, mid-light);
+    padding: size(20);
+}
+
+th {
+    @extend td;
+    background-color: palette(gray, light);
+}
+
+table {
+    text-align: left;
+    width: 100%;
+}
+
+tr {
+
+    &:nth-child(even) {
+        background-color: palette(gray, xlight);
+    }
+}

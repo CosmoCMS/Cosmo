@@ -1,0 +1,36 @@
+%button {
+    background-color: transparent;
+    border: 1px solid palette(gray, dark);
+    color: palette(gray, dark);
+    display: block;
+    font-weight: 200;
+    margin: 0 auto;
+    outline: none;
+    padding: .5rem .75rem;
+    text-align: center;
+    text-transform: lowercase;
+    transition: all .15s ease-in;
+
+    @media #{$bp-beta} {
+        display: inline-block;
+        margin: 0 size(5) size(5);
+        padding: 1rem 1.5rem;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    i {
+        color: palette(gray, dark);
+        margin-right: .5rem;
+    }
+
+    &:focus {
+        color: palette(gray, white);
+    }
+
+    &:hover {
+        color: palette(gray, light);
+    }
+}

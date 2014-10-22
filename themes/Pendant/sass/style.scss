@@ -1,0 +1,36 @@
+@import "susy";
+
+.cosmo-theme.ng-enter {
+    transition: opacity .75s linear;
+    opacity: 0;
+}
+
+.cosmo-theme.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.cosmo-theme {
+    @import "global/z-index";
+    @import "global/margins-padding";
+    @import "global/media-queries";
+    @import "global/color";
+    @import "global/type";
+    @import "global/buttons";
+    @import "global/nav";
+    @import "global/img";
+    @import "global/shame";
+    @import "global/lists";
+
+
+    @import "partials/header";
+    @import "partials/search";
+    @import "partials/banners";
+    @import "partials/article-overview";
+    @import "partials/article";
+    @import "partials/tables";
+
+
+    @import "modules/google-maps";
+    @import "modules/comments";
+    @import "global/animation";
+}

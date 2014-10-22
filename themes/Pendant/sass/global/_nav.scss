@@ -1,0 +1,215 @@
+%sidebar {
+    background-color: palette(gray, white);
+    height: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    right: -100%;
+    transition: right .25s ease-in;
+    width: 100%;
+}
+
+/* overall sidebar for all comments/nav etc... */
+.pen-sidebar {
+    background-color: palette(gray, white);
+    border-left: 1px solid palette(gray, mid--light);
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    right: -100%;
+    top: 0;
+    transition: .25s ease-in;
+    width: 100%;
+    z-index: z(sidebar);
+
+    @media #{$bp-beta} {
+        width: 30rem;
+    }
+
+    @media #{$bp-delta} {
+        transition: .45s ease-in;
+    }
+
+    i {
+        color: palette(gray, dark);
+        transition: .15s ease-in;
+
+        &:hover {
+            color: palette(gray, mid);
+        }
+    }
+
+    .ng-hide {
+        opacity: 0;
+    }
+
+    .ng-hide-add.ng-hide-add-active, .ng-hide-remove.ng-hide-remove-active {
+        transition: .05s ease-in;
+    }
+
+    input {
+        border: 0;
+        border-bottom: 1px solid palette(gray, mid--light);
+        box-sizing: border-box;
+        font-weight: 600;
+        height: 4rem;
+        padding-left: 1.25rem;
+        width: 100%;
+
+        @include placeholder {
+            color: palette(gray, dark);
+            font-weight: 200;
+        }
+    }
+
+    nav {
+        @extend %sidebar;
+    }
+
+    nav.show-right {
+        height: auto;
+        position: absolute;
+        right: 0;
+    }
+}
+
+.pen-sidebar.show-right {
+    height: 100%;
+    position: fixed;
+}
+
+/* top nav for search, closing sidebar etc.. */
+.nav-options {
+    background-color: palette(gray, white);
+    height: 4rem;
+    padding: 1.25rem;
+
+    .selections {
+        display: inline-block;
+        float: right;
+
+        .close {
+            font-size: 1.1em;
+        }
+
+        .search, .comments {
+            font-size: 1em;
+            margin-left: size(15);
+        }
+
+        .menu {
+            @extend .search;
+            font-size: .9em;
+        }
+    }
+}
+
+/* overall nav for pendant */
+.pen-sidebar ul {
+    font-size: 1rem;
+    margin: 0;
+    padding-left: size(20);
+
+    li {
+        color: palette(gray, mid--light);
+        list-style: none;
+        margin-bottom: 0;
+
+        a {
+            color: palette(gray, dark);
+            display: block;
+            font-size: .9em;
+            font-weight: 400;
+            letter-spacing: .02rem;
+            line-height: 2.5rem;
+            transition: .25s ease;
+
+            &:hover {
+                color: palette(gray, mid);
+            }
+        }
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+/* subnav styling for pendant */
+.pen-sidebar ul li {
+
+    ul {
+        display: none;
+        font-size: 1rem;
+        margin-left: - size(20);
+        padding: 0;
+        transition: .15s ease-in;
+
+
+        li {
+            color: palette(gray, mid--light);
+            list-style: none;
+            padding-left: size(20) * 2;
+            transition: .15s ease-in;
+
+            a {
+                color: palette(gray, mid);
+                font-size: .9em;
+
+                &:hover {
+                    color: palette(gray, dark);
+                }
+            }
+        }
+    }
+
+    ul.show {
+        display: block;
+    }
+
+    ul li ul.show-child {
+        display: block;
+    }
+}
+
+footer {
+    @include container(68.75rem);
+    color: palette(gray, mid);
+    font-size: .75em;
+    margin-bottom: 2rem;
+    padding: 2rem 4% 0 4%;
+
+    @media #{$bp-epsilon} {
+        padding: 2rem 0 0 0;
+    }
+
+    p {
+        display: block;
+
+        @media #{$bp-beta} {
+            display: inline-block;
+        }
+    }
+
+    .cosmo-logo {
+        display: inline-block;
+        height: 33px;
+        margin-left: -7px;
+        vertical-align: middle;
+        width: auto;
+    }
+
+    .social {
+        font-size: 1.25em;
+        margin-bottom: 2rem;
+        margin-right: size(15);
+
+        @media #{$bp-beta} {
+            float: right;
+            margin-bottom: 0;
+            margin-left: size(15);
+            margin-right: 0;
+        }
+    }
+}

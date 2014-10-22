@@ -1,0 +1,133 @@
+/* general image styling to be applied on inserting of the image */
+
+.img--xsml {
+    width: 100%;
+
+    @media #{$bp-beta} {
+        width: 250px;
+    }
+}
+
+.img--sml {
+    width: 100%;
+
+    @media #{$bp-beta} {
+        width: 380px;
+    }
+}
+
+.img--med {
+    width: 100%;
+
+    @media #{$bp-beta} {
+        width: 480px;
+    }
+}
+
+.img--lrg {
+    margin-bottom: size(15);
+    margin-left: 0;
+    transition: .5s ease;
+    width: 100%;
+
+    @media #{$bp-gamma} {
+        margin-left: -30%;
+        width: 160%;
+    }
+}
+
+.img--round {
+    border-radius: 2rem;
+}
+
+.img--half-round {
+    border-radius: 2rem 0 2rem 0;
+}
+
+.img--circle {
+    border-radius: 100%;
+}
+
+.img--left {
+    float: left;
+    margin: .5rem 1.5rem 1.5rem 0;
+    transition: .5s ease;
+
+    @media #{$bp-gamma} {
+        margin-left: -13.5%;
+    }
+}
+
+.img--right {
+    float: right;
+    margin: .5rem 0 1.5rem 1.5rem;
+    transition: .5s ease;
+
+    @media #{$bp-gamma} {
+        margin-right: -13.5%;
+    }
+}
+
+/* captions styling! Exciting right?! */
+
+.caption {
+    color: palette(gray, mid);
+    font-family: $font-beta;
+    font-size: .9rem;
+    font-style: italic;
+    margin: .5rem 0 1rem 0;
+    text-align: center;
+}
+
+/* general gallery styling */
+
+.cs-gallery {
+    clear: both;
+    display: block;
+    float: left;
+    margin: size(30) 0;
+    text-align: center;
+    transition: .5s ease;
+    width: 100%;
+
+    @media #{$bp-gamma} {
+        margin-left: -14%;
+        width: 128.5%;
+    }
+
+    img {
+        float: left;
+        margin: 0;
+        transition: .5s ease;
+        vertical-align: top;
+        width: 100%;
+
+        @media #{$bp-alpha} and #{$bp-beta--end} {
+            width: 50%;
+
+            &:nth-child(3n+3) {
+                width: 100%;
+            }
+        }
+
+        @media #{$bp-gamma} {
+            min-height: 15rem;
+            max-height: 15rem;
+            opacity: .5;
+            transition: .5s ease .25s;
+            width: 33%;
+
+            &:hover {
+                cursor: pointer;
+                max-height: 30rem;
+                opacity: 1;
+                width: 66%;
+
+                &:last-child {
+                    max-height: 1000rem;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

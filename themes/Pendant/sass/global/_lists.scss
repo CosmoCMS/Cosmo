@@ -1,0 +1,28 @@
+ul, ol {
+    font-family: $font-alpha;
+    font-weight: 200;
+}
+
+ul {
+    padding-left: 1rem;
+
+    li {
+        line-height: 1.5;
+        list-style: none;
+        margin-bottom: size(15);
+
+        &:before {
+            content: "~";
+            margin-right: size(10);
+        }
+    }
+}
+
+ol {
+    padding-left: 2.5rem;
+
+    li {
+        line-height: 1.5;
+        margin-bottom: size(15);
+    }
+}

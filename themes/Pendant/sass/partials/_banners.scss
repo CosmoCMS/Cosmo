@@ -1,0 +1,122 @@
+.banner--lrg {
+    background: center center no-repeat;
+    background-size: cover;
+    height: 35rem;
+    overflow: hidden;
+    position: relative;
+    transition: .15s ease;
+
+    @media #{$bp-delta} {
+        height: 80%;
+    }
+
+    .meta {
+        margin-bottom: 0;
+
+        a, i {
+            color: palette(gray, white);
+
+            &:hover {
+                color: palette(gray, mid--light);
+            }
+        }
+
+        .posted {
+            color: palette(gray, white);
+        }
+    }
+}
+
+.banner--sml {
+    @extend .banner--lrg;
+    background: top center no-repeat;
+    background-size: cover;
+    height: 40rem;
+    margin: 0 auto;
+    max-width: 68.75rem;
+}
+
+.banner--no-img {
+    @extend .banner--sml;
+    background-color: palette(gray, white);
+    background-image: none;
+    height: 33rem;
+
+    .article--title {
+
+        h1, p {
+            color: palette(gray, dark);
+        }
+
+        @media #{$bp-epsilon} {
+            padding: 1.5rem 0;
+        }
+    }
+
+    .meta {
+
+        a, i {
+            color: palette(gray, mid);
+
+            &:hover {
+                color: palette(gray, dark);
+            }
+        }
+
+        .posted {
+            color: palette(gray, mid);
+        }
+    }
+}
+
+.banner--title {
+    @include container(68.75rem);
+    bottom: 1rem;
+    padding: 1.5rem 4%;
+    position: absolute;
+
+    @media #{$bp-epsilon} {
+        @include span(11 of 12 before);
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    h1 {
+        color: palette(gray, white);
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        display: none;
+
+        @media #{$bp-beta} {
+            color: palette(gray, white);
+            display: block;
+            font-size: 2em;
+            font-weight: 200;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.banner--maintenance {
+    @extend .banner--no-img;
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    p {
+        display: block;
+    }
+
+    .article--title {
+        bottom: auto;
+        height: auto;
+        left: 50%;
+        right: auto;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+    }
+}

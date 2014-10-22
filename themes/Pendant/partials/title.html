@@ -1,0 +1,17 @@
+<div class="article--title">
+    <div>
+        <h1 cs-content="header" type="text" prepopulate="Headline"></h1>
+        <p cs-content="subheader" type="text" prepopulate="Subheader"></p>
+        <div class="meta">
+            <div class="category">
+                <a href="#">Posted in:<span>Latest News</span></a>
+            </div>
+            <div class="byline">
+                <a href="#">By <span>{{author.name}}</span> on <span>{{page.published_date | date:'MM.dd.yyyy'}}</span></a>
+            </div>
+            <div class="comments">
+                <a ng-click="showComments=true;page.expandMenu=true"><i class="fa fa-comments"></i>{{page.commentsNum}} Comments</a>
+            </div>
+        </div>
+    </div>
+</div>

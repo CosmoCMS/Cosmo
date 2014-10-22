@@ -1,0 +1,22 @@
+<div class="article-row">
+    <article class="article--two-no-text" ng-repeat="post in posts | filter:search:true | limitTo:3">
+        <div class="article--img-top" style="background-image: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)),  url({{post.featured}});">
+            <div class="article--no-text-info">
+                <a ng-href="{{post.url}}">
+                    <h1>{{post.header}}</h1>
+                </a>
+                <div class="meta">
+                    <div class="category">
+                        <a href="#">Posted in:<span>{{article.tag}}</span></a>
+                    </div>
+                    <div class="byline">
+                        <a href="#">By <span>{{post.author}}</span> on <span>{{post.timestamp * 1000 | date:'MM/dd/yyyy'}}</span></a>
+                    </div>
+                    <div class="comments">
+                        <a href="#"><i class="fa fa-comments"></i>285 Comments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
