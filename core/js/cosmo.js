@@ -14,7 +14,7 @@ angular.module('cosmo', [])
  *      Get the current page information          *
  **************************************************/
 
-.controller('urlCtrl', ['$scope', '$routeParams', 'Page', '$rootScope', 'REST', '$location', 'Users', function($scope, $routeParams, Page, $rootScope, REST, $location, Users){
+.controller('urlCtrl', ['$scope', '$routeParams', 'Page', '$rootScope', 'REST', '$location', 'Users', '$filter', function($scope, $routeParams, Page, $rootScope, REST, $location, Users, $filter){
     
     // Reset variables while new page loads
     $scope.page = {};
@@ -90,6 +90,7 @@ angular.module('cosmo', [])
         
         // Get comments for this page
         REST.comments.query({ id: Page.id }, function(data){
+<<<<<<< HEAD
             // Parse comment path from 1/3/2 (first comment, third reply, second reply) into array
             angular.forEach(data, function(comment){
                 if(comment.path)
@@ -97,6 +98,16 @@ angular.module('cosmo', [])
             });
             $scope.page.comments = data;
             $scope.page.commentsNum = $scope.page.comments.length;
+=======
+            // Parse comment from JSON
+            angular.forEach(data, function(comment){
+                comment.path = angular.fromJson(comment.path);
+            });
+            $scope.page.comments = $filter('orderBy')(data, function(comment){ return comment.path; });
+            Page.comments = $scope.page.comments;
+            $scope.page.commentsNum = $scope.page.comments.length;
+            $rootScope.$broadcast('commentsGet', {comments: $scope.page.comments});
+>>>>>>> back-end
         });
         
     }, function(data){ // Page not found
@@ -148,16 +159,62 @@ angular.module('cosmo', [])
  
  .controller('commentsCtrl', ['$scope', 'REST', 'Page', 'Users', '$rootScope', function($scope, REST, Page, Users, $rootScope){
     
+<<<<<<< HEAD
     $scope.comment = {};
+=======
+    // Initialize variables
+    $scope.comment = {};
+    $scope.comments = Page.comments;
+    // Get the path of the last comment
+    if($scope.comments && $scope.comments[0] && $scope.comments[0].path)
+        $scope.comment.path = [$scope.comments[$scope.comments.length-1].path[0]+1];
+    else
+        $scope.comments = [1];
+    
+>>>>>>> back-end
     // See if the user is logged in
     if(!Users.username)
         $scope.guest = true;
     
+<<<<<<< HEAD
+=======
+    // Watch for comments
+    $scope.$on('commentsGet', function(event, data){
+        $scope.comments = data.comments;
+        // Get the path of the last comment
+        if($scope.comments && $scope.comments[0] && $scope.comments[0].path)
+            $scope.comment.path = [$scope.comments[$scope.comments.length-1].path[0]+1];
+        else
+            $scope.comments = [1];
+    });
+    
+    // Check the level of the reply.
+    $scope.replyLevel = function(path){
+        return path.length;
+    };
+    
+    // Set the path for someone to reply to another comment
+    $scope.reply = function(index, path){
+        var tempPath = angular.copy(path);
+        tempPath.push(1);
+        index++; // Check against the next comment in the array
+        while($scope.comments[index] && angular.equals(tempPath, $scope.comments[index].path)){
+            tempPath[tempPath.length-1]++; // Increment the last path number
+            index++; // Go to the next comment in the array
+        }
+        $scope.comment.path = tempPath;
+    };
+    
+>>>>>>> back-end
     // Post a new comment
     $scope.submit = function(){
         REST.comments.save({ 
             content_id: Page.id,
+<<<<<<< HEAD
             path: $scope.comment.path,
+=======
+            path: angular.toJson($scope.comment.path),
+>>>>>>> back-end
             name: Users.username,
             email: Users.email,
             comment: $scope.comment.message
@@ -167,7 +224,10 @@ angular.module('cosmo', [])
             $rootScope.$broadcast('notify', { message: 'There was an error submitting your comment' });
         });
     };
+<<<<<<< HEAD
     
+=======
+>>>>>>> back-end
 }])
 
 /****************************************************************************************************
@@ -182,7 +242,11 @@ angular.module('cosmo', [])
  *              Block Directive                   *
  **************************************************/
 
+<<<<<<< HEAD
 .directive('csBlock', ['Page', '$compile', function(Page, $compile) {
+=======
+.directive('csBlock', ['Page', '$compile', '$timeout', function(Page, $compile, $timeout) {
+>>>>>>> back-end
     return {
         link: function(scope, elm, attrs, ctrl) {
             
@@ -195,7 +259,9 @@ angular.module('cosmo', [])
                             blockHTML += data.block;
                     });
                     elm.html(blockHTML);
-                    $compile(elm.contents())(scope);
+                    $timeout(function(){
+                        $compile(elm.contents())(scope);
+                    });
                 }
             };
             updateBlocks();
@@ -416,7 +482,11 @@ angular.module('cosmo', [])
  *             Background images                  *
  **************************************************/
 
+<<<<<<< HEAD
 .directive('csBgImage', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', 'Responsive', 'Hooks', function(Page, $routeParams, $rootScope, ngDialog, Users, Responsive, Hooks) {
+=======
+.directive('csBgImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'Responsive', 'Hooks', function(Page, $rootScope, ngDialog, Users, Responsive, Hooks) {
+>>>>>>> back-end
     return {
         link: function(scope, elm, attrs, ctrl) {
             
@@ -428,6 +498,7 @@ angular.module('cosmo', [])
                     else
                         var imageURL = Hooks.imageHookNotify(Page.extras[attrs.csBgImage].src);
                     elm.css('background-image', 'url('+ imageURL +')');
+<<<<<<< HEAD
                 } else if(Users.admin) {
                     elm.css('background-image', 'url(core/img/image.svg)');
                     elm.css('-webkit-background-size', 'cover');
@@ -435,6 +506,10 @@ angular.module('cosmo', [])
                     elm.css('-o-background-size', 'cover');
                     elm.css('background-size', 'cover');
                 }
+=======
+                } else if(Users.admin)
+                    elm.css('background-image', 'url(core/img/image.svg)');
+>>>>>>> back-end
             }
             updateBGImage();
             
@@ -444,7 +519,10 @@ angular.module('cosmo', [])
             
             // Check if user is an admin
             if(Users.admin) {
+<<<<<<< HEAD
                 
+=======
+>>>>>>> back-end
                 // Double click image to edit
                 elm.on('dblclick', function(){
                    ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csBgImage }) });
@@ -466,7 +544,11 @@ angular.module('cosmo', [])
  *              Image Directive                   *
  **************************************************/
 
+<<<<<<< HEAD
 .directive('csImage', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', function(Page, $routeParams, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks){
+=======
+.directive('csImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', function(Page, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks){
+>>>>>>> back-end
     return {
         scope: {},
         template: '<img ng-src="{{src}}" alt="{{image.alt}}" title="{{image.title}}" size="{{image.size}}" />',
@@ -541,9 +623,20 @@ angular.module('cosmo', [])
 
 .directive('csGallery', ['Page', '$rootScope', 'REST', '$timeout', 'ngDialog', 'Users', '$sce', 'Responsive', 'Hooks', function(Page, $rootScope, REST, $timeout, ngDialog, Users, $sce, Responsive, Hooks){
     return {
+<<<<<<< HEAD
         template: '<div class="cs-gallery"><img ng-src="{{image.url}}" ng-repeat="image in images | filter:search" ng-hide="$index!==currentIndex && showOnlyOne" ng-click="clickedGallery($index)"></div>',
+=======
+        template: '<div class="cs-gallery"><img ng-src="{{image.url}}" ng-repeat="image in images | limitTo:limitNum | filter:search" ng-hide="$index!==currentIndex && showOnlyOne" ng-click="clickedGallery($index)"></div>',
+        scope: {},
+>>>>>>> back-end
         replace: true,
         link: function(scope, elm, attrs){
+            
+            // Initialize
+            if(attrs.limit)
+                scope.limitNum = parseInt(attrs.limit);
+            else
+                scope.limitNum = 10000;
             
             function updateGallery(){
                 // Get images
@@ -566,9 +659,27 @@ angular.module('cosmo', [])
             }
             updateGallery();
             
+<<<<<<< HEAD
             scope.$on('contentGet', function(data){
                 updateGallery();
             });
+=======
+            // Update the gallery
+            scope.$on('contentGet', function(data){
+                updateGallery();
+            });
+            
+            // Bug: currently adjusts limit of all galleries on the page. Isolate
+            // Get a new limit on the number of images displayed
+            scope.$on('galleryLimitNum', function(event, data){
+                if(data.increase)
+                    scope.limitNum += data.increase;
+                else if(data.decrease)
+                    scope.limitNum -= data.decrease;
+                else
+                    scope.limitNum = data.limit;
+            });
+>>>>>>> back-end
 
             // Apply filtering if available
             if(attrs.filter){
@@ -591,10 +702,19 @@ angular.module('cosmo', [])
             if(Users.admin) {
                 // When clicked, open a modal window to edit
                 scope.clickedGallery = function(index){
+<<<<<<< HEAD
                     ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({
                             id: attrs.csGallery,
                             gallery: true,
                             images: Page.extras[attrs.csGallery]
+=======
+                    ngDialog.open({ 
+                        template: 'core/html/modal.html', 
+                        data: angular.toJson({
+                            id: attrs.csGallery,
+                            gallery: true,
+                            images: scope.images
+>>>>>>> back-end
                         })
                     });
                 };
@@ -634,9 +754,10 @@ angular.module('cosmo', [])
 }])
 
 /**************************************************
- *                Link Directive                  *
+ *               Link Controller                  *
  **************************************************/
 
+<<<<<<< HEAD
 .directive('csLink', ['Page', 'ngDialog', 'Users', function(Page, ngDialog, Users){
     return {
         scope: {
@@ -670,17 +791,27 @@ angular.module('cosmo', [])
             }
 
         }
-    };
-}])
-
-/**************************************************
- *               Link Controller                  *
- **************************************************/
-
+=======
 .controller('linkCtrl', ['$scope', '$rootScope', 'ngDialog', function($scope, $rootScope, ngDialog){
     $scope.save = function(){
         $rootScope.$broadcast('editedLink', {text: $scope.link.text, url: $scope.link.url});
         ngDialog.close();
+>>>>>>> back-end
+    };
+}])
+
+/**************************************************
+ *               Logo Directive                   *
+ **************************************************/
+
+.directive('csLogo', ['Page', function(Page){
+    return {
+        template: '<a ng-href="/{{folder}}"><img class="logo--img" ng-src="{{url}}" /></a>',
+        replace: true,
+        link: function(scope, elm, attrs){
+            scope.folder = Page.folder;
+            scope.url = Page.settings.logo;
+        }
     };
 }])
 
@@ -766,6 +897,7 @@ angular.module('cosmo', [])
 
 /**************************************************
 <<<<<<< HEAD
+<<<<<<< HEAD
  *              Notify Directive                  *
  *            Manage notifications                *
  **************************************************/
@@ -804,22 +936,25 @@ angular.module('cosmo', [])
 */
 
 /**************************************************
+=======
+>>>>>>> back-end
  *              Notify Directive                  *
+ *            Manage notifications                *
  **************************************************/
 
-.directive('notification', ['$timeout', function($timeout){
+.directive('csNotification', ['$timeout', '$sce', function($timeout, $sce){
     return {
-        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false">x</a>{{message}}</div>',
+        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false"><i class="fa fa-times"></i></a><span ng-bind-html="message"></span></div>',
         replace: true,
         link: function(scope, elm, attrs){
-            
-            scope.showNotification = true;
-            scope.message = 'Hi there!';
-            scope.classes = 'alert-alert';
-            
-            scope.$on('notify', function(data){
+            // Watch for notifications
+            scope.$on('notify', function(event, data){
                 scope.showNotification = true;
+<<<<<<< HEAD
                 scope.message = data.message;
+>>>>>>> back-end
+=======
+                scope.message = $sce.trustAsHtml(data.message);
 >>>>>>> back-end
                 
                 // Default class is alert-alert
@@ -842,13 +977,19 @@ angular.module('cosmo', [])
 }])
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> back-end
 /**************************************************
  *              HTML Controller                   *
  *              Manage Meta-tags                  *
  **************************************************/
  
+<<<<<<< HEAD
 =======
 // Control meta tags
+>>>>>>> back-end
+=======
 >>>>>>> back-end
 .controller('HTMLCtrl', ['$scope', 'Page', 'Hooks', '$rootScope', 'Users', function($scope, Page, Hooks, $rootScope, Users){
 
@@ -933,6 +1074,19 @@ angular.module('cosmo', [])
     // Login
     $scope.login = function(){
         REST.users.get({ username: $scope.login.username, password: $scope.login.password, dontcache: new Date().getTime() }, function(data){
+<<<<<<< HEAD
+=======
+            
+            // Set Users variables
+            Users.name = data.name;
+            Users.bio = data.bio;
+            Users.photo = data.photo;
+            Users.role = data.role;
+            Users.twitter = data.twitter;
+            Users.facebook = data.facebook;
+            Users.username = data.username;
+            Users.email = data.email;
+>>>>>>> back-end
 
             // Set cookie and headers with username and auth token
             var expdate = new Date();
@@ -944,6 +1098,10 @@ angular.module('cosmo', [])
             
             $http.defaults.headers.common['username'] = $scope.login.username.toLowerCase();
             $http.defaults.headers.common['token'] = data.token;
+<<<<<<< HEAD
+=======
+            $http.defaults.headers.common['usersID'] = data.id;
+>>>>>>> back-end
             
             Users.id = data.id;
             Users.username = $scope.login.username.toLowerCase();
@@ -974,6 +1132,10 @@ angular.module('cosmo', [])
         Users.username = '';
         $http.defaults.headers.common['username'] = '';
         $http.defaults.headers.common['token'] = '';
+<<<<<<< HEAD
+=======
+        $http.defaults.headers.common['usersID'] = '';
+>>>>>>> back-end
         $location.path('/');
         $timeout(function(){
             location.reload();
@@ -983,7 +1145,11 @@ angular.module('cosmo', [])
     // Reset password
     $scope.resetPassword = function(){
         if($scope.login.username){
+<<<<<<< HEAD
             REST.users.update({ username: $scope.login.username }, function(data){
+=======
+            REST.users.update({ username: $scope.login.username, reset: true }, function(data){
+>>>>>>> back-end
                 $rootScope.$broadcast('notify', {message: 'Check your password reset for instructions'});
             });
         } else
@@ -1019,6 +1185,7 @@ angular.module('cosmo', [])
             Users.username = '';
             $http.defaults.headers.common['username'] = '';
             $http.defaults.headers.common['token'] = '';
+            $http.defaults.headers.common['usersID'] = '';
             $location.path('/');
         });
     };
@@ -1268,11 +1435,15 @@ angular.module('cosmo', [])
 
 .factory('Users', function() {
     return {
-        email: '',
         id: '',
-        role: '',
         username: '',
-        permissions: []
+        name: '',
+        bio: '',
+        email: '',
+        facebook: '',
+        twitter: '',
+        photo: '',
+        role: ''
     };
 })
 
@@ -1284,7 +1455,7 @@ angular.module('cosmo', [])
 .filter('plaintext', function(){
     return function(input){
         if(input){
-            return input.replace(/<[^<]+?>/g, ' ').replace(/  /g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ');
+            return input.replace(/<[^<]+?>/g, '').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ');
         } else
             return input;
     };
@@ -1298,10 +1469,12 @@ angular.module('cosmo', [])
     return function(input){
         if(typeof input === 'string' && input){
             var words = input.split(' ');
-            var exceptions = ' the a an and but or for nor aboard about above across after against along amid among around as at atop before behind below beneath beside between beyond by despite down during for from in inside into like near of off on onto out outside over past regarding round since than through throughout till to toward under unlike until up upon with within without ';
+            var exceptions = ' the a an also and but or for nor aboard about above across after against along amid among around as at atop before behind below beneath beside between beyond by despite down during for from in is inside into like near of off on onto out outside over past regarding round since than through throughout till to toward under unlike until up upon with within without ';
             for(var i=0; i<words.length; i++){
                 if((i===0 || i===words.length-1 || exceptions.indexOf(' '+words[i].toLowerCase()+' ') === -1) && words[i])
                     words[i] = words[i][0].toUpperCase() + words[i].substring(1).toLowerCase();
+                else
+                    words[i] = words[i].toLowerCase();
             }
             return words.join(' ');
         } else
@@ -2103,7 +2276,6 @@ angular.module('cosmo', [])
     };
 })
 
-
 /****************************************************************************************************
  *                                             Controllers                                          *
  ****************************************************************************************************/
@@ -2115,13 +2287,27 @@ angular.module('cosmo', [])
  *           Control the admin sidebar            *
  **************************************************/
 
+<<<<<<< HEAD
 .controller('adminPanelCtrl', ['$scope', 'Users', 'REST', '$location', '$timeout', function($scope, Users, REST, $location, $timeout){
+=======
+.controller('adminPanelCtrl', ['$scope', 'Users', 'REST', '$location', '$timeout', '$http', function($scope, Users, REST, $location, $timeout, $http){
+>>>>>>> back-end
 
     $scope.admin = {};
     $scope.admin.sidebar = 'core/html/sidebar.html';
     $scope.admin.username = Users.username;
+    $scope.admin.roleNum = Users.roleNum;
     
     REST.users.get({userID: Users.id}, function(data){
+        Users.name = data.name;
+        Users.bio = data.bio;
+        Users.photo = data.photo;
+        Users.role = data.role;
+        Users.twitter = data.twitter;
+        Users.facebook = data.facebook;
+        Users.username = data.username;
+        Users.email = data.email;
+        
         if(data.photo)
             $scope.admin.photo = data.photo;
         else
@@ -2311,7 +2497,11 @@ angular.module('cosmo', [])
  **************************************************/
 
 .controller('contentListCtrl', ['$scope', 'REST', 'Hooks', 'Responsive', function($scope, REST, Hooks, Responsive){
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> back-end
     $scope.search = {};
     $scope.exclude = {};
     $scope.exclude.tags = '!exclude';
@@ -2320,18 +2510,23 @@ angular.module('cosmo', [])
     // Search
     $scope.searchBar = function(){
         switch($scope.content.onlySearch){
-            case 'type':
+            case 'type': // Search only the page type
                 $scope.search.type = $scope.content.input;
                 break;
-            case 'author':
+            case 'author': // Search only the author
                 $scope.search.author = $scope.content.input;
                 break;
-            case 'tags':
+            case 'tags': // Search only the tags
                 $scope.search.tags = $scope.content.input;
                 break;
 
+<<<<<<< HEAD
             default:
                 $scope.search.title = $scope.content.input;
+=======
+            default: // Search anywhere
+                $scope.search = $scope.content.input;
+>>>>>>> back-end
                 break;
         }
     };
@@ -2495,6 +2690,7 @@ angular.module('cosmo', [])
 
     // Save title/tags to the file
     $scope.save = function(){
+<<<<<<< HEAD
         /*
         // Save file elements
         REST.files.update({
@@ -2507,6 +2703,9 @@ angular.module('cosmo', [])
             $rootScope.$broadcast('notify', {message: 'File updated'});
         });
         */
+=======
+        
+>>>>>>> back-end
         // Delete old tags
         REST.filesTags.delete({ fileID: $scope.selectedId });
 
@@ -3017,7 +3216,6 @@ angular.module('cosmo', [])
         
         // Create a new page or a duplicate
         if($location.path() === '/new' || duplicate){
-            
             // Save content
             REST.content.save({
                 title: $scope.page.title,
@@ -3034,7 +3232,7 @@ angular.module('cosmo', [])
             }, function(data){
                 var contentID = data.id;
                 
-                // Reset variables to edit page instead of create a new page
+                // Reset variables to edit page
                 $scope.page.id = contentID;
                 $scope.autoURL = false;
                 
@@ -3224,9 +3422,22 @@ angular.module('cosmo', [])
 
     // Initialize variables
     $scope.profile = {};
+<<<<<<< HEAD
+=======
+    $scope.profile.email = Users.email;
+>>>>>>> back-end
 
     // Get the User's profile photo
     REST.users.get({userID: Users.id}, function(data){
+        Users.name = data.name;
+        Users.bio = data.bio;
+        Users.photo = data.photo;
+        Users.role = data.role;
+        Users.twitter = data.twitter;
+        Users.facebook = data.facebook;
+        Users.username = data.username;
+        Users.email = data.email;
+        
         $scope.profile = data;
         if(!$scope.profile.photo)
             $scope.profile.photo = 'core/img/image.svg'; // Placeholder image
@@ -3247,17 +3458,25 @@ angular.module('cosmo', [])
     $scope.updateProfile = function(){
         REST.users.update({
             userID: Users.id,
+<<<<<<< HEAD
             username: $scope.profile.username,
+=======
+            username: Users.username,
+>>>>>>> back-end
             name: $scope.profile.name,
             photo: $scope.profile.photo,
             bio: $scope.profile.bio,
             facebook: $scope.profile.facebook,
             twitter: $scope.profile.twitter,
-            role: $scope.profile.role,
             email: $scope.profile.email
-        }, function(){
+        }, function(data){
             $rootScope.$broadcast('notify', { message: 'Profile info updated' });
         }, function(){
+<<<<<<< HEAD
+            $rootScope.$broadcast('notify', { message: 'Profile info updated' });
+        }, function(){
+=======
+>>>>>>> back-end
             $rootScope.$broadcast('notify', { message: 'There was an error updating your profile' });
         });
     };
@@ -3447,7 +3666,11 @@ angular.module('cosmo', [])
             twitter: user.twitter,
             role: user.role,
             email: user.email
+<<<<<<< HEAD
         }, function(){
+=======
+        }, function(data){
+>>>>>>> back-end
             $rootScope.$broadcast('notify', {message: 'User info updated'});
         });
     };
@@ -3482,6 +3705,7 @@ angular.module('cosmo', [])
 
 
 
+<<<<<<< HEAD
 /**************************************************
  *           Admin Panel Directive                *
  **************************************************
@@ -3495,6 +3719,8 @@ depreciated
 */
 
 
+=======
+>>>>>>> back-end
 
 /****************************************************************************************************
  *                                           Filters                                                *
@@ -3521,7 +3747,7 @@ depreciated
             // Capitalize the first letter of every word
             output = output.replace(/\b./g, function(m){ return m.toUpperCase(); });
 
-            return output;
+            return output.trim();
         } else
             return input;
     };

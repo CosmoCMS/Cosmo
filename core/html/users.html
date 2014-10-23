@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="users" ng-controller="usersCtrl">
     <div ng-show="!selectedUser">
 
@@ -59,3 +60,66 @@
         </ul>
     </div>
 </div>
+=======
+<div class="users" ng-controller="usersCtrl">
+    <div ng-show="!selectedUser">
+
+        <div class="bar-top">
+            <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+            <h1>Manage</h1><h2>Users</h2>
+        </div>
+
+        <div class="form-case--border">
+            <div ng-controller="loginRegistrationCtrl">
+                <button class="new" ng-click="createUser=!createUser">
+                    <div ng-if="!createUser">
+                        <i class="fa fa-plus"></i><p>New User</p>
+                    </div>
+                    <div ng-if="createUser">
+                        <i class="fa fa-times-circle-o"></i><p>Close</p>
+                    </div>
+                </button>
+                <div class="new-user" ng-show="createUser">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" ng-model="register.username">
+
+                    <label for="email">Email</label>
+                    <input id="email" type="text" ng-model="register.email">
+
+                    <label for="password">Password</label>
+                    <input id="password" type="password" ng-model="register.password">
+
+                    <label for="confirm-password">Confirm Password</label>
+                    <input id="confirm-password"type="password" ng-model="register.confirmPassword">
+
+                    <button class="btn-success" ng-click="register()">Create User</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-case--border">
+            <label>Search</label>
+            <input class="search" placeholder="Username or Email" value="search" type="text" ng-model="users.search">
+        </div>
+        <ul>
+            <li ng-repeat="user in users.data | filter:users.search">
+
+                <label for="username">Username</label>
+                <input id="username" ng-model="user.username" ng-keyup="updateUser(user)">
+
+                <label for="role">Role</label>
+                <div class="cos-select">
+                    <select id="role" ng-model="user.role" ng-change="updateUser(user)">
+                        <option value="admin">admin</option>
+                        <option value="editor">editor</option>
+                        <option value="author">author</option>
+                        <option value="contributor">contributor</option>
+                    </select>
+                </div>
+
+                <label for="email">Email</label>
+                <input id="email" ng-model="user.email" ng-keyup="updateUser(user)">
+            </li>
+        </ul>
+    </div>
+</div>
+>>>>>>> back-end

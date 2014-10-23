@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="profile" ng-controller="profileCtrl">
 
     <div class="bar-top">
@@ -28,3 +29,38 @@
     </div>
 
 </div>
+=======
+<div class="profile" ng-controller="profileCtrl">
+
+    <div class="bar-top">
+        <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+        <h1>Your</h1><h2>Profile</h2>
+    </div>
+
+    <div class="form-case">
+        <label for="name">Name</label>
+        <input id="name" ng-model="profile.name">
+        
+        <label for="bio">Bio</label>
+        <textarea id="bio" ng-model="profile.bio"></textarea>
+        
+        <label for="email">Email</label>
+        <input id="email" ng-model="profile.email">
+        
+        <label for="facebook">Facebook</label>
+        <input id="facebook" ng-model="profile.facebook">
+
+        <label for="twitter">Twitter</label>
+        <input id="twitter" ng-model="profile.twitter">
+
+        <label for="photo">Profile Photo</label>
+        <img ng-src="{{profile.photo}}" ng-click="addProfilePhoto()">
+
+
+        <div>
+            <button class="btn-success" ng-click="updateProfile()">Save</button>
+        </div>
+    </div>
+
+</div>
+>>>>>>> back-end

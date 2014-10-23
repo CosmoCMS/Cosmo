@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div ng-controller="revisionsCtrl">
     <div class="bar-top">
         <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
@@ -20,3 +21,27 @@
         </li>
     </ul>
 </div>
+=======
+<div ng-controller="revisionsCtrl">
+    <div class="bar-top">
+        <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+        <h1>PAGE</h1><h2>Revisions</h2>
+    </div>
+    <ul ng-repeat="revision in revisions">
+        <li class="revisions">
+            <a class="content-title" ng-click="getRevision($index)">
+                <div ng-if="revision.title">
+                    <p><strong>Title:</strong> {{revision.title}}</p>
+                </div>
+                <div ng-if="!revision.title">
+                    <p>N/A</p>
+                </div>
+            </a>
+            <p class="info" alt="author"><i class="fa fw fa-user"></i>{{revision.author}}</p>
+            <p class="info" alt="published"><i class="fa fw fa-check"></i>{{revision.published}}</p>
+            <p class="info" alt="published date"><i class="fa fw fa-calendar"></i>{{revision.timestamp | timestamp}}</p>
+            <button class="btn-success" ng-click="revert($index)">Revert</button>
+        </li>
+    </ul>
+</div>
+>>>>>>> back-end
