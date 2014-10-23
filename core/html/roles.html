@@ -4,10 +4,10 @@
             <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1>Roles</h1><h2>Management</h2>
         </div>
-        <div class="formcase-border">
+        <div class="form-case--border">
             <label for="name">Add a new role:</label>
             <input value="name" type='text' ng-model='role.newName' placeholder="e.g., manager, publisher, editor, intern">
-            <button class="success-button" ng-click='newRole()'>Create</button>
+            <button class="btn-success" ng-click='newRole()'>Create</button>
         </div>
         <ul>
             <li ng-repeat='role in roles'><a href='' ng-click='selectRole(role)' ng-if="role.name">{{role.name}}</a></li>
@@ -18,7 +18,7 @@
             <i class="fa fa-chevron-left " ng-click="rolePanel='manage'"></i>
             <h1>Edit</h1><h2>{{role.name}}</h2>
         </div>
-            <div class="formcase">
+            <div class="form-case">
                 <label for="name">Edit Role Name:</label>
                 <input type='text' ng-model='role.name'>
             </div>
@@ -35,8 +35,8 @@
                 <label for="delete">delete</label>
             </div>
         <div class="btn-case-btm">
-            <button type="button" class="error-button" ng-click='deleteRole()'>Delete</button>
-            <button type="button" class="success-button" ng-click="saveRoles()">Save</button>
+            <button type="button" class="btn-error" ng-click='deleteRole()'>Delete</button>
+            <button type="button" class="btn-success" ng-click="saveRoles()">Save</button>
         </div>
     </div>
 </div>

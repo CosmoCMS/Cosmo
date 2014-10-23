@@ -35,9 +35,9 @@ class Cosmo {
      * @param str name Name of the new block
      * @return mixed Returns last insert ID on success. False on fail.
      */
-    public function blockCreate($name)
+    public function blocksCreate($name)
     {
-        $stmt = $this->pdo->prepare('INSERT INTO blocks (name) VALUES (?)');
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'blocks (name) VALUES (?)');
         $data = array($name);
         if($stmt->execute($data))
             return $this->pdo->lastInsertId();
@@ -49,10 +49,11 @@ class Cosmo {
      * Fetch all the blocks
      * @return array Array with names 'id', 'name', 'block', 'priority', and 'area'
      */
-    public function blockRead(){
-        $stmt = $this->pdo->prepare('SELECT * FROM blocks');
+    public function blocksRead(){
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks');
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $blocks = array();
         while($row = $stmt->fetch())
             $blocks[] = $row;
         
@@ -64,9 +65,9 @@ class Cosmo {
      * @param int $blockID Block ID
      * @return boolean
      */
-    public function blockDelete($blockID)
+    public function blocksDelete($blockID)
     {
-        $stmt = $this->pdo->prepare('DELETE FROM blocks WHERE id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'blocks WHERE id=?');
         $data = array($blockID);
         return $stmt->execute($data);
     }
@@ -76,9 +77,9 @@ class Cosmo {
      * @param string $block Block HTML
      * @return boolean
      */
-    public function blockUpdate($name, $block, $priority, $area, $blockID)
+    public function blocksUpdate($name, $block, $priority, $area, $blockID)
     {
-        $stmt = $this->pdo->prepare('UPDATE blocks SET name=?, block=?, priority=?, area=? WHERE id=?');
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'blocks SET name=?, block=?, priority=?, area=? WHERE id=?');
         $data = array($name, $block, $priority, $area, $blockID);
         return $stmt->execute($data);
     }
@@ -90,7 +91,7 @@ class Cosmo {
      */
     public function blockFetch($blockID)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM blocks WHERE id=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks WHERE id=?');
         $data = array($blockID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -106,9 +107,10 @@ class Cosmo {
      */
     public function blockFetchAll($pageType=null, $url=null)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM blocks ORDER BY priority DESC');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks ORDER BY priority DESC');
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $blockArray = array();
         while($row = $stmt->fetch())
         {
             $blockID = $row['id'];
@@ -122,7 +124,7 @@ class Cosmo {
             $typeSkip = FALSE;
             
             // Get requirements
-            $stmt2 = $this->pdo->prepare('SELECT * FROM blocks_requirements WHERE blocks_id=?');
+            $stmt2 = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks_requirements WHERE blocks_id=?');
             $data2 = array($blockID);
             $stmt2->execute($data2);
             $stmt2->setFetchMode(PDO::FETCH_ASSOC);
@@ -210,7 +212,7 @@ class Cosmo {
      * @param string $requirement URL or page type
      * @return boolean
      */
-    public function blockRequirementsCreate($blockID, $type, $requirement){
+    public function blocksRequirementsCreate($blockID, $type, $requirement){
         if($blockID && $type !== 'type' && $requirement !== '')
         {
             if($type === 'visible' || $type === 'invisible')
@@ -219,7 +221,7 @@ class Cosmo {
                 if(strpos($requirement, '/') !== 0)
                     $requirement = '/' + $requirement;
             }
-            $stmt = $this->pdo->prepare('INSERT INTO blocks_requirements (blocks_id, type, requirement) VALUES (?,?,?)');
+            $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'blocks_requirements (blocks_id, type, requirement) VALUES (?,?,?)');
             $data = array($blockID, $type, $requirement);
             return $stmt->execute($data);
         } else
@@ -231,8 +233,8 @@ class Cosmo {
      * @param int $blockID Block id
      * @return array Array with block requirement columns 'id', 'blocks_id', 'type', and 'requirement'
      */
-    public function blockRequirementsRead($blockID){
-        $stmt = $this->pdo->prepare('SELECT * FROM blocks_requirements WHERE blocks_id=?');
+    public function blocksRequirementsRead($blockID){
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks_requirements WHERE blocks_id=?');
         $data = array($blockID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -250,8 +252,8 @@ class Cosmo {
      * @param string $requirement URL or page type
      * @return boolean
      */
-    public function blockRequirementsUpdate($requirementID, $blockID, $type, $requirement){
-        $stmt = $this->pdo->prepare('UPDATE blocks_requirements SET blocks_id=?, type=?, requirement=? WHERE id=?');
+    public function blocksRequirementsUpdate($requirementID, $blockID, $type, $requirement){
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'blocks_requirements SET blocks_id=?, type=?, requirement=? WHERE id=?');
         $data = array($blockID, $type, $requirement, $requirementID);
         return $stmt->execute($data);
     }
@@ -261,10 +263,81 @@ class Cosmo {
      * @param int $blockID Block id to delete
      * @return boolean
      */
-    public function blockRequirementsDelete($blockID){
-        $stmt = $this->pdo->prepare('DELETE FROM blocks_requirements WHERE blocks_id=?');
+    public function blocksRequirementsDelete($blockID){
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'blocks_requirements WHERE blocks_id=?');
         $data = array($blockID);
         return $stmt->execute($data);
+    }
+    
+    ##################################################
+    #                 Comments                       #
+    ##################################################
+    
+    /**
+     * Create a new comment
+     * @param int $contentID Content id
+     * @param int $parentID ID of parent comment (if applicable)
+     * @param str $name Name
+     * @param str $email Email
+     * @param str $comment Comment
+     * @return mixed Returns inserted id on success, false on fail.
+     */
+    public function commentsCreate($contentID, $path=NULL, $name=NULL, $email=NULL, $comment=NULL)
+    {
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'comments (content_id, path, name, email, comment, timestamp) VALUES (?,?,?,?,?,?)');
+        $data = array($contentID, $path, $name, $email, $comment, time() * 1000);
+        if($stmt->execute($data))
+            return $this->pdo->lastInsertId();
+        else
+            return FALSE;
+    }
+    
+    /**
+     * Fetch all the comments from a given page
+     * @param int $id Id of the page you want to query
+     * @return array Array of comments
+     */
+    public function commentsRead($id){
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'comments WHERE content_id=?');
+        $data = array($id);
+        $stmt->execute($data);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        while($row = $stmt->fetch())
+            $comments[] = $row;
+        if(!$comments)
+            $comments = array();
+        
+        return $comments;
+    }
+    
+    /**
+     * Update a comment
+     * @param int $commentID Content ID
+     * @param str $comment Comment
+     * @return boolean
+     */
+    public function commentsUpdate($id, $comment)
+    {
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'comments SET comment=? WHERE id=?');
+        $data = array($id, $comment);
+        return $stmt->execute($data);
+    }
+    
+    /**
+     * Delete a block
+     * @param int $blockID Block ID
+     * @return boolean
+     */
+    public function commentsDelete($id)
+    {
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'comments SET comment=? WHERE id=?');
+        $data = array($id, 'This comment has been deleted');
+        return $stmt->execute($data);
+        /* don't delete sub threads?
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'comments WHERE id=?');
+        $data = array($id);
+        return $stmt->execute($data);
+         */
     }
     
     ##################################################
@@ -280,19 +353,19 @@ class Cosmo {
      * @param str $body
      * @param str $url
      * @param str $compiledHTML Compiled HTML of the entire page for the snapshot
-     * @param str $type Type of page. e.g. 'blog', or 'page'
+     * @param str $type Type of page. e.g. 'blog.html', or 'page.html'
      * @param str $published 'Y' or 'N'
      * @param str $publishedDate Date the article was published on
      * @return boolean
      */
-    public function contentCreate($title, $description, $header, $subheader, $body, $url, $author, $type='page.html', $published='Y', $publishedDate=null){
+    public function contentCreate($title, $description, $header, $subheader, $featured, $body, $url, $author, $type, $published='Y', $publishedDate=null){
         // Make sure URL starts with a slash '/'
         if(strpos($url, '/') !== 0)
             $url = '/' . $url;
-            
+        
         // Save to database
-        $stmt = $this->pdo->prepare('INSERT INTO content (title, description, header, subheader, body, url, type, published, published_date, author, timestamp) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
-        $data = array($title, $description, $header, $subheader, $body, $url, $type, $published, $publishedDate, $author, time());
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'content (title, description, header, subheader, featured, body, url, type, published, published_date, author, timestamp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
+        $data = array($title, $description, $header, $subheader, $featured, $body, $url, $type, $published, $publishedDate, $author, time());
         if($stmt->execute($data))
             return $this->pdo->lastInsertId();
         else
@@ -315,7 +388,7 @@ class Cosmo {
             }
             
             // Lookup page in URL
-            $stmt = $this->pdo->prepare("SELECT * FROM content WHERE url=?");
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content WHERE url=?');
             $data = array($url);
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -327,19 +400,25 @@ class Cosmo {
                 // Get extras
                 $extras = self::contentExtrasRead($row['id']);
                 $tags = self::contentTagsRead($row['id']);
+                if($row['url'] === '/')
+                    $url = '/';
+                else
+                    $url = substr($row['url'], 1); // Remove first slash '/' to make the URL relative for sites in subfolders
+                
                 return array(
                     'id' => $row['id'],
                     'title' => $row['title'],
                     'description' => $row['description'],
                     'header' => $row['header'],
                     'subheader' => $row['subheader'],
+                    'featured' => $row['featured'],
                     'body' => $row['body'],
-                    'url' => $row['url'],
+                    'url' => $url,
                     'published' => $row['published'],
                     'published_date' => $row['published_date'],
                     'tags' => $tags,
                     'type' => $row['type'],
-                    'author' => $row['author'],
+                    'author' => self::usersRead($row['author']),
                     'timestamp' => $row['timestamp'],
                     'extras' => $extras
                 );
@@ -347,14 +426,14 @@ class Cosmo {
                 return FALSE;
             } else {
                 // See if URL changed, if so, redirect the user to the new page
-                $stmt = $this->pdo->prepare("SELECT * FROM revisions WHERE url=? LIMIT 1");
+                $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE url=? LIMIT 1');
                 $data = array($url);
                 $stmt->execute($data);
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 if($row = $stmt->fetch())
                 {
                     // Grab new URL
-                    $stmt = $this->pdo->prepare("SELECT * FROM content WHERE id=?");
+                    $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content WHERE id=?');
                     $data = array($row['content_id']);
                     $stmt->execute($data);
                     $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -367,13 +446,20 @@ class Cosmo {
             }
         } else // List all pages
         {
-            $stmt = $this->pdo->prepare('SELECT id, title, url, type, published, published_date, author FROM content');
+            $stmt = $this->pdo->prepare('SELECT id, title, description, header, subheader, featured, url, type, published, published_date, author, timestamp FROM '.$this->prefix.'content');
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $i = 0;
             while($row = $stmt->fetch()){
                 $results[$i] = $row;
+                if($row['url'] === '/')
+                    $url = '/';
+                else
+                    $url = substr($row['url'], 1); // Remove first slash '/' to make the URL relative for sites in subfolders
+                
+                $results[$i]['url'] = $url;
                 $results[$i]['tags'] = self::contentTagsRead($row['id']);
+                $results[$i]['author'] = self::usersRead($row['author']);
                 $i++;
             }
             
@@ -396,13 +482,13 @@ class Cosmo {
      * @param str $publishedDate Date the article was published on
      * @return boolean
      */
-    public function contentUpdate($contentID, $title, $description, $header, $subheader, $body, $url, $author, $type, $published='N', $publishedDate=null){
+    public function contentUpdate($contentID, $title, $description, $header, $subheader, $featured, $body, $url, $author, $type, $published='N', $publishedDate=null){
         // Make sure URL starts with a slash '/'
         if(strpos($url, '/') !== 0)
             $url = '/' . $url;
         // Save to database
-        $stmt = $this->pdo->prepare('UPDATE content SET title=?, description=?, header=?, subheader=?, body=?, url=?, type=?, published=?, published_date=?, author=?, timestamp=? WHERE id=?');
-        $data = array($title, $description, $header, $subheader, $body, $url, $type, $published, $publishedDate, $author, time(), $contentID);
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'content SET title=?, description=?, header=?, subheader=?, featured=?, body=?, url=?, type=?, published=?, published_date=?, author=?, timestamp=? WHERE id=?');
+        $data = array($title, $description, $header, $subheader, $featured, $body, $url, $type, $published, $publishedDate, $author, time(), $contentID);
         return $stmt->execute($data);
     }
     
@@ -414,7 +500,7 @@ class Cosmo {
     public function contentDelete($contentID){
         // Don't delete the 'new' page
         if($contentID != 1){
-            $stmt = $this->pdo->prepare('DELETE FROM content WHERE id=?');
+            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'content WHERE id=?');
             $data = array($contentID);
             return $stmt->execute($data);
         } else
@@ -433,7 +519,7 @@ class Cosmo {
      */
     public function conentExtrasCreate($contentID, $name, $extra)
     {
-        $stmt = $this->pdo->prepare('INSERT INTO content_extras (content_id, name, extra) VALUES (?,?,?)');
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'content_extras (content_id, name, extra) VALUES (?,?,?)');
         $data = array($contentID, $name, $extra);
         return $stmt->execute($data);
     }
@@ -444,7 +530,7 @@ class Cosmo {
      * @return array Array with strings of data
      */
     public function contentExtrasRead($contentID){
-        $stmt = $this->pdo->prepare('SELECT * FROM content_extras WHERE content_id=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content_extras WHERE content_id=?');
         $data = array($contentID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -460,7 +546,7 @@ class Cosmo {
      * @return boolean
      */
     public function contentExtrasDelete($contentID){
-        $stmt = $this->pdo->prepare('DELETE FROM content_extras WHERE content_id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'content_extras WHERE content_id=?');
         $data = array($contentID);
         return $stmt->execute($data);
     }
@@ -476,7 +562,7 @@ class Cosmo {
      * @return boolean
      */
     public function contentTagsCreate($contentID, $tag){
-        $stmt = $this->pdo->prepare('INSERT INTO content_tags (content_id, tag) VALUES (?,?)');
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'content_tags (content_id, tag) VALUES (?,?)');
         $data = array($contentID, strtolower(trim($tag)));
         return $stmt->execute($data);
     }
@@ -487,7 +573,7 @@ class Cosmo {
      * @return array Array of tags
      */
     public function contentTagsRead($contentID){
-        $stmt = $this->pdo->prepare('SELECT * FROM content_tags WHERE content_id=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content_tags WHERE content_id=?');
         $data = array($contentID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -503,7 +589,7 @@ class Cosmo {
      * @return boolean
      */
     public function contentTagsDelete($contentID){
-        $stmt = $this->pdo->prepare('DELETE FROM content_tags WHERE content_id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'content_tags WHERE content_id=?');
         $data = array($contentID);
         return $stmt->execute($data);
     }
@@ -530,7 +616,7 @@ class Cosmo {
      * Save a file to the 'uploads' folder. Insert record into database.
      * @return boolean
      */
-    public function fileCreate($file=null)
+    public function filesCreate($file=null)
     {
         $fileExtensions = array(
             'xls',
@@ -575,8 +661,12 @@ class Cosmo {
         );
         $imageExtensions = array(
             'jpg',
+            'jpeg',
+            'JPG',
             'png',
-            'gif'
+            'gif',
+            'GIF',
+            'svg'
         );
         
         if($file)
@@ -606,16 +696,16 @@ class Cosmo {
             else if(in_array($extension, $imageExtensions))
                 $type = 'image';
             
-            $stmt = $this->pdo->prepare('INSERT INTO files (filename, type, timestamp) VALUES (?,?,?)');
+            $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'files (filename, type, timestamp) VALUES (?,?,?)');
             $data = array($file, $type, time());
             return $stmt->execute($data);
         } else
         {
-            $originalName = $_FILES["file"]["name"];
+            $originalName = str_replace(' ', '_', $_FILES["file"]["name"]); // Replace spaces with underscores
             $nameParts = explode('.', $originalName);
             $extension = end($nameParts);
             $name = uniqid();
-            $filename =  $nameParts[0] .'-'. $name . '.' . $extension;
+            $filename =  str_replace('&', '', $nameParts[0]) .'-'. $name . '.' . $extension;
             $tempPath = $_FILES[ 'file' ][ 'tmp_name' ];
             $dir = dirname( __FILE__ );
             $dir = str_replace('/core/app', '', $dir);
@@ -647,18 +737,18 @@ class Cosmo {
             // Make thumbnails
             $responsive = 'yes';
             foreach($this->thumbnailSizes as $size){
-                if(!self::makeThumbnail($tempPath, "$dir/uploads/$nameParts[0]-$name-$size.$extension", $size, 0, 100))
+                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 100))
                     $responsive = 'no';
             }
             
             if(move_uploaded_file($tempPath, $uploadPath))
-            {   
+            {
                 // Insert into database
-                $stmt = $this->pdo->prepare('INSERT INTO files (filename, responsive, type, timestamp) VALUES (?,?,?,?)');
+                $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'files (filename, responsive, type, timestamp) VALUES (?,?,?,?)');
                 if($type === 'video' && (strpos($file, 'youtube') || strpos($file, 'youtu.be') || strpos($file, 'vimeo')))
                     $data = array($filename, $responsive, $type, time());
                 else {
-                    $filename = '/uploads/' . $filename;
+                    $filename = 'uploads/' . $filename;
                     $data = array($filename, $responsive, $type, time());
                 }
                 $stmt->execute($data);
@@ -672,10 +762,11 @@ class Cosmo {
      * List all files that have been uploaded
      * @return array Array of files columns
      */
-    public function fileRead(){
-        $stmt = $this->pdo->prepare('SELECT * FROM files ORDER BY timestamp DESC');
+    public function filesRead(){
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files ORDER BY timestamp DESC');
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $files = array();
         while($row = $stmt->fetch())
         {
             // Get tags
@@ -683,7 +774,7 @@ class Cosmo {
                 'id' => $row['id'],
                 'filename' => $row['filename'],
                 'responsive' => $row['responsive'],
-                'tags' => self::fileTagsRead($row['id']),
+                'tags' => self::filesTagsRead($row['id']),
                 'type' => $row['type']
             );
         }
@@ -694,10 +785,10 @@ class Cosmo {
      * List all files that have been uploaded
      * @return array Array of files columns
      */
-    public function fileReadRecord($fileID=null, $filename=null){
+    public function filesReadRecord($fileID=null, $filename=null){
         if($fileID)
         {
-            $stmt = $this->pdo->prepare('SELECT * FROM files WHERE id=?');
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files WHERE id=?');
             $data = array($fileID);
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -707,12 +798,12 @@ class Cosmo {
                 'id' => $row['id'],
                 'url' => $row['filename'],
                 'responsive' => $row['responsive'],
-                'tags' => self::fileTagsRead($row['id']),
+                'tags' => self::filesTagsRead($row['id']),
                 'type' => $row['type']
             );
         } else
         {
-            $stmt = $this->pdo->prepare('SELECT * FROM files WHERE filename=?');
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files WHERE filename=?');
             $data = array($filename);
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -722,7 +813,7 @@ class Cosmo {
                 'id' => $row['id'],
                 'url' => $row['filename'],
                 'responsive' => $row['responsive'],
-                'tags' => self::fileTagsRead($row['id']),
+                'tags' => self::filesTagsRead($row['id']),
                 'type' => $row['type']
             );
         }
@@ -730,18 +821,21 @@ class Cosmo {
         return $files;
     }
     
-    /**
+    /** DEPRECIATED - Todo: determine if we ever need to update file info
      * Update the title and tags of an image
      * @param int $fileID File ID
      * @param string $responsive Is the file responsive or not. "yes" or "no"
      * @return boolean True if title update was executed, false if not
      */
-    public function fileUpdate($fileID, $responsive)
+    public function filesUpdate($fileID, $responsive)
     {
         // Update the title
-        $stmt = $this->pdo->prepare('UPDATE files SET responsive=? WHERE id=?');
+        /*
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'files SET responsive=? WHERE id=?');
         $data = array($responsive, $fileID);
         return $stmt->execute($data);
+         * 
+         */
     }
     
     /**
@@ -749,9 +843,9 @@ class Cosmo {
      * @param string $fileID File ID
      * @return boolean
      */
-    public function fileDelete($fileID)
+    public function filesDelete($fileID)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM files WHERE id=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files WHERE id=?');
         $data = array($fileID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -759,12 +853,12 @@ class Cosmo {
         $filename = $row['filename'];
         
         // Delete file from db
-        $stmt = $this->pdo->prepare('DELETE FROM files WHERE id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'files WHERE id=?');
         $data = array($fileID);
         $stmt->execute($data);
 
         // Delete tags of associated file
-        $stmt = $this->pdo->prepare('DELETE FROM files_tags WHERE files_id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'files_tags WHERE files_id=?');
         $data = array($fileID);
         $stmt->execute($data);
         
@@ -773,13 +867,13 @@ class Cosmo {
         $extension = $fileParts[1];
         
         // Remove thumbnails
-        if(strpos($filename, '/uploads/') === 0){
+        if(strpos($filename, 'uploads/') === 0){
             foreach($this->thumbnailSizes as $size)
-                unlink($_SERVER['DOCUMENT_ROOT'] . "$name-$size.$extension");
+                unlink($_SERVER['DOCUMENT_ROOT'] . "/$name-$size.$extension");
         }
         
         // Delete file from uploads folder
-        return unlink($_SERVER['DOCUMENT_ROOT'] . $filename);
+        return unlink($_SERVER['DOCUMENT_ROOT'] .'/'. $filename);
     }
     
     /**
@@ -798,18 +892,18 @@ class Cosmo {
         // Load image and get image size.
         $type = exif_imagetype($sourcefile); // [] if you don't have exif you could use getImageSize() 
         switch ($type) { 
-            case 1 : 
-                $img = imageCreateFromGif($sourcefile); 
-            break; 
-            case 2 : 
-                $img = imageCreateFromJpeg($sourcefile); 
-            break; 
-            case 3 : 
-                $img = imageCreateFromPng($sourcefile); 
-            break; 
-            case 6 : 
-                $img = imageCreateFromBmp($sourcefile); 
-            break; 
+            case 1 :
+                $img = imageCreateFromGif($sourcefile);
+                break; 
+            case 2 :
+                $img = imageCreateFromJpeg($sourcefile);
+                break; 
+            case 3 :
+                $img = imageCreateFromPng($sourcefile);
+                break; 
+            case 6 :
+                $img = imageCreateFromBmp($sourcefile);
+                break; 
         }
         
         $width = imagesx($img);
@@ -822,22 +916,22 @@ class Cosmo {
         if ($width > $height) {
             $newwidth = $thumbwidth;
             $divisor = $width / $thumbwidth;
-            $newheight = floor( $height / $divisor);
+            $newheight = floor($height / $divisor);
         } else {
             $newheight = $thumbheight;
             $divisor = $height / $thumbheight;
-            $newwidth = floor( $width / $divisor );
+            $newwidth = floor($width / $divisor );
         }
         
         // Create a new temporary image.
-        $tmpimg = imagecreatetruecolor( $newwidth, $newheight );
+        $tmpimg = imagecreatetruecolor($newwidth, $newheight);
         
         // Copy and resize old image into new image.
-        imagecopyresampled( $tmpimg, $img, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
-
+        imagecopyresampled($tmpimg, $img, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+        
         // Save thumbnail into a file.
         $returnVal = imagejpeg($tmpimg, $endfile, $quality);
-
+        
         // release the memory
         imagedestroy($tmpimg);
         imagedestroy($img);
@@ -855,11 +949,11 @@ class Cosmo {
      * @param str $tag Tag name
      * @return boolean TRUE on success, FALSE on failure to insert record.
      */
-    public function fileTagsCreate($fileID, $tag)
+    public function filesTagsCreate($fileID, $tag)
     {
         if(!empty($tag))
         {
-            $stmt = $this->pdo->prepare('INSERT INTO files_tags (files_id, tag) VALUES (?,?)');
+            $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'files_tags (files_id, tag) VALUES (?,?)');
             $data = array($fileID, $tag);
             return $stmt->execute($data);
         } else 
@@ -871,10 +965,10 @@ class Cosmo {
      * @param int $fileID File ID
      * @return array Array of all tags
      */
-    public function fileTagsRead($fileID=null, $tag=null){
+    public function filesTagsRead($fileID=null, $tag=null){
         if(!empty($fileID))
         {
-            $stmt = $this->pdo->prepare('SELECT * FROM files_tags WHERE files_id=?');
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files_tags WHERE files_id=?');
             $data = array($fileID);
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -882,7 +976,7 @@ class Cosmo {
                 $tags[] = $row['tag'];
         } else
         {
-            $stmt = $this->pdo->prepare('SELECT DISTINCT tag FROM files_tags WHERE tag LIKE ?');
+            $stmt = $this->pdo->prepare('SELECT DISTINCT tag FROM '.$this->prefix.'files_tags WHERE tag LIKE ?');
             $data = array($tag . '%');
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -898,8 +992,8 @@ class Cosmo {
      * @param string $newTag New tag
      * @return boolean
      */
-    public function fileTagsUpdate($oldTag, $newTag){
-        $stmt = $this->pdo->prepare('UPDATE files_tags SET tag=? WHERE tag=?');
+    public function filesTagsUpdate($oldTag, $newTag){
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'files_tags SET tag=? WHERE tag=?');
         $data = array($newTag, $oldTag);
         return $stmt->execute($data);
     }
@@ -909,15 +1003,15 @@ class Cosmo {
      * @param string $tag Tag
      * @return boolean
      */
-    public function fileTagsDelete($fileID, $tag){
+    public function filesTagsDelete($fileID, $tag){
         if($fileID)
         {
-            $stmt = $this->pdo->prepare('DELETE FROM files_tags WHERE files_id=?');
+            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'files_tags WHERE files_id=?');
             $data = array($fileID);
             return $stmt->execute($data);
         } else
         {
-            $stmt = $this->pdo->prepare('DELETE FROM files_tags WHERE tag=?');
+            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'files_tags WHERE tag=?');
             $data = array($tag);
             return $stmt->execute($data);
         }
@@ -932,9 +1026,9 @@ class Cosmo {
      * @param string $name Name of the new menu
      * @return mixed Returns last insert ID on success. False on fail.
      */
-    public function menuCreate($name)
+    public function menusCreate($name)
     {
-        $stmt = $this->pdo->prepare('INSERT INTO menus (name) VALUES (?)');
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'menus (name) VALUES (?)');
         $data = array($name);
         if($stmt->execute($data))
             return $this->pdo->lastInsertId();
@@ -946,10 +1040,11 @@ class Cosmo {
      * Get all menus
      * @return array Array with 'id', 'name', 'menu', and 'area'
      */
-    public function menuRead(){
-        $stmt = $this->pdo->prepare('SELECT * FROM menus');
+    public function menusRead(){
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'menus');
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $menus = array();
         while($row = $stmt->fetch())
             $menus[] = $row;
         
@@ -961,9 +1056,9 @@ class Cosmo {
      * @param string $menu Menu HTML
      * @return boolean
      */
-    public function menuUpdate($menuID, $name, $menu, $area)
+    public function menusUpdate($menuID, $name, $menu, $area)
     {
-        $stmt = $this->pdo->prepare('UPDATE menus SET name=?, menu=?, area=? WHERE id=?');
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'menus SET name=?, menu=?, area=? WHERE id=?');
         $data = array($name, $menu, $area, $menuID);
         return $stmt->execute($data);
     }
@@ -974,9 +1069,9 @@ class Cosmo {
      * @param str $name Menu's new name
      * @return boolean
      */
-    public function menuUpdateName($menuID, $name)
+    public function menusUpdateName($menuID, $name)
     {
-        $stmt = $this->pdo->prepare('UPDATE menus SET name=? WHERE id=?');
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'menus SET name=? WHERE id=?');
         $data = array($name, $menuID);
         return $stmt->execute($data);
     }
@@ -986,9 +1081,9 @@ class Cosmo {
      * @param int $menuID Menu ID
      * @return boolean
      */
-    public function menuDelete($menuID)
+    public function menusDelete($menuID)
     {
-        $stmt = $this->pdo->prepare('DELETE FROM menus WHERE id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'menus WHERE id=?');
         $data = array($menuID);
         return $stmt->execute($data);
     }
@@ -1004,7 +1099,7 @@ class Cosmo {
      */
     public function miscCreate($name, $value)
     {
-        $stmt = $this->pdo->prepare('INSERT INTO misc (name, value) VALUES (?,?)');
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'misc (name, value) VALUES (?,?)');
         $data = array($name, $value);
         if($stmt->execute($data))
             return $this->pdo->lastInsertId();
@@ -1018,11 +1113,11 @@ class Cosmo {
      * @return record
      */
     public function miscRead($name){
-        $stmt = $this->pdo->prepare('SELECT * FROM misc WHERE name=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'misc WHERE name=?');
         $data = array($name);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch();
+        return $stmt->fetch()['value'];
     }
     
     /**
@@ -1033,7 +1128,7 @@ class Cosmo {
      */
     public function miscUpdate($name, $value)
     {
-        $stmt = $this->pdo->prepare('UPDATE misc SET value=? WHERE name=?');
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'misc SET value=? WHERE name=?');
         $data = array($value, $name);
         return $stmt->execute($data);
     }
@@ -1045,7 +1140,7 @@ class Cosmo {
      */
     public function miscDelete($name)
     {
-        $stmt = $this->pdo->prepare('DELETE FROM misc WHERE name=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'misc WHERE name=?');
         $data = array($name);
         return $stmt->execute($data);
     }
@@ -1062,10 +1157,10 @@ class Cosmo {
     public function modulesCreate($module)
     {
         // Add module to database
-        $stmt = $this->pdo->prepare('INSERT INTO modules (module, status) VALUES (?,?)');
-        $data = array($module, 'inactive');
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'modules (module, status) VALUES (?,?)');
+        $data = array($module, 'active');
         if($stmt->execute($data))
-            return $this->pdo->lastInsertId ();
+            return $this->pdo->lastInsertId();
         else
             return FALSE;
     }
@@ -1088,7 +1183,7 @@ class Cosmo {
         }
         
         // Check installed modules
-        $stmt = $this->pdo->prepare('SELECT * FROM modules');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'modules');
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $stmt->fetch())
@@ -1112,7 +1207,7 @@ class Cosmo {
      */
     public function modulesUpdate($moduleID, $status)
     {
-        $stmt = $this->pdo->prepare('UPDATE modules SET status=? WHERE id=?');
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'modules SET status=? WHERE id=?');
         $data = array($status, $moduleID);
         return $stmt->execute($data);
     }
@@ -1125,7 +1220,7 @@ class Cosmo {
     public function modulesDelete($moduleID)
     {
         // Delete a module
-        $stmt = $this->pdo->prepare('DELETE FROM modules WHERE id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'modules WHERE id=?');
         $data = array($moduleID);
         return $stmt->execute($data);
     }
@@ -1170,7 +1265,7 @@ class Cosmo {
     public function passwordVerify($username, $password)
     {
         // Get the password stored with the given username
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE username=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'users WHERE username=?');
         $data = array(strtolower($username));
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -1204,7 +1299,7 @@ class Cosmo {
      */
     public function passwordReset($username)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE username=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'users WHERE username=?');
         $data = array(strtolower($username));
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -1230,44 +1325,18 @@ class Cosmo {
     public function passwordResetVerify($userID, $token)
     {
         // Check if the token is still valid (created in the last 48 hours)
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE id=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'users WHERE id=?');
         $data = array($userID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $row = $stmt->fetch();
         $currentHour = round(time()/3600);
+        // Check if this token was made in the last 48 hours
         for($i=0; $i<=48; $i++)
         {
             if($token === $this->encrypt($row['password'] . $this->salt . ($currentHour - $i)))
                 return TRUE;
         }
-        return FALSE;
-    }
-    
-    /**
-     * Check if the user is an administrator or not
-     * @param string Username
-     * @param string Auth Token
-     * @return boolean TRUE if user is an admin. FALSE if not.
-     */
-    public function isUserAdmin($username, $auth_token)
-    {
-        // Get the user's id
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE username=?');
-        $data = array(strtolower($username));
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $row = $stmt->fetch();
-        $userID = $row['id'];
-        
-        // Make sure token is valid
-        if($this->tokenValidate($username, $auth_token))
-        {
-            // Get user's permissions. See if it is the admin role '1'
-            if($this->usersRead(null, $username)==='admin')
-                return TRUE;
-        }
-        
         return FALSE;
     }
     
@@ -1290,13 +1359,13 @@ class Cosmo {
      * @param str $publishedDate Date the article was published on
      * @return mixed Revision id on true, false on fail
      */
-    public function revisionsCreate($contentID, $title, $description, $header, $subheader, $body, $url, $type, $published, $publishedDate, $author){
+    public function revisionsCreate($contentID, $title, $description, $header, $subheader, $featured, $body, $url, $type, $published, $publishedDate, $author){
         if($url){
             // Make sure URL starts with a slash '/'
             if(strpos($url, '/') !== 0)
                 $url = '/' . $url;
-            $stmt = $this->pdo->prepare('INSERT INTO revisions (content_id, title, description, header, subheader, body, url, type, published, published_date, author, timestamp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
-            $data = array($contentID, $title, $description, $header, $subheader, $body, $url, $type, $published, $publishedDate, $author, time());
+            $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'revisions (content_id, title, description, header, subheader, featured, body, url, type, published, published_date, author, timestamp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)');
+            $data = array($contentID, $title, $description, $header, $subheader, $featured, $body, $url, $type, $published, $publishedDate, $author, time());
             if($stmt->execute($data))
                 return $this->pdo->lastInsertId();
             else
@@ -1311,7 +1380,7 @@ class Cosmo {
      */
     public function revisionsRead($contentID)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM revisions WHERE content_id=? ORDER BY timestamp DESC LIMIT 100');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE content_id=? ORDER BY timestamp DESC LIMIT 100');
         $data = array($contentID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -1328,7 +1397,7 @@ class Cosmo {
      */
     public function revisionsReadRecord($revisionID)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM revisions WHERE id=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE id=?');
         $data = array($revisionID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -1344,7 +1413,7 @@ class Cosmo {
      * @return boolean
      */
     public function revisionsDelete($revisionID){
-        $stmt = $this->pdo->prepare('DELETE FROM revisions WHERE id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'revisions WHERE id=?');
         $data = array($revisionID);
         return $stmt->execute($data);
     }
@@ -1355,7 +1424,7 @@ class Cosmo {
      * @return boolean
      */
     public function revisionsDeleteAll($contentID){
-        $stmt = $this->pdo->prepare('DELETE FROM revisions WHERE content_id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'revisions WHERE content_id=?');
         $data = array($contentID);
         return $stmt->execute($data);
     }
@@ -1373,7 +1442,7 @@ class Cosmo {
      */
     public function revisionsExtrasCreate($revisionID, $contentID, $name, $extra)
     {
-        $stmt = $this->pdo->prepare('INSERT INTO revisions_extras (revisions_id, content_id, name, extra) VALUES (?,?,?,?)');
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'revisions_extras (revisions_id, content_id, name, extra) VALUES (?,?,?,?)');
         $data = array($revisionID, $contentID, $name, $extra);
         return $stmt->execute($data);
     }
@@ -1384,7 +1453,7 @@ class Cosmo {
      * @return array Array with strings of data
      */
     public function revisionsExtrasRead($revisionID){
-        $stmt = $this->pdo->prepare('SELECT * FROM revisions_extras WHERE revisions_id=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions_extras WHERE revisions_id=?');
         $data = array($revisionID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -1400,7 +1469,7 @@ class Cosmo {
      * @return boolean
      */
     public function revisionsExtrasDelete($contentID){
-        $stmt = $this->pdo->prepare('DELETE FROM revisions_extras WHERE content_id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'revisions_extras WHERE content_id=?');
         $data = array($contentID);
         return $stmt->execute($data);
     }
@@ -1415,7 +1484,7 @@ class Cosmo {
      */
     public function settingsRead()
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM settings');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'settings');
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
@@ -1434,7 +1503,7 @@ class Cosmo {
      */
     public function settingsUpdate($siteName, $slogan, $logo, $favicon, $email, $maintenanceURL, $maintenanceMode)
     {
-        $stmt = $this->pdo->prepare('UPDATE settings SET site_name=?, slogan=?, logo=?, favicon=?, email=?, maintenance_url=?, maintenance_mode=?');
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'settings SET site_name=?, slogan=?, logo=?, favicon=?, email=?, maintenance_url=?, maintenance_mode=?');
         $data = array($siteName, $slogan, $logo, $favicon, $email, $maintenanceURL, $maintenanceMode);
         return $stmt->execute($data);
     }
@@ -1551,10 +1620,73 @@ class Cosmo {
      * @return boolean
      */
     public function themesUpdate($theme){
-        $stmt = $this->pdo->prepare('UPDATE settings SET theme=?');
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'settings SET theme=?');
         $data = array($theme);
         return $stmt->execute($data);
     }
+    
+    ##################################################
+    #                    Tokens                      #
+    ##################################################
+    
+    /**
+     * Save a token to the database
+     * @param string $usersID User's ID
+     * @return mixed Returns token on success, FALSE on fail
+     */
+    public function tokensCreate($usersID)
+    {
+        $token = $this->randomCharGenerator();
+        $hashedToken = $this->encrypt($token);
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'tokens (users_id, token) VALUES (?,?)');
+        $data = array(strtolower($usersID), $hashedToken);
+        if($stmt->execute($data))
+            return $hashedToken;
+        else
+            return FALSE;
+    }
+    
+    /**
+     * Check if token and username combination are valid
+     * @param string $usersID User's ID
+     * @param string $token Token
+     * @return mixed Returns new token on success, false on fail.
+     */
+    public function tokensRead($usersID, $token){
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'tokens WHERE users_id=? AND token=?');
+        $data = array($usersID, $token);
+        $stmt->execute($data);
+        if($stmt->rowCount())
+            return TRUE;
+        else
+        {
+            // Invalid token was used. Token could have been compromised, delete all tokens for security.
+            $this->tokensDelete($usersID);
+            return FALSE;
+        }
+    }
+    
+    /**
+     * Delete a specific token, or all tokens
+     * @param string $username Username
+     * @param string $token Token
+     * @return boolean
+     */
+    public function tokensDelete($usersID, $token=null){
+        if($token) // Delete given token
+        {
+            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'tokens WHERE users_id=? AND token=?');
+            $data = array($usersID, $token);
+            return $stmt->execute($data);
+        } else // Delete all tokens for this user
+        {
+            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'tokens WHERE users_id=?');
+            $data = array($usersID);
+            return TRUE; // $stmt->execute($data); // Seems to get called on valid tokens
+        }
+    }
+    
+    
     
     ##################################################
     #                User Management                 #
@@ -1566,56 +1698,62 @@ class Cosmo {
      * @param string $password Unencrypted password
      * @return mixed Returns id on insert. False if there was an error
      */
-    public function userCreate($username, $email, $password)
+    public function usersCreate($username, $email, $password, $role)
     {
-        $stmt = $this->pdo->prepare('INSERT INTO users (username, email, password) VALUES (?,?,?)');
-        $data = array(strtolower($username), $email, $this->encrypt($password));
+        $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'users (username, email, password, role) VALUES (?,?,?,?)');
+        $data = array(strtolower($username), $email, $this->encrypt($password), $role);
         return $stmt->execute($data);
     }
     
     /**
      * List all users
-     * @return array Array of all users' info
+     * @param int $usersID User's ID
+     * @param str $keyword Search user's info for this string in username/email columns
+     * @return array Array of all user(s) info (except password)
      */
-    public function usersRead($keyword=null, $username=null, $userID=null)
+    public function usersRead($usersID=NULL, $keyword=NULL)
     {
-        if($userID)
+        if($usersID) // Get a specific user's info
         {
-            $stmt = $this->pdo->prepare('SELECT * FROM users WHERE id=?');
-            $stmt->execute(array($userID));
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'users WHERE id=?');
+            $stmt->execute(array($usersID));
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $row = $stmt->fetch();
             $users = array(
+                'id' => $row['id'],
                 'username'=>$row['username'],
+                'name'=>$row['name'],
                 'photo'=>$row['photo'],
+                'bio'=>$row['bio'],
                 'facebook'=>$row['facebook'],
                 'twitter'=>$row['twitter'],
                 'role'=>$row['role'],
                 'email'=>$row['email']
             );
-        } else if($keyword)
+        } else if($keyword) // Get users similar to a keyword
         {
-            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username LIKE ? OR email LIKE ? LIMIT 250");
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'users WHERE username LIKE ? OR email LIKE ? LIMIT 250');
             $data = array('%' . $keyword . '%', '%' . $keyword . '%');
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while($row = $stmt->fetch())
-                $users[] = array('id'=>$row['id'], 'username'=>$row['username'], 'email'=>$row['email'], 'role'=>$row['role']);
-        } else if($username) // Get user's role
+                $users[] = array(
+                    'id'=>$row['id'], 
+                    'username'=>$row['username'], 
+                    'name'=>$row['name'], 
+                    'email'=>$row['email'], 
+                    'role'=>$row['role']
+                );
+        } else // Get all users
         {
-            $stmt = $this->pdo->prepare('SELECT * FROM users WHERE username=?');
-            $stmt->execute(array($username));
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $row = $stmt->fetch();
-            $users = $row['role'];
-        } else 
-        {
-            $stmt = $this->pdo->prepare('SELECT * FROM users LIMIT 250');
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'users');
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while($row = $stmt->fetch())
                 $users[] = array(
+                    'id' => $row['id'],
                     'username'=>$row['username'],
+                    'name'=>$row['name'],
                     'photo'=>$row['photo'],
                     'facebook'=>$row['facebook'],
                     'twitter'=>$row['twitter'],
@@ -1628,41 +1766,83 @@ class Cosmo {
     }
     
     /**
-     * Save a token to the database
+     * Login a user
      * @param string $username Username
-     * @return mixed Returns token on success, FALSE on fail
+     * @param srting $password Password
+     * @return mixed Returns the token on success, FALSE on fail.
      */
-    public function tokenSave($username)
+    public function userLogin($username, $password)
     {
-        $token = $this->randomCharGenerator();
-        $hashedToken = $this->encrypt($token);
-        $stmt = $this->pdo->prepare('INSERT INTO tokens (username, token) VALUES (?,?)');
-        $data = array(strtolower($username), $hashedToken);
-        if($stmt->execute($data))
-            return $hashedToken;
-        else
+        $usersID = $this->passwordVerify($username, $password);
+        if($usersID)
+        {
+            return array(
+                'id' => $usersID,
+                'username' => strtolower($username),
+                'token' => $this->tokensCreate($usersID),
+                'role' => $this->usersRead($usersID)['role']
+            );
+        } else
             return FALSE;
     }
     
     /**
-     * Delete a specific token, or all tokens
-     * @param string $username Username
-     * @param string $token Token
-     * @return boolean
+     * Change a user's username, email, role, or password
+     * @param int $userID User's ID to be updated
+     * @param string $username New username
+     * @param string $role User's role
+     * @param string $email New email
+     * @param string $password New password
+     * @return boolean Returns true on successful update, false on error
      */
-    public function tokenDelete($username, $token=null){
-        if($token) // Delete given token
-        {
-            $stmt = $this->pdo->prepare('DELETE FROM tokens WHERE username=? AND token=?');
-            $data = array($username, $token);
+    public function usersUpdate($userID, $username=NULL, $name=NULL, $photo=NULL, $bio=NULL, $facebook=NULL, $twitter=NULL, $role=NULL, $email=NULL, $password=NULL)
+    {
+        // Edit basic user info
+        if(!empty($userID)){
+            if($role) // Edit the role as well as the other info (only allowed by admins for security)
+            {
+                $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'users SET name=?, photo=?, bio=?, facebook=?, twitter=?, role=?, email=? WHERE id=?');
+                $data = array($name, $photo, $bio, $facebook, $twitter, $role, $email, $userID);
+            } else {
+                $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'users SET name=?, photo=?, bio=?, facebook=?, twitter=?, email=? WHERE id=?');
+                $data = array($name, $photo, $bio, $facebook, $twitter, $email, $userID);
+            }
             return $stmt->execute($data);
-        } else // Delete all tokens for this user
+        }else if(!empty($username)) // Update username
         {
-            $stmt = $this->pdo->prepare('DELETE FROM tokens WHERE username=?');
-            $data = array($username);
-            return TRUE; // $stmt->execute($data); // Seems to get called on valid tokens
+            $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'users SET username=? WHERE id=?');
+            $data = array($username, $userID);
+            return $stmt->execute($data);
+        }else if(!empty($email)) // Update email
+        {
+            $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'users SET email=? WHERE id=?');
+            $data = array($email, $userID);
+            return $stmt->execute($data);
+        } else if(!empty($password)) // Reset password
+        {
+            $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'users SET password=? WHERE id=?');
+            $data = array($this->encrypt($password), $userID);
+            return $stmt->execute($data);
         }
     }
+    
+    /**
+     * Delete a user
+     * @param INT $userID User's ID to delete
+     * @return boolean Returns true on successful delete, false on error
+     */
+    public function usersDelete($userID)
+    {
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'users WHERE id=?');
+        $data = array($userID);
+        return $stmt->execute($data);
+    }
+    
+    
+    
+    ##################################################
+    #                     Misc.                      #
+    ##################################################
     
     /**
      * Generate a random 128 character string
@@ -1681,92 +1861,6 @@ class Cosmo {
         }
 
         return $random_string;
-    }
-    
-    /**
-     * Check if token and username combination are valid
-     * @param string $username username
-     * @param string $token Token
-     * @return mixed Returns new token on success, false on fail.
-     */
-    public function tokenValidate($username, $token){
-        $stmt = $this->pdo->prepare('SELECT * FROM tokens WHERE username=? AND token=?');
-        $data = array($username, $token);
-        $stmt->execute($data);
-        if($stmt->rowCount())
-            return TRUE;
-        else
-        {
-            // Invalid token was used. Token could have been compromised, delete all tokens for security.
-            $this->tokenDelete($username);
-            return FALSE;
-        }
-    }
-    
-    /**
-     * Login a user
-     * @param string $username Username
-     * @param srting $password Password
-     * @return mixed Returns the token on success, FALSE on fail.
-     */
-    public function userLogin($username, $password)
-    {
-        $userID = $this->passwordVerify($username, $password);
-        if($userID)
-        {
-            return array(
-                'id' => $userID,
-                'username' => strtolower($username),
-                'token' => $this->tokenSave($username),
-                'role' => $this->usersRead(null, $username)
-            );
-        } else
-            return FALSE;
-    }
-    
-    /**
-     * Change a user's username, email, role, or password
-     * @param INT $userID User's ID to be updated
-     * @param string $username New username
-     * @param string $role User's role
-     * @param string $email New email
-     * @param string $password New password
-     * @return boolean Returns true on successful update, false on error
-     */
-    public function userUpdate($userID, $username=NULL, $photo=NULL, $facebook=NULL, $twitter=NULL, $role=NULL, $email=NULL, $password=NULL)
-    {
-        if(!empty($username) && !empty($role) && !empty($email)){
-            $stmt = $this->pdo->prepare('UPDATE users SET username=?, photo=?, facebook=?, twitter=?, role=?, email=? WHERE id=?');
-            $data = array($username, $photo, $facebook, $twitter, $role, $email, $userID);
-            return $stmt->execute($data);
-        }else if(!empty($username))
-        {
-            $stmt = $this->pdo->prepare('UPDATE users SET username=? WHERE id=?');
-            $data = array($username, $userID);
-            return $stmt->execute($data);
-        }else if(!empty($email))
-        {
-            $stmt = $this->pdo->prepare('UPDATE users SET email=? WHERE id=?');
-            $data = array($email, $userID);
-            return $stmt->execute($data);
-        } else if(!empty($password))
-        {
-            $stmt = $this->pdo->prepare('UPDATE users SET password=? WHERE id=?');
-            $data = array($this->encrypt($password), $userID);
-            return $stmt->execute($data);
-        }
-    }
-    
-    /**
-     * Delete a user
-     * @param INT $userID User's ID to delete
-     * @return boolean Returns true on successful delete, false on error
-     */
-    public function userDelete($userID)
-    {
-        $stmt = $this->pdo->prepare('DELETE FROM users WHERE id=?');
-        $data = array($userID);
-        return $stmt->execute($data);
     }
 }
 

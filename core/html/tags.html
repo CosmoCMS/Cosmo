@@ -3,9 +3,9 @@
         <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
         <h1>Edit</h1><h2>Tags</h2>
     </div>
-    <div class="formcase-border">
-        <input type="text" ng-model="tags.search" placeholder="e.g., company, soccer, big salad">
+    <div class="form-case--border">
         <label>Search</label>
+        <input type="text" ng-model="tags.search" placeholder="e.g., company, soccer, big salad">
     </div>
     <ul>
         <li class="tag-list" ng-repeat="tag in tags.tags | filter:tags.search" ng-click="tags.selectedTag=tag;tags.newTag=tag;">
@@ -14,8 +14,8 @@
                 <div ng-if="tags.selectedTag==tag">
                     <input id="tag" value="text" type="text" ng-model="tags.newTag">
                     <label for="tag">Edit Tag</label>
-                    <button class="error-button" ng-click="deleteTag()">delete</button>
-                    <button class="success-button" ng-click="updateTag()">update</button>
+                    <button class="btn-error" ng-click="deleteTag()">delete</button>
+                    <button class="btn-success" ng-click="updateTag()">update</button>
                 </div>
             </div>
         </li>

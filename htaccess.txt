@@ -1,26 +1,21 @@
 <IfModule mod_rewrite.c>
-
+    
     Options -MultiViews
-
+    
     # Core
     RewriteEngine On
     RewriteBase /
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_URI} !^/uploads/
     RewriteRule ^ index.php [QSA]
-
+    
     # API
     RewriteCond %{REQUEST_URI} ^/api/
     RewriteRule ^ core/app/api.php [QSA]
-
+    
     # Sitemap
     RewriteCond %{REQUEST_URI} ^/sitemap.xml
     RewriteRule ^ core/app/sitemap.php [QSA]
-
-    # HTML snapshots for search engines
-    RewriteCond %{REQUEST_URI}  ^/$
-    RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/?(.*)$
-    RewriteRule ^(.*)$ /core/app/compile.php?url=%1? [NC,L]
 
 </IfModule>
 
@@ -28,12 +23,12 @@
     # The following line is enough for .js and .css
     AddOutputFilter DEFLATE js css
     AddOutputFilterByType DEFLATE text/plain text/xml application/xhtml+xml text/css   application/xml application/rss+xml application/atom_xml application/x-javascript application/x-httpd-php application/x-httpd-fastphp text/html
-
+    
     # The following lines are to avoid bugs with some browsers
     BrowserMatch ^Mozilla/4 gzip-only-text/html
     BrowserMatch ^Mozilla/4\.0[678] no-gzip
     BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
-
+    
     # Compress .svg files
     AddType image/svg+xml .svg
     AddOutputFilterByType DEFLATE image/svg+xml

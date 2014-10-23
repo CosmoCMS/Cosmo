@@ -1,0 +1,80 @@
+<div ng-include="'themes/KHP/partials/header.html'"></div>
+
+<div ng-controller="favoritesCtrl">
+    <div class="row loggedinmarg overviewtext">
+        <div class="container" ng-controller="loginRegistrationCtrl">
+            <div class="col-md-5 profile">
+                <ul>
+                    <li><a ng-click="edit=true">Edit Email & Password</a></li>
+                    <li><a ng-click="logout()">Logout</a></li>
+                    <li><a ng-click="deleteAccount()">Delete Account</a></li>
+                </ul>
+            </div>
+            <div ng-show="edit">
+                <br />
+                New Email<br />
+                <input type="text" ng-model="email"> <button ng-click="changeEmail()">Update</button><br />
+                New Password<br />
+                <input type="password" ng-model="password"> <button ng-click="changePassword()">Update</button><br />
+                <a ng-click="edit=false">Hide</a>
+            </div>
+        </div>
+    </div>
+            <hr>
+            <div class="devreg">
+    <div class="container">
+        <h5>SAVED MLS SEARCHES</h5>
+        <div class="topclear row featuredproperties propoverwrite">
+            <div ng-show="searches.length==0"><h6 class="center">No Properties</h6></div>
+            <div class="col-md-3 col-sm-3 property" ng-repeat="search in searches track by $index">
+            <a ng-href="{{search.url}}">
+                <p class="saved-search"><strong>Bedrooms:</strong> {{search.bedrooms}}</p>
+                <p class="saved-search"><strong>Bathrooms:</strong> {{search.bathrooms}}</p>
+                <p class="saved-search"><strong>Price Min:</strong> {{search.priceMin}}</p>
+                <p class="saved-search"><strong>Price Max:</strong> {{search.priceMax}}</p>
+                <p class="saved-search"><strong>Living Min:</strong> {{search.livingMin}}</p>
+                <p class="saved-search"><strong>Living Max:</strong> {{search.livingMax}}</p>
+            </a>
+                <a ng-click="deleteMLS(search.url)">Remove</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="devalt">
+        <div class="container">
+            <h5>FAVORITE PROPERTIES</h5>
+            <div class="topclear row featuredproperties propoverwrite">
+                <div ng-show="favorites.length==0"><h6 class="center">No Favorites</h6></div>
+                <div class="col-md-3 col-sm-3 property" ng-repeat="property in favorites track by $index">
+                <a ng-href="{{property.url}}"><img ng-src="{{property.featured}}"></a>
+                    <p class="address"  ng-click="addComparison(property)">Compare</p>
+                    <a class="view" ng-click="deleteFavorite(property.favoriteID)">Remove</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Begin Normal Styled Developer Inventory -->
+    
+    <div class="devreg">
+    <div class="container">
+        <h5>COMPARE PROPERTIES</h5>
+        <div class="row topclear">
+            <div ng-show="compareProperties.length==0"><h6 class="center">No Properties to Compare: Select one from your favorite properties</h6></div>
+            <div class="col-md-3 col-sm-3" ng-repeat="property in compareProperties | limitTo:4">
+                <img class="devthumb" ng-src="{{property.featured}}">
+                <p class="address" ng-click="removeComparison($index)">Remove</p>
+                <a class="view" ng-href="{{property.url}}">View</a>
+                <!-- Left Aligned Table -->
+                <div class="table-responsive">
+                    <div><strong>Price: {{property.price | plaintext}}</strong></div>
+                    <div class="responsive" ng-bind-html="property.table"></div>
+                </div>
+                <!-- End Left Aligned Table -->
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div ng-include="'themes/KHP/partials/footer.html'"></div>
