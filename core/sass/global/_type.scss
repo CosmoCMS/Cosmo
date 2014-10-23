@@ -1,0 +1,96 @@
+// type setup throughout cosmo
+
+span {
+    letter-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: palette(blue, dark);
+    font-family: $font-alpha;
+    margin: 0;
+}
+
+h1 {
+    color: palette(gray, light);
+    display: inline;
+    font-size: 1.25em;
+    font-weight: 700;
+    line-height: 3em;
+    margin-left: 2rem;
+}
+
+h2 {
+    color: palette(gray, light);
+    display: inline;
+    font-size: 1.25em;
+    font-weight: 200;
+    line-height: 3em;
+    margin-left: size(5);
+}
+
+h3 {
+    font-size: 1.125em;
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+
+h6 {
+    color: palette(blue, dark);
+    font-size: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+a {
+    color: palette(gray, dark);
+    font-family: $font-alpha;
+    text-decoration: none;
+    transition: color .1s linear;
+
+    &:hover {
+        color: palette(blue, light);
+    }
+
+    &:active, &:focus {
+        color: palette(blue, light);
+        font-weight: 200;
+        outline: none;
+    }
+}
+
+p {
+    font-size: 1em;
+    font-family: $font-alpha;
+    font-weight: 200;
+    line-height: 1.5;
+    margin: 0 0 size(10) 0;
+
+    &:active, &:focus {
+        font-weight: 200;
+  }
+}
+
+p.error {
+    color: palette(alert, error);
+    font-weight: 800;
+}
+
+small {
+    display: block;
+    font-size: 85%;
+}
+
+// generic styling set up throughout cosmo
+
+img {
+    margin: 0;
+    width: 100%;
+}
+
+[ng-click] {
+    cursor: pointer;
+}
+
+[ng-href] {
+    cursor: pointer;
+}

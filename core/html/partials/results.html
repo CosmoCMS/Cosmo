@@ -1,0 +1,10 @@
+<div class="results">
+    <div ng-repeat="result in results">
+        <div class="resultsTitle"><a ng-href="{{result.url}}" ng-bind-html="result.title"></a></div>
+        <div class="resultsDescription" ng-bind-html="result.description"></div>
+        <div class="resultsUrl"><a ng-href="{{result.url}}" ng-bind-html="result.url"></a></div>
+    </div>
+    <div>
+        Previous - Next
+    </div>
+</div>

@@ -1,0 +1,224 @@
+<div class="cosmo-default" ng-controller="filesCtrl">
+    <!-- Gallery Area -->
+    <div ng-show='files.gallery'>
+        <div class="modal--bar-top">
+            <h1 class="no-marg">Media</h1><h2>Gallery</h2>
+            <div class="options">
+                <button class="btn-options no-marg" ng-click="files.gallery=false">Add Media</button>
+                <button class="btn-success no-marg" ng-click="saveGallery()">Update Gallery</button>
+            </div>
+        </div>
+        <div class="media-wrapper">
+            <div ng-repeat="image in images">
+                <div class="img-gallery">
+                    <img ng-if="image.type==='image'" ng-src="{{image.url}}">
+                    <iframe ng-if="image.type==='youtube'" width="100%" height="266" ng-src="{{image.url}}" frameborder="0" allowfullscreen></iframe>
+                    <iframe ng-if="image.type==='vimeo'" ng-src="{{image.url}}" width="100%" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <video controls ng-if="image.type==='video'" ng-src="{{image.url}}" width="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></video>
+                    <i ng-if="image.type==='pdf'" class="fa fa-file-pdf-o"></i>
+                    <i ng-if="image.type==='doc'" class="fa fa-file-text-o"></i>
+                    <i ng-if="image.type==='ppt'" class="fa fa-file-powerpoint-o"></i>
+                    <i ng-if="image.type==='spreadsheet'" class="fa fa-file-excel-o"></i>
+                    <i ng-if="image.type==='compressed'" class="fa fa-file-archive-o"></i>
+                    <i ng-if="image.type==='file'" class="fa fa-file-text-o"></i>
+                    <i ng-if="image.type==='audio'" class="fa fa-file-audio-o"></i>
+                </div>
+                <div class="img-gallery-info">
+                    <label ng-if="image.title">Title</label>
+                    <p ng-if="image.title">{{image.title}}</p>
+                    <label ng-if="image.alt">Alt Text</label>
+                    <p ng-if="image.alt">{{image.alt}}</p>
+                    <label>URL</label>
+                    <p>{{image.url}}</p>
+                    <div>
+                        <a class="tag" ng-repeat="tag in image.tags">
+                            <i class="fa fa-tag"></i>{{tag}}
+                        </a>
+                    </div>
+                    <button class="btn-success" ng-if="!$last" ng-click="images.splice($index,1);images.splice($index+1,0,image)">Down</button>
+                    <button class="btn-success" ng-if="!$first" ng-click="images.splice($index,1);images.splice($index-1,0,image)">Up</button>
+                    <button class="btn-options" ng-click="viewFile(image);files.gallery=!files.gallery">Edit</button>
+                    <button class="btn-error" ng-click="images.splice($index,1)">Remove</button>
+                </div>
+             </div>
+         </div>
+    </div>
+    <!-- Media Selection Area -->
+    <div ng-show="!files.gallery">
+        <div ng-show='!upload'>
+            <div class="modal--bar-top" id="top-anchor">
+                <i class="fa fa-chevron-left" ng-if="images" ng-click="files.gallery=true"></i>
+                <h1>Search</h1><h2>Media</h2>
+
+                <div class="options">
+
+                    <input class="search-bar" placeholder="Search" value="search" type="text" ng-model="search.$">
+
+                    <div class="cos-select">
+                        <select ng-model="page.media.type">
+                            <option value="">All</option>
+                            <option value="image">Images</option>
+                            <option value="video">Video</option>
+                            <option value="audio">Audio</option>
+                            <option value="files">Files</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-success upload"  ng-click="upload=!upload">Upload</button>
+                </div>
+                <div ng-show="selectedFile" class="img-edit">
+                    <div class="modal--bar-top">
+                        <i class="fa fa-chevron-left" ng-click="selectedFile = ! selectedFile"></i><h1>Image</h1><h2>Information</h2>
+                        <div class="nav">
+                            <button class="btn-options" ng-click="prev()" ng-show="!search&&!page.media.type">Previous</button>
+                            <button class="btn-options" ng-click="next()" ng-show="!search&&!page.media.type">Next</button>
+                        </div>
+                    </div>
+                  <div class="img-prev">
+                    <img ng-if="files.type==='image'" ng-src="{{selectedFile}}">
+                    <iframe ng-if="files.type==='youtube'" width="100%" height="264" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
+                    <iframe ng-if="files.type==='vimeo'" ng-src="{{selectedFile}}" width="100%" height="188" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe ng-if="files.type==='youtube'" width="100%" height="140" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
+                    <video controls ng-if="files.type==='video'" ng-src="{{selectedFile}}" width="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></video>
+                    <i ng-if="files.type==='pdf'" class="fa fa-file-pdf-o"></i>
+                    <i ng-if="files.type==='doc'" class="fa fa-file-text-o"></i>
+                    <i ng-if="files.type==='ppt'" class="fa fa-file-powerpoint-o"></i>
+                    <i ng-if="files.type==='spreadsheet'" class="fa fa-file-excel-o"></i>
+                    <i ng-if="files.type==='compressed'" class="fa fa-file-archive-o"></i>
+                    <i ng-if="files.type==='file'" class="fa fa-file-text-o"></i>
+                    <i ng-if="files.type==='audio'" class="fa fa-file-audio-o"></i>
+                    <div class="img-size" ng-if="files.type==='image'">
+                        <input type="radio" ng-model="files.size" id="responsive" value="responsive"> <label for="responsive" ng-click="files.size='responsive'">Full</label>
+                        <input type="radio" ng-model="files.size" id="1024" value="large"> <label for="1024" ng-click="files.size='large'">Large (1024px)</label>
+                        <input type="radio" ng-model="files.size" id="512" value="medium"> <label for="512" ng-click="files.size='medium'">Medium (512px)</label>
+                        <input type="radio" ng-model="files.size" id="320" value="small"> <label for="320" ng-click="files.size='small'">Small (320px)</label>
+                        <input type="radio" ng-model="files.size" id="nonresponsive" value="nonresponsive"> <label for="nonresponsive" ng-click="files.size='nonresponsive'">Non-responsive</label>
+                        <div class="url">
+                            <label>URL</label>
+                            <p>{{origFilename}}</p>
+                        </div>
+                    </div>
+                    <div class="img-size" ng-if="files.type==='video'">
+                        <input id="autoplay" type="checkbox" ng-model="files.autoplay" value="true">
+                        <label for="autoplay">Autoplay</label>
+
+                        <input id="controls" type="checkbox" ng-model="files.controls" value="true">
+                        <label for="controls">Controls</label>
+
+                        <input id="loop" type="checkbox" ng-model="files.loop" value="true">
+                        <label for="loop">Loop</label>
+
+                        <input id="autoload" type="checkbox" ng-model="files.autoload" value="Y">
+                        <label for="autoload">Autoload</label>
+                    </div>
+                  </div>
+                    <div class="media-info">
+                        <div class="img-info">
+                            <label for="title">Title</label>
+                            <input type="text" ng-model="files.title">
+
+                            <label for="class">CSS Classes (space separated)</label>
+                            <input type="text" ng-model="files.class">
+
+                            </div>
+                        <div class="img-info">
+                            <label for="alttext">Alt Text </label>
+                            <input type="text" ng-model="files.alt">
+
+                            <label for="href">Link URL</label>
+                            <input type="text" ng-model="files.href">
+
+                            <button class="btn-error" ng-click="deleteFile()">Delete</button>
+                            <button class="btn-options" ng-click="save()">Save</button>
+                            <button class="btn-success" ng-click="selectFile()">Choose File</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="media-holder gallery-media-wrapper">
+                  <div class="media-tile" ng-repeat="file in media | filter:search | filter:page.media.type | limitTo:numFiles" ng-click="viewFile(file, $index)">
+                      <div ng-if="file.type==='image'">
+                          <img ng-src="{{file.src}}" ng-if="file.type==='image'">
+                      </div>
+                      <div ng-if="file.type==='youtube' || file.type==='vimeo'">
+                          <iframe width="100%" height="140" ng-src="{{file.src}}" frameborder="0" allowfullscreen></iframe><button class="btn-options">Edit Video</button>
+                      </div>
+                      <div ng-if="file.type==='video'">
+                          <video controls ng-src="{{file.src}}" width="100%" height="188" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></video>
+                          <button class="btn-options">Edit Video</button>
+                      </div>
+                      <div class="file-prev" ng-if="file.type==='pdf'">
+                          <i class="fa fa-file-pdf-o"></i>
+                      </div>
+                      <div class="file-prev" ng-if="file.type==='doc'">
+                          <i class="fa fa-file-text-o"></i>
+                      </div>
+                      <div class="file-prev" ng-if="file.type==='ppt'">
+                          <i class="fa fa-file-powerpoint-o"></i>
+                      </div>
+                      <div class="file-prev" ng-if="file.type==='spreadsheet'">
+                          <i class="fa fa-file-excel-o"></i>
+                      </div>
+                      <div class="file-prev" ng-if="file.type==='compressed'">
+                          <i class="fa fa-file-archive-o"></i>
+                      </div>
+                      <div class="file-prev" ng-if="file.type==='file'">
+                          <i class="fa fa-file-text-o"></i>
+                      </div>
+                      <div class="file-prev" ng-if="file.type==='audio'">
+                          <i class="fa fa-file-audio-o"></i>
+                      </div>
+                      <div ng-if="file.type==='pdf'">
+                          <i class="fa fa-file-pdf-o"></i>
+                      </div>
+                      <div ng-if="file.type==='doc'">
+                          <i class="fa fa-file-text-o"></i>
+                      </div>
+                      <div ng-if="file.type==='ppt'">
+                          <i class="fa fa-file-powerpoint-o"></i>
+                      </div>
+                      <div ng-if="file.type==='spreadsheet'">
+                          <i class="fa fa-file-excel-o"></i>
+                      </div>
+                      <div ng-if="file.type==='compressed'">
+                          <i class="fa fa-file-archive-o"></i>
+                      </div>
+                      <div ng-if="file.type==='file'">
+                          <i class="fa fa-file-text-o"></i>
+                      </div>
+                      <div ng-if="file.type==='audio'">
+                          <i class="fa fa-file-audio-o"></i>
+                      </div>
+                  </div>
+                  <div class="btncase">
+                    <button class="btn-options" ng-click="numFiles=numFiles+12">View More</button>
+                  </div>
+                </div>
+        </div>
+        <!-- Upload Content Area -->
+        <div ng-show='upload'>
+            <div class="modal--bar-top">
+                    <i class="fa fa-chevron-left" ng-click="upload=!upload"></i>
+                <h1>Upload</h1><h2>A File</h2>
+            </div>
+            <div class="uploader">
+                <input class="url-uploader" type="text" ng-model="files.uploadURL" placeholder="Upload from URL: e.g., http://player.vimeo.com/video/21291918">
+                <button class="btn-success" ng-click="uploadFromUrl()">Save from URL</button>
+                <div class="ui-progress-bar ui-container transition" id="progress_bar">
+                    <div class="ui-progress" style="width: 100%;">
+                        <span class="ui-label" style="display: none;">Completed</span>
+                    </div>
+                </div>
+                <div ng-show="progress">
+                    {{progress}}
+                </div>
+                <div class="dropzone" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="ng-file-over" ng-show="dropSupported" class="fileDropZone">
+                    <h2>Click or Drag files</h2>
+                    <input class="custom-form" type="file" ng-file-select="onFileSelect($files)" multiple>
+                </div>
+                <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

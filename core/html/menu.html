@@ -1,0 +1,102 @@
+<div ng-controller="menuCtrl">
+    <div ng-show="menu.panel==='manage'">
+        <div class="bar-top">
+            <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+            <h1>Edit</h1><h2>Menus</h2>
+        </div>
+        <div class="form-case--border">
+            <button class="new" ng-click="createMenu=!createMenu">
+                <div ng-if="!createMenu">
+                    <i class="fa fa-plus"></i><p>New Menu</p>
+                </div>
+                <div ng-if="createMenu">
+                    <i class="fa fa-times-circle-o"></i><p>Close</p>
+                </div>
+            </button>
+            <div class="add-new" ng-show="createMenu">
+                <label for="name">Add a Menu</label>
+                <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
+                <button class="btn-success" ng-click='newMenu()'>add</button>
+            </div>
+        </div>
+        <ul>
+            <li ng-repeat='menu in menus'><a ng-click="selectMenu(menu)">{{menu.name}}</a></li>
+        </ul>
+    </div>
+    <div ng-show="menu.panel==='edit'">
+        <div class="bar-top">
+            <i class="fa fa-chevron-left " ng-click="menu.panel='manage'"></i>
+            <h1>Editing</h1><h2>{{menu.name}}</h2>
+        </div>
+        <div class="form-case">
+            <label for="name">Name:</label>
+            <input value="name" type="text" ng-model="menu.name">
+            <label for="area">Area:</label>
+            <div class="cos-select">
+                <select value="area" ng-model="menu.area">
+                    <option value="primary">Primary</option>
+                    <option value="secondary">Secondary</option>
+                    <option value="footer">Footer</option>
+                    <option value="sidebar1">Sidebar 1</option>
+                    <option value="sidebar2">Sidebar 2</option>
+                    <option value="sidebar3">Sidebar 3</option>
+                    <option value="menu1">Menu 1</option>
+                    <option value="menu2">Menu 2</option>
+                    <option value="menu3">Menu 3</option>
+                    <option value="menu4">Menu 4</option>
+                    <option value="menu5">Menu 5</option>
+                    <option value="menu6">Menu 6</option>
+                    <option value="menu7">Menu 7</option>
+                    <option value="menu8">Menu 8</option>
+                    <option value="menu9">Menu 9</option>
+                    <option value="menu10">Menu 10</option>
+                </select>
+            </div>
+            <div class="nestedSortable-list">
+                <div ui-tree>
+                    <ol ui-tree-nodes="options" ng-model="list">
+                        <li class="nestedSortable-handle" ng-repeat="item in list" ui-tree-node>
+                            <div ui-tree-handle>
+                                <h6>{{item.title}}</h6>
+                                <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=item;menu.editLinkText=item.title;menu.editLinkURL=item.url">Edit</a>
+                                <a data-nodrag ng-click="remove(this)">Remove</a>
+                                <a data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">Add Item</a>
+                            </div>
+                            <ol ui-tree-nodes="options" ng-model="item.items">
+                                <li ng-repeat="subItem in item.items" ui-tree-node>
+                                    <div ui-tree-handle>
+                                        {{subItem.title}}
+                                        <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem;menu.editLinkText=subItem.title;menu.editLinkURL=subItem.url">Edit</a>
+                                        <a data-nodrag ng-click="remove(this)">Remove</a>
+                                        <a data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">Add Item</a>
+                                    </div>
+                                    <ol ui-tree-nodes="options" ng-model="subItem.items">
+                                        <li ng-repeat="subItem1 in subItem.items" ui-tree-node>
+                                            <div ui-tree-handle>
+                                                {{subItem1.title}}
+                                                <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem1;menu.editLinkText=subItem1.title;menu.editLinkURL=subItem1.url">Edit</a>
+                                                <a data-nodrag ng-click="remove(this)">Remove</a>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div ng-show="menu.editLink">
+                <label for="text">Edit Link Text</label>
+                <input value="text" type="text" ng-model="menu.editLinkText">
+                <label for="url">Edit Link URL</label>
+                <input value="url" type="text" ng-model="menu.editLinkURL">
+
+                <button class="btn-error" ng-click="deleteLink()">delete link</button>
+                <button class="btn-success" ng-click="updateLink()">update link</button>
+                <button class="btn-error" ng-click='deleteMenu()'>delete</button>
+                <button class="btn-success" ng-click="saveMenu()">save</button>
+            </div>
+        </div>
+    </div>
+</div>

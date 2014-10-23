@@ -1,0 +1,19 @@
+table {
+    display: block;
+    margin: 2rem 0;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+td {
+    border: 1px solid palette(gray, mid);
+    height: auto;
+    overflow: auto;
+    padding: size(15);
+    text-align: left;
+}
+
+tr {
+    height: auto;
+    overflow-x: scroll;
+}
