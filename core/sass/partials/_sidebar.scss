@@ -111,11 +111,6 @@
         }
     }
 
-    img {
-        height: 3.75rem;
-        width: 3.75rem;
-    }
-
     .active {
         color: palette(alert, warning);
   }
@@ -145,6 +140,14 @@
             color: palette(blue, light);
         }
     }
+}
+
+.prfl-img {
+    background: center center no-repeat;
+    background-size: cover;
+    display: inline-block;
+    height: 3.75rem;
+    width: 3.75rem;
 }
 
 // case to adjust sides within the sidebar

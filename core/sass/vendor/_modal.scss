@@ -1,4 +1,4 @@
-// animations for fade in and fade out of modal 
+// animations for fade in and fade out of modal
 
 @keyframes ngdialog-fadeout {
     0% {
@@ -30,12 +30,12 @@
 }
 
 
-// box-sizing 
+// box-sizing
 .ngdialog, .ngdialog *, .ngdialog *:before, .ngdialog *:after {
     box-sizing: border-box;
 }
 
-// setting up the modal window 
+// setting up the modal window
 .ngdialog {
     bottom: 0;
     left: 0;
@@ -47,12 +47,12 @@
     z-index: z(modal);
 }
 
-// make sure there's no weird scrolling once the modal is open 
+// make sure there's no weird scrolling once the modal is open
 body.ngdialog-open {
     overflow: hidden;
 }
 
-// the "x" to close the modal 
+// the "x" to close the modal
 .ngdialog-close {
     cursor: pointer;
 
@@ -71,7 +71,7 @@ body.ngdialog-open {
     }
 }
 
-// actual background and content holder for the modal 
+// actual background and content holder for the modal
 .ngdialog-content {
     animation: ngdialog-fadein 0.5s;
     backface-visibility: hidden;
@@ -106,7 +106,7 @@ body.ngdialog-open {
     }
 }
 
-// background for the modal window to hide the content beneath it 
+// background for the modal window to hide the content beneath it
 .ngdialog-overlay {
     animation: ngdialog-fadein 0.5s;
     background-color: palette(blue, dark--two-third);
