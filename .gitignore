@@ -1,3 +1,7 @@
 *.codekit
 
 *.scssc
+
+Gruntfile.js
+
+package.json
