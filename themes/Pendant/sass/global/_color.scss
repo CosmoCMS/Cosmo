@@ -1,0 +1,34 @@
+/* colors */
+$colors: (
+    gray: (
+        xlight: rgba(253, 253, 253, 1),
+        light: rgba(247, 247, 247, 1),
+        mid--light: rgba(218, 218, 218, 1),
+        mid: rgba(133, 133, 133, 1),
+        dark: rgba(43, 40, 39, 1),
+        dark--two-third: rgba(43, 40, 39, .75),
+        black: rgba(0, 0, 0, 1),
+        white: rgba(255, 255, 255, 1),
+        white--half: rgba(255, 255, 255, .5),
+    ),
+
+    blue: (
+        light: rgba(112, 200, 196, 1),
+        mid: rgba(69, 158, 155, 1),
+        dark: rgba(74, 96, 103, 1),
+        dark--two-third: rgba(74, 96, 103, .75),
+    ),
+
+    alert: (
+        error: rgba(234, 29, 44, 1),
+        error--dark: rgba(184, 0, 11, 1),
+        success: rgba(32, 186, 44, 1),
+        success--dark: rgba(0, 136, 0, 1),
+        warning: rgba(255, 211, 44, 1),
+        warning--dark: rgba(215, 176, 0, 1),
+    ),
+);
+
+@function palette($palette, $tone: 'base') {
+    @return map-get(map-get($colors, $palette), $tone);
+}

@@ -1,0 +1,124 @@
+header {
+    background-color: palette(gray, white);
+    border-bottom: 1px solid palette(gray, mid--light);
+    position: fixed;
+    top: -10rem;
+    transition: .2s ease-in 1s, top .35s ease-in 0s;
+    width: 100%;
+    z-index: z(sidebar);
+}
+
+header .social {
+    display: none;
+
+    a, i {
+        display: none;
+    }
+
+    @media #{$bp-beta} {
+        font-size: 1rem;
+        margin-right: size(20);
+        position: relative;
+        top: -.2rem;
+
+        i {
+            color: palette(gray, mid--light);
+            display: inline-block;
+            transition: .15s ease-in;
+
+            &:hover {
+                color: palette(gray, dark);
+            }
+        }
+    }
+}
+
+.head {
+    @include container(68.75rem);
+    height: 4rem;
+    overflow: hidden;
+}
+
+.sticky {
+    position: fixed;
+}
+
+.cos-scroll-transition {
+    transform: translateY(-10rem);
+}
+
+.logo {
+    @include span(7 of 12 inside);
+    padding: 0 4%;
+
+    @media #{$bp-beta} {
+        @include span(7 of 12 before);
+        margin-left: 0;
+    }
+
+    @media #{$bp-epsilon} {
+        padding: 0;
+    }
+
+    .title {
+        display: inline-block;
+        font-size: 2em;
+        margin: .6rem 1.5rem 0 0;
+
+        a {
+            font-weight: 200;
+        }
+    }
+
+    .slogan {
+        color: palette(gray, mid--light);
+        display: none;
+        font-family: $font-beta;
+        font-size: 1em;
+        font-style: italic;
+        font-weight: 200;
+        position: relative;
+        top: -.3rem;
+
+        @media #{$bp-beta} {
+            display: inline-block;
+        }
+    }
+}
+
+.nav-toggle {
+    @include span(5 of 12 inside);
+    font-size: 1.5em;
+    margin-top: .95rem;
+    padding-right: 4%;
+    text-align: right;
+
+    @media #{$bp-beta} {
+        @include span(5 of 12 before);
+    }
+
+    @media #{$bp-epsilon} {
+        padding-right: 0;
+    }
+
+    a {
+        color: palette(gray, dark);
+        display: inline-block;
+
+        &:hover {
+            color: palette(gray, mid);
+        }
+    }
+
+    span {
+        font-size: .5em;
+        font-weight: 200;
+        margin-right: size(10);
+        position: relative;
+        top: -.25rem;
+    }
+}
+
+.sticky {
+    top: 0;
+}

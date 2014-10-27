@@ -1,0 +1,20 @@
+.border-btm {
+    border-bottom: 1px solid palette(gray, mid);
+}
+
+label {
+    display: block;
+}
+
+@include placeholder {
+    color: palette(gray, mid);
+}
+
+// section to add a new block/menu etc... 
+.add-new {
+    margin-top: 1.5rem;
+
+    .success-button {
+        margin-bottom: 0;
+    }
+}

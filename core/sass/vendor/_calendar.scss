@@ -1,0 +1,207 @@
+.quickdate-close {
+    color: palette(blue, light);
+    font-size: 110%;
+    margin-top: -.6rem;
+    position: absolute;
+    right: size(5);
+    text-decoration: none;
+    top: size(5);
+
+    &:hover, &:visited {
+        text-decoration: none;
+    }
+}
+
+.quickdate-calendar-header {
+    display: block;
+    margin-bottom: size(5);
+    padding: .2rem 0;
+    text-align: center;
+}
+
+.quickdate-month {
+    display: inline-block;
+}
+
+a.quickdate-prev-month {
+    float: left;
+}
+
+a.quickdate-next-month {
+    float: right;
+}
+
+.quickdate-text-inputs {
+    margin-bottom: size(5);
+    text-align: left;
+}
+
+.quickdate-input-wrapper {
+    display: inline-block;
+    width: 48%;
+}
+
+input.quickdate-date-input,
+input.quickdate-time-input {
+    height: auto;
+    margin: 0;
+    padding: .2rem .3rem;
+    width: 10rem;
+}
+table.quickdate-calendar {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: size(25) * .25;
+    width: 100%;
+}
+table.quickdate-calendar th, table.quickdate-calendar td {
+    padding: size(5);
+}
+table.quickdate-calendar td:hover {
+    cursor: pointer;
+}
+
+.quickdate-popup-footer {
+    display: block;
+    text-align: right;
+}
+
+.quickdate-error {
+    border: 1px solid palette(alert, error);
+
+    &:focus {
+        outline-color: palette(alert, error);
+    }
+}
+
+.quickdate{
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+input.quickdate-date-input, input.quickdate-time-input {
+    width: 7rem;
+    height: auto;
+    padding: size(25) * .5 0;
+}
+
+.quickdate-button{
+    background-color: palette(gray, mid);
+    box-sizing: border-box;
+    color: palette(blue, dark);
+    display: inline-block;
+    font-weight: 700;
+    margin-top: .25rem;
+    padding: size(25) * .5;
+    text-decoration: none;
+    width: 16.85rem;
+
+    &:hover {
+        color: palette(blue, light);
+
+        i {
+            text-decoration:none
+        }
+    }
+
+    i {
+        padding-right: size(25) * .5;
+    }
+}
+.quickdate-popup{
+    background-color: palette(gray, light);
+    border: 1px solid palette(gray, mid);
+    color: palette(blue, dark);
+    display: none;
+    margin-top: -size(25);
+    padding: size(25) * .25;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+
+    span {
+        font-family: $font-alpha;
+    }
+}
+
+.quickdate-action-link:visited {
+    color: palette(blue, light);
+    text-decoration: none;
+}
+
+.quickdate-next-month i{
+    padding-left: size(25) * .05;
+}
+
+.quickdate-prev-month i{
+    padding-right: size(25) * .05;
+}
+
+
+table.quickdate-calendar {
+    border: 1px solid palette(gray, mid);
+    color: palette(gray, light);
+
+    &:hover {
+        background-color: palette(gray, mid);
+        color: palette(blue, dark);
+    }
+
+    th, table, td {
+        border-bottom: 1px solid palette(gray, mid);
+        border-right: 1px solid palette(gray, mid);
+        font-family: $font-alpha;
+    }
+
+    td.other-month {
+        background-color: palette(blue, dark);
+        color: palette(gray, light);
+        font-family: $font-alpha;
+
+        &:hover {
+            background-color: palette(blue, mid);
+        }
+    }
+
+    td.disabled-date {
+        color: palette(blue, dark);
+        background-color: inherit;
+        font-family: $font-alpha;
+
+        &:hover {
+            background-color: inherit;
+            cursor: default;
+        }
+    }
+
+    td.selected{
+        background-color: palette(blue, light);
+        color: palette(gray, light);
+        font-family: $font-alpha;
+        font-weight: 700;
+    }
+
+    td.is-today{
+        color: palette(blue, light);
+        font-family: $font-alpha;
+        font-weight: 700;
+
+        .disabled-date{
+            color: palette(blue, dark);
+            font-weight:200;
+        }
+    }
+}
+
+.quickdate-clear {
+    @extend %button;
+    color: palette(blue, dark);
+    display: inline-block;
+    margin: size(25) * .1 0;
+    text-decoration: none;
+
+    &:hover {
+        color: palette(gray, light);
+    }
+}

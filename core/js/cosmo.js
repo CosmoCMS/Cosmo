@@ -284,7 +284,7 @@ angular.module('cosmo', [])
                 
             };
             updateCosmo();
-            
+            console.log(Page);
             scope.$on('contentGet', function(){
                 updateCosmo();
             });
@@ -769,7 +769,7 @@ angular.module('cosmo', [])
                 });
             };
             updateMenus();
-
+            
             scope.$on('menusGet', function(){
                 updateMenus();
             });

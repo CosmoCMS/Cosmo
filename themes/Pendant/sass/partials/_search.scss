@@ -1,0 +1,40 @@
+/* search styling for the container on the search area */
+.pen-search {
+    @extend %sidebar
+}
+
+/* text info for articles in search */
+.search-results--article {
+    cursor: pointer;
+    padding: size(20);
+
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: .35em;
+        margin-top: 0;
+    }
+
+    h2 {
+        font-size: 1em;
+        font-weight: 200;
+        margin-top: 0;
+    }
+
+    p {
+        font-size: .8em;
+    }
+}
+
+/* div with bg image if article has a banner*/
+.search-results--img {
+    display: none;
+    transition: .2s ease-in;
+
+    @media #{$bp-gamma} {
+        background: no-repeat center center;
+        background-size: cover;
+        display: block;
+        height: 12rem;
+        width: 100%;
+    }
+}

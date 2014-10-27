@@ -1,0 +1,368 @@
+.article-case {
+    @include container(68.75rem);
+    margin-bottom: 2rem;
+    margin-top: 6rem;
+}
+
+.article-row {
+    @include container;
+    border-bottom: 1px solid palette(gray, mid--light);
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+
+    h1 {
+        font-size: 1.5em;
+        margin-top: 1.5rem;
+
+        @media #{$bp-beta} {
+            margin-bottom: .4rem;
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+    }
+
+    p {
+        line-height: 1.5;
+        margin-bottom: 0;
+
+        @media #{$bp-beta} {
+            font-size: 1em;
+        }
+    }
+}
+
+.article--img-side {
+    @include span(12 of 12 inside);
+    background: center center no-repeat;
+    background-size: cover;
+    height: 8rem;
+    margin-bottom: 1.5rem;
+
+    @media #{$bp-alpha} {
+        height: 12rem;
+    }
+
+    @media #{$bp-beta} {
+        @include span(4 of 12 before);
+        height: 14rem;
+        margin: 0 2rem 0 0;
+    }
+
+    @media #{$bp-epsilon} {
+        @include span(4 of 12 after);
+    }
+}
+
+.article--one {
+    padding: 0 4%;
+
+    @media #{$bp-epsilon} {
+        padding: 0;
+    }
+}
+
+.article--two {
+    @include span(12 of 12 inside);
+    padding: 0 4% 2rem 4%;
+    margin-top: 2rem;
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+
+    @media #{$bp-beta} {
+        border: 0;
+        margin-top: 0;
+        padding-bottom: 0;
+
+        &:first-child {
+            @include span(6 of 12 inside);
+            padding-left: 4%;
+        }
+
+        &:last-child {
+            @include span(6 of 12 inside);
+            margin-right: 0;
+            padding-right: 4%;
+        }
+    }
+
+    @media #{$bp-gamma} {
+
+        &:first-child {
+            @include span(8 of 12 inside);
+            padding-left: 4%;
+        }
+
+        &:last-child {
+            @include span(4 of 12 inside);
+            margin-right: 0;
+            padding-right: 4%;
+        }
+    }
+
+    @media #{$bp-epsilon} {
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    .article {
+        padding: 0;
+    }
+}
+
+.article--two-left {
+    @extend .article--two;
+
+    @media #{$bp-gamma} {
+
+        &:first-child {
+            @include span(4 of 12 inside);
+            margin-right: 0;
+            padding-left: 4%;
+        }
+
+        &:last-child {
+            @include span(8 of 12 inside);
+            padding-right: 4%;
+        }
+    }
+
+    @media #{$bp-epsilon} {
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    .article {
+        padding: 0;
+    }
+}
+
+.article--img-top {
+    @include span(12 of 12 inside);
+    background: center center no-repeat;
+    background-size: cover;
+    height: 8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    @media #{$bp-alpha} {
+        height: 12rem;
+    }
+
+    @media #{$bp-beta} {
+        height: 14rem;
+    }
+}
+
+/* class added to the article--img-top inside of article--three when there's no content beneath it, just an image */
+.no-content--below {
+    height: 20rem;
+    margin-bottom: 0;
+}
+
+.article--three {
+    @include span(12 of 12 inside);
+    padding: 0 4% 2rem 4%;
+    margin-top: 2rem;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:nth-child(3) {
+        padding-bottom: 0;
+    }
+
+    @media #{$bp-beta} {
+        @include span(4 of 12 inside);
+        border: 0;
+        margin-top: 0;
+        padding-bottom: 0;
+
+        &:first-child {
+            padding-left: 4%;
+        }
+
+        &:nth-child(3) {
+            margin-right: 0;
+            padding-right: 4%;
+        }
+    }
+
+    @media #{$bp-epsilon} {
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:nth-child(3) {
+            padding-right: 0;
+        }
+    }
+
+    .article {
+        padding: 0;
+    }
+}
+
+.article--three-img {
+    @include span(12 of 12 inside);
+    background: center center no-repeat;
+    background-size: cover;
+    height: 8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    @media #{$bp-alpha} {
+        height: 12rem;
+    }
+
+    @media #{$bp-beta} {
+        height: 14rem;
+    }
+}
+
+/* style if you don't want text below the images, recommended for portfolios */
+.article--two-no-text {
+    @extend .article--two;
+
+    .article--img-top {
+        @extend .article--img-top;
+        height: 20rem;
+        margin-bottom: 0;
+
+        @media #{$bp-alpha} {
+            height: 12rem;
+        }
+
+        @media #{$bp-beta} {
+            height: 14rem;
+        }
+    }
+
+    &:first-child {
+        .article--img-top {
+            @extend .article--img-top;
+            height: 20rem;
+            margin-top: 0;
+
+            @media #{$bp-alpha} {
+                height: 24rem;
+            }
+
+            @media #{$bp-beta} {
+                height: 29rem;
+            }
+        }
+    }
+
+    &:nth-child(2) {
+        margin-bottom: 0;
+
+        @media #{$bp-beta} {
+            @include span(6 of 12 inside);
+            margin-right: 0;
+            padding-right: 4%;
+
+            .article--img-top {
+                margin-bottom: 4.5%;
+            }
+        }
+
+        @media #{$bp-gamma} {
+            @include span(4 of 12 inside);
+            margin-right: 0;
+            padding-right: 4%;
+
+            .article--img-top {
+                margin-bottom: 5%;
+            }
+        }
+
+        @media #{$bp-epsilon} {
+            padding-right: 0;
+
+            .article--img-top {
+                margin-bottom: 4.5%;
+            }
+        }
+    }
+}
+
+.article--no-text-info {
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    position: absolute;
+
+    h1 {
+        color: palette(gray, white);
+    }
+
+    .meta {
+
+
+        a {
+            color: palette(gray, white);
+            transition: .15s ease-in;
+
+            &:hover {
+                color: palette(gray, mid--light);
+            }
+        }
+
+        i {
+            color: palette(gray, white);
+        }
+    }
+}
+
+
+
+/* article info shown on search, banners and throughout */
+.meta {
+    color: palette(gray, mid);
+    font-size: .8em;
+    margin-bottom: size(20);
+
+    i {
+        color: palette(gray, mid);
+        margin-right: size(5);
+    }
+
+    .category, .byline, .comments {
+        display: inline-block;
+        font-weight: 200;
+        transition: .15s ease-in;
+    }
+
+    .category, .byline, .comments {
+        margin-right: size(20);
+        margin-top: size(10);
+    }
+
+    .category, .byline {
+
+        span {
+            font-family: $font-beta;
+            font-style: italic;
+        }
+    }
+
+    .category span {
+        margin-left: size(5);
+    }
+}

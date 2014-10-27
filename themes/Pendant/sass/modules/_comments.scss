@@ -1,0 +1,184 @@
+/* search styling for the container on the search area */
+.cos-comments {
+    @extend %sidebar;
+    padding-bottom: 9.5rem;
+
+    @media #{$bp-beta} {
+        width: 30rem;
+    }
+
+    .unread {
+        border-right: 10px solid palette(gray, mid--light);
+        transition: .25s ease-in;
+    }
+}
+
+.cos-comments .reply {
+    background-color: palette(gray, white);
+    border: 1px solid palette(gray, mid--light);
+    border-left: 0;
+    bottom: 0;
+    padding-bottom: size(20);
+    position: fixed;
+    right: -100%;
+    transition: right .25s ease-in;
+    width: 100%;
+
+    @media #{$bp-beta} {
+        width: 30rem;
+    }
+
+    a {
+        font-size: .9em;
+        margin-left: 1.25rem;
+    }
+
+    textarea {
+        border: 0;
+        border-bottom: 1px solid palette(gray, mid--light);
+        display: block;
+        font-size: .9em;
+        font-weight: 200;
+        margin-bottom: size(20);
+        min-height: 5rem;
+        padding: size(20);
+        width: 100%;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    .logged-out {
+
+        input {
+            height: 3rem;
+        }
+
+        .captcha {
+            display: block;
+            margin-bottom: size(10);
+        }
+    }
+}
+
+.cos-comments .reply.show-right {
+    right: 0;
+}
+
+.cos-comments--head {
+    background-color: palette(gray, light);
+    padding: size(20) size(20) size(20) 1.25rem;
+
+    a {
+        font-size: .9em;
+        margin-left: size(10);
+
+        &:first-child {
+            margin-left: 0;
+            margin-right: size(10);
+        }
+    }
+
+    h2 {
+        display: inline-block;
+        font-size: 1em;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .cos-comments--credentials {
+        display: inline-block;
+        float: right;
+    }
+}
+
+
+/* text info for articles in search */
+.cos-comments--comment {
+    border-bottom: 2px solid palette(gray, light);
+    padding: size(20);
+    transition: .25s ease-in;
+
+    i {
+        color: palette(gray, mid--light);
+        margin-top: size(10);
+        transition: .15s ease-in;
+
+        &:hover {
+            color: palette(gray, dark);
+            cursor: pointer;
+        }
+    }
+
+    p {
+        font-size: .9em;
+        margin-bottom: 0;
+    }
+
+    .active {
+        color: palette(gray, dark);
+    }
+
+    .comment-info {
+        border-bottom: 1px solid palette(gray, mid--light);
+        margin-bottom: size(10);
+
+        i {
+            font-size: .8em;
+            margin-right: 0;
+        }
+
+        a:hover {
+            color: palette(gray, dark);
+
+            i {
+                color: palette(gray, dark);
+            }
+        }
+    }
+}
+
+.cos-comments--comment {
+
+    .fa-exclamation-circle {
+        float: right;
+    }
+
+    .fa-reply {
+        margin-right: size(15);
+    }
+
+    .fa-thumbs-up {
+        margin-right: size(5);
+    }
+
+    .numbered-likes {
+        color: palette(gray, mid);
+        font-size: .8em;
+        vertical-align: middle;
+    }
+
+    .posted-on {
+        color: palette(gray, mid--light);
+        float: right;
+        display: inline-block;
+        font-size: .8em;
+        font-style: italic;
+        font-weight: 400;
+        margin-bottom: size(5);
+    }
+
+    .username {
+        display: inline-block;
+        font-size: .8em;
+        font-style: italic;
+        font-weight: 600;
+        margin-bottom: size(5);
+    }
+}
+
+.cos-comments--reply-to-comment {
+    @extend .cos-comments--comment;
+    padding-left: size(20) * 2;
+}

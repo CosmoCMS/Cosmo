@@ -1,0 +1,15 @@
+/* z-index */
+$z-layers: (
+    modal: 10001,
+    sidebar: 10000,
+    minimal: 1,
+);
+
+@function z($key) {
+  @if map-has-key($z-layers, $key) {
+    @return map-get($z-layers, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $z-layers.";
+  @return null;
+}

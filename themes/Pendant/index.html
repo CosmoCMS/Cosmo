@@ -1,0 +1,30 @@
+<div class="cosmo-theme" ng-controller="pendantCtrl">
+    <div ng-include="'themes/Pendant/partials/header.html'"></div>
+    <section ng-controller="contentCtrl" ng-repeat="post in posts | filter:'blog-post.html':true | limitTo:1" role="banner" class="banner--lrg" style="background-image: url({{post.featured}});">
+        <div class="container">
+            <div class="banner--title">
+                <a ng-href="{{post.url}}">
+                    <h1>{{post.header}}</h1>
+                </a>
+                <p>{{post.subheader}}</p>
+                <div class="meta">
+                    <div class="category">
+                        <a href="#">Posted in:<span>Latest News</span></a>
+                    </div>
+                    <div class="byline">
+                        <a href="#">By <span>{{post.author}}</span> on <span>{{post.timestamp * 1000 | date:'MM/dd/yyyy'}}</span></a>
+                    </div>
+                    <div class="comments">
+                        <a href="#"><i class="fa fa-comments"></i>285 Comments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="article-case">
+        <section>
+            <div cs-block="block1"></div>
+        </section>
+    </div>
+    <div ng-include="'themes/Pendant/partials/footer.html'"></div>
+</div>

@@ -1,0 +1,17 @@
+// tag styling when editing or creating new pages 
+.tag-suggestions {
+    background-color: palette(gray, mid);
+    padding: size(25) * .25;
+    overflow-y: scroll;
+
+    a {
+        color: palette(blue, dark);
+        display: block;
+        font-weight: 700;
+        padding: size(5) 0;
+
+        &:hover {
+            color: palette(gray, light);
+        }
+    }
+}
