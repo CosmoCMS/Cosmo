@@ -1,4 +1,4 @@
-// setup easy margin/padding sass-map 
+// setup easy margin/padding sass-map
 $size: (
     5: .313rem,
     10: .625rem,
@@ -14,4 +14,19 @@ $size: (
   }
 
   @return null;
+}
+
+
+.half-width {
+    width: 100%;
+
+    @media #{$bp-beta} {
+        display: inline-block;
+        vertical-align: top;
+        width: 48.98%;
+
+        &:nth-child(odd) {
+            margin-right: 1%;
+        }
+    }
 }

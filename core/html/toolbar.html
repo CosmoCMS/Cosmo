@@ -113,15 +113,14 @@
         <button ng-click="action('bg-img')"><i class="fa fa-picture-o"></i>Background</button>
     </div>
     <div class="code-dropdown" ng-show="code" ng-mouseenter="code=true" ng-mouseleave="code=false">
+        <button ng-click="action('toggle')"><i class="fa fa-code"></i>Code View</button>
         <button ng-click="action('bgimage')"><i class="fa fa-picture-o"></i>Background</button>
         <button ng-click="action('html')"><i class="fa fa-code"></i>Insert HTML</button>
         <button ng-click="action('div')"><i class="fa fa-code"></i>Div</button>
-        <!--<button ng-click="action('custom')"><i class="fa fa-code"></i>Custom Directive</button>-->
         <button ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false"><i class="fa fa-code"></i>Directive</button>
-            <div ng-show="premadeDirective" ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false" ng-click="premadeDirective=false" class="table-dropdown--insert">
+            <div ng-show="premadeDirective" ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false" ng-click="premadeDirective=false" class="directive-dropdown">
                 <button ng-repeat="directive in editor.directives track by $index" ng-click="action('premade', '{{directive.directive}}', '{{directive.description}}')">{{directive.name}}</button>
             </div>
-        <button ng-click="action('toggle')"><i class="fa fa-code"></i>Code View</button>
     </div>
     <div class="list-dropdown" ng-show="list" ng-mouseenter="list=true" ng-mouseleave="list=false">
         <button ng-click="action('ol')"><i class="fa fa-list-ol"></i>Ordered List</button>

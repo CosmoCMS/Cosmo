@@ -1,26 +1,26 @@
-// for dropdowns used in the cosmo WYSIWYG editor 
+// for dropdowns used in the cosmo WYSIWYG editor
 %wysiwyg-dropdown {
-    background-color: palette(gray, light);
-    border: 1px solid palette(gray, mid);
+    background-color: palette(gray, xlight);
+    border-radius: 5px;
     color: palette(blue, dark);
     display: block;
     height: auto;
-    margin-top: .08rem;
     position: relative;
     width: 14.5rem;
 
     button {
         background-color: transparent;
         border: 0;
+        border-radius: 5px;
         display: block;
         font-family: $font-alpha;
-        margin: 0 0 .39075rem 0;
         outline: none;
-        padding: .39075rem .39075rem 0 .7815rem;
+        padding: 10px;
         text-align: left;
         width: 100%;
 
         &:hover {
+            background-color: palette(gray, light);
 
             i {
                 background-color: transparent;
@@ -36,12 +36,12 @@
     }
 }
 
-// --------------------------------------- End Mixins --------------------------------------- 
+// --------------------------------------- End Mixins ---------------------------------------
 
-// full length bar for wysiwyg 
+// full length bar for wysiwyg
 .cosmo-toolbar-large {
-    background-color: palette(gray, light);
-    border: 1px solid palette(gray, mid);
+    background-color: palette(gray, xlight);
+    border-radius: 5px;
     color: palette(gray, light);
     cursor: pointer;
     font-size: .787em;
@@ -201,7 +201,7 @@
     width: 8.438rem;
 
     .divide {
-        border-bottom: 1px solid palette(gray, mid);
+        border-bottom: 1px solid palette(gray, mid--light);
         margin-bottom: .39075rem;
         padding-bottom: .7815rem;
     }
@@ -209,18 +209,20 @@
 
 .table-dropdown--insert {
     @extend %wysiwyg-dropdown;
-    left: -11.5rem;
-    margin-top: -1.8rem;
+    left: -11.3rem;
+    margin-top: -2.2rem;
     padding: .469rem .156rem .156rem .469rem;
     position: absolute;
     width: 10.75rem;
+
 
     p {
         margin: 0;
     }
 
     .cell-select {
-        border: 1px solid palette(gray, mid);
+        border: 1px solid palette(gray, mid--light);
+        border-radius: 0;
         display: inline-block;
         height: .9rem;
         margin: 0 .156rem .156rem 0;
@@ -231,14 +233,14 @@
             background-color: palette(blue, light);
         }
 
-        &:nth-child(10) {
+        &:nth-child(10n) {
             margin-right: 0;
         }
     }
 
     .cell-select--focus {
         background-color: palette(blue, light);
-        border: 1px solid palette(gray, dark);
+        border: 1px solid palette(gray, mid--light);
         display: inline-block;
     }
 }
@@ -246,13 +248,34 @@
 .media-dropdown {
     @extend %wysiwyg-dropdown;
     left: 9.656rem;
-    width: 8.125rem;
+    width: 9rem;
 }
 
 .code-dropdown {
     @extend %wysiwyg-dropdown;
     left: 11.469rem;
-    width: 8.031rem;
+    width: 10rem;
+
+    .directive-dropdown {
+        background-color: palette(gray, light);
+        border-bottom: 1px solid palette(gray, mid--light);
+        border-radius: 0 0 5px 5px;
+        border-top: 1px solid palette(gray, mid--light);
+
+        button {
+            padding-left: 10px;
+
+            &:hover {
+                background-color: palette(blue, light);
+                border-radius: 0;
+                color: palette(gray, light);
+            }
+
+            &:last-child:hover {
+                border-radius: 0 0 5px 5px;
+            }
+        }
+    }
 }
 
 pre {

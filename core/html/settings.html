@@ -1,29 +1,41 @@
 <div class="settings" ng-controller="settingsCtrl">
     <div class="bar-top">
-        <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
-        <h1>Site</h1><h2>Settings</h2>
+        <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+        <h1>Settings</h1>
     </div>
     <div class="form-case">
-        <label for="sitename">Site name</label>
-        <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
+        <div class="half-width">
+            <label for="sitename">Site name</label>
+            <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
+        </div>
 
-        <label for="slogan">Slogan</label>
-        <input value="slogan" type='textarea' ng-model='settings.slogan' placeholder="e.g., These pretzels are making me thirsty">
+        <div class="half-width">
+            <label for="slogan">Slogan</label>
+            <input value="slogan" type='textarea' ng-model='settings.slogan' placeholder="e.g., These pretzels are making me thirsty">
+        </div>
 
-        <label for="logo">Logo</label>
-        <img ng-src="{{settings.logo}}" ng-click="uploadPhoto('logo')">
+        <div class="half-width images">
+            <label for="logo">Logo</label>
+            <img ng-src="{{settings.logo}}" ng-click="uploadPhoto('logo')">
+        </div>
 
-        <label for="favicon">Favicon</label>
-        <img ng-src="{{settings.favicon}}" ng-click="uploadPhoto('favicon')">
+        <div class="half-width images">
+            <label for="favicon">Favicon</label>
+            <img ng-src="{{settings.favicon}}" ng-click="uploadPhoto('favicon')">
+        </div>
 
-        <label for="email">Email</label>
-        <input value="email" type='text' ng-model='settings.email' placeholder="info@builtwithcosmo.com">
+        <div class="half-width">
+            <label for="email">Email</label>
+            <input value="email" type='text' ng-model='settings.email' placeholder="info@cosmocms.org">
+        </div>
 
-        <label for="maintenance">Maintenance URL</label>
-        <input value="maintenance" type='text' ng-model='settings.maintenanceURL' placeholder="/maintenance">
+        <div class="half-width">
+            <label for="maintenance">Maintenance URL</label>
+            <input value="maintenance" type='text' ng-model='settings.maintenanceURL' placeholder="/maintenance">
+        </div>
 
         <input type='checkbox' id="maintenance" ng-model='settings.maintenanceMode'>
-        <label for="maintenance">Activate Maintenance Mode</label>
+        <label class="maint-mode" for="maintenance">Activate Maintenance Mode</label>
 
             <button class="btn-success" ng-click='changeSettings()'>save</button>
     </div>

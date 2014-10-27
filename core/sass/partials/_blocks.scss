@@ -2,8 +2,8 @@
 
     .blk-code {
         @extend input;
-        border: 1px solid palette(gray, dark);
-        height: 3size(20);
+        border: 1px solid palette(gray, mid--light);
+        height: 18.75rem;
         overflow: scroll;
     }
 

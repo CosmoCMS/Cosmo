@@ -14,7 +14,7 @@ h1 {
     color: palette(gray, light);
     display: inline;
     font-size: 1.25em;
-    font-weight: 700;
+    font-weight: 200;
     line-height: 3em;
     margin-left: 2rem;
 }
@@ -22,7 +22,7 @@ h1 {
 h2 {
     color: palette(gray, light);
     display: inline;
-    font-size: 1.25em;
+    font-size: 1.15em;
     font-weight: 200;
     line-height: 3em;
     margin-left: size(5);
@@ -45,7 +45,6 @@ a {
     color: palette(gray, dark);
     font-family: $font-alpha;
     text-decoration: none;
-    transition: color .1s linear;
 
     &:hover {
         color: palette(blue, light);

@@ -1,16 +1,20 @@
 %button {
     background-color: transparent;
+    border: 1px solid palette(gray, mid--light);
+    border-radius: size(5);
     color: palette(blue, dark);
     cursor: pointer;
     display: inline-block;
+    font-family: $font-alpha;
     font-size: .813em;
     font-weight: 200;
-    margin: 0 size(5) .65rem 0;
+    letter-spacing: .05;
+    margin: 0 size(5) size(10) 0;
     outline: none;
-    padding: 0.65rem 1rem 0.75rem 1rem;
+    padding: size(10) size(15);
     text-align: center;
-    text-transform: lowercase;
-    transition: all .25s ease-in-out;
+    text-transform: capitalize;
+    transition: all .15s ease-in-out;
 
     &:focus {
         color: palette(gray, white);
@@ -25,59 +29,50 @@
     }
 }
 
-// save/success style button 
+// save/success style button
 .btn-success {
     @extend %button;
-    border: 1px solid palette(gray, mid--dark);
 
     &:focus {
         background-color: palette(alert, success--dark);
-        border: 1px solid palette(alert, success--dark);
     }
 
     &:hover {
         background-color: palette(alert, success);
-        border: 1px solid palette(alert, success--dark);
     }
 }
 
-// error button, generally used for "delete" 
+// error button, generally used for "delete"
 .btn-error {
     @extend %button;
-    border: 1px solid palette(gray, mid--dark);
 
     &:focus {
         background-color: palette(alert, error--dark);
-        border: 1px solid palette(alert, error--dark);
     }
 
     &:hover {
         background-color: palette(alert, error);
-        border: 1px solid palette(alert, error--dark);
     }
 
 }
 
-// general button used 
+// general button used
 .btn-options {
     @extend %button;
-    border: 1px solid palette(gray, mid--dark);
 
     &:focus {
         background-color: palette(blue, dark);
-        border: 1px solid palette(blue, dark);
     }
 
     &:hover {
-        background-color: palette(gray, mid--dark);
-        border: 1px solid palette(blue, dark);
-        color: palette(blue, dark);
+        background-color: palette(blue, mid);
+        color: palette(gray, light);
     }
 }
 
-// holder for button needed to add a new menu/block etc... 
+// holder for button needed to add a new menu/block etc...
 .new {
-    background-color: palette(gray, light);
+    background-color: transparent;
     opacity: 1;
     text-align: left;
     text-transform: lowercase;

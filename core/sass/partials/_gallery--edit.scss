@@ -1,35 +1,30 @@
-// image editing / previewing area
-
-
 // holder for prev/next selection in the image preview/edit area
 .nav {
     display: block;
     margin-top: 0;
     padding-right: 0;
 
-    .options-button {
-        @extend %modal--options-button;
-    }
-
     @media #{$bp-alpha} {
         display: inline-block;
         margin-left: size(5);
-        margin-top: .65rem;
+        margin-top: .75rem;
         padding-right: size(25);
-
-        .options-button {
-            margin-bottom: 0;
-        }
     }
 
     @media #{$bp-beta} {
         float: right;
     }
 
-    .options-button {
+    .btn-options {
+        border-color: palette(blue, mid);
+        color: palette(gray, light);
 
         &:last-child {
             margin-right: 0;
+        }
+
+        @media #{$bp-alpha} {
+            margin-bottom: 0;
         }
     }
 }
@@ -123,6 +118,18 @@
 
     &:last-child {
         margin-right: 0;
+    }
+
+    .btn-success {
+        @extend %button;
+
+        &:focus {
+            background-color: palette(alert, success--dark);
+        }
+
+        &:hover {
+            background-color: palette(alert, success);
+        }
     }
 }
 

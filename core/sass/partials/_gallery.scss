@@ -1,4 +1,4 @@
-// styling the options-button within the modal 
+// styling the options-button within the modal
 %modal--options-button {
     border: 1px solid palette(blue, dark);
 
@@ -13,19 +13,11 @@
     }
 }
 
-//
-*
-**
-***
-*** padding/margins and overall layout with top bar info
-***
-**
-*
+// padding/margins and overall layout with top bar info
 
-
-// similar to bar-top, but for the modal window 
+// similar to bar-top, but for the modal window
 .modal--bar-top {
-    background-color: palette(blue, light);
+    background-color: palette(blue, dark);
     height: auto;
     margin: 0 auto;
     padding: 0 size(25);
@@ -57,7 +49,16 @@
         color: palette(gray, light);
 
         &:hover {
-            color: palette(blue, dark);
+            color: palette(blue, light);
+        }
+    }
+
+    .btn-success {
+        border-color: palette(blue, mid);
+        color: white;
+
+        &:hover {
+            background-color: palette(blue, mid);
         }
     }
 
@@ -69,8 +70,8 @@
 // search bar
 .modal--bar-top input.search-bar {
     @include placeholder { color: palette(blue, light); }
-    background-color: palette(gray, white);
-    border: 1px solid palette(blue, mid);
+    background-color: palette(blue, mid);
+    border: 0;
     box-sizing: border-box;
     color: palette(gray, white);
     margin-bottom: 0;
@@ -85,7 +86,7 @@
     }
 }
 
-// initial options to update the image / gallery ("add media", "upload") 
+// initial options to update the image / gallery ("add media", "upload")
 .modal--bar-top .options {
     display: block;
     margin-left: 0;
@@ -137,7 +138,7 @@
     }
 }
 
-// case to hold all the images in place within .ngdialog-content 
+// case to hold all the images in place within .ngdialog-content
 .media-wrapper {
     background-color: palette(gray, light);
     overflow-x: hidden;
@@ -155,7 +156,7 @@
     }
 }
 
-// wrapper to hold elements and push down below the bar-top within .media-wrapper 
+// wrapper to hold elements and push down below the bar-top within .media-wrapper
 .gallery-media-wrapper {
     @extend .media-wrapper;
     top: 15rem;
@@ -170,24 +171,20 @@
     }
 }
 
-// padding/margins for browse area 
+// padding/margins for browse area
 .media-holder {
     background-color: palette(gray, light);
     overflow-y: scroll;
     padding: size(25);
+
+    .btn-options {
+        margin: 0;
+        width: 100%;
+    }
 }
 
-//
-*
-**
-***
-*** gallery previews
-***
-**
-*
 
-
-// styling to keep each image/video at correct proportions 
+// styling to keep each image/video at correct proportions
 .media-tile {
     display: inline-block;
     margin: 0 size(25) * .5 size(25) * .5 0;
@@ -242,7 +239,7 @@
     }
 }
 
-// preview of files currently being used as a single image or in the gallery 
+// preview of files currently being used as a single image or in the gallery
 .img-gallery {
     display: inline-block;
     margin: 0 size(25) 2rem size(25);
@@ -260,7 +257,7 @@
     }
 }
 
-// holder for info (css classes, links etc..) related to .img-gallery 
+// holder for info (css classes, links etc..) related to .img-gallery
 .img-gallery-info {
     margin-left: size(25);
     overflow: hidden;

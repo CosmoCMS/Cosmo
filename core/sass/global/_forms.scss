@@ -1,6 +1,6 @@
 input {
-	background-color: palette(gray, white--half);
-	border: 1px solid palette(gray, mid--dark);
+	background-color: palette(gray, xlight);
+	border: 1px solid palette(gray, mid--light);
 	box-sizing: border-box;
 	color: palette(blue, dark);
 	display: inline-block;
@@ -41,7 +41,7 @@ label {
 	text-transform: uppercase;
 }
 
-// number count for things like titles, descriptions etc... 
+// number count for things like titles, descriptions etc...
 .num-count {
 	color: palette(blue, light);
 	font-size: .85em;
@@ -53,7 +53,7 @@ label {
 .cos-select {
 	background: url(../img/arrows.svg) no-repeat transparent right;
 	background-size: 2.25rem size(15);
-	border: 1px solid palette(gray, mid--dark);
+	border: 1px solid palette(gray, mid--light);
 	box-sizing: border-box;
 	color: palette(blue, dark);
 	cursor: pointer;
@@ -78,14 +78,16 @@ label {
 	}
 }
 
-// same as .cos-select just half width in order to have 2 up 
-.cos-select--half {
+.cos-select--half-width {
 	@extend .cos-select;
-	display: inline-block;
-	margin-right: size(5);
-	width: 8rem;
 
-	&:last-child {
-		margin-right: 0;
+	@media #{$bp-beta} {
+		display: inline-block;
+		vertical-align: top;
+		width: 48.98%;
+
+		&:nth-child(odd) {
+			margin-right: 1%;
+		}
 	}
 }

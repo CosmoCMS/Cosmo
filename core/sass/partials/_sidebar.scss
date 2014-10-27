@@ -1,6 +1,6 @@
 // sidebar for all of cosmo editing outside of the live editing done on page
 .sidebar {
-    background-color: palette(gray, light);
+    background-color: palette(gray, xlight);
     bottom: 0;
     height: 100%;
     left: -100%;
@@ -34,19 +34,13 @@
 
     .hamburger {
         background-color: palette(blue, light);
-        border-radius: 100%;
-        left: 1rem;
+        left: 0;
         outline: none;
-        padding: .7rem .75rem .7rem .9rem;
+        padding: size(10) size(15);
         transition: background-color .15s ease, color .15s ease;
 
         &:hover {
             background-color: palette(blue, dark);
-            color: palette(gray, light);
-
-            .icon {
-                fill: palette(gray, light);
-            }
         }
 
         svg {
@@ -94,7 +88,7 @@
 
 // bar to be used at the top of each area of the sidebar
 .bar-top {
-    background-color: palette(blue, light);
+    background-color: palette(blue, dark);
     height: 3.75rem;
     overflow: hidden;
     width: 100%;
@@ -108,17 +102,12 @@
         margin-left: size(5);
     }
 
-    h2 {
-        color: palette(gray, white);
-        width: 9.375rem;
-    }
-
     i {
         color: palette(gray, light);
         margin-left: size(25);
 
         &:hover {
-            color: palette(blue, dark);
+            color: palette(blue, light);
         }
     }
 
@@ -143,15 +132,17 @@
 
     p {
         color: palette(gray, white);
+        font-size: 1em;
         margin-bottom: 0;
     }
 
     a {
         color: palette(gray, light);
-        font-weight: 700;
+        font-size: .8em;
+        font-weight: 200;
 
         &:hover {
-            color: palette(blue, dark);
+            color: palette(blue, light);
         }
     }
 }
@@ -164,6 +155,6 @@
 
 // similar to .form-case, but with a border at the bottom
 .form-case--border {
-    border-bottom: 1px solid palette(gray, mid--dark);
+    border-bottom: 1px solid palette(gray, mid--light);
     padding: size(25);
 }

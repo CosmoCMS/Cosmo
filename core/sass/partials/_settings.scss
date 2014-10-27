@@ -3,4 +3,14 @@
     button {
         margin-bottom: 2rem;
     }
+
+    label.maint-mode, input[type=checkbox]:checked+label {
+        display: block;
+    }
+
+    .images {
+        height: 15rem;
+        margin-bottom: size(20);
+        overflow: hidden;
+    }
 }

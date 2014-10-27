@@ -5,14 +5,9 @@
         button {
             margin-bottom: 0;
         }
-    }
-}
 
-div.form {
-    width: 100%;
-
-    @media #{$bp-beta} {
-        display: inline-block;
-        width: 49.5%;
+        small {
+            margin-top: size(20);
+        }
     }
 }

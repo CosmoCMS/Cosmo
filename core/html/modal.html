@@ -2,10 +2,10 @@
     <!-- Gallery Area -->
     <div ng-show='files.gallery'>
         <div class="modal--bar-top">
-            <h1 class="no-marg">Media</h1><h2>Gallery</h2>
+            <h1 class="no-marg">Media</h1>
             <div class="options">
                 <button class="btn-options no-marg" ng-click="files.gallery=false">Add Media</button>
-                <button class="btn-success no-marg" ng-click="saveGallery()">Update Gallery</button>
+                <button class="btn-success no-marg" ng-click="saveGallery()">Update</button>
             </div>
         </div>
         <div class="media-wrapper">
@@ -48,7 +48,7 @@
         <div ng-show='!upload'>
             <div class="modal--bar-top" id="top-anchor">
                 <i class="fa fa-chevron-left" ng-if="images" ng-click="files.gallery=true"></i>
-                <h1>Search</h1><h2>Media</h2>
+                <h1>Search Media</h1>
 
                 <div class="options">
 
@@ -190,16 +190,14 @@
                           <i class="fa fa-file-audio-o"></i>
                       </div>
                   </div>
-                  <div class="btncase">
-                    <button class="btn-options" ng-click="numFiles=numFiles+12">View More</button>
-                  </div>
+                  <button class="btn-options" ng-click="numFiles=numFiles+12">View More</button>
                 </div>
         </div>
         <!-- Upload Content Area -->
         <div ng-show='upload'>
             <div class="modal--bar-top">
                     <i class="fa fa-chevron-left" ng-click="upload=!upload"></i>
-                <h1>Upload</h1><h2>A File</h2>
+                <h1>Upload Files</h1>
             </div>
             <div class="uploader">
                 <input class="url-uploader" type="text" ng-model="files.uploadURL" placeholder="Upload from URL: e.g., http://player.vimeo.com/video/21291918">

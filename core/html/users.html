@@ -3,7 +3,7 @@
 
         <div class="bar-top">
             <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
-            <h1>Manage</h1><h2>Users</h2>
+            <h1>Users</h1>
         </div>
 
         <div class="form-case--border">
@@ -17,17 +17,25 @@
                     </div>
                 </button>
                 <div class="new-user" ng-show="createUser">
-                    <label for="username">Username</label>
-                    <input id="username" type="text" ng-model="register.username">
+                    <div class="half-width">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" ng-model="register.username">
+                    </div>
 
-                    <label for="email">Email</label>
-                    <input id="email" type="text" ng-model="register.email">
+                    <div class="half-width">
+                        <label for="email">Email</label>
+                        <input id="email" type="text" ng-model="register.email">
+                    </div>
 
-                    <label for="password">Password</label>
-                    <input id="password" type="password" ng-model="register.password">
+                    <div class="half-width">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" ng-model="register.password">
+                    </div>
 
-                    <label for="confirm-password">Confirm Password</label>
-                    <input id="confirm-password"type="password" ng-model="register.confirmPassword">
+                    <div class="half-width">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password"type="password" ng-model="register.confirmPassword">
+                    </div>
 
                     <button class="btn-success" ng-click="register()">Create User</button>
                 </div>
@@ -40,8 +48,15 @@
         <ul>
             <li ng-repeat="user in users.data | filter:users.search">
 
-                <label for="username">Username</label>
-                <input id="username" ng-model="user.username" ng-keyup="updateUser(user)">
+                <div class="half-width">
+                    <label for="username">Username</label>
+                    <input id="username" ng-model="user.username" ng-keyup="updateUser(user)">
+                </div>
+
+                <div class="half-width">
+                    <label for="email">Email</label>
+                    <input id="email" ng-model="user.email" ng-keyup="updateUser(user)">
+                </div>
 
                 <label for="role">Role</label>
                 <div class="cos-select">
@@ -52,9 +67,6 @@
                         <option value="contributor">contributor</option>
                     </select>
                 </div>
-
-                <label for="email">Email</label>
-                <input id="email" ng-model="user.email" ng-keyup="updateUser(user)">
             </li>
         </ul>
     </div>
