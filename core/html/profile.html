@@ -6,24 +6,33 @@
     </div>
 
     <div class="form-case">
-        <label for="name">Name</label>
-        <input id="name" ng-model="profile.name">
+        <div class="half-width">
+            <label for="name">Name</label>
+            <input id="name" ng-model="profile.name">
+        </div>
+
+        <div class="half-width">
+            <label for="email">Email</label>
+            <input id="email" ng-model="profile.email">
+        </div>
+
+        <div class="half-width">
+            <label for="facebook">Facebook</label>
+            <input id="facebook" ng-model="profile.facebook">
+        </div>
+
+        <div class="half-width">
+            <label for="twitter">Twitter</label>
+            <input id="twitter" ng-model="profile.twitter">
+        </div>
 
         <label for="bio">Bio</label>
         <textarea id="bio" ng-model="profile.bio"></textarea>
 
-        <label for="email">Email</label>
-        <input id="email" ng-model="profile.email">
-
-        <label for="facebook">Facebook</label>
-        <input id="facebook" ng-model="profile.facebook">
-
-        <label for="twitter">Twitter</label>
-        <input id="twitter" ng-model="profile.twitter">
-
-        <label for="photo">Profile Photo</label>
-        <img ng-src="{{profile.photo}}" ng-click="addProfilePhoto()">
-
+        <div class="half-width">
+            <label for="photo">Profile Photo</label>
+            <img ng-src="{{profile.photo}}" ng-click="addProfilePhoto()">
+        </div>
 
         <div>
             <button class="btn-success" ng-click="updateProfile()">Save</button>

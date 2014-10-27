@@ -16,8 +16,12 @@
     }
 
     .btn-options {
-        border-color: palette(blue, mid);
+        border-color: palette(blue, light);
         color: palette(gray, light);
+
+        &:hover {
+            border-color: palette(blue, mid);
+        }
 
         &:last-child {
             margin-right: 0;

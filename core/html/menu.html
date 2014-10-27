@@ -26,31 +26,35 @@
     <div ng-show="menu.panel==='edit'">
         <div class="bar-top">
             <i class="fa fa-chevron-left " ng-click="menu.panel='manage'"></i>
-            <h1>Editing</h1><h2>{{menu.name}}</h2>
+            <h1>Editing {{menu.name}}</h1>
         </div>
         <div class="form-case">
-            <label for="name">Name:</label>
-            <input value="name" type="text" ng-model="menu.name">
-            <label for="area">Area:</label>
-            <div class="cos-select">
-                <select value="area" ng-model="menu.area">
-                    <option value="primary">Primary</option>
-                    <option value="secondary">Secondary</option>
-                    <option value="footer">Footer</option>
-                    <option value="sidebar1">Sidebar 1</option>
-                    <option value="sidebar2">Sidebar 2</option>
-                    <option value="sidebar3">Sidebar 3</option>
-                    <option value="menu1">Menu 1</option>
-                    <option value="menu2">Menu 2</option>
-                    <option value="menu3">Menu 3</option>
-                    <option value="menu4">Menu 4</option>
-                    <option value="menu5">Menu 5</option>
-                    <option value="menu6">Menu 6</option>
-                    <option value="menu7">Menu 7</option>
-                    <option value="menu8">Menu 8</option>
-                    <option value="menu9">Menu 9</option>
-                    <option value="menu10">Menu 10</option>
-                </select>
+            <div class="half-width">
+                <label for="name">Name:</label>
+                <input value="name" type="text" ng-model="menu.name">
+            </div>
+            <div class="half-width">
+                <label for="area">Area:</label>
+                <div class="cos-select">
+                    <select value="area" ng-model="menu.area">
+                        <option value="primary">Primary</option>
+                        <option value="secondary">Secondary</option>
+                        <option value="footer">Footer</option>
+                        <option value="sidebar1">Sidebar 1</option>
+                        <option value="sidebar2">Sidebar 2</option>
+                        <option value="sidebar3">Sidebar 3</option>
+                        <option value="menu1">Menu 1</option>
+                        <option value="menu2">Menu 2</option>
+                        <option value="menu3">Menu 3</option>
+                        <option value="menu4">Menu 4</option>
+                        <option value="menu5">Menu 5</option>
+                        <option value="menu6">Menu 6</option>
+                        <option value="menu7">Menu 7</option>
+                        <option value="menu8">Menu 8</option>
+                        <option value="menu9">Menu 9</option>
+                        <option value="menu10">Menu 10</option>
+                    </select>
+                </div>
             </div>
             <div class="nestedSortable-list">
                 <div ui-tree>
@@ -87,10 +91,14 @@
             </div>
 
             <div ng-show="menu.editLink">
-                <label for="text">Edit Link Text</label>
-                <input value="text" type="text" ng-model="menu.editLinkText">
-                <label for="url">Edit Link URL</label>
-                <input value="url" type="text" ng-model="menu.editLinkURL">
+                <div class="half-width">
+                    <label for="text">Edit Link Text</label>
+                    <input value="text" type="text" ng-model="menu.editLinkText">
+                </div>
+                <div class="half-width">
+                    <label for="url">Edit Link URL</label>
+                    <input value="url" type="text" ng-model="menu.editLinkURL">
+                </div>
 
                 <button class="btn-error" ng-click="deleteLink()">delete link</button>
                 <button class="btn-success" ng-click="updateLink()">update link</button>

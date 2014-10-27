@@ -36,7 +36,7 @@
         background-color: palette(blue, light);
         left: 0;
         outline: none;
-        padding: size(10) size(15);
+        padding: size(15);
         transition: background-color .15s ease, color .15s ease;
 
         &:hover {

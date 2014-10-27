@@ -8,7 +8,7 @@
     }
 
     &:hover {
-        background-color: palette(blue, mid);
+        background-color: palette(gray, light);
         color: palette(gray, light);
     }
 }
@@ -59,6 +59,7 @@
 
         &:hover {
             background-color: palette(blue, mid);
+            border-color: palette(blue, mid);
         }
     }
 
@@ -69,16 +70,17 @@
 
 // search bar
 .modal--bar-top input.search-bar {
-    @include placeholder { color: palette(blue, light); }
-    background-color: palette(blue, mid);
+    @include placeholder { color: palette(gray, light); }
+    background-color: transparent;
     border: 0;
+    border-bottom: 1px solid palette(gray, light);
     box-sizing: border-box;
     color: palette(gray, white);
     margin-bottom: 0;
     width: 100%;
 
     &:focus {
-        color: palette(blue, dark);
+        color: palette(gray, xlight);
     }
 
     @media #{$bp-beta} {
@@ -120,7 +122,9 @@
     }
 
     .cos-select {
+        background-color: palette(blue, mid);
         border-color: palette(blue, mid);
+        color: palette(gray, light);
         display: inline-block;
         height: 2.4rem;
         margin-bottom: 0;
