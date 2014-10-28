@@ -284,7 +284,7 @@ angular.module('cosmo', [])
                 
             };
             updateCosmo();
-            console.log(Page);
+            
             scope.$on('contentGet', function(){
                 updateCosmo();
             });
@@ -1128,12 +1128,18 @@ angular.module('cosmo', [])
             if(!angular.isString(imageURL) || maxSize === 'nonresponsive' || imageURL.indexOf('-2048') > 0 || imageURL.indexOf('-1024.') > 0 || imageURL.indexOf('-512.') > 0 || imageURL.indexOf('-320.') > 0)
                 return imageURL;
             
+            var width = window.innerWidth;
+            
+            // Check for retina displays
+            if(window.devicePixelRatio > 1)
+                width = width * window.devicePixelRatio;
+            
             // Check screen size for responsive images
-            if(window.innerWidth >= 2048)
+            if(width >= 2048)
                 var quality = 2048;
-            else if(window.innerWidth >= 1024)
+            else if(width >= 1024)
                 var quality = 1024;
-            else if(window.innerWidth >= 512)
+            else if(width >= 512)
                 var quality = 512;
             else
                 var quality = 320;
@@ -2106,6 +2112,14 @@ angular.module('cosmo', [])
     $scope.admin.username = Users.username;
     $scope.admin.roleNum = Users.roleNum;
     
+    // Get latest official message from Cosmo (for version updates and blog posts)
+    $http.get('http://www.cosmocms.org/message.php')
+    .success(function(data){
+        data = angular.fromJson(data);
+        $scope.admin.message = $sce.trustAsHtml(data.message);
+    });
+    
+    // Get user's info
     REST.users.get({userID: Users.id}, function(data){
         Users.name = data.name;
         Users.bio = data.bio;
@@ -2940,7 +2954,7 @@ angular.module('cosmo', [])
         } else
             $scope.page.suggestions = [];
     };
-
+    
     // Select tag from autocomplete
     $scope.selectSuggestion = function(tag){
         var tags = angular.copy($scope.page.tags);
@@ -2949,7 +2963,7 @@ angular.module('cosmo', [])
         $scope.page.tags = tags;
         $scope.page.suggestions = [];
     };
-
+    
     // Save the page
     $scope.savePage = function(duplicate){
         
@@ -2971,10 +2985,10 @@ angular.module('cosmo', [])
                 $scope.page.title = Page.header;
         }
         
-        // If there's no custom url, use the title
-        if($scope.page.url.length === 0 || $scope.page.url === '/new'){
-            var title = $scope.page.title.replace(/ /g, '-').toLowerCase;
-            $scope.page.url = title;
+        // If there's no custom url, throw an error
+        if($scope.page.url.length === 0 || $scope.page.url === 'new'){
+            $rootScope.$broadcast('notify', { message: 'No URL Input', classes: 'alert-error' });
+            return;
         }
         
         // Get the scheduled date to publish
