@@ -5,6 +5,9 @@
         <a ng-click="logout()">Log Out</a>
     </div>
 </div>
+<div>
+    <p ng-bind-html="admin.mesage"></p>
+</div>
 <ul>
     <li ng-show="admin.roleNum<=3" ng-class="{active: active=='content'}" ng-click="contentDropdown=!contentDropdown">
         <a><i class="fa fa-file-text-o "></i>Content</a>
