@@ -41,13 +41,13 @@
 // full length bar for wysiwyg
 .cosmo-toolbar-large {
     background-color: palette(gray, xlight);
+    border: 1px solid palette(gray, light);
     border-radius: 5px;
     color: palette(gray, light);
     cursor: pointer;
     font-size: .787em;
     height: 2.094rem;
     position: absolute;
-    width: 13.594rem;
     z-index: z(hamburger);
 
     td,tr,hr {
