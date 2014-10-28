@@ -6,7 +6,7 @@
     display: block;
     height: auto;
     position: relative;
-    width: 14.5rem;
+    width: 10rem;
 
     button {
         background-color: transparent;
@@ -15,7 +15,7 @@
         display: block;
         font-family: $font-alpha;
         outline: none;
-        padding: 10px;
+        padding: .625rem;
         text-align: left;
         width: 100%;
 
@@ -25,6 +25,7 @@
             i {
                 background-color: transparent;
                 color: palette(blue, light);
+                vertical-align: middle;
             }
         }
 
@@ -35,8 +36,6 @@
         }
     }
 }
-
-// --------------------------------------- End Mixins ---------------------------------------
 
 // full length bar for wysiwyg
 .cosmo-toolbar-large {
@@ -74,8 +73,6 @@
             display: inline-block;
             padding: 0;
             border: 0;
-            height: 34px;
-            width: 1.438rem;
 
             &:after, &:before {
                 display: none;
@@ -96,19 +93,24 @@
                 height: 2.094rem;
                 margin: 0;
                 outline: none;
-                padding-right: 0 0 0 .366rem;
+                padding-right: .366rem;
                 text-align: center;
 
                 &:hover {
+                    background-color: palette(gray, light);
 
                     i {
                         color: palette(blue, light);
                     }
                 }
+            }
+        }
 
-                .text-alignment {
-                    margin-top: -.25rem;
-                }
+        .table, .code {
+            display: none;
+
+            @media #{$bp-gamma} {
+                display: inline-block;
             }
         }
     }
@@ -117,7 +119,6 @@
 .type-dropdown {
     @extend %wysiwyg-dropdown;
     left: 0;
-    width: 8.125rem;
 
     button {
 
@@ -172,106 +173,117 @@
 
 .format-dropdown {
     @extend %wysiwyg-dropdown;
-    left: 1.25rem;
-    width: 9.063rem;
+    left: .4rem;
 }
 
 .link-dropdown {
     @extend %wysiwyg-dropdown;
-    left: 2.813rem;
-    width: 8.438rem;
+    left: 2.3rem;
 }
 
 .list-dropdown {
     @extend %wysiwyg-dropdown;
-    left: 4.656rem;
-    width: 9.6888rem;
+    left: 4.3rem;
 }
 
 .align-dropdown {
     @extend %wysiwyg-dropdown;
-    left: 6.406rem;
-    width: 8.281rem;
+    left: 6.2rem;
 }
 
 
 .table-dropdown {
     @extend %wysiwyg-dropdown;
-    left: 8.031rem;
-    width: 8.438rem;
+    display: none;
 
-    .divide {
-        border-bottom: 1px solid palette(gray, mid--light);
-        margin-bottom: .39075rem;
-        padding-bottom: .7815rem;
+    @media #{$bp-gamma} {
+        display: block;
+        left: 8.3rem;
+
+        .divide {
+            border-bottom: 1px solid palette(gray, mid--light);
+            margin-bottom: .39075rem;
+            padding-bottom: .7815rem;
+        }
     }
 }
 
 .table-dropdown--insert {
     @extend %wysiwyg-dropdown;
-    left: -11.3rem;
-    margin-top: -2.2rem;
-    padding: .469rem .156rem .156rem .469rem;
-    position: absolute;
-    width: 10.75rem;
+    display: none;
 
+    @media #{$bp-gamma} {
+        display: block;
+        left: -11.3rem;
+        margin-top: -2.2rem;
+        padding: .469rem .156rem .156rem .469rem;
+        position: absolute;
+        width: 10.75rem;
 
-    p {
-        margin: 0;
-    }
+        p {
+            margin: 0;
+        }
 
-    .cell-select {
-        border: 1px solid palette(gray, mid--light);
-        border-radius: 0;
-        display: inline-block;
-        height: .9rem;
-        margin: 0 .156rem .156rem 0;
-        padding: 0;
-        width: .9rem;
+        .cell-select {
+            border: 1px solid palette(gray, mid--light);
+            border-radius: 0;
+            display: inline-block;
+            height: .9rem;
+            margin: 0 .156rem .156rem 0;
+            padding: 0;
+            width: .9rem;
 
-        &:hover {
+            &:hover {
+                background-color: palette(blue, light);
+            }
+
+            &:nth-child(10n) {
+                margin-right: 0;
+            }
+        }
+
+        .cell-select--focus {
             background-color: palette(blue, light);
+            border: 1px solid palette(gray, mid--light);
+            display: inline-block;
         }
-
-        &:nth-child(10n) {
-            margin-right: 0;
-        }
-    }
-
-    .cell-select--focus {
-        background-color: palette(blue, light);
-        border: 1px solid palette(gray, mid--light);
-        display: inline-block;
     }
 }
 
 .media-dropdown {
     @extend %wysiwyg-dropdown;
-    left: 9.656rem;
-    width: 9rem;
+    left: 8.3rem;
+
+    @media #{$bp-gamma} {
+        left: 10.2rem;
+    }
 }
 
 .code-dropdown {
     @extend %wysiwyg-dropdown;
-    left: 11.469rem;
-    width: 10rem;
+    display: none;
 
-    .directive-dropdown {
-        background-color: palette(gray, light);
-        border-radius: 0 0 5px 5px;
-        border-top: 1px solid palette(gray, mid--light);
+    @media #{$bp-gamma} {
+        display: block;
+        left: 12.1rem;
 
-        button {
-            padding-left: 15px;
+        .directive-dropdown {
+            background-color: palette(gray, light);
+            border-radius: 0 0 5px 5px;
+            border-top: 1px solid palette(gray, mid--light);
 
-            &:hover {
-                background-color: palette(blue, light);
-                border-radius: 0;
-                color: palette(gray, light);
-            }
+            button {
+                padding-left: 15px;
 
-            &:last-child:hover {
-                border-radius: 0 0 5px 5px;
+                &:hover {
+                    background-color: palette(blue, light);
+                    border-radius: 0;
+                    color: palette(gray, light);
+                }
+
+                &:last-child:hover {
+                    border-radius: 0 0 5px 5px;
+                }
             }
         }
     }
@@ -289,16 +301,16 @@ pre {
     border: 0;
     min-height: 2rem;
     outline: 0;
-    transition: outline .2s ease;
+    transition: outline .1s ease;
 
     &:hover {
-        outline: 1px solid palette(gray, mid);
+        outline: 1px solid palette(gray, mid--light);
     }
 
-    img, iframe {
+    div, h1, h2, h3, h4, h5, h6, iframe, img, table, video {
 
         &:hover {
-            outline: 1px solid palette(gray, mid);
+            outline: 1px solid palette(gray, mid--light);
         }
     }
 }

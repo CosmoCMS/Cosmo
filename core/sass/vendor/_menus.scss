@@ -1,133 +1,68 @@
-.nestedSortable-drag {
-    opacity: .8;
-    pointer-events: none;
-    position: absolute;
-    z-index: 999;
-}
-
-.nestedSortable-handle {
-    background: palette(gray, light);
-    border: 1px solid palette(gray, mid);
-    box-sizing: border-box;
-    color: palette(blue, dark);
-    cursor: move;
-    font-family: $font-alpha;
-    font-weight: 200;
-    display: block;
-    margin: size(5) 0;
-    min-height: 2em;
-    padding: .8em 1.1em;
-    text-decoration: none;
-    transition: all .25s ease;
-
-    &:hover {
-        background: palette(blue, dark);
-        border-color: 1px solid palette(blue, dark);
-        color: palette(gray, light);
-        transition: all .25s ease;
-
-        a {
-            color: palette(gray, mid);
-        }
-
-        h6 {
-            color: palette(gray, light);
-        }
-
-        i {
-            color: palette(blue, light);
-        }
-    }
-
-    a {
-        color: palette(blue, mid);
-    }
-}
-
-.nestedSortable-item, .nestedSortable-placeholder {
-    display: block;
-    margin: 0;
-    min-height: size(5);
-    padding: 0;
-    position: relative;
-}
-
-.nestedSortable-list {
-    background: palette(gray, mid);
-    display: block;
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    position: relative;
-
-    .nestedSortable-list {
-        padding-left: size(25) * .5;
-    }
-}
-
-.nestedSortable-placeholder {
-    background: palette(gray, mid);
-    border: 2px dashed palette(gray, dark);
-    box-sizing: border-box;
-    margin: size(5) 0;
-    min-height: 2rem;
-    padding: 0;
-}
-
-.tree-node {
-    border: 1px solid #dae2ea;
-    background: #f8faff;
-    color: #7c9eb2;
-}
-.tree-node-content {
-    margin: 10px;
-}
-.tree-handle {
-    padding: 10px;
-    background: #428bca;
-    color: #FFF;
-    margin-right: 10px;
-}
-
-.angular-ui-tree-handle:hover {
-}
-
-.angular-ui-tree-placeholder {
-    background: #f0f9ff;
-    border: 2px dashed #bed2db;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-
-.btn {
-    margin-right: 8px;
+.angular-ui-tree {
+    margin-bottom: size(20);
 }
 
 .angular-ui-tree-handle {
-    background: #f8faff;
-    border: 1px solid #dae2ea;
-    color: #7c9eb2;
-    padding: 10px 10px;
-}
+    background: palette(gray, light);
+    border: 1px solid palette(gray, mid--light);
+    color: palette(blue, dark);
+    padding: size(10);
 
-.angular-ui-tree-handle:hover {
-    color: #438eb9;
-    background: #f4f6f7;
-    border-color: #dce2e8;
+    &:hover {
+        background: palette(gray, xlight);
+        color: palette(blue, light);
+        cursor: move;
+    }
 }
 
 .angular-ui-tree-placeholder {
-    background: #f0f9ff;
-    border: 2px dashed #bed2db;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    background: palette(gray, light);
+    border: 2px dashed palette(blue, light);
 }
 
 
-.group-title {
-    background-color: #687074 !important;
-    color: #FFF !important;
+ol.angular-ui-tree-nodes {
+    margin-bottom: size(5);
+
+    p {
+        display: inline-block;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    li ol {
+        font-family: $font-alpha;
+        margin-left: size(30);
+
+        .angular-ui-tree-handle {
+            border-top: 0;
+        }
+    }
+}
+
+.menu-manager {
+    float: right;
+    margin-top: .125rem;
+
+    i {
+        color: palette(gray, mid);
+        margin-right: size(5);
+        vertical-align: middle;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .fa-pencil-square-o:hover {
+        color: palette(blue, mid);
+    }
+
+    .fa-plus:hover {
+        color: palette(alert, success);
+    }
+
+    .fa-times:hover {
+        color: palette(alert, error);
+    }
 }
