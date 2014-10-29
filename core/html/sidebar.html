@@ -1,5 +1,5 @@
 <div class="bar-top">
-    <div class="prfl-img" cs-bg-image="{{admin.photo}}" ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"></div>
+    <div class="prfl-img" style="background-image: url({{admin.photo}})" ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"></div>
     <div class="prfl-info">
         <p ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"> {{admin.username}}</p>
         <a ng-click="logout()">Log Out</a>

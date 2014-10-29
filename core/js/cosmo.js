@@ -2105,7 +2105,7 @@ angular.module('cosmo', [])
  *           Control the admin sidebar            *
  **************************************************/
 
-.controller('adminPanelCtrl', ['$scope', 'Users', 'REST', '$location', '$timeout', '$http', function($scope, Users, REST, $location, $timeout, $http){
+.controller('adminPanelCtrl', ['$scope', 'Users', 'REST', '$location', '$timeout', '$http', '$sce', function($scope, Users, REST, $location, $timeout, $http, $sce){
 
     $scope.admin = {};
     $scope.admin.sidebar = 'core/html/sidebar.html';
@@ -2113,11 +2113,24 @@ angular.module('cosmo', [])
     $scope.admin.roleNum = Users.roleNum;
     
     // Get latest official message from Cosmo (for version updates and blog posts)
-    $http.get('http://www.cosmocms.org/message.php')
+    $http.get('http://www.cosmocms.org/message.php?dontcache='+ new Date().getTime())
     .success(function(data){
         data = angular.fromJson(data);
-        $scope.admin.message = $sce.trustAsHtml(data.message);
+        $scope.admin.messageID = data.id;
+        var dontShowCookie = document.cookie.substr(document.cookie.indexOf('dontShowMessage=')+16, 5);
+        if($scope.admin.messageID !== dontShowCookie){
+            $scope.admin.message = $sce.trustAsHtml(data.message);
+            $scope.admin.displayMessage = true;
+        }
     });
+    
+    // Set a cookie so you don't see this message any more
+    $scope.removeMessage = function(){
+        var expdate = new Date();
+        expdate.setDate(expdate.getDate() + 90); // 90 days in the future
+        document.cookie = "dontShowMessage=" + $scope.admin.messageID + ";expires=" + expdate.toGMTString();
+        $scope.admin.displayMessage = false;
+    };
     
     // Get user's info
     REST.users.get({userID: Users.id}, function(data){
