@@ -5,8 +5,8 @@
         <a ng-click="logout()">Log Out</a>
     </div>
 </div>
-<div>
-    <p ng-bind-html="admin.mesage"></p>
+<div class="new-message--cosmo" ng-show="admin.displayMessage">
+    <p class="message" ng-bind-html="admin.message"></p><span ng-click="removeMessage()"><i class="fa fa-times"></i></span>
 </div>
 <ul>
     <li ng-show="admin.roleNum<=3" ng-class="{active: active=='content'}" ng-click="contentDropdown=!contentDropdown">

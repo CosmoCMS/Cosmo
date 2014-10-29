@@ -161,3 +161,29 @@
     border-bottom: 1px solid palette(gray, mid--light);
     padding: size(25);
 }
+
+.new-message--cosmo {
+    background-color: palette(blue, light);
+    color: palette(gray, light);
+    padding: 1rem 1.913rem;
+    position: relative;
+
+    .message {
+        display: inline-block;
+        margin: 0;
+        width: 90%;
+
+        a {
+            color: palette(blue, dark);
+            font-weight: 400;
+
+            &:hover {
+                color: palette(gray, dark);
+            }
+        }
+    }
+
+    span {
+        float: right;
+    }
+}

@@ -36,6 +36,7 @@
 // editing image information once an image has been selected
 .img-edit {
     background-color: palette(gray, light);
+    box-sizing: border-box;
     height: 100%;
     left: 0;
     overflow-x: hidden;
@@ -46,8 +47,7 @@
     z-index: z(minimal);
 
     @media #{$bp-beta} {
-        left: auto;
-        margin-left: -1.55rem;
+        position: relative;
         width: 43.75rem;
     }
 
@@ -58,6 +58,7 @@
 
 // preview of the image within the editing area
 .img-edit .img-prev {
+    box-sizing: border-box;
     display: inline-block;
     height: auto;
     margin-bottom: 1.5rem;
@@ -75,14 +76,13 @@
     }
 
     .img-size {
+        box-sizing: border-box;
         padding: 0 size(25);
         width: 100%;
 
         @media #{$bp-beta} {
             display: inline-block;
-            margin-left: size(10);
-            padding: 0 size(10);
-            width: 47%;
+            width: 49.5%;
             vertical-align: top;
         }
 
@@ -96,20 +96,21 @@
         width: 100%;
 
         @media #{$bp-beta} {
-            width: 47%;
+            width: 49.5%;
         }
     }
 }
 
 // text input area below the image preview
 .img-edit .img-info {
+    box-sizing: border-box;
     display: inline-block;
-    margin-right: size(25);
+    margin-right: 2%;
     vertical-align: top;
     width: 100%;
 
     @media #{$bp-beta} {
-        width: 47%;
+        width: 48.5%;
     }
 
     input {
@@ -139,6 +140,7 @@
 
 // holder for information to input in the img-edit area
 .media-info {
+    box-sizing: border-box;
     display: inline-block;
     padding: 0 size(25);
     width: 100%;

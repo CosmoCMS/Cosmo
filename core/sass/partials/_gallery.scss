@@ -16,6 +16,7 @@
 // similar to bar-top, but for the modal window
 .modal--bar-top {
     background-color: palette(blue, dark);
+    box-sizing: border-box;
     height: auto;
     margin: 0 auto;
     padding: 0 size(25);
@@ -72,7 +73,6 @@
     background-color: transparent;
     border: 0;
     border-bottom: 1px solid palette(gray, light);
-    box-sizing: border-box;
     color: palette(gray, white);
     margin-bottom: 0;
     width: 100%;
@@ -88,6 +88,7 @@
 
 // initial options to update the image / gallery ("add media", "upload")
 .modal--bar-top .options {
+    box-sizing: border-box;
     display: block;
     margin-left: 0;
 
@@ -98,6 +99,11 @@
 
     button {
         margin-bottom: size(10);
+    }
+
+    .btn-options {
+        color: palette(gray, light);
+        border-color: palette(blue, mid);
     }
 
     .success-button, .error-button {
@@ -143,6 +149,7 @@
 // case to hold all the images in place within .ngdialog-content
 .media-wrapper {
     background-color: palette(gray, light);
+    box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: scroll;
     position: absolute;
@@ -176,6 +183,7 @@
 // padding/margins for browse area
 .media-holder {
     background-color: palette(gray, light);
+    box-sizing: border-box;
     overflow-y: scroll;
     padding: size(25);
 
@@ -188,6 +196,7 @@
 
 // styling to keep each image/video at correct proportions
 .media-tile {
+    box-sizing: border-box;
     display: inline-block;
     margin: 0 size(25) * .5 size(25) * .5 0;
     text-align: center;
@@ -243,6 +252,7 @@
 
 // preview of files currently being used as a single image or in the gallery
 .img-gallery {
+    box-sizing: border-box;
     display: inline-block;
     margin: 0 size(25) 2rem size(25);
     vertical-align: top;
@@ -261,6 +271,7 @@
 
 // holder for info (css classes, links etc..) related to .img-gallery
 .img-gallery-info {
+    box-sizing: border-box;
     margin-left: size(25);
     overflow: hidden;
     padding-right: 2rem;
@@ -280,29 +291,5 @@
 
     p {
         margin-bottom: 1.5rem;
-    }
-
-    .tag {
-        background-color: palette(gray, mid);
-        color: palette(blue, dark);
-        display: inline-block;
-        height: auto;
-        margin: 0 size(10) 2rem size(10);
-        padding: size(5) size(10) .75rem size(10);
-        width: auto;
-
-        &:first-child {
-            margin-left: 0;
-        }
-
-        &:hover {
-            cursor: default;
-            color: palette(blue, dark);
-        }
-
-        .fa-tag {
-            margin-right: size(5);
-            vertical-align: middle;
-        }
     }
 }

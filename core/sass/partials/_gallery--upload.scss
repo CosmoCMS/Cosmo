@@ -30,6 +30,10 @@ input[type='file'] {
     &:active {
       @extend :hover;
     }
+
+    h2 {
+        line-height: 4;
+    }
 }
 
 .ng-file-over {
@@ -61,10 +65,6 @@ input[type='file'] {
     width: 100%;
 
     @media #{$bp-beta} {
-        width: 33.5rem;
-    }
-
-    @media #{$bp-gamma} {
-        width: 49.063rem;
+        width: 75%;
     }
 }
