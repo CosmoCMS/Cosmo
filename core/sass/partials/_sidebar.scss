@@ -120,10 +120,12 @@
 .prfl-info {
     display: inline-block;
     font-size: .85rem;
-    height: 3.125rem;
+    height: 3.75rem;
     margin-left: size(5);
     overflow: hidden;
+    padding-top: .65rem;
     width: 7.813rem;
+    vertical-align: top;
 
     p {
         color: palette(gray, white);
@@ -152,7 +154,6 @@
 
 // case to adjust sides within the sidebar
 .form-case {
-    overflow-y: scroll;
     padding: size(25) size(25) 0 size(25);
 }
 

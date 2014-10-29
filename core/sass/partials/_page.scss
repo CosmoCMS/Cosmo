@@ -9,7 +9,7 @@ label.type {
     width: 100%;
     z-index: z(sidebar);
 
-    @media #{$bp-gamma} {
+    @media #{$bp-beta} {
         width: 30rem;
     }
 

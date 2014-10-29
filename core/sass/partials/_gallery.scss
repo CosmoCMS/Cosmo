@@ -150,8 +150,6 @@
 .media-wrapper {
     background-color: palette(gray, light);
     box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: scroll;
     position: absolute;
     top: 14rem;
     width: 100%;
@@ -184,7 +182,7 @@
 .media-holder {
     background-color: palette(gray, light);
     box-sizing: border-box;
-    overflow-y: scroll;
+    overflow: hidden;
     padding: size(25);
 
     .btn-options {
