@@ -2,13 +2,11 @@
 .nav {
     display: block;
     margin-top: 0;
-    padding-right: 0;
 
     @media #{$bp-alpha} {
         display: inline-block;
         margin-left: size(5);
         margin-top: .75rem;
-        padding-right: size(25);
     }
 
     @media #{$bp-beta} {
@@ -82,7 +80,7 @@
 
         @media #{$bp-beta} {
             display: inline-block;
-            width: 49.5%;
+            width: 52%;
             vertical-align: top;
         }
 
@@ -96,7 +94,7 @@
         width: 100%;
 
         @media #{$bp-beta} {
-            width: 49.5%;
+            width: 47%;
         }
     }
 }
@@ -142,7 +140,7 @@
 .media-info {
     box-sizing: border-box;
     display: inline-block;
-    padding: 0 size(25);
+    padding: 0 size(25) size(15) size(25);
     width: 100%;
 }
 

@@ -307,7 +307,7 @@ pre {
         outline: 1px solid palette(gray, mid--light);
     }
 
-    div, h1, h2, h3, h4, h5, h6, iframe, img, table, video {
+    iframe, img, table, video {
 
         &:hover {
             outline: 1px solid palette(gray, mid--light);

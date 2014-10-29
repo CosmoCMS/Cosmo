@@ -1,8 +1,7 @@
 %sidebar {
     background-color: palette(gray, white);
     height: 0;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: scroll;
     position: fixed;
     right: -100%;
     transition: right .25s ease-in;
@@ -10,7 +9,7 @@
 }
 
 /* overall sidebar for all comments/nav etc... */
-.pen-sidebar {
+.sidebar {
     background-color: palette(gray, white);
     border-left: 1px solid palette(gray, mid--light);
     height: 100%;
@@ -71,10 +70,11 @@
         height: auto;
         position: absolute;
         right: 0;
+        top: 4rem;
     }
 }
 
-.pen-sidebar.show-right {
+.sidebar.show-right {
     height: 100%;
     position: fixed;
 }
@@ -106,7 +106,7 @@
 }
 
 /* overall nav for pendant */
-.pen-sidebar ul {
+.sidebar ul {
     font-size: 1rem;
     margin: 0;
     padding-left: size(20);
@@ -137,7 +137,7 @@
 }
 
 /* subnav styling for pendant */
-.pen-sidebar ul li {
+.sidebar ul li {
 
     ul {
         display: none;

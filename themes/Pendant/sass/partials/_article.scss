@@ -74,6 +74,10 @@
     @include container(54rem);
     left: 0;
     right: 0;
+
+    h1 {
+        margin-bottom: 0;
+    }
 }
 
 .article-view--byline {

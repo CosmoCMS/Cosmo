@@ -13,7 +13,7 @@
 
 
 
-    <div class="pen-sidebar" ng-class="{'show-right': page.expandMenu}">
+    <div class="sidebar" ng-class="{'show-right': page.expandMenu}">
         <div class="nav-options">
             <a class="close" ng-click="page.expandMenu=!page.expandMenu"><i class="fa fa-times"></i></a>
             <div class="selections">
@@ -29,7 +29,6 @@
         <!-- Search -->
 
         <section class="pen-search" ng-class="{'show-right': panel=='search'}" ng-controller="contentListCtrl">
-            <!--<input type="search" placeholder="Search" ng-model="pendant.search">-->
             <form>
                 <input id="search" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="Search">
             </form>

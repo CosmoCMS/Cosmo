@@ -4,16 +4,6 @@
         <h1>Settings</h1>
     </div>
     <div class="form-case">
-        <div class="half-width">
-            <label for="sitename">Site name</label>
-            <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
-        </div>
-
-        <div class="half-width">
-            <label for="slogan">Slogan</label>
-            <input value="slogan" type='textarea' ng-model='settings.slogan' placeholder="e.g., These pretzels are making me thirsty">
-        </div>
-
         <div class="half-width images">
             <label for="logo">Logo</label>
             <img ng-src="{{settings.logo}}" ng-click="uploadPhoto('logo')">
@@ -22,6 +12,16 @@
         <div class="half-width images">
             <label for="favicon">Favicon</label>
             <img ng-src="{{settings.favicon}}" ng-click="uploadPhoto('favicon')">
+        </div>
+        
+        <div class="half-width">
+            <label for="sitename">Site name</label>
+            <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
+        </div>
+
+        <div class="half-width">
+            <label for="slogan">Slogan</label>
+            <input value="slogan" type='textarea' ng-model='settings.slogan' placeholder="e.g., These pretzels are making me thirsty">
         </div>
 
         <div class="half-width">

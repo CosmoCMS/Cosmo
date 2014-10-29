@@ -1,6 +1,7 @@
 %alert-style {
-    background-color: palette(gray, light);
+    background-color: palette(gray, xlight);
     border-left: 5px solid;
+    border-radius: 5px;
     color: palette(blue, dark);
     font-family: $font-alpha;
     padding: 1.25rem;
@@ -39,5 +40,5 @@
 
 .alert-alert {
     @extend %alert-style;
-    border-color: palette(blue, dark);
+    border-color: palette(blue, light);
 }
