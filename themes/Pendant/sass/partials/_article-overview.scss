@@ -11,13 +11,13 @@
     padding-bottom: 2rem;
 
     h1 {
-        font-size: 1.5em;
+        font-size: 1.5rem;
         margin-top: 1.5rem;
 
         @media #{$bp-beta} {
             margin-bottom: .4rem;
             margin-top: 0;
-            font-size: 1.8em;
+            font-size: 1.8rem;
         }
     }
 
@@ -26,7 +26,7 @@
         margin-bottom: 0;
 
         @media #{$bp-beta} {
-            font-size: 1em;
+            font-size: 1rem;
         }
     }
 }
@@ -335,7 +335,7 @@
 /* article info shown on search, banners and throughout */
 .meta {
     color: palette(gray, mid);
-    font-size: .8em;
+    font-size: .8rem;
     margin-bottom: size(20);
 
     i {

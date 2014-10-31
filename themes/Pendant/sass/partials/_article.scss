@@ -14,56 +14,56 @@
     margin-bottom: 6rem;
 
     h1 {
-        font-size: 1.8em;
+        font-size: 1.8rem;
         font-weight: 200;
 
         @media #{$bp-beta} {
-            font-size: 2em;
+            font-size: 2rem;
         }
     }
 
     h2 {
-        font-size: 1.6em;
+        font-size: 1.6rem;
         font-weight: 200;
 
         @media #{$bp-beta} {
-            font-size: 1.8em;
+            font-size: 1.8rem;
         }
     }
 
     h3 {
-        font-size: 1.4em;
+        font-size: 1.4rem;
 
         @media #{$bp-beta} {
-            font-size: 1.6em;
+            font-size: 1.6rem;
         }
     }
 
     h4 {
-        font-size: 1.2em;
+        font-size: 1.2rem;
         font-weight: 200;
 
         @media #{$bp-beta} {
-            font-size: 1.4em;
+            font-size: 1.4rem;
         }
     }
 
     h5 {
-        font-size: 1.1em;
+        font-size: 1.1rem;
         font-weight: 200;
         text-transform: uppercase;
 
         @media #{$bp-beta} {
-            font-size: 1.2em;
+            font-size: 1.2rem;
         }
     }
 
     h6 {
-        font-size: 1.1em;
+        font-size: 1.1rem;
         text-transform: uppercase;
 
         @media #{$bp-beta} {
-            font-size: 1.2em;
+            font-size: 1.2rem;
         }
     }
 
@@ -94,14 +94,14 @@
     }
 
     h5 {
-        font-size: 1.25em;
+        font-size: 1.25rem;
         font-weight: 600;
         margin-bottom: size(5);
         margin-top: 0;
     }
 
     p {
-        font-size: 1em;
+        font-size: 1rem;
     }
 
     .byline-info {
@@ -157,12 +157,12 @@
     }
 
     .fa-comments {
-        font-size: 1.25em;
+        font-size: 1.25rem;
         margin-right: size(5);
     }
 
     .number {
-        font-size: 1.25em;
+        font-size: 1.25rem;
         font-weight: 200;
         text-transform: uppercase;
     }

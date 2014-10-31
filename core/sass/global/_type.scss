@@ -13,30 +13,30 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     color: palette(gray, light);
     display: inline;
-    font-size: 1.25em;
+    font-size: 1.25rem;
     font-weight: 200;
-    line-height: 3em;
+    line-height: 3rem;
     margin-left: 2rem;
 }
 
 h2 {
     color: palette(gray, light);
     display: inline;
-    font-size: 1.15em;
+    font-size: 1.15rem;
     font-weight: 200;
-    line-height: 3em;
+    line-height: 3rem;
     margin-left: size(5);
 }
 
 h3 {
-    font-size: 1.125em;
+    font-size: 1.125rem;
     line-height: 1;
     margin-bottom: 2rem;
 }
 
 h6 {
     color: palette(blue, dark);
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -57,7 +57,7 @@ a {
 }
 
 p {
-    font-size: 1em;
+    font-size: 1rem;
     font-family: $font-alpha;
     font-weight: 400;
     line-height: 1.5;

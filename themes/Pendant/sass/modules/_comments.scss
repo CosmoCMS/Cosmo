@@ -29,7 +29,7 @@
     }
 
     a {
-        font-size: .9em;
+        font-size: .9rem;
         margin-left: 1.25rem;
     }
 
@@ -37,7 +37,7 @@
         border: 0;
         border-bottom: 1px solid palette(gray, mid--light);
         display: block;
-        font-size: .9em;
+        font-size: .9rem;
         font-weight: 200;
         margin-bottom: size(20);
         min-height: 5rem;
@@ -71,7 +71,7 @@
     padding: size(20) size(20) size(20) 1.25rem;
 
     a {
-        font-size: .9em;
+        font-size: .9rem;
         margin-left: size(10);
 
         &:first-child {
@@ -82,7 +82,7 @@
 
     h2 {
         display: inline-block;
-        font-size: 1em;
+        font-size: 1rem;
         font-weight: 600;
         margin: 0;
     }
@@ -112,7 +112,7 @@
     }
 
     p {
-        font-size: .9em;
+        font-size: .9rem;
         margin-bottom: 0;
     }
 
@@ -125,7 +125,7 @@
         margin-bottom: size(10);
 
         i {
-            font-size: .8em;
+            font-size: .8rem;
             margin-right: 0;
         }
 
@@ -155,7 +155,7 @@
 
     .numbered-likes {
         color: palette(gray, mid);
-        font-size: .8em;
+        font-size: .8rem;
         vertical-align: middle;
     }
 
@@ -163,7 +163,7 @@
         color: palette(gray, mid--light);
         float: right;
         display: inline-block;
-        font-size: .8em;
+        font-size: .8rem;
         font-style: italic;
         font-weight: 400;
         margin-bottom: size(5);
@@ -171,7 +171,7 @@
 
     .username {
         display: inline-block;
-        font-size: .8em;
+        font-size: .8rem;
         font-style: italic;
         font-weight: 600;
         margin-bottom: size(5);

@@ -90,17 +90,17 @@
         float: right;
 
         .close {
-            font-size: 1.1em;
+            font-size: 1.1rem;
         }
 
         .search, .comments {
-            font-size: 1em;
+            font-size: 1rem;
             margin-left: size(15);
         }
 
         .menu {
             @extend .search;
-            font-size: .9em;
+            font-size: .9rem;
         }
     }
 }
@@ -119,7 +119,7 @@
         a {
             color: palette(gray, dark);
             display: block;
-            font-size: .9em;
+            font-size: .9rem;
             font-weight: 400;
             letter-spacing: .02rem;
             line-height: 2.5rem;
@@ -155,7 +155,7 @@
 
             a {
                 color: palette(gray, mid);
-                font-size: .9em;
+                font-size: .9rem;
 
                 &:hover {
                     color: palette(gray, dark);
@@ -176,7 +176,7 @@
 footer {
     @include container(68.75rem);
     color: palette(gray, mid);
-    font-size: .75em;
+    font-size: .75rem;
     margin-bottom: 2rem;
     padding: 2rem 4% 0 4%;
 
@@ -186,6 +186,7 @@ footer {
 
     p {
         display: block;
+        font-size: .8rem;
 
         @media #{$bp-beta} {
             display: inline-block;

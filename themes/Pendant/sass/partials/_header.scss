@@ -62,7 +62,7 @@ header .social {
 
     .title {
         display: inline-block;
-        font-size: 2em;
+        font-size: 2rem;
         margin: .6rem 1.5rem 0 0;
 
         a {
@@ -74,7 +74,7 @@ header .social {
         color: palette(gray, mid--light);
         display: none;
         font-family: $font-beta;
-        font-size: 1em;
+        font-size: 1rem;
         font-style: italic;
         font-weight: 200;
         position: relative;
@@ -88,7 +88,7 @@ header .social {
 
 .nav-toggle {
     @include span(5 of 12 inside);
-    font-size: 1.5em;
+    font-size: 1.5rem;
     margin-top: .95rem;
     padding-right: 4%;
     text-align: right;
@@ -111,7 +111,7 @@ header .social {
     }
 
     span {
-        font-size: .5em;
+        font-size: .5rem;
         font-weight: 200;
         margin-right: size(10);
         position: relative;

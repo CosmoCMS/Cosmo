@@ -36,7 +36,7 @@ label {
 	color: palette(blue, dark);
 	display: inline-block;
 	font-family: $font-alpha;
-	font-size: .85em;
+	font-size: .85rem;
 	font-weight: 600;
 	margin-top: 0;
 	text-transform: uppercase;
@@ -45,7 +45,7 @@ label {
 // number count for things like titles, descriptions etc...
 .num-count {
 	color: palette(blue, light);
-	font-size: .85em;
+	font-size: .85rem;
 	font-weight: 400;
 	float: right;
 }

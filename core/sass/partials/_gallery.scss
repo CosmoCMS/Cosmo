@@ -225,11 +225,11 @@
 
     i {
         color: palette(blue, dark);
-        font-size: 10em;
+        font-size: 10rem;
         margin-top: size(15);
 
         @media #{$bp-beta} {
-            font-size: 7.5em;
+            font-size: 7.5rem;
             margin-top: 0;
         }
     }

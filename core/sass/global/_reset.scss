@@ -108,8 +108,8 @@ dfn {
 
 
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+  font-size: 2rem;
+  margin: 0.67rem 0;
 }
 
 // Address styling not present in IE 8/9.
@@ -139,11 +139,11 @@ sup {
 }
 
 sup {
-  top: -0.5em;
+  top: -0.5rem;
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -0.25rem;
 }
 
 // Embedded content
@@ -168,7 +168,7 @@ svg:not(:root) {
 
 
 figure {
-  margin: 1em 40px;
+  margin: 1rem 40px;
 }
 
 // Address differences between Firefox and other browsers.
@@ -195,7 +195,7 @@ kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 // Forms
@@ -308,7 +308,7 @@ input[type="search"]::-webkit-search-decoration {
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
+  padding: 0.35rem 0.625rem 0.75rem;
 }
 
 // 1. Correct `color` not being inherited in IE 8/9. 2. Remove padding so people aren't caught out if they zero out fieldsets.
