@@ -29,35 +29,53 @@ h1, h2, h3, h4, p, a {
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 200;
-
-    @media #{$bp-beta} {
-        font-size: 3.5rem;
-    }
-}
-
-h2 {
-    font-size: 2.25rem;
-
-    @media #{$bp-beta} {
-        font-size: 3rem;
-    }
-}
-
-h3 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 600;
 
     @media #{$bp-beta} {
         font-size: 2.5rem;
     }
 }
 
-h4 {
-    font-size: 1.5rem;
+h2 {
+    font-size: 1.6rem;
 
     @media #{$bp-beta} {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+}
+
+h3 {
+    font-size: 1.4rem;
+
+    @media #{$bp-beta} {
+        font-size: 1.6rem;
+    }
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-weight: 200;
+
+    @media #{$bp-beta} {
+        font-size: 1.4rem;
+    }
+}
+
+h5 {
+    font-size: 1.1rem;
+
+    @media #{$bp-beta} {
+        font-size: 1.2rem;
+    }
+}
+
+h6 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+
+    @media #{$bp-beta} {
+        font-size: 1.1rem;
     }
 }
 

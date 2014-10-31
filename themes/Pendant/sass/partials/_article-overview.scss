@@ -1,7 +1,7 @@
 .article-case {
     @include container(68.75rem);
     margin-bottom: 2rem;
-    margin-top: 6rem;
+    margin-top: 4rem;
 }
 
 .article-row {
@@ -12,6 +12,7 @@
 
     h1 {
         font-size: 1.5rem;
+        font-weight: 200;
         margin-top: 1.5rem;
 
         @media #{$bp-beta} {

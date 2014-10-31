@@ -7,77 +7,21 @@
     @media #{$bp-epsilon} {
         padding: 0;
     }
+
+    .cos-comments {
+        float: left;
+    }
 }
 
 .article {
     @include container(54rem);
     margin-bottom: 6rem;
-
-    h1 {
-        font-size: 1.8rem;
-        font-weight: 200;
-
-        @media #{$bp-beta} {
-            font-size: 2rem;
-        }
-    }
-
-    h2 {
-        font-size: 1.6rem;
-        font-weight: 200;
-
-        @media #{$bp-beta} {
-            font-size: 1.8rem;
-        }
-    }
-
-    h3 {
-        font-size: 1.4rem;
-
-        @media #{$bp-beta} {
-            font-size: 1.6rem;
-        }
-    }
-
-    h4 {
-        font-size: 1.2rem;
-        font-weight: 200;
-
-        @media #{$bp-beta} {
-            font-size: 1.4rem;
-        }
-    }
-
-    h5 {
-        font-size: 1.1rem;
-        font-weight: 200;
-        text-transform: uppercase;
-
-        @media #{$bp-beta} {
-            font-size: 1.2rem;
-        }
-    }
-
-    h6 {
-        font-size: 1.1rem;
-        text-transform: uppercase;
-
-        @media #{$bp-beta} {
-            font-size: 1.2rem;
-        }
-    }
-
 }
 
 .article--title {
-    @extend .banner--title;
     @include container(54rem);
-    left: 0;
-    right: 0;
-
-    h1 {
-        margin-bottom: 0;
-    }
+    border-bottom: 1px solid palette(gray, mid--light);
+    margin-bottom: size(30);
 }
 
 .article-view--byline {
@@ -94,7 +38,6 @@
     }
 
     h5 {
-        font-size: 1.25rem;
         font-weight: 600;
         margin-bottom: size(5);
         margin-top: 0;

@@ -1,10 +1,18 @@
 /* search styling for the container on the search area */
 .cos-comments {
-    @extend %sidebar;
-    padding-bottom: 9.5rem;
+    height: auto;
+    width: 100%;
 
-    @media #{$bp-beta} {
-        width: 30rem;
+    &.reply-first {
+        padding-left: size(15);
+    }
+
+    &.reply-second {
+        padding-left: size(25);
+    }
+
+    &.reply-third {
+        padding-left: 2.188rem;
     }
 
     .unread {
@@ -15,36 +23,37 @@
 
 .cos-comments .reply {
     background-color: palette(gray, white);
-    border: 1px solid palette(gray, mid--light);
-    border-left: 0;
-    bottom: 0;
     padding-bottom: size(20);
-    position: fixed;
-    right: -100%;
     transition: right .25s ease-in;
     width: 100%;
 
-    @media #{$bp-beta} {
-        width: 30rem;
-    }
-
     a {
+        background-color: palette(gray, dark);
+        border: 1px solid palette(gray, mid--light);
+        color: palette(gray, light);
         font-size: .9rem;
-        margin-left: 1.25rem;
+        padding: size(10);
     }
 
     textarea {
-        border: 0;
-        border-bottom: 1px solid palette(gray, mid--light);
+        background-color: palette(gray, light);
+        border: 1px solid palette(gray, mid--light);
         display: block;
         font-size: .9rem;
         font-weight: 200;
-        margin-bottom: size(20);
-        min-height: 5rem;
-        padding: size(20);
+        height: 10rem;
+        margin: size(20) 0;
+        padding: size(15);
+        resize: none;
+        transition: .1s ease-in;
         width: 100%;
 
+        &:hover {
+            cursor: text;
+        }
+
         &:focus {
+            background-color: palette(gray, xlight);
             outline: 0;
         }
     }
@@ -97,7 +106,7 @@
 /* text info for articles in search */
 .cos-comments--comment {
     border-bottom: 2px solid palette(gray, light);
-    padding: size(20);
+    padding: size(20) size(20) size(20) 0;
     transition: .25s ease-in;
 
     i {

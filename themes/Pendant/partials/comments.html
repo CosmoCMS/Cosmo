@@ -1,0 +1,34 @@
+<!-- Comments -->
+<section ng-controller="commentsCtrl" class="cos-comments" ng-class="{'show-right': panel=='comments'}">
+        <div class="cos-comments--head">
+            <h2>{{page.commentsNum}} Comments</h2>
+            <div class="cos-comments--credentials">
+                <a href="#">Login</a> <span>or</span> <a href="#">Register</a> <!--<a href="#">Logout</a> -->
+            </div>
+        </div>
+        <div ng-repeat="comment in page.comments | orderBy:page.comments.path" class="cos-comments--comment">
+            <div class="comment-info">
+                <a href="#" class="username">{{comment.name}}
+                <i class="fa fa-twitter"></i></a>
+                <!-- <i class="fa fa-facebook"></i> -->
+
+                <p class="posted-on">15 minutes ago</p>
+            </div>
+            <p>{{comment.comment}}</p>
+            <i class="fa fa-reply" alt="reply"></i>
+            <i class="fa fa-thumbs-up" alt="like"></i>
+            <i class="fa fa-exclamation-circle" alt="Spam"></i>
+        </div>
+        <div class="reply" ng-class="{'show-right': panel=='comments'}">
+            <div class="logged-out" ng-if="guest&&userIsCommenting">
+                <div class="captcha">
+                    <!-- Insert captcha here -->
+                    <iframe src="http://www.cosmocms.org/captcha" height="150px" width="200px"></iframe>
+                </div>
+                <input type="text" ng-model="comment.username" id="name" placeholder="name"></input>
+                <input type="email" ng-model="comment.email" id="email" placeholder="email"></input>
+            </div>
+            <textarea ng-model="comment.message" ng-click="userIsCommenting=true" placeholder="Post A New Comment"></textarea>
+            <a ng-click="submit()">Submit</a>
+        </div>
+    </section>

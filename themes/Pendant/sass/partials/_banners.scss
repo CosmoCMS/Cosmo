@@ -7,7 +7,12 @@
     transition: .15s ease;
 
     @media #{$bp-delta} {
-        height: 80%;
+        height: 70%;
+    }
+
+    h3 {
+        color: palette(gray, light);
+        font-weight: 200;
     }
 
     .meta {
@@ -29,8 +34,6 @@
 
 .banner--sml {
     @extend .banner--lrg;
-    background: top center no-repeat;
-    background-size: cover;
     height: 40rem;
     margin: 0 auto;
     max-width: 68.75rem;
@@ -84,7 +87,7 @@
     h1 {
         color: palette(gray, white);
         font-weight: 600;
-        margin-bottom: 1rem;
+        margin-bottom: .25rem;
     }
 
     p {

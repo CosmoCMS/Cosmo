@@ -48,8 +48,8 @@ header .social {
 }
 
 .logo {
-    @include span(7 of 12 inside);
-    padding: 0 4%;
+    @include span(8 of 12 inside);
+    padding: 0 0 0 4%;
 
     @media #{$bp-beta} {
         @include span(7 of 12 before);
@@ -60,13 +60,23 @@ header .social {
         padding: 0;
     }
 
+    img {
+        margin-top: -.6rem;
+        vertical-align: middle;
+        width: 3rem;
+    }
+
     .title {
         display: inline-block;
         font-size: 2rem;
-        margin: .6rem 1.5rem 0 0;
+        margin: .6rem 0 0 0;
 
         a {
             font-weight: 200;
+        }
+
+        @media #{$bp-beta} {
+            margin-right: 1.5rem;
         }
     }
 
@@ -78,7 +88,7 @@ header .social {
         font-style: italic;
         font-weight: 200;
         position: relative;
-        top: -.3rem;
+        top: -.1rem;
 
         @media #{$bp-beta} {
             display: inline-block;
@@ -87,9 +97,10 @@ header .social {
 }
 
 .nav-toggle {
-    @include span(5 of 12 inside);
+    @include span(4 of 12 inside);
     font-size: 1.5rem;
     margin-top: .95rem;
+    padding-left: 0;
     padding-right: 4%;
     text-align: right;
 
