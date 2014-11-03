@@ -57,6 +57,9 @@ $minifyScripts .= FOLDER."core/js/3rd-party/angular-ui-tree.min.js";
 $minifyCSS .= FOLDER."core/css/cosmo-default-style.minify.css";
 
 
+// Load menus
+$menus = $Cosmo->menusRead();
+
 // Load theme files
 $settings = $Cosmo->settingsRead();
 $theme = $settings['theme'];

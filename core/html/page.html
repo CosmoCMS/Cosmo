@@ -20,8 +20,7 @@
         <label for="schedule" ng-click="page.publish='schedule'">Schedule</label>
         <div class="schedule-triangle" ng-show="page.publish=='schedule'"></div>
         <input type="datetime-local" class="schedule radio-inline" ng-model="page.scheduleDate" ng-show="page.publish=='schedule'">
-
-
+        
         <label class="type" for="type">Type</label>
         <div class="cos-select">
             <select value="type" ng-change="updatePageType()" ng-model="page.type" ng-options="(themePage | themeFiles ) for themePage in page.themePages" required></select>

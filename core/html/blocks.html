@@ -258,7 +258,7 @@
 
     <div ng-show="block.panel==='edit'">
         <div class="bar-top">
-                <i class="fa fa-chevron-left " ng-click="block.panel='manage'"></i>
+                <i class="fa fa-chevron-left " ng-click="block.panel='manage';confirm=false"></i>
             <h1>Editing</h1><h2>{{block.name}}</h2>
         </div>
         <div class="form-case">
@@ -517,8 +517,8 @@
                 <label for="type">{{type | themeFiles}}</label>
             </p>
             <div class="confirm" ng-show="confirm">
-                <p>Are you sure you want to delete this page?</p>
-                <button class="btn-error" ng-click='deleteBlock()'>Yes</button>
+                <p>Are you sure you want to delete this block?</p>
+                <button class="btn-error" ng-click="deleteBlock();block.panel='manage'">Yes</button>
                 <button class="btn-success" ng-click='confirm=false'>No</button>
             </div>
             <div>

@@ -1,5 +1,17 @@
 <? include 'core/app/initialize.php'; ?>
 <!doctype html>
+<!-- 
+####################################
+
+           Created with:
+        __  __   __       __  
+       /   /  \ (_  |\/| /  \ 
+       \__ \__/ __) |  | \__/
+
+      http://www.cosmocms.org/
+
+####################################
+-->
 <html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="main" ng-controller="HTMLCtrl">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,11 +26,7 @@
             <script src="core/js/3rd-party/json2.js"></script>
             <br /><br />Your broswer is incompatible with this site. Please upgrade to a <a href="http://www.browsehappy.com">newer browser.</a>
         <![endif]-->
-        
-        <!--
-        <link REL="SHORTCUT ICON" HREF="http://www.davesite.com/webstation/html/favicon.ico">
-        <link rel="icon" type="image/png" href="img/logo.png">
-        -->
+        <link rel="shortcut icon" href="<?php echo $settings['favicon'] ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
         <!-- Meta Tags -->
@@ -29,7 +37,7 @@
         <meta property="og:type" content="article" />
         <meta property="og:url" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" />
 <?php if($content['extras']['featured']): ?>
-        <meta property="og:image" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . explode('/', $_SERVER['REQUEST_URI'])[0] . json_decode($content['extras']['featured'])->src; ?>" />
+        <meta property="og:image" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . explode('/', $_SERVER['REQUEST_URI'])[0] . '/' . json_decode($content['extras']['featured'])->src; ?>" />
 <?php endif; ?>
         
         <base href="/<?php echo FOLDER; ?>" />
@@ -81,7 +89,12 @@
                 
                 Page.classes = "<?php echo $classes; ?>";
                 Page.themePages = <?php echo json_encode($themeJSON->pages); ?>;
-                Page.folder = '<?php echo FOLDER; ?>';
+                Page.folder = '<?php echo FOLDER; ?>';<?php if($menus):?>
+                
+                Page.menus = <?php echo json_encode($menus); ?>;<?php endif; ?>
+                
+                Page.settings = <?php echo json_encode($settings); ?>;
+                Page.theme = '<?php echo $theme; ?>';
                 
                 // If the user has permissions, show the sidebar.
                 if(Users.role === 'admin' || Users.role === 'editor' || Users.role === 'contributor' || Users.id){
@@ -109,19 +122,6 @@
                 $http.defaults.headers.common['usersID'] = '<?php echo $usersID; ?>';
                 $http.defaults.headers.common['username'] = '<?php echo $username; ?>';
                 $http.defaults.headers.common['token'] = '<?php echo $token; ?>';
-                
-                // Load template
-                REST.settings.get({}, function(data){
-                    Page.settings = data;
-                    Page.theme = data.theme;
-                    $rootScope.$broadcast('settingsGet', data);
-                });
-                
-                // Load menus
-                REST.menus.query({}, function(data){
-                    Page.menus = data;
-                    $rootScope.$broadcast('menusGet', data);
-                });
                 
                 // Cache all template pages
                 angular.forEach(Page.themePages, function(page){

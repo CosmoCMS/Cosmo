@@ -152,11 +152,12 @@ angular.module('cosmo', [])
     // Initialize variables
     $scope.comment = {};
     $scope.comments = Page.comments;
+    
     // Get the path of the last comment
     if($scope.comments && $scope.comments[0] && $scope.comments[0].path)
         $scope.comment.path = [$scope.comments[$scope.comments.length-1].path[0]+1];
     else
-        $scope.comments = [1];
+        $scope.comment.path = [1];
     
     // See if the user is logged in
     if(!Users.username)
@@ -169,12 +170,15 @@ angular.module('cosmo', [])
         if($scope.comments && $scope.comments[0] && $scope.comments[0].path)
             $scope.comment.path = [$scope.comments[$scope.comments.length-1].path[0]+1];
         else
-            $scope.comments = [1];
+            $scope.comment.path = [1];
     });
     
     // Check the level of the reply.
     $scope.replyLevel = function(path){
-        return path.length;
+        if(path)
+            return path.length;
+        else
+            return 0;
     };
     
     // Set the path for someone to reply to another comment
@@ -198,6 +202,7 @@ angular.module('cosmo', [])
             email: Users.email,
             comment: $scope.comment.message
         }, function(data){
+            $scope.comments.push({path: $scope.comment.path, name: Users.username, email: Users.email, comment: $scope.comment.message});
             $rootScope.$broadcast('notify', { message: 'Comment Added' });
         }, function(){
             $rootScope.$broadcast('notify', { message: 'There was an error submitting your comment' });
@@ -817,10 +822,10 @@ angular.module('cosmo', [])
  **************************************************/
  
 .controller('HTMLCtrl', ['$scope', 'Page', 'Hooks', '$rootScope', 'Users', function($scope, Page, Hooks, $rootScope, Users){
-
+    
     if(Users.admin)
         $scope.admin = true;
-
+    
     // Update meta-tags
     var updateMetaTags = function(){
         var data = Hooks.HTMLHookNotify({title: Page.title, description: Page.description});
@@ -2112,15 +2117,17 @@ angular.module('cosmo', [])
     $scope.admin.username = Users.username;
     $scope.admin.roleNum = Users.roleNum;
     
-    // Get latest official message from Cosmo (for version updates and blog posts)
+    // Get latest official message from Cosmo (for version, updates, and blog posts)
     $http.get('http://www.cosmocms.org/message.php?dontcache='+ new Date().getTime())
     .success(function(data){
-        data = angular.fromJson(data);
-        $scope.admin.messageID = data.id;
-        var dontShowCookie = document.cookie.substr(document.cookie.indexOf('dontShowMessage=')+16, 5);
-        if($scope.admin.messageID !== dontShowCookie){
-            $scope.admin.message = $sce.trustAsHtml(data.message);
-            $scope.admin.displayMessage = true;
+        if(data){
+            data = angular.fromJson(data);
+            $scope.admin.messageID = data.id;
+            var dontShowCookie = document.cookie.substr(document.cookie.indexOf('dontShowMessage=')+16, 5);
+            if($scope.admin.messageID !== dontShowCookie){
+                $scope.admin.message = $sce.trustAsHtml(data.message);
+                $scope.admin.displayMessage = true;
+            }
         }
     });
     
@@ -2180,7 +2187,7 @@ angular.module('cosmo', [])
  **************************************************/
 
 .controller('blockCtrl', ['$scope', 'REST', 'Page', '$rootScope', function($scope, REST, Page, $rootScope){
-
+    
     $scope.block = {};
     $scope.block.panel = 'manage';
     $scope.types = [];
@@ -2798,7 +2805,7 @@ angular.module('cosmo', [])
  **************************************************/
 
 .controller('pageCtrl', ['$scope', 'REST', '$location', 'Page', '$rootScope', '$routeParams', '$upload', 'Users', function($scope, REST, $location, Page, $rootScope, $routeParams, $upload, Users){
-
+    
     // Initialize variables
     $scope.page = {
         id: Page.id,
@@ -2814,14 +2821,14 @@ angular.module('cosmo', [])
     
     // Set the date to today if no date was set
     if(!$scope.page.scheduleDate || $location.path() === '/new')
-        $scope.page.scheduleDate = Math.round(+new Date().getTime()/1000);
+        $scope.page.scheduleDate = new Date(); // Math.round(+new Date().getTime()/1000); Depreciate?
     
-    // Initialize schedule date
+    // Initialize schedule date - Depreciate?
     var date = new Date($scope.page.scheduleDate * 1000);
     var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
     var ampm = date.getHours() > 12 ? 'PM' : 'AM';
     var formattedDate = date.getMonth() + 1 +'/'+ date.getDate() +'/'+ date.getFullYear() +' '+ hours +':'+ date.getMinutes() +' '+ ampm;
-    $scope.page.scheduleDate = formattedDate;
+    // $scope.page.scheduleDate = formattedDate;
     
     // Get the pages available to this theme
     $scope.page.themePages = Page.themePages;
@@ -3275,6 +3282,7 @@ angular.module('cosmo', [])
             email: $scope.profile.email
         }, function(data){
             $rootScope.$broadcast('notify', { message: 'Profile info updated' });
+            $scope.admin.photo = $scope.profile.photo;
         }, function(){
             $rootScope.$broadcast('notify', { message: 'There was an error updating your profile' });
         });

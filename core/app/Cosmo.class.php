@@ -46,30 +46,123 @@ class Cosmo {
     }
     
     /**
-     * Fetch all the blocks
+     * Fetch blocks
+     * @param int Block ID
+     * @param str Page type. e.g. home.html
+     * @param str URL
      * @return array Array with names 'id', 'name', 'block', 'priority', and 'area'
      */
-    public function blocksRead(){
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks');
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $blocks = array();
-        while($row = $stmt->fetch())
-            $blocks[] = $row;
+    public function blocksRead($blockID=NULL, $pageType=NULL, $url=NULL){
+        
+        // Get a specific block
+        if($blockID){
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks WHERE id=?');
+            $data = array($blockID);
+            $stmt->execute($data);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch();
+            $blocks = $row['block'];
+        } else if($pageType || $url){ // Get all blocks for this page
+            $blocks = array();
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks ORDER BY priority DESC');
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while($row = $stmt->fetch())
+            {
+                $blockID = $row['id'];
+                $name = $row['name'];
+                $block = $row['block'];
+                $priority = $row['priority'];
+                $area = $row['area'];
+                $pagePass = TRUE;
+                $typePass = TRUE;
+                $skip = FALSE;
+                $typeSkip = FALSE;
+
+                // Get requirements
+                $stmt2 = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks_requirements WHERE blocks_id=?');
+                $data2 = array($blockID);
+                $stmt2->execute($data2);
+                $stmt2->setFetchMode(PDO::FETCH_ASSOC);
+                if($stmt2->rowCount())
+                {
+                    // Iterate through each requirement
+                    while($row2 = $stmt2->fetch())
+                    {
+                        $requirement = $row2['requirement'];
+
+                        // Check if requirement was met
+                        switch($row2['type'])
+                        {
+                            // Show only on these pages:
+                            case 'visible':
+                                // Check for a wildcard at the end of this requirement
+                                if(strpos($requirement, '*') === strlen($requirement)-1)
+                                {
+                                    // Check if the URL starts with the requirement
+                                    if(strpos($url, substr($requirement, 0, strlen($requirement)-1)) === 0 && !$skip)
+                                    {
+                                        $pagePass = TRUE;
+                                        $skip = TRUE;
+                                    } else if(!$skip)
+                                        $pagePass = FALSE;
+
+                                } else if($requirement === $url && !$skip) // User is on an allowed page. Skip further checks.
+                                {
+                                    $pagePass = TRUE;
+                                    $skip = TRUE;
+                                } else if(!$skip) // This page doesn't match this requirement.
+                                    $pagePass = FALSE;
+
+                                break;
+
+                            // Show on all pages except these:
+                            case 'invisible':
+                                // Check for a wildcard at the end of this requirement
+                                if(strpos($requirement, '*') === strlen($requirement)-1)
+                                {
+                                    // Check if the URL starts with the requirement
+                                    if(strpos($url, substr($requirement, 0, strlen($requirement)-1)) === 0)
+                                        $pagePass = FALSE;
+
+                                } else if($requirement === $url)
+                                    $pagePass = FALSE;
+
+                                break;
+
+                            // Show only for this type
+                            case 'type':
+                                if($requirement === $pageType && !$typeSkip)
+                                {
+                                    $typePass = TRUE;
+                                    $typeSkip = TRUE;
+                                } else if(!$typeSkip)
+                                    $typePass = FALSE;
+
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+
+                    // If block passes requirements, include in array
+                    if($pagePass && $typePass)
+                        $blocks[] = array('name'=>$name, 'block'=>$block, 'priority'=>$priority, 'area'=>$area);
+                    
+                } else // No requirements
+                    $blocks[] = array('name'=>$name, 'block'=>$block, 'priority'=>$priority, 'area'=>$area);
+            }
+        } else { // Get all blocks
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks');
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $blocks = array();
+            while($row = $stmt->fetch())
+                $blocks[] = $row;
+        }
         
         return $blocks;
-    }
-    
-    /**
-     * Delete a block
-     * @param int $blockID Block ID
-     * @return boolean
-     */
-    public function blocksDelete($blockID)
-    {
-        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'blocks WHERE id=?');
-        $data = array($blockID);
-        return $stmt->execute($data);
     }
     
     /**
@@ -85,120 +178,15 @@ class Cosmo {
     }
     
     /**
-     * Fetch a specific block
-     * @param type $this->pdo
-     * @param type $blockID
+     * Delete a block
+     * @param int $blockID Block ID
+     * @return boolean
      */
-    public function blockFetch($blockID)
+    public function blocksDelete($blockID)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks WHERE id=?');
+        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'blocks WHERE id=?');
         $data = array($blockID);
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $row = $stmt->fetch();
-        return $row['block'];
-    }
-    
-    /**
-     * Fetch all blocks
-     * @param string $pageType Page type. e.g. 'blog'
-     * @param string $url Page URL e.g. /blog
-     * @return array 2d array with 'block', 'priority', and 'area' names
-     */
-    public function blockFetchAll($pageType=null, $url=null)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks ORDER BY priority DESC');
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $blockArray = array();
-        while($row = $stmt->fetch())
-        {
-            $blockID = $row['id'];
-            $name = $row['name'];
-            $block = $row['block'];
-            $priority = $row['priority'];
-            $area = $row['area'];
-            $pagePass = TRUE;
-            $typePass = TRUE;
-            $skip = FALSE;
-            $typeSkip = FALSE;
-            
-            // Get requirements
-            $stmt2 = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks_requirements WHERE blocks_id=?');
-            $data2 = array($blockID);
-            $stmt2->execute($data2);
-            $stmt2->setFetchMode(PDO::FETCH_ASSOC);
-            if($stmt2->rowCount())
-            {
-                // Iterate through each requirement
-                while($row2 = $stmt2->fetch())
-                {
-                    $requirement = $row2['requirement'];
-                    
-                    // Check if requirement was met
-                    switch($row2['type'])
-                    {
-                        // Show only on these pages:
-                        case 'visible':
-                            // Check for a wildcard at the end of this requirement
-                            if(strpos($requirement, '*') === strlen($requirement)-1)
-                            {
-                                // Check if the URL starts with the requirement
-                                if(strpos($url, substr($requirement, 0, strlen($requirement)-1)) === 0 && !$skip)
-                                {
-                                    $pagePass = TRUE;
-                                    $skip = TRUE;
-                                } else if(!$skip)
-                                    $pagePass = FALSE;
-                                
-                            } else if($requirement === $url && !$skip) // User is on an allowed page. Skip further checks.
-                            {
-                                $pagePass = TRUE;
-                                $skip = TRUE;
-                            } else if(!$skip) // This page doesn't match this requirement.
-                                $pagePass = FALSE;
-
-                            break;
-                            
-                        // Show on all pages except these:
-                        case 'invisible':
-                            // Check for a wildcard at the end of this requirement
-                            if(strpos($requirement, '*') === strlen($requirement)-1)
-                            {
-                                // Check if the URL starts with the requirement
-                                if(strpos($url, substr($requirement, 0, strlen($requirement)-1)) === 0)
-                                    $pagePass = FALSE;
-                                
-                            } else if($requirement === $url)
-                                $pagePass = FALSE;
-
-                            break;
-                            
-                        // Show only for this type
-                        case 'type':
-                            if($requirement === $pageType && !$typeSkip)
-                            {
-                                $typePass = TRUE;
-                                $typeSkip = TRUE;
-                            } else if(!$typeSkip)
-                                $typePass = FALSE;
-
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-                
-                // If block passes requirements, include in array
-                if($pagePass && $typePass)
-                    $blockArray[] = array('name'=>$name, 'block'=>$block, 'priority'=>$priority, 'area'=>$area);
-                
-            } else // No requirements
-                $blockArray[] = array('name'=>$name, 'block'=>$block, 'priority'=>$priority, 'area'=>$area);
-        }
-        
-        return $blockArray;
+        return $stmt->execute($data);
     }
     
     ##################################################
@@ -595,20 +583,6 @@ class Cosmo {
     }
     
     ##################################################
-    #                   Email                        #
-    ##################################################
-    
-    /**
-     * Save a file to the 'uploads' folder. Insert record into database.
-     * @return boolean
-     */
-    public function email($to, $subject, $message)
-    {
-        return mail($to, $subject, $message);
-    }
-    
-    
-    ##################################################
     #                   Files                        #
     ##################################################
     
@@ -662,10 +636,8 @@ class Cosmo {
         $imageExtensions = array(
             'jpg',
             'jpeg',
-            'JPG',
             'png',
             'gif',
-            'GIF',
             'svg'
         );
         
@@ -689,11 +661,11 @@ class Cosmo {
                 $type = 'video';
                 if(strpos($file, 'http') !== 0)
                     $file = 'http://' . $file;
-            } else if(in_array($extension, $videoExtensions))
+            } else if(in_array(strtolower($extension), $videoExtensions))
                 $type = 'video';
-            else if(in_array($extension, $audioExtensions))
+            else if(in_array(strtolower($extension), $audioExtensions))
                 $type = 'audio';
-            else if(in_array($extension, $imageExtensions))
+            else if(in_array(strtolower($extension), $imageExtensions))
                 $type = 'image';
             
             $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'files (filename, type, timestamp) VALUES (?,?,?)');
@@ -727,17 +699,17 @@ class Cosmo {
                 $type = 'video';
                 if(strpos($file, 'http') !== 0)
                     $file = 'http://' . $file;
-            } else if(in_array($extension, $videoExtensions))
+            } else if(in_array(strtolower($extension), $videoExtensions))
                 $type = 'video';
-            else if(in_array($extension, $audioExtensions))
+            else if(in_array(strtolower($extension), $audioExtensions))
                 $type = 'audio';
-            else if(in_array($extension, $imageExtensions))
+            else if(in_array(strtolower($extension), $imageExtensions))
                 $type = 'image';
             
             // Make thumbnails
             $responsive = 'yes';
             foreach($this->thumbnailSizes as $size){
-                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 100))
+                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 70))
                     $responsive = 'no';
             }
             
@@ -759,34 +731,14 @@ class Cosmo {
     }
     
     /**
-     * List all files that have been uploaded
+     * Fetch files
+     * @param int File ID
+     * @param str Filename
      * @return array Array of files columns
      */
-    public function filesRead(){
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files ORDER BY timestamp DESC');
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $files = array();
-        while($row = $stmt->fetch())
-        {
-            // Get tags
-            $files[] = array(
-                'id' => $row['id'],
-                'filename' => $row['filename'],
-                'responsive' => $row['responsive'],
-                'tags' => self::filesTagsRead($row['id']),
-                'type' => $row['type']
-            );
-        }
-        return $files;
-    }
-    
-    /**
-     * List all files that have been uploaded
-     * @return array Array of files columns
-     */
-    public function filesReadRecord($fileID=null, $filename=null){
-        if($fileID)
+    public function filesRead($fileID=null, $filename=null){
+        
+        if($fileID) // Get a specific file record
         {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files WHERE id=?');
             $data = array($fileID);
@@ -801,7 +753,7 @@ class Cosmo {
                 'tags' => self::filesTagsRead($row['id']),
                 'type' => $row['type']
             );
-        } else
+        } else if($filename) // Find a filename with a specific name
         {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files WHERE filename=?');
             $data = array($filename);
@@ -816,26 +768,25 @@ class Cosmo {
                 'tags' => self::filesTagsRead($row['id']),
                 'type' => $row['type']
             );
+        } else // Get all files
+        {
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files ORDER BY timestamp DESC');
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $files = array();
+            while($row = $stmt->fetch())
+            {
+                // Get tags
+                $files[] = array(
+                    'id' => $row['id'],
+                    'filename' => $row['filename'],
+                    'responsive' => $row['responsive'],
+                    'tags' => self::filesTagsRead($row['id']),
+                    'type' => $row['type']
+                );
+            }
         }
-        
         return $files;
-    }
-    
-    /** DEPRECIATED - Todo: determine if we ever need to update file info
-     * Update the title and tags of an image
-     * @param int $fileID File ID
-     * @param string $responsive Is the file responsive or not. "yes" or "no"
-     * @return boolean True if title update was executed, false if not
-     */
-    public function filesUpdate($fileID, $responsive)
-    {
-        // Update the title
-        /*
-        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'files SET responsive=? WHERE id=?');
-        $data = array($responsive, $fileID);
-        return $stmt->execute($data);
-         * 
-         */
     }
     
     /**
@@ -874,69 +825,6 @@ class Cosmo {
         
         // Delete file from uploads folder
         return unlink($_SERVER['DOCUMENT_ROOT'] .'/'. $filename);
-    }
-    
-    /**
-     * Original source: https://stackoverflow.com/questions/12661/efficient-jpeg-image-resizing-in-php
-     * Resize images for thumbnails/mobile
-     * @param str $sourcefile
-     * @param str $endfile
-     * @param int $thumbwidth
-     * @param int $thumbheight
-     * @param int $quality
-     */
-    public function makeThumbnail($sourcefile, $endfile, $thumbwidth, $thumbheight, $quality){
-        // Takes the sourcefile (path/to/image.jpg) and makes a thumbnail from it
-        // and places it at endfile (path/to/thumb.jpg).
-        
-        // Load image and get image size.
-        $type = exif_imagetype($sourcefile); // [] if you don't have exif you could use getImageSize() 
-        switch ($type) { 
-            case 1 :
-                $img = imageCreateFromGif($sourcefile);
-                break; 
-            case 2 :
-                $img = imageCreateFromJpeg($sourcefile);
-                break; 
-            case 3 :
-                $img = imageCreateFromPng($sourcefile);
-                break; 
-            case 6 :
-                $img = imageCreateFromBmp($sourcefile);
-                break; 
-        }
-        
-        $width = imagesx($img);
-        $height = imagesy($img);
-        
-        // Don't make images larger than the original
-        if($thumbwidth > $width)
-            $thumbwidth = $width;
-        
-        if ($width > $height) {
-            $newwidth = $thumbwidth;
-            $divisor = $width / $thumbwidth;
-            $newheight = floor($height / $divisor);
-        } else {
-            $newheight = $thumbheight;
-            $divisor = $height / $thumbheight;
-            $newwidth = floor($width / $divisor );
-        }
-        
-        // Create a new temporary image.
-        $tmpimg = imagecreatetruecolor($newwidth, $newheight);
-        
-        // Copy and resize old image into new image.
-        imagecopyresampled($tmpimg, $img, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-        
-        // Save thumbnail into a file.
-        $returnVal = imagejpeg($tmpimg, $endfile, $quality);
-        
-        // release the memory
-        imagedestroy($tmpimg);
-        imagedestroy($img);
-        
-        return $returnVal;
     }
     
     ##################################################
@@ -1052,27 +940,17 @@ class Cosmo {
     }
     
     /**
-     * Save a menu in HTML
-     * @param string $menu Menu HTML
+     * Save or update a menu in HTML
+     * @param int Menu ID
+     * @param str Menu name
+     * @param str $menu Menu HTML
+     * @param str Area. e.g. 'footer' 
      * @return boolean
      */
     public function menusUpdate($menuID, $name, $menu, $area)
     {
         $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'menus SET name=?, menu=?, area=? WHERE id=?');
         $data = array($name, $menu, $area, $menuID);
-        return $stmt->execute($data);
-    }
-    
-    /**
-     * Update a menu's name
-     * @param int $menuID Menu ID
-     * @param str $name Menu's new name
-     * @return boolean
-     */
-    public function menusUpdateName($menuID, $name)
-    {
-        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'menus SET name=? WHERE id=?');
-        $data = array($name, $menuID);
         return $stmt->execute($data);
     }
     
@@ -1378,31 +1256,25 @@ class Cosmo {
      * @param str $url URL
      * @return array 2d array with 'title', 'url', 'type', 'pulished', 'timestamp' fields
      */
-    public function revisionsRead($contentID)
+    public function revisionsRead($revisionID, $contentID)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE content_id=? ORDER BY timestamp DESC LIMIT 100');
-        $data = array($contentID);
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        while($row = $stmt->fetch())
-            $revisions[] = $row;
-        
-        return $revisions;
-    }
-    
-    /**
-     * Get all revisions
-     * @param str $url URL
-     * @return array 2d array with 'title', 'url', 'type', 'pulished', 'timestamp' fields
-     */
-    public function revisionsReadRecord($revisionID)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE id=?');
-        $data = array($revisionID);
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        while($row = $stmt->fetch())
-            $revisions[] = $row;
+        if($revisionID) // Get a specific record
+        {
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE id=?');
+            $data = array($revisionID);
+            $stmt->execute($data);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while($row = $stmt->fetch())
+                $revisions[] = $row;
+        } else // Get all records associated with a specific page
+        {
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE content_id=? ORDER BY timestamp DESC LIMIT 100');
+            $data = array($contentID);
+            $stmt->execute($data);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while($row = $stmt->fetch())
+                $revisions[] = $row;
+        }
         
         return $revisions;
     }
@@ -1412,10 +1284,18 @@ class Cosmo {
      * @param int $revisionID Revision ID
      * @return boolean
      */
-    public function revisionsDelete($revisionID){
-        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'revisions WHERE id=?');
-        $data = array($revisionID);
-        return $stmt->execute($data);
+    public function revisionsDelete($revisionID, $contentID){
+        if($revisionID)
+        {
+            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'revisions WHERE id=?');
+            $data = array($revisionID);
+            return $stmt->execute($data);
+        } else if($contentID)
+        {
+            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'revisions WHERE content_id=?');
+            $data = array($contentID);
+            return $stmt->execute($data);
+        }
     }
     
     /**
@@ -1424,9 +1304,7 @@ class Cosmo {
      * @return boolean
      */
     public function revisionsDeleteAll($contentID){
-        $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'revisions WHERE content_id=?');
-        $data = array($contentID);
-        return $stmt->execute($data);
+        
     }
     
     ##################################################
@@ -1587,31 +1465,27 @@ class Cosmo {
     
     /**
      * Get all themes in the 'themes' folder
+     * @param string $themeID Name of the theme. e.g. 'default'
      * @return array Array with all 'name' of the folders
      */
-    public function themesRead()
+    public function themesRead($themeID=NULL)
     {
-        // Get all theme folders
-        foreach(glob('../../themes/*') as $theme)
-            $themes[] = array('name' => str_replace('../../themes/', '', $theme));
+        if($themeID)
+        {
+            foreach(glob("../../themes/$themeID/*") as $theme)
+            {
+                // Only return the html files
+                if(strpos($theme, '.html'))
+                    $themes[] = array('type' => str_replace("../../themes/$themeID/", '', $theme));
+            }
+        } else 
+        {
+            // Get all theme folders
+            foreach(glob('../../themes/*') as $theme)
+                $themes[] = array('name' => str_replace('../../themes/', '', $theme));
+        }
         
         return $themes;
-    }
-    
-    /**
-     * Get all the page types available to the active theme
-     * @param string $themeID Name of the theme. e.g. 'default'
-     * @return array Array of page 'type'
-     */
-    public function themesActive($themeID)
-    {
-        foreach(glob("../../themes/$themeID/*") as $theme)
-        {
-            // Only return the html files
-            if(strpos($theme, '.html'))
-                $types[] = array('type' => str_replace("../../themes/$themeID/", '', $theme));
-        }
-        return $types;
     }
     
     /**
@@ -1861,6 +1735,78 @@ class Cosmo {
         }
 
         return $random_string;
+    }
+    
+    /**
+     * Original source: https://stackoverflow.com/questions/12661/efficient-jpeg-image-resizing-in-php
+     * Resize images for thumbnails/mobile
+     * @param str $sourcefile
+     * @param str $endfile
+     * @param int $thumbwidth
+     * @param int $thumbheight
+     * @param int $quality
+     */
+    public function makeThumbnail($sourcefile, $endfile, $thumbwidth, $thumbheight, $quality){
+        // Takes the sourcefile (path/to/image.jpg) and makes a thumbnail from it
+        // and places it at endfile (path/to/thumb.jpg).
+        
+        // Load image and get image size.
+        $type = exif_imagetype($sourcefile); // [] if you don't have exif you could use getImageSize() 
+        switch ($type) { 
+            case 1 :
+                $img = imageCreateFromGif($sourcefile);
+                break; 
+            case 2 :
+                $img = imageCreateFromJpeg($sourcefile);
+                break; 
+            case 3 :
+                $img = imageCreateFromPng($sourcefile);
+                break; 
+            case 6 :
+                $img = imageCreateFromBmp($sourcefile);
+                break; 
+        }
+        
+        $width = imagesx($img);
+        $height = imagesy($img);
+        
+        // Don't make images larger than the original
+        if($thumbwidth > $width)
+            $thumbwidth = $width;
+        
+        if ($width > $height) {
+            $newwidth = $thumbwidth;
+            $divisor = $width / $thumbwidth;
+            $newheight = floor($height / $divisor);
+        } else {
+            $newheight = $thumbheight;
+            $divisor = $height / $thumbheight;
+            $newwidth = floor($width / $divisor );
+        }
+        
+        // Create a new temporary image.
+        $tmpimg = imagecreatetruecolor($newwidth, $newheight);
+        
+        // Copy and resize old image into new image.
+        imagecopyresampled($tmpimg, $img, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+        
+        // Save thumbnail into a file.
+        $returnVal = imagejpeg($tmpimg, $endfile, $quality);
+        
+        // release the memory
+        imagedestroy($tmpimg);
+        imagedestroy($img);
+        
+        return $returnVal;
+    }
+    
+    /**
+     * Save a file to the 'uploads' folder. Insert record into database.
+     * @return boolean
+     */
+    public function email($to, $subject, $message)
+    {
+        return mail($to, $subject, $message);
     }
 }
 

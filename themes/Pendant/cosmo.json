@@ -58,11 +58,11 @@
         }
     ],
     "pages": [
-        "blog-post.html",
-        "blog-post-large-banner.html",
-        "blog-post-without-image.html",
-        "index.html",
-        "index-without-banner.html"
+        "post.html",
+        "post-alt.html",
+        "post-alt-2.html",
+        "home.html",
+        "home-alt.html"
     ],
     "scripts": [
         "js/pendant.minify.js"

@@ -271,3 +271,12 @@ CREATE TABLE IF NOT EXISTS `**prefix**users` (
   UNIQUE KEY `username` (`email`),
   UNIQUE KEY `username_2` (`username`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
+-- --------------------------------------------------------
+
+--
+-- Insert first record
+--
+
+INSERT INTO `content` (`id`, `title`, `description`, `header`, `subheader`, `featured`, `body`, `url`, `type`, `published`, `published_date`, `author`, `timestamp`) VALUES
+(2, 'Welcome to Cosmo', 'Welcome to Pendant, a blog theme developed for Cosmo.', 'Welcome to Cosmo', 'Your new website awaits', NULL, '<p class="ng-scope"><span class="ng-scope">Your site is now running on Cosmo, an open source content management system that''s designed to help make editing your website quick and easy, it''s created by James and<a href="http://twitter.com/jordandunn"> Jordan Dunn</a>. If this is your first time using Cosmo we recommend&nbsp;<a href="http://cosmocms.org/cosmo-basics">checking out our how-to''s</a>&nbsp;for creating pages, editing content, uploading media and more. Once you''re ready to make your first page, click the umbrella to your left, go to content &gt; new page and you''ll be on your way.</span></p><p class="ng-scope"><span class="ng-scope">If you''re looking to create a new theme for Cosmo you can view all documentation for&nbsp;<a href="http://cosmocms.org/how-to-create-a-theme-for-cosmo">theme creation</a>&nbsp;along with&nbsp;how to use or&nbsp;<a href="http://cosmocms.org/how-to-create-a-module-for-cosmo">create new modules</a>&nbsp;to run within Cosmo.</span></p><p class="ng-scope">If you''re looking for some free photos to work well with your new site, we recommend checking out&nbsp;<a href="http://deathtothestockphoto.com">Death to Stock Photo</a>&nbsp;or&nbsp;<a href="https://unsplash.com">Unsplash</a>.</p><p class="ng-scope">Once your website is up and running,&nbsp;<a href="http://twitter.com/cosmocms">send us a link</a>&nbsp;so we can check it out and maybe even highlight it on our&nbsp;website or social media.</p>', '/welcome-to-cosmo', 'post-alt-2.html', 'Y', NULL, 1, 1000000000);

@@ -159,9 +159,9 @@ switch($segments[0])
                 if($segments[2] === 'requirements')
                     $response = $Cosmo->blocksRequirementsRead($segments[1]);
                 else if($segments[1])
-                    $response['html'] = $Cosmo->blockFetch($segments[1]);
+                    $response['html'] = $Cosmo->blocksRead($segments[1]);
                 else if($_GET['type'] || $_GET['type'])
-                    $response = $Cosmo->blockFetchAll($_GET['type'], $_GET['url']);
+                    $response = $Cosmo->blocksRead(NULL, $_GET['type'], $_GET['url']);
                 else
                     $response = $Cosmo->blocksRead();
                 break;
@@ -236,9 +236,9 @@ switch($segments[0])
         {
             case 'GET':
                 if($segments[2] === 'revisions' && $segments[3])
-                    $response = $Cosmo->revisionsReadRecord($segments[3]);
+                    $response = $Cosmo->revisionsRead($segments[3]);
                 else if($segments[2] === 'revisions')
-                    $response = $Cosmo->revisionsRead($segments[1]);
+                    $response = $Cosmo->revisionsRead(NULL, $segments[1]);
                 else if($segments[2] === 'tags')
                     $response = $Cosmo->contentTagsRead($segments[1]);
                 else
@@ -267,13 +267,13 @@ switch($segments[0])
                         $response = $Cosmo->contentUpdate($segments[1], $_PUT['title'], $_PUT['description'], $_PUT['header'], $_PUT['subheader'], $_PUT['featured'], $_PUT['body'], $_PUT['url'], $_PUT['author'], $_PUT['type'], $_PUT['published'], $_PUT['published_date']);
                 }
                 break;
-
+                
             case 'DELETE':
                 if(checkPermissions('deletePage')){
                     if($segments[2] === 'revisions' && $segments[3])
                         $response = $Cosmo->revisionsDelete($segments[3]);
                     else if($segments[2] === 'revisions')
-                        $response = $Cosmo->revisionsDeleteAll($segments[1]);
+                        $response = $Cosmo->revisionsDelete(NULL, $segments[1]);
                     else if($segments[2] === 'extras')
                         $response = $Cosmo->contentExtrasDelete($segments[1]);
                     else if($segments[2] === 'tags')
@@ -300,7 +300,7 @@ switch($segments[0])
     ##################################################
     #                    Files                       #
     ##################################################
-
+    
     case 'files':
         switch($method)
         {
@@ -308,13 +308,13 @@ switch($segments[0])
                 if($segments[1] === 'tag')
                     $response = $Cosmo->filesTagsRead(null, $segments[2]);
                 else if($segments[1])
-                    $response = $Cosmo->filesReadRecord($segments[1]);
+                    $response = $Cosmo->filesRead($segments[1]);
                 else if($_GET['url'])
-                    $response = $Cosmo->filesReadRecord(null, $_GET['url']);
+                    $response = $Cosmo->filesRead(null, $_GET['url']);
                 else
                     $response = $Cosmo->filesRead();
                 break;
-
+                
             case 'POST':
                 if(checkPermissions('createPage', $_POST['published']))
                 {
@@ -438,7 +438,7 @@ switch($segments[0])
         {
             case 'GET':
                 if($segments[1])
-                    $response = $Cosmo->themesActive($segments[1]);
+                    $response = $Cosmo->themesRead($segments[1]);
                 else
                     $response = $Cosmo->themesRead();
                 break;

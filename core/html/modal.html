@@ -189,7 +189,7 @@
                           <i class="fa fa-file-audio-o"></i>
                       </div>
                   </div>
-                  <button class="btn-options" ng-click="numFiles=numFiles+12">View More</button>
+                  <button class="btn-options" ng-show="numFiles<media.length" ng-click="numFiles=numFiles+12">View More</button>
                 </div>
         </div>
         <!-- Upload Content Area -->

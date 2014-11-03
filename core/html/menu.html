@@ -7,10 +7,10 @@
         <div class="form-case--border">
             <button class="new" ng-click="createMenu=!createMenu">
                 <div ng-if="!createMenu">
-                    <i class="fa fa-plus"></i><p>New Menu</p>
+                    <i class="fa fa-fw fa-plus"></i><p>New Menu</p>
                 </div>
                 <div ng-if="createMenu">
-                    <i class="fa fa-times-circle-o"></i><p>Close</p>
+                    <i class="fa fa-fw fa-times-circle-o"></i><p>Close</p>
                 </div>
             </button>
             <div class="add-new" ng-show="createMenu">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <ul>
-            <li ng-repeat='menu in menus'><a ng-click="selectMenu(menu)">{{menu.name}}</a></li>
+            <li ng-repeat="menu in menus" ng-click="selectMenu(menu)"><a>{{menu.name}}</a></li>
         </ul>
     </div>
     <div ng-show="menu.panel==='edit'">
@@ -119,3 +119,4 @@
         </div>
     </div>
 </div>
+>>>>>>> back-end
