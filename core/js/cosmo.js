@@ -129,6 +129,9 @@ angular.module('cosmo', [])
                 $rootScope.$broadcast('switchViewMode');
         });
     }
+    
+    // Callback for the page loading
+    $rootScope.$broadcast('pageLoaded', { url: $location.path() });
 }])
 
 /**************************************************
@@ -2988,7 +2991,7 @@ angular.module('cosmo', [])
     $scope.savePage = function(duplicate){
         
         // Check for duplicate URL
-        if(duplicate && $scope.page.url === Page.url){
+        if(duplicate && $scope.page.url === $location.path()){
             $rootScope.$broadcast('notify', {message: 'Error: URL must be different to duplicate a page', classes: 'alert-error'});
             return;
         }

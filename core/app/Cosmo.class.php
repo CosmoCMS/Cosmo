@@ -505,7 +505,7 @@ class Cosmo {
      * @param string $extra Content of the extra
      * @return boolean
      */
-    public function conentExtrasCreate($contentID, $name, $extra)
+    public function contentExtrasCreate($contentID, $name, $extra)
     {
         $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'content_extras (content_id, name, extra) VALUES (?,?,?)');
         $data = array($contentID, $name, $extra);
