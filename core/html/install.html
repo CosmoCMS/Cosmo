@@ -23,50 +23,51 @@
                 <p ng-bind-html="error"></p>
             </p>
             <h3>Database Info</h3>
-            <div class="form">
-                <label>Host <small>(you probably won't have to change this)</small></label>
+            <div class="half-width">
+                <label>Host</label>
                 <input type="text" name="host" value="localhost">
             </div>
-            <div class="form">
+            <div class="half-width">
                 <label>Database name</label>
                 <input type="text" ng-model="install.dbname" name="name">
             </div>
-            <div class="form">
+            <div class="half-width">
                 <label>Username</label>
                 <input type="text" ng-model="install.username" name="username"><br />
             </div>
-            <div class="form">
+            <div class="half-width">
                 <label>Password</label>
                 <input type="password" ng-model="install.password" name="password"><br />
             </div>
 
-            <div class="form">
-                <label>Prefix <small>(if you want multiple installations on the same database, change this)</small></label>
+            <div class="half-width">
+                <label>Database Prefix</label>
                 <input type="text" ng-model="install.prefix" name="prefix" value="cosmo_">
             </div>
-            <div class="form">
-                <label>Folder <small>(if you aren't putting this in the main directory (e.g. subfolder/ ))</small></label>
+            <!-- todo: Add message about modifying the .htaccess files as well
+            <div class="half-width">
+                <label>Folder</label>
                 <input type="text" ng-model="install.folder" name="folder" value="">
             </div>
-
+            -->
             <h3>Site Info</h3>
-            <div class="form">
+            <div class="half-width">
                 <label>Site Title</label>
                 <input type="text" ng-model="install.title" name="title" value="My Cosmo Site">
             </div>
-            <div class="form">
+            <div class="half-width">
                 <label>Username</label>
                 <input type="text" ng-model="install.adminUsername" value="admin">
             </div>
-            <div class="form">
+            <div class="half-width">
                 <label>Password</label>
                 <input type="password" ng-model="install.adminPassword" name="adminPassword">
             </div>
-            <div class="form">
+            <div class="half-width">
                 <label>Confirm Password</label>
                 <input type="password" ng-model="install.adminPassword2" name="adminPassword2">
             </div>
-            <div class="form">
+            <div class="half-width">
                 <label>Email</label>
                 <input type="text" ng-model="install.email" name="email" value="admin@example.com">
             </div>

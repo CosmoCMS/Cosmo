@@ -253,7 +253,7 @@ switch($segments[0])
                     if($segments[2] === 'revisions')
                         $response['id'] = $Cosmo->revisionsCreate($segments[1], $_POST['title'], $_POST['description'], $_POST['header'], $_POST['subheader'], $_POST['featured'], $_POST['body'], $_POST['url'], $_POST['type'], $_POST['published'], $_POST['published_date'], $_POST['author']);
                     else if($segments[2] === 'extras')
-                        $response = $Cosmo->conentExtrasCreate($segments[1], $_POST['name'], $_POST['extra']);
+                        $response = $Cosmo->contentExtrasCreate($segments[1], $_POST['name'], $_POST['extra']);
                     else if($segments[2] === 'tags')
                         $response = $Cosmo->contentTagsCreate($segments[1], $_POST['tag']);
                     else // Create a new page

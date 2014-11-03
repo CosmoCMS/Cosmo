@@ -9,14 +9,11 @@
             </a>
             <p>{{post.subheader}}</p>
             <div class="meta">
-                <div class="category">
-                    <a href="#">Posted in:<span>{{article.tag}}</span></a>
-                </div>
                 <div class="byline">
-                    <a href="#">By <span>{{post.author}}</span> on <span>{{post.timestamp * 1000 | date:'MM/dd/yyyy'}}</span></a>
+                    <a>By <span>{{post.author.name}}</span> on <span>{{post.timestamp * 1000 | date:'MM/dd/yyyy'}}</span> <span ng-repeat="tag in post.tags">#{{tag}} </span></a>
                 </div>
                 <div class="comments">
-                    <a href="#"><i class="fa fa-comments"></i>285 Comments</a>
+                    <a><i class="fa fa-comments"></i>{{post.commentsNum}} Comments</a>
                 </div>
             </div>
         </div>
