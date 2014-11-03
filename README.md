@@ -9,4 +9,4 @@ Demo- http://www.cosmocms.org/demo/
 
 Features- http://www.cosmocms.org/cosmo-launch
 
-Install - http://cosmocms.org/install
+Install - http://www.cosmocms.org/install
