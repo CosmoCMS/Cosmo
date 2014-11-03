@@ -3,18 +3,6 @@
     height: auto;
     width: 100%;
 
-    &.reply-first {
-        padding-left: size(15);
-    }
-
-    &.reply-second {
-        padding-left: size(25);
-    }
-
-    &.reply-third {
-        padding-left: 2.188rem;
-    }
-
     .unread {
         border-right: 10px solid palette(gray, mid--light);
         transition: .25s ease-in;
@@ -106,7 +94,7 @@
 /* text info for articles in search */
 .cos-comments--comment {
     border-bottom: 2px solid palette(gray, light);
-    padding: size(20) size(20) size(20) 0;
+    padding: size(20) 0;
     transition: .25s ease-in;
 
     i {
@@ -123,6 +111,18 @@
     p {
         font-size: .9rem;
         margin-bottom: 0;
+    }
+
+    &.reply-first {
+        margin-left: size(15);
+    }
+
+    &.reply-second {
+        margin-left: size(30);
+    }
+
+    &.reply-third {
+        margin-left: 2.813rem;
     }
 
     .active {
