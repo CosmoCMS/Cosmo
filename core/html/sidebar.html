@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-<div class="bar-top">
-    <div class="prfl-img" style="background-image: url({{admin.photo}})" ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"></div>
-=======
 <div class="bar-top">
     <div class="prfl-img" style="background-image: url({{admin.photo | imageSize:320}})" ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"></div>
->>>>>>> back-end
+<div class="bar-top">
+    <div class="prfl-img" style="background-image: url({{admin.photo | imageSize:320}})" ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"></div>
     <div class="prfl-info">
         <p ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"> {{admin.username}}</p>
         <a ng-click="logout()">Log Out</a>
