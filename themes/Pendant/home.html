@@ -1,6 +1,6 @@
 <div class="cosmo-theme" ng-controller="pendantCtrl">
     <div ng-include="'themes/Pendant/partials/header.html'"></div>
-    <section ng-repeat="post in posts | filter:'post.html':true | limitTo:1" role="banner" class="banner--lrg" style="background-image: url({{post.featured}});">
+    <section ng-repeat="post in posts | filter:'post' | limitTo:1" role="banner" class="banner--lrg" style="background-image: url({{post.featured}});">
         <div class="container">
             <div class="banner--title">
                 <a ng-href="{{post.url}}">

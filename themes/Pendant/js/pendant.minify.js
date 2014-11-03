@@ -4,6 +4,10 @@ angular.module('pendant', [])
     REST.content.query({}, function(data){
         angular.forEach(data, function(data2, key){
             data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured));
+            // Get comments for this page
+            REST.comments.query({ id: data2.id }, function(commentsData){
+                data2.commentsNum = commentsData.length;
+            });
         });
         $scope.posts = data;
     });
@@ -25,39 +29,54 @@ angular.module('pendant', [])
     });
 }])
 
-.directive('pendantOnePost', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
+.directive('onePost', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
     return {
         scope: {},
         templateUrl: 'themes/Pendant/partials/one.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.pendantOnePost;
+            scope.search.tags = attrs.onePost;
+            scope.limitNum = 10;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
+            // Get content
             REST.content.query({}, function(data){
                 angular.forEach(data, function(data2){
                     data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured, 'medium'));
+                    // Get comments for this page
+                    REST.comments.query({ id: data2.id }, function(commentsData){
+                        data2.commentsNum = commentsData.length;
+                    });
                 });
                 scope.posts = data;
+            });
+            
+            // Watch for infinity scroll reaching the bottom
+            scope.$on('infinityScroll', function(){
+                scope.limitNum += 10;
             });
         }
     };
 }])
 
-.directive('pendantRowLeft', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
+.directive('rowLeft', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
     return {
         scope: {},
         templateUrl: 'themes/Pendant/partials/row-left.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.pendantRowLeft;
+            scope.search.tags = attrs.rowLeft;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
             REST.content.query({}, function(data){
                 angular.forEach(data, function(data2, key){
                     data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured, 'large'));
+                    // Get comments for this page
+                    REST.comments.query({ id: data2.id }, function(commentsData){
+                        data2.commentsNum = commentsData.length;
+                    });
                 });
                 scope.posts = data;
             });
@@ -65,19 +84,23 @@ angular.module('pendant', [])
     };
 }])
 
-.directive('pendantRowRight', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
+.directive('rowRight', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
     return {
         scope: {},
         templateUrl: 'themes/Pendant/partials/row-right.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.pendantRowRight;
+            scope.search.tags = attrs.rowRight;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
             REST.content.query({}, function(data){
                 angular.forEach(data, function(data2, key){
                     data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured, 'large'));
+                    // Get comments for this page
+                    REST.comments.query({ id: data2.id }, function(commentsData){
+                        data2.commentsNum = commentsData.length;
+                    });
                 });
                 scope.posts = data;
             });
@@ -85,19 +108,23 @@ angular.module('pendant', [])
     };
 }])
 
-.directive('pendantThreePosts', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
+.directive('threePosts', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
     return {
         scope: {},
         templateUrl: 'themes/Pendant/partials/three.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.pendantThreePosts;
+            scope.search.tags = attrs.threePosts;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
             REST.content.query({}, function(data){
                 angular.forEach(data, function(data2){
                     data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured, 'medium'));
+                    // Get comments for this page
+                    REST.comments.query({ id: data2.id }, function(commentsData){
+                        data2.commentsNum = commentsData.length;
+                    });
                 });
                 scope.posts = data;
             });
@@ -105,19 +132,23 @@ angular.module('pendant', [])
     };
 }])
 
-.directive('pendantThreeBlock', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
+.directive('threeBlock', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
     return {
         scope: {},
         templateUrl: 'themes/Pendant/partials/three-block.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.pendantThreeBlock;
+            scope.search.tags = attrs.threeBlock;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
             REST.content.query({}, function(data){
                 angular.forEach(data, function(data2, key){
                     data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured, 'large'));
+                    // Get comments for this page
+                    REST.comments.query({ id: data2.id }, function(commentsData){
+                        data2.commentsNum = commentsData.length;
+                    });
                 });
                 scope.posts = data;
             });
@@ -125,19 +156,23 @@ angular.module('pendant', [])
     };
 }])
 
-.directive('pendantThreeUniform', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
+.directive('threeUniform', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
     return {
         scope: {},
         templateUrl: 'themes/Pendant/partials/three-uniform.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.pendantThreeUniform;
+            scope.search.tags = attrs.threeUniform;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
             REST.content.query({}, function(data){
                 angular.forEach(data, function(data2){
                     data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured, 'medium'));
+                    // Get comments for this page
+                    REST.comments.query({ id: data2.id }, function(commentsData){
+                        data2.commentsNum = commentsData.length;
+                    });
                 });
                 scope.posts = data;
             });
