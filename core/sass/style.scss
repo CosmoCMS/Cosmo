@@ -56,6 +56,7 @@ html, body, [ng-include="template"], .cosmo-theme {
     @import "partials/gallery"; // styling of the gallery modal
     @import "partials/gallery--edit"; // edit/preview styling for media
     @import "partials/gallery--upload"; // styling for form used in the gallery upload
+    @import "partials/comments";
 
 
 
