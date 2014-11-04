@@ -737,7 +737,6 @@ class Cosmo {
      * @return array Array of files columns
      */
     public function filesRead($fileID=null, $filename=null){
-        
         if($fileID) // Get a specific file record
         {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files WHERE id=?');
@@ -750,7 +749,6 @@ class Cosmo {
                 'id' => $row['id'],
                 'url' => $row['filename'],
                 'responsive' => $row['responsive'],
-                'tags' => self::filesTagsRead($row['id']),
                 'type' => $row['type']
             );
         } else if($filename) // Find a filename with a specific name
@@ -765,7 +763,6 @@ class Cosmo {
                 'id' => $row['id'],
                 'url' => $row['filename'],
                 'responsive' => $row['responsive'],
-                'tags' => self::filesTagsRead($row['id']),
                 'type' => $row['type']
             );
         } else // Get all files
@@ -781,7 +778,6 @@ class Cosmo {
                     'id' => $row['id'],
                     'filename' => $row['filename'],
                     'responsive' => $row['responsive'],
-                    'tags' => self::filesTagsRead($row['id']),
                     'type' => $row['type']
                 );
             }
@@ -825,84 +821,6 @@ class Cosmo {
         
         // Delete file from uploads folder
         return unlink($_SERVER['DOCUMENT_ROOT'] .'/'. $filename);
-    }
-    
-    ##################################################
-    #                 File Tags                      #
-    ##################################################
-    
-    /**
-     * Create a new tag
-     * @param int $fileID File's id
-     * @param str $tag Tag name
-     * @return boolean TRUE on success, FALSE on failure to insert record.
-     */
-    public function filesTagsCreate($fileID, $tag)
-    {
-        if(!empty($tag))
-        {
-            $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'files_tags (files_id, tag) VALUES (?,?)');
-            $data = array($fileID, $tag);
-            return $stmt->execute($data);
-        } else 
-            return FALSE;
-    }
-    
-    /**
-     * Get all tags for a given file
-     * @param int $fileID File ID
-     * @return array Array of all tags
-     */
-    public function filesTagsRead($fileID=null, $tag=null){
-        if(!empty($fileID))
-        {
-            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'files_tags WHERE files_id=?');
-            $data = array($fileID);
-            $stmt->execute($data);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            while($row = $stmt->fetch())
-                $tags[] = $row['tag'];
-        } else
-        {
-            $stmt = $this->pdo->prepare('SELECT DISTINCT tag FROM '.$this->prefix.'files_tags WHERE tag LIKE ?');
-            $data = array($tag . '%');
-            $stmt->execute($data);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            while($row = $stmt->fetch())
-                $tags[] = $row['tag'];
-        }
-        return $tags;
-    }
-    
-    /**
-     * Update a tag
-     * @param string $oldTag Old tag
-     * @param string $newTag New tag
-     * @return boolean
-     */
-    public function filesTagsUpdate($oldTag, $newTag){
-        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'files_tags SET tag=? WHERE tag=?');
-        $data = array($newTag, $oldTag);
-        return $stmt->execute($data);
-    }
-    
-    /**
-     * Delete a tag
-     * @param string $tag Tag
-     * @return boolean
-     */
-    public function filesTagsDelete($fileID, $tag){
-        if($fileID)
-        {
-            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'files_tags WHERE files_id=?');
-            $data = array($fileID);
-            return $stmt->execute($data);
-        } else
-        {
-            $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'files_tags WHERE tag=?');
-            $data = array($tag);
-            return $stmt->execute($data);
-        }
     }
     
     ##################################################
