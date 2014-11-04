@@ -305,9 +305,7 @@ switch($segments[0])
         switch($method)
         {
             case 'GET':
-                if($segments[1] === 'tag')
-                    $response = $Cosmo->filesTagsRead(null, $segments[2]);
-                else if($segments[1])
+                if($segments[1])
                     $response = $Cosmo->filesRead($segments[1]);
                 else if($_GET['url'])
                     $response = $Cosmo->filesRead(null, $_GET['url']);
@@ -318,30 +316,17 @@ switch($segments[0])
             case 'POST':
                 if(checkPermissions('createPage', $_POST['published']))
                 {
-                    if($segments[2] === 'tag') // Insert a new tag
-                        $response = $Cosmo->filesTagsCreate($segments[1], urldecode($segments[3]));
-                    else
-                        $response = $Cosmo->filesCreate($_POST['file']);
+                    $response = $Cosmo->filesCreate($_POST['file']);
                 }
                 break;
 
             case 'PUT':
-                if(checkPermissions('editPage', $_PUT['published'], $_PUT['url']))
-                {
-                    if($segments[2] === 'tag')
-                        $response = $Cosmo->filesTagsUpdate(urldecode($segments[3]), $_PUT['newTag']);
-                }
                 break;
 
             case 'DELETE':
                 if(checkPermissions('deletePage'))
                 {
-                    if($segments[1] === 'tag') // Delete all tags
-                        $response = $Cosmo->filesTagsDelete($segments[2]);
-                    else if($segments[2] === 'tag') // Delete all tags for a file
-                        $response = $Cosmo->filesTagsDelete($segments[1]);
-                    else
-                        $response = $Cosmo->filesDelete($segments[1]);
+                    $response = $Cosmo->filesDelete($segments[1]);
                 }
                 break;
         }
