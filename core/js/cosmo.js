@@ -237,6 +237,7 @@ angular.module('cosmo', [])
                         if(data.area === attrs.csBlock)
                             blockHTML += data.block;
                     });
+                    
                     elm.html(blockHTML);
                     $timeout(function(){
                         $compile(elm.contents())(scope);
@@ -935,8 +936,10 @@ angular.module('cosmo', [])
             Users.role = data.role;
             
             // Check if the user is an administrator
-            if(data.role === 'admin')
+            if(data.role === 'admin'){
                 $rootScope.$broadcast('adminLogin');
+                Users.roleNum = 1;
+            }
             
             $scope.login.username = '';
             $scope.login.password = '';
