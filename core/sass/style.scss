@@ -7,7 +7,7 @@
 @import "global/alerts"; // alert notifications used for saved pages, errors etc..
 @import "global/video"; // turns all videos uploaded (.avi, .mp4 etc...) into a responsive size
 @import "global/tables"; //not used directly within cosmo, but a generic that's inserted within the WYSIWYG
-@import "partials/comments";
+
 
 // vendor styles, may be fully altered or untouched from original styling
 @import "vendor/fontawesome/font-awesome"; // font awesome fonts --fontawesome.io--
@@ -56,6 +56,8 @@ html, body, [ng-include="template"], .cosmo-theme {
     @import "partials/gallery"; // styling of the gallery modal
     @import "partials/gallery--edit"; // edit/preview styling for media
     @import "partials/gallery--upload"; // styling for form used in the gallery upload
+
+
 
     @import "vendor/menus"; // styling for menu reordering in sidebar
     @import "vendor/calendar"; // calendar used to schedule posts
