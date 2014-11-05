@@ -522,6 +522,8 @@ class Cosmo {
         $data = array($contentID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $extras = array();
+
         while($row = $stmt->fetch())
             $extras[$row['name']] = $row['extra'];
         
@@ -565,6 +567,7 @@ class Cosmo {
         $data = array($contentID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $tags = array();
         while($row = $stmt->fetch())
             $tags[] = $row['tag'];
         

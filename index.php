@@ -1,11 +1,11 @@
-<? include 'core/app/initialize.php'; ?>
+<?php include 'core/app/initialize.php'; ?>
 <!doctype html>
-<!-- 
+<!--
 ####################################
 
            Created with:
-        __  __   __       __  
-       /   /  \ (_  |\/| /  \ 
+        __  __   __       __
+       /   /  \ (_  |\/| /  \
        \__ \__/ __) |  | \__/
 
       http://www.cosmocms.org/
@@ -36,21 +36,21 @@
         <meta property="og:description" content="<?php echo $content['description']; ?>" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" />
-<?php if($content['extras']['featured']): ?>
+<?php if(isset($content['extras']['featured']) && $content['extras']['featured']): ?>
         <meta property="og:image" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . explode('/', $_SERVER['REQUEST_URI'])[0] . '/' . json_decode($content['extras']['featured'])->src; ?>" />
 <?php endif; ?>
-        
+
         <base href="/<?php echo FOLDER; ?>" />
-        
+
         <script src="<?php echo $minifyScripts; ?>"></script>
-        
+
         <link rel="stylesheet" type="text/css" href="<?php echo $minifyCSS; ?>">
-        
+
         <?php echo $scripts; ?>
         <?php echo $CSS; ?>
-        
+
         <script>
-            
+
             // Setup main module with HTML5 URLs
             angular.module('main', [
                 'cosmo',
@@ -61,9 +61,9 @@
                 'ngResource',
                 'ngDialog',
                 'ngTouch'<?php echo $angularModules; ?>
-                
+
             ])
-            
+
             .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
                 // Configure standard URLs
                 $routeProvider.
@@ -71,37 +71,37 @@
                     when('/reset/:userID/:token', { controller: 'resetModal', template: '<div></div>' }).
                     when('/', { controller: 'urlCtrl', template: '<div ng-include="template"></div>' }).
                     when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template"></div>' });
-                    
+
                 // Enable HTML5 urls
                 $locationProvider.html5Mode(true).hashPrefix('!');
             }])
-            
+
             // Initialize JS variables
             .run(['Users', '$http', '$templateCache', 'REST', '$rootScope', 'Page', function(Users, $http, $templateCache, REST, $rootScope, Page) {
-                
-                Users.username = '<?php echo $username; ?>';<?php if($usersID): ?>
-                
+
+                Users.username = '<?php echo $username; ?>';<?php if(isset($usersID) && $usersID): ?>
+
                 Users.id = <?php echo $usersID; ?>;<?php endif; ?>
-                
-                Users.role = '<?php echo $role; ?>';<?php if($directives): ?>
-                
-                Page.directives = <?php echo json_encode($directives); ?>;<? endif; ?>
-                
+
+                Users.role = '<?php echo isset($role) ? $role: ''; ?>';<?php if($directives): ?>
+
+                Page.directives = <?php echo json_encode($directives); ?>;<?php endif; ?>
+
                 Page.classes = "<?php echo $classes; ?>";
                 Page.themePages = <?php echo json_encode($themeJSON->pages); ?>;
                 Page.folder = '<?php echo FOLDER; ?>';<?php if($menus):?>
-                
+
                 Page.menus = <?php echo json_encode($menus); ?>;<?php endif; ?>
-                
+
                 Page.settings = <?php echo json_encode($settings); ?>;
                 Page.theme = '<?php echo $theme; ?>';
-                
+
                 // If the user has permissions, show the sidebar.
                 if(Users.role === 'admin' || Users.role === 'editor' || Users.role === 'contributor' || Users.id){
                     Users.admin = true;
                     $rootScope.$broadcast('adminLogin');
                 }
-                
+
                 // Get the user's role number
                 switch(Users.role){
                     case 'admin':
@@ -117,17 +117,17 @@
                         Users.roleNum = 4;
                         break;
                 }
-                
+
                 // Initialize headers for authorizing API calls
-                $http.defaults.headers.common['usersID'] = '<?php echo $usersID; ?>';
+                $http.defaults.headers.common['usersID'] = '<?php echo isset($usersID) ? $usersID : ''; ?>';
                 $http.defaults.headers.common['username'] = '<?php echo $username; ?>';
-                $http.defaults.headers.common['token'] = '<?php echo $token; ?>';
-                
+                $http.defaults.headers.common['token'] = '<?php echo isset($token) ? $token : ''; ?>';
+
                 // Cache all template pages
                 angular.forEach(Page.themePages, function(page){
                     $templateCache.put('themes/<?php echo $theme; ?>/'+page);
                 });
-                
+
             }]);
         </script>
     </head>

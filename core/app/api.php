@@ -13,9 +13,11 @@ $uri = substr($_SERVER['REQUEST_URI'], 5 + strlen(FOLDER)); # remove '/api/' and
 $uri = explode('?', $uri); // Separate GET parameters
 $segments = explode('/', $uri[0]);
 $header = 200;
+$role = '';
 
 // Check permissions for autorized requests
-if($_SERVER['HTTP_USERSID'] && $_SERVER['HTTP_TOKEN'])
+if(isset($_SERVER['HTTP_USERSID']) && $_SERVER['HTTP_USERSID']
+    && isset($_SERVER['HTTP_TOKEN']) && $_SERVER['HTTP_TOKEN'])
 {
     if($Cosmo->tokensRead($_SERVER['HTTP_USERSID'], $_SERVER['HTTP_TOKEN'])){
         $usersID = $_SERVER['HTTP_USERSID'];
@@ -235,26 +237,26 @@ switch($segments[0])
         switch($method)
         {
             case 'GET':
-                if($segments[2] === 'revisions' && $segments[3])
+                if(count($segments) > 3 && $segments[2] === 'revisions')
                     $response = $Cosmo->revisionsRead($segments[3]);
-                else if($segments[2] === 'revisions')
+                else if(count($segments) > 2 && $segments[2] === 'revisions')
                     $response = $Cosmo->revisionsRead(NULL, $segments[1]);
-                else if($segments[2] === 'tags')
+                else if(count($segments) > 2 && $segments[2] === 'tags')
                     $response = $Cosmo->contentTagsRead($segments[1]);
                 else
-                    $response = $Cosmo->contentRead($_GET['url'], $role==='admin');
+                    $response = $Cosmo->contentRead((isset($_GET['url']) ? $_GET['url'] : ''), $role==='admin');
                 break;
                 
             case 'POST':
                 if(checkPermissions('createPage', $_POST['published']))
                 {
-                    if($segments[2] === 'revisions' && $segments[4] === 'extras')
+                    if(count($segments) > 4 && $segments[2] === 'revisions' && $segments[4] === 'extras')
                         $response = $Cosmo->revisionsExtrasCreate($segments[3], $segments[1], $_POST['name'], $_POST['extra']);
-                    if($segments[2] === 'revisions')
+                    if(count($segments) > 2 && $segments[2] === 'revisions')
                         $response['id'] = $Cosmo->revisionsCreate($segments[1], $_POST['title'], $_POST['description'], $_POST['header'], $_POST['subheader'], $_POST['featured'], $_POST['body'], $_POST['url'], $_POST['type'], $_POST['published'], $_POST['published_date'], $_POST['author']);
-                    else if($segments[2] === 'extras')
+                    else if(count($segments) > 2 && $segments[2] === 'extras')
                         $response = $Cosmo->contentExtrasCreate($segments[1], $_POST['name'], $_POST['extra']);
-                    else if($segments[2] === 'tags')
+                    else if(count($segments) > 2 && $segments[2] === 'tags')
                         $response = $Cosmo->contentTagsCreate($segments[1], $_POST['tag']);
                     else // Create a new page
                         $response['id'] = $Cosmo->contentCreate($_POST['title'], $_POST['description'], $_POST['header'], $_POST['subheader'], $_POST['featured'], $_POST['body'], $_POST['url'], $_POST['author'], $_POST['type'], $_POST['published'], $_POST['published_date']);
@@ -451,7 +453,7 @@ switch($segments[0])
         switch($method)
         {
             case 'GET':
-                if($segments[1])
+                if(count($segments) > 1 && $segments[1])
                     $response = $Cosmo->usersRead($segments[1]);
                 else if($_GET['username'] && $_GET['password']) // Login
                     $response = $Cosmo->userLogin($_GET['username'], $_GET['password']);
@@ -468,7 +470,7 @@ switch($segments[0])
                 break;
                 
             case 'PUT':
-                if($segments[1]) // Edit username, email, role, or password
+                if(count($segments) > 1 && $segments[1]) // Edit username, email, role, or password
                 {
                     // Make sure the user is editing their own info, or the user is an administrator
                     if($role === 'admin') // Allow the editing of the role too
