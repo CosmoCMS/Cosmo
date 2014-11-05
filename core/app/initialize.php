@@ -17,7 +17,7 @@ $CSS = '';
 $developerMode = FALSE;
 
 // Log user in if they have a cookie
-if($_COOKIE['usersID'] && $_COOKIE['token'])
+if(isset($_COOKIE['usersID']) && $_COOKIE['usersID'] && $_COOKIE['token'])
 {
     // Validate token
     if($Cosmo->tokensRead($_COOKIE['usersID'], $_COOKIE['token']))
