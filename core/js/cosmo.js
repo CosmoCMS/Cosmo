@@ -2520,6 +2520,11 @@ angular.module('cosmo', [])
         $scope.currentIndex = $scope.currentIndex-1;
         $scope.updateCurrentImage();
     };
+    
+    // Make sure the next image exists
+    $scope.nextExists = function(){
+        return $scope.media[$scope.currentIndex+1];
+    };
 
     // Go to the next image/media item
     $scope.next = function(){
