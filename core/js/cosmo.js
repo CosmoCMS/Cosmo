@@ -727,7 +727,7 @@ angular.module('cosmo', [])
 
 .directive('csMovie', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
     return {
-        template: '<video ng-click="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
+        template: '<video ng-dblclick="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
         replace: true,
         link: function(scope, elm, attrs, ctrl) {
             
