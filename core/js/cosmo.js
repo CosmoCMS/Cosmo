@@ -727,13 +727,21 @@ angular.module('cosmo', [])
 
 .directive('csMovie', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
     return {
-        template: '<video autoplay loop ng-click="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
+        template: '<video ng-click="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
         replace: true,
         link: function(scope, elm, attrs, ctrl) {
             
-            if(Page.extras[attrs.csMovie])
+            if(Page.extras[attrs.csMovie]){
                 scope.videos = angular.fromJson(Page.extras[attrs.csMovie]);
-            else if(Users.admin)
+                if(scope.videos[0].controls)
+                    elm.attr('controls', true);
+                if(scope.videos[0].autoplay)
+                    elm.attr('autoplay', true);
+                if(scope.videos[0].loop)
+                    elm.attr('loop', true);
+                if(scope.videos[0].autoload)
+                    elm.attr('autoload', true);
+            } else if(Users.admin)
                 scope.videos = [{ src: 'core/img/image.svg', type: 'video' }];
             
             // Check if user is an admin
@@ -2407,7 +2415,7 @@ angular.module('cosmo', [])
     
     // Get files for the media library
     function getFiles(justUploaded){
-        
+        // Get all files
         REST.files.query({}, function(data){
             $scope.media = [];
             angular.forEach(data, function(value){
@@ -2523,7 +2531,10 @@ angular.module('cosmo', [])
     
     // Make sure the next image exists
     $scope.nextExists = function(){
-        return $scope.media[$scope.currentIndex+1];
+        if($scope.currentIndex && $scope.media[$scope.currentIndex+1])
+            return true;
+        else
+            return false;
     };
 
     // Go to the next image/media item
@@ -2577,6 +2588,10 @@ angular.module('cosmo', [])
             $scope.files.gallery = true;
             $scope.images.push({
                 id: $scope.selectedId,
+                autoload: $scope.files.autoload,
+                autoplay: $scope.files.autoplay,
+                loop: $scope.files.loop,
+                controls: $scope.files.controls,
                 title: $scope.files.title,
                 alt: $scope.files.alt,
                 src: $scope.origFilename,
