@@ -3245,7 +3245,8 @@ angular.module('cosmo', [])
                                 });
                             }
                         }
-                        $rootScope.$broadcast('notify', {message: 'Page Updated'});
+                        if(!Page.extras.length)
+                            $rootScope.$broadcast('notify', {message: 'Page Updated'});
                     });
                 });
             }, function(data){ // Error
