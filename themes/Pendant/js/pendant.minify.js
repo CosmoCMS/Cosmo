@@ -35,7 +35,10 @@ angular.module('pendant', [])
         templateUrl: 'themes/Pendant/partials/one.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.onePost;
+            if(attrs.onePost)
+                scope.search.tags = attrs.onePost;
+            else
+                scope.search = '';
             scope.limitNum = 10;
             scope.article = {};
             scope.article.tag = attrs.tag;

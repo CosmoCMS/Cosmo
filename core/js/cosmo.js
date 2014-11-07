@@ -3245,6 +3245,7 @@ angular.module('cosmo', [])
                                 });
                             }
                         }
+                        // If there were no extras, notify right away
                         if(!Page.extras.length)
                             $rootScope.$broadcast('notify', {message: 'Page Updated'});
                     });

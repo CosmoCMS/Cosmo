@@ -97,7 +97,7 @@ if($_GET)
     
     // Insert first block
     $Cosmo->blocksCreate('Home Page');
-    $Cosmo->blocksUpdate('Home Page', '<div one-post="blog"></div>', 0, 'block1', 1);
+    $Cosmo->blocksUpdate('Home Page', '<div one-post=""></div>', 0, 'block1', 1);
     $Cosmo->blocksRequirementsCreate(1, 'visible', '/');
 }
 

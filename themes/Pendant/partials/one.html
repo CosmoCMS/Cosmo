@@ -1,4 +1,4 @@
-<article class="article-row" infinity-scroll ng-repeat="post in posts | filter:search:true | limitTo:limitNum">
+<article class="article-row" infinity-scroll ng-repeat="post in posts | filter:search:true | limitTo:limitNum" ng-if="post.url!=='/'&&post.url!=='new'">
     <div class="article--one">
         <a ng-href="{{post.url}}" ng-if="post.featured">
             <div class="article--img-side" style="background-image: url({{post.featured}});"></div>
