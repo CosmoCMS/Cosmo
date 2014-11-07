@@ -29,7 +29,7 @@ angular.module('pendant', [])
     });
 }])
 
-.directive('onePost', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
+.directive('onePost', ['REST', 'Hooks', 'Responsive', 'Page', function(REST, Hooks, Responsive, Page){
     return {
         scope: {},
         templateUrl: 'themes/Pendant/partials/one.html',
@@ -42,6 +42,9 @@ angular.module('pendant', [])
             scope.limitNum = 10;
             scope.article = {};
             scope.article.tag = attrs.tag;
+            scope.page = {};
+            scope.page.type = Page.type;
+            console.log(scope.page.type);
             
             // Get content
             REST.content.query({}, function(data){
