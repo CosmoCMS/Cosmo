@@ -2630,7 +2630,7 @@ angular.module('cosmo', [])
  *     Manage admin sidebar menu editor           *
  **************************************************/
 
-.controller('menuCtrl', ['$scope', 'REST', '$rootScope', function($scope, REST, $rootScope){
+.controller('menuCtrl', ['$scope', 'REST', '$rootScope', 'Page', function($scope, REST, $rootScope, Page){
 
     $scope.menu = {};
     $scope.menu.panel = 'manage';
@@ -2756,6 +2756,12 @@ angular.module('cosmo', [])
     $scope.saveMenu = function(){
         // Save menu
         REST.menus.update({ menuID: $scope.menu.id, name: $scope.menu.name, menu: angular.toJson($scope.list), area: $scope.menu.area }, function(data){
+            // Re-fetch menus to update the site live
+            REST.menus.query({}, function(data){
+                Page.menus = data;
+                $rootScope.$broadcast('menusGet');
+            });
+            // Notify the user the menu has been updated
             $rootScope.$broadcast('notify', {message: 'Menu saved'});
         });
     };
