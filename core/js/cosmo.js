@@ -506,7 +506,7 @@ angular.module('cosmo', [])
  *              Image Directive                   *
  **************************************************/
 
-.directive('csImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', function(Page, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks){
+.directive('csImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', '$timeout', function(Page, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks, $timeout){
     return {
         scope: {},
         template: '<img ng-src="{{src}}" alt="{{image.alt}}" title="{{image.title}}" size="{{image.size}}" />',
@@ -551,6 +551,10 @@ angular.module('cosmo', [])
                         // Open image editing modal
                         elm.on('click', function(){
                             ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csImage }) });
+                            // Don't show the wysiwyg editor when someone clicks an image
+                            $timeout(function(){
+                                $rootScope.$broadcast('hideWYSIWYG');
+                            });
                         });
                         
                         // Save edits to the image
