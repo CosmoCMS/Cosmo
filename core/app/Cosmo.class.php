@@ -432,10 +432,11 @@ class Cosmo {
                 } else
                     return FALSE;
             }
-        } else // List all pages
+        } else // List all pages except the home page and new page
         {
-            $stmt = $this->pdo->prepare('SELECT id, title, description, header, subheader, featured, url, type, published, published_date, author, timestamp FROM '.$this->prefix.'content');
-            $stmt->execute();
+            $stmt = $this->pdo->prepare('SELECT id, title, description, header, subheader, featured, url, type, published, published_date, author, timestamp FROM '.$this->prefix.'content WHERE url!=? AND url!=?');
+            $data = array('/', '/new');
+            $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $i = 0;
             while($row = $stmt->fetch()){
