@@ -550,7 +550,7 @@ angular.module('cosmo', [])
                     if(Users.admin) {
                         // Open image editing modal
                         elm.on('click', function(){
-                            ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csImage }) });
+                            ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csImage, data: scope.image }) });
                             // Don't show the wysiwyg editor when someone clicks an image
                             $timeout(function(){
                                 $rootScope.$broadcast('hideWYSIWYG');
@@ -2416,7 +2416,13 @@ angular.module('cosmo', [])
     }
     
     $scope.id = $scope.$parent.ngDialogData.id;
-    
+    if($scope.$parent.ngDialogData.data){
+        $scope.files.title = $scope.$parent.ngDialogData.data.title;
+        $scope.files.class = $scope.$parent.ngDialogData.data.class;
+        $scope.files.alt = $scope.$parent.ngDialogData.data.alt;
+        $scope.files.href = $scope.$parent.ngDialogData.data.href;
+    }
+        
     // Get files for the media library
     function getFiles(justUploaded){
         // Get all files
@@ -2515,11 +2521,6 @@ angular.module('cosmo', [])
         $scope.selectedId = file.id;
         $scope.selectedFile = file.src;
         $scope.origFilename = file.origFilename;
-        $scope.files.title = file.title;
-        $scope.files.href = file.href;
-        $scope.files.alt = file.alt;
-        $scope.files.class = file.class;
-        $scope.files.tags = file.tags;
         $scope.files.type = file.type;
         $scope.files.responsive = file.responsive;
         
