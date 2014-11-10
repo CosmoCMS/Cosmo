@@ -174,15 +174,8 @@
 }
 
 footer {
-    @include container(68.75rem);
     color: palette(gray, mid);
-    font-size: .75rem;
-    margin-bottom: 2rem;
-    padding: 2rem 4% 0 4%;
-
-    @media #{$bp-epsilon} {
-        padding: 2rem 0 0 0;
-    }
+    font-size: .85rem;
 
     p {
         display: block;
@@ -199,18 +192,5 @@ footer {
         margin-left: -7px;
         vertical-align: middle;
         width: auto;
-    }
-
-    .social {
-        font-size: 1.25em;
-        margin-bottom: 2rem;
-        margin-right: size(15);
-
-        @media #{$bp-beta} {
-            float: right;
-            margin-bottom: 0;
-            margin-left: size(15);
-            margin-right: 0;
-        }
     }
 }

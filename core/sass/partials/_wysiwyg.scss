@@ -47,6 +47,7 @@
     font-size: .787rem;
     height: 2.094rem;
     position: absolute;
+    transition: .15s;
     z-index: z(hamburger);
 
     td,tr,hr {
@@ -312,5 +313,9 @@ pre {
         &:hover {
             outline: 1px solid palette(gray, mid--light);
         }
+    }
+
+    iframe, img, video {
+        cursor: pointer;
     }
 }

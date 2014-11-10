@@ -1,14 +1,17 @@
-<div class="cosmo-theme">
+<div ng-controller="pendantCtrl">
     <div ng-include="'themes/Pendant/partials/header.html'"></div>
-    <div role="banner" class="banner--sml" cs-bg-image="featured">
-    </div>
-    <div class="article-view--case">
-        <section class="article">
-            <div ng-include="'themes/Pendant/partials/title.html'"></div>
-            <article cs-content="body" prepopulate="Content"></article>
-        </section>
-        <div ng-include="'themes/Pendant/partials/author-info.html'"></div>
-        <div ng-include="'core/html/partials/comments.html'"></div>
-    </div>
+    <main class="site-content container">
+        <div role="banner" class="banner--sml" cs-bg-image="featured"></div>
+        <div class="pad-vert">
+            <section>
+                <div ng-include="'themes/Pendant/partials/title.html'"></div>
+                <article cs-content="body" prepopulate="Content"></article>
+            </section>
+            <section>
+                <div ng-include="'themes/Pendant/partials/author-info.html'"></div>
+                <div ng-include="'core/html/partials/comments.html'"></div>
+            </section>
+        </div>
+    </main>
     <div ng-include="'themes/Pendant/partials/footer.html'"></div>
 </div>

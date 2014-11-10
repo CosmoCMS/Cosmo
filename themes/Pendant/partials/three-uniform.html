@@ -1,9 +1,9 @@
-<div class="article-row">
+<div class="container article-border">
     <article class="article--three" ng-repeat="post in posts | filter:search:true | limitTo:3">
-        <div class="article--img-top no-content--below" style="background-image: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)),  url({{post.featured}});">
-            <div class="article--no-text-info">
+        <div class="img center" style="background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),  url({{post.featured}});">
+            <div class="text">
                 <a ng-href="{{post.url}}">
-                    <h1>{{post.header}}</h1>
+                    <h2>{{post.header}}</h2>
                 </a>
                 <div class="meta">
                     <div class="byline">

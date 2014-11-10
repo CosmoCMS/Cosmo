@@ -1,18 +1,26 @@
 .banner--lrg {
     background: center center no-repeat;
     background-size: cover;
-    height: 35rem;
+    flex: $col-twelve;
+    height: 100vh;
     overflow: hidden;
     position: relative;
     transition: .15s ease;
 
     @media #{$bp-delta} {
-        height: 70%;
+        height: 70vh;
     }
 
-    h3 {
+    h1, h3, h4 {
         color: palette(gray, light);
         font-weight: 200;
+    }
+
+    .article--title {
+        border: 0;
+        min-width: 20rem;
+        max-width: 68.75rem;
+        text-align: center;
     }
 
     .meta {
@@ -34,52 +42,22 @@
 
 .banner--sml {
     @extend .banner--lrg;
-    height: 40rem;
+    height: 70vh;
     margin: 0 auto;
-    max-width: 68.75rem;
-}
 
-.banner--no-img {
-    @extend .banner--sml;
-    background-color: palette(gray, white);
-    background-image: none;
-    height: 33rem;
-
-    .article--title {
-
-        h1, p {
-            color: palette(gray, dark);
-        }
-
-        @media #{$bp-epsilon} {
-            padding: 1.5rem 0;
-        }
-    }
-
-    .meta {
-
-        a, i {
-            color: palette(gray, mid);
-
-            &:hover {
-                color: palette(gray, dark);
-            }
-        }
-
-        .posted {
-            color: palette(gray, mid);
-        }
+    @media #{$bp-delta} {
+        height: 50vh;
     }
 }
 
 .banner--title {
-    @include container(68.75rem);
+    flex: $col-twelve;
     bottom: 1rem;
     padding: 1.5rem 4%;
     position: absolute;
 
     @media #{$bp-epsilon} {
-        @include span(11 of 12 before);
+        flex: 5;
         margin-left: 0;
         padding-left: 0;
     }
@@ -100,26 +78,5 @@
             font-weight: 200;
             margin-bottom: 0;
         }
-    }
-}
-
-.banner--maintenance {
-    @extend .banner--no-img;
-    height: 100%;
-    position: relative;
-    width: 100%;
-
-    p {
-        display: block;
-    }
-
-    .article--title {
-        bottom: auto;
-        height: auto;
-        left: 50%;
-        right: auto;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: auto;
     }
 }

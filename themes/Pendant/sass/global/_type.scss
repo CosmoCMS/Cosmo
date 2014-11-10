@@ -29,17 +29,18 @@ h1, h2, h3, h4, p, a {
 }
 
 h1 {
-    font-size: 2.2rem;
-    font-weight: 600;
+    font-size: 2.5rem;
+    font-weight: 200;
     margin-bottom: 1rem;
 
     @media #{$bp-beta} {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 }
 
 h2 {
     font-size: 1.6rem;
+    font-weight: 200;
 
     @media #{$bp-beta} {
         font-size: 1.8rem;
@@ -48,6 +49,7 @@ h2 {
 
 h3 {
     font-size: 1.4rem;
+    margin-bottom: 1rem;
 
     @media #{$bp-beta} {
         font-size: 1.6rem;
@@ -57,6 +59,8 @@ h3 {
 h4 {
     font-size: 1.2rem;
     font-weight: 200;
+    line-height: 1.8;
+    margin-bottom: 1rem;
 
     @media #{$bp-beta} {
         font-size: 1.4rem;
@@ -65,6 +69,7 @@ h4 {
 
 h5 {
     font-size: 1.1rem;
+    margin-bottom: 1rem;
 
     @media #{$bp-beta} {
         font-size: 1.2rem;
@@ -73,6 +78,7 @@ h5 {
 
 h6 {
     font-size: 1.05rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
 
     @media #{$bp-beta} {
@@ -136,13 +142,6 @@ input {
     &:focus {
         outline: none;
     }
-}
-
-hr {
-    border-bottom: 1px solid palette(gray, light-mid);
-    border-left: none;
-    border-right: none;
-    border-top: none;
 }
 
 img {

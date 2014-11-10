@@ -1,15 +1,13 @@
-<div>
-    <div class="article-view--byline">
-        <div class="byline-photo">
-            <img ng-src="{{page.author.photo}}">
-        </div>
-        <div class="byline-info">
-            <h5>{{page.author.name}}</h5>
-            <p>{{page.author.bio}}</p>
-        </div>
+<div class="article--byline">
+    <div class="byline-photo">
+        <img ng-src="{{page.author.photo}}">
     </div>
-    <div>
-        <a class="article-view--comments" ng-click="showComments=true;page.expandMenu=true">
+    <div class="byline-info">
+        <h5>{{page.author.name}}</h5>
+        <p>{{page.author.bio}}</p>
+    </div>
+    <div class="article--comments pad-vert">
+        <a ng-click="showComments=true;page.expandMenu=true">
             <i class="fa fa-comments"></i>
             <span class="number">{{page.commentsNum}}</span>
             <span class="number">comments</span>

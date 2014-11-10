@@ -1,11 +1,11 @@
-<div class="article-row">
-    <article class="article--two-left" ng-repeat="post in posts | filter:search:true | limitTo:2">
-        <a ng-href="{{post.url}}" ng-if="post.featured">
-            <div class="article--img-top" style="background-image: url({{post.featured}});"></div>
-        </a>
+<div class="container article-border">
+    <article class="article--two-right" ng-repeat="post in posts | filter:search:true | limitTo:2">
+        <div class="img center">
+            <img ng-src="{{post.featured}}">
+        </div>
         <div>
             <a ng-href="{{post.url}}">
-                <h1>{{post.header}}</h1>
+                <h2>{{post.header}}</h2>
             </a>
             <p>{{post.subheader}}</p>
             <div class="meta">

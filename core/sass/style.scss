@@ -21,10 +21,6 @@
 html, body, [ng-include="template"], .cosmo-theme {
     height: 100%;
 
-    [ng-click] {
-        cursor: pointer;
-    }
-
     [ng-href] {
         cursor: pointer;
     }
@@ -38,8 +34,6 @@ html, body, [ng-include="template"], .cosmo-theme {
     @import "global/radio-checkbox"; // styling for checkboxes and radio select styles
     @import "global/forms"; // actual form areas
     @import "global/global"; // NEED TO CHANGE
-
-
 
     @import "partials/login";
     @import "partials/profile";
@@ -57,8 +51,10 @@ html, body, [ng-include="template"], .cosmo-theme {
     @import "partials/gallery--edit"; // edit/preview styling for media
     @import "partials/gallery--upload"; // styling for form used in the gallery upload
 
-
-
     @import "vendor/menus"; // styling for menu reordering in sidebar
     @import "vendor/calendar"; // calendar used to schedule posts
+}
+
+.cosmo-theme {
+    @import "partials/comments";
 }

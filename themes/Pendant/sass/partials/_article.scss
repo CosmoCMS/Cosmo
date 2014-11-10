@@ -1,99 +1,58 @@
-.article-view--case {
-    @extend .article-case;
-    overflow: hidden;
-    padding: 0 4%;
-    position: relative;
-
-    @media #{$bp-epsilon} {
-        padding: 0;
-    }
-
-    .cos-comments {
-        float: left;
-        margin-top: size(20);
-    }
-}
-
-.article {
-    @include container(54rem);
-    margin-bottom: 6rem;
-}
-
-.article--title {
-    @include container(54rem);
-    border-bottom: 1px solid palette(gray, mid--light);
-    margin-bottom: size(30);
-}
-
-.article-view--byline {
-    @include span(12 of 12 inside);
+.article--byline {
+    @extend .marg-vert;
+    @extend .container--flex;
     border-top: 1px solid palette(gray, mid--light);
-    margin-left: 0;
-    padding: size(20) 0;
-    transition: .15s ease-in;
+    flex: $col-twelve;
+}
 
-    @media #{$bp-gamma} {
-        @include span(9 of 12 inside);
-        height: 10.25rem;
-        padding: size(20) 0;
+.byline-info {
+    flex: $col-twelve;
+    padding: size(20);
+    vertical-align: top;
+
+    @media #{$bp-alpha} {
+        flex: 2.5;
+        margin-left: 0;
+    }
+
+    @media #{$bp-beta} {
+        flex: 3;
+        margin-left: 0;
     }
 
     h5 {
-        font-weight: 600;
-        margin-bottom: size(5);
+        margin-bottom: 1rem;
         margin-top: 0;
     }
+}
 
-    p {
-        font-size: 1rem;
-    }
+.byline-photo {
+    flex: $col-twelve;
+    margin-bottom: size(15);
+    transition: .15s ease-in;
 
-    .byline-info {
-        @include span(12 of 12 before);
-        vertical-align: top;
+    @media #{$bp-alpha} {
+        flex: 1;
 
-        @media #{$bp-alpha} {
-            @include span(7.5 of 12 before);
-            margin-left: 0;
-        }
-
-        @media #{$bp-beta} {
-            @include span(9 of 12 before);
-            margin-left: 0;
-        }
-    }
-
-    .byline-photo {
-        @include span(12 of 12 after);
-        margin-bottom: size(15);
-        transition: .15s ease-in;
-
-        @media #{$bp-alpha} {
-            height: 7.75rem;
-            margin-bottom: 0;
-            margin-right: size(20);
-            width: 7.75rem;
-
-            img {
-                height: 7.75rem;
-                width: auto;
-            }
+        img {
+            height: auto;
+            width: 100%;
         }
     }
 }
 
-.article-view--comments {
-    @include span(12 of 12 inside);
+.article--comments {
+    @include center;
+    flex: $col-twelve;
     border: 1px solid palette(gray, mid--light);
     color: palette(gray, dark);
-    padding: size(25);
+    height: auto;
     text-align: center;
     transition: .15s ease-in;
 
     @media #{$bp-gamma} {
-        @include span(3 of 12 inside);
-        height: 10.25rem;
-        padding: 4.2rem size(25) 4.2rem size(25);
+        border-top: 0;
+        flex: 1;
     }
 
     &:hover {
@@ -109,6 +68,15 @@
         font-size: 1.25rem;
         font-weight: 200;
         text-transform: uppercase;
+    }
+}
+
+.article--title {
+    border-bottom: 1px solid palette(gray, mid--light);
+    margin-bottom: 2rem;
+
+    h4 {
+        margin-bottom: 1rem;
     }
 }
 

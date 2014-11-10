@@ -1,18 +1,23 @@
-@import "global/grid/susy"; // grid system susy
+body, [ng-include="template"] {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-.cosmo-theme.ng-enter {
-    transition: opacity .75s linear;
+[ng-include="template"].ng-enter {
+    transition: opacity .5s ease-in .05s;
     opacity: 0;
 }
 
-.cosmo-theme.ng-enter.ng-enter-active {
+[ng-include="template"].ng-enter-active {
     opacity: 1;
 }
 
 .cosmo-theme {
+    @import "global/media-queries";
     @import "global/z-index";
     @import "global/margins-padding";
-    @import "global/media-queries";
+    @import "global/grid";
     @import "global/color";
     @import "global/type";
     @import "global/buttons";
@@ -22,7 +27,6 @@
     @import "global/lists";
     @import "global/animation";
 
-
     @import "partials/header";
     @import "partials/search";
     @import "partials/banners";
@@ -30,7 +34,5 @@
     @import "partials/article";
     @import "partials/tables";
 
-
     @import "modules/google-maps";
-    @import "modules/comments";
 }

@@ -1,10 +1,15 @@
+%bg-img {
+    background: center center no-repeat;
+    background-size: cover;
+}
+
 /* general image styling to be applied on inserting of the image */
 
 .img--xsml {
     width: 100%;
 
     @media #{$bp-beta} {
-        width: 250px;
+        width: 20%;
     }
 }
 
@@ -12,7 +17,7 @@
     width: 100%;
 
     @media #{$bp-beta} {
-        width: 380px;
+        width: 28%;
     }
 }
 
@@ -20,7 +25,7 @@
     width: 100%;
 
     @media #{$bp-beta} {
-        width: 480px;
+        width: 35%;
     }
 }
 
@@ -53,8 +58,8 @@
     margin: .5rem 1.5rem 1.5rem 0;
     transition: .5s ease;
 
-    @media #{$bp-gamma} {
-        margin-left: -13.5%;
+    @media #{$bp-epsilon} {
+        margin-left: -5%;
     }
 }
 
@@ -63,8 +68,8 @@
     margin: .5rem 0 1.5rem 1.5rem;
     transition: .5s ease;
 
-    @media #{$bp-gamma} {
-        margin-right: -13.5%;
+    @media #{$bp-epsilon} {
+        margin-right: -5%;
     }
 }
 
@@ -79,54 +84,34 @@
     text-align: center;
 }
 
-/* general gallery styling */
+// general gallery styling
 
 .cs-gallery {
-    clear: both;
-    display: block;
-    float: left;
     margin: size(30) 0;
-    text-align: center;
-    transition: .5s ease;
-    width: 100%;
-
-    @media #{$bp-gamma} {
-        margin-left: -14%;
-        width: 128.5%;
-    }
+    transition: .15s;
 
     img {
-        float: left;
-        margin: 0;
+        margin: .125rem 0;
         transition: .5s ease;
         vertical-align: top;
         width: 100%;
 
-        @media #{$bp-alpha} and #{$bp-beta--end} {
+        @media #{$bp-beta} {
+            display: inline-block;
+            margin: 0;
             width: 50%;
 
-            &:nth-child(3n+3) {
-                width: 100%;
+            &:nth-child(3n+1) {
+                padding-right: .063rem;
             }
-        }
 
-        @media #{$bp-gamma} {
-            min-height: 15rem;
-            max-height: 15rem;
-            opacity: .5;
-            transition: .5s ease .25s;
-            width: 33%;
+            &:nth-child(3n+2) {
+                padding-left: .063rem;
+            }
 
-            &:hover {
-                cursor: pointer;
-                max-height: 30rem;
-                opacity: 1;
-                width: 66%;
-
-                &:last-child {
-                    max-height: 1000rem;
-                    width: 100%;
-                }
+            &:nth-child(3n+3) {
+                padding: .125rem 0;
+                width: 100%;
             }
         }
     }

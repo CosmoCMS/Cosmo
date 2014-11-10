@@ -1,339 +1,243 @@
-.article-case {
-    @include container(68.75rem);
-    margin-bottom: 2rem;
-    margin-top: 4rem;
-}
-
-.article-row {
-    @include container;
+// used on all blog post modules except one.html
+%article {
     border-bottom: 1px solid palette(gray, mid--light);
-    margin-top: 2rem;
-    padding-bottom: 2rem;
-
-    h1 {
-        font-size: 1.5rem;
-        font-weight: 200;
-        margin-top: 1.5rem;
-
-        @media #{$bp-beta} {
-            margin-bottom: .4rem;
-            margin-top: 0;
-            font-size: 1.8rem;
-        }
-    }
-
-    p {
-        line-height: 1.5;
-        margin-bottom: 0;
-
-        @media #{$bp-beta} {
-            font-size: 1rem;
-        }
-    }
-}
-
-.article--img-side {
-    @include span(12 of 12 inside);
-    background: center center no-repeat;
-    background-size: cover;
-    height: 8rem;
-    margin-bottom: 1.5rem;
-
-    @media #{$bp-alpha} {
-        height: 12rem;
-    }
+    padding-bottom: size(15);
+    margin-bottom: size(15);
+    flex: $col-twelve;
 
     @media #{$bp-beta} {
-        @include span(4 of 12 before);
-        height: 14rem;
-        margin: 0 2rem 0 0;
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
     }
 
-    @media #{$bp-epsilon} {
-        @include span(4 of 12 after);
+    h2 {
+        margin-bottom: size(5);
+    }
+
+    .text {
+        a, h2, i, .meta {
+            color: palette(gray, light);
+        }
     }
 }
 
+// used on all blog post modules except one.html
+.article-border {
+
+    @media #{$bp-beta} {
+        border-top: 1px solid palette(gray, mid--light);
+        padding-top: size(20);
+        margin-top: size(20);
+    }
+}
+
+// style for one.html
 .article--one {
-    padding: 0 4%;
-
-    @media #{$bp-epsilon} {
-        padding: 0;
-    }
-}
-
-.article--two {
-    @include span(12 of 12 inside);
-    padding: 0 4% 2rem 4%;
-    margin-top: 2rem;
+    margin-top: size(20);
+    flex: 1;
 
     &:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
         padding-bottom: 0;
     }
 
-    @media #{$bp-beta} {
-        border: 0;
-        margin-top: 0;
-        padding-bottom: 0;
+    h2 {
+        margin-bottom: size(5);
+    }
 
-        &:first-child {
-            @include span(6 of 12 inside);
-            padding-left: 4%;
-        }
+    .img {
+        flex: $col-twelve;
+        margin-bottom: size(15);
 
-        &:last-child {
-            @include span(6 of 12 inside);
-            margin-right: 0;
-            padding-right: 4%;
+        @media #{$bp-beta} {
+            margin-bottom: 0;
+            flex: 1;
+            margin-right: size(30);
         }
     }
 
-    @media #{$bp-gamma} {
+    .text {
+        flex: $col-twelve;
 
-        &:first-child {
-            @include span(8 of 12 inside);
-            padding-left: 4%;
+        @media #{$bp-beta} {
+            flex: 2.5;
         }
 
-        &:last-child {
-            @include span(4 of 12 inside);
-            margin-right: 0;
-            padding-right: 4%;
+        a, h2, i, .meta {
+            color: palette(gray, dark);
         }
-    }
-
-    @media #{$bp-epsilon} {
-
-        &:first-child {
-            padding-left: 0;
-        }
-
-        &:last-child {
-            padding-right: 0;
-        }
-    }
-
-    .article {
-        padding: 0;
     }
 }
 
+// style for row-left.html
 .article--two-left {
-    @extend .article--two;
+    @extend %article;
+
+    .center {
+        height: auto;
+    }
+
+    .img {
+        margin-bottom: size(15);
+    }
+
+    @media #{$bp-beta} {
+        &:first-child {
+            border-right: 1px solid palette(gray, mid--light);
+            flex: 2;
+            margin-right: size(15);
+            padding-right: size(15);
+        }
+
+        &:last-child {
+            flex: 1;
+        }
+
+        .img {
+            height: 10rem;
+            overflow: hidden;
+        }
+    }
 
     @media #{$bp-gamma} {
-
         &:first-child {
-            @include span(4 of 12 inside);
-            margin-right: 0;
-            padding-left: 4%;
+            flex: 3;
         }
-
-        &:last-child {
-            @include span(8 of 12 inside);
-            padding-right: 4%;
-        }
-    }
-
-    @media #{$bp-epsilon} {
-
-        &:first-child {
-            padding-left: 0;
-        }
-
-        &:last-child {
-            padding-right: 0;
-        }
-    }
-
-    .article {
-        padding: 0;
     }
 }
 
-.article--img-top {
-    @include span(12 of 12 inside);
-    background: center center no-repeat;
-    background-size: cover;
-    height: 8rem;
-    margin-bottom: 1.5rem;
-    position: relative;
+// style for row-right.html
+.article--two-right {
+    @extend %article;
 
-    @media #{$bp-alpha} {
-        height: 12rem;
+    .center {
+        height: auto;
+    }
+
+    .img {
+        margin-bottom: size(15);
     }
 
     @media #{$bp-beta} {
-        height: 14rem;
+        &:first-child {
+            border-right: 1px solid palette(gray, mid--light);
+            flex: 1;
+            margin-right: size(15);
+            padding-right: size(15);
+        }
+
+        &:last-child {
+            flex: 2;
+        }
+
+        .img {
+            height: 10rem;
+            overflow: hidden;
+        }
+    }
+
+    @media #{$bp-gamma} {
+        &:last-child {
+            flex: 3;
+        }
     }
 }
 
-/* class added to the article--img-top inside of article--three when there's no content beneath it, just an image */
-.no-content--below {
-    height: 20rem;
-    margin-bottom: 0;
-}
-
+// style for three.html and three-uniform.html
 .article--three {
-    @include span(12 of 12 inside);
-    padding: 0 4% 2rem 4%;
-    margin-top: 2rem;
-
-    &:first-child {
-        margin-top: 0;
-    }
-
-    &:nth-child(3) {
-        padding-bottom: 0;
-    }
+    @extend %article;
 
     @media #{$bp-beta} {
-        @include span(4 of 12 inside);
-        border: 0;
-        margin-top: 0;
-        padding-bottom: 0;
+        border-bottom: 0;
+        border-right: 1px solid palette(gray, mid--light);
+        flex: 1;
+        margin-right: size(15);
+        padding-right: size(15);
 
-        &:first-child {
-            padding-left: 4%;
-        }
-
-        &:nth-child(3) {
+        &:last-child {
+            border-right: 0;
             margin-right: 0;
-            padding-right: 4%;
-        }
-    }
-
-    @media #{$bp-epsilon} {
-
-        &:first-child {
-            padding-left: 0;
-        }
-
-        &:nth-child(3) {
             padding-right: 0;
         }
     }
 
-    .article {
-        padding: 0;
+    h2 {
+        margin-bottom: size(5);
+    }
+
+    // style used on three-uniform.html for images as background
+    .img {
+        @extend %bg-img;
+        height: 25rem;
+        padding: size(20);
     }
 }
 
-.article--three-img {
-    @include span(12 of 12 inside);
-    background: center center no-repeat;
-    background-size: cover;
-    height: 8rem;
-    margin-bottom: 1.5rem;
-    position: relative;
+// large block background image with text over top of it
+.article--block-lrg {
+    @extend %article;
 
-    @media #{$bp-alpha} {
-        height: 12rem;
+    .img {
+        @extend %bg-img;
+        height: 25rem;
+        padding: size(20);
     }
 
     @media #{$bp-beta} {
-        height: 14rem;
+            flex: 1;
+            margin-right: size(15);
+
+        .img {
+            height: 30rem;
+        }
+    }
+
+    @media #{$bp-gamma} {
+        flex: 2;
     }
 }
 
-/* style if you don't want text below the images, recommended for portfolios */
-.article--two-no-text {
-    @extend .article--two;
+// small block background image with text over top of it
+.article--block-sml {
+    @extend %article;
 
-    .article--img-top {
-        @extend .article--img-top;
-        height: 20rem;
-        margin-bottom: 0;
+    .img {
+        @extend %bg-img;
+        height: 25rem;
+        padding: size(20);
+    }
 
-        @media #{$bp-alpha} {
-            height: 12rem;
-        }
-
-        @media #{$bp-beta} {
-            height: 14rem;
+    .text {
+        a, h2, i, .meta {
+            color: palette(gray, light);
         }
     }
 
-    &:first-child {
-        .article--img-top {
-            @extend .article--img-top;
-            height: 20rem;
-            margin-top: 0;
+    @media #{$bp-beta} {
 
-            @media #{$bp-alpha} {
-                height: 24rem;
-            }
-
-            @media #{$bp-beta} {
-                height: 29rem;
-            }
-        }
-    }
-
-    &:nth-child(2) {
-        margin-bottom: 0;
-
-        @media #{$bp-beta} {
-            @include span(6 of 12 inside);
-            margin-right: 0;
-            padding-right: 4%;
-
-            .article--img-top {
-                margin-bottom: 4.5%;
-            }
+        &:first-child {
+            margin-bottom: size(15);
         }
 
-        @media #{$bp-gamma} {
-            @include span(4 of 12 inside);
-            margin-right: 0;
-            padding-right: 4%;
-
-            .article--img-top {
-                margin-bottom: 5%;
-            }
-        }
-
-        @media #{$bp-epsilon} {
-            padding-right: 0;
-
-            .article--img-top {
-                margin-bottom: 4.5%;
-            }
+        .img {
+            height: 14.55rem;
         }
     }
 }
 
-.article--no-text-info {
-    bottom: 0;
-    left: 1.5rem;
-    right: 1.5rem;
-    position: absolute;
+// container for block background image with text over top of it
+.article--sml {
+    flex: $col-twelve;
 
-    h1 {
-        color: palette(gray, white);
-    }
-
-    .meta {
-
-
-        a {
-            color: palette(gray, white);
-            transition: .15s ease-in;
-
-            &:hover {
-                color: palette(gray, mid--light);
-            }
-        }
-
-        i {
-            color: palette(gray, white);
-        }
+    @media #{$bp-beta} {
+        flex: 1;
     }
 }
 
 
-
-/* article info shown on search, banners and throughout */
+// article info shown on search, banners and throughout
 .meta {
     color: palette(gray, mid);
     font-size: .8rem;
@@ -350,12 +254,8 @@
         transition: .15s ease-in;
     }
 
-    .category, .byline, .comments {
-        margin-right: size(20);
-        margin-top: size(10);
-    }
-
     .category, .byline {
+        margin-right: size(20);
 
         span {
             font-family: $font-beta;

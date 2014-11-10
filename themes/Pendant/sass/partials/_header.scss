@@ -34,7 +34,6 @@ header .social {
 }
 
 .head {
-    @include container(68.75rem);
     height: 4rem;
     overflow: hidden;
 }
@@ -48,28 +47,28 @@ header .social {
 }
 
 .logo {
-    @include span(8 of 12 inside);
-    padding: 0 0 0 4%;
+    flex: 2.5;
+    height: auto;
+    padding-top: 1rem;
 
     @media #{$bp-beta} {
-        @include span(7 of 12 before);
+        flex: 2;
         margin-left: 0;
     }
 
-    @media #{$bp-epsilon} {
-        padding: 0;
-    }
-
     img {
-        margin-top: -.6rem;
-        vertical-align: middle;
-        width: 3rem;
+        height: 2rem;
+        max-width: 7rem;
+        width: auto;
     }
 
     .title {
         display: inline-block;
         font-size: 2rem;
-        margin: .6rem 0 0 0;
+        margin-bottom: 0;
+        margin-top: -.5rem;
+        position: relative;
+        top: -.45rem;
 
         a {
             font-weight: 200;
@@ -81,35 +80,30 @@ header .social {
     }
 
     .slogan {
-        color: palette(gray, mid--light);
         display: none;
-        font-family: $font-beta;
-        font-size: 1rem;
-        font-style: italic;
-        font-weight: 200;
-        position: relative;
-        top: -.1rem;
 
         @media #{$bp-beta} {
+            color: palette(gray, mid--light);
             display: inline-block;
+            font-family: $font-beta;
+            font-size: 1rem;
+            font-style: italic;
+            font-weight: 200;
+            margin-bottom: 0;
+            position: relative;
+            top: -.7rem;
         }
     }
 }
 
 .nav-toggle {
-    @include span(4 of 12 inside);
+    flex: 1;
     font-size: 1.5rem;
     margin-top: .95rem;
-    padding-left: 0;
-    padding-right: 4%;
     text-align: right;
 
     @media #{$bp-beta} {
-        @include span(5 of 12 before);
-    }
-
-    @media #{$bp-epsilon} {
-        padding-right: 0;
+        flex: 1;
     }
 
     a {

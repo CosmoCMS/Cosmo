@@ -1,27 +1,29 @@
-<div class="cosmo-theme" ng-controller="pendantCtrl">
+<div ng-controller="pendantCtrl">
     <div ng-include="'themes/Pendant/partials/header.html'"></div>
-    <section ng-repeat="post in posts | filter:'post' | limitTo:1" role="banner" class="banner--lrg" style="background-image: url({{post.featured}});">
-        <div class="container">
-            <div class="banner--title">
-                <a ng-href="{{post.url}}">
-                    <h1>{{post.header}}</h1>
-                </a>
-                <h3>{{post.subheader}}</h3>
-                <div class="meta">
-                    <div class="byline">
-                        <a>By <span>{{post.author.name}}</span> on <span>{{post.timestamp * 1000 | date:'MM/dd/yyyy'}}</span> <span ng-repeat="tag in post.tags">#{{tag}} </span></a>
-                    </div>
-                    <div class="comments">
-                        <a><i class="fa fa-comments"></i>{{post.commentsNum}} Comments</a>
+    <main class="site-content">
+        <section ng-repeat="post in posts | filter:'post' | limitTo:1" role="banner" class="banner--lrg" style="background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),  url({{post.featured}});">
+            <div class="container">
+                <div class="banner--title">
+                    <a ng-href="{{post.url}}">
+                        <h1>{{post.header}}</h1>
+                    </a>
+                    <h3>{{post.subheader}}</h3>
+                    <div class="meta">
+                        <div class="byline">
+                            <a>By <span>{{post.author.name}}</span> on <span>{{post.timestamp * 1000 | date:'MM/dd/yyyy'}}</span> <span ng-repeat="tag in post.tags">#{{tag}} </span></a>
+                        </div>
+                        <div class="comments">
+                            <a><i class="fa fa-comments"></i>{{post.commentsNum}} Comments</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <div class="article-case">
-        <section>
-            <div cs-block="block1"></div>
         </section>
-    </div>
+        <div class="pad-vert">
+            <section>
+                <div cs-block="block1"></div>
+            </section>
+        </div>
+    </main>
     <div ng-include="'themes/Pendant/partials/footer.html'"></div>
 </div>

@@ -1,11 +1,11 @@
-<article class="article-row" infinity-scroll ng-repeat="post in posts | filter:search:true | limitTo:limitNum">
-    <div class="article--one">
-        <a ng-href="{{post.url}}" ng-if="post.featured">
-            <div class="article--img-side" style="background-image: url({{post.featured}});"></div>
-        </a>
-        <div>
+<article class="container article-border" infinity-scroll ng-repeat="post in posts | filter:search:true | limitTo:limitNum">
+    <div class="container--flex article--one">
+        <div ng-if="post.featured" class="img">
+            <img ng-src="{{post.featured}}">
+        </div>
+        <div class="text">
             <a ng-href="{{post.url}}">
-                <h1>{{post.header}}</h1>
+                <h2>{{post.header}}</h2>
             </a>
             <p>{{post.subheader}}</p>
             <div class="meta">

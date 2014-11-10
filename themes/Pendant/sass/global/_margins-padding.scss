@@ -17,15 +17,52 @@ $size: (
 }
 
 @mixin center {
-    display: table-cell;
-    padding: 0 size(15);
-    vertical-align: middle;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
 }
 
 .center {
     @include center;
 }
 
-.container {
-    @include container(68.75rem);
+.pad-horz {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media #{$bp-beta} {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+.pad-vert {
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+
+    @media #{$bp-beta} {
+        padding-bottom: 4rem;
+        padding-top: 4rem;
+    }
+}
+
+.marg-horz {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+    @media #{$bp-beta} {
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+}
+
+.marg-vert {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+
+    @media #{$bp-beta} {
+        margin-bottom: 4rem;
+        margin-top: 4rem;
+    }
 }
