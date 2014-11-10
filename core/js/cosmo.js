@@ -506,7 +506,7 @@ angular.module('cosmo', [])
  *              Image Directive                   *
  **************************************************/
 
-.directive('csImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', function(Page, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks){
+.directive('csImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', '$timeout', function(Page, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks, $timeout){
     return {
         scope: {},
         template: '<img ng-src="{{src}}" alt="{{image.alt}}" title="{{image.title}}" size="{{image.size}}" />',
@@ -550,7 +550,11 @@ angular.module('cosmo', [])
                     if(Users.admin) {
                         // Open image editing modal
                         elm.on('click', function(){
-                            ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csImage }) });
+                            ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csImage, data: scope.image }) });
+                            // Don't show the wysiwyg editor when someone clicks an image
+                            $timeout(function(){
+                                $rootScope.$broadcast('hideWYSIWYG');
+                            });
                         });
                         
                         // Save edits to the image
@@ -727,7 +731,7 @@ angular.module('cosmo', [])
 
 .directive('csMovie', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
     return {
-        template: '<video ng-click="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
+        template: '<video ng-dblclick="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
         replace: true,
         link: function(scope, elm, attrs, ctrl) {
             
@@ -2412,7 +2416,13 @@ angular.module('cosmo', [])
     }
     
     $scope.id = $scope.$parent.ngDialogData.id;
-    
+    if($scope.$parent.ngDialogData.data){
+        $scope.files.title = $scope.$parent.ngDialogData.data.title;
+        $scope.files.class = $scope.$parent.ngDialogData.data.class;
+        $scope.files.alt = $scope.$parent.ngDialogData.data.alt;
+        $scope.files.href = $scope.$parent.ngDialogData.data.href;
+    }
+        
     // Get files for the media library
     function getFiles(justUploaded){
         // Get all files
@@ -2511,11 +2521,6 @@ angular.module('cosmo', [])
         $scope.selectedId = file.id;
         $scope.selectedFile = file.src;
         $scope.origFilename = file.origFilename;
-        $scope.files.title = file.title;
-        $scope.files.href = file.href;
-        $scope.files.alt = file.alt;
-        $scope.files.class = file.class;
-        $scope.files.tags = file.tags;
         $scope.files.type = file.type;
         $scope.files.responsive = file.responsive;
         
@@ -2625,7 +2630,7 @@ angular.module('cosmo', [])
  *     Manage admin sidebar menu editor           *
  **************************************************/
 
-.controller('menuCtrl', ['$scope', 'REST', '$rootScope', function($scope, REST, $rootScope){
+.controller('menuCtrl', ['$scope', 'REST', '$rootScope', 'Page', function($scope, REST, $rootScope, Page){
 
     $scope.menu = {};
     $scope.menu.panel = 'manage';
@@ -2751,6 +2756,12 @@ angular.module('cosmo', [])
     $scope.saveMenu = function(){
         // Save menu
         REST.menus.update({ menuID: $scope.menu.id, name: $scope.menu.name, menu: angular.toJson($scope.list), area: $scope.menu.area }, function(data){
+            // Re-fetch menus to update the site live
+            REST.menus.query({}, function(data){
+                Page.menus = data;
+                $rootScope.$broadcast('menusGet');
+            });
+            // Notify the user the menu has been updated
             $rootScope.$broadcast('notify', {message: 'Menu saved'});
         });
     };
@@ -3245,7 +3256,9 @@ angular.module('cosmo', [])
                                 });
                             }
                         }
-                        $rootScope.$broadcast('notify', {message: 'Page Updated'});
+                        // If there were no extras, notify right away
+                        if(!Page.extras.length)
+                            $rootScope.$broadcast('notify', {message: 'Page Updated'});
                     });
                 });
             }, function(data){ // Error

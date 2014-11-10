@@ -25,7 +25,7 @@
     </div>
     <div ng-show="menu.panel==='edit'">
         <div class="bar-top">
-            <i class="fa fa-fw fa-chevron-left " ng-click="menu.panel='manage'"></i>
+            <i class="fa fa-fw fa-chevron-left " ng-click="menu.panel='manage';confirm=false"></i>
             <h1>Editing {{menu.name}}</h1>
         </div>
         <div class="form-case">
@@ -100,21 +100,24 @@
                 <div ng-show="menu.editLinkText">
                     <div class="half-width">
                         <label for="text">Edit Link Text</label>
-                        <input value="text" type="text" ng-model="menu.editLinkText">
+                        <input value="text" type="text" ng-model="menu.editLinkText" ng-change="updateLink()">
                     </div>
 
                     <div class="half-width">
                         <label for="url">Edit Link URL</label>
-                        <input value="url" type="text" ng-model="menu.editLinkURL">
+                        <input value="url" type="text" ng-model="menu.editLinkURL" ng-change="updateLink()">
                     </div>
-
-                    <button class="btn-error" ng-click="deleteLink()">delete link</button>
-                    <button class="btn-success" ng-click="updateLink()">update link</button>
                 </div>
 
 
-                <button class="btn-error" ng-click='deleteMenu()'>delete</button>
-                <button class="btn-success" ng-click="saveMenu()">save</button>
+                <button class="btn-error" ng-click="confirm=true">delete menu</button>
+                <button class="btn-success" ng-click="saveMenu()">save menu</button>
+                
+                <div class="confirm" ng-show="confirm">
+                    <p>Are you sure you want to delete this menu?</p>
+                    <button class="btn-error" ng-click="deleteMenu();menu.panel='manage'">Yes</button>
+                    <button class="btn-success" ng-click='confirm=false'>No</button>
+                </div>
             </div>
         </div>
     </div>
