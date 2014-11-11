@@ -217,8 +217,8 @@
 
     @media #{$bp-beta} {
 
-        &:first-child {
-            margin-bottom: size(15);
+        &:last-child {
+            margin-top: size(15);
         }
 
         .img {

@@ -23,6 +23,14 @@ $font-beta: 'Lora', serif;
     box-sizing: border-box;
 }
 
+code {
+    background-color: palette(gray, light);
+    border-radius: size(5);
+    color: palette(gray, mid);
+    display: block;
+    padding: size(10);
+}
+
 h1, h2, h3, h4, p, a {
     font-family: $font-alpha;
     margin-top: 0;
