@@ -354,7 +354,7 @@ class Cosmo {
         // If this post is scheduled to publish immediately, set the published date to now
         if(!$publishedDate)
             $publishedDate = time();
-
+        
         // Save to database
         $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'content (title, description, header, subheader, featured, body, url, type, published, published_date, author, timestamp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
         $data = array($title, $description, $header, $subheader, $featured, $body, $url, $type, $published, $publishedDate, $author, time());
@@ -438,7 +438,7 @@ class Cosmo {
             }
         } else // List all pages except the home page and new page
         {
-            $stmt = $this->pdo->prepare('SELECT id, title, description, header, subheader, featured, url, type, published, published_date, author, timestamp FROM '.$this->prefix.'content WHERE url!=? AND url!=?');
+            $stmt = $this->pdo->prepare('SELECT id, title, description, header, subheader, featured, url, type, published, published_date, author, timestamp FROM '.$this->prefix.'content WHERE url!=? AND url!=? ORDER BY published_date');
             $data = array('/', '/new');
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
