@@ -13,23 +13,23 @@
     }
  */
 class Cosmo {
-    
+
     private $pdo;
     private $prefix;
     private $salt;
     private $thumbnailSizes = array(320, 512, 1024, 2048);
-    
+
     public function __construct(PDO $pdo, $prefix, $salt=null)
     {
         $this->pdo = $pdo;
         $this->prefix = $prefix;
         $this->salt = $salt;
     }
-    
+
     ##################################################
     #                   Blocks                       #
     ##################################################
-    
+
     /**
      * Create a new block
      * @param str name Name of the new block
@@ -44,7 +44,7 @@ class Cosmo {
         else
             return FALSE;
     }
-    
+
     /**
      * Fetch blocks
      * @param int Block ID
@@ -53,7 +53,7 @@ class Cosmo {
      * @return array Array with names 'id', 'name', 'block', 'priority', and 'area'
      */
     public function blocksRead($blockID=NULL, $pageType=NULL, $url=NULL){
-        
+
         // Get a specific block
         if($blockID){
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks WHERE id=?');
@@ -149,7 +149,7 @@ class Cosmo {
                     // If block passes requirements, include in array
                     if($pagePass && $typePass)
                         $blocks[] = array('name'=>$name, 'block'=>$block, 'priority'=>$priority, 'area'=>$area);
-                    
+
                 } else // No requirements
                     $blocks[] = array('name'=>$name, 'block'=>$block, 'priority'=>$priority, 'area'=>$area);
             }
@@ -161,10 +161,10 @@ class Cosmo {
             while($row = $stmt->fetch())
                 $blocks[] = $row;
         }
-        
+
         return $blocks;
     }
-    
+
     /**
      * Save a block in HTML
      * @param string $block Block HTML
@@ -176,7 +176,7 @@ class Cosmo {
         $data = array($name, $block, $priority, $area, $blockID);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Delete a block
      * @param int $blockID Block ID
@@ -188,11 +188,11 @@ class Cosmo {
         $data = array($blockID);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #              Block Requirements                #
     ##################################################
-    
+
     /**
      * Add a new requirement to a block
      * @param int $blockID Block id
@@ -215,7 +215,7 @@ class Cosmo {
         } else
             return FALSE;
     }
-    
+
     /**
      * Fetch all block requirements
      * @param int $blockID Block id
@@ -228,10 +228,10 @@ class Cosmo {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $stmt->fetch())
             $requirements[] = $row;
-        
+
         return $requirements;
     }
-    
+
     /**
      * Update a requirement for a block to be displayed
      * @param int $requirementID Requirement id
@@ -245,7 +245,7 @@ class Cosmo {
         $data = array($blockID, $type, $requirement, $requirementID);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Delete all requirements for a given block
      * @param int $blockID Block id to delete
@@ -256,11 +256,11 @@ class Cosmo {
         $data = array($blockID);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #                 Comments                       #
     ##################################################
-    
+
     /**
      * Create a new comment
      * @param int $contentID Content id
@@ -279,7 +279,7 @@ class Cosmo {
         else
             return FALSE;
     }
-    
+
     /**
      * Fetch all the comments from a given page
      * @param int $id Id of the page you want to query
@@ -294,10 +294,10 @@ class Cosmo {
             $comments[] = $row;
         if(!$comments)
             $comments = array();
-        
+
         return $comments;
     }
-    
+
     /**
      * Update a comment
      * @param int $commentID Content ID
@@ -310,7 +310,7 @@ class Cosmo {
         $data = array($id, $comment);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Delete a block
      * @param int $blockID Block ID
@@ -327,11 +327,11 @@ class Cosmo {
         return $stmt->execute($data);
          */
     }
-    
+
     ##################################################
     #                   Content                      #
     ##################################################
-    
+
     /**
      * Create a new page
      * @param str $title
@@ -350,11 +350,11 @@ class Cosmo {
         // Make sure URL starts with a slash '/'
         if(strpos($url, '/') !== 0)
             $url = '/' . $url;
-        
+
         // If this post is scheduled to publish immediately, set the published date to now
         if(!$publishedDate)
             $publishedDate = time();
-        
+
         // Save to database
         $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'content (title, description, header, subheader, featured, body, url, type, published, published_date, author, timestamp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
         $data = array($title, $description, $header, $subheader, $featured, $body, $url, $type, $published, $publishedDate, $author, time());
@@ -363,7 +363,7 @@ class Cosmo {
         else
             return FALSE;
     }
-    
+
     /**
      * Get the page content for the specified URL
      * @param string URL
@@ -378,14 +378,14 @@ class Cosmo {
                 $prefix = substr($this->prefix, 0, strlen($this->prefix)-1); // Remove trailing slash '/'
                 $url = str_replace ($prefix, '', $url);
             }
-            
+
             // Lookup page in URL
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content WHERE url=?');
             $data = array($url);
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $row = $stmt->fetch();
-            
+
             // Make sure page exists and is published, or user is an administrator
             if($row && ($row['published'] === 'Y' || $admin))
             {
@@ -396,7 +396,7 @@ class Cosmo {
                     $url = '/';
                 else
                     $url = substr($row['url'], 1); // Remove first slash '/' to make the URL relative for sites in subfolders
-                
+
                 return array(
                     'id' => $row['id'],
                     'title' => $row['title'],
@@ -449,17 +449,17 @@ class Cosmo {
                     $url = '/';
                 else
                     $url = substr($row['url'], 1); // Remove first slash '/' to make the URL relative for sites in subfolders
-                
+
                 $results[$i]['url'] = $url;
                 $results[$i]['tags'] = self::contentTagsRead($row['id']);
                 $results[$i]['author'] = self::usersRead($row['author']);
                 $i++;
             }
-            
+
             return $results;
         }
     }
-    
+
     /**
      * Create a new page
      * @param int $contentID Content id to update
@@ -484,7 +484,7 @@ class Cosmo {
         $data = array($title, $description, $header, $subheader, $featured, $body, $url, $type, $published, $publishedDate, $author, time(), $contentID);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Delete content
      * @param int $contentID Content ID
@@ -499,11 +499,11 @@ class Cosmo {
         } else
             return FALSE;
     }
-    
+
     ##################################################
     #              Content Extras                    #
     ##################################################
-    
+
     /**
      * Add extra content to a page
      * @param int $contentID Content ID
@@ -516,7 +516,7 @@ class Cosmo {
         $data = array($contentID, $name, $extra);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Get all extra content for the page
      * @param int $contentID Content ID
@@ -531,10 +531,10 @@ class Cosmo {
 
         while($row = $stmt->fetch())
             $extras[$row['name']] = $row['extra'];
-        
+
         return $extras;
     }
-    
+
     /**
      * Delete all extras for a page
      * @param int $contentID Content id
@@ -545,11 +545,11 @@ class Cosmo {
         $data = array($contentID);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #               Content Tags                     #
     ##################################################
-    
+
     /**
      * Create a new tag for a page
      * @param int $contentID Content id
@@ -561,7 +561,7 @@ class Cosmo {
         $data = array($contentID, strtolower(trim($tag)));
         return $stmt->execute($data);
     }
-    
+
     /**
      * Get all tags for a page
      * @param int $contentID Content id
@@ -575,10 +575,10 @@ class Cosmo {
         $tags = array();
         while($row = $stmt->fetch())
             $tags[] = $row['tag'];
-        
+
         return $tags;
     }
-    
+
     /**
      * Delete all tags for a page
      * @param int $contentID Content id
@@ -589,11 +589,11 @@ class Cosmo {
         $data = array($contentID);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #                   Files                        #
     ##################################################
-    
+
     /**
      * Save a file to the 'uploads' folder. Insert record into database.
      * @return boolean
@@ -648,11 +648,11 @@ class Cosmo {
             'gif',
             'svg'
         );
-        
+
         if($file)
         {
             $extension = end(explode('.',$file));
-            
+
             if($extension === 'pdf')
                 $type = 'pdf';
             else if($extension === 'ppt')
@@ -675,7 +675,7 @@ class Cosmo {
                 $type = 'audio';
             else if(in_array(strtolower($extension), $imageExtensions))
                 $type = 'image';
-            
+
             $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'files (filename, type, timestamp) VALUES (?,?,?)');
             $data = array($file, $type, time());
             return $stmt->execute($data);
@@ -690,7 +690,7 @@ class Cosmo {
             $dir = dirname( __FILE__ );
             $dir = str_replace('/core/app', '', $dir);
             $uploadPath = $dir . '/uploads/' . $filename;
-            
+
             if($extension === 'pdf')
                 $type = 'pdf';
             else if($extension === 'ppt')
@@ -713,14 +713,14 @@ class Cosmo {
                 $type = 'audio';
             else if(in_array(strtolower($extension), $imageExtensions))
                 $type = 'image';
-            
+
             // Make thumbnails
             $responsive = 'yes';
             foreach($this->thumbnailSizes as $size){
                 if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 70))
                     $responsive = 'no';
             }
-            
+
             if(move_uploaded_file($tempPath, $uploadPath))
             {
                 // Insert into database
@@ -737,7 +737,7 @@ class Cosmo {
                 return FALSE;
         }
     }
-    
+
     /**
      * Fetch files
      * @param int File ID
@@ -792,7 +792,7 @@ class Cosmo {
         }
         return $files;
     }
-    
+
     /**
      * Delete a file from the uploads folder and the database
      * @param string $fileID File ID
@@ -806,7 +806,7 @@ class Cosmo {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $row = $stmt->fetch();
         $filename = $row['filename'];
-        
+
         // Delete file from db
         $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'files WHERE id=?');
         $data = array($fileID);
@@ -816,25 +816,25 @@ class Cosmo {
         $stmt = $this->pdo->prepare('DELETE FROM '.$this->prefix.'files_tags WHERE files_id=?');
         $data = array($fileID);
         $stmt->execute($data);
-        
+
         $fileParts = explode('.', $filename);
         $name = $fileParts[0];
         $extension = $fileParts[1];
-        
+
         // Remove thumbnails
         if(strpos($filename, 'uploads/') === 0){
             foreach($this->thumbnailSizes as $size)
                 unlink($_SERVER['DOCUMENT_ROOT'] . "/$name-$size.$extension");
         }
-        
+
         // Delete file from uploads folder
         return unlink($_SERVER['DOCUMENT_ROOT'] .'/'. $filename);
     }
-    
+
     ##################################################
     #                     Menu                       #
     ##################################################
-    
+
     /**
      * Create a new menu
      * @param string $name Name of the new menu
@@ -849,7 +849,7 @@ class Cosmo {
         else
             return FALSE;
     }
-    
+
     /**
      * Get all menus
      * @return array Array with 'id', 'name', 'menu', and 'area'
@@ -861,16 +861,16 @@ class Cosmo {
         $menus = array();
         while($row = $stmt->fetch())
             $menus[] = $row;
-        
+
         return $menus;
     }
-    
+
     /**
      * Save or update a menu in HTML
      * @param int Menu ID
      * @param str Menu name
      * @param str $menu Menu HTML
-     * @param str Area. e.g. 'footer' 
+     * @param str Area. e.g. 'footer'
      * @return boolean
      */
     public function menusUpdate($menuID, $name, $menu, $area)
@@ -879,7 +879,7 @@ class Cosmo {
         $data = array($name, $menu, $area, $menuID);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Delete a menu
      * @param int $menuID Menu ID
@@ -891,11 +891,11 @@ class Cosmo {
         $data = array($menuID);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #                     Misc                       #
     ##################################################
-    
+
     /**
      * Create a new misc record
      * @param string $name Name of the new menu
@@ -910,20 +910,20 @@ class Cosmo {
         else
             return FALSE;
     }
-    
+
     /**
      * Get a misc item by it's name
      * @param str Name to search for
      * @return record
      */
     public function miscRead($name){
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'misc WHERE name=?');
+        $stmt = $this->pdo->prepare('SELECT value FROM '.$this->prefix.'misc WHERE name=?');
         $data = array($name);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch()['value'];
+        return $stmt->fetch();
     }
-    
+
     /**
      * Update a misc record
      * @param str $name Name of the record to modify
@@ -936,7 +936,7 @@ class Cosmo {
         $data = array($value, $name);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Delete a misc record
      * @param str $name Name of the record to delete
@@ -948,11 +948,11 @@ class Cosmo {
         $data = array($name);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #                   Modules                      #
     ##################################################
-    
+
     /**
      * Install a module
      * @param string $module Module name
@@ -968,7 +968,7 @@ class Cosmo {
         else
             return FALSE;
     }
-    
+
     /**
      * Fetch all modules
      * @return array 2d array with all modules
@@ -985,7 +985,7 @@ class Cosmo {
             $modules[$i]->status = 'uninstalled';
             $i++;
         }
-        
+
         // Check installed modules
         $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'modules');
         $stmt->execute();
@@ -1002,7 +1002,7 @@ class Cosmo {
         }
         return $modules;
     }
-    
+
     /**
      * Update the module's status
      * @param str $module Module name
@@ -1015,7 +1015,7 @@ class Cosmo {
         $data = array($status, $moduleID);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Activate a module
      * @param string $module Module name
@@ -1028,11 +1028,11 @@ class Cosmo {
         $data = array($moduleID);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #                  Passwords                     #
     ##################################################
-    
+
     /**
      * Securely encrypt passwords. Uses bcrypt if available, otherwise uses SHA512
      * @param string $password Password to encrypt
@@ -1045,21 +1045,21 @@ class Cosmo {
         if(CRYPT_BLOWFISH === 1)
         {
             $uniqueSalt = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
-            
+
             // Check which version of blowfish we should use depending on the PHP version
             if(version_compare(PHP_VERSION, '5.3.7') >= 0)
                 $version = 'y';
             else
                 $version = 'a';
-            
+
             $encryptedPassword = crypt($password, '$2' . $version . '$' . $rounds . '$' . $uniqueSalt);
         }
         else # Use SHA512 if blowfish isn't available
             $encryptedPassword = hash('SHA512', $password);
-        
+
         return $encryptedPassword;
     }
-    
+
     /**
      * Use to check password encrypted with the encrypt() function
      * @param string $username User's entered username
@@ -1075,7 +1075,7 @@ class Cosmo {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $row = $stmt->fetch();
         $dbPassword = $row['password'];
-        
+
         // Check if the password was encrypted with blowfish
         if(strpos($dbPassword, '$2y$') === 0 || strpos($dbPassword, '$2a$') === 0)
         {
@@ -1084,18 +1084,18 @@ class Cosmo {
                 $version = 'y';
             else
                 $version = 'a';
-            
+
             $encryptedPassword = crypt($password, $dbPassword);
         }
         else # Use SHA512 if blowfish isn't available
             $encryptedPassword = hash('SHA512', $password);
-        
+
         if($dbPassword === $encryptedPassword)
             return $row['id'];
         else
             return FALSE;
     }
-    
+
     /**
      * Reset user's password.
      * @param str $username Username
@@ -1108,9 +1108,9 @@ class Cosmo {
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $row = $stmt->fetch();
-        
+
         if($stmt->rowCount()){
-            // Encrypted string with hashed password, salt, and timestamp in hours. 
+            // Encrypted string with hashed password, salt, and timestamp in hours.
             // Password makes it one-time-use, salt makes it un-duplicateable, timestamp makes it temporary
             $token = $this->encrypt($row['password'] . $this->salt . round(time()/3600));
             $url = 'http://'. $_SERVER['HTTP_HOST'] . $this->prefix . '/reset/'. $row['id'] .'/'. $token;
@@ -1119,7 +1119,7 @@ class Cosmo {
         } else
             return FALSE;
     }
-    
+
     /**
      * Verify that the reset token is valid
      * @param str $userID User's ID
@@ -1143,11 +1143,11 @@ class Cosmo {
         }
         return FALSE;
     }
-    
+
     ##################################################
     #                Revisions                       #
     ##################################################
-    
+
     /**
      * Create a new revision
      * @param int $contentID Content ID this is a revision of
@@ -1176,7 +1176,7 @@ class Cosmo {
                 return FALSE;
         }
     }
-    
+
     /**
      * Get all revisions
      * @param str $url URL
@@ -1201,10 +1201,10 @@ class Cosmo {
             while($row = $stmt->fetch())
                 $revisions[] = $row;
         }
-        
+
         return $revisions;
     }
-    
+
     /**
      * Delete revision
      * @param int $revisionID Revision ID
@@ -1223,20 +1223,20 @@ class Cosmo {
             return $stmt->execute($data);
         }
     }
-    
+
     /**
      * Delete all revisions for a piece of content
      * @param int $contentID Content ID you are deleting
      * @return boolean
      */
     public function revisionsDeleteAll($contentID){
-        
+
     }
-    
+
     ##################################################
     #             Revisions Extras                   #
     ##################################################
-    
+
     /**
      * Add extra content to a page
      * @param int $revisionID Revision ID
@@ -1250,7 +1250,7 @@ class Cosmo {
         $data = array($revisionID, $contentID, $name, $extra);
         return $stmt->execute($data);
     }
-    
+
     /**
      * Get all extra content for the page
      * @param int $contentID Content ID
@@ -1263,10 +1263,10 @@ class Cosmo {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $stmt->fetch())
             $extras[$row['name']] = $row['extra'];
-        
+
         return $extras;
     }
-    
+
     /**
      * Delete all extras for a page
      * @param int $contentID Content id
@@ -1277,11 +1277,11 @@ class Cosmo {
         $data = array($contentID);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #                  Settings                      #
     ##################################################
-    
+
     /**
      * Get the settings
      * @return boolean
@@ -1293,7 +1293,7 @@ class Cosmo {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
-    
+
     /**
      * Update the settings
      * @param str $siteName Site's name
@@ -1311,11 +1311,11 @@ class Cosmo {
         $data = array($siteName, $slogan, $logo, $favicon, $email, $maintenanceURL, $maintenanceMode);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #                  Sitemaps                      #
     ##################################################
-    
+
     /**
      * Create a new, empty sitemap file at the specified location
      * @param str $fileLocation Sitemap filename. e.g. /sitemap.xml
@@ -1329,7 +1329,7 @@ class Cosmo {
         fclose($file);
         return TRUE;
     }
-    
+
     /**
      * Add a URL to the sitemap
      * @param str $fileLocation File name and location. e.g. /sitemap.xml
@@ -1357,7 +1357,7 @@ class Cosmo {
         fclose($file);
         return TRUE;
     }
-    
+
     /**
      * Remove a URL from the sitemap
      * @param str $fileLocation Location of the sitemap. e.g. /sitemap.xml
@@ -1369,7 +1369,7 @@ class Cosmo {
         $doc = new DOMDocument;
         $doc->preserveWhiteSpace = FALSE;
         $doc->load($fileLocation);
-        
+
         $xPath = new DOMXPath($doc);
         $query = sprintf('//url[./loc[contains(., "%s")]]', $url);
         foreach($xPath->query($query) as $node) {
@@ -1384,11 +1384,11 @@ class Cosmo {
         fclose($file);
         return TRUE;
     }
-    
+
     ##################################################
     #                   Themes                       #
     ##################################################
-    
+
     /**
      * Get all themes in the 'themes' folder
      * @param string $themeID Name of the theme. e.g. 'default'
@@ -1404,16 +1404,16 @@ class Cosmo {
                 if(strpos($theme, '.html'))
                     $themes[] = array('type' => str_replace("../../themes/$themeID/", '', $theme));
             }
-        } else 
+        } else
         {
             // Get all theme folders
             foreach(glob('../../themes/*') as $theme)
                 $themes[] = array('name' => str_replace('../../themes/', '', $theme));
         }
-        
+
         return $themes;
     }
-    
+
     /**
      * Set the new theme
      * @param str $theme Name of the theme
@@ -1424,11 +1424,11 @@ class Cosmo {
         $data = array($theme);
         return $stmt->execute($data);
     }
-    
+
     ##################################################
     #                    Tokens                      #
     ##################################################
-    
+
     /**
      * Save a token to the database
      * @param string $usersID User's ID
@@ -1445,7 +1445,7 @@ class Cosmo {
         else
             return FALSE;
     }
-    
+
     /**
      * Check if token and username combination are valid
      * @param string $usersID User's ID
@@ -1465,7 +1465,7 @@ class Cosmo {
             return FALSE;
         }
     }
-    
+
     /**
      * Delete a specific token, or all tokens
      * @param string $username Username
@@ -1485,13 +1485,13 @@ class Cosmo {
             return TRUE; // $stmt->execute($data); // Seems to get called on valid tokens
         }
     }
-    
-    
-    
+
+
+
     ##################################################
     #                User Management                 #
     ##################################################
-    
+
     /**
      * Create a new user
      * @param string $username Username
@@ -1504,7 +1504,7 @@ class Cosmo {
         $data = array(strtolower($username), $email, $this->encrypt($password), $role);
         return $stmt->execute($data);
     }
-    
+
     /**
      * List all users
      * @param int $usersID User's ID
@@ -1538,10 +1538,10 @@ class Cosmo {
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while($row = $stmt->fetch())
                 $users[] = array(
-                    'id'=>$row['id'], 
-                    'username'=>$row['username'], 
-                    'name'=>$row['name'], 
-                    'email'=>$row['email'], 
+                    'id'=>$row['id'],
+                    'username'=>$row['username'],
+                    'name'=>$row['name'],
+                    'email'=>$row['email'],
                     'role'=>$row['role']
                 );
         } else // Get all users
@@ -1561,10 +1561,10 @@ class Cosmo {
                     'email'=>$row['email']
                 );
         }
-        
+
         return $users;
     }
-    
+
     /**
      * Login a user
      * @param string $username Username
@@ -1585,7 +1585,7 @@ class Cosmo {
         } else
             return FALSE;
     }
-    
+
     /**
      * Change a user's username, email, role, or password
      * @param int $userID User's ID to be updated
@@ -1625,7 +1625,7 @@ class Cosmo {
             return $stmt->execute($data);
         }
     }
-    
+
     /**
      * Delete a user
      * @param INT $userID User's ID to delete
@@ -1637,13 +1637,13 @@ class Cosmo {
         $data = array($userID);
         return $stmt->execute($data);
     }
-    
-    
-    
+
+
+
     ##################################################
     #                     Misc.                      #
     ##################################################
-    
+
     /**
      * Generate a random 128 character string
      * @param int $chars Number of characters in string. Default is 128
@@ -1662,7 +1662,7 @@ class Cosmo {
 
         return $random_string;
     }
-    
+
     /**
      * Original source: https://stackoverflow.com/questions/12661/efficient-jpeg-image-resizing-in-php
      * Resize images for thumbnails/mobile
@@ -1675,31 +1675,31 @@ class Cosmo {
     public function makeThumbnail($sourcefile, $endfile, $thumbwidth, $thumbheight, $quality){
         // Takes the sourcefile (path/to/image.jpg) and makes a thumbnail from it
         // and places it at endfile (path/to/thumb.jpg).
-        
+
         // Load image and get image size.
-        $type = exif_imagetype($sourcefile); // [] if you don't have exif you could use getImageSize() 
-        switch ($type) { 
+        $type = exif_imagetype($sourcefile); // [] if you don't have exif you could use getImageSize()
+        switch ($type) {
             case 1 :
                 $img = imageCreateFromGif($sourcefile);
-                break; 
+                break;
             case 2 :
                 $img = imageCreateFromJpeg($sourcefile);
-                break; 
+                break;
             case 3 :
                 $img = imageCreateFromPng($sourcefile);
-                break; 
+                break;
             case 6 :
                 $img = imageCreateFromBmp($sourcefile);
-                break; 
+                break;
         }
-        
+
         $width = imagesx($img);
         $height = imagesy($img);
-        
+
         // Don't make images larger than the original
         if($thumbwidth > $width)
             $thumbwidth = $width;
-        
+
         if ($width > $height) {
             $newwidth = $thumbwidth;
             $divisor = $width / $thumbwidth;
@@ -1709,23 +1709,23 @@ class Cosmo {
             $divisor = $height / $thumbheight;
             $newwidth = floor($width / $divisor );
         }
-        
+
         // Create a new temporary image.
         $tmpimg = imagecreatetruecolor($newwidth, $newheight);
-        
+
         // Copy and resize old image into new image.
         imagecopyresampled($tmpimg, $img, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-        
+
         // Save thumbnail into a file.
         $returnVal = imagejpeg($tmpimg, $endfile, $quality);
-        
+
         // release the memory
         imagedestroy($tmpimg);
         imagedestroy($img);
-        
+
         return $returnVal;
     }
-    
+
     /**
      * Save a file to the 'uploads' folder. Insert record into database.
      * @return boolean
