@@ -439,6 +439,48 @@ angular.module('cosmo', [])
 }])
 
 /**************************************************
+ *              Audio Directive                   *
+ *                HTML5 Audio                     *
+ **************************************************/
+
+.directive('csAudio', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
+    return {
+        template: '<audio ng-dblclick="clicked()"><source ng-repeat="file in audioFiles" ng-src="{{file.src}}"></audio>',
+        replace: true,
+        link: function(scope, elm, attrs) {
+            
+            if(Page.extras[attrs.csAudio])
+                scope.audioFiles = angular.fromJson(Page.extras[attrs.csAudio]);
+            else if(Users.admin)
+                scope.audioFiles = [{ src: 'core/img/image.svg', type: 'audio' }];
+            
+            elm.css('min-height', '50px'); // Only way to make this clickable?
+            
+            // Check if user is an admin
+            if(Users.admin) {
+                scope.clicked = function(){
+                    ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({
+                            id: attrs.csAudio,
+                            gallery: true,
+                            images: scope.audioFiles
+                        })
+                    });
+                };
+                
+                // Save edits/selection of the movie
+                scope.$on('choseGalleryFile', function(event, data){
+                    if(data.id === attrs.csMovie){
+                        scope.audioFiles = data.data;
+                        Page.extras[attrs.csMovie] = scope.audioFiles;
+                    }
+                });
+            }
+        }
+    };
+}])
+
+
+/**************************************************
  *            Fluidvids Directive                 * 
  *          Make videos responsive                *
  **************************************************/
@@ -2030,7 +2072,7 @@ angular.module('cosmo', [])
                         }
                         break;
                     case 'photo':
-                        document.execCommand('insertHTML', false, '<div cs-image="'+ new Date().getTime() +'"></div>');
+                        document.execCommand('insertHTML', false, '<img cs-image="'+ new Date().getTime() +'">');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'bgimage':
@@ -2038,20 +2080,20 @@ angular.module('cosmo', [])
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'audio':
-                        document.execCommand('insertHTML', false, '<div cs-audio="'+ new Date().getTime() +'"></div>');
+                        document.execCommand('insertHTML', false, '<audio controls cs-audio="'+ new Date().getTime() +'"></audio>');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'video':
-                        document.execCommand('insertHTML', false, '<div cs-movie="'+ new Date().getTime() +'"></div>');
+                        document.execCommand('insertHTML', false, '<video cs-movie="'+ new Date().getTime() +'"></video>');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'videourl':
                         var url = prompt("Video embed URL:\ne.g. http://www.youtube.com/embed/JMl8cQjBfqk");
                         if(url)
-                            document.execCommand('insertHTML', false, '<div video="'+ url +'" height="315" width="560" fluidvids></div>');
+                            document.execCommand('insertHTML', false, '<div video="'+ url +'" height="315" width="560" fluidvids><iframe src="'+ url +'"></iframe></div>');
                         break;
                     case 'gallery':
-                        document.execCommand('insertHTML', false, '<img cs-gallery="'+ new Date().getTime() +'"></img>');
+                        document.execCommand('insertHTML', false, '<img cs-gallery="'+ new Date().getTime() +'">');
                         $rootScope.$broadcast('saveAndRefresh');
                         break;
                     case 'div':

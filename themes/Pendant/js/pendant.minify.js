@@ -37,14 +37,11 @@ angular.module('pendant', [])
             scope.search = {};
             if(attrs.onePost)
                 scope.search.tags = attrs.onePost;
-            else
-                scope.search = '';
             scope.limitNum = 10;
             scope.article = {};
             scope.article.tag = attrs.tag;
             scope.page = {};
             scope.page.type = Page.type;
-            console.log(scope.page.type);
             
             // Get content
             REST.content.query({}, function(data){
@@ -72,7 +69,8 @@ angular.module('pendant', [])
         templateUrl: 'themes/Pendant/partials/row-left.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.rowLeft;
+            if(attrs.rowLeft)
+                scope.search.tags = attrs.rowLeft;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
@@ -96,7 +94,8 @@ angular.module('pendant', [])
         templateUrl: 'themes/Pendant/partials/row-right.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.rowRight;
+            if(attrs.rowRight)
+                scope.search.tags = attrs.rowRight;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
@@ -120,7 +119,8 @@ angular.module('pendant', [])
         templateUrl: 'themes/Pendant/partials/three.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.threePosts;
+            if(attrs.threePosts)
+                scope.search.tags = attrs.threePosts;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
@@ -144,7 +144,8 @@ angular.module('pendant', [])
         templateUrl: 'themes/Pendant/partials/three-block.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.threeBlock;
+            if(attrs.threeBlock)
+                scope.search.tags = attrs.threeBlock;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
@@ -168,7 +169,8 @@ angular.module('pendant', [])
         templateUrl: 'themes/Pendant/partials/three-uniform.html',
         link: function(scope, elm, attrs){
             scope.search = {};
-            scope.search.tags = attrs.threeUniform;
+            if(attrs.threeUniform)
+                scope.search.tags = attrs.threeUniform;
             scope.article = {};
             scope.article.tag = attrs.tag;
             
