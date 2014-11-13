@@ -325,7 +325,7 @@ angular.module('cosmo', [])
 
                 // Watch for edits to the page and save them
                 elm.on('keyup focusout', function(event) {
-                    // Open quick-save option
+                    // todo: Open quick-save option
                     // $rootScope.$broadcast('notify', {message: '<a ng-controller="pageCtrl" ng-click="savePage()">Quick Save</a>', duration: 99999});
                     
                     // Make sure we aren't saving escaped HTML
@@ -361,7 +361,7 @@ angular.module('cosmo', [])
                 elm.attr('contenteditable', 'true');
 
                 // Hide toolbar on focus out
-                elm.on('focusout', function(){
+                elm.on('focusout blur', function(){
                     $rootScope.$broadcast('hideWYSIWYG');
                 });
 
@@ -454,7 +454,7 @@ angular.module('cosmo', [])
             else if(Users.admin)
                 scope.audioFiles = [{ src: 'core/img/image.svg', type: 'audio' }];
             
-            elm.css('min-height', '50px'); // Only way to make this clickable?
+            elm.css('min-height', '50px'); // Only way to make this clickable in Chrome?
             
             // Check if user is an admin
             if(Users.admin) {
@@ -2129,6 +2129,9 @@ angular.module('cosmo', [])
                 }
                 if(!toggle)
                     $rootScope.$broadcast('saveAndRefresh');
+                
+                // Hide WYWSIWYG editor
+                $rootScope.$broadcast('hideWYSIWYG');
             };
         }
     };
