@@ -69,8 +69,8 @@
                 $routeProvider.
                     when('/admin', { controller: function(ngDialog){ ngDialog.open({ template: 'core/html/login.html', showClose: false, closeByEscape: false, closeByDocument: false }); }, template: '<div></div>' }).
                     when('/reset/:userID/:token', { controller: 'resetModal', template: '<div></div>' }).
-                    when('/', { controller: 'urlCtrl', template: '<div ng-include="template"></div>' }).
-                    when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template"></div>' });
+                    when('/', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' }).
+                    when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' });
 
                 // Enable HTML5 urls
                 $locationProvider.html5Mode(true).hashPrefix('!');
