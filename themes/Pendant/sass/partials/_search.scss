@@ -1,9 +1,9 @@
-/* search styling for the container on the search area */
+// search styling for the container on the search area
 .pen-search {
     @extend %sidebar;
 }
 
-/* text info for articles in search */
+// text info for articles in search
 .search-results--article {
     cursor: pointer;
     padding: size(20);
@@ -25,7 +25,7 @@
     }
 }
 
-/* div with bg image if article has a banner*/
+// div with bg image if article has a banner
 .search-results--img {
     display: none;
     transition: .2s ease-in;

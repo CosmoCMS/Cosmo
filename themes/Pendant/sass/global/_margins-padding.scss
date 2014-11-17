@@ -1,4 +1,4 @@
-/* setup easy margin/padding sass-map */
+// setup easy margin/padding sass-map
 $size: (
     5: .313rem,
     10: .625rem,
@@ -58,11 +58,6 @@ $size: (
 }
 
 .marg-vert {
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-
-    @media #{$bp-beta} {
-        margin-bottom: 4rem;
-        margin-top: 4rem;
-    }
+    margin-bottom: 4rem;
+    margin-top: 4rem;
 }

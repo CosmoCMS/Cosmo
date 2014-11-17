@@ -16,7 +16,7 @@
     }
 
     @media #{$bp-beta} {
-        flex: 3;
+        flex: 4;
         margin-left: 0;
     }
 
@@ -52,7 +52,7 @@
 
     @media #{$bp-gamma} {
         border-top: 0;
-        flex: 1;
+        flex: 1.25;
     }
 
     &:hover {

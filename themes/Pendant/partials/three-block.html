@@ -19,7 +19,7 @@
 
 
     <div class="article--sml">
-        <div class="article--block-sml" ng-repeat="post in posts | filter:search:true | limitTo:2">
+        <div class="article--block-sml" ng-repeat="post in posts | filter:search:true | limitTo:3" ng-show="!$first">
             <div class="center img" style="background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),  url({{post.featured}});">
                 <div class="text">
                     <a ng-href="{{post.url}}">
