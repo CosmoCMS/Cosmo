@@ -18,7 +18,7 @@
 // cosmo elements needed to be outside of the cosmo-default tag
 @import "partials/wysiwyg"; // wysiwyg editor
 
-html, body, [ng-include="template"], .cosmo-theme {
+html, body, [ng-include="template"] {
     height: 100%;
 
     [ng-href] {
