@@ -4,14 +4,6 @@
  * Cosmo class provides core functionality of the CMS
  */
 
-/**
-   // Error codes
-   try {
-        $stmt->execute($data);
-    } catch (PDOException $e) {
-        return $e->getMessage();
-    }
- */
 class Cosmo {
 
     private $pdo;
@@ -600,6 +592,8 @@ class Cosmo {
      */
     public function filesCreate($file=null)
     {
+        $forbiddenFileType = FALSE;
+        
         $fileExtensions = array(
             'xls',
             'csv',
@@ -635,11 +629,12 @@ class Cosmo {
         $videoExtensions = array(
             'mov',
             'mp4',
-            'wmv'
+            'wmv',
+            'ogg',
+            'webm'
         );
         $audioExtensions = array(
-            'mp3',
-            'wmv'
+            'mp3'
         );
         $imageExtensions = array(
             'jpg',
@@ -713,6 +708,8 @@ class Cosmo {
                 $type = 'audio';
             else if(in_array(strtolower($extension), $imageExtensions))
                 $type = 'image';
+            else
+                $forbiddenFileType = true;
 
             // Make thumbnails
             $responsive = 'yes';
@@ -721,7 +718,7 @@ class Cosmo {
                     $responsive = 'no';
             }
 
-            if(move_uploaded_file($tempPath, $uploadPath))
+            if(!$forbiddenFileType && move_uploaded_file($tempPath, $uploadPath))
             {
                 // Insert into database
                 $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'files (filename, responsive, type, timestamp) VALUES (?,?,?,?)');
@@ -921,7 +918,7 @@ class Cosmo {
         $data = array($name);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch();
+        return $stmt->fetch()['value'];
     }
 
     /**
