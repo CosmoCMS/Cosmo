@@ -42,7 +42,7 @@
                     </a>
                     <div class="meta">
                         <div class="byline">
-                            <a>By <span>Jordan</span> on <span>07.31.14</span> <span ng-repeat="tag in post.tags">#{{tag}} </span></a>
+                            <a>By <span>{{page.author.name}}</span> on <span>{{post.published_date * 1000 | date:'MM/dd/yyyy'}}</span> <span ng-repeat="tag in post.tags">#{{tag}} </span></a>
                         </div>
                     </div>
                 </article>

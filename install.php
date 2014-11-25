@@ -79,7 +79,12 @@ if($_GET)
     
     // Create new page
     $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, author, published) VALUES (?,?,?)');
-    $data = array('/new', $_GET['username'], 'Y');
+    $data = array('/new', 1, 'Y');
+    $stmt->execute($data);
+    
+    // Create error page
+    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, type, author, published) VALUES (?,?,?,?)');
+    $data = array('/error', 'home.html', 1, 'Y');
     $stmt->execute($data);
     
     // Create admin username/password
@@ -87,8 +92,8 @@ if($_GET)
     
     // Create first post
     $Cosmo->contentCreate('Welcome to Cosmo', 'Welcome to Pendant, a blog theme developed for Cosmo.', 'Welcome to Cosmo', 'Your new website awaits', 'uploads/MIbCzcvxQdahamZSNQ26_12082014-IMG_3526-54571eebdae22.jpg', '<p class="ng-scope">Your site is now running on Cosmo, an open source content management system that\'s designed to help make editing your website quick and easy, it\'s created by James and<a href="http://twitter.com/jordandunn"> Jordan Dunn</a>. If this is your first time using Cosmo we recommend&nbsp;<a href="http://cosmocms.org/cosmo-basics">checking out our how-to\'s</a>&nbsp;for creating pages, editing content, uploading media and more. Once you\'re ready to make your first page, click the umbrella to your left, go to content &gt; new page and you\'ll be on your way.</p><p class="ng-scope"><span class="ng-scope">If you\'re looking to create a new theme for Cosmo you can view all documentation for&nbsp;<a href="http://cosmocms.org/how-to-create-a-theme-for-cosmo">theme creation</a>&nbsp;along with&nbsp;how to use or&nbsp;<a href="http://cosmocms.org/how-to-create-a-module-for-cosmo">create new modules</a>&nbsp;to run within Cosmo.</span></p><p class="ng-scope">If you\'re looking for some free photos to work well with your new site, we recommend checking out&nbsp;<a href="http://deathtothestockphoto.com">Death to Stock Photo</a>&nbsp;or&nbsp;<a href="https://unsplash.com">Unsplash</a>.</p><p class="ng-scope">Once your website is up and running,&nbsp;<a href="http://twitter.com/cosmocms">send us a link</a>&nbsp;so we can check it out and maybe even highlight it on our&nbsp;website or social media.</p>', '/welcome-to-cosmo', 1, 'post.html', 'Y', NULL);
-    $Cosmo->contentExtrasCreate(3, 'featured', '{"id":"featured","alt":"Welcome","src":"uploads/MIbCzcvxQdahamZSNQ26_12082014-IMG_3526-54571eebdae22.jpg","size":"responsive","responsive":"yes"}');
-    $Cosmo->contentTagsCreate(3, 'blog');
+    $Cosmo->contentExtrasCreate(4, 'featured', '{"id":"featured","alt":"Welcome","src":"uploads/MIbCzcvxQdahamZSNQ26_12082014-IMG_3526-54571eebdae22.jpg","size":"responsive","responsive":"yes"}');
+    $Cosmo->contentTagsCreate(4, 'blog');
     
     // Insert first file
     $stmt = $pdo->prepare('INSERT INTO '.$prefix.'files (filename, responsive, type, timestamp) VALUES (?,?,?,?)');
@@ -99,6 +104,10 @@ if($_GET)
     $Cosmo->blocksCreate('Home Page');
     $Cosmo->blocksUpdate('Home Page', '<div one-post="blog"></div>', 0, 'block1', 1);
     $Cosmo->blocksRequirementsCreate(1, 'visible', '/');
+    
+    // Insert footer block
+    $Cosmo->blocksCreate('Copyright');
+    $Cosmo->blocksUpdate('Home Page', '<p>Copyright &copy {{page.current_year}} | Built with <a href="http://www.cosmocms.org/"><img class="cosmo-logo" alt="Single Page Application CMS" src="core/img/cosmo-logo.svg"></a></p>', 0, 'footer', 2);
 }
 
 if(!$_GET):
