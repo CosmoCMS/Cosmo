@@ -36,7 +36,7 @@ angular.module('cosmo', [])
         
         // Check if the site is under maintenence
         if(Page.settings){
-            if(Page.settings.maintenance_mode && Page.settings.maintenance_url && !Users.admin){
+            if(Page.settings.maintenance_mode == 1 && Page.settings.maintenance_url && !Users.admin){
                 Page.menus = []; // Don't show menus, since those pages are disabled
                 $location.path(Page.settings.maintenance_url).replace();
                 if(data.redirect) // Don't double redirect if this is a redirected URL

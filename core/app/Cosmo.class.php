@@ -641,7 +641,8 @@ class Cosmo {
             'jpeg',
             'png',
             'gif',
-            'svg'
+            'svg',
+            'tiff'
         );
 
         if($file)
@@ -709,7 +710,7 @@ class Cosmo {
             else if(in_array(strtolower($extension), $imageExtensions))
                 $type = 'image';
             else
-                $forbiddenFileType = true;
+                $forbiddenFileType = TRUE;
 
             // Make thumbnails
             $responsive = 'yes';
