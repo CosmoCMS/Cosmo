@@ -2,11 +2,6 @@
 %modal--options-button {
     border: 1px solid palette(blue, dark);
 
-    &:focus {
-        background-color: palette(blue, dark);
-        color: palette(gray, light);
-    }
-
     &:hover {
         background-color: palette(gray, light);
         color: palette(gray, light);

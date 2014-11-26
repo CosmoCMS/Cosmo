@@ -15,10 +15,6 @@
     text-transform: capitalize;
     transition: all .15s ease-in-out;
 
-    &:focus {
-        color: palette(gray, white);
-    }
-
     &:hover {
         color: palette(gray, light);
     }
@@ -32,10 +28,6 @@
 .btn-success {
     @extend %button;
 
-    &:focus {
-        background-color: palette(alert, success--dark);
-    }
-
     &:hover {
         background-color: palette(alert, success);
     }
@@ -44,10 +36,6 @@
 // error button, generally used for "delete"
 .btn-error {
     @extend %button;
-
-    &:focus {
-        background-color: palette(alert, error--dark);
-    }
 
     &:hover {
         background-color: palette(alert, error);
@@ -58,10 +46,6 @@
 // general button used
 .btn-options {
     @extend %button;
-
-    &:focus {
-        background-color: palette(blue, dark);
-    }
 
     &:hover {
         background-color: palette(blue, mid);

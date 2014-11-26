@@ -126,10 +126,6 @@
     .btn-success {
         @extend %button;
 
-        &:focus {
-            background-color: palette(alert, success--dark);
-        }
-
         &:hover {
             background-color: palette(alert, success);
         }
