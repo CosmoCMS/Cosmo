@@ -2408,9 +2408,11 @@ angular.module('cosmo', [])
     $scope.exclude = {};
     $scope.exclude.tags = '!exclude';
     $scope.content = {};
+    $scope.content.onlySearch = 'all';
 
     // Search
     $scope.searchBar = function(){
+        $scope.search = {};
         switch($scope.content.onlySearch){
             case 'type': // Search only the page type
                 $scope.search.type = $scope.content.input;
