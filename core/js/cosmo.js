@@ -2582,7 +2582,7 @@ angular.module('cosmo', [])
     
     // Make sure the next image exists
     $scope.nextExists = function(){
-        if($scope.currentIndex && $scope.media[$scope.currentIndex+1])
+        if(angular.isNumber($scope.currentIndex) && $scope.media[$scope.currentIndex+1])
             return true;
         else
             return false;
