@@ -59,6 +59,7 @@ class Cosmo {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks ORDER BY priority DESC');
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $blocks = array();
             while($row = $stmt->fetch())
             {
                 $blockID = $row['id'];
@@ -218,6 +219,7 @@ class Cosmo {
         $data = array($blockID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $requirements = array();
         while($row = $stmt->fetch())
             $requirements[] = $row;
 
@@ -282,10 +284,9 @@ class Cosmo {
         $data = array($id);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $comments = array();
         while($row = $stmt->fetch())
             $comments[] = $row;
-        if(!$comments)
-            $comments = array();
 
         return $comments;
     }
@@ -1182,6 +1183,7 @@ class Cosmo {
      */
     public function revisionsRead($revisionID, $contentID)
     {
+        $revisions = array();
         if($revisionID) // Get a specific record
         {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE id=?');
@@ -1394,6 +1396,7 @@ class Cosmo {
      */
     public function themesRead($themeID=NULL)
     {
+        $themes = array();
         if($themeID)
         {
             foreach(glob("../../themes/$themeID/*") as $theme)
@@ -1534,6 +1537,7 @@ class Cosmo {
             $data = array('%' . $keyword . '%', '%' . $keyword . '%');
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $users = array();
             while($row = $stmt->fetch())
                 $users[] = array(
                     'id'=>$row['id'],
@@ -1547,6 +1551,7 @@ class Cosmo {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'users');
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $users = array();
             while($row = $stmt->fetch())
                 $users[] = array(
                     'id' => $row['id'],

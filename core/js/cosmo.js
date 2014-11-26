@@ -2286,7 +2286,7 @@ angular.module('cosmo', [])
         $rootScope.$broadcast('contentGet');
 
         // Get the block requirements
-        REST.blocksRequirements.get({ blockID: $scope.block.id }, function(data){
+        REST.blocksRequirements.query({ blockID: $scope.block.id }, function(data){
             var blockURLs = '';
             angular.forEach(data, function(data2){
                 if(data2.type === 'visible' || data2.type === 'invisible'){
@@ -2294,7 +2294,7 @@ angular.module('cosmo', [])
                     blockURLs += data2.requirement + "\n";
                 } else {
                     if(data2.type)
-                        $scope.block.selectedTypes[data2.type] = true;
+                        $scope.block.selectedTypes[data2.requirement] = true;
                 }
             });
             $scope.block.urls = blockURLs;
