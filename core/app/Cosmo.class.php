@@ -193,7 +193,7 @@ class Cosmo {
      * @return boolean
      */
     public function blocksRequirementsCreate($blockID, $type, $requirement){
-        if($blockID && $type !== 'type' && $requirement !== '')
+        if($blockID && $requirement !== '')
         {
             if($type === 'visible' || $type === 'invisible')
             {

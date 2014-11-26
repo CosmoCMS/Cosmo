@@ -2264,7 +2264,7 @@ angular.module('cosmo', [])
     
     // Get the page types availabl
     $scope.types = Page.themePages;
-    
+
     $scope.$on('wysiwygEdit', function(event, data){
         $scope.block.html = data.html;
     });
@@ -2286,7 +2286,7 @@ angular.module('cosmo', [])
         $rootScope.$broadcast('contentGet');
 
         // Get the block requirements
-        REST.blocksRequirements.query({ blockID: $scope.block.id }, function(data){
+        REST.blocksRequirements.get({ blockID: $scope.block.id }, function(data){
             var blockURLs = '';
             angular.forEach(data, function(data2){
                 if(data2.type === 'visible' || data2.type === 'invisible'){
