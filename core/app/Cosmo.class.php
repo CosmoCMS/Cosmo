@@ -716,7 +716,7 @@ class Cosmo {
             // Make thumbnails
             $responsive = 'yes';
             foreach($this->thumbnailSizes as $size){
-                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 70))
+                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 80))
                     $responsive = 'no';
             }
 
@@ -1702,17 +1702,14 @@ class Cosmo {
         // Don't make images larger than the original
         if($thumbwidth > $width)
             $thumbwidth = $width;
+        if($thumbheight > $height)
+            $thumbheight = $height;
 
-        if ($width > $height) {
-            $newwidth = $thumbwidth;
-            $divisor = $width / $thumbwidth;
-            $newheight = floor($height / $divisor);
-        } else {
-            $newheight = $thumbheight;
-            $divisor = $height / $thumbheight;
-            $newwidth = floor($width / $divisor );
-        }
-
+        // Resized dimensions
+        $newwidth = $thumbwidth;
+        $divisor = $width / $thumbwidth;
+        $newheight = floor($height / $divisor);
+        
         // Create a new temporary image.
         $tmpimg = imagecreatetruecolor($newwidth, $newheight);
 
@@ -1722,7 +1719,7 @@ class Cosmo {
         // Save thumbnail into a file.
         $returnVal = imagejpeg($tmpimg, $endfile, $quality);
 
-        // release the memory
+        // Release the memory
         imagedestroy($tmpimg);
         imagedestroy($img);
 
