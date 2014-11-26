@@ -172,7 +172,7 @@ switch($segments[0])
                 if($role === 'admin')
                 {
                     if($segments[2])
-                        $response = $Cosmo->blocksRequirementsCreate ($segments[1], $_POST['type'], $_POST['requirement']);
+                        $response = $Cosmo->blocksRequirementsCreate($segments[1], $_POST['type'], $_POST['requirement']);
                     else
                         $response = $Cosmo->blocksCreate($_POST['name']);
                 }

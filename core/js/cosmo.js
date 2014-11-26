@@ -2264,7 +2264,7 @@ angular.module('cosmo', [])
     
     // Get the page types availabl
     $scope.types = Page.themePages;
-    
+
     $scope.$on('wysiwygEdit', function(event, data){
         $scope.block.html = data.html;
     });
@@ -2294,7 +2294,7 @@ angular.module('cosmo', [])
                     blockURLs += data2.requirement + "\n";
                 } else {
                     if(data2.type)
-                        $scope.block.selectedTypes[data2.type] = true;
+                        $scope.block.selectedTypes[data2.requirement] = true;
                 }
             });
             $scope.block.urls = blockURLs;
@@ -2408,9 +2408,11 @@ angular.module('cosmo', [])
     $scope.exclude = {};
     $scope.exclude.tags = '!exclude';
     $scope.content = {};
+    $scope.content.onlySearch = 'all';
 
     // Search
     $scope.searchBar = function(){
+        $scope.search = {};
         switch($scope.content.onlySearch){
             case 'type': // Search only the page type
                 $scope.search.type = $scope.content.input;
@@ -2582,7 +2584,7 @@ angular.module('cosmo', [])
     
     // Make sure the next image exists
     $scope.nextExists = function(){
-        if($scope.currentIndex && $scope.media[$scope.currentIndex+1])
+        if(angular.isNumber($scope.currentIndex) && $scope.media[$scope.currentIndex+1])
             return true;
         else
             return false;

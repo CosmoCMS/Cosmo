@@ -17,6 +17,15 @@
         <label for="tags" ng-click="content.onlySearch='tags';searchBar()">Tags</label> -->
         <label for="search">Search</label>
         <input id="search" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="e.g., The Millenium">
+        <label for="restrict">Restrict Search</label>
+        <div class="cos-select" id="restrict">
+            <select ng-model="content.onlySearch" ng-change="searchBar()">
+                <option value="all">All</option>
+                <option value="type">Type</option>
+                <option value="author">Author</option>
+                <option value="tags">Tags</option>
+            </select>
+        </div>
     </form>
     <ul>
         <li ng-repeat="page in pages | filter:search">

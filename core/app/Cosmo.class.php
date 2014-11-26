@@ -59,6 +59,7 @@ class Cosmo {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks ORDER BY priority DESC');
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $blocks = array();
             while($row = $stmt->fetch())
             {
                 $blockID = $row['id'];
@@ -193,7 +194,7 @@ class Cosmo {
      * @return boolean
      */
     public function blocksRequirementsCreate($blockID, $type, $requirement){
-        if($blockID && $type !== 'type' && $requirement !== '')
+        if($blockID && $requirement !== '')
         {
             if($type === 'visible' || $type === 'invisible')
             {
@@ -218,6 +219,7 @@ class Cosmo {
         $data = array($blockID);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $requirements = array();
         while($row = $stmt->fetch())
             $requirements[] = $row;
 
@@ -282,10 +284,9 @@ class Cosmo {
         $data = array($id);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $comments = array();
         while($row = $stmt->fetch())
             $comments[] = $row;
-        if(!$comments)
-            $comments = array();
 
         return $comments;
     }
@@ -715,7 +716,7 @@ class Cosmo {
             // Make thumbnails
             $responsive = 'yes';
             foreach($this->thumbnailSizes as $size){
-                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 70))
+                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 80))
                     $responsive = 'no';
             }
 
@@ -1182,6 +1183,7 @@ class Cosmo {
      */
     public function revisionsRead($revisionID, $contentID)
     {
+        $revisions = array();
         if($revisionID) // Get a specific record
         {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'revisions WHERE id=?');
@@ -1394,6 +1396,7 @@ class Cosmo {
      */
     public function themesRead($themeID=NULL)
     {
+        $themes = array();
         if($themeID)
         {
             foreach(glob("../../themes/$themeID/*") as $theme)
@@ -1534,6 +1537,7 @@ class Cosmo {
             $data = array('%' . $keyword . '%', '%' . $keyword . '%');
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $users = array();
             while($row = $stmt->fetch())
                 $users[] = array(
                     'id'=>$row['id'],
@@ -1547,6 +1551,7 @@ class Cosmo {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'users');
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $users = array();
             while($row = $stmt->fetch())
                 $users[] = array(
                     'id' => $row['id'],
@@ -1697,17 +1702,14 @@ class Cosmo {
         // Don't make images larger than the original
         if($thumbwidth > $width)
             $thumbwidth = $width;
+        if($thumbheight > $height)
+            $thumbheight = $height;
 
-        if ($width > $height) {
-            $newwidth = $thumbwidth;
-            $divisor = $width / $thumbwidth;
-            $newheight = floor($height / $divisor);
-        } else {
-            $newheight = $thumbheight;
-            $divisor = $height / $thumbheight;
-            $newwidth = floor($width / $divisor );
-        }
-
+        // Resized dimensions
+        $newwidth = $thumbwidth;
+        $divisor = $width / $thumbwidth;
+        $newheight = floor($height / $divisor);
+        
         // Create a new temporary image.
         $tmpimg = imagecreatetruecolor($newwidth, $newheight);
 
@@ -1717,7 +1719,7 @@ class Cosmo {
         // Save thumbnail into a file.
         $returnVal = imagejpeg($tmpimg, $endfile, $quality);
 
-        // release the memory
+        // Release the memory
         imagedestroy($tmpimg);
         imagedestroy($img);
 
