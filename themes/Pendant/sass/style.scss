@@ -4,13 +4,22 @@ body, [ng-include="template"] {
     min-height: 100vh;
 }
 
-[ng-include="template"].ng-enter, [ng-include="template"].ng-leave {
-    transition: opacity .5s ease-in .05s;
+[ng-include="template"].ng-enter {
     opacity: 0;
+    transition: 1s ease;
 }
 
-[ng-include="template"].ng-enter-active, [ng-include="template"].ng-leave-active {
+[ng-include="template"].ng-enter-active{
     opacity: 1;
+}
+
+[ng-include="template"].ng-leave {
+    opacity: 1;
+    transition: 1s ease;
+}
+
+[ng-include="template"].ng-leave-active {
+    opacity: 0;
 }
 
 .cosmo-theme {

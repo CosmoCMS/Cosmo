@@ -44,12 +44,6 @@
                 <label>Database Prefix</label>
                 <input type="text" ng-model="install.prefix" name="prefix" value="cosmo_">
             </div>
-            <!-- todo: Add message about modifying the .htaccess files as well
-            <div class="half-width">
-                <label>Folder</label>
-                <input type="text" ng-model="install.folder" name="folder" value="">
-            </div>
-            -->
             <h3>Site Info</h3>
             <div class="half-width">
                 <label>Site Title</label>
@@ -71,6 +65,8 @@
                 <label>Email</label>
                 <input type="text" ng-model="install.email" name="email" value="admin@example.com">
             </div>
-            <button class="btn-success" ng-click="submit()">Submit</button>
+            <div>
+                <button class="btn-success" ng-click="submit()">Submit</button>
+            </div>
     </div>
 </div>
