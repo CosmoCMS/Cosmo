@@ -37,7 +37,8 @@
         <meta property="og:type" content="article" />
         <meta property="og:url" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" />
 <?php if(isset($content['extras']['featured']) && $content['extras']['featured']): ?>
-        <meta property="og:image" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . explode('/', $_SERVER['REQUEST_URI'])[0] . '/' . json_decode($content['extras']['featured'])->src; ?>" />
+        <?php $requestURI = explode('/', $_SERVER['REQUEST_URI']); ?>
+        <meta property="og:image" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $requestURI[0] . '/' . json_decode($content['extras']['featured'])->src; ?>" />
 <?php endif; ?>
 
         <base href="/<?php echo FOLDER; ?>" />

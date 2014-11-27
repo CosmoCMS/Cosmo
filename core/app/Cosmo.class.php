@@ -920,7 +920,11 @@ class Cosmo {
         $data = array($name);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetch()['value'];
+        $row = $stmt->fetch();
+        if($row && $row['value'])
+            return $row['value'];
+        else
+            return '';
     }
 
     /**
@@ -1579,11 +1583,17 @@ class Cosmo {
         $usersID = $this->passwordVerify($username, $password);
         if($usersID)
         {
+            $roleRecord = $this->usersRead($usersID);
+            if($roleRecord && $roleRecord['role'])
+                $role = $roleRecord['role'];
+            else
+                $role = 'Guest';
+            
             return array(
                 'id' => $usersID,
                 'username' => strtolower($username),
                 'token' => $this->tokensCreate($usersID),
-                'role' => $this->usersRead($usersID)['role']
+                'role' => $role
             );
         } else
             return FALSE;
