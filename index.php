@@ -46,6 +46,9 @@
         <script src="<?php echo $minifyScripts; ?>"></script>
 
         <link rel="stylesheet" type="text/css" href="<?php echo $minifyCSS; ?>">
+        <script src="//use.edgefonts.net/quicksand.js"></script>
+
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
         <?php echo $scripts; ?>
         <?php echo $CSS; ?>

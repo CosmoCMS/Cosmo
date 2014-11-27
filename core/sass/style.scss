@@ -9,10 +9,7 @@
 @import "global/tables"; //not used directly within cosmo, but a generic that's inserted within the WYSIWYG
 
 
-// vendor styles, may be fully altered or untouched from original styling
-@import "vendor/fontawesome/font-awesome"; // font awesome fonts --fontawesome.io--
 @import "vendor/modal"; // modal window used for the gallery
-
 
 
 // cosmo elements needed to be outside of the cosmo-default tag
