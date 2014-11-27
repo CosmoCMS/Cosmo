@@ -22,7 +22,8 @@ if(isset($_SERVER['HTTP_USERSID']) && $_SERVER['HTTP_USERSID']
     if($Cosmo->tokensRead($_SERVER['HTTP_USERSID'], $_SERVER['HTTP_TOKEN'])){
         $usersID = $_SERVER['HTTP_USERSID'];
         $username = $_SERVER['HTTP_USERNAME'];
-        $role = $Cosmo->usersRead($usersID)['role'];
+        $roleRecord = $Cosmo->usersRead($usersID);
+        $role = $roleRecord['role'];
     }
 }
 
@@ -66,7 +67,9 @@ function checkPermissions($action, $publishedStatus=null, $url=null)
                     $return = true;
                     break;
                 case 'author':
-                    if($Cosmo->contentRead($url)['author'] === $username)
+                    $authorRecord = $Cosmo->contentRead($url);
+                    $author = $authorRecord['author'];
+                    if($author === $username)
                         $return = true;
                     else
                         $return = false;
@@ -91,7 +94,9 @@ function checkPermissions($action, $publishedStatus=null, $url=null)
                     $return = true;
                     break;
                 case 'author':
-                    if($Cosmo->contentRead($url)['author'] === $username)
+                    $authorRecord = $Cosmo->contentRead($url);
+                    $author = $authorRecord['author'];
+                    if($author === $username)
                         $return = true;
                     else
                         $return = false;
@@ -517,7 +522,7 @@ header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
 header('Pragma: no-cache'); // HTTP 1.0.
 header('Expires: 0'); // Proxies.
 header("Status: $header");
-http_response_code($header);
+// http_response_code($header); // todo: Breaks older versions of PHP. Find workaround
 
 echo json_encode($response);
 

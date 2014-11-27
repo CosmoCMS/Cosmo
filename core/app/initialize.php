@@ -24,7 +24,8 @@ if(isset($_COOKIE['usersID']) && $_COOKIE['usersID'] && $_COOKIE['token'])
     {
         $usersID = $_COOKIE['usersID'];
         $username = $_COOKIE['username'];
-        $role = $Cosmo->usersRead($usersID)['role'];
+        $roleRecord = $Cosmo->usersRead($usersID);
+        $role = $roleRecord['role'];
         
         // Delete one-use token, issue a new one
         // todo: fix this so it doesn't break every refresh
