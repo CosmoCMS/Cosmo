@@ -45,7 +45,6 @@ class Cosmo {
      * @return array Array with names 'id', 'name', 'block', 'priority', and 'area'
      */
     public function blocksRead($blockID=NULL, $pageType=NULL, $url=NULL){
-
         // Get a specific block
         if($blockID){
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks WHERE id=?');
@@ -55,7 +54,6 @@ class Cosmo {
             $row = $stmt->fetch();
             $blocks = $row['block'];
         } else if($pageType || $url){ // Get all blocks for this page
-            $blocks = array();
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'blocks ORDER BY priority DESC');
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -431,7 +429,7 @@ class Cosmo {
             }
         } else // List all pages except the home page and new page
         {
-            $stmt = $this->pdo->prepare('SELECT id, title, description, header, subheader, featured, url, type, published, published_date, author, timestamp FROM '.$this->prefix.'content WHERE url!=? AND url!=? ORDER BY published_date');
+            $stmt = $this->pdo->prepare('SELECT id, title, description, header, subheader, featured, url, type, published, published_date, author, timestamp FROM '.$this->prefix.'content WHERE url!=? AND url!=? ORDER BY published_date DESC');
             $data = array('/', '/new');
             $stmt->execute($data);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);

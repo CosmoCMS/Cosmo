@@ -70,24 +70,24 @@ if(file_exists("themes/$theme/cosmo.json"))
     $themeJSON = json_decode(file_get_contents("themes/$theme/cosmo.json"));
     
     // Add to module list
-    if($themeJSON->module)
+    if(!empty($themeJSON->module))
         $angularModules .= ",\n\t\t'". $themeJSON->module ."'";
     
     // Get all Directives
-    if($themeJSON->directives){
+    if(!empty($themeJSON->directives)){
         foreach($themeJSON->directives as $directive)
             $directives[] = $directive;
     }
     
     // Get all classes
-    if($themeJSON->classes){
+    if(!empty($themeJSON->classes)){
         $classes .= $themeJSON->name . ":;";
         foreach($themeJSON->classes as $class)
             $classes .= $class . ";";
     }
     
     // Check if there is are Javascript files for this theme
-    if($themeJSON->scripts){
+    if(!empty($themeJSON->scripts)){
         foreach($themeJSON->scripts as $script){
             if(strpos($script, '//') !== FALSE)
                 $scripts .= "<script src='". $script ."'></script>\n\t"; // External js files    
@@ -99,7 +99,7 @@ if(file_exists("themes/$theme/cosmo.json"))
     }
     
     // Check if there is are CSS files for this theme
-    if($themeJSON->css){
+    if(!empty($themeJSON->css)){
         foreach($themeJSON->css as $css){
             if(strpos($css, '//') !== FALSE)
                 $CSS .= "<link href='". $css ."' rel='stylesheet' type='text/css'>\n\t"; // External style sheets
@@ -125,24 +125,24 @@ while($row = $stmt->fetch())
         $moduleJSON = json_decode(file_get_contents("modules/$folder/cosmo.json"));
         
         // Add to module list
-        if($moduleJSON->module)
+        if(!empty($moduleJSON->module))
             $angularModules .= ",\n\t\t'". $moduleJSON->module ."'";
         
         // Get all directives
-        if($moduleJSON->directives){
+        if(!empty($moduleJSON->directives)){
             foreach($moduleJSON->directives as $directive)
                 $directives[] = $directive;
         }
 
         // Get all classes
-        if($moduleJSON->classes){
+        if(!empty($moduleJSON->classes)){
             $classes .= $moduleJSON->name . ":;";
             foreach($moduleJSON->classes as $class)
                 $classes .= $class . ";";
         }
 
         // Check if there is are Javascript files for this script
-        if($moduleJSON->scripts){
+        if(!empty($moduleJSON->scripts)){
             foreach($moduleJSON->scripts as $script){
                 if(strpos($script, '//') !== FALSE)
                     $scripts .= "<script src='". $script ."'></script>\n\t"; // External file
@@ -154,7 +154,7 @@ while($row = $stmt->fetch())
         }
         
         // Check if there are CSS files for this module
-        if($moduleJSON->css){
+        if(!empty($moduleJSON->css)){
             foreach($moduleJSON->css as $css){
                 if(strpos($css, '//') !== FALSE)
                     $CSS .= "<link href='". $css ."' rel='stylesheet'>\n\t"; // External stylesheet
