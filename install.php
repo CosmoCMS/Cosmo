@@ -108,7 +108,11 @@ if($_GET)
     
     // Insert footer block
     $Cosmo->blocksCreate('Copyright');
-    $Cosmo->blocksUpdate('Home Page', '<p>Copyright &copy {{page.current_year}} | Built with <a href="http://www.cosmocms.org/"><img class="cosmo-logo" alt="Single Page Application CMS" src="core/img/cosmo-logo.svg"></a></p>', 0, 'footer', 2);
+    $Cosmo->blocksUpdate('Copyright', '<p>Copyright &copy {{page.current_year}} | Built with <a href="http://www.cosmocms.org/"><img class="cosmo-logo" alt="Single Page Application CMS" src="core/img/cosmo-logo.svg"></a></p>', 0, 'footer', 2);
+    
+    // Insert example primary menu
+    $Cosmo->menusCreate('Primary');
+    $Cosmo->menusUpdate(1, 'Primary', '[{"id":1,"title”:”About”,”url”:”about“,”items":[]},{"id":100,"title”:”Contact”,”url”:”contact”,”items":[]}]', 'primary');
 }
 
 if(!$_GET):
