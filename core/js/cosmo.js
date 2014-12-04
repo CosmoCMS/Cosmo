@@ -2821,12 +2821,12 @@ angular.module('cosmo', [])
  **************************************************/
 
 .controller('moduleCtrl', ['$scope', 'REST', '$rootScope', '$http', function($scope, REST, $rootScope, $http){
-    
+
     // Get modules
     REST.modules.query({}, function(data){
         $scope.modules = data;
     });
-    
+
     // Install Module
     $scope.install = function(module, index){
         REST.modules.save({ module: module }, function(data){
@@ -2840,7 +2840,7 @@ angular.module('cosmo', [])
             $rootScope.$broadcast('notify', { message: 'Module installed' });
         });
     };
-    
+
     // Uninstall Module
     $scope.uninstall = function(moduleID, index){
         REST.modules.delete({ moduleID: moduleID }, function(data){
