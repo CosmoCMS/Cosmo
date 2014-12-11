@@ -69,22 +69,22 @@ if($_GET)
     }
     
     // Setup site info
-    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'settings (site_name, email, theme) VALUES (?,?,?)');
+    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'settings (site_name, email, theme) VALUES (?,?,?) ON DUPLICATE KEY UPDATE site_name=VALUES(site_name)');
     $data = array($title, $email, 'Pendant');
     $stmt->execute($data);
     
     // Create home page
-    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, type, published) VALUES (?,?,?)');
+    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, type, published) VALUES (?,?,?) ON DUPLICATE KEY UPDATE url=VALUES(url)');
     $data = array('/', 'home.html', 'Y');
     $stmt->execute($data);
     
     // Create new page
-    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, author, published) VALUES (?,?,?)');
+    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, author, published) VALUES (?,?,?) ON DUPLICATE KEY UPDATE url=VALUES(url)');
     $data = array('/new', 1, 'Y');
     $stmt->execute($data);
     
     // Create error page
-    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, type, author, published) VALUES (?,?,?,?)');
+    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, type, author, published) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE url=VALUES(url)');
     $data = array('/error', 'home.html', 1, 'Y');
     $stmt->execute($data);
     
