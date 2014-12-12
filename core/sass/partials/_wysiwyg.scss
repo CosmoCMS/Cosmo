@@ -297,6 +297,12 @@ pre {
     outline: none;
 }
 
+[contenteditable="false"] {
+    .cosmo-toolbar-large {
+        display: none;
+    }
+}
+
 [contenteditable="true"] {
     border: 0;
     min-height: 2rem;
