@@ -55,6 +55,7 @@
             // Setup main module with HTML5 URLs
             angular.module('main', [
                 'cosmo',
+                'cosmo.admin',
                 'ngRoute',
                 'ngAnimate',
                 'ui.tree',
