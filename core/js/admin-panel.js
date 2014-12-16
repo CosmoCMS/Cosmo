@@ -15,7 +15,10 @@ angular.module('cosmo.admin', [])
     
     // Get latest official message from Cosmo (for version, updates, and blog posts)
     $http.get('http://www.cosmocms.org/message.php?dontcache='+ new Date().getTime())
-    .success(function(data){
+    .success(officialMessagePromise);
+    
+    // Update official message from Cosmo
+    function officialMessagePromise(data){
         if(data){
             data = angular.fromJson(data);
             $scope.admin.messageID = data.id;
@@ -25,7 +28,7 @@ angular.module('cosmo.admin', [])
                 $scope.admin.displayMessage = true;
             }
         }
-    });
+    };
     
     // Set a cookie so you don't see this message any more
     $scope.removeMessage = function(){
@@ -36,7 +39,10 @@ angular.module('cosmo.admin', [])
     };
     
     // Get user's info
-    REST.users.get({userID: Users.id}, function(data){
+    REST.users.get({userID: Users.id}, usersInfoPromise);
+    
+    // Update user's info in the template
+    function usersInfoPromise(data){
         Users.name = data.name;
         Users.bio = data.bio;
         Users.photo = data.photo;
@@ -50,8 +56,8 @@ angular.module('cosmo.admin', [])
             $scope.admin.photo = data.photo;
         else
             $scope.admin.photo = 'core/img/image.svg';
-    });
-
+    };
+    
     $scope.sidebar = '';
     $scope.showAdminPanel = false; // Initialize sidebar as hidden
     
@@ -118,47 +124,56 @@ angular.module('cosmo.admin', [])
         $rootScope.$broadcast('contentGet');
 
         // Get the block requirements
-        REST.blocksRequirements.query({ blockID: $scope.block.id }, function(data){
-            var blockURLs = '';
-            angular.forEach(data, function(data2){
-                if(data2.type === 'visible' || data2.type === 'invisible'){
-                    $scope.block.visibility = data2.type;
-                    blockURLs += data2.requirement + "\n";
-                } else {
-                    if(data2.type)
-                        $scope.block.selectedTypes[data2.requirement] = true;
-                }
-            });
-            $scope.block.urls = blockURLs;
-        });
+        REST.blocksRequirements.query({ blockID: $scope.block.id }, blockRequirementsPromise);
     };
+    
+    // Update block requirements
+    function blockRequirementsPromise(data){
+        var blockURLs = '';
+        angular.forEach(data, function(data2){
+            if(data2.type === 'visible' || data2.type === 'invisible'){
+                $scope.block.visibility = data2.type;
+                blockURLs += data2.requirement + "\n";
+            } else {
+                if(data2.type)
+                    $scope.block.selectedTypes[data2.requirement] = true;
+            }
+        });
+        $scope.block.urls = blockURLs;
+    }
 
     // Add a new block
     $scope.newBlock = function(){
-        REST.blocks.save({ name: $scope.block.newName }, function(data){
-            if($scope.blocks)
-                $scope.blocks.push({ id: data.data, name: $scope.block.newName });
-            else
-                $scope.blocks = [{ id: data.data, name: $scope.block.newName }];
-
-            $scope.block.newName = '';
-            $rootScope.$broadcast('notify', {message: 'New block added'});
-        });
+        REST.blocks.save({ name: $scope.block.newName }, newBlockPromise);
     };
+    
+    // Update info from the new block
+    function newBlockPromise(data){
+        if($scope.blocks)
+            $scope.blocks.push({ id: data.data, name: $scope.block.newName });
+        else
+            $scope.blocks = [{ id: data.data, name: $scope.block.newName }];
+
+        $scope.block.newName = '';
+        $rootScope.$broadcast('notify', {message: 'New block added'});
+    }
 
     // Delete block
     $scope.deleteBlock = function(){
-        REST.blocks.delete({ blockID: $scope.block.id }, function(data){
-            if(data){
-                for(var i=0; i< $scope.blocks.length; i++){
-                    if($scope.blocks[i]['id'] === $scope.block.id)
-                        $scope.blocks.splice(i,1);
-                }
-                $scope.block.name = '';
-                $rootScope.$broadcast('notify', {message: 'Block deleted'});
-            }
-        });
+        REST.blocks.delete({ blockID: $scope.block.id }, deleteBlockPromise);
     };
+    
+    // Update block after being deleted
+    function deleteBlockPromise(data){
+        if(data){
+            for(var i=0; i< $scope.blocks.length; i++){
+                if($scope.blocks[i]['id'] === $scope.block.id)
+                    $scope.blocks.splice(i,1);
+            }
+            $scope.block.name = '';
+            $rootScope.$broadcast('notify', {message: 'Block deleted'});
+        }
+    }
     
     // Update block section/priority from the overview section
     $scope.updateBlock = function(block){
@@ -182,49 +197,55 @@ angular.module('cosmo.admin', [])
             block: $scope.block.html,
             area: $scope.block.area,
             priority: $scope.block.priority
-        }, function(data){
+        }, saveBlockPromise);
+    };
+    
+    // Update page after saving a block
+    function saveBlockPromise(data){
             
-            // Update block name in CMS
-            for(var i=0; i< $scope.blocks.length; i++){
-                if($scope.blocks[i]['id'] === $scope.block.id)
-                    $scope.blocks[i]['name'] = $scope.block.name;
-            }
+        // Update block name in CMS
+        for(var i=0; i< $scope.blocks.length; i++){
+            if($scope.blocks[i]['id'] === $scope.block.id)
+                $scope.blocks[i]['name'] = $scope.block.name;
+        }
 
-            // Delete old visibility requirements
-            REST.blocksRequirements.delete({ blockID: $scope.block.id }, function(){
-                // Save block visibility requirements
-                if($scope.block.visibility){
-                    var urls = $scope.block.urls.split("\n");
-                    for(var i=0; i<urls.length; i++){
-                        REST.blocksRequirements.save({
-                            blockID: $scope.block.id,
-                            type: $scope.block.visibility,
-                            requirement: urls[i]
-                        });
-                    }
-                }
+        // Delete old visibility requirements
+        REST.blocksRequirements.delete({ blockID: $scope.block.id }, blocksRequirementsDeletePromise);
 
-                // Save block page type requirements
-                angular.forEach($scope.block.selectedTypes, function(value, key){
-                    if($scope.block.selectedTypes[key]){
-                        REST.blocksRequirements.save({
-                            blockID: $scope.block.id,
-                            type: 'type',
-                            requirement: key
-                        });
-                    }
+        // Update page object
+        Page.blocks.push({
+            name: $scope.block.name,
+            block: $scope.block.html,
+            area: $scope.block.area,
+            priority: $scope.block.priority
+        });
+        $rootScope.$broadcast('notify', {message: 'Block updated'});
+        $rootScope.$broadcast('blocksGet');
+    };
+    
+    // Update visibility requirements
+    function blocksRequirementsDeletePromise(){
+        // Save block visibility requirements
+        if($scope.block.visibility){
+            var urls = $scope.block.urls.split("\n");
+            for(var i=0; i<urls.length; i++){
+                REST.blocksRequirements.save({
+                    blockID: $scope.block.id,
+                    type: $scope.block.visibility,
+                    requirement: urls[i]
                 });
-            });
+            }
+        }
 
-            // Update page object
-            Page.blocks.push({
-                name: $scope.block.name,
-                block: $scope.block.html,
-                area: $scope.block.area,
-                priority: $scope.block.priority
-            });
-            $rootScope.$broadcast('notify', {message: 'Block updated'});
-            $rootScope.$broadcast('blocksGet');
+        // Save block page type requirements
+        angular.forEach($scope.block.selectedTypes, function(value, key){
+            if($scope.block.selectedTypes[key]){
+                REST.blocksRequirements.save({
+                    blockID: $scope.block.id,
+                    type: 'type',
+                    requirement: key
+                });
+            }
         });
     };
 }])
