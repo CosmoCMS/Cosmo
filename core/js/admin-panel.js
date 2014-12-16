@@ -284,12 +284,15 @@ angular.module('cosmo.admin', [])
     };
     
     // Fetch content
-    REST.content.query({}, function(data){
+    REST.content.query({}, fetchContentPromise);
+    
+    // Update the content after it's called
+    function fetchContentPromise(data){
         angular.forEach(data, function(data2){
             data2.featured = Hooks.imageHookNotify(Responsive.resize(data2.featured, 'small'));
         });
         $scope.pages = data;
-    });
+    }
 }])
 
 /**************************************************
@@ -370,30 +373,41 @@ angular.module('cosmo.admin', [])
 
     // Edit a menu's name
     $scope.updateMenuName = function(){
-        REST.menus.update({ menuID: $scope.menu.id, name: $scope.menu.name, menu: $scope.menu.menu, area: $scope.menu.area }, function(data){
-            if(data){
-                for(var i=0; i< $scope.menus.length; i++){
-                    if($scope.menus[i]['id'] === $scope.menu.id)
-                        $scope.menus[i]['name'] = $scope.menu.name;
-                }
-                $scope.menu.name = '';
-            }
-        });
+        REST.menus.update({ 
+            menuID: $scope.menu.id, 
+            name: $scope.menu.name, 
+            menu: $scope.menu.menu, 
+            area: $scope.menu.area 
+        }, updateMenuPromise);
     };
+    
+    // Update the menu after it's called
+    function updateMenuPromise(data){
+        if(data){
+            for(var i=0; i< $scope.menus.length; i++){
+                if($scope.menus[i]['id'] === $scope.menu.id)
+                    $scope.menus[i]['name'] = $scope.menu.name;
+            }
+            $scope.menu.name = '';
+        }
+    }
 
     // Delete menu
     $scope.deleteMenu = function(){
-        REST.menus.delete({ menuID: $scope.menu.id }, function(data){
-            if(data){
-                for(var i=0; i< $scope.menus.length; i++){
-                    if($scope.menus[i]['id'] === $scope.menu.id)
-                        $scope.menus.splice(i,1);
-                }
-                $scope.menu.name = '';
-                $rootScope.$broadcast('notify', {message: 'Menu deleted'});
-            }
-        });
+        REST.menus.delete({ menuID: $scope.menu.id }, deleteMenuPromise);
     };
+
+    // Update the page after a menu was deleted
+    function deleteMenuPromise(data){
+        if(data){
+            for(var i=0; i< $scope.menus.length; i++){
+                if($scope.menus[i]['id'] === $scope.menu.id)
+                    $scope.menus.splice(i,1);
+            }
+            $scope.menu.name = '';
+            $rootScope.$broadcast('notify', {message: 'Menu deleted'});
+        }
+    }
 
     // Update link
     $scope.updateLink = function(){
@@ -422,16 +436,24 @@ angular.module('cosmo.admin', [])
     // Save the addition/edits to the menu
     $scope.saveMenu = function(){
         // Save menu
-        REST.menus.update({ menuID: $scope.menu.id, name: $scope.menu.name, menu: angular.toJson($scope.list), area: $scope.menu.area }, function(data){
-            // Re-fetch menus to update the site live
-            REST.menus.query({}, function(data){
-                Page.menus = data;
-                $rootScope.$broadcast('menusGet');
-            });
-            // Notify the user the menu has been updated
-            $rootScope.$broadcast('notify', {message: 'Menu saved'});
-        });
+        REST.menus.update({ 
+            menuID: $scope.menu.id, 
+            name: $scope.menu.name, 
+            menu: angular.toJson($scope.list), 
+            area: $scope.menu.area 
+        }, saveMenuPromise);
     };
+    
+    // Update page after saving the menu
+    function saveMenuPromise(data){
+        // Re-fetch menus to update the site live
+        REST.menus.query({}, function(data){
+            Page.menus = data;
+            $rootScope.$broadcast('menusGet');
+        });
+        // Notify the user the menu has been updated
+        $rootScope.$broadcast('notify', {message: 'Menu saved'});
+    }
 }])
 
 /**************************************************
@@ -448,53 +470,64 @@ angular.module('cosmo.admin', [])
 
     // Install Module
     $scope.install = function(module, index){
-        REST.modules.save({ module: module }, function(data){
-            $scope.modules[index]['status'] = 'active';
-            
-            // Check for an installation file and run it
-            if($scope.modules[index]['install'])
-                $http.get('modules/'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['install']);
-            
-            // Success Message
-            $rootScope.$broadcast('notify', { message: 'Module installed' });
-        });
+        REST.modules.save({ module: module }, installModulePromise);
     };
+
+    // Update the page after installing a new module
+    function installModulePromise(data){
+        $scope.modules[index]['status'] = 'active';
+
+        // Check for an installation file and run it
+        if($scope.modules[index]['install'])
+            $http.get('modules/'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['install']);
+
+        // Success Message
+        $rootScope.$broadcast('notify', { message: 'Module installed' });
+    }
 
     // Uninstall Module
     $scope.uninstall = function(moduleID, index){
-        REST.modules.delete({ moduleID: moduleID }, function(data){
-            
-            // Check for an uninstallation file and run it
-            if($scope.modules[index]['uninstall'])
-                $http.get('modules/'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['uninstall']);
-            
-            // Remove module from sidebar
-            $scope.modules[index] = null;
-            
-            // Success Message
-            $rootScope.$broadcast('notify', {message: 'Module uninstalled'});
-        });
+        REST.modules.delete({ moduleID: moduleID }, uninstallModulePromise);
     };
+    
+    // Update the page after uninstalling a module
+    function uninstallModulePromise(data){
+        // Check for an uninstallation file and run it
+        if($scope.modules[index]['uninstall'])
+            $http.get('modules/'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['uninstall']);
+
+        // Remove module from sidebar
+        $scope.modules[index] = null;
+
+        // Success Message
+        $rootScope.$broadcast('notify', {message: 'Module uninstalled'});
+    }
     
     // Activate Module
     $scope.activate = function(moduleID, index){
-        REST.modules.update({ moduleID: moduleID, status: 'active' }, function(data){
-            $scope.modules[index]['status'] = 'active';
-            
-            // Success Message
-            $rootScope.$broadcast('notify', {message: 'Module activated'});
-        });
+        REST.modules.update({ moduleID: moduleID, status: 'active' }, activateModulePromise);
     };
+    
+    // Update the page after activating a module
+    function activateModulePromise(data){
+        $scope.modules[index]['status'] = 'active';
+
+        // Success Message
+        $rootScope.$broadcast('notify', {message: 'Module activated'});
+    }
 
     // Deactivate Module
     $scope.deactivate = function(moduleID, index){
-        REST.modules.update({ moduleID: moduleID, status: 'inactive' }, function(data){
-            $scope.modules[index]['status'] = 'inactive';
-
-            // Success Message
-            $rootScope.$broadcast('notify', {message: 'Module deactivated'});
-        });
+        REST.modules.update({ moduleID: moduleID, status: 'inactive' }, deactivateModulePromise);
     };
+    
+    // Update the page after deactivating a module
+    function deactivateModulePromise(data){
+        $scope.modules[index]['status'] = 'inactive';
+
+        // Success Message
+        $rootScope.$broadcast('notify', {message: 'Module deactivated'});
+    }
 
     // Go to a module's settings
     $scope.goToSettings = function(folder, file){
@@ -583,6 +616,7 @@ angular.module('cosmo.admin', [])
 
     // Delete the page
     $scope.deletePage = function(){
+        // Delete the page
         REST.content.delete({ contentID: $scope.page.id }, function(data){
             // Success message
             $rootScope.$broadcast('notify', {message: 'Deleted'});
@@ -600,6 +634,7 @@ angular.module('cosmo.admin', [])
         // Delete all tags for this page
         REST.contentTags.delete({ contentID: $scope.page.id });
 
+        // Redirect to the default new page
         $location.path('new');
     };
 
@@ -751,93 +786,14 @@ angular.module('cosmo.admin', [])
                 published: $scope.page.publish,
                 published_date: scheduleDate,
                 author: Users.id
-            }, function(data){
-                var contentID = data.id;
-                
-                // Reset variables to edit page
-                $scope.page.id = contentID;
-                $scope.autoURL = false;
-                
-                // Save new tags
-                if($scope.page.tags){
-                    angular.forEach($scope.page.tags, function(value){
-                        REST.contentTags.save({ contentID: contentID, tag: value });
-                    });
-                }
-                
-                // Save page as a revision
-                REST.contentRevisions.save({
-                    contentID: contentID,
-                    title: $scope.page.title,
-                    description: $scope.page.description,
-                    header: Page.header,
-                    subheader: Page.subheader,
-                    featured: featured,
-                    body: Page.body,
-                    url: $scope.page.url,
-                    type: $scope.page.type,
-                    published: $scope.page.publish,
-                    published_date: scheduleDate,
-                    author: Users.id
-                }, function(data){
-                    revisionID = data.id;
-                    var i = 1;
-
-                    // Save additional data if there is any
-                    if(Object.keys(Page.extras).length === 0){
-                        // Success message
-                        $rootScope.$broadcast('notify', {message: 'Saved'});
-                        // Redirect to new page
-                        $location.path($scope.page.url);
-                    } else {
-                        for(var key in Page.extras){
-                            // Stringify arrays and objects
-                            if(typeof Page.extras[key] === 'object')
-                                Page.extras[key] = angular.toJson(Page.extras[key]);
-
-                            // Save extra
-                            REST.contentExtras.save({
-                                contentID: contentID,
-                                name: key,
-                                extra: Page.extras[key]
-                            }, function(){
-                                // Wait for the last extra to be saved, then redirect the user
-                                if(i === Object.keys(Page.extras).length){
-                                    // Success message
-                                    $rootScope.$broadcast('notify', {message: 'Saved'});
-                                    // Redirect to new page
-                                    $location.path($scope.page.url);
-                                } else
-                                    i++;
-                            }, function(){
-                                // Wait for the last extra to be saved, then redirect the user
-                                if(i === Object.keys(Page.extras).length){
-                                    // Success message
-                                    $rootScope.$broadcast('notify', {message: 'Saved'});
-                                    // Redirect to new page
-                                    $location.path($scope.page.url);
-                                } else
-                                    i++;
-                            });
-
-                            // Save extra to revisions
-                            REST.contentRevisionsExtras.save({
-                                revisionID: revisionID,
-                                contentID: contentID,
-                                name: key,
-                                extra: Page.extras[key]
-                            });
-                        };
-                    }
-                    $rootScope.$broadcast('notify', {message: 'Page Created'});
-                });
-            }, function(){ // Error
+            }, newPagePromise, function(){ // Error
                 $rootScope.$broadcast('notify', {message: 'Error saving page. Possible duplicate URL', classes: 'alert-error'});
             });
         } else { // Update existing page
 
             var revisionID;
 
+            // Update the page
             REST.content.update({
                 contentID: $scope.page.id,
                 title: $scope.page.title,
@@ -851,88 +807,160 @@ angular.module('cosmo.admin', [])
                 published: $scope.page.publish,
                 published_date: scheduleDate,
                 author: Users.id
-            }, function(data){
-                
-                // Delete old tags
-                REST.contentTags.delete({ contentID: $scope.page.id }, function(){
-                    // Save new tags
-                    angular.forEach($scope.page.tags, function(value){
-                        REST.contentTags.save({ contentID: $scope.page.id, tag: value });
-                    });
-                });
-                
-                // Save page as a revision
-                REST.contentRevisions.save({
-                    contentID: $scope.page.id,
-                    title: $scope.page.title,
-                    description: $scope.page.description,
-                    header: Page.header,
-                    subheader: Page.subheader,
-                    featured: featured,
-                    body: Page.body,
-                    url: $scope.page.url,
-                    type: $scope.page.type,
-                    published: $scope.page.publish,
-                    published_date: $scope.page.scheduleDate,
-                    author: Users.id
-                }, function(data){
-                    revisionID = data.id;
-                    var i = 1;
-                    
-                    // Delete old extras
-                    REST.contentExtras.delete({ contentID: $scope.page.id }, function(){
-                        // Save additional data
-                        for (var key in Page.extras){
-                            if (Page.extras.hasOwnProperty(key)){
-
-                                // Stringify arrays and objects
-                                if(typeof Page.extras[key] === 'object')
-                                    Page.extras[key] = angular.toJson(Page.extras[key]);
-
-                                // Save new extra
-                                REST.contentExtras.save({
-                                    contentID: $scope.page.id,
-                                    name: key,
-                                    extra: Page.extras[key]
-                                }, function(){
-                                    // Wait for the last extra to be saved, then redirect the user
-                                    if(i === Object.keys(Page.extras).length){
-                                        // Success message
-                                        $rootScope.$broadcast('notify', {message: 'Page updated'});
-                                        // Redirect to new page
-                                        $location.path($scope.page.url);
-                                    } else
-                                        i++;
-                                }, function(){
-                                    // Wait for the last extra to be saved, then redirect the user
-                                    if(i === Object.keys(Page.extras).length){
-                                        // Success message
-                                        $rootScope.$broadcast('notify', {message: 'Page updated'});
-                                        // Redirect to new page
-                                        $location.path($scope.page.url);
-                                    } else
-                                        i++;
-                                });
-
-                                // Save new extra to revisions
-                                REST.contentRevisionsExtras.save({
-                                    revisionID: revisionID,
-                                    contentID: $scope.page.id,
-                                    name: key,
-                                    extra: Page.extras[key]
-                                });
-                            }
-                        }
-                        // If there were no extras, notify right away
-                        if(!Page.extras.length)
-                            $rootScope.$broadcast('notify', {message: 'Page Updated'});
-                    });
-                });
-            }, function(data){ // Error
+            }, updatePagePromise, function(data){ // Error
                 $rootScope.$broadcast('notify', {message: 'Error updating page', classes: 'alert-error'});
             });
         }
+        
+        // Update the page after a new page was saved
+        function newPagePromise(data){
+            var contentID = data.id;
 
+            // Reset variables to edit page
+            $scope.page.id = contentID;
+            $scope.autoURL = false;
+
+            // Save new tags
+            if($scope.page.tags){
+                angular.forEach($scope.page.tags, function(value){
+                    REST.contentTags.save({ contentID: contentID, tag: value });
+                });
+            }
+
+            // Save page as a revision
+            REST.contentRevisions.save({
+                contentID: contentID,
+                title: $scope.page.title,
+                description: $scope.page.description,
+                header: Page.header,
+                subheader: Page.subheader,
+                featured: featured,
+                body: Page.body,
+                url: $scope.page.url,
+                type: $scope.page.type,
+                published: $scope.page.publish,
+                published_date: scheduleDate,
+                author: Users.id
+            }, saveRevisionPromise);
+        }
+            
+        // Update the page after saving a page revision
+        function saveRevisionPromise(data){
+            revisionID = data.id;
+            var i = 1;
+
+            // Save additional data if there is any
+            if(Object.keys(Page.extras).length === 0){
+                // Success message
+                $rootScope.$broadcast('notify', {message: 'Saved'});
+                // Redirect to new page
+                $location.path($scope.page.url);
+            } else {
+                for(var key in Page.extras){
+                    // Stringify arrays and objects
+                    if(typeof Page.extras[key] === 'object')
+                        Page.extras[key] = angular.toJson(Page.extras[key]);
+
+                    // Save extra
+                    REST.contentExtras.save({
+                        contentID: contentID,
+                        name: key,
+                        extra: Page.extras[key]
+                    }, saveExtrasPromise, saveExtrasPromise);
+
+                    // Save extra to revisions
+                    REST.contentRevisionsExtras.save({
+                        revisionID: revisionID,
+                        contentID: contentID,
+                        name: key,
+                        extra: Page.extras[key]
+                    });
+                };
+            }
+            $rootScope.$broadcast('notify', {message: 'Page Created'});
+        }
+
+        // Notify the user after saving the last extra
+        function saveExtrasPromise(){
+            // Wait for the last extra to be saved, then redirect the user
+            if(i === Object.keys(Page.extras).length){
+                // Success message
+                $rootScope.$broadcast('notify', {message: 'Saved'});
+                // Redirect to new page
+                $location.path($scope.page.url);
+            } else
+                i++;
+        }
+
+        // Update the page after it's been saved
+        function updatePagePromise(data){
+            // Delete old tags
+            REST.contentTags.delete({ contentID: $scope.page.id }, deleteTagsPromise);
+
+            // Save page as a revision
+            REST.contentRevisions.save({
+                contentID: $scope.page.id,
+                title: $scope.page.title,
+                description: $scope.page.description,
+                header: Page.header,
+                subheader: Page.subheader,
+                featured: featured,
+                body: Page.body,
+                url: $scope.page.url,
+                type: $scope.page.type,
+                published: $scope.page.publish,
+                published_date: $scope.page.scheduleDate,
+                author: Users.id
+            }, savePageRevisionPromise);
+        }
+        
+        // Callback for saving a page revision
+        function savePageRevisionPromise(data){
+            revisionID = data.id;
+            var i = 1;
+
+            // Delete old extras
+            REST.contentExtras.delete({ contentID: $scope.page.id }, deleteExtrasPromise);
+        }
+
+        // Callback after tags are deleted
+        function deleteTagsPromise(){
+            // Save new tags
+            angular.forEach($scope.page.tags, function(value){
+                REST.contentTags.save({ contentID: $scope.page.id, tag: value });
+            });
+        }
+
+        // Callback after deleting extras
+        function deleteExtrasPromise(){
+            // Save additional data
+            for (var key in Page.extras){
+                if (Page.extras.hasOwnProperty(key)){
+
+                    // Stringify arrays and objects
+                    if(typeof Page.extras[key] === 'object')
+                        Page.extras[key] = angular.toJson(Page.extras[key]);
+
+                    // Save new extra
+                    REST.contentExtras.save({
+                        contentID: $scope.page.id,
+                        name: key,
+                        extra: Page.extras[key]
+                    }, saveExtrasPromise, saveExtrasPromise);
+
+                    // Save new extra to revisions
+                    REST.contentRevisionsExtras.save({
+                        revisionID: revisionID,
+                        contentID: $scope.page.id,
+                        name: key,
+                        extra: Page.extras[key]
+                    });
+                }
+            }
+            // If there were no extras, notify right away
+            if(!Page.extras.length)
+                $rootScope.$broadcast('notify', {message: 'Page Updated'});
+        }
     };
 }])
 
