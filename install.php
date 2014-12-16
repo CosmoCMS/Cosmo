@@ -11,16 +11,16 @@ if($_GET)
     error_reporting(E_ALL);
     
     // Catch variables from form
-    if(isset($_GET['folder']) ? $folder = $_GET['folder'] : $folder = '');
-    if(isset($_GET['prefix']) ? $prefix = $_GET['prefix'] : $prefix = '');
-    if(isset($_GET['host']) ? $host = $_GET['host'] : $host = '');
-    if(isset($_GET['name']) ? $name = $_GET['name'] : $name = '');
-    if(isset($_GET['username']) ? $username = $_GET['username'] : $username = '');
-    if(isset($_GET['password']) ? $password = $_GET['password'] : $password = '');
-    if(isset($_GET['title']) ? $title = $_GET['title'] : $title = '');
-    if(isset($_GET['email']) ? $email = $_GET['email'] : $email = '');
-    if(isset($_GET['adminUsername']) ? $adminUsername = $_GET['adminUsername'] : $adminUsername = '');
-    if(isset($_GET['adminPassword']) ? $adminPassword = $_GET['adminPassword'] : $adminPassword = '');
+    $folder = (isset($_GET['folder'])) ? $_GET['folder'] : '';
+    $prefix = (isset($_GET['prefix'])) ? $_GET['prefix'] : '';
+    $host = (isset($_GET['host'])) ? $_GET['host'] : '';
+    $name = (isset($_GET['name'])) ? $_GET['name'] : '';
+    $username = (isset($_GET['username'])) ? $_GET['username'] : '';
+    $password = (isset($_GET['password'])) ? $_GET['password'] : '';
+    $title = (isset($_GET['title'])) ? $_GET['title'] : '';
+    $email = (isset($_GET['email'])) ? $_GET['email'] : '';
+    $adminUsername = (isset($_GET['adminUsername'])) ? $_GET['adminUsername'] : '';
+    $adminPassword = (isset($_GET['adminPassword'])) ? $_GET['adminPassword'] : '';
     
     // Generate 128 character salt
     $salt = "";
@@ -40,7 +40,7 @@ if($_GET)
     $username = \''. $username .'\';
     $password = \''. $password .'\';
     $prefix = \''. $prefix .'\'; // e.g. cosmo_
-    $folder = define(\'FOLDER\', \''. $folder .'\'); // /subfolder
+    define(\'FOLDER\', \''. $folder .'\'); // /subfolder
     $salt = \''. $salt .'\';
     $developerMode = false; // Switching this to true prevents minification/combination of JS/CSS files for better error reporting
     
