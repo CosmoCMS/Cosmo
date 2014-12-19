@@ -36,7 +36,7 @@ angular.module('cosmo', [])
         
         // Check if the site is under maintenence
         if(Page.settings){
-            if(Page.settings.maintenance_mode == 1 && Page.settings.maintenance_url && !Users.admin){
+            if(Page.settings.maintenance_mode === 1 && Page.settings.maintenance_url && !Users.admin){
                 Page.menus = []; // Don't show menus, since those pages are disabled
                 $location.path(Page.settings.maintenance_url).replace();
                 if(data.redirect) // Don't double redirect if this is a redirected URL
@@ -291,10 +291,9 @@ angular.module('cosmo', [])
                     if(attrs.type !== 'text')
                         $compile(elm.contents())(scope);
                 }
-                
             };
             updateCosmo();
-            
+
             scope.$on('contentGet', function(){
                 updateCosmo();
             });
@@ -302,7 +301,7 @@ angular.module('cosmo', [])
             // Display the WYSIWYG toolbar
             elm.on('mousedown', function(event) {
                 scope.currentBlock = attrs.csContent;
-                if(attrs.type !== 'text')
+                if(attrs.type !== 'text' && (!event.srcElement.attributes['cs-type'] || event.srcElement.attributes['cs-type'].value !== 'text'))
                     $rootScope.$broadcast('activateWYSIWYG', event);
             });
 
@@ -1161,7 +1160,7 @@ angular.module('cosmo', [])
  *       Create Page factory to store             *
  *          page variables globally               *
  **************************************************/
-// 
+
 .factory('Page', function(){
     return {
         id: 0,
