@@ -911,10 +911,10 @@ class Cosmo {
     /**
      * Get a misc item by it's name
      * @param str Name to search for
-     * @return record
+     * @return str Value
      */
     public function miscRead($name){
-        $stmt = $this->pdo->prepare('SELECT value FROM '.$this->prefix.'misc WHERE name=?');
+        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'misc WHERE name=?');
         $data = array($name);
         $stmt->execute($data);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);

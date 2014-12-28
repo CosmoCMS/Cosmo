@@ -45,8 +45,9 @@ $minifyScripts .= FOLDER."core/js/angular/angular-touch.min.js,";
 $minifyScripts .= FOLDER."core/js/angular/angular-route.min.js,";
 $minifyScripts .= FOLDER."core/js/angular/angular-resource.min.js,";
 
-// Load the Cosmo file
+// Load the Cosmo core files
 $minifyScripts .= FOLDER."core/js/cosmo.js,";
+$minifyScripts .= FOLDER."core/js/admin-panel.js,";
 
 // 3rd party scripts
 $minifyScripts .= FOLDER."core/js/3rd-party/angular-file-upload.min.js,";

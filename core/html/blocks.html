@@ -26,7 +26,7 @@
         <div>
             <ul ng-repeat='block in blocks | filter:search'>
                 <li>
-                    <a href='' ><h6 ng-click='selectBlock(block)'>{{block.name}}</h6></a>
+                    <a href='' ><h6 ng-click='selectBlock(block)'>{{block.name || 'N/A'}}</h6></a>
                     <div class="cos-select--half-width">
                         <select value="section" ng-model="block.area" ng-change="updateBlock(block)">
                             <option value="header">Header</option>
@@ -518,7 +518,7 @@
             </p>
             <div class="confirm" ng-show="confirm">
                 <p>Are you sure you want to delete this block?</p>
-                <button class="btn-error" ng-click="deleteBlock();block.panel='manage'">Yes</button>
+                <button class="btn-error" ng-click="confirm=false;deleteBlock();block.panel='manage'">Yes</button>
                 <button class="btn-success" ng-click='confirm=false'>No</button>
             </div>
             <div>

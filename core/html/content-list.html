@@ -18,7 +18,7 @@
     </form>
     <ul>
         <li ng-repeat="page in pages | filter:search">
-            <a ng-href="{{page.url}}">{{page.title}}</a>
+            <a ng-href="{{page.url}}">{{page.title || 'N/A'}}</a>
             <p class="page-type"><small><i class="fa fa-file-text"></i> {{page.type | themeFiles}}</small></p>
             <p><small><i alt="published" class="fa fa-check"></i> {{page.published}}</small></p>
             <p><small><i alt="author" class="fa fa-user"></i> {{page.author.username}}</small></p>

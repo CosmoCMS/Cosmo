@@ -16,7 +16,6 @@
             <li ng-click="showAdminPanel=true;admin.sidebar='core/html/content-list.html';active='content';"><a><i class="fa fa-eye "></i>Browse</a></li>
             <li ng-click="showAdminPanel=true;admin.sidebar='core/html/page.html';active='content'"><a><i class="fa fa-pencil-square-o "></i>Edit Page</a></li>
             <li ng-click="admin.sidebar='core/html/revisions.html';active='content';showAdminPanel=true;"><a><i class="fa fa-terminal "></i>Revisions</a></li>
-            <li ng-click="admin.sidebar='core/html/tags.html';active='content';showAdminPanel=true;"><a><i class="fa fa-tags "></i>Manage Tags</a></li>
         </ul>
     </li>
     <li ng-show="admin.roleNum==1" ng-class="{active: active=='menus'}" ng-click="admin.sidebar='core/html/menu.html';active='menus';showAdminPanel=true"><a><i class="fa fa-sitemap "></i>Menus</a></li>

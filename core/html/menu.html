@@ -20,7 +20,7 @@
             </div>
         </div>
         <ul>
-            <li ng-repeat="menu in menus" ng-click="selectMenu(menu)"><a>{{menu.name}}</a></li>
+            <li ng-repeat="menu in menus" ng-click="selectMenu(menu)"><a>{{menu.name || 'N/A'}}</a></li>
         </ul>
     </div>
     <div ng-show="menu.panel==='edit'">
@@ -115,7 +115,7 @@
                 
                 <div class="confirm" ng-show="confirm">
                     <p>Are you sure you want to delete this menu?</p>
-                    <button class="btn-error" ng-click="deleteMenu();menu.panel='manage'">Yes</button>
+                    <button class="btn-error" ng-click="confirm=false;deleteMenu();menu.panel='manage'">Yes</button>
                     <button class="btn-success" ng-click='confirm=false'>No</button>
                 </div>
             </div>
