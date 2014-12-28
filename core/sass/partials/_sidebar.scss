@@ -36,11 +36,12 @@
         background-color: palette(blue, light);
         left: 0;
         outline: none;
+        opacity: .5;
         padding: size(15);
-        transition: background-color .15s ease, color .15s ease;
+        transition: opacity .15s ease;
 
         &:hover {
-            background-color: palette(blue, dark);
+            opacity: 1;
         }
 
         svg {
