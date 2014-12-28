@@ -7,7 +7,7 @@
         <li class="revisions">
             <a class="content-title" ng-click="getRevision($index)">
                 <div ng-if="revision.title">
-                    <p><strong>Title:</strong> {{revision.title}}</p>
+                    <p><strong>Title:</strong> {{revision.title || 'N/A'}}</p>
                 </div>
                 <div ng-if="!revision.title">
                     <p>N/A</p>
