@@ -28,7 +28,6 @@
             <br /><br />Your broswer is incompatible with this site. Please upgrade to a <a href="http://www.browsehappy.com">newer browser.</a>
         <![endif]-->
         <link rel="shortcut icon" href="<?php echo $settings['favicon'] ?>">
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
         <!-- Meta Tags -->
