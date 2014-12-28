@@ -212,15 +212,8 @@ angular.module('cosmo.admin', [])
         // Delete old visibility requirements
         REST.blocksRequirements.delete({ blockID: $scope.block.id }, blocksRequirementsDeletePromise);
 
-        // Update page object
-        Page.blocks.push({
-            name: $scope.block.name,
-            block: $scope.block.html,
-            area: $scope.block.area,
-            priority: $scope.block.priority
-        });
+        // Notify the user of the updated block
         $rootScope.$broadcast('notify', {message: 'Block updated'});
-        $rootScope.$broadcast('blocksGet');
     };
     
     // Update visibility requirements
@@ -244,10 +237,19 @@ angular.module('cosmo.admin', [])
                     blockID: $scope.block.id,
                     type: 'type',
                     requirement: key
-                });
+                }, fetchUpdatedBlocks);
             }
         });
-    };
+        fetchUpdatedBlocks();
+    }
+    
+    // Get new updated blocks
+    function fetchUpdatedBlocks(){
+        REST.blocks.query({ type: Page.type, url: Page.url }, function(data){
+            Page.blocks = data;
+            $rootScope.$broadcast('blocksGet', data);
+        });
+    }
 }])
 
 /**************************************************

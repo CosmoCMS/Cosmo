@@ -26,7 +26,7 @@
         <div>
             <ul ng-repeat='block in blocks | filter:search'>
                 <li>
-                    <a href='' ><h6 ng-click='selectBlock(block)'>{{block.name}}</h6></a>
+                    <a href='' ><h6 ng-click='selectBlock(block)'>{{block.name || 'unnamed'}}</h6></a>
                     <div class="cos-select--half-width">
                         <select value="section" ng-model="block.area" ng-change="updateBlock(block)">
                             <option value="header">Header</option>
