@@ -592,7 +592,13 @@ angular.module('cosmo', [])
                     if(Users.admin) {
                         // Open image editing modal
                         elm.on('click', function(){
-                            ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csImage, data: scope.image }) });
+                            ngDialog.open({ 
+                                template: 'core/html/modal.html', 
+                                data: angular.toJson({ 
+                                    id: attrs.csImage, 
+                                    data: scope.image 
+                                }) 
+                            });
                             // Don't show the wysiwyg editor when someone clicks an image
                             $timeout(function(){
                                 $rootScope.$broadcast('hideWYSIWYG');
@@ -2175,7 +2181,7 @@ angular.module('cosmo', [])
     $scope.numFiles = 12;
     
     // Open modal window
-    if($scope.$parent.ngDialogData.gallery){
+    if($scope.$parent.ngDialogData.gallery){ // Editing an image gallery
         $scope.images = $scope.$parent.ngDialogData.images;
         for(var i=0; i<$scope.images.length; i++)
             $scope.images[i].url = $sce.trustAsResourceUrl($scope.images[i].src);
@@ -2293,10 +2299,12 @@ angular.module('cosmo', [])
         $scope.selectedFile = file.src;
         $scope.origFilename = file.origFilename;
         $scope.files.type = file.type;
+        $scope.files.title = file.title;
+        $scope.files.class = file.class;
+        $scope.files.alt = file.alt;
+        $scope.files.href = file.href;
         $scope.files.responsive = file.responsive;
-        
         $scope.currentIndex = index;
-        // $scope.updateCurrentImage();
     };
 
     // Go to the previous image/media item

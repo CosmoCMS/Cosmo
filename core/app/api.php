@@ -277,7 +277,7 @@ switch($segments[0])
                 else
                     $response = $Cosmo->contentRead((isset($_GET['url']) ? $_GET['url'] : ''), $role==='admin');
                 break;
-                
+
             case 'POST':
                 $published = (isset($_POST['published'])) ? $_POST['published'] : '';
                 $name = (isset($_POST['name'])) ? $_POST['name'] : '';
