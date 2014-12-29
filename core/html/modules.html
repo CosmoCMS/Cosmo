@@ -3,6 +3,7 @@
         <i class="fa fa-chevron-left " ng-show="!settingsFile" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
         <i class="fa fa-chevron-left " ng-show="settingsFile" ng-click="settingsFile=''"></i>
         <h1>Module <span ng-show="!settingsFile">Manager</span><span ng-show="settingsFile">Settings</span></h1>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
     </div>
 
     <ul ng-repeat="module in modules" ng-if="!settingsFile">
