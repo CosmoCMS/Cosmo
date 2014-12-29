@@ -50,41 +50,17 @@
             width: 2.5rem;
         }
     }
-
-    .close {
-        color: palette(gray, light);
-        left: -100%;
-        opacity: 0;
-        padding: 1size(5) 1.469rem;
-        position: fixed;
-        transition: opacity .3s ease .3s;
-        z-index: z(sidebar);
-
-        @media #{$bp-beta} {
-            left: -28rem;
-        }
-    }
 }
 
 //NEED TO CHANGE *
-.hamburgeractive {
-    top: 0;
+.hamburgeractive .hamburger {
+    left: -28.5rem;
+}
 
-    .close {
-        left: auto;
-        opacity: 1;
-        right: 1.25rem;
-        top: 1.25rem;
-
-        @media #{$bp-beta} {
-            left: 27.25rem;
-            right: auto;
-        }
-    }
-
-    .hamburger {
-        left: -28.5rem;
-    }
+.sidebar-close {
+    position: absolute;
+    right: size(25);
+    top: 1.25rem;
 }
 
 // bar to be used at the top of each area of the sidebar
@@ -167,7 +143,7 @@
 .new-message--cosmo {
     background-color: palette(blue, light);
     color: palette(gray, light);
-    padding: 1rem 1.913rem;
+    padding: size(10) size(25);
     position: relative;
 
     .message {
