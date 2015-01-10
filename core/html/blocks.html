@@ -3,6 +3,7 @@
         <div class="bar-top">
                 <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1>Edit Blocks</h1>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
         </div>
         <div class="form-case--border">
             <button class="new" ng-click="createBlock=!createBlock">
@@ -260,6 +261,7 @@
         <div class="bar-top">
                 <i class="fa fa-chevron-left " ng-click="block.panel='manage';confirm=false"></i>
             <h1>Editing</h1><h2>{{block.name}}</h2>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
         </div>
         <div class="form-case">
             <label for="name">Block Name</label>

@@ -4,6 +4,7 @@
         <p ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"> {{admin.username}}</p>
         <a ng-click="logout()">Log Out</a>
     </div>
+    <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
 </div>
 <div class="new-message--cosmo" ng-show="admin.displayMessage">
     <p class="message" ng-bind-html="admin.message"></p><span ng-click="removeMessage()"><i class="fa fa-times"></i></span>
