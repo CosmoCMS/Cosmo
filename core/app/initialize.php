@@ -51,6 +51,7 @@ $minifyScripts .= FOLDER."core/js/admin-panel.js,";
 
 // 3rd party scripts
 $minifyScripts .= FOLDER."core/js/3rd-party/angular-file-upload.min.js,";
+$minifyScripts .= FOLDER."core/js/3rd-party/angular-translate.min.js,";
 $minifyScripts .= FOLDER."core/js/3rd-party/diff_match_patch.js,";
 $minifyScripts .= FOLDER."core/js/3rd-party/ngDialog.min.js,";
 $minifyScripts .= FOLDER."core/js/3rd-party/angular-ui-tree.min.js";

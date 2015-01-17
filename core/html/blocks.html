@@ -2,22 +2,22 @@
     <div ng-show="block.panel==='manage'">
         <div class="bar-top">
                 <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
-            <h1>Edit Blocks</h1>
+            <h1 translate="blocks_title"></h1>
             <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
         </div>
         <div class="form-case--border">
             <button class="new" ng-click="createBlock=!createBlock">
                 <div ng-if="!createBlock">
-                    <i class="fa fa-plus"></i><p>New Block</p>
+                    <i class="fa fa-plus"></i><p translate="blocks_description"></p>
                 </div>
                 <div ng-if="createBlock">
-                    <i class="fa fa-times-circle-o"></i><p>Close</p>
+                    <i class="fa fa-times-circle-o"></i><p translate="close"></p>
                 </div>
             </button>
             <div class="add-new" ng-show="createBlock">
-                <label for="name">Name</label>
+                <label for="name" translate="name"></label>
                 <input id="name" value="name" type='text' ng-model='block.newName' placeholder="e.g. My new custom block">
-                <button class="btn-success" ng-click='newBlock()'>add</button>
+                <button class="btn-success" ng-click='newBlock()' translate="blocks_add"></button>
             </div>
         </div>
         <div class="form-case--border">
@@ -260,7 +260,7 @@
     <div ng-show="block.panel==='edit'">
         <div class="bar-top">
                 <i class="fa fa-chevron-left " ng-click="block.panel='manage';confirm=false"></i>
-            <h1>Editing</h1><h2>{{block.name}}</h2>
+            <h1 translate="blocks_editing"></h1><h2>{{block.name}}</h2>
             <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
         </div>
         <div class="form-case">

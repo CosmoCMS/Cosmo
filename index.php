@@ -58,12 +58,14 @@
             angular.module('main', [
                 'cosmo',
                 'cosmo.admin',
+                'cosmo.i18n',
                 'ngRoute',
                 'ngAnimate',
                 'ui.tree',
                 'angularFileUpload',
                 'ngResource',
                 'ngDialog',
+                'pascalprecht.translate',
                 'ngTouch'<?php echo $angularModules; ?>
 
             ])
