@@ -2,10 +2,10 @@
     <!-- Gallery Area -->
     <div ng-show='files.gallery'>
         <div class="modal--bar-top">
-            <h1 class="no-marg">Media</h1>
+            <h1 class="no-marg" translate="files_media"></h1>
             <div class="options">
-                <button class="btn-options no-marg" ng-click="files.gallery=false">Add Media</button>
-                <button class="btn-success no-marg" ng-click="saveGallery()">Update</button>
+                <button class="btn-options no-marg" ng-click="files.gallery=false" translate="files_add_media"></button>
+                <button class="btn-success no-marg" ng-click="saveGallery()" translate="update"></button>
             </div>
         </div>
         <div class="media-wrapper">
@@ -24,21 +24,21 @@
                     <i ng-if="image.type==='audio'" class="fa fa-file-audio-o"></i>
                 </div>
                 <div class="img-gallery-info">
-                    <label ng-if="image.title">Title</label>
+                    <label ng-if="image.title" translate="title"></label>
                     <p ng-if="image.title">{{image.title}}</p>
-                    <label ng-if="image.alt">Alt Text</label>
+                    <label ng-if="image.alt" translate="files_alt_text"></label>
                     <p ng-if="image.alt">{{image.alt}}</p>
-                    <label>URL</label>
+                    <label translate="url"></label>
                     <p>{{image.url}}</p>
                     <div>
                         <a class="tag" ng-repeat="tag in image.tags">
                             <i class="fa fa-tag"></i>{{tag}}
                         </a>
                     </div>
-                    <button class="btn-success" ng-if="!$last" ng-click="images.splice($index,1);images.splice($index+1,0,image)">Down</button>
-                    <button class="btn-success" ng-if="!$first" ng-click="images.splice($index,1);images.splice($index-1,0,image)">Up</button>
-                    <button class="btn-options" ng-click="viewFile(image);files.gallery=!files.gallery">Edit</button>
-                    <button class="btn-error" ng-click="images.splice($index,1)">Remove</button>
+                    <button class="btn-success" ng-if="!$last" ng-click="images.splice($index,1);images.splice($index+1,0,image)" translate="files_down"></button>
+                    <button class="btn-success" ng-if="!$first" ng-click="images.splice($index,1);images.splice($index-1,0,image)" translate="files_up"></button>
+                    <button class="btn-options" ng-click="viewFile(image);files.gallery=!files.gallery" translate="edit"></button>
+                    <button class="btn-error" ng-click="images.splice($index,1)" translate="files_remove"></button>
                 </div>
              </div>
          </div>
@@ -48,31 +48,29 @@
         <div ng-show='!upload'>
             <div class="modal--bar-top" id="top-anchor">
                 <i class="fa fa-chevron-left" ng-if="images" ng-click="files.gallery=true"></i>
-                <h1>Search Media</h1>
-
+                <h1 translate="files_search_media"></h1>
                 <div class="options">
-
                     <input class="search-bar" placeholder="Search" value="search" type="text" ng-model="search.$">
-
                     <div class="cos-select">
                         <select ng-model="page.media.type">
-                            <option value="">All</option>
-                            <option value="image">Images</option>
-                            <option value="video">Video</option>
-                            <option value="audio">Audio</option>
-                            <option value="files">Files</option>
+                            <option value="" translate="all"></option>
+                            <option value="image" translate="files_images"></option>
+                            <option value="video" translate="files_video"></option>
+                            <option value="audio" translate="files_audio"></option>
+                            <option value="files" translate="files_files"></option>
                         </select>
                     </div>
 
-                    <button class="btn-success upload"  ng-click="upload=!upload">Upload</button>
+                    <button class="btn-success upload"  ng-click="upload=!upload" translate="upload"></button>
                 </div>
             </div>
             <div ng-show="selectedFile" class="img-edit">
                 <div class="modal--bar-top">
-                    <i class="fa fa-chevron-left" ng-click="selectedFile=!selectedFile"></i><h1>Image Information</h1>
+                    <i class="fa fa-chevron-left" ng-click="selectedFile=!selectedFile"></i>
+                    <h1 translate="files_image_information"></h1>
                     <div class="nav">
-                        <button class="btn-options" ng-click="prev()" ng-show="!search&&!page.media.type&&currentIndex>0">Previous</button>
-                        <button class="btn-options" ng-click="next()" ng-show="!search&&!page.media.type&&nextExists()">Next</button>
+                        <button class="btn-options" ng-click="prev()" ng-show="!search&&!page.media.type&&currentIndex>0" translate="files_previous"></button>
+                        <button class="btn-options" ng-click="next()" ng-show="!search&&!page.media.type&&nextExists()" translate="files_next"></button>
                     </div>
                 </div>
               <div class="img-prev">
@@ -89,48 +87,53 @@
                 <i ng-if="files.type==='file'" class="fa fa-file-text-o"></i>
                 <i ng-if="files.type==='audio'" class="fa fa-file-audio-o"></i>
                 <div class="img-size" ng-if="files.type==='image'">
-                    <input type="radio" ng-model="files.size" id="responsive" value="responsive"> <label for="responsive" ng-click="files.size='responsive'">Full</label>
-                    <input type="radio" ng-model="files.size" id="1024" value="large"> <label for="1024" ng-click="files.size='large'">Large (1024px)</label>
-                    <input type="radio" ng-model="files.size" id="512" value="medium"> <label for="512" ng-click="files.size='medium'">Medium (512px)</label>
-                    <input type="radio" ng-model="files.size" id="320" value="small"> <label for="320" ng-click="files.size='small'">Small (320px)</label>
-                    <input type="radio" ng-model="files.size" id="nonresponsive" value="nonresponsive"> <label for="nonresponsive" ng-click="files.size='nonresponsive'">Non-responsive</label>
+                    <input type="radio" ng-model="files.size" id="responsive" value="responsive"> 
+                    <label for="responsive" ng-click="files.size='responsive'" translate="files_full"></label>
+                    <input type="radio" ng-model="files.size" id="1024" value="large"> 
+                    <label for="1024" ng-click="files.size='large'" translate="files_large">{{files_large}} (1024px)</label>
+                    <input type="radio" ng-model="files.size" id="512" value="medium"> 
+                    <label for="512" ng-click="files.size='medium'" translate>files_medium (512px)</label>
+                    <input type="radio" ng-model="files.size" id="320" value="small"> 
+                    <label for="320" ng-click="files.size='small'" translate>files_small (320px)</label>
+                    <input type="radio" ng-model="files.size" id="nonresponsive" value="nonresponsive"> 
+                    <label for="nonresponsive" ng-click="files.size='nonresponsive'" translate="files_non_responsive"></label>
                     <div class="url">
-                        <label>URL</label>
+                        <label translate="url"></label>
                         <p>{{origFilename}}</p>
                     </div>
                 </div>
                 <div class="img-size" ng-if="files.type==='video'">
                     <input id="autoplay" type="checkbox" ng-model="files.autoplay" value="true">
-                    <label for="autoplay">Autoplay</label>
+                    <label for="autoplay" translate="files_autoplay"></label>
 
                     <input id="controls" type="checkbox" ng-model="files.controls" value="true">
-                    <label for="controls">Controls</label>
+                    <label for="controls" translate="files_controls"></label>
 
                     <input id="loop" type="checkbox" ng-model="files.loop" value="true">
-                    <label for="loop">Loop</label>
+                    <label for="loop" translate="files_loop"></label>
 
                     <input id="autoload" type="checkbox" ng-model="files.autoload" value="Y">
-                    <label for="autoload">Autoload</label>
+                    <label for="autoload" translate="files_autoload"></label>
                 </div>
               </div>
                 <div class="media-info" ng-show="files.type!=='video'">
                     <div class="img-info">
-                        <label for="title">Title</label>
+                        <label for="title" translate="title"></label>
                         <input type="text" ng-model="files.title">
 
-                        <label for="class">CSS Classes (space separated)</label>
+                        <label for="class" translated="files_css_classes"></label>
                         <input type="text" ng-model="files.class">
 
                         </div>
                     <div class="img-info">
-                        <label for="alttext">Alt Text </label>
+                        <label for="alttext" translate="files_alt_text"></label>
                         <input type="text" ng-model="files.alt">
 
-                        <label for="href">Link URL</label>
+                        <label for="href" translate="files_link_url"></label>
                         <input type="text" ng-model="files.href">
 
-                        <button class="btn-error" ng-click="deleteFile()">Delete</button>
-                        <button class="btn-success" ng-click="selectFile()">Choose File</button>
+                        <button class="btn-error" ng-click="deleteFile()" translate="delete"></button>
+                        <button class="btn-success" ng-click="selectFile()" translate="files_choose_file"></button>
                     </div>
                 </div>
             </div>
@@ -140,11 +143,12 @@
                           <img ng-src="{{file.src}}" ng-if="file.type==='image'">
                       </div>
                       <div ng-if="file.type==='youtube' || file.type==='vimeo'">
-                          <iframe width="100%" height="140" ng-src="{{file.src}}" frameborder="0" allowfullscreen></iframe><button class="btn-options">Edit Video</button>
+                          <iframe width="100%" height="140" ng-src="{{file.src}}" frameborder="0" allowfullscreen></iframe>
+                          <button class="btn-options" translate="files_edit_video"></button>
                       </div>
                       <div ng-if="file.type==='video'">
                           <video controls ng-src="{{file.src}}" width="100%" height="188" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></video>
-                          <button class="btn-options">Edit Video</button>
+                          <button class="btn-options" translate="files_edit_video"></button>
                       </div>
                       <div class="file-prev" ng-if="file.type==='pdf'">
                           <i class="fa fa-file-pdf-o"></i>
@@ -189,31 +193,31 @@
                           <i class="fa fa-file-audio-o"></i>
                       </div>
                   </div>
-                  <button class="btn-options" ng-show="numFiles<media.length" ng-click="numFiles=numFiles+12">View More</button>
+                  <button class="btn-options" ng-show="numFiles<media.length" ng-click="numFiles=numFiles+12" translate="view_more"></button>
                 </div>
         </div>
         <!-- Upload Content Area -->
         <div ng-show='upload'>
             <div class="modal--bar-top">
-                    <i class="fa fa-chevron-left" ng-click="upload=!upload"></i>
-                <h1>Upload Files</h1>
+                <i class="fa fa-chevron-left" ng-click="upload=!upload"></i>
+                <h1 translate="files_upload_files"></h1>
             </div>
             <div class="uploader">
                 <input class="url-uploader" type="text" ng-model="files.uploadURL" placeholder="Upload from URL: e.g.,  https://farm3.staticflickr.com/2169/2195155905_9257b2fc65_o.jpg">
-                <button class="btn-success" ng-click="uploadFromUrl()">Save from URL</button>
+                <button class="btn-success" ng-click="uploadFromUrl()" translate="files_save_from_url"></button>
                 <div class="ui-progress-bar ui-container transition" id="progress_bar">
                     <div class="ui-progress" style="width: 100%;">
-                        <span class="ui-label" style="display: none;">Completed</span>
+                        <span class="ui-label" style="display: none;" translate="files_completed"></span>
                     </div>
                 </div>
                 <div ng-show="progress">
                     {{progress}}
                 </div>
                 <div class="dropzone" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="ng-file-over" ng-show="dropSupported" class="fileDropZone">
-                    <h2>Click or Drag files</h2>
+                    <h2 translate="files_click_drag"></h2>
                     <input class="custom-form" type="file" ng-file-select="onFileSelect($files)" multiple>
                 </div>
-                <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!
+                <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported" translate="files_html5_not_supported">
                 </div>
             </div>
         </div>

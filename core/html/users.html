@@ -2,69 +2,72 @@
     <div ng-show="!selectedUser">
         <div class="bar-top">
             <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
-            <h1>Users</h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
+            <h1 translate="users"></h1>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
+                <i class="fa fa-times close"></i>
+            </a>
         </div>
-
         <div class="form-case--border">
             <div ng-controller="loginRegistrationCtrl">
                 <button class="new" ng-click="createUser=!createUser">
                     <div ng-if="!createUser">
-                        <i class="fa fa-plus"></i><p>New User</p>
+                        <i class="fa fa-plus"></i>
+                        <p translate="users_new_user"></p>
                     </div>
                     <div ng-if="createUser">
-                        <i class="fa fa-times-circle-o"></i><p>Close</p>
+                        <i class="fa fa-times-circle-o"></i>
+                        <p translate="close"></p>
                     </div>
                 </button>
                 <div class="new-user" ng-show="createUser">
                     <div class="half-width">
-                        <label for="username">Username</label>
+                        <label for="username" translate="username"></label>
                         <input id="username" type="text" ng-model="register.username">
                     </div>
 
                     <div class="half-width">
-                        <label for="email">Email</label>
+                        <label for="email" translate="email"></label>
                         <input id="email" type="text" ng-model="register.email">
                     </div>
 
                     <div class="half-width">
-                        <label for="password">Password</label>
+                        <label for="password" translate="password"></label>
                         <input id="password" type="password" ng-model="register.password">
                     </div>
 
                     <div class="half-width">
-                        <label for="confirm-password">Confirm Password</label>
+                        <label for="confirm-password" translate="users_confirm_password"></label>
                         <input id="confirm-password"type="password" ng-model="register.confirmPassword">
                     </div>
 
-                    <button class="btn-success" ng-click="register()">Create User</button>
+                    <button class="btn-success" ng-click="register()" translate="users_create"></button>
                 </div>
             </div>
         </div>
         <div class="form-case--border">
-            <label>Search</label>
+            <label translate="search"></label>
             <input class="search" placeholder="Username or Email" value="search" type="text" ng-model="users.search">
         </div>
         <ul>
             <li ng-repeat="user in users.data | filter:users.search">
 
                 <div class="half-width">
-                    <label for="username">Username</label>
+                    <label for="username" translate="username"></label>
                     <input id="username" ng-model="user.username" ng-keyup="updateUser(user)">
                 </div>
 
                 <div class="half-width">
-                    <label for="email">Email</label>
+                    <label for="email" translate="email"></label>
                     <input id="email" ng-model="user.email" ng-keyup="updateUser(user)">
                 </div>
 
-                <label for="role">Role</label>
+                <label for="role" translate="role"></label>
                 <div class="cos-select">
                     <select id="role" ng-model="user.role" ng-change="updateUser(user)">
-                        <option value="admin">admin</option>
-                        <option value="editor">editor</option>
-                        <option value="author">author</option>
-                        <option value="contributor">contributor</option>
+                        <option value="admin" translate="users_admin"></option>
+                        <option value="editor" translate="users_editor"></option>
+                        <option value="author" translate="users_author"></option>
+                        <option value="contributor" translate="users_contributor"></option>
                     </select>
                 </div>
             </li>

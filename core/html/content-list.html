@@ -1,28 +1,40 @@
 <div ng-controller="contentListCtrl">
     <div class="bar-top">
         <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
-        <h1>Search Pages</h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
+        <h1 translate="browse_search"></h1>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
+            <i class="fa fa-times close"></i>
+        </a>
     </div>
     <form class="form-case">
-        <label for="search">Search</label>
+        <label for="search" translate="search"></label>
         <input id="search" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="e.g., The Millenium">
-        <label for="restrict">Restrict Search</label>
+        <label for="restrict" translate="browse_restrict"></label>
         <div class="cos-select" id="restrict">
             <select ng-model="content.onlySearch" ng-change="searchBar()">
-                <option value="all">All</option>
-                <option value="type">Type</option>
-                <option value="author">Author</option>
-                <option value="tags">Tags</option>
+                <option value="all" translate="all"></option>
+                <option value="type" translate="type"></option>
+                <option value="author" translate="author"></option>
+                <option value="tags" translate="tags"></option>
             </select>
         </div>
     </form>
     <ul>
         <li ng-repeat="page in pages | filter:search">
             <a ng-href="{{page.url}}">{{page.title || 'N/A'}}</a>
-            <p class="page-type"><small><i class="fa fa-file-text"></i> {{page.type | themeFiles}}</small></p>
-            <p><small><i alt="published" class="fa fa-check"></i> {{page.published}}</small></p>
-            <p><small><i alt="author" class="fa fa-user"></i> {{page.author.username}}</small></p>
+            <p class="page-type">
+                <small><i class="fa fa-file-text"></i> {{page.type | themeFiles}}</small>
+            </p>
+            <p>
+                <small>
+                    <i alt="published" class="fa fa-check"></i> {{page.published}}
+                </small>
+            </p>
+            <p>
+                <small>
+                    <i alt="author" class="fa fa-user"></i> {{page.author.username}}
+                </small>
+            </p>
         </li>
     </ul>
 </div>

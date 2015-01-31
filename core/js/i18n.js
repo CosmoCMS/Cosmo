@@ -7,21 +7,13 @@
 
 angular.module('cosmo.i18n', ['pascalprecht.translate'])
 
-.config(function ($translateProvider) {
-    
-    var englishTranslations = {
-        // General text shared by multiple pages
-        close: 'Close',
+.config(function($translateProvider) {
 
-        // Blocks page text
-        blocks_title: 'Edit Blocks',
-        blocks_description: 'New Block',
-        blocks_name: 'Name',
-        blocks_add: 'add',
-        blocks_editing: 'Editing'
-    };
-    
-    $translateProvider.translations('en', englishTranslations);
-  
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/core/languages/',
+        suffix: '.json'
+    });
+
+    // $translateProvider.useCookieStorage();
     $translateProvider.preferredLanguage('en');
 });

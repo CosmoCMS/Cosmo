@@ -65,7 +65,6 @@
                 'angularFileUpload',
                 'ngResource',
                 'ngDialog',
-                'pascalprecht.translate',
                 'ngTouch'<?php echo $angularModules; ?>
 
             ])

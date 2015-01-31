@@ -43,89 +43,146 @@
     </ul>
 
     <div class="type-dropdown" ng-show="format" ng-mouseenter="format=true" ng-mouseleave="format=false">
-        <button class="wysiwyg-p" ng-click="action('p')">Paragraph</button>
-        <button class="wysiwyg-q" ng-click="action('blockquote')">Block Quote</button>
-        <button class="wysiwyg-c" ng-click="action('code')">code</button>
-        <button class="wysiwyg-h1" ng-click="action('h1')">Header1</button>
-        <button class="wysiwyg-h2" ng-click="action('h2')">Header2</button>
-        <button class="wysiwyg-h3" ng-click="action('h3')">Header3</button>
-        <button class="wysiwyg-h4" ng-click="action('h4')">Header4</button>
-        <button class="wysiwyg-h5" ng-click="action('h5')">Header5</button>
-        <button class="wysiwyg-h6" ng-click="action('h6')">Header6</button>
+        <button class="wysiwyg-p" ng-click="action('p')" translate="paragraph"></button>
+        <button class="wysiwyg-q" ng-click="action('blockquote')" translate="toolbar_block_quote"></button>
+        <button class="wysiwyg-c" ng-click="action('code')" translate="toolbar_code"></button>
+        <button class="wysiwyg-h1" ng-click="action('h1')" translate>header 1</button>
+        <button class="wysiwyg-h2" ng-click="action('h2')" translate>header 2</button>
+        <button class="wysiwyg-h3" ng-click="action('h3')" translate>header 3</button>
+        <button class="wysiwyg-h4" ng-click="action('h4')" translate>header 4</button>
+        <button class="wysiwyg-h5" ng-click="action('h5')" translate>header 5</button>
+        <button class="wysiwyg-h6" ng-click="action('h6')" translate>header 6</button>
     </div>
     <div class="format-dropdown" ng-show="style" ng-mouseenter="style=true" ng-mouseleave="style=false">
-        <button ng-click="action('bold')">
-            <i class="fa  fa-fw fa-bold"></i>Bold
+        <button ng-click="action('bold')" translate>
+            <i class="fa  fa-fw fa-bold"></i>toolbar_bold
         </button>
-        <button ng-click="action('italic')">
-            <i class="fa  fa-fw fa-italic"></i>Italicize
+        <button ng-click="action('italic')" translate>
+            <i class="fa  fa-fw fa-italic"></i>toolbar_italicize
         </button>
-        <button ng-click="action('strikethrough')">
-            <i class="fa  fa-fw fa-strikethrough"></i>Strikethrough
+        <button ng-click="action('strikethrough')" translate>
+            <i class="fa  fa-fw fa-strikethrough"></i>toolbar_strikethrough
         </button>
-        <button ng-click="action('underline')">
-            <i class="fa  fa-fw fa-underline"></i>Underline
+        <button ng-click="action('underline')" translate>
+            <i class="fa  fa-fw fa-underline"></i>toolbar_underline
         </button>
-        <button class="wysiwyg-u" ng-click="action('unformat')">
-            <i class="fa  fa-fw fa-minus"></i>Unformat
+        <button class="wysiwyg-u" ng-click="action('unformat')" translate>
+            <i class="fa  fa-fw fa-minus"></i>toolbar_unformat
         </button>
     </div>
     <div class="link-dropdown" ng-show="link" ng-mouseenter="link=true" ng-mouseleave="link=false">
-        <button ng-click="action('link')">
-            <i class="fa  fa-fw fa-link"></i>Add Link
+        <button ng-click="action('link')" translate>
+            <i class="fa  fa-fw fa-link"></i>toolbar_add_link
         </button>
-        <button ng-click="action('unlink')">
-            <i class="fa  fa-fw fa-chain-broken"></i>Remove Link
+        <button ng-click="action('unlink')" translate>
+            <i class="fa  fa-fw fa-chain-broken"></i>toolbar_remove_link
         </button>
-        <button ng-click="action('externalLink')">
-            <i class="fa  fa-fw fa-external-link"></i>External Link
+        <button ng-click="action('externalLink')" translate>
+            <i class="fa  fa-fw fa-external-link"></i>toolbar_external_link
         </button>
     </div>
     <div class="align-dropdown" ng-show="align" ng-mouseenter="align=true" ng-mouseleave="align=false">
-        <button ng-click="action('left')"><i class="fa fa-fw  fa-align-left"></i>Align Left</button>
-        <button ng-click="action('center')"><i class="fa fa-fw  fa-align-center"></i>Align Center</button>
-        <button ng-click="action('right')"><i class="fa fa-fw  fa-align-right"></i>Align Right</button>
-        <button ng-click="action('justify')"><i class="fa fa-fw  fa-align-justify"></i>Justify Text</button>
+        <button ng-click="action('left')" translate>
+            <i class="fa fa-fw  fa-align-left"></i>toolbar_align_left
+        </button>
+        <button ng-click="action('center')" translate>
+            <i class="fa fa-fw  fa-align-center"></i>toolbar_align_center
+        </button>
+        <button ng-click="action('right')" translate>
+            <i class="fa fa-fw  fa-align-right"></i>toolbar_align_right
+        </button>
+        <button ng-click="action('justify')" translate>
+            <i class="fa fa-fw  fa-align-justify"></i>toolbar_justify_text
+        </button>
     </div>
     <div class="table-dropdown" ng-show="table" ng-mouseenter="table=true" ng-mouseleave="table=false">
-        <button ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false"><i class="fa  fa-fw fa-table"></i>Insert Table</button>
+        <button ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false" translate>
+            <i class="fa  fa-fw fa-table"></i>toolbar_insert_table
+        </button>
             <div ng-show="insertTable" ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false" ng-click="insertTable=false" class="table-dropdown--insert">
                 <button ng-repeat="cell in editor.tableRows" ng-class="{'cell-select--focus': selectedCell(cell.row, cell.col)}" class="cell-select" ng-mouseover="cellMouseover(cell.row, cell.col)" ng-click="createTable(cell.row, cell.col)"></button>
                 <p>{{mouseoverCol}} x {{mouseoverRow}}</p>
             </div>
-        <button class="divide" ng-click="action('table')"><i class="fa  fa-fw fa-table"></i>Paste Table</button>
-        <button ng-click="action('addTableHeader')"><i class="fa fa-fw  fa-plus"></i>Table Head</button>
-        <button class="divide" ng-click="action('removeTableHeader')"><i class="fa fa-fw  fa-minus"></i>Table Head</button>
-        <button ng-click="action('addRowAbove')"><i class="fa fa-fw  fa-plus"></i>Row Above</button>
-        <button ng-click="action('addRowBelow')"><i class="fa fa-fw  fa-plus"></i>Row Below</button>
-        <button class="divide" ng-click="action('deleteRow')"><i class="fa  fa-fw fa-minus"></i>Row</button>
-        <button ng-click="action('addColLeft')"><i class="fa fa-fw  fa-plus"></i>Column Left</button>
-        <button ng-click="action('addColRight')"><i class="fa fa-fw  fa-plus"></i>Column Right</button>
-        <button class="divide" ng-click="action('deleteCol')"><i class="fa  fa-fw fa-minus"></i>Column</button>
-        <button ng-click="action('deleteTable')"><i class="fa fa-fw  fa-minus"></i>Table</button>
+        <button class="divide" ng-click="action('table')" translate>
+            <i class="fa  fa-fw fa-table"></i>toolbar_paste_table
+        </button>
+        <button ng-click="action('addTableHeader')" translate>
+            <i class="fa fa-fw  fa-plus"></i>toolbar_table_head
+        </button>
+        <button class="divide" ng-click="action('removeTableHeader')" translate>
+            <i class="fa fa-fw  fa-minus"></i>toolbar_table_head
+        </button>
+        <button ng-click="action('addRowAbove')" translate>
+            <i class="fa fa-fw  fa-plus"></i>toolbar_row_above
+        </button>
+        <button ng-click="action('addRowBelow')" translate>
+            <i class="fa fa-fw  fa-plus"></i>toolbar_row_below
+        </button>
+        <button class="divide" ng-click="action('deleteRow')" translate>
+            <i class="fa  fa-fw fa-minus"></i>toolbar_row
+        </button>
+        <button ng-click="action('addColLeft')" translate>
+            <i class="fa fa-fw  fa-plus"></i>toolbar_column_left
+        </button>
+        <button ng-click="action('addColRight')" translate>
+            <i class="fa fa-fw  fa-plus"></i>toolbar_column_right
+        </button>
+        <button class="divide" ng-click="action('deleteCol')" translate>
+            <i class="fa  fa-fw fa-minus"></i>toolbar_column
+        </button>
+        <button ng-click="action('deleteTable')" translate>
+            <i class="fa fa-fw  fa-minus"></i>toolbar_table
+        </button>
     </div>
     <div class="media-dropdown" ng-show="media" ng-mouseenter="media=true" ng-mouseleave="media=false">
-        <button ng-click="action('photo')"><i class="fa fa-fw  fa-picture-o"></i>Photo</button>
-        <button ng-click="action('video')"><i class="fa fa-fw  fa-video-camera"></i>Upload Video</button>
-        <button ng-click="action('videourl')"><i class="fa fa-fw  fa-video-camera"></i>External Video</button>
-        <button ng-click="action('audio')"><i class="fa fa-fw  fa-volume-up"></i>Audio</button>
-        <button ng-click="action('gallery')"><i class="fa fa-fw  fa-camera"></i>Gallery</button>
-        <!--<button ng-click="action('bgimage')"><i class="fa fa-fw  fa-picture-o"></i>Background</button>-->
+        <button ng-click="action('photo')" translate>
+            <i class="fa fa-fw  fa-picture-o"></i>toolbar_photo
+        </button>
+        <button ng-click="action('video')" translate>
+            <i class="fa fa-fw  fa-video-camera"></i>toolbar_upload_video
+        </button>
+        <button ng-click="action('videourl')" translate>
+            <i class="fa fa-fw  fa-video-camera"></i>toolbar_external_video
+        </button>
+        <button ng-click="action('audio')" translate>
+            <i class="fa fa-fw  fa-volume-up"></i>toolbar_audio
+        </button>
+        <button ng-click="action('gallery')" translate>
+            <i class="fa fa-fw  fa-camera"></i>toolbar_gallery
+        </button>
     </div>
     <div class="code-dropdown" ng-show="code" ng-mouseenter="code=true" ng-mouseleave="code=false">
-        <button ng-click="action('toggle')"><i class="fa fa-fw  fa-code"></i>Code View</button>
-        <button ng-click="action('html')"><i class="fa fa-fw  fa-code"></i>Insert HTML</button>
-        <button ng-click="action('div')"><i class="fa fa-fw  fa-code"></i>Div</button>
-        <button ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false"><i class="fa fa-fw  fa-code"></i>Directive</button>
-            <div ng-show="premadeDirective" ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false" ng-click="premadeDirective=false" class="directive-dropdown">
-                <button ng-repeat="directive in editor.directives track by $index" ng-click="action('premade', '{{directive.directive}}', '{{directive.description}}')">{{directive.name}}</button>
-            </div>
+        <button ng-click="action('toggle')" translate>
+            <i class="fa fa-fw  fa-code"></i>toolbar_code_view
+        </button>
+        <button ng-click="action('html')" translate>
+            <i class="fa fa-fw  fa-code"></i>toolbar_insert_html
+        </button>
+        <button ng-click="action('div')" translate>
+            <i class="fa fa-fw  fa-code"></i>toolbar_div
+        </button>
+        <button ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false" translate>
+            <i class="fa fa-fw  fa-code"></i>toolbar_directive
+        </button>
+        <div ng-show="premadeDirective" ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false" ng-click="premadeDirective=false" class="directive-dropdown">
+            <button ng-repeat="directive in editor.directives track by $index" ng-click="action('premade', '{{directive.directive}}', '{{directive.description}}')">{{directive.name}}</button>
+        </div>
     </div>
     <div class="list-dropdown" ng-show="list" ng-mouseenter="list=true" ng-mouseleave="list=false">
-        <button ng-click="action('ol')"><i class="fa fa-fw  fa-list-ol"></i>Ordered List</button>
-        <button ng-click="action('ul')"><i class="fa fa-fw  fa-list-ul"></i>Unordered List</button>
-        <button ng-click="action('hr')"><i class="fa fa-fw  fa-minus"></i>Line Break</button>
-        <button ng-click="action('indent')"><i class="fa fa-fw  fa-indent"></i>Indent</button>
-        <button ng-click="action('outdent')"><i class="fa fa-fw  fa-outdent"></i>Outdent</button>
+        <button ng-click="action('ol')" translate>
+            <i class="fa fa-fw  fa-list-ol"></i>toolbar_ordered_list
+        </button>
+        <button ng-click="action('ul')" translate>
+            <i class="fa fa-fw  fa-list-ul"></i>toolbar_unordered_list
+        </button>
+        <button ng-click="action('hr')" translate>
+            <i class="fa fa-fw  fa-minus"></i>toolbar_line_break
+        </button>
+        <button ng-click="action('indent')" translate>
+            <i class="fa fa-fw  fa-indent"></i>toolbar_indent
+        </button>
+        <button ng-click="action('outdent')" translate>
+            <i class="fa fa-fw  fa-outdent"></i>toolbar_outdent
+        </button>
     </div>
 </div>

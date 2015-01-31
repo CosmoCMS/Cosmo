@@ -1,50 +1,56 @@
 <div class="blocks" ng-controller="blockCtrl">
     <div ng-show="block.panel==='manage'">
         <div class="bar-top">
-                <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+            <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1 translate="blocks_title"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
+                <i class="fa fa-times close"></i>
+            </a>
         </div>
         <div class="form-case--border">
             <button class="new" ng-click="createBlock=!createBlock">
                 <div ng-if="!createBlock">
-                    <i class="fa fa-plus"></i><p translate="blocks_description"></p>
+                    <i class="fa fa-plus"></i>
+                    <p translate="blocks_description"></p>
                 </div>
                 <div ng-if="createBlock">
-                    <i class="fa fa-times-circle-o"></i><p translate="close"></p>
+                    <i class="fa fa-times-circle-o"></i>
+                    <p translate="close"></p>
                 </div>
             </button>
             <div class="add-new" ng-show="createBlock">
                 <label for="name" translate="name"></label>
                 <input id="name" value="name" type='text' ng-model='block.newName' placeholder="e.g. My new custom block">
-                <button class="btn-success" ng-click='newBlock()' translate="blocks_add"></button>
+                <button class="btn-success" ng-click='newBlock()' translate="add"></button>
             </div>
         </div>
         <div class="form-case--border">
-            <label class="search" for="search">Search</label>
+            <label class="search" for="search" translate="search"></label>
             <input id="search" type="text" ng-model="search" placeholder="Search: e.g. Footer">
         </div>
         <div>
             <ul ng-repeat='block in blocks | filter:search'>
                 <li>
-                    <a href='' ><h6 ng-click='selectBlock(block)'>{{block.name || 'N/A'}}</h6></a>
+                    <a>
+                        <h6 ng-click='selectBlock(block)'>{{block.name || 'N/A'}}</h6>
+                    </a>
                     <div class="cos-select--half-width">
                         <select value="section" ng-model="block.area" ng-change="updateBlock(block)">
-                            <option value="header">Header</option>
-                            <option value="footer">Footer</option>
-                            <option value="sidebar1">Sidebar 1</option>
-                            <option value="sidebar2">Sidebar 2</option>
-                            <option value="sidebar3">Sidebar 3</option>
-                            <option value="block1">Block 1</option>
-                            <option value="block2">Block 2</option>
-                            <option value="block3">Block 3</option>
-                            <option value="block4">Block 4</option>
-                            <option value="block5">Block 5</option>
-                            <option value="block6">Block 6</option>
-                            <option value="block7">Block 7</option>
-                            <option value="block8">Block 8</option>
-                            <option value="block9">Block 9</option>
-                            <option value="block10">Block 10</option>
+                            <option value="header" translate="header"></option>
+                            <option value="footer" translate="footer"></option>
+                            <option value="sidebar1" translate>sidebar 1</option>
+                            <option value="sidebar2" translate>sidebar 2</option>
+                            <option value="sidebar3" translate>sidebar 3</option>
+                            <option value="block1" translate>block 1</option>
+                            <option value="block2" translate>block 2</option>
+                            <option value="block3" translate>block 3</option>
+                            <option value="block4" translate>block 4</option>
+                            <option value="block5" translate>block 5</option>
+                            <option value="block6" translate>block 6</option>
+                            <option value="block7" translate>block 7</option>
+                            <option value="block8" translate>block 8</option>
+                            <option value="block9" translate>block 9</option>
+                            <option value="block10" translate>block 10</option>
                         </select>
                     </div>
                     <div class="cos-select--half-width">
@@ -260,40 +266,42 @@
     <div ng-show="block.panel==='edit'">
         <div class="bar-top">
                 <i class="fa fa-chevron-left " ng-click="block.panel='manage';confirm=false"></i>
-            <h1 translate="blocks_editing"></h1><h2>{{block.name}}</h2>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
+            <h1 translate="editing"></h1><h2>{{block.name}}</h2>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
+                <i class="fa fa-times close"></i>
+            </a>
         </div>
         <div class="form-case">
-            <label for="name">Block Name</label>
-	        <input id="name" value="name" type='text' ng-model='block.name'>
-            <label for="code">Code</label>
-	        <div id="code" class="blk-code" cs-content="none"></div>
+            <label for="name" translate="blocks_name"></label>
+            <input id="name" value="name" type='text' ng-model='block.name'>
+            <label for="code" translate="code"></label>
+            <div id="code" class="blk-code" cs-content="none"></div>
 
             <div class="half-width">
-                <label for="section">Section</label>
+                <label for="section" translate="Section"></label>
                 <div class="cos-select">
                     <select id="selection" value="section" ng-model="block.area">
-                        <option value="header">Header</option>
-                        <option value="footer">Footer</option>
-                        <option value="sidebar1">Sidebar 1</option>
-                        <option value="sidebar2">Sidebar 2</option>
-                        <option value="sidebar3">Sidebar 3</option>
-                        <option value="block1">Block 1</option>
-                        <option value="block2">Block 2</option>
-                        <option value="block3">Block 3</option>
-                        <option value="block4">Block 4</option>
-                        <option value="block5">Block 5</option>
-                        <option value="block6">Block 6</option>
-                        <option value="block7">Block 7</option>
-                        <option value="block8">Block 8</option>
-                        <option value="block9">Block 9</option>
-                        <option value="block10">Block 10</option>
+                        <option value="header" translate="header"></option>
+                        <option value="footer" translate="footer"></option>
+                        <option value="sidebar1" translate>sidebar 1</option>
+                        <option value="sidebar2" translate>sidebar 2</option>
+                        <option value="sidebar3" translate>sidebar 3</option>
+                        <option value="block1" translate>block 1</option>
+                        <option value="block2" translate>block 2</option>
+                        <option value="block3" translate>block 3</option>
+                        <option value="block4" translate>block 4</option>
+                        <option value="block5" translate>block 5</option>
+                        <option value="block6" translate>block 6</option>
+                        <option value="block7" translate>block 7</option>
+                        <option value="block8" translate>block 8</option>
+                        <option value="block9" translate>block 9</option>
+                        <option value="block10" translate>block 10</option>
                     </select>
                 </div>
             </div>
 
             <div class="half-width">
-                <label for="priority">Priority</label>
+                <label for="priority" translate="priority"></label>
                 <div class="cos-select">
                     <select id="priority" ng-model='block.priority'>
                         <option value="-100">-100</option>
@@ -500,32 +508,32 @@
                     </select>
                 </div>
             </div>
-            <label for="visibility">Page Visibility</label>
+            <label for="visibility" translate="blocks_visibility"></label>
             <div class="cos-select">
                 <select id="visibility" ng-model='block.visibility'>
-                    <option value="">Display on all pages</option>
-                    <option value="visible">Only for pages below</option>
-                    <option value="invisible">All pages, except below</option>
+                    <option value="" translate="blocks_all_pages"></option>
+                    <option value="visible" translate="blocks_only"></option>
+                    <option value="invisible" translate="blocks_except"></option>
                 </select>
             </div>
             <div ng-show="block.visibility">
-                <p>Use an asterisk (*) as a wildcard at the end of a page. e.g. /blog*</p>
+                <p translate="blocks_wildcard"></p>
                 <textarea ng-model='block.urls'></textarea>
             </div>
-            <p>Show only for specific content type(s):
-            <small>*If no item is selected, there will be no limitation.</small></p>
+            <p><span translate="blocks_only_specific"><span>
+            <small translate="blocks_no_limitation"></small></p>
             <p class="page-select" ng-repeat="type in types" ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
                 <input id="type" value="type" type='checkbox' ng-model='block.selectedTypes[type]' ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
                 <label for="type">{{type | themeFiles}}</label>
             </p>
             <div class="confirm" ng-show="confirm">
-                <p>Are you sure you want to delete this block?</p>
-                <button class="btn-error" ng-click="confirm=false;deleteBlock();block.panel='manage'">Yes</button>
-                <button class="btn-success" ng-click='confirm=false'>No</button>
+                <p translate="blocks_delete"></p>
+                <button class="btn-error" ng-click="confirm=false;deleteBlock();block.panel='manage'" translate="yes"></button>
+                <button class="btn-success" ng-click='confirm=false' translate="no"></button>
             </div>
             <div>
-                <button class="marg btn-error" ng-click='confirm=true'>delete</button>
-                <button class="marg btn-success" ng-click="saveBlock()">save</button>
+                <button class="marg btn-error" ng-click='confirm=true' translate="delete"></button>
+                <button class="marg btn-success" ng-click="saveBlock()" translate="save"></button>
             </div>
         </div>
     </div>

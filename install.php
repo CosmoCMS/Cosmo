@@ -137,9 +137,16 @@ if(!$_GET):
             
             .controller('installationCtrl', function($scope, ngDialog, $http, $sce){
                 $scope.install = {};
+                $scope.install.dbname = '';
                 $scope.install.prefix = '';
                 $scope.install.folder = '';
                 $scope.install.host = 'localhost';
+                $scope.install.username = '';
+                $scope.install.password = '';
+                $scope.install.title = '';
+                $scope.install.email = '';
+                $scope.install.adminUsername = '';
+                $scope.install.adminPassword = '';
                 $scope.uploadsPermissions = '<?php echo substr(sprintf('%o', fileperms('uploads')), -4); ?>';
                 $scope.autoloadPermissions = '<?php echo substr(sprintf('%o', fileperms('core/app/autoload.php')), -4); ?>';
                 $scope.htaccess = '<?php echo file_exists('.htaccess');?>';

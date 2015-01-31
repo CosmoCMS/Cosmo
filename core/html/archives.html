@@ -1,13 +1,16 @@
 <div ng-controller="archiveCtrl">
-    <h3>Archives</h3>
-    <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
+    <h3 translate="archives"></h3>
+    <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
+        <i class="fa fa-times close"></i>
+    </a>
     <div ng-repeat="archive in archives">
-        <div><a ng-href="{{archive.url}}">{{archive.title || 'N/A'}}</a></div>
+        <div>
+            <a ng-href="{{archive.url}}">{{archive.title || 'N/A'}}</a>
+        </div>
         <div>
             <div>{{archive.published}}</div>
             <div>{{archive.timestamp}}</div>
             <div>{{archive.author}}</div>
         </div>
     </div>
-
 </div>
