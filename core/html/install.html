@@ -4,8 +4,8 @@
     </div>
     <div class="login">
         <div class="form-case">
-            <p class="error" ng-if="uploadsPermissions!=='0777'" translate="install_error_upload"></p>
-            <p class="error" ng-if="autoloadPermissions!=='0777'" translate="install_error_autoload"></p>
+            <p class="error" ng-if="!uploadsPermissions" translate="install_error_upload"></p>
+            <p class="error" ng-if="!autoloadPermissions" translate="install_error_autoload"></p>
             <p class="error" ng-if="!htaccess" translate="install_error_htaccess"></p>
             <p class="error" ng-if="success" translate>
                 install_complete<br />

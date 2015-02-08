@@ -4,12 +4,13 @@
  * Install Cosmo CMS. Delete this page after installing
  */
 
+// User submitted the form. Proceed with installation
 if($_GET)
 {
     // Catch variables from form
     ini_set('display_errors', true);
     error_reporting(E_ALL);
-    
+
     // Catch variables from form
     $folder = (isset($_GET['folder'])) ? $_GET['folder'] : '';
     $prefix = (isset($_GET['prefix'])) ? $_GET['prefix'] : '';
@@ -21,7 +22,7 @@ if($_GET)
     $email = (isset($_GET['email'])) ? $_GET['email'] : '';
     $adminUsername = (isset($_GET['adminUsername'])) ? $_GET['adminUsername'] : '';
     $adminPassword = (isset($_GET['adminPassword'])) ? $_GET['adminPassword'] : '';
-    
+
     // Generate 128 character salt
     $salt = "";
     for ($i=0; $i<128; $i++)
@@ -30,11 +31,11 @@ if($_GET)
         if($random_char !== "'")
             $salt .= $random_char;
     }
-    
+
     // Write settings to config file
     $fp = fopen('core/app/autoload.php', 'w');
     fwrite($fp, '<?php
-    
+
     $host = \''. $host .'\';
     $dbName = \''. $name .'\'; # Database name
     $username = \''. $username .'\';
@@ -43,23 +44,23 @@ if($_GET)
     define(\'FOLDER\', \''. $folder .'\'); // /subfolder
     $salt = \''. $salt .'\';
     $developerMode = false; // Switching this to true prevents minification/combination of JS/CSS files for better error reporting
-    
+
     $pdo = new PDO("mysql:host=$host;dbname=$dbName;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $username = null;
-    
+
 ?>');
     fclose($fp);
-    
+
     // Install database
     include 'core/app/autoload.php';
     include 'core/app/Cosmo.class.php';
     $Cosmo = new Cosmo($pdo, $prefix, $salt);
-    
+
     $sqlFile = file_get_contents('install.sql');
     $statements = explode(';', $sqlFile);
-    
+
     // Execute MySQL statements, replacing the prefix
     foreach ($statements as $statement) {
         if(trim($statement) != '') {
@@ -67,27 +68,27 @@ if($_GET)
             $stmt->execute();
         }
     }
-    
+
     // Setup site info
     $stmt = $pdo->prepare('INSERT INTO '.$prefix.'settings (site_name, email, theme) VALUES (?,?,?) ON DUPLICATE KEY UPDATE site_name=VALUES(site_name)');
     $data = array($title, $email, 'Pendant');
     $stmt->execute($data);
-    
+
     // Create home page
     $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, type, published) VALUES (?,?,?) ON DUPLICATE KEY UPDATE url=VALUES(url)');
     $data = array('/', 'home.html', 'Y');
     $stmt->execute($data);
-    
+
     // Create new page
     $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, author, published) VALUES (?,?,?) ON DUPLICATE KEY UPDATE url=VALUES(url)');
     $data = array('/new', 1, 'Y');
     $stmt->execute($data);
-    
+
     // Create error page
     $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, type, author, published) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE url=VALUES(url)');
     $data = array('/error', 'home.html', 1, 'Y');
     $stmt->execute($data);
-    
+
     // Insert records
     try {
         // Create admin username/password
@@ -120,6 +121,7 @@ if($_GET)
     }
 }
 
+// User hasn't submitted the form yet
 if(!$_GET):
 ?>
 <html ng-app="app">
@@ -128,13 +130,22 @@ if(!$_GET):
         <link rel="stylesheet" type="text/css" href="core/css/cosmo-default-style.minify.css">
         <script src="core/js/angular/angular.min.js"></script>
         <script src="core/js/3rd-party/ngDialog.min.js"></script>
+        <script src="core/js/3rd-party/angular-translate.min.js"></script>
+        <script src="core/js/3rd-party/angular-translate-storage-cookie.min.js"></script>
+        <script src="core/js/3rd-party/angular-translate-loader-static-files.min.js"></script>
+        <script src="core/js/i18n.js"></script>
         <script>
-            angular.module('app', ['ngDialog'])
-            
+            angular.module('app', ['ngDialog', 'cosmo.i18n'])
+
             .run(function(ngDialog){
-                ngDialog.open({ template: 'core/html/install.html', showClose: false, closeByEscape: false, closeByDocument: false });
+                ngDialog.open({ 
+                    template: 'core/html/install.html', 
+                    showClose: false,
+                    closeByEscape: false,
+                    closeByDocument: false 
+                });
             })
-            
+
             .controller('installationCtrl', function($scope, ngDialog, $http, $sce){
                 $scope.install = {};
                 $scope.install.dbname = '';
@@ -147,10 +158,10 @@ if(!$_GET):
                 $scope.install.email = '';
                 $scope.install.adminUsername = '';
                 $scope.install.adminPassword = '';
-                $scope.uploadsPermissions = '<?php echo substr(sprintf('%o', fileperms('uploads')), -4); ?>';
-                $scope.autoloadPermissions = '<?php echo substr(sprintf('%o', fileperms('core/app/autoload.php')), -4); ?>';
+                $scope.uploadsPermissions = '<?php echo fopen('uploads/placeholder.txt', 'w'); ?>';
+                $scope.autoloadPermissions = '<?php echo fopen('core/app/autoload.php', 'w'); ?>';
                 $scope.htaccess = '<?php echo file_exists('.htaccess');?>';
-                
+
                 $scope.submit = function(){
                     if($scope.install.adminPassword === $scope.install.adminPassword2){
                         $http.get('install.php?name='+ $scope.install.dbname +
