@@ -1,8 +1,8 @@
 <section ng-controller="commentsCtrl" class="cos-comments" ng-class="{'show-right': panel=='comments'}">
     <div class="cos-comments--head">
-        <h2>{{page.commentsNum}} Comments</h2>
+        <h2 translate>{{page.commentsNum}} comments</h2>
         <div class="cos-comments--credentials">
-            <a href="#">Login</a> <span>or</span> <a href="#">Register</a> <!--<a href="#">Logout</a> -->
+            <a translate="login"></a> <span translate="or"></span> <a translate="register"></a> <!--<a href="#">Logout</a> -->
         </div>
     </div>
     <div ng-repeat="comment in page.comments | orderBy:page.comments.path" class="cos-comments--comment" ng-class="{'reply-first': replyLevel(comment.path)==1, 'reply-second': replyLevel(comment.path)==2}">
@@ -23,6 +23,6 @@
             <input type="email" ng-model="comment.email" id="email" placeholder="email"></input>
         </div>
         <textarea ng-model="comment.message" ng-click="userIsCommenting=true" placeholder="Post A New Comment"></textarea>
-        <a ng-click="submit()">Submit</a>
+        <a ng-click="submit()" translate="submit"></a>
     </div>
 </section>

@@ -2,59 +2,67 @@
     <div ng-show="menu.panel==='manage'">
         <div class="bar-top">
             <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
-            <h1>Menus</h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
+            <h1 translate="menus"></h1>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
+                <i class="fa fa-times close"></i>
+            </a>
         </div>
         <div class="form-case--border">
             <button class="new" ng-click="createMenu=!createMenu">
                 <div ng-if="!createMenu">
-                    <i class="fa fa-fw fa-plus"></i><p>New Menu</p>
+                    <i class="fa fa-fw fa-plus"></i>
+                    <p translate="menu_new"></p>
                 </div>
                 <div ng-if="createMenu">
-                    <i class="fa fa-fw fa-times-circle-o"></i><p>Close</p>
+                    <i class="fa fa-fw fa-times-circle-o"></i>
+                    <p translate="close"></p>
                 </div>
             </button>
             <div class="add-new" ng-show="createMenu">
-                <label for="name">Add a Menu</label>
+                <label for="name" translate="menu_add"></label>
                 <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
-                <button class="btn-success" ng-click='newMenu()'>add</button>
+                <button class="btn-success" ng-click='newMenu()' translate="add"></button>
             </div>
         </div>
         <ul>
-            <li ng-repeat="menu in menus" ng-click="selectMenu(menu)"><a>{{menu.name || 'N/A'}}</a></li>
+            <li ng-repeat="menu in menus" ng-click="selectMenu(menu)">
+                <a>{{menu.name || 'N/A'}}</a>
+            </li>
         </ul>
     </div>
     <div ng-show="menu.panel==='edit'">
         <div class="bar-top">
             <i class="fa fa-fw fa-chevron-left " ng-click="menu.panel='manage';confirm=false"></i>
-            <h1>Editing {{menu.name}}</h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
+            <h1 translate="editing"></h1> <h2>{{menu.name}}</h2>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
+                <i class="fa fa-times close"></i>
+            </a>
         </div>
         <div class="form-case">
             <div class="half-width">
-                <label for="name">Name:</label>
+                <label for="name" translate>name:</label>
                 <input value="name" type="text" ng-model="menu.name">
             </div>
             <div class="half-width">
-                <label for="area">Area:</label>
+                <label for="area" translate>area:</label>
                 <div class="cos-select">
                     <select value="area" ng-model="menu.area">
-                        <option value="primary">Primary</option>
-                        <option value="secondary">Secondary</option>
-                        <option value="footer">Footer</option>
-                        <option value="sidebar1">Sidebar 1</option>
-                        <option value="sidebar2">Sidebar 2</option>
-                        <option value="sidebar3">Sidebar 3</option>
-                        <option value="menu1">Menu 1</option>
-                        <option value="menu2">Menu 2</option>
-                        <option value="menu3">Menu 3</option>
-                        <option value="menu4">Menu 4</option>
-                        <option value="menu5">Menu 5</option>
-                        <option value="menu6">Menu 6</option>
-                        <option value="menu7">Menu 7</option>
-                        <option value="menu8">Menu 8</option>
-                        <option value="menu9">Menu 9</option>
-                        <option value="menu10">Menu 10</option>
+                        <option value="primary" translate="primary"></option>
+                        <option value="secondary" translate="secondary"></option>
+                        <option value="footer" translate="footer"></option>
+                        <option value="sidebar1" translate>sidebar 1</option>
+                        <option value="sidebar2" translate>sidebar 2</option>
+                        <option value="sidebar3" translate>sidebar 3</option>
+                        <option value="menu1" translate>menu 1</option>
+                        <option value="menu2" translate>menu 2</option>
+                        <option value="menu3" translate>menu 3</option>
+                        <option value="menu4" translate>menu 4</option>
+                        <option value="menu5" translate>menu 5</option>
+                        <option value="menu6" translate>menu 6</option>
+                        <option value="menu7" translate>menu 7</option>
+                        <option value="menu8" translate>menu 8</option>
+                        <option value="menu9" translate>menu 9</option>
+                        <option value="menu10" translate>menu 10</option>
                     </select>
                 </div>
             </div>
@@ -65,9 +73,15 @@
                             <div ui-tree-handle>
                                 <p>{{item.title}}</p>
                                 <div class="menu-manager">
-                                    <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=item;menu.editLinkText=item.title;menu.editLinkURL=item.url"><i class="fa fa-fw fa-pencil-square-o"></i></a>
-                                    <a data-nodrag ng-click="newSubItem(this)"><i class="fa fa-fw fa-plus"></i></a>
-                                    <a data-nodrag ng-click="remove(this)"><i class="fa fa-fw fa-times"></i></a>
+                                    <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=item;menu.editLinkText=item.title;menu.editLinkURL=item.url">
+                                        <i class="fa fa-fw fa-pencil-square-o"></i>
+                                    </a>
+                                    <a data-nodrag ng-click="newSubItem(this)">
+                                        <i class="fa fa-fw fa-plus"></i>
+                                    </a>
+                                    <a data-nodrag ng-click="remove(this)">
+                                        <i class="fa fa-fw fa-times"></i>
+                                    </a>
                                 </div>
                             </div>
                             <ol ui-tree-nodes="options" ng-model="item.items">
@@ -76,8 +90,12 @@
                                         {{subItem.title}}
                                         <div class="menu-manager">
                                             <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem;menu.editLinkText=subItem.title;menu.editLinkURL=subItem.url"><i class="fa fa-fw fa-pencil-square-o"></i></a>
-                                            <a data-nodrag ng-click="newSubItem(this)"><i class="fa fa-fw fa-plus"></i></a>
-                                            <a data-nodrag ng-click="remove(this)"><i class="fa fa-fw fa-times"></i></a>
+                                            <a data-nodrag ng-click="newSubItem(this)">
+                                                <i class="fa fa-fw fa-plus"></i>
+                                            </a>
+                                            <a data-nodrag ng-click="remove(this)">
+                                                <i class="fa fa-fw fa-times"></i>
+                                            </a>
                                         </div>
                                     </div>
                                     <ol ui-tree-nodes="options" ng-model="subItem.items">
@@ -86,7 +104,9 @@
                                                 {{subItem1.title}}
                                                 <div class="menu-manager">
                                                     <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem1;menu.editLinkText=subItem1.title;menu.editLinkURL=subItem1.url"><i class="fa fa-fw fa-pencil-square-o"></i></a>
-                                                    <a data-nodrag ng-click="remove(this)"><i class="fa fa-fw fa-times"></i></a>
+                                                    <a data-nodrag ng-click="remove(this)">
+                                                        <i class="fa fa-fw fa-times"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -101,24 +121,22 @@
             <div ng-show="menu.editLink">
                 <div ng-show="menu.editLinkText">
                     <div class="half-width">
-                        <label for="text">Edit Link Text</label>
+                        <label for="text" translate="menu_edit_link_text"></label>
                         <input value="text" type="text" ng-model="menu.editLinkText" ng-change="updateLink()">
                     </div>
-
                     <div class="half-width">
-                        <label for="url">Edit Link URL</label>
+                        <label for="url" translate="menu_edit_link_url"></label>
                         <input value="url" type="text" ng-model="menu.editLinkURL" ng-change="updateLink()">
                     </div>
                 </div>
 
-
-                <button class="btn-error" ng-click="confirm=true">delete menu</button>
-                <button class="btn-success" ng-click="saveMenu()">save menu</button>
+                <button class="btn-error" ng-click="confirm=true" translate="menu_delete"></button>
+                <button class="btn-success" ng-click="saveMenu()" translate="menu_save"></button>
                 
                 <div class="confirm" ng-show="confirm">
-                    <p>Are you sure you want to delete this menu?</p>
-                    <button class="btn-error" ng-click="confirm=false;deleteMenu();menu.panel='manage'">Yes</button>
-                    <button class="btn-success" ng-click='confirm=false'>No</button>
+                    <p translate="menu_confirm"></p>
+                    <button class="btn-error" ng-click="confirm=false;deleteMenu();menu.panel='manage'" translate="yes"></button>
+                    <button class="btn-success" ng-click='confirm=false' translate="no"></button>
                 </div>
             </div>
         </div>

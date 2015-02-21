@@ -60,6 +60,7 @@
             angular.module('main', [
                 'cosmo',
                 'cosmo.admin',
+                'cosmo.i18n',
                 'ngRoute',
                 'ngAnimate',
                 'ui.tree',

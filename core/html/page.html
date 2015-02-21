@@ -1,41 +1,43 @@
 <div ng-controller="pageCtrl">
     <div class="new-version" ng-show="newerVersion">
-        <p>There's a newer version of this document you didn't save. Would you like to use that instead?</p>
+        <p translate="page_newer"></p>
         <div class="btn-case">
-            <button class="btn-error" type="button" ng-click="deleteNewerVersion()">discard</button>
-            <button class="btn-options" type="button" ng-click='localVersion()'>compare</button>
-            <button class="btn-success" type="button" ng-click='localVersion()'>use</button>
+            <button class="btn-error" type="button" ng-click="deleteNewerVersion()" translate="discard"></button>
+            <button class="btn-options" type="button" ng-click='localVersion()' translate="compare"></button>
+            <button class="btn-success" type="button" ng-click='localVersion()' translate="use"></button>
         </div>
     </div>
     <div class="bar-top">
         <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
-        <h1>Page Details</h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times close"></i></a>
+        <h1 translate="page_details"></h1>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
+            <i class="fa fa-times close"></i>
+        </a>
     </div>
     <div class="pg-editor form-case">
         <input  type="radio" ng-class="{active: page.publish=='Y'}" name="publish" id="Y" value="Y" ng-modal="page.publish">
-        <label for="Y" ng-click="page.publish='Y'">Publish</label>
+        <label for="Y" ng-click="page.publish='Y'" translate="publish"></label>
         <input  type="radio" ng-class="{active: page.publish=='N'}" name="publish" id="N" value="N" ng-modal="page.publish">
-        <label for="N" ng-click="page.publish='N'">Draft</label>
+        <label for="N" ng-click="page.publish='N'" translate="draft"></label>
         <input  type="radio" ng-class="{active: page.publish=='schedule'}" name="publish" id="schedule" value="schedule" ng-modal="page.publish">
-        <label for="schedule" ng-click="page.publish='schedule'">Schedule</label>
+        <label for="schedule" ng-click="page.publish='schedule'" translate="schedule"></label>
         <div class="schedule-triangle" ng-show="page.publish=='schedule'"></div>
         <input type="datetime-local" class="schedule radio-inline" ng-model="page.scheduleDate" ng-show="page.publish=='schedule'">
         
-        <label class="type" for="type">Type</label>
+        <label class="type" for="type" translate="type"></label>
         <div class="cos-select">
             <select value="type" ng-change="updatePageType()" ng-model="page.type" ng-options="(themePage | themeFiles ) for themePage in page.themePages" required></select>
         </div>
 
         <span class="num-count">{{page.title.length}}</span>
-        <label>Title</label>
+        <label translate="title"></label>
         <input type='text' ng-model="page.title" ng-keyup="titleChange()" placeholder="about us, contact us">
 
         <span class="num-count">{{page.description.length}}</span>
-        <label for="description">Description</label>
+        <label for="description" translate="description"></label>
         <textarea value="description" ng-model="page.description" ng-keyup="descriptionChange()" placeholder="Tom's Restaurant is a diner located at 2880 Broadway (on the corner of 112th Street) in the Morningside Heights neighborhood of Manhattan in New York City."></textarea>
 
-        <label for="tags">Tags</label>
+        <label for="tags" translate="tags"></label>
         <input value="tags" type="text" ng-list ng-model="page.tags" ng-change="autocompleteTags()" placeholder="about, restaurant, food, nyc">
         <div class="tag-suggestions" ng-show="page.suggestions.length">
             <div ng-repeat="tag in page.suggestions | limitTo:10">
@@ -43,18 +45,16 @@
             </div>
         </div>
 
-        <label for="url">URL</label>
+        <label for="url" translate="url"></label>
         <input value="url" type='text' ng-model='page.url' ng-keyup="autoURL=false;urlChange()">
 
-
-
         <div class="confirm" ng-show="confirm">
-            <p>Are you sure you want to delete this page?</p>
-            <button type="button" class="btn-error" ng-click="deletePage()">Yes</button>
-            <button type="button" class="btn-success" ng-click="confirm=false">No</button>
+            <p translate="page_delete"></p>
+            <button type="button" class="btn-error" ng-click="deletePage()" translate="yes"></button>
+            <button type="button" class="btn-success" ng-click="confirm=false" translate="no"></button>
         </div>
-        <button type="button" class="btn-error" ng-click="confirm=true">delete</button>
-        <button type="button" class="btn-options" ng-click="savePage(true)">duplicate</button>
-        <button type="button" class="btn-success" ng-click="savePage()">save</button>
+        <button type="button" class="btn-error" ng-click="confirm=true" translate="delete"></button>
+        <button type="button" class="btn-options" ng-click="savePage(true)" translate="duplicate"></button>
+        <button type="button" class="btn-success" ng-click="savePage()" translate="save"></button>
     </div>
 </div>
