@@ -146,7 +146,7 @@ if(!$_GET):
                 });
             })
 
-            .controller('installationCtrl', function($scope, ngDialog, $http, $sce){
+            .controller('installationCtrl', function($scope, ngDialog, $http, $sce, $translate){
                 $scope.install = {};
                 $scope.install.dbname = '';
                 $scope.install.prefix = '';
@@ -158,9 +158,14 @@ if(!$_GET):
                 $scope.install.email = '';
                 $scope.install.adminUsername = '';
                 $scope.install.adminPassword = '';
+                $scope.install.language = 'en';
                 $scope.uploadsPermissions = '<?php echo fopen('uploads/placeholder.txt', 'w'); ?>';
                 $scope.autoloadPermissions = '<?php echo fopen('core/app/autoload.php', 'w'); ?>';
                 $scope.htaccess = '<?php echo file_exists('.htaccess');?>';
+
+                $scope.changeLanguage = function(key){
+                    $translate.use(key);
+                };
 
                 $scope.submit = function(){
                     if($scope.install.adminPassword === $scope.install.adminPassword2){

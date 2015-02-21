@@ -121,6 +121,7 @@
     "files_html5_not_supported": "HTML5 Drop File is not supported!",
 
     "install_cosmo": "Install cosmo",
+    "install_choose_language": "Choose your Language",
     "install_error_upload": "Error: /uploads/ folder is not writeable. Please change the permissions and refresh.",
     "install_error_autoload": "Error: File core/app/autoload.php is not writeable. Please change the permission and refresh.",
     "install_error_htaccess": "Error: File .htaccess does not exist. Please upload and refresh.",
