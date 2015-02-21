@@ -16,6 +16,17 @@
                 install_error<br />
                 <p ng-bind-html="error"></p>
             </p>
+            <h3>Choose Your Language</h3>
+            <div>
+                <input type="radio" for="english"></input>
+                <label for="english">English</label>
+                <input type="radio" for="german"></input>
+                <label for="german">German</label>
+                <input type="radio" for="french"></input>
+                <label for="french">French</label>
+                <input type="radio" for="hungarian"></input>
+                <label for="hungarian">Hungarian</label>
+            </div>
             <h3 translate="install_database"></h3>
             <div class="half-width">
                 <label translate="install_host"></label>
@@ -27,15 +38,15 @@
             </div>
             <div class="half-width">
                 <label translate="username"></label>
-                <input type="text" ng-model="install.username" name="username"><br />
+                <input type="text" ng-model="install.username" name="username">
             </div>
             <div class="half-width">
                 <label translate="password"></label>
-                <input type="password" ng-model="install.password" name="password"><br />
+                <input type="password" ng-model="install.password" name="password">
             </div>
 
             <div class="half-width">
-                <label transalte="install_database_prefix"></label>
+                <label translate="install_database_prefix"></label>
                 <input type="text" ng-model="install.prefix" name="prefix" value="cosmo_">
             </div>
             <!-- todo: Add message about modifying the .htaccess files as well

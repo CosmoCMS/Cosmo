@@ -16,7 +16,7 @@
             <label for="favicon" translate="favicon"></label>
             <img ng-src="{{settings.favicon}}" ng-click="uploadPhoto('favicon')">
         </div>
-        
+
         <div class="half-width">
             <label for="sitename" translate="settings_site_name"></label>
             <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
@@ -35,6 +35,17 @@
         <div class="half-width">
             <label for="maintenance" translate="settings_maintenance_url"></label>
             <input value="maintenance" type='text' ng-model='settings.maintenanceURL' placeholder="/maintenance">
+        </div>
+
+        <div>
+            <input type="radio" value="english"></input>
+            <label for="english">English</label>
+            <input type="radio" value="german"></input>
+            <label for="german">German</label>
+            <input type="radio" value="french"></input>
+            <label for="french">French</label>
+            <input type="radio" value="hungarian"></input>
+            <label for="hungarian">Hungarian</label>
         </div>
 
         <input type='checkbox' id="maintenance" ng-model='settings.maintenanceMode'>
