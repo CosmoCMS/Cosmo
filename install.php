@@ -131,7 +131,7 @@ if(!$_GET):
         <script src="core/js/angular/angular.min.js"></script>
         <script src="core/js/3rd-party/ngDialog.min.js"></script>
         <script src="core/js/3rd-party/angular-translate.min.js"></script>
-        <script src="core/js/3rd-party/angular-translate-storage-cookie.min.js"></script>
+        <!--<script src="core/js/3rd-party/angular-translate-storage-cookie.min.js"></script>-->
         <script src="core/js/3rd-party/angular-translate-loader-static-files.min.js"></script>
         <script src="core/js/i18n.js"></script>
         <script>
@@ -164,6 +164,7 @@ if(!$_GET):
                 $scope.htaccess = '<?php echo file_exists('.htaccess');?>';
 
                 $scope.changeLanguage = function(key){
+                    alert(key);
                     $translate.use(key);
                 };
 

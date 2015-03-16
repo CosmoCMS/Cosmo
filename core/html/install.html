@@ -18,12 +18,10 @@
             </p>
             <h3 translate="install_choose_language"></h3>
             <div>
-                <input name="language" type="radio" id="english" value="en" ng-model="install.language" ng-change="changeLanguage('en')">
-                <label for="english">English</label>
-                <input name="language" type="radio" id="german" value="de" ng-model="install.language" ng-change="changeLanguage('de')">
-                <label for="german">German</label>
-                <input name="language" type="radio" id="french" value="fr" ng-model="install.language" ng-change="changeLanguage('fr')">
-                <label for="french">French</label>
+                <input name="language" type="radio" id="english" value="en" ng-model="install.language">
+                <label for="en" ng-click="changeLanguage('en');install.language='en'">English</label>
+                <input name="language" type="radio" id="german" value="ru" ng-model="install.language">
+                <label for="ru" ng-click="changeLanguage('ru');install.language='ru'">русский язык</label>
             </div>
             <h3 translate="install_database"></h3>
             <div class="half-width">
