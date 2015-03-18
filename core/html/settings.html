@@ -38,14 +38,10 @@
         </div>
 
         <div>
-            <input type="radio" value="english"></input>
-            <label for="english">English</label>
-            <input type="radio" value="german"></input>
-            <label for="german">German</label>
-            <input type="radio" value="french"></input>
-            <label for="french">French</label>
-            <input type="radio" value="hungarian"></input>
-            <label for="hungarian">Hungarian</label>
+            <input type="radio" ng-model="settings.language" value="en"></input>
+            <label for="en">English</label>
+            <input type="radio" ng-model="settings.language" value="ru"></input>
+            <label for="ru">русский язык</label>
         </div>
 
         <input type='checkbox' id="maintenance" ng-model='settings.maintenanceMode'>

@@ -163,8 +163,8 @@ switch($segments[0])
         switch($method)
         {
             case 'GET':
-                $url = (isset($_GET['url'])) ? $_GET['url'] : '';
-                $type = (isset($_GET['type'])) ? $_GET['type'] : '';
+                $url = isset($_GET['url']) ? $_GET['url'] : '';
+                $type = isset($_GET['type']) ? $_GET['type'] : '';
                 
                 if(isset($segments[2]) && $segments[2] === 'requirements')
                     $response = $Cosmo->blocksRequirementsRead($segments[1]);
@@ -179,9 +179,9 @@ switch($segments[0])
             case 'POST':
                 if($role === 'admin')
                 {
-                    $type = (isset($_POST['type'])) ? $_POST['type'] : '';
-                    $requirement = (isset($_GET['requirement'])) ? $_POST['requirement'] : '';
-                    $name = (isset($_POST['name'])) ? $_POST['name'] : '';
+                    $type = isset($_POST['type']) ? $_POST['type'] : '';
+                    $requirement = isset($_GET['requirement']) ? $_POST['requirement'] : '';
+                    $name = isset($_POST['name']) ? $_POST['name'] : '';
                     
                     if(isset($segments[2]))
                         $response = $Cosmo->blocksRequirementsCreate($segments[1], $type, $requirement);
@@ -193,13 +193,13 @@ switch($segments[0])
             case 'PUT':
                 if($role === 'admin')
                 {
-                    $blockID = (isset($_PUT['blockID'])) ? $_PUT['blockID'] : '';
-                    $type = (isset($_PUT['type'])) ? $_PUT['type'] : '';
-                    $requirement = (isset($_PUT['requirement'])) ? $_PUT['requirement'] : '';
-                    $name = (isset($_PUT['name'])) ? $_PUT['name'] : '';
-                    $block = (isset($_PUT['block'])) ? $_PUT['block'] : '';
-                    $priority = (isset($_PUT['priority'])) ? $_PUT['priority'] : '';
-                    $area = (isset($_PUT['area'])) ? $_PUT['area'] : '';
+                    $blockID = isset($_PUT['blockID']) ? $_PUT['blockID'] : '';
+                    $type = isset($_PUT['type']) ? $_PUT['type'] : '';
+                    $requirement = isset($_PUT['requirement']) ? $_PUT['requirement'] : '';
+                    $name = isset($_PUT['name']) ? $_PUT['name'] : '';
+                    $block = isset($_PUT['block']) ? $_PUT['block'] : '';
+                    $priority = isset($_PUT['priority']) ? $_PUT['priority'] : '';
+                    $area = isset($_PUT['area']) ? $_PUT['area'] : '';
                     
                     if(isset($segments[3]))
                         $response = $Cosmo->blocksRequirementsUpdate($segments[3], $blockID, $type, $requirement);
@@ -232,24 +232,24 @@ switch($segments[0])
         switch($method)
         {
             case 'GET':
-                $id = (isset($_GET['id'])) ? $_GET['id'] : '';
+                $id = isset($_GET['id']) ? $_GET['id'] : '';
                 
                 $response = $Cosmo->commentsRead($id);
                 break;
                 
             case 'POST':
-                $content_id = (isset($_POST['content_id'])) ? $_POST['content_id'] : '';
-                $path = (isset($_POST['path'])) ? $_POST['path'] : '';
-                $name = (isset($_POST['name'])) ? $_POST['name'] : '';
-                $email = (isset($_POST['email'])) ? $_POST['email'] : '';
-                $comment = (isset($_POST['comment'])) ? $_POST['comment'] : '';
+                $content_id = isset($_POST['content_id']) ? $_POST['content_id'] : '';
+                $path = isset($_POST['path']) ? $_POST['path'] : '';
+                $name = isset($_POST['name']) ? $_POST['name'] : '';
+                $email = isset($_POST['email']) ? $_POST['email'] : '';
+                $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
                 
                 $response = $Cosmo->commentsCreate($content_id, $path, $name, $email, $comment);
                 break;
 
             case 'PUT':
-                $id = (isset($_PUT['id'])) ? $_PUT['id'] : '';
-                $comment = (isset($_PUT['comment'])) ? $_PUT['comment'] : '';
+                $id = isset($_PUT['id']) ? $_PUT['id'] : '';
+                $comment = isset($_PUT['comment']) ? $_PUT['comment'] : '';
                 
                 $response = $Cosmo->commentsUpdate($id, $comment);
                 break;
@@ -275,24 +275,24 @@ switch($segments[0])
                 else if(count($segments) > 2 && $segments[2] === 'tags')
                     $response = $Cosmo->contentTagsRead($segments[1]);
                 else
-                    $response = $Cosmo->contentRead((isset($_GET['url']) ? $_GET['url'] : ''), $role==='admin');
+                    $response = $Cosmo->contentRead(isset($_GET['url']) ? $_GET['url'] : '', $role==='admin');
                 break;
 
             case 'POST':
-                $published = (isset($_POST['published'])) ? $_POST['published'] : '';
-                $name = (isset($_POST['name'])) ? $_POST['name'] : '';
-                $extra = (isset($_POST['extra'])) ? $_POST['extra'] : '';
-                $title = (isset($_POST['title'])) ? $_POST['title'] : '';
-                $description = (isset($_POST['description'])) ? $_POST['description'] : '';
-                $header = (isset($_POST['header'])) ? $_POST['header'] : '';
-                $subheader = (isset($_POST['subheader'])) ? $_POST['subheader'] : '';
-                $featured = (isset($_POST['featured'])) ? $_POST['featured'] : '';
-                $body = (isset($_POST['body'])) ? $_POST['body'] : '';
-                $url = (isset($_POST['url'])) ? $_POST['url'] : '';
-                $type = (isset($_POST['type'])) ? $_POST['type'] : '';
-                $published_date = (isset($_POST['published_date'])) ? $_POST['published_date'] : '';
-                $author = (isset($_POST['author'])) ? $_POST['author'] : '';
-                $tag = (isset($_POST['tag'])) ? $_POST['tag'] : '';
+                $published = isset($_POST['published']) ? $_POST['published'] : '';
+                $name = isset($_POST['name']) ? $_POST['name'] : '';
+                $extra = isset($_POST['extra']) ? $_POST['extra'] : '';
+                $title = isset($_POST['title']) ? $_POST['title'] : '';
+                $description = isset($_POST['description']) ? $_POST['description'] : '';
+                $header = isset($_POST['header']) ? $_POST['header'] : '';
+                $subheader = isset($_POST['subheader']) ? $_POST['subheader'] : '';
+                $featured = isset($_POST['featured']) ? $_POST['featured'] : '';
+                $body = isset($_POST['body']) ? $_POST['body'] : '';
+                $url = isset($_POST['url']) ? $_POST['url'] : '';
+                $type = isset($_POST['type']) ? $_POST['type'] : '';
+                $published_date = isset($_POST['published_date']) ? $_POST['published_date'] : '';
+                $author = isset($_POST['author']) ? $_POST['author'] : '';
+                $tag = isset($_POST['tag']) ? $_POST['tag'] : '';
                 
                 if(checkPermissions('createPage', $published))
                 {
@@ -310,20 +310,20 @@ switch($segments[0])
                 break;
 
             case 'PUT':
-                $published = (isset($_PUT['published'])) ? $_PUT['published'] : '';
-                $name = (isset($_PUT['name'])) ? $_PUT['name'] : '';
-                $extra = (isset($_PUT['extra'])) ? $_PUT['extra'] : '';
-                $title = (isset($_PUT['title'])) ? $_PUT['title'] : '';
-                $description = (isset($_PUT['description'])) ? $_PUT['description'] : '';
-                $header = (isset($_PUT['header'])) ? $_PUT['header'] : '';
-                $subheader = (isset($_PUT['subheader'])) ? $_PUT['subheader'] : '';
-                $featured = (isset($_PUT['featured'])) ? $_PUT['featured'] : '';
-                $body = (isset($_PUT['body'])) ? $_PUT['body'] : '';
-                $url = (isset($_PUT['url'])) ? $_PUT['url'] : '';
-                $type = (isset($_PUT['type'])) ? $_PUT['type'] : '';
-                $published_date = (isset($_PUT['published_date'])) ? $_PUT['published_date'] : '';
-                $author = (isset($_PUT['author'])) ? $_PUT['author'] : '';
-                $tag = (isset($_PUT['tag'])) ? $_PUT['tag'] : '';
+                $published = isset($_PUT['published']) ? $_PUT['published'] : '';
+                $name = isset($_PUT['name']) ? $_PUT['name'] : '';
+                $extra = isset($_PUT['extra']) ? $_PUT['extra'] : '';
+                $title = isset($_PUT['title']) ? $_PUT['title'] : '';
+                $description = isset($_PUT['description']) ? $_PUT['description'] : '';
+                $header = isset($_PUT['header']) ? $_PUT['header'] : '';
+                $subheader = isset($_PUT['subheader']) ? $_PUT['subheader'] : '';
+                $featured = isset($_PUT['featured']) ? $_PUT['featured'] : '';
+                $body = isset($_PUT['body']) ? $_PUT['body'] : '';
+                $url = isset($_PUT['url']) ? $_PUT['url'] : '';
+                $type = isset($_PUT['type']) ? $_PUT['type'] : '';
+                $published_date = isset($_PUT['published_date']) ? $_PUT['published_date'] : '';
+                $author = isset($_PUT['author']) ? $_PUT['author'] : '';
+                $tag = isset($_PUT['tag']) ? $_PUT['tag'] : '';
                 
                 if(isset($segments[1])){
                     if(checkPermissions('editPage', $_PUT['published'], $_PUT['url']))
@@ -356,9 +356,9 @@ switch($segments[0])
         switch($method)
         {
             case 'POST':
-                $to = (isset($_POST['to'])) ? $_POST['to'] : '';
-                $subject = (isset($_POST['subject'])) ? $_POST['subject'] : '';
-                $message = (isset($_POST['message'])) ? $_POST['message'] : '';
+                $to = isset($_POST['to']) ? $_POST['to'] : '';
+                $subject = isset($_POST['subject']) ? $_POST['subject'] : '';
+                $message = isset($_POST['message']) ? $_POST['message'] : '';
                 
                 $Cosmo->email($to, $subject, $message);
                 break;
@@ -372,7 +372,7 @@ switch($segments[0])
         switch($method)
         {
             case 'GET':
-                $url = (isset($_GET['url'])) ? $_GET['url'] : '';
+                $url = isset($_GET['url']) ? $_GET['url'] : '';
                 
                 if(isset($segments[1]))
                     $response = $Cosmo->filesRead($segments[1]);
@@ -383,8 +383,8 @@ switch($segments[0])
                 break;
                 
             case 'POST':
-                $published = (isset($_POST['published'])) ? $_POST['published'] : '';
-                $file = (isset($_POST['file'])) ? $_POST['file'] : '';
+                $published = isset($_POST['published']) ? $_POST['published'] : '';
+                $file = isset($_POST['file']) ? $_POST['file'] : '';
                 
                 if(checkPermissions('createPage', $published))
                     $response = $Cosmo->filesCreate($file);
@@ -413,16 +413,16 @@ switch($segments[0])
                 break;
 
             case 'POST':
-                $name = (isset($_POST['name'])) ? $_POST['name'] : '';
+                $name = isset($_POST['name']) ? $_POST['name'] : '';
                 
                 if($role === 'admin')
                     $response = $Cosmo->menusCreate($name);
                 break;
 
             case 'PUT':
-                $name = (isset($_PUT['name'])) ? $_PUT['name'] : '';
-                $menu = (isset($_PUT['menu'])) ? $_PUT['menu'] : '';
-                $area = (isset($_PUT['area'])) ? $_PUT['area'] : '';
+                $name = isset($_PUT['name']) ? $_PUT['name'] : '';
+                $menu = isset($_PUT['menu']) ? $_PUT['menu'] : '';
+                $area = isset($_PUT['area']) ? $_PUT['area'] : '';
 
                 if($role === 'admin')
                     $response = $Cosmo->menusUpdate($segments[1], $name, $menu, $area);
@@ -449,14 +449,14 @@ switch($segments[0])
                 break;
 
             case 'POST':
-                $module = (isset($_POST['module'])) ? $_POST['module'] : '';
+                $module = isset($_POST['module']) ? $_POST['module'] : '';
                 
                 if($role === 'admin')
                     $response = $Cosmo->modulesCreate($module);
                 break;
 
             case 'PUT':
-                $status = (isset($_PUT['status'])) ? $_PUT['status'] : '';
+                $status = isset($_PUT['status']) ? $_PUT['status'] : '';
                 
                 if($role === 'admin')
                     $response = $Cosmo->modulesUpdate($segments[1], $status);
@@ -481,16 +481,17 @@ switch($segments[0])
                 break;
 
             case 'PUT':
-                $siteName = (isset($_PUT['siteName'])) ? $_PUT['siteName'] : '';
-                $slogan = (isset($_PUT['slogan'])) ? $_PUT['slogan'] : '';
-                $logo = (isset($_PUT['logo'])) ? $_PUT['logo'] : '';
-                $favicon = (isset($_PUT['favicon'])) ? $_PUT['favicon'] : '';
-                $email = (isset($_PUT['email'])) ? $_PUT['email'] : '';
-                $maintenanceURL = (isset($_PUT['maintenanceURL'])) ? $_PUT['maintenanceURL'] : '';
-                $maintenanceMode = (isset($_PUT['maintenanceMode'])) ? $_PUT['maintenanceMode'] : '';
+                $siteName = isset($_PUT['siteName']) ? $_PUT['siteName'] : '';
+                $slogan = isset($_PUT['slogan']) ? $_PUT['slogan'] : '';
+                $logo = isset($_PUT['logo']) ? $_PUT['logo'] : '';
+                $favicon = isset($_PUT['favicon']) ? $_PUT['favicon'] : '';
+                $email = isset($_PUT['email']) ? $_PUT['email'] : '';
+                $language = isset($_PUT['language']) ? $_PUT['language'] : '';
+                $maintenanceURL = isset($_PUT['maintenanceURL']) ? $_PUT['maintenanceURL'] : '';
+                $maintenanceMode = isset($_PUT['maintenanceMode']) ? $_PUT['maintenanceMode'] : '';
                 
                 if($role === 'admin')
-                    $response = $Cosmo->settingsUpdate($siteName, $slogan, $logo, $favicon, $email, $maintenanceURL, $maintenanceMode);
+                    $response = $Cosmo->settingsUpdate($siteName, $slogan, $logo, $favicon, $email, $language, $maintenanceURL, $maintenanceMode);
                 break;
 
             default:
@@ -518,7 +519,7 @@ switch($segments[0])
                 break;
 
             case 'PUT':
-                $theme = (isset($_PUT['theme'])) ? $_PUT['theme'] : '';
+                $theme = isset($_PUT['theme']) ? $_PUT['theme'] : '';
                 
                 if($role === 'admin')
                     $response = $Cosmo->themesUpdate($theme);
@@ -549,25 +550,25 @@ switch($segments[0])
                 break;
                 
             case 'POST':
-                $username = (isset($_POST['username'])) ? $_POST['username'] : '';
-                $email = (isset($_POST['email'])) ? $_POST['email'] : '';
-                $password = (isset($_POST['password'])) ? $_POST['password'] : '';
+                $username = isset($_POST['username']) ? $_POST['username'] : '';
+                $email = isset($_POST['email']) ? $_POST['email'] : '';
+                $password = isset($_POST['password']) ? $_POST['password'] : '';
                 
                 $response = $Cosmo->usersCreate($username, $email, $password);
                 break;
                 
             case 'PUT':
-                $username = (isset($_POST['username'])) ? $_POST['username'] : '';
-                $password = (isset($_POST['password'])) ? $_POST['password'] : '';
-                $name = (isset($_POST['name'])) ? $_POST['name'] : '';
-                $photo = (isset($_POST['photo'])) ? $_POST['photo'] : '';
-                $bio = (isset($_POST['bio'])) ? $_POST['bio'] : '';
-                $facebook = (isset($_POST['facebook'])) ? $_POST['facebook'] : '';
-                $twitter = (isset($_POST['twitter'])) ? $_POST['twitter'] : '';
-                $role = (isset($_POST['role'])) ? $_POST['role'] : '';
-                $email = (isset($_POST['email'])) ? $_POST['email'] : '';
-                $reset = (isset($_POST['reset'])) ? $_POST['reset'] : '';
-                $token = (isset($_POST['token'])) ? $_POST['token'] : '';
+                $username = isset($_POST['username']) ? $_POST['username'] : '';
+                $password = isset($_POST['password']) ? $_POST['password'] : '';
+                $name = isset($_POST['name']) ? $_POST['name'] : '';
+                $photo = isset($_POST['photo']) ? $_POST['photo'] : '';
+                $bio = isset($_POST['bio']) ? $_POST['bio'] : '';
+                $facebook = isset($_POST['facebook']) ? $_POST['facebook'] : '';
+                $twitter = isset($_POST['twitter']) ? $_POST['twitter'] : '';
+                $role = isset($_POST['role']) ? $_POST['role'] : '';
+                $email = isset($_POST['email']) ? $_POST['email'] : '';
+                $reset = isset($_POST['reset']) ? $_POST['reset'] : '';
+                $token = isset($_POST['token']) ? $_POST['token'] : '';
                 
                 if(count($segments) > 1 && $segments[1]) // Edit username, email, role, or password
                 {
