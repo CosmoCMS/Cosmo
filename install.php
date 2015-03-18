@@ -12,16 +12,17 @@ if($_GET)
     error_reporting(E_ALL);
 
     // Catch variables from form
-    $folder = (isset($_GET['folder'])) ? $_GET['folder'] : '';
-    $prefix = (isset($_GET['prefix'])) ? $_GET['prefix'] : '';
-    $host = (isset($_GET['host'])) ? $_GET['host'] : '';
-    $name = (isset($_GET['name'])) ? $_GET['name'] : '';
-    $username = (isset($_GET['username'])) ? $_GET['username'] : '';
-    $password = (isset($_GET['password'])) ? $_GET['password'] : '';
-    $title = (isset($_GET['title'])) ? $_GET['title'] : '';
-    $email = (isset($_GET['email'])) ? $_GET['email'] : '';
-    $adminUsername = (isset($_GET['adminUsername'])) ? $_GET['adminUsername'] : '';
-    $adminPassword = (isset($_GET['adminPassword'])) ? $_GET['adminPassword'] : '';
+    $folder = isset($_GET['folder']) ? $_GET['folder'] : '';
+    $prefix = isset($_GET['prefix']) ? $_GET['prefix'] : '';
+    $host = isset($_GET['host']) ? $_GET['host'] : '';
+    $name = isset($_GET['name']) ? $_GET['name'] : '';
+    $username = isset($_GET['username']) ? $_GET['username'] : '';
+    $password = isset($_GET['password']) ? $_GET['password'] : '';
+    $title = isset($_GET['title']) ? $_GET['title'] : '';
+    $email = isset($_GET['email']) ? $_GET['email'] : '';
+    $language = isset($_GET['language']) ? $_GET['language'] : '';
+    $adminUsername = isset($_GET['adminUsername']) ? $_GET['adminUsername'] : '';
+    $adminPassword = isset($_GET['adminPassword']) ? $_GET['adminPassword'] : '';
 
     // Generate 128 character salt
     $salt = "";
@@ -70,8 +71,8 @@ if($_GET)
     }
 
     // Setup site info
-    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'settings (site_name, email, theme) VALUES (?,?,?) ON DUPLICATE KEY UPDATE site_name=VALUES(site_name)');
-    $data = array($title, $email, 'Pendant');
+    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'settings (site_name, email, theme, language) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE site_name=VALUES(site_name)');
+    $data = array($title, $email, 'Pendant', $language);
     $stmt->execute($data);
 
     // Create home page
@@ -131,7 +132,7 @@ if(!$_GET):
         <script src="core/js/angular/angular.min.js"></script>
         <script src="core/js/3rd-party/ngDialog.min.js"></script>
         <script src="core/js/3rd-party/angular-translate.min.js"></script>
-        <script src="core/js/3rd-party/angular-translate-storage-cookie.min.js"></script>
+        <!--<script src="core/js/3rd-party/angular-translate-storage-cookie.min.js"></script>-->
         <script src="core/js/3rd-party/angular-translate-loader-static-files.min.js"></script>
         <script src="core/js/i18n.js"></script>
         <script>
@@ -146,7 +147,7 @@ if(!$_GET):
                 });
             })
 
-            .controller('installationCtrl', function($scope, ngDialog, $http, $sce){
+            .controller('installationCtrl', function($scope, ngDialog, $http, $sce, $translate){
                 $scope.install = {};
                 $scope.install.dbname = '';
                 $scope.install.prefix = '';
@@ -158,9 +159,15 @@ if(!$_GET):
                 $scope.install.email = '';
                 $scope.install.adminUsername = '';
                 $scope.install.adminPassword = '';
+                $scope.install.language = 'en';
                 $scope.uploadsPermissions = '<?php echo fopen('uploads/placeholder.txt', 'w'); ?>';
                 $scope.autoloadPermissions = '<?php echo fopen('core/app/autoload.php', 'w'); ?>';
                 $scope.htaccess = '<?php echo file_exists('.htaccess');?>';
+
+                $scope.changeLanguage = function(key){
+                    $scope.install.language = key;
+                    $translate.use(key);
+                };
 
                 $scope.submit = function(){
                     if($scope.install.adminPassword === $scope.install.adminPassword2){
@@ -171,6 +178,7 @@ if(!$_GET):
                                 '&prefix='+ $scope.install.prefix +
                                 '&folder='+ $scope.install.folder +
                                 '&title='+ $scope.install.title +
+                                '&language='+ $scope.install.language +
                                 '&adminUsername='+ $scope.install.adminUsername +
                                 '&adminPassword='+ $scope.install.adminPassword + 
                                 '&email='+ $scope.install.email)

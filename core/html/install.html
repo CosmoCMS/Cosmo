@@ -16,16 +16,12 @@
                 install_error<br />
                 <p ng-bind-html="error"></p>
             </p>
-            <h3>Choose Your Language</h3>
+            <h3 translate="install_choose_language"></h3>
             <div>
-                <input type="radio" for="english"></input>
-                <label for="english">English</label>
-                <input type="radio" for="german"></input>
-                <label for="german">German</label>
-                <input type="radio" for="french"></input>
-                <label for="french">French</label>
-                <input type="radio" for="hungarian"></input>
-                <label for="hungarian">Hungarian</label>
+                <input name="language" type="radio" id="english" value="en" ng-model="install.language">
+                <label for="en" ng-click="changeLanguage('en');install.language='en'">English</label>
+                <input name="language" type="radio" id="german" value="ru" ng-model="install.language">
+                <label for="ru" ng-click="changeLanguage('ru');install.language='ru'">русский язык</label>
             </div>
             <h3 translate="install_database"></h3>
             <div class="half-width">
@@ -77,5 +73,6 @@
                 <input type="text" ng-model="install.email" name="email" value="admin@example.com">
             </div>
             <button class="btn-success" ng-click="submit()" translate="submit"></button>
+        </div>
     </div>
 </div>

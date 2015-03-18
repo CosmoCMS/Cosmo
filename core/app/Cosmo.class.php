@@ -1303,14 +1303,15 @@ class Cosmo {
      * @param str $logo URL for the logo
      * @param str $favicon URL for the favicon
      * @param str $email Email address
+     * @param str $language Language preference. e.g. 'en' or 'es'
      * @param str $maintenanceURL Maintenance URL
      * @param str $maintenanceMode Maintenece Mode. 'true' or 'false'
      * return boolean
      */
-    public function settingsUpdate($siteName, $slogan, $logo, $favicon, $email, $maintenanceURL, $maintenanceMode)
+    public function settingsUpdate($siteName, $slogan, $logo, $favicon, $email, $language, $maintenanceURL, $maintenanceMode)
     {
-        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'settings SET site_name=?, slogan=?, logo=?, favicon=?, email=?, maintenance_url=?, maintenance_mode=?');
-        $data = array($siteName, $slogan, $logo, $favicon, $email, $maintenanceURL, $maintenanceMode);
+        $stmt = $this->pdo->prepare('UPDATE '.$this->prefix.'settings SET site_name=?, slogan=?, logo=?, favicon=?, email=?, language=?, maintenance_url=?, maintenance_mode=?');
+        $data = array($siteName, $slogan, $logo, $favicon, $email, $language, $maintenanceURL, $maintenanceMode);
         return $stmt->execute($data);
     }
 

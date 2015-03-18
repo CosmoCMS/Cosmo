@@ -1087,6 +1087,7 @@ angular.module('cosmo.admin', [])
     $scope.settings.favicon = Page.settings.favicon;
     $scope.settings.slogan = Page.settings.slogan;
     $scope.settings.email = Page.settings.email;
+    $scope.settings.language = Page.settings.language;
     $scope.settings.maintenanceURL = Page.settings.maintenance_url;
     if(Page.settings.maintenance_mode)
         $scope.settings.maintenanceMode = true;
@@ -1118,6 +1119,7 @@ angular.module('cosmo.admin', [])
             logo: $scope.settings.logo,
             favicon: $scope.settings.favicon,
             email: $scope.settings.email,
+            language: $scope.settings.language,
             maintenanceURL: $scope.settings.maintenanceURL,
             maintenanceMode: $scope.settings.maintenanceMode
         }, function(data){

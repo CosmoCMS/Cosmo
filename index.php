@@ -9,7 +9,7 @@
        \__ \__/ __) |  | \__/
 
       http://www.cosmocms.org/
-            v1.0.0-beta.3
+            v1.0.0-beta.4
 
 ####################################
 -->
@@ -60,7 +60,7 @@
             angular.module('main', [
                 'cosmo',
                 'cosmo.admin',
-                'cosmo.i18n',
+                'pascalprecht.translate',
                 'ngRoute',
                 'ngAnimate',
                 'ui.tree',
@@ -71,7 +71,7 @@
 
             ])
 
-            .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+            .config(['$routeProvider', '$locationProvider', '$translateProvider', function($routeProvider, $locationProvider, $translateProvider) {
                 // Configure standard URLs
                 $routeProvider.
                     when('/admin', { controller: function(ngDialog){ ngDialog.open({ template: 'core/html/login.html', showClose: false, closeByEscape: false, closeByDocument: false }); }, template: '<div></div>' }).
@@ -81,6 +81,15 @@
 
                 // Enable HTML5 urls
                 $locationProvider.html5Mode(true).hashPrefix('!');
+                
+                // Load files from the core/languages folder
+                $translateProvider.useStaticFilesLoader({
+                    prefix: '/core/languages/',
+                    suffix: '.json'
+                });
+                
+                // Set the default language
+                $translateProvider.preferredLanguage('<?php echo $settings['language'] || 'en';?>');
             }])
 
             // Initialize JS variables
