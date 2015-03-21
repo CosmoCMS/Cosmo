@@ -89,7 +89,7 @@
                 });
                 
                 // Set the default language
-                $translateProvider.preferredLanguage('<?php echo $settings['language'] || 'en';?>');
+                $translateProvider.preferredLanguage('<?php echo $settings['language'];?>');
             }])
 
             // Initialize JS variables

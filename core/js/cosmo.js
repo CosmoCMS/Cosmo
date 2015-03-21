@@ -893,7 +893,7 @@ angular.module('cosmo', [])
     // Update meta-tags
     var updateMetaTags = function(){
         var data = Hooks.HTMLHookNotify({title: Page.title, description: Page.description});
-        $scope.title = data.title;
+        $scope.title = data.title || Page.settings.site_name;
         $scope.description = data.description;
         $rootScope.$broadcast('HTMLCallback', {title: $scope.title, description: $scope.description});
     };
