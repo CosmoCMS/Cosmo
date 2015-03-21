@@ -7,10 +7,10 @@
             <p class="error" ng-if="!uploadsPermissions" translate="install_error_upload"></p>
             <p class="error" ng-if="!autoloadPermissions" translate="install_error_autoload"></p>
             <p class="error" ng-if="!htaccess" translate="install_error_htaccess"></p>
+            <p class="success" ng-if="success" translate="install_complete"></p>
+            <p class="success" ng-if="success" translate="install_view"></p>
             <p class="error" ng-if="success" translate>
-                install_complete<br />
-                install_delete<br />
-                install_view
+                install_delete
             </p>
             <p class="error" ng-if="error" translate>
                 install_error<br />
@@ -18,9 +18,9 @@
             </p>
             <h3 translate="install_choose_language"></h3>
             <div>
-                <input name="language" type="radio" id="english" value="en" ng-model="install.language">
+                <input type="radio" value="en" ng-model="install.language">
                 <label for="en" ng-click="changeLanguage('en');install.language='en'">English</label>
-                <input name="language" type="radio" id="german" value="ru" ng-model="install.language">
+                <input type="radio" value="ru" ng-model="install.language">
                 <label for="ru" ng-click="changeLanguage('ru');install.language='ru'">русский язык</label>
             </div>
             <h3 translate="install_database"></h3>

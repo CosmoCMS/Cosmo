@@ -127,16 +127,24 @@ if(!$_GET):
 ?>
 <html ng-app="app">
     <head>
-        <title>Install Cosmo</title>
+        <title translate>install_cosmo</title>
         <link rel="stylesheet" type="text/css" href="core/css/cosmo-default-style.minify.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="core/js/angular/angular.min.js"></script>
         <script src="core/js/3rd-party/ngDialog.min.js"></script>
         <script src="core/js/3rd-party/angular-translate.min.js"></script>
         <!--<script src="core/js/3rd-party/angular-translate-storage-cookie.min.js"></script>-->
         <script src="core/js/3rd-party/angular-translate-loader-static-files.min.js"></script>
-        <script src="core/js/i18n.js"></script>
         <script>
-            angular.module('app', ['ngDialog', 'cosmo.i18n'])
+            angular.module('app', ['ngDialog', 'pascalprecht.translate'])
+            
+            .config(function($translateProvider) {
+                // Load files from the core/languages folder
+                $translateProvider.useStaticFilesLoader({
+                    prefix: '/core/languages/',
+                    suffix: '.json'
+                });
+            })
 
             .run(function(ngDialog){
                 ngDialog.open({ 
@@ -147,7 +155,7 @@ if(!$_GET):
                 });
             })
 
-            .controller('installationCtrl', function($scope, ngDialog, $http, $sce, $translate){
+            .controller('installationCtrl', function($scope, $http, $sce, $translate){
                 $scope.install = {};
                 $scope.install.dbname = '';
                 $scope.install.prefix = '';
@@ -160,6 +168,7 @@ if(!$_GET):
                 $scope.install.adminUsername = '';
                 $scope.install.adminPassword = '';
                 $scope.install.language = 'en';
+                $translate.use('en');
                 $scope.uploadsPermissions = '<?php echo fopen('uploads/placeholder.txt', 'w'); ?>';
                 $scope.autoloadPermissions = '<?php echo fopen('core/app/autoload.php', 'w'); ?>';
                 $scope.htaccess = '<?php echo file_exists('.htaccess');?>';

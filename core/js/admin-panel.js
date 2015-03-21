@@ -472,16 +472,17 @@ angular.module('cosmo.admin', [])
 
     // Install Module
     $scope.install = function(module, index){
+        $scope.currentIndex = index;
         REST.modules.save({ module: module }, installModulePromise);
     };
 
     // Update the page after installing a new module
     function installModulePromise(data){
-        $scope.modules[index]['status'] = 'active';
+        $scope.modules[$scope.currentIndex]['status'] = 'active';
 
         // Check for an installation file and run it
-        if($scope.modules[index]['install'])
-            $http.get('modules/'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['install']);
+        if($scope.modules[$scope.currentIndex]['install'])
+            $http.get('modules/'+ $scope.modules[$scope.currentIndex]['folder'] +'/'+ $scope.modules[$scope.currentIndex]['install']);
 
         // Success Message
         $rootScope.$broadcast('notify', { message: 'Module installed' });
@@ -489,17 +490,18 @@ angular.module('cosmo.admin', [])
 
     // Uninstall Module
     $scope.uninstall = function(moduleID, index){
+        $scope.currentIndex = index;
         REST.modules.delete({ moduleID: moduleID }, uninstallModulePromise);
     };
     
     // Update the page after uninstalling a module
     function uninstallModulePromise(data){
         // Check for an uninstallation file and run it
-        if($scope.modules[index]['uninstall'])
-            $http.get('modules/'+ $scope.modules[index]['folder'] +'/'+ $scope.modules[index]['uninstall']);
+        if($scope.modules[$scope.currentIndex]['uninstall'])
+            $http.get('modules/'+ $scope.modules[$scope.currentIndex]['folder'] +'/'+ $scope.modules[$scope.currentIndex]['uninstall']);
 
         // Remove module from sidebar
-        $scope.modules[index] = null;
+        $scope.modules[$scope.currentIndex] = null;
 
         // Success Message
         $rootScope.$broadcast('notify', {message: 'Module uninstalled'});
@@ -507,12 +509,13 @@ angular.module('cosmo.admin', [])
     
     // Activate Module
     $scope.activate = function(moduleID, index){
+        $scope.currentIndex = index;
         REST.modules.update({ moduleID: moduleID, status: 'active' }, activateModulePromise);
     };
     
     // Update the page after activating a module
     function activateModulePromise(data){
-        $scope.modules[index]['status'] = 'active';
+        $scope.modules[$scope.currentIndex]['status'] = 'active';
 
         // Success Message
         $rootScope.$broadcast('notify', {message: 'Module activated'});
@@ -520,12 +523,13 @@ angular.module('cosmo.admin', [])
 
     // Deactivate Module
     $scope.deactivate = function(moduleID, index){
+        $scope.currentIndex = index;
         REST.modules.update({ moduleID: moduleID, status: 'inactive' }, deactivateModulePromise);
     };
     
     // Update the page after deactivating a module
     function deactivateModulePromise(data){
-        $scope.modules[index]['status'] = 'inactive';
+        $scope.modules[$scope.currentIndex]['status'] = 'inactive';
 
         // Success Message
         $rootScope.$broadcast('notify', {message: 'Module deactivated'});
@@ -1079,7 +1083,7 @@ angular.module('cosmo.admin', [])
  *        Manage the settings of the site         *
  **************************************************/
 
-.controller('settingsCtrl', ['$scope', 'REST', '$rootScope', 'Page', 'ngDialog', function($scope, REST, $rootScope, Page, ngDialog){
+.controller('settingsCtrl', ['$scope', 'REST', '$rootScope', 'Page', 'ngDialog', '$translate', function($scope, REST, $rootScope, Page, ngDialog, $translate){
 
     $scope.settings = {};
     $scope.settings.siteName = Page.settings.site_name;
@@ -1110,6 +1114,10 @@ angular.module('cosmo.admin', [])
         else if(data.id === 'favicon')
             $scope.settings.favicon = data.src;
     });
+    
+    $scope.changeLanguage = function(key){
+        $translate.use(key);
+    };
 
     // Save settings
     $scope.changeSettings = function(){
