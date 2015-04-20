@@ -1,27 +1,23 @@
 <div ng-controller="menuCtrl">
     <div ng-show="menu.panel==='manage'">
         <div class="bar-top">
-            <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''">Back</a>
             <h1 translate="menus"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-                <i class="fa fa-times close"></i>
-            </a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
         </div>
-        <div class="form-case--border">
-            <button class="new" ng-click="createMenu=!createMenu">
-                <div ng-if="!createMenu">
-                    <i class="fa fa-fw fa-plus"></i>
-                    <p translate="menu_new"></p>
-                </div>
-                <div ng-if="createMenu">
-                    <i class="fa fa-fw fa-times-circle-o"></i>
-                    <p translate="close"></p>
-                </div>
+
+        <div class="bar--actions">
+            <button ng-click="createMenu=!createMenu">
+                <span translate="menu_new" ng-if="!createMenu"></span>
+                <span translate="close" ng-if="createMenu"></span>
             </button>
+        </div>
+
+        <div class="form-case">
             <div class="add-new" ng-show="createMenu">
                 <label for="name" translate="menu_add"></label>
                 <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
-                <button class="btn-success" ng-click='newMenu()' translate="add"></button>
+                <button ng-click='newMenu()' translate="add"></button>
             </div>
         </div>
         <ul>
@@ -32,19 +28,22 @@
     </div>
     <div ng-show="menu.panel==='edit'">
         <div class="bar-top">
-            <i class="fa fa-fw fa-chevron-left " ng-click="menu.panel='manage';confirm=false"></i>
-            <h1 translate="editing"></h1> <h2>{{menu.name}}</h2>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-                <i class="fa fa-times close"></i>
-            </a>
+            <a ng-click="menu.panel='manage';menu.confirm=false">Back</a>
+            <h1 translate="editing"><span>: {{menu.name}}</span></h1>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
         </div>
+        <div class="bar--actions">
+            <button ng-click="menu.confirm=true" translate="menu_delete"></button>
+            <button ng-click="saveMenu()" translate="menu_save"></button>
+        </div>
+
         <div class="form-case">
             <div class="half-width">
-                <label for="name" translate>name:</label>
+                <label for="name" translate>Name</label>
                 <input value="name" type="text" ng-model="menu.name">
             </div>
             <div class="half-width">
-                <label for="area" translate>area:</label>
+                <label for="area" translate>Area</label>
                 <div class="cos-select">
                     <select value="area" ng-model="menu.area">
                         <option value="primary" translate="primary"></option>
@@ -74,14 +73,10 @@
                                 <p>{{item.title}}</p>
                                 <div class="menu-manager">
                                     <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=item;menu.editLinkText=item.title;menu.editLinkURL=item.url">
-                                        <i class="fa fa-fw fa-pencil-square-o"></i>
+                                        Edit
                                     </a>
-                                    <a data-nodrag ng-click="newSubItem(this)">
-                                        <i class="fa fa-fw fa-plus"></i>
-                                    </a>
-                                    <a data-nodrag ng-click="remove(this)">
-                                        <i class="fa fa-fw fa-times"></i>
-                                    </a>
+                                    <a data-nodrag ng-click="newSubItem(this)">Add</a>
+                                    <a data-nodrag ng-click="remove(this)">Remove</a>
                                 </div>
                             </div>
                             <ol ui-tree-nodes="options" ng-model="item.items">
@@ -89,13 +84,9 @@
                                     <div ui-tree-handle>
                                         {{subItem.title}}
                                         <div class="menu-manager">
-                                            <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem;menu.editLinkText=subItem.title;menu.editLinkURL=subItem.url"><i class="fa fa-fw fa-pencil-square-o"></i></a>
-                                            <a data-nodrag ng-click="newSubItem(this)">
-                                                <i class="fa fa-fw fa-plus"></i>
-                                            </a>
-                                            <a data-nodrag ng-click="remove(this)">
-                                                <i class="fa fa-fw fa-times"></i>
-                                            </a>
+                                            <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem;menu.editLinkText=subItem.title;menu.editLinkURL=subItem.url">Edit</a>
+                                            <a data-nodrag ng-click="newSubItem(this)">Add</a>
+                                            <a data-nodrag ng-click="remove(this)">Remove</a>
                                         </div>
                                     </div>
                                     <ol ui-tree-nodes="options" ng-model="subItem.items">
@@ -103,10 +94,8 @@
                                             <div ui-tree-handle>
                                                 {{subItem1.title}}
                                                 <div class="menu-manager">
-                                                    <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem1;menu.editLinkText=subItem1.title;menu.editLinkURL=subItem1.url"><i class="fa fa-fw fa-pencil-square-o"></i></a>
-                                                    <a data-nodrag ng-click="remove(this)">
-                                                        <i class="fa fa-fw fa-times"></i>
-                                                    </a>
+                                                    <a data-nodrag ng-click="menu.editLink=true;menu.currentlyEditingLink=subItem1;menu.editLinkText=subItem1.title;menu.editLinkURL=subItem1.url">Add</a>
+                                                    <a data-nodrag ng-click="remove(this)">Remove</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -130,13 +119,10 @@
                     </div>
                 </div>
 
-                <button class="btn-error" ng-click="confirm=true" translate="menu_delete"></button>
-                <button class="btn-success" ng-click="saveMenu()" translate="menu_save"></button>
-                
-                <div class="confirm" ng-show="confirm">
+                <div class="confirm" ng-show="menu.confirm">
                     <p translate="menu_confirm"></p>
-                    <button class="btn-error" ng-click="confirm=false;deleteMenu();menu.panel='manage'" translate="yes"></button>
-                    <button class="btn-success" ng-click='confirm=false' translate="no"></button>
+                    <button class="btn-error" ng-click="menu.confirm=false;deleteMenu();menu.panel='manage'" translate="yes"></button>
+                    <button class="btn-success" ng-click='menu.confirm=false' translate="no"></button>
                 </div>
             </div>
         </div>

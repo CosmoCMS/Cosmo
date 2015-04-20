@@ -57,15 +57,23 @@ angular.module('cosmo.admin', [])
         else
             $scope.admin.photo = 'core/img/image.svg';
     };
-    
+
     $scope.sidebar = '';
     $scope.showAdminPanel = false; // Initialize sidebar as hidden
-    
+
     // Go to the new page
     $scope.navigate = function(){
         $location.path('new');
     };
-    
+
+    // Watch for calls to open the file menu
+    $scope.$on('editFiles', function(event, data) {
+        $scope.admin.files = angular.fromJson(data);
+        $scope.admin.sidebar = 'core/html/files.html';
+        $scope.admin.showAdminPanel = true;
+        $scope.admin.active = true;
+    });
+
     // todo: Depreciate. Remove from admin-panel.html and use loginRegistrationCtrl instead
     $scope.logout = function(){
         // Delete cookies
@@ -853,7 +861,7 @@ angular.module('cosmo.admin', [])
         // Update the page after saving a page revision
         function saveRevisionPromise(data){
             revisionID = data.id;
-            var i = 1;
+            var extrasCounter.i = 1;
 
             // Save additional data if there is any
             if(Object.keys(Page.extras).length === 0){
@@ -889,13 +897,13 @@ angular.module('cosmo.admin', [])
         // Notify the user after saving the last extra
         function saveExtrasPromise(){
             // Wait for the last extra to be saved, then redirect the user
-            if(i === Object.keys(Page.extras).length){
+            if(extrasCounter.i === Object.keys(Page.extras).length){
                 // Success message
                 $rootScope.$broadcast('notify', {message: 'Saved'});
                 // Redirect to new page
                 $location.path($scope.page.url);
             } else
-                i++;
+                extrasCounter.i++;
         }
 
         // Update the page after it's been saved
@@ -923,8 +931,6 @@ angular.module('cosmo.admin', [])
         // Callback for saving a page revision
         function savePageRevisionPromise(data){
             revisionID = data.id;
-            var i = 1;
-
             // Delete old extras
             REST.contentExtras.delete({ contentID: $scope.page.id }, deleteExtrasPromise);
         }
