@@ -149,6 +149,42 @@
                 angular.forEach(Page.themePages, function(page){
                     cacheTemplate('themes/<?php echo $theme; ?>/'+page);
                 });
+                
+                // Cache all admin pages
+                if(Users.admin) {
+                    var adminPanelPages = [
+                        'core/html/archives.html',
+                        'core/html/blocks.html',
+                        'core/html/content-list.html',
+                        'core/html/files.html',
+                        'core/html/icons.html',
+                        'core/html/login.html',
+                        'core/html/menu.html',
+                        'core/html/modal.html',
+                        'core/html/modules.html',
+                        'core/html/page.html',
+                        'core/html/profile.html',
+                        'core/html/revisions.html',
+                        'core/html/roles.html',
+                        'core/html/settings.html',
+                        'core/html/sidebar.html',
+                        'core/html/theme.html',
+                        'core/html/toolbar.html',
+                        'core/html/users.html',
+                        'core/html/wysiwyg.html',
+                        'core/html/partials/comments.html',
+                        'core/html/partials/link.html',
+                        'core/html/partials/menu-links.html',
+                        'core/html/partials/password-reset.html',
+                        'core/html/partials/results.html',
+                        'core/html/partials/user-login.html',
+                        'core/html/partials/user-registration.html'
+                    ];
+                    
+                    angular.forEach(adminPanelPages, function(page){
+                        cacheTemplate(page);
+                    });
+                }
 
             }]);
         </script>
