@@ -459,12 +459,11 @@ angular.module('cosmo', [])
             // Check if user is an admin
             if(Users.admin) {
                 scope.clicked = function(){
-                    ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({
-                            id: attrs.csAudio,
-                            gallery: true,
-                            images: scope.audioFiles
+                    $rootScope.$broadcast('editFiles', angular.toJson({ 
+                            id: attrs.csAudio, 
+                            data: scope.audioFiles 
                         })
-                    });
+                    );
                 };
                 
                 // Save edits/selection of the movie
@@ -592,13 +591,12 @@ angular.module('cosmo', [])
                     if(Users.admin) {
                         // Open image editing modal
                         elm.on('click', function(){
-                            ngDialog.open({ 
-                                template: 'core/html/modal.html', 
-                                data: angular.toJson({ 
+                            $rootScope.$broadcast('editFiles', angular.toJson({ 
                                     id: attrs.csImage, 
                                     data: scope.image 
-                                }) 
-                            });
+                                })
+                            );
+
                             // Don't show the wysiwyg editor when someone clicks an image
                             $timeout(function(){
                                 $rootScope.$broadcast('hideWYSIWYG');
@@ -631,7 +629,7 @@ angular.module('cosmo', [])
  *   Create repeating images wrapped in a div     *
  **************************************************/
 
-.directive('csGallery', ['Page', '$rootScope', 'REST', '$timeout', 'ngDialog', 'Users', '$sce', 'Responsive', 'Hooks', function(Page, $rootScope, REST, $timeout, ngDialog, Users, $sce, Responsive, Hooks){
+.directive('csGallery', ['Page', '$rootScope', 'REST', '$timeout', 'Users', '$sce', 'Responsive', 'Hooks', function(Page, $rootScope, REST, $timeout, Users, $sce, Responsive, Hooks){
     return {
         template: '<div class="cs-gallery"><img ng-src="{{image.url}}" ng-repeat="image in images | limitTo:limitNum | filter:search" ng-hide="$index!==currentIndex && showOnlyOne" ng-click="clickedGallery($index)"></div>',
         scope: {},
@@ -702,14 +700,12 @@ angular.module('cosmo', [])
             if(Users.admin) {
                 // When clicked, open a modal window to edit
                 scope.clickedGallery = function(index){
-                    ngDialog.open({ 
-                        template: 'core/html/modal.html', 
-                        data: angular.toJson({
+                    $rootScope.$broadcast('editFiles', angular.toJson({ 
                             id: attrs.csGallery,
                             gallery: true,
                             images: scope.images
                         })
-                    });
+                    );
                 };
                 
                 // Watch for edits to the gallery
@@ -750,10 +746,10 @@ angular.module('cosmo', [])
  *               Link Controller                  *
  **************************************************/
 
-.controller('linkCtrl', ['$scope', '$rootScope', 'ngDialog', function($scope, $rootScope, ngDialog){
+.controller('linkCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
     $scope.save = function(){
         $rootScope.$broadcast('editedLink', {text: $scope.link.text, url: $scope.link.url});
-        ngDialog.close();
+        // ngDialog.close();
     };
 }])
 
@@ -777,7 +773,7 @@ angular.module('cosmo', [])
  *               HTML5 Videos                     *
  **************************************************/
 
-.directive('csMovie', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
+.directive('csMovie', ['Page', '$routeParams', '$rootScope', 'Users', '$sce', function(Page, $routeParams, $rootScope, Users, $sce) {
     return {
         template: '<video ng-dblclick="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
         replace: true,
@@ -799,12 +795,12 @@ angular.module('cosmo', [])
             // Check if user is an admin
             if(Users.admin) {
                 scope.clicked = function(){
-                    ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({
+                    $rootScope.$broadcast('editFiles', angular.toJson({ 
                             id: attrs.csMovie,
                             gallery: true,
                             images: scope.videos
                         })
-                    });
+                    );
                 };
                 
                 // Save edits/selection of the movie
@@ -937,7 +933,7 @@ angular.module('cosmo', [])
  *      Login / Registration Controller           *
  **************************************************/
 
-.controller('loginRegistrationCtrl', ['$scope', 'REST', '$http', 'ngDialog', '$location', '$rootScope', 'Users', 'Page', '$timeout', function($scope, REST, $http, ngDialog, $location, $rootScope, Users, Page, $timeout){
+.controller('loginRegistrationCtrl', ['$scope', 'REST', '$http', '$location', '$rootScope', 'Users', 'Page', '$timeout', function($scope, REST, $http, $location, $rootScope, Users, Page, $timeout){
 
     // Initialize panel to show
     $scope.panel = 'login';
@@ -954,7 +950,7 @@ angular.module('cosmo', [])
                 password: $scope.register.password
             }, function(data){ // Success
                 $rootScope.$broadcast('notify', {message: 'Account created'});
-                ngDialog.close();
+                // ngDialog.close();
                 $location.path('/');
             }, function(){ // Error
                 $rootScope.$broadcast('notify', {message: 'Username/email is already in use'});
@@ -1003,7 +999,7 @@ angular.module('cosmo', [])
             
             $scope.login.username = '';
             $scope.login.password = '';
-            ngDialog.close();
+            // ngDialog.close();
             $location.path('/');
 
             $rootScope.$broadcast('loggedIn');
@@ -1376,7 +1372,7 @@ angular.module('cosmo', [])
  *             Make HTML tables                   *
  **************************************************/
 
-.directive('csTable', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', '$timeout', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce, $timeout) {
+.directive('csTable', ['Page', '$routeParams', '$rootScope', 'Users', '$sce', '$timeout', function(Page, $routeParams, $rootScope, Users, $sce, $timeout) {
     return {
         template: '<table><tr ng-repeat="row in rows track by $index" ng-click="clickedRow({{$index}})" ng-init="isFirst=$first"><th ng-if="isFirst&&tableHeader" ng-repeat="col in row track by $index" ng-click="clickedCol({{$index}})">{{col}}</th><td ng-if="!isFirst||!tableHeader" ng-repeat="col in row track by $index" ng-click="clickedCol({{$index}})">{{col}}</td></tr></table>',
         replace: true,
@@ -1808,7 +1804,7 @@ angular.module('cosmo', [])
             url = 'http://' + url;
 
         document.execCommand('insertHTML', false, '<a href="'+ url +'" target="'+ newTab +'" class="'+ $scope.editor.classes.join('') +'">'+ $scope.editor.text.join('') +'</a>');
-        ngDialog.close();
+        // ngDialog.close();
     };
 
     // Insert a table
@@ -1844,13 +1840,13 @@ angular.module('cosmo', [])
         Page.extras[timestamp] = angular.toJson(rows);
 
         document.execCommand('insertHTML', false, '<div cs-table="'+ timestamp +'"></div>');
-        ngDialog.close();
+        // ngDialog.close();
         $rootScope.$broadcast('saveAndRefresh');
     };
     
 }])
 
-.directive('csWysiwyg', ['ngDialog', '$rootScope', 'Page', '$compile', '$timeout', function(ngDialog, $rootScope, Page, $compile, $timeout){
+.directive('csWysiwyg', ['$rootScope', 'Page', '$compile', '$timeout', function($rootScope, Page, $compile, $timeout){
     return {
         templateUrl: 'core/html/toolbar.html',
         replace: true,
@@ -2173,33 +2169,40 @@ angular.module('cosmo', [])
  *             Upload/edit files                  *
  **************************************************/
 
-.controller('filesCtrl', ['$scope', '$upload', 'REST', '$rootScope', '$sce', 'ngDialog', 'Hooks', 'Responsive', function($scope, $upload, REST, $rootScope, $sce, ngDialog, Hooks, Responsive){
-    
+.controller('filesCtrl', ['$scope', '$upload', 'REST', '$rootScope', '$sce', 'Hooks', 'Responsive', function($scope, $upload, REST, $rootScope, $sce, Hooks, Responsive){
+
     $scope.files = {};
     $scope.files.class = '';
     $scope.files.size = 'responsive';
     $scope.numFiles = 12;
-    
-    // Open modal window
-    if($scope.$parent.ngDialogData.gallery){ // Editing an image gallery
-        $scope.images = $scope.$parent.ngDialogData.images;
-        for(var i=0; i<$scope.images.length; i++)
-            $scope.images[i].url = $sce.trustAsResourceUrl($scope.images[i].src);
-        $scope.files.gallery = true;
-        $scope.editingGallery = true;
-    }else {
-        $scope.files.gallery = false;
-        $scope.editingGallery = false;
+
+    // Initialize variables
+    function filesInit() {
+        if($scope.admin.files.gallery){ // Editing an image gallery
+            $scope.images = $scope.admin.files.images;
+            for(var i=0; i<$scope.images.length; i++)
+                $scope.images[i].url = $sce.trustAsResourceUrl($scope.images[i].src);
+            $scope.files.gallery = true;
+            $scope.editingGallery = true;
+        } else {
+            $scope.files.gallery = false;
+            $scope.editingGallery = false;
+        }
+
+        $scope.id = $scope.admin.files.id;
+        if($scope.admin.files.data){
+            $scope.files.title = $scope.admin.files.data.title;
+            $scope.files.class = $scope.admin.files.data.class;
+            $scope.files.alt = $scope.admin.files.data.alt;
+            $scope.files.href = $scope.admin.files.data.href;
+        }
     }
+    filesInit();
     
-    $scope.id = $scope.$parent.ngDialogData.id;
-    if($scope.$parent.ngDialogData.data){
-        $scope.files.title = $scope.$parent.ngDialogData.data.title;
-        $scope.files.class = $scope.$parent.ngDialogData.data.class;
-        $scope.files.alt = $scope.$parent.ngDialogData.data.alt;
-        $scope.files.href = $scope.$parent.ngDialogData.data.href;
-    }
-        
+    $scope.$on('editFiles', function(event, data){
+        filesInit();
+    });
+
     // Get files for the media library
     function getFiles(justUploaded){
         // Get all files
@@ -2218,7 +2221,7 @@ angular.module('cosmo', [])
                     else
                         var filename = Hooks.imageHookNotify(value.filename);
                 }
-                
+
                 $scope.media.push({
                     alt: value.alt,
                     class: value.class,
@@ -2232,7 +2235,7 @@ angular.module('cosmo', [])
                     responsive: value.responsive
                 });
             });
-            
+
             if(justUploaded){
                 $scope.viewFile($scope.media[0]);
                 $rootScope.$broadcast('imageSaved', data[0]);
@@ -2241,9 +2244,14 @@ angular.module('cosmo', [])
     }
     getFiles();
     
+    // De-selects the file (to go back to the image select view)
+    $scope.noSelectedFile = function() {
+        $scope.selectedFile = null;
+    };
+    
     // Upload files
     $scope.onFileSelect = function($files) {
-        //$files: an array of files selected, each file has name, size, and type.
+        // $files: an array of files selected, each file has name, size, and type.
         for (var i = 0; i < $files.length; i++) {
             var $file = $files[i];
             $scope.upload = $upload.upload({
@@ -2262,7 +2270,7 @@ angular.module('cosmo', [])
             }).success(function(data, status, headers, config) {
                 // file is uploaded successfully
                 getFiles(true);
-                $scope.upload = false;
+                $scope.files.upload = false;
                 $rootScope.$broadcast('fileUploaded', data);
             });
         }
@@ -2363,7 +2371,7 @@ angular.module('cosmo', [])
     // Save image gallery
     $scope.saveGallery = function(){
         $rootScope.$broadcast('choseGalleryFile', { id: $scope.id, data: $scope.images });
-        ngDialog.close();
+        $scope.admin.showAdminPanel = false;
     };
 
     // Select media
@@ -2398,7 +2406,7 @@ angular.module('cosmo', [])
                 size: $scope.files.size,
                 responsive: $scope.files.responsive
             });
-            ngDialog.close();
+            $scope.admin.showAdminPanel = false;
         }
     };
 

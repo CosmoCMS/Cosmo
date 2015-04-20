@@ -1,10 +1,8 @@
 <div ng-controller="contentListCtrl">
     <div class="bar-top">
-        <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+        <a ng-click="admin.sidebar='core/html/sidebar.html';active=''">Back</a>
         <h1 translate="browse_search"></h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-            <i class="fa fa-times close"></i>
-        </a>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
     </div>
     <form class="form-case">
         <label for="search" translate="search"></label>
@@ -23,17 +21,13 @@
         <li ng-repeat="page in pages | filter:search">
             <a ng-href="{{page.url}}">{{page.title || 'N/A'}}</a>
             <p class="page-type">
-                <small><i class="fa fa-file-text"></i> {{page.type | themeFiles}}</small>
+                <small>{{page.type | themeFiles}}</small>
             </p>
             <p>
-                <small>
-                    <i alt="published" class="fa fa-check"></i> {{page.published}}
-                </small>
+                <small>{{page.published}}</small>
             </p>
             <p>
-                <small>
-                    <i alt="author" class="fa fa-user"></i> {{page.author.username}}
-                </small>
+                <small>{{page.author.username}}</small>
             </p>
         </li>
     </ul>

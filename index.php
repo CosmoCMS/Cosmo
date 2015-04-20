@@ -139,9 +139,15 @@
                 $http.defaults.headers.common['username'] = '<?php echo $username; ?>';
                 $http.defaults.headers.common['token'] = '<?php echo isset($token) ? $token : ''; ?>';
 
+                function cacheTemplate(url){
+                    $http.get(url).success(function(data){
+                        $templateCache.put(url, data);
+                    });
+                };
+
                 // Cache all template pages
                 angular.forEach(Page.themePages, function(page){
-                    $templateCache.put('themes/<?php echo $theme; ?>/'+page);
+                    cacheTemplate('themes/<?php echo $theme; ?>/'+page);
                 });
 
             }]);

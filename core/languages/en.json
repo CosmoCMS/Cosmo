@@ -1,5 +1,6 @@
 {
     "close": "Close",
+    "back": "Back",
     "search": "Search",
     "name": "Name",
     "code": "Code",
@@ -74,7 +75,7 @@
     
     "blocks_title": "Edit Blocks",
     "blocks_description": "New Block",
-    "blocks_name": "Block Name",
+    "blocks_name": "Name of block here",
     "blocks_visibility": "Page Visibility",
     "blocks_all_pages": "Display on all pages",
     "blocks_only": "Only for pages below",
@@ -105,6 +106,7 @@
     "files_full": "Full",
     "files_large": "Large",
     "files_medium": "Medium",
+    "files_small": "Small",
     "files_non_responsive": "Non-responsive",
     "files_autoplay": "Autoplay",
     "files_controls": "Controls",

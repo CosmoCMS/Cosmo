@@ -1,30 +1,32 @@
 <div class="blocks" ng-controller="blockCtrl">
     <div ng-show="block.panel==='manage'">
         <div class="bar-top">
-            <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''" translate="back"></a>
             <h1 translate="blocks_title"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-                <i class="fa fa-times close"></i>
-            </a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
         </div>
-        <div class="form-case--border">
-            <button class="new" ng-click="createBlock=!createBlock">
-                <div ng-if="!createBlock">
-                    <i class="fa fa-plus"></i>
-                    <p translate="blocks_description"></p>
-                </div>
-                <div ng-if="createBlock">
-                    <i class="fa fa-times-circle-o"></i>
-                    <p translate="close"></p>
-                </div>
+
+        <div class="bar--actions">
+            <button ng-click="createBlock=!createBlock;beginSearch=false;">
+                <span ng-if="!createBlock" translate="blocks_description">
+                </span>
+                <span ng-if="createBlock" translate="close">
+                </span>
             </button>
-            <div class="add-new" ng-show="createBlock">
-                <label for="name" translate="name"></label>
-                <input id="name" value="name" type='text' ng-model='block.newName' placeholder="e.g. My new custom block">
-                <button class="btn-success" ng-click='newBlock()' translate="add"></button>
-            </div>
+            <button ng-click="beginSearch=!beginSearch;createBlock=false;">
+                <span ng-if="!beginSearch" translate="search">
+                </span>
+                <span ng-if="beginSearch" translate="close">
+                </span>
+            </button>
         </div>
-        <div class="form-case--border">
+
+        <div class="add-new form-case--border" ng-show="createBlock">
+            <label for="name" translate="name"></label>
+            <input id="name" value="name" type="text" ng-model="block.newName" placeholder="e.g. My new custom block">
+            <button  ng-click="newBlock()" translate="add"></button>
+        </div>
+        <div class="form-case--border" ng-show="beginSearch">
             <label class="search" for="search" translate="search"></label>
             <input id="search" type="text" ng-model="search" placeholder="Search: e.g. Footer">
         </div>
@@ -265,12 +267,16 @@
 
     <div ng-show="block.panel==='edit'">
         <div class="bar-top">
-                <i class="fa fa-chevron-left " ng-click="block.panel='manage';confirm=false"></i>
-            <h1 translate="editing"></h1><h2>{{block.name}}</h2>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-                <i class="fa fa-times close"></i>
-            </a>
+                <a ng-click="block.panel='manage';confirm=false">Back</a>
+            <h1 translate="editing">: {{block.name}}</h1>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
         </div>
+
+        <div class="bar--actions">
+            <button ng-click='confirm=true' translate="delete"></button>
+            <button ng-click="saveBlock()" translate="save"></button>
+        </div>
+
         <div class="form-case">
             <label for="name" translate="blocks_name"></label>
             <input id="name" value="name" type='text' ng-model='block.name'>
@@ -520,7 +526,7 @@
                 <p translate="blocks_wildcard"></p>
                 <textarea ng-model='block.urls'></textarea>
             </div>
-            <p><span translate="blocks_only_specific"><span>
+            <p><span translate="blocks_specific"><span>
             <small translate="blocks_no_limitation"></small></p>
             <p class="page-select" ng-repeat="type in types" ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
                 <input id="type" value="type" type='checkbox' ng-model='block.selectedTypes[type]' ng-click="block.selectedTypes[type]=!block.selectedTypes[type]">
@@ -528,12 +534,8 @@
             </p>
             <div class="confirm" ng-show="confirm">
                 <p translate="blocks_delete"></p>
-                <button class="btn-error" ng-click="confirm=false;deleteBlock();block.panel='manage'" translate="yes"></button>
-                <button class="btn-success" ng-click='confirm=false' translate="no"></button>
-            </div>
-            <div>
-                <button class="marg btn-error" ng-click='confirm=true' translate="delete"></button>
-                <button class="marg btn-success" ng-click="saveBlock()" translate="save"></button>
+                <button  ng-click="confirm=false;deleteBlock();block.panel='manage'" translate="yes"></button>
+                <button  ng-click='confirm=false' translate="no"></button>
             </div>
         </div>
     </div>

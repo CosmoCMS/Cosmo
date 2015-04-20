@@ -3,14 +3,11 @@
         <div class="bar-top">
             <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
             <h1 translate="roles_header"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-                <i class="fa fa-times close"></i>
-            </a>
         </div>
         <div class="form-case--border">
             <label for="name" translate>roles_new:</label>
             <input value="name" type='text' ng-model='role.newName' placeholder="e.g., manager, publisher, editor, intern">
-            <button class="btn-success" ng-click='newRole()' translate="create"></button>
+            <button  ng-click='newRole()' translate="create"></button>
         </div>
         <ul>
             <li ng-repeat='role in roles'>
@@ -40,8 +37,8 @@
                 <label for="delete" translate="delete"></label>
             </div>
         <div class="btn-case-btm">
-            <button type="button" class="btn-error" ng-click='deleteRole()' translate="delete"></button>
-            <button type="button" class="btn-success" ng-click="saveRoles()" translate="save"></button>
+            <button type="button"  ng-click='deleteRole()' translate="delete"></button>
+            <button type="button"  ng-click="saveRoles()" translate="save"></button>
         </div>
     </div>
 </div>

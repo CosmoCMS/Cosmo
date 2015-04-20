@@ -1,8 +1,11 @@
-<div class="cosmo-default" ng-controller="installationCtrl">
-    <div class="modal--bar-top">
-        <h1 class="no-marg" translate="install_cosmo"></h1>
-    </div>
-    <div class="login">
+<div class="cosmo-default sidebar" ng-controller="installationCtrl">
+    <div class="sidebar adminSidebarSlideOut">
+        <div class="bar-top">
+            <h1 class="no-marg" translate="install_cosmo"></h1>
+        </div>
+        <div class="bar--actions">
+            <button ng-click="submit()" translate="submit"></button>
+        </div>
         <div class="form-case">
             <p class="error" ng-if="!uploadsPermissions" translate="install_error_upload"></p>
             <p class="error" ng-if="!autoloadPermissions" translate="install_error_autoload"></p>
@@ -17,62 +20,37 @@
                 <p ng-bind-html="error"></p>
             </p>
             <h3 translate="install_choose_language"></h3>
-            <div>
                 <input type="radio" value="en" ng-model="install.language">
                 <label for="en" ng-click="changeLanguage('en');install.language='en'">English</label>
                 <input type="radio" value="ru" ng-model="install.language">
                 <label for="ru" ng-click="changeLanguage('ru');install.language='ru'">русский язык</label>
-            </div>
             <h3 translate="install_database"></h3>
-            <div class="half-width">
                 <label translate="install_host"></label>
                 <input type="text" name="host" value="localhost">
-            </div>
-            <div class="half-width">
                 <label translate="install_database_name"></label>
                 <input type="text" ng-model="install.dbname" name="name">
-            </div>
-            <div class="half-width">
                 <label translate="username"></label>
                 <input type="text" ng-model="install.username" name="username">
-            </div>
-            <div class="half-width">
                 <label translate="password"></label>
                 <input type="password" ng-model="install.password" name="password">
-            </div>
 
-            <div class="half-width">
                 <label translate="install_database_prefix"></label>
                 <input type="text" ng-model="install.prefix" name="prefix" value="cosmo_">
-            </div>
             <!-- todo: Add message about modifying the .htaccess files as well
-            <div class="half-width">
                 <label translate="folder"></label>
                 <input type="text" ng-model="install.folder" name="folder" value="">
-            </div>
             -->
             <h3 translate="install_site_info"></h3>
-            <div class="half-width">
                 <label translate="install_site_title"></label>
                 <input type="text" ng-model="install.title" name="title" value="My Cosmo Site">
-            </div>
-            <div class="half-width">
                 <label translate="username"></label>
                 <input type="text" ng-model="install.adminUsername" value="admin">
-            </div>
-            <div class="half-width">
                 <label translate="password"></label>
                 <input type="password" ng-model="install.adminPassword" name="adminPassword">
-            </div>
-            <div class="half-width">
                 <label translate="confirm_password"></label>
                 <input type="password" ng-model="install.adminPassword2" name="adminPassword2">
-            </div>
-            <div class="half-width">
                 <label translate="email"></label>
                 <input type="text" ng-model="install.email" name="email" value="admin@example.com">
-            </div>
-            <button class="btn-success" ng-click="submit()" translate="submit"></button>
         </div>
     </div>
 </div>

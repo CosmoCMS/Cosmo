@@ -1,19 +1,33 @@
 <div class="settings" ng-controller="settingsCtrl">
     <div class="bar-top">
-        <i class="fa fa-chevron-left" ng-click="admin.sidebar='core/html/sidebar.html'"></i>
+        <a ng-click="admin.sidebar='core/html/sidebar.html'">Back</a>
         <h1 translate="settings"></h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-            <i class="fa fa-times close"></i>
-        </a>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
     </div>
+
+    <div class="bar--actions">
+        <button ng-click='changeSettings()' translate="save"></button>
+    </div>
+
     <div class="form-case">
+        <div>
+            <input type="radio" value="english"></input>
+            <label for="english">English</label>
+            <input type="radio" value="german"></input>
+            <label for="german">German</label>
+            <input type="radio" value="french"></input>
+            <label for="french">French</label>
+            <input type="radio" value="hungarian"></input>
+            <label for="hungarian">Hungarian</label>
+        </div>
+
         <div class="half-width images">
-            <label for="logo" translate="logo"></label>
+            <label class="type" for="logo" translate="logo"></label>
             <img ng-src="{{settings.logo}}" ng-click="uploadPhoto('logo')">
         </div>
 
         <div class="half-width images">
-            <label for="favicon" translate="favicon"></label>
+            <label class="type" for="favicon" translate="favicon"></label>
             <img ng-src="{{settings.favicon}}" ng-click="uploadPhoto('favicon')">
         </div>
 
@@ -37,15 +51,7 @@
             <input value="maintenance" type='text' ng-model='settings.maintenanceURL' placeholder="/maintenance">
         </div>
 
-        <div>
-            <input type="radio" ng-model="settings.language" value="en">
-            <label for="en" ng-click="changeLanguage('en');settings.language='en'">English</label>
-            <input type="radio" ng-model="settings.language" value="ru">
-            <label for="ru" ng-click="changeLanguage('ru');settings.language='ru'">русский язык</label>
-        </div>
-
         <input type='checkbox' id="maintenance" ng-model='settings.maintenanceMode'>
         <label class="maint-mode" for="maintenance" translate="settings_activate_maintenance"></label>
-        <button class="btn-success" ng-click='changeSettings()' translate="save"></button>
     </div>
 </div>

@@ -1,29 +1,25 @@
 <div ng-controller="pageCtrl">
-    <div class="new-version" ng-show="newerVersion">
+    <div class="new-version form-case" ng-show="newerVersion">
         <p translate="page_newer"></p>
-        <div class="btn-case">
-            <button class="btn-error" type="button" ng-click="deleteNewerVersion()" translate="discard"></button>
-            <button class="btn-options" type="button" ng-click='localVersion()' translate="compare"></button>
-            <button class="btn-success" type="button" ng-click='localVersion()' translate="use"></button>
-        </div>
+        <button class="btn-error" type="button" ng-click="deleteNewerVersion()" translate="discard"></button>
+        <button class="btn-options" type="button" ng-click='localVersion()' translate="compare"></button>
+        <button class="btn-success" type="button" ng-click='localVersion()' translate="use"></button>
     </div>
     <div class="bar-top">
-        <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
-        <h1 translate="page_details"></h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-            <i class="fa fa-times close"></i>
-        </a>
+        <a ng-click="admin.sidebar='core/html/sidebar.html';active=''" translate="back"></a>
+        <h1 class="title" translate="page_details"></h1>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;" translate="close"></a>
+    </div>
+    <div class="bar--actions">
+        <button type="button" class="btn-error" ng-click="page.confirm=true" translate="delete" ng-show="!page.confirm"></button>
+        <button type="button" class="btn-options" ng-click="savePage(true)" translate="duplicate" ng-show="!page.confirm"></button>
+        <button type="button" class="btn-success" ng-click="savePage()" translate="save" ng-show="!page.confirm"></button>
+
+        <p translate="page_delete" ng-show="page.confirm"></p>
+        <button type="button" class="btn-error" ng-click="deletePage()" translate="yes" ng-show="page.confirm"></button>
+        <button type="button" class="btn-success" ng-click="page.confirm=false" translate="no" ng-show="page.confirm"></button>
     </div>
     <div class="pg-editor form-case">
-        <input  type="radio" ng-class="{active: page.publish=='Y'}" name="publish" id="Y" value="Y" ng-modal="page.publish">
-        <label for="Y" ng-click="page.publish='Y'" translate="publish"></label>
-        <input  type="radio" ng-class="{active: page.publish=='N'}" name="publish" id="N" value="N" ng-modal="page.publish">
-        <label for="N" ng-click="page.publish='N'" translate="draft"></label>
-        <input  type="radio" ng-class="{active: page.publish=='schedule'}" name="publish" id="schedule" value="schedule" ng-modal="page.publish">
-        <label for="schedule" ng-click="page.publish='schedule'" translate="schedule"></label>
-        <div class="schedule-triangle" ng-show="page.publish=='schedule'"></div>
-        <input type="datetime-local" class="schedule radio-inline" ng-model="page.scheduleDate" ng-show="page.publish=='schedule'">
-        
         <label class="type" for="type" translate="type"></label>
         <div class="cos-select">
             <select value="type" ng-change="updatePageType()" ng-model="page.type" ng-options="(themePage | themeFiles ) for themePage in page.themePages" required></select>
@@ -48,13 +44,13 @@
         <label for="url" translate="url"></label>
         <input value="url" type='text' ng-model='page.url' ng-keyup="autoURL=false;urlChange()">
 
-        <div class="confirm" ng-show="confirm">
-            <p translate="page_delete"></p>
-            <button type="button" class="btn-error" ng-click="deletePage()" translate="yes"></button>
-            <button type="button" class="btn-success" ng-click="confirm=false" translate="no"></button>
-        </div>
-        <button type="button" class="btn-error" ng-click="confirm=true" translate="delete"></button>
-        <button type="button" class="btn-options" ng-click="savePage(true)" translate="duplicate"></button>
-        <button type="button" class="btn-success" ng-click="savePage()" translate="save"></button>
+        <input  type="radio" ng-class="{active: page.publish=='Y'}" name="publish" id="Y" value="Y" ng-modal="page.publish">
+        <label for="Y" ng-click="page.publish='Y'" translate="publish"></label>
+        <input  type="radio" ng-class="{active: page.publish=='N'}" name="publish" id="N" value="N" ng-modal="page.publish">
+        <label for="N" ng-click="page.publish='N'" translate="draft"></label>
+        <input  type="radio" ng-class="{active: page.publish=='schedule'}" name="publish" id="schedule" value="schedule" ng-modal="page.publish">
+        <label for="schedule" ng-click="page.publish='schedule'" translate="schedule"></label>
+        <div class="schedule-triangle" ng-show="page.publish=='schedule'"></div>
+        <input type="datetime-local" class="schedule radio-inline" ng-model="page.scheduleDate" ng-show="page.publish=='schedule'">
     </div>
 </div>

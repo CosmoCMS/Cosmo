@@ -1,25 +1,27 @@
 <div class="users" ng-controller="usersCtrl">
     <div ng-show="!selectedUser">
         <div class="bar-top">
-            <i class="fa fa-chevron-left " ng-click="admin.sidebar='core/html/sidebar.html';active=''"></i>
+            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''">Back</ai>
             <h1 translate="users"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">
-                <i class="fa fa-times close"></i>
-            </a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
         </div>
-        <div class="form-case--border">
+
+        <div class="bar--actions">
+            <button ng-click="createUser=!createUser">
+                <span translate="users_new_user" ng-if="!createUser"></span>
+                <span translate="close" ng-if="createUser"></span>
+            </button>
+            <button ng-click="beginSearch=!beginSearch">
+                <span ng-if="!beginSearch" translate="search">
+                </span>
+                <span ng-if="beginSearch" translate="close">
+                </span>
+            </button>
+        </div>
+
+        <div class="form-case--border" ng-show="createUser">
             <div ng-controller="loginRegistrationCtrl">
-                <button class="new" ng-click="createUser=!createUser">
-                    <div ng-if="!createUser">
-                        <i class="fa fa-plus"></i>
-                        <p translate="users_new_user"></p>
-                    </div>
-                    <div ng-if="createUser">
-                        <i class="fa fa-times-circle-o"></i>
-                        <p translate="close"></p>
-                    </div>
-                </button>
-                <div class="new-user" ng-show="createUser">
+                <div class="new-user">
                     <div class="half-width">
                         <label for="username" translate="username"></label>
                         <input id="username" type="text" ng-model="register.username">
@@ -36,15 +38,15 @@
                     </div>
 
                     <div class="half-width">
-                        <label for="confirm-password" translate="users_confirm_password"></label>
+                        <label for="confirm-password" translate="confirm_password"></label>
                         <input id="confirm-password"type="password" ng-model="register.confirmPassword">
                     </div>
 
-                    <button class="btn-success" ng-click="register()" translate="users_create"></button>
+                    <button ng-click="register()" translate="users_create"></button>
                 </div>
             </div>
         </div>
-        <div class="form-case--border">
+        <div class="form-case--border" ng-show="beginSearch">
             <label translate="search"></label>
             <input class="search" placeholder="Username or Email" value="search" type="text" ng-model="users.search">
         </div>
