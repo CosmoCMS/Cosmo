@@ -2,7 +2,7 @@
 %wysiwyg-dropdown {
     background-color: palette(gray, xlight);
     border-radius: 5px;
-    color: palette(blue, dark);
+    color: palette(gray, dark);
     display: block;
     height: auto;
     position: relative;
@@ -54,7 +54,7 @@
     }
 
     i {
-        color: palette(blue, dark);
+        color: palette(gray, dark);
         display: inline-block;
         font-size: .813rem;
         vertical-align: middle;

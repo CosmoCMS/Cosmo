@@ -5,26 +5,27 @@ span {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: palette(blue, dark);
+    color: palette(gray, dark);
     font-family: $font-alpha;
     margin: 0;
 }
 
 h1 {
     color: palette(gray, light);
-    display: inline;
+    flex: 3;
     font-size: 1.25rem;
-    font-weight: 400;
-    line-height: 3;
-    margin-left: 2rem;
+    font-weight: 200;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 h2 {
     color: palette(gray, light);
     display: inline;
     font-size: 1.15rem;
-    font-weight: 400;
-    line-height: 3;
+    font-weight: 200;
+    line-height: 4;
     margin-left: size(5);
 }
 
@@ -35,15 +36,16 @@ h3 {
 }
 
 h6 {
-    color: palette(blue, dark);
+    color: palette(gray, dark);
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 200;
     text-transform: uppercase;
 }
 
 a {
     color: palette(gray, dark);
     font-family: $font-alpha;
+    font-weight: 200;
     text-decoration: none;
 
     &:hover {
@@ -59,14 +61,14 @@ a {
 p {
     font-size: 1rem;
     font-family: $font-alpha;
-    font-weight: 400;
+    font-weight: 200;
     line-height: 1.5;
     margin: 0 0 size(10) 0;
 }
 
 p.error {
     color: palette(alert, error);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 small {

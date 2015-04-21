@@ -1,8 +1,8 @@
-<div class="settings" ng-controller="settingsCtrl">
+<div ng-controller="settingsCtrl">
     <div class="bar-top">
-        <a ng-click="admin.sidebar='core/html/sidebar.html'">Back</a>
+        <a ng-click="admin.sidebar='core/html/sidebar.html'"><i class="fa fa-angle-left"></i></a>
         <h1 translate="settings"></h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
     </div>
 
     <div class="bar--actions">
@@ -19,35 +19,27 @@
             <label for="pl" ng-click="changeLanguage('pl');settings.language='pl'">polszczyzna</label>
         </div>
 
-        <div class="half-width images">
+        <div>
             <label class="type" for="logo" translate="logo"></label>
             <img ng-src="{{settings.logo}}" ng-click="uploadPhoto('logo')">
         </div>
 
-        <div class="half-width images">
+        <div>
             <label class="type" for="favicon" translate="favicon"></label>
             <img ng-src="{{settings.favicon}}" ng-click="uploadPhoto('favicon')">
         </div>
 
-        <div class="half-width">
-            <label for="sitename" translate="settings_site_name"></label>
-            <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
-        </div>
+        <label for="sitename" translate="settings_site_name"></label>
+        <input value="sitename" type='text' ng-model='settings.siteName' placeholder="e.g., Tom's Restaurant">
 
-        <div class="half-width">
-            <label for="slogan" translate="settings_slogan"></label>
-            <input value="slogan" type='textarea' ng-model='settings.slogan' placeholder="e.g., These pretzels are making me thirsty">
-        </div>
+        <label for="slogan" translate="settings_slogan"></label>
+        <input value="slogan" type='textarea' ng-model='settings.slogan' placeholder="e.g., These pretzels are making me thirsty">
 
-        <div class="half-width">
-            <label for="email" translate="email"></label>
-            <input value="email" type='text' ng-model='settings.email' placeholder="info@cosmocms.org">
-        </div>
+        <label for="email" translate="email"></label>
+        <input value="email" type='text' ng-model='settings.email' placeholder="info@cosmocms.org">
 
-        <div class="half-width">
-            <label for="maintenance" translate="settings_maintenance_url"></label>
-            <input value="maintenance" type='text' ng-model='settings.maintenanceURL' placeholder="/maintenance">
-        </div>
+        <label for="maintenance" translate="settings_maintenance_url"></label>
+        <input value="maintenance" type='text' ng-model='settings.maintenanceURL' placeholder="/maintenance">
 
         <input type='checkbox' id="maintenance" ng-model='settings.maintenanceMode'>
         <label class="maint-mode" for="maintenance" translate="settings_activate_maintenance"></label>

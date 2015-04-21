@@ -1,9 +1,9 @@
 <div class="blocks" ng-controller="blockCtrl">
     <div ng-show="block.panel==='manage'">
         <div class="bar-top">
-            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''" translate="back"></a>
+            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''"><i class="fa fa-angle-left"></i></a>
             <h1 translate="blocks_title"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
         </div>
 
         <div class="bar--actions">

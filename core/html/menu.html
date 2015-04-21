@@ -1,9 +1,9 @@
 <div ng-controller="menuCtrl">
     <div ng-show="menu.panel==='manage'">
         <div class="bar-top">
-            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''">Back</a>
+            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''"><i class="fa fa-angle-left"></i></a>
             <h1 translate="menus"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
         </div>
 
         <div class="bar--actions">
@@ -13,12 +13,10 @@
             </button>
         </div>
 
-        <div class="form-case">
-            <div class="add-new" ng-show="createMenu">
-                <label for="name" translate="menu_add"></label>
-                <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
-                <button ng-click='newMenu()' translate="add"></button>
-            </div>
+        <div class="form-case" ng-show="createMenu">
+            <label for="name" translate="menu_add"></label>
+            <input value="name" type='text' ng-model='menu.newName' placeholder="Menu Name e.g., Footer">
+            <button ng-click='newMenu()' translate="add"></button>
         </div>
         <ul>
             <li ng-repeat="menu in menus" ng-click="selectMenu(menu)">
@@ -28,9 +26,9 @@
     </div>
     <div ng-show="menu.panel==='edit'">
         <div class="bar-top">
-            <a ng-click="menu.panel='manage';menu.confirm=false">Back</a>
+            <a ng-click="menu.panel='manage';menu.confirm=false"><i class="fa fa-angle-left"></i></a>
             <h1 translate="editing"><span>: {{menu.name}}</span></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
         </div>
         <div class="bar--actions">
             <button ng-click="menu.confirm=true" translate="menu_delete"></button>

@@ -1,6 +1,6 @@
 // sidebar for all of cosmo editing outside of the live editing done on page
 .sidebar {
-    background-color: palette(gray, xlight);
+    background-color: palette(gray, white);
     bottom: 0;
     height: 100%;
     left: -100%;
@@ -28,12 +28,13 @@
 
 // active hamburger navigation before you open the sidebar
 .hamburger {
+    height: 5rem;
     position: fixed;
-    top: 25%;
+    width: 5rem;
     z-index: z(hamburger);
 
     .hamburger {
-        background-color: palette(blue, light);
+        background-color: transparent;
         left: 0;
         outline: none;
         opacity: .5;
@@ -57,31 +58,27 @@
     left: -28.5rem;
 }
 
-.sidebar-close {
-    position: absolute;
-    right: size(25);
-    top: 1.25rem;
-}
-
 // bar to be used at the top of each area of the sidebar
 .bar-top {
+    align-items: center;
     background-color: palette(blue, dark);
-    height: 3.75rem;
+    display: flex;
+    height: 5rem;
+    justify-content: center;
     overflow: hidden;
+    padding: 0 1.5rem;
     width: 100%;
 
     @media #{$bp-beta} {
-        width: 30rem;
+        width: 27rem;
     }
 
-    h1 {
-        color: palette(gray, white);
-        margin-left: size(5);
-    }
-
-    i {
+    a {
         color: palette(gray, light);
-        margin-left: size(25);
+        font-size: 1.75rem;
+        flex: 1;
+        text-align: left;
+        text-transform: uppercase;
 
         &:hover {
             color: palette(blue, light);
@@ -90,33 +87,29 @@
 
     .active {
         color: palette(alert, warning);
-  }
+    }
+
+    a.sidebar-close {
+        font-size: 1.15rem;
+        text-align: right;
+    }
 }
 
 // username and logout styling for prfl-qk-view
 .prfl-info {
-    display: inline-block;
-    font-size: .85rem;
-    height: 3.75rem;
-    margin-left: size(5);
-    overflow: hidden;
-    padding-top: .65rem;
-    width: 7.813rem;
-    vertical-align: top;
+    flex: 4;
+    margin-left: size(20);
+    padding-top: .8rem;
 
     p {
         color: palette(gray, white);
-        font-size: 1rem;
-        margin-bottom: 0;
-    }
 
-    a {
-        color: palette(gray, light);
-        font-size: .8rem;
-        font-weight: 400;
+        &:first-child {
+            margin-bottom: 0;
+        }
 
-        &:hover {
-            color: palette(blue, light);
+        &:last-child {
+            font-size: .8rem;
         }
     }
 }
@@ -124,14 +117,25 @@
 .prfl-img {
     background: center center no-repeat;
     background-size: cover;
-    display: inline-block;
-    height: 3.75rem;
-    width: 3.75rem;
+    flex: 1.5;
+    margin-left: -2rem;
+    width: 6rem;
 }
 
 // case to adjust sides within the sidebar
 .form-case {
-    padding: size(25) size(25) 0 size(25);
+    padding: size(25);
+
+    button {
+        @extend %button;
+        background-color: palette(blue, light);
+        color: palette(gray, white);
+
+        &:hover {
+            background-color: palette(blue, dark);
+            color: palette(gray, white);
+        }
+    }
 }
 
 // similar to .form-case, but with a border at the bottom
@@ -143,13 +147,14 @@
 .new-message--cosmo {
     background-color: palette(blue, light);
     color: palette(gray, light);
+    display: flex;
     padding: size(10) size(25);
-    position: relative;
 
     .message {
         display: inline-block;
+        flex: 11;
+        font-weight: 400;
         margin: 0;
-        width: 90%;
 
         a {
             color: palette(blue, dark);
@@ -161,7 +166,48 @@
         }
     }
 
-    span {
-        float: right;
+    a.hide {
+        color: white;
+        font-size: .75rem;
+        flex: 1;
+        line-height: 2;
+        text-align: right;
+    }
+}
+
+.bar--actions {
+    background-color: darken(palette(blue, dark), 10%);
+    color: palette(gray, white);
+    display: flex;
+    text-align: center;
+
+    button {
+        color: palette(gray, light);
+        flex: 1;
+        margin-right: 0;
+        padding: 1rem;
+    }
+
+    p {
+        flex: 2;
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+        text-align: left;
+    }
+}
+
+// alert when a newer version of the page has been saved
+.new-version {
+    background-color: palette(blue, dark);
+    position: fixed;
+    width: 100%;
+    z-index: z(sidebar);
+
+    @media #{$bp-beta} {
+        width: 27rem;
+    }
+
+    p, button {
+        color: palette(gray, light);
     }
 }

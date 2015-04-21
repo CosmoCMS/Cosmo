@@ -88,7 +88,7 @@ input.quickdate-date-input, input.quickdate-time-input {
 .quickdate-button{
     background-color: palette(gray, mid);
     box-sizing: border-box;
-    color: palette(blue, dark);
+    color: palette(gray, dark);
     display: inline-block;
     font-weight: 700;
     margin-top: .25rem;
@@ -111,7 +111,7 @@ input.quickdate-date-input, input.quickdate-time-input {
 .quickdate-popup{
     background-color: palette(gray, light);
     border: 1px solid palette(gray, mid);
-    color: palette(blue, dark);
+    color: palette(gray, dark);
     display: none;
     margin-top: -size(25);
     padding: size(25) * .25;
@@ -145,7 +145,7 @@ table.quickdate-calendar {
 
     &:hover {
         background-color: palette(gray, mid);
-        color: palette(blue, dark);
+        color: palette(gray, dark);
     }
 
     th, table, td {
@@ -155,7 +155,7 @@ table.quickdate-calendar {
     }
 
     td.other-month {
-        background-color: palette(blue, dark);
+        background-color: palette(gray, dark);
         color: palette(gray, light);
         font-family: $font-alpha;
 
@@ -165,7 +165,7 @@ table.quickdate-calendar {
     }
 
     td.disabled-date {
-        color: palette(blue, dark);
+        color: palette(gray, dark);
         background-color: inherit;
         font-family: $font-alpha;
 
@@ -188,7 +188,7 @@ table.quickdate-calendar {
         font-weight: 700;
 
         .disabled-date{
-            color: palette(blue, dark);
+            color: palette(gray, dark);
             font-weight:200;
         }
     }
@@ -196,7 +196,7 @@ table.quickdate-calendar {
 
 .quickdate-clear {
     @extend %button;
-    color: palette(blue, dark);
+    color: palette(gray, dark);
     display: inline-block;
     margin: size(25) * .1 0;
     text-decoration: none;

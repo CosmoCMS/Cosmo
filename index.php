@@ -47,7 +47,6 @@
         <script src="<?php echo $minifyScripts; ?>"></script>
 
         <link rel="stylesheet" type="text/css" href="<?php echo $minifyCSS; ?>">
-        <script src="//use.edgefonts.net/quicksand.js"></script>
 
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -81,13 +80,13 @@
 
                 // Enable HTML5 urls
                 $locationProvider.html5Mode(true).hashPrefix('!');
-                
+
                 // Load files from the core/languages folder
                 $translateProvider.useStaticFilesLoader({
                     prefix: '/core/languages/',
                     suffix: '.json'
                 });
-                
+
                 // Set the default language
                 $translateProvider.preferredLanguage('<?php echo $settings['language'];?>');
             }])
@@ -149,7 +148,7 @@
                 angular.forEach(Page.themePages, function(page){
                     cacheTemplate('themes/<?php echo $theme; ?>/'+page);
                 });
-                
+
                 // Cache all admin pages
                 if(Users.admin) {
                     var adminPanelPages = [
@@ -180,7 +179,7 @@
                         'core/html/partials/user-login.html',
                         'core/html/partials/user-registration.html'
                     ];
-                    
+
                     angular.forEach(adminPanelPages, function(page){
                         cacheTemplate(page);
                     });

@@ -2,9 +2,9 @@
     <!-- Gallery Area -->
     <div ng-show='files.gallery'>
         <div class="bar-top">
-            <a ng-click="admin.sidebar='core/html/sidebar.html';admin.active=false" translate="back"></a>
+            <a ng-click="admin.sidebar='core/html/sidebar.html';admin.active=false"><i class="fa fa-angle-left"></i></a>
             <h1 class="no-marg" translate="files_media"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;" translate="close"></a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
         </div>
         <div class="bar--actions">
             <button ng-click="files.gallery=false" translate="files_add_media"></button>
@@ -48,9 +48,9 @@
         <div ng-show='!files.upload'>
             <div ng-show="!selectedFile">
                 <div class="bar-top" id="top-anchor">
-                    <a ng-click="admin.sidebar='core/html/sidebar.html';admin.active=false;" translate="back"></a>
+                    <a ng-click="admin.sidebar='core/html/sidebar.html';admin.active=false;"><i class="fa fa-angle-left"></i></a>
                     <h1 translate="files_search_media"></h1>
-                    <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;" translate="close"></a>
+                    <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
                 </div>
                 <div class="bar--actions">
                     <button ng-click="files.search=!files.search">
@@ -77,9 +77,9 @@
             </div>
             <div ng-show="selectedFile">
                 <div class="bar-top">
-                    <a ng-click="noSelectedFile()" translate="back"></a>
+                    <a ng-click="noSelectedFile()"><i class="fa fa-angle-left"></i></a>
                     <h1 translate="files_image_information"></h1>
-                    <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;" translate="close"></a>
+                    <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
                 </div>
                 <div class="bar--actions">
                     <button  ng-click="deleteFile()" translate="delete"></button>
@@ -204,9 +204,9 @@
     <!-- Upload Content Area -->
     <div ng-show="files.upload">
         <div class="bar-top">
-            <a ng-click="files.upload=false;admin.active=false" translate="back"></a>
+            <a ng-click="files.upload=false;admin.active=false" ><i class="fa fa-angle-left"></i></a>
             <h1 translate="files_upload_files" ng-click="files.upload=true"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;" translate="close"></a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
         </div>
 
         <div class="ui-progress-bar ui-container transition" id="progress_bar"></div>

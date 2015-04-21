@@ -19,15 +19,13 @@ ul {
             a {
                 color: palette(blue, dark);
             }
-
-            i {
-                color: palette(blue, light);
-            }
         }
 
         a {
             color: palette(blue, dark);
             display: block;
+            font-size: .95rem;
+            font-weight: 200;
         }
 
         .active {
@@ -44,10 +42,6 @@ ul {
             margin-bottom: 0;
         }
 
-        i {
-            color: palette(blue, dark);
-            margin-right: .75rem;
-        }
         //NEED TO CHANGE
         small {
 
@@ -60,7 +54,7 @@ ul {
 }
 
 ul li ul {
-    background-color: palette(gray, light);
+    background-color: palette(gray, xlight);
     margin-left: -2.5rem;
     width: 130%;
 
@@ -69,7 +63,7 @@ ul li ul {
     }
 
     li {
-        padding-left: 4.3rem;
+        padding-left: 4rem;
 
         &:first-child {
             margin-top: 1rem;
@@ -79,11 +73,7 @@ ul li ul {
             background-color: palette(blue, light);
 
             a {
-                color: palette(gray, light);
-            }
-
-            i {
-                color: palette(gray, light);
+                color: palette(gray, xlight);
             }
         }
 

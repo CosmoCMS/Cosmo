@@ -1,8 +1,8 @@
 <div class="profile" ng-controller="profileCtrl">
     <div class="bar-top">
-        <a ng-click="admin.sidebar='core/html/sidebar.html';active=''">Back</a>
+        <a ng-click="admin.sidebar='core/html/sidebar.html';active=''"><i class="fa fa-angle-left"></i></a>
         <h1 translate="profile_header"></h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
     </div>
     <div class="bar--actions">
         <button  ng-click="updateProfile()" translate="save"></button>

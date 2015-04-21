@@ -1,288 +1,175 @@
-// styling the options-button within the modal
-%modal--options-button {
-    border: 1px solid palette(blue, dark);
+.file--listed {
+    background-color: palette(gray, light);
+    border-bottom: 1px solid palette(gray, mid--light);
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
 
     &:hover {
-        background-color: palette(gray, light);
-        color: palette(gray, light);
-    }
-}
-
-// similar to bar-top, but for the modal window
-.modal--bar-top {
-    background-color: palette(blue, dark);
-    box-sizing: border-box;
-    height: auto;
-    margin: 0 auto;
-    padding: 0 size(25);
-    position: fixed;
-    width: 100%;
-    z-index: z(minimal);
-
-    @media #{$bp-beta} {
-        width: 43.75rem;
+        cursor: move;
     }
 
-    @media #{$bp-gamma} {
-        width: 59.375rem;
-    }
-
-    h1, h2 {
-        color: palette(gray, white);
-    }
-
-    h1 {
-        margin-left: size(5);
-    }
-
-    h1.no-marg {
-        margin-left: 0;
-    }
-
-    i {
-        color: palette(gray, light);
-
-        &:hover {
-            color: palette(blue, light);
-        }
-    }
-
-    .btn-success {
-        border-color: palette(blue, mid);
-        color: white;
-
-        &:hover {
-            background-color: palette(blue, mid);
-            border-color: palette(blue, mid);
-        }
-    }
-
-    .no-marg {
-        margin-bottom: 0;
-    }
-}
-
-// search bar
-.modal--bar-top input.search-bar {
-    @include placeholder { color: palette(gray, light); }
-    background-color: transparent;
-    border: 0;
-    border-bottom: 1px solid palette(gray, light);
-    color: palette(gray, white);
-    margin-bottom: 0;
-    width: 100%;
-
-    &:focus {
-        color: palette(gray, xlight);
-    }
-
-    @media #{$bp-beta} {
-        width: 15rem;
-    }
-}
-
-// initial options to update the image / gallery ("add media", "upload")
-.modal--bar-top .options {
-    box-sizing: border-box;
-    display: block;
-    margin-left: 0;
-
-    @media #{$bp-beta} {
-        display: inline-block;
-        margin-left: 1.5rem;
-    }
-
-    button {
-        margin-bottom: size(10);
-    }
-
-    .btn-options {
-        color: palette(gray, light);
-        border-color: palette(blue, mid);
-    }
-
-    .success-button, .error-button {
-        border: 1px solid palette(blue, dark);
-    }
-
-    .upload {
-        display: block;
-        margin-top: 1.5rem;
-        width: 100%;
-
-        @media #{$bp-beta} {
-            display: inline-block;
-            margin: 0;
-            position: absolute;
-            right: 2rem;
-            top: .8rem;
-            width: auto;
-        }
-    }
-
-    .cos-select {
-        background-color: palette(blue, mid);
-        border-color: palette(blue, mid);
-        color: palette(gray, light);
-        display: inline-block;
-        height: 2.4rem;
-        margin-bottom: 0;
-        margin-top: 1.5rem;
-        width: 100%;
-
-        select {
-            height: 2.3rem;
+    @media #{$bp-alpha} {
+        div {
+            flex: 1;
         }
 
-        @media #{$bp-beta} {
-            margin-top: -.4rem;
-            width: 8rem;
+        .form-case {
+            flex: 1;
         }
-    }
-}
-
-// case to hold all the images in place within .ngdialog-content
-.media-wrapper {
-    background-color: palette(gray, light);
-    box-sizing: border-box;
-    position: absolute;
-    top: 14rem;
-    width: 100%;
-
-    @media #{$bp-beta} {
-        top: 7.813rem;
-    }
-
-    .success-button {
-        margin-bottom: 0;
-    }
-}
-
-// wrapper to hold elements and push down below the bar-top within .media-wrapper
-.gallery-media-wrapper {
-    @extend .media-wrapper;
-    top: 15rem;
-
-    @media #{$bp-beta} {
-        top: 4rem;
-    }
-
-    button.options-button {
-        margin-top: .65rem;
-        width: 100%;
-    }
-}
-
-// padding/margins for browse area
-.media-holder {
-    background-color: palette(gray, light);
-    box-sizing: border-box;
-    overflow: hidden;
-    padding: size(25);
-
-    .btn-options {
-        margin: 0;
-        width: 100%;
-    }
-}
-
-
-// styling to keep each image/video at correct proportions
-.media-tile {
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 0 size(25) * .5 size(25) * .5 0;
-    text-align: center;
-    vertical-align: top;
-    width: 100%;
-
-    @media #{$bp-beta} {
-        height: 13.55rem;
-        overflow: hidden;
-        width: 48.5%;
-
-        &:nth-child(even) {
-            margin-right: 0;
-        }
-
-        &:nth-child(odd) {
-            margin-right: 1.2rem;
-        }
-    }
-
-    @media #{$bp-gamma} {
-        height: 19rem;
-
-        &:nth-child(odd) {
-            margin-right: size(25);
-        }
-    }
-
-    i {
-        color: palette(blue, dark);
-        font-size: 10rem;
-        margin-top: size(15);
-
-        @media #{$bp-beta} {
-            font-size: 7.5rem;
-            margin-top: 0;
-        }
-    }
-
-    img {
-        height: auto;
-
-        @media #{$bp-beta} {
-            min-height: 13.55rem;
-            min-width: 100%;
-        }
-
-        @media #{$bp-gamma} {
-            min-height: 19rem;
-        }
-    }
-}
-
-// preview of files currently being used as a single image or in the gallery
-.img-gallery {
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 0 size(25) 2rem size(25);
-    vertical-align: top;
-    width: auto;
-
-    @media #{$bp-beta} {
-        width: 33%;
-    }
-
-    img {
-        @media #{$bp-beta} {
-            width: 100%;
-        }
-    }
-}
-
-// holder for info (css classes, links etc..) related to .img-gallery
-.img-gallery-info {
-    box-sizing: border-box;
-    margin-left: size(25);
-    overflow: hidden;
-    padding-right: 2rem;
-    width: auto;
-
-    @media #{$bp-beta} {
-        display: inline-block;
-        margin: 0 0 2rem 0;
-        vertical-align: top;
-        width: 53%;
-    }
-
-    @media #{$bp-gamma} {
-        overflow: hidden;
-        width: 61%;
     }
 
     p {
-        margin-bottom: 1.5rem;
+        overflow: hidden;
     }
+
+    .bar--actions {
+        background-color: transparent;
+        flex: 0 0 100%;
+        width: 100%;
+
+        button {
+            color: palette(blue, dark);
+
+            &:hover {
+                color: palette(gray, white);
+            }
+        }
+    }
+
+    .tag {
+        display: block;
+    }
+}
+
+.file--info {
+    flex-wrap: wrap;
+
+    button {
+        flex: 0 0 50%;
+
+        @media #{$bp-alpha} {
+            flex: 1;
+        }
+    }
+}
+
+.file-prev--thumb {
+    align-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+
+    .thumb {
+        flex: 0 0 49.8%;
+        height: 8.5rem;
+        overflow: hidden;
+
+        @media #{$bp-alpha--end} {
+            &:nth-child(2n){
+                margin-left: .07rem;
+            }
+
+            &:nth-child(n+3) {
+                margin-top: .07rem;
+            }
+        }
+
+        @media #{$bp-alpha} {
+            flex: 0 0 33.1%;
+            height: 12rem;
+            margin-left: .06rem;
+
+            &:nth-child(n+4) {
+                margin-top: .06rem;
+            }
+
+            &:nth-child(3n+1){
+                margin-left: 0;
+            }
+        }
+
+        @media #{$bp-beta} {
+            flex: 0 0 9.96rem;
+            height: 9.96rem;
+        }
+
+        img {
+            min-height: 12rem;
+            min-width: 100%;
+            width: auto;
+
+            @media #{$bp-beta} {
+                min-height: 9.96rem;
+            }
+        }
+    }
+}
+
+.file-img--prev {
+    margin-bottom: size(25);
+}
+
+.btn-file--prev {
+    float: left;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+
+    &:hover {
+        background-color: transparent;
+        color: palette(blue, light);
+    }
+}
+
+.btn-file--next {
+    @extend .btn-file--prev;
+    float: right;
+}
+
+input[type='file'] {
+    float: left;
+    height: 20rem;
+    margin: -19rem 0 0 0;
+    opacity: 0;
+    padding: 1.465rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.dropzone {
+    background-color: palette(gray, light);
+    border: 2px dashed palette(gray, mid--light);
+    color: palette(gray, dark);
+    height: 20rem;
+    margin-left: .1rem;
+    text-align: center;
+    transition: all .25s ease;
+
+    &:hover {
+        background-color: palette(blue, light);
+        border: 2px dashed palette(gray, light);
+        color: palette(blue, light);
+
+        h2 {
+            color: palette(gray, light);
+        }
+    }
+
+    &:active {
+      @extend :hover;
+    }
+
+    h2 {
+        color: palette(gray, mid--light);
+        line-height: 17;
+        transition: all .25s ease;
+    }
+}
+
+.ng-file-over {
+    border: 2px dashed palette(blue, light);
+    transition: all .25s ease;
 }
