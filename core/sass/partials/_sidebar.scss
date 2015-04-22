@@ -10,10 +10,10 @@
     position: fixed;
     top: 0;
     transition: left .3s ease;
-    width: 100%;
+    width: 20rem;
     z-index: z(sidebar);
 
-    @media #{$bp-beta} {
+    @media #{$bp-alpha} {
         left: -34rem;
         width: 30rem;
     }
@@ -61,22 +61,22 @@
 // bar to be used at the top of each area of the sidebar
 .bar-top {
     align-items: center;
-    background-color: palette(blue, dark);
+    background-color: palette(blue, mid);
     display: flex;
     height: 5rem;
     justify-content: center;
     overflow: hidden;
     padding: 0 1.5rem;
-    width: 100%;
+    width: 17rem;
 
-    @media #{$bp-beta} {
+    @media #{$bp-alpha} {
         width: 27rem;
     }
 
     a {
         color: palette(gray, light);
         font-size: 1.75rem;
-        flex: 1;
+        flex: .15;
         text-align: left;
         text-transform: uppercase;
 
@@ -128,11 +128,11 @@
 
     button {
         @extend %button;
-        background-color: palette(blue, light);
+        background-color: palette(blue, dark);
         color: palette(gray, white);
 
         &:hover {
-            background-color: palette(blue, dark);
+            background-color: palette(blue, light);
             color: palette(gray, white);
         }
     }
@@ -142,6 +142,16 @@
 .form-case--border {
     border-bottom: 1px solid palette(gray, mid--light);
     padding: size(25);
+
+    button {
+        background-color: palette(blue, dark);
+        color: palette(gray, white);
+
+        &:hover {
+            background-color: palette(blue, light);
+            color: palette(gray, white);
+        }
+    }
 }
 
 .new-message--cosmo {
@@ -157,7 +167,7 @@
         margin: 0;
 
         a {
-            color: palette(blue, dark);
+            color: palette(blue, mid);
             font-weight: 400;
 
             &:hover {
@@ -176,7 +186,7 @@
 }
 
 .bar--actions {
-    background-color: darken(palette(blue, dark), 10%);
+    background-color: palette(blue, dark);
     color: palette(gray, white);
     display: flex;
     text-align: center;
@@ -198,16 +208,26 @@
 
 // alert when a newer version of the page has been saved
 .new-version {
-    background-color: palette(blue, dark);
+    background-color: palette(blue, mid);
     position: fixed;
-    width: 100%;
+    width: 17rem;
     z-index: z(sidebar);
 
-    @media #{$bp-beta} {
+    @media #{$bp-alpha} {
         width: 27rem;
     }
 
-    p, button {
-        color: palette(gray, light);
+    p {
+        color: palette(gray, white);
+    }
+
+    button {
+        background-color: transparent;
+        margin: 0;
+        padding: 1rem 1.25rem;
+
+        &:hover {
+            background-color: palette(blue, light);
+        }
     }
 }

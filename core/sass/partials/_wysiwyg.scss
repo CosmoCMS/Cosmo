@@ -50,7 +50,7 @@
     z-index: z(hamburger);
 
     td,tr,hr {
-        border: 1px solid palette(blue, dark);
+        border: 1px solid palette(blue, mid);
     }
 
     i {
@@ -290,7 +290,7 @@
 }
 
 pre {
-    background-color: darken(palette(blue, dark), 15%);
+    background-color: darken(palette(blue, mid), 15%);
     border: 1px solid palette(gray, mid);
     color: palette(gray, light);
     font-family: Consolas, Monaco, Lucida Console, Courier New;

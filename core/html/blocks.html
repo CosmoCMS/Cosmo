@@ -33,8 +33,7 @@
         <div>
             <ul ng-repeat='block in blocks | filter:search'>
                 <li>
-                    <a>
-                        <h6 ng-click='selectBlock(block)'>{{block.name || 'N/A'}}</h6>
+                    <a ng-click='selectBlock(block)'>{{block.name || 'N/A'}}
                     </a>
                     <div class="cos-select--half-width">
                         <select value="section" ng-model="block.area" ng-change="updateBlock(block)">
@@ -267,9 +266,9 @@
 
     <div ng-show="block.panel==='edit'">
         <div class="bar-top">
-                <a ng-click="block.panel='manage';confirm=false">Back</a>
+                <a ng-click="block.panel='manage';confirm=false"><i class="fa fa-angle-left"></i></a>
             <h1 translate="editing">: {{block.name}}</h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
         </div>
 
         <div class="bar--actions">

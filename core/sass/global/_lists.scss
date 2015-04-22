@@ -17,19 +17,40 @@ ul {
             background-color: palette(gray, light);
 
             a {
-                color: palette(blue, dark);
+                color: palette(blue, mid);
+            }
+
+            input, .cos-select {
+                background-color: palette(gray, white);
             }
         }
 
         a {
-            color: palette(blue, dark);
+            color: palette(blue, mid);
             display: block;
             font-size: .95rem;
             font-weight: 200;
         }
 
-        .active {
+        button {
             background-color: palette(blue, dark);
+            color: palette(gray, white);
+            margin: 0;
+            padding: 1rem 1.25rem;
+
+            &:hover {
+                background-color: palette(blue, light);
+                color: palette(gray, white);
+            }
+        }
+
+        p {
+            display: inline-block;
+            margin-bottom: 0;
+        }
+
+        .active {
+            background-color: palette(blue, mid);
             color: palette(blue, light);
         }
 
@@ -37,10 +58,6 @@ ul {
             margin-bottom: 0;
         }
 
-        p {
-            display: inline-block;
-            margin-bottom: 0;
-        }
 
         //NEED TO CHANGE
         small {

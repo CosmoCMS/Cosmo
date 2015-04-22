@@ -26,12 +26,10 @@ html, body, [ng-include="template"] {
     @import "global/buttons";
     @import "global/radio-checkbox"; // styling for checkboxes and radio select styles
     @import "global/forms"; // actual form areas
-    @import "global/global"; // NEED TO CHANGE
 
     @import "partials/sidebar";
     @import "partials/settings";
     @import "partials/tags";
-    @import "partials/users";
     @import "partials/roles";
     @import "partials/modules";
     @import "partials/revisions";

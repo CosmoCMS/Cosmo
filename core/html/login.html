@@ -1,55 +1,42 @@
 <div class="cosmo-default" ng-controller="loginRegistrationCtrl">
-    <div class="login" ng-show="panel=='register'">
-        <div class="modal--bar-top">
+    <div class="sidebar adminSidebarSlideOut" ng-show="panel=='register'">
+        <div class="bar-top">
             <i class="fa fa-chevron-left" ng-click="panel='login'"></i>
             <h1 translate="login_register"></h1>
         </div>
+        <div class="bar--actions">
+            <button type="button"  ng-click="register()" translate="login_create_account"></button>
+        </div>
         <div class="form-case">
-            <div class="half-width">
-                <label translate="username"></label>
-                <input id="username" type="text" ng-model="register.username" class="ng-valid ng-dirty">
-            </div>
+            <label translate="username"></label>
+            <input id="username" type="text" ng-model="register.username" class="ng-valid ng-dirty">
 
-            <div class="half-width">
-                <label translate="login_email"></label>
-                <input id="email" type="email" ng-model="register.email" class="ng-valid ng-dirty">
-            </div>
+            <label translate="login_email"></label>
+            <input id="email" type="email" ng-model="register.email" class="ng-valid ng-dirty">
 
-            <div class="half-width">
-                <label translate="password"></label>
-                <input id="password" type="password" ng-model="register.password" class="ng-valid ng-dirty">
-            </div>
+            <label translate="password"></label>
+            <input id="password" type="password" ng-model="register.password" class="ng-valid ng-dirty">
 
-            <div class="half-width">
-                <label translate="confirm_password"></label>
-                <input id="confirm your password" type="password" ng-model="register.confirmPassword" class="ng-valid ng-dirty">
-            </div>
-
-            <div>
-                <button type="button"  ng-click="register()" translate="login_create_account"></button>
-            </div>
+            <label translate="confirm_password"></label>
+            <input id="confirm your password" type="password" ng-model="register.confirmPassword" class="ng-valid ng-dirty">
         </div>
     </div>
-    <div class="login" ng-show="panel=='login'">
-        <div class="modal--bar-top">
-            <h1 class="no-marg" translate="login_sign"></h1><h2 translate="login_in"></h2>
+    <div class="sidebar adminSidebarSlideOut" ng-show="panel=='login'">
+        <div class="bar-top">
+            <h1 class="no-marg" translate="login_sign"></h1>
+        </div>
+        <div class="bar--actions">
+            <button type="button"  ng-click="panel='register'" translate="register"></button>
+            <button type="button"  ng-click="login()" translate="login"></button>
         </div>
         <div class="form-case">
-            <div class="half-width">
-                <label translate="username"></label>
-                <input id="username" type="text" ng-model="login.username" class="ng-valid ng-dirty">
-            </div>
+            <label translate="username"></label>
+            <input id="username" type="text" ng-model="login.username" class="ng-valid ng-dirty">
 
-            <div class="half-width">
-                <label translate="password"></label>
-                <input id="password" type="password" ng-model="login.password" class="ng-valid ng-dirty">
-            </div>
+            <label translate="password"></label>
+            <input id="password" type="password" ng-model="login.password" class="ng-valid ng-dirty">
 
-            <div>
-                <button type="button"  ng-click="panel='register'" translate="register"></button>
-                <button type="button"  ng-click="login()" translate="login"></button>
-            </div>
-            <small><a ng-click="resetPassword()" translate="login_forgot_password"></a></small>
+            <a ng-click="resetPassword()" translate="login_forgot_password"></a>
         </div>
     </div>
 </div>
