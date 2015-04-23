@@ -4,14 +4,14 @@
     cursor: pointer;
     display: inline-block;
     font-family: $font-alpha;
-    font-size: .9rem;
-    font-weight: 400;
+    font-size: .7rem;
+    font-weight: 500;
     letter-spacing: .03rem;
     margin: 0 size(25) 0 0;
     outline: none;
     padding: 1rem 2rem;
     text-align: center;
-    text-transform: capitalize;
+    text-transform: uppercase;
 
     &:hover {
         background-color: palette(blue, light);

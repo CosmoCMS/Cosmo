@@ -14,7 +14,7 @@
     z-index: z(sidebar);
 
     @media #{$bp-alpha} {
-        left: -34rem;
+        left: -50rem;
         width: 30rem;
     }
 }
@@ -51,11 +51,6 @@
             width: 2.5rem;
         }
     }
-}
-
-//NEED TO CHANGE *
-.hamburgeractive .hamburger {
-    left: -28.5rem;
 }
 
 // bar to be used at the top of each area of the sidebar
@@ -140,18 +135,8 @@
 
 // similar to .form-case, but with a border at the bottom
 .form-case--border {
+    @extend .form-case;
     border-bottom: 1px solid palette(gray, mid--light);
-    padding: size(25);
-
-    button {
-        background-color: palette(blue, dark);
-        color: palette(gray, white);
-
-        &:hover {
-            background-color: palette(blue, light);
-            color: palette(gray, white);
-        }
-    }
 }
 
 .new-message--cosmo {

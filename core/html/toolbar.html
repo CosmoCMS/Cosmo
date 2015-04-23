@@ -42,7 +42,7 @@
         </li>
     </ul>
 
-    <div class="type-dropdown" ng-show="format" ng-mouseenter="format=true" ng-mouseleave="format=false">
+    <div class="wysiwyg-dropdown" ng-show="format" ng-mouseenter="format=true" ng-mouseleave="format=false">
         <button class="wysiwyg-p" ng-click="action('p')" translate="paragraph"></button>
         <button class="wysiwyg-q" ng-click="action('blockquote')" translate="toolbar_block_quote"></button>
         <button class="wysiwyg-c" ng-click="action('code')" translate="toolbar_code"></button>
@@ -53,25 +53,25 @@
         <button class="wysiwyg-h5" ng-click="action('h5')" translate>header 5</button>
         <button class="wysiwyg-h6" ng-click="action('h6')" translate>header 6</button>
     </div>
-    <div class="format-dropdown" ng-show="style" ng-mouseenter="style=true" ng-mouseleave="style=false">
+    <div class="wysiwyg-dropdown" ng-show="style" ng-mouseenter="style=true" ng-mouseleave="style=false">
         <button ng-click="action('bold')" translate>toolbar_bold</button>
         <button ng-click="action('italic')" translate>toolbar_italicize</button>
         <button ng-click="action('strikethrough')" translate>toolbar_strikethrough</button>
         <button ng-click="action('underline')" translate>toolbar_underline</button>
         <button class="wysiwyg-u" ng-click="action('unformat')" translate>toolbar_unformat</button>
     </div>
-    <div class="link-dropdown" ng-show="link" ng-mouseenter="link=true" ng-mouseleave="link=false">
+    <div class="wysiwyg-dropdown" ng-show="link" ng-mouseenter="link=true" ng-mouseleave="link=false">
         <button ng-click="action('link')" translate>toolbar_add_link</button>
         <button ng-click="action('unlink')" translate>toolbar_remove_link</button>
         <button ng-click="action('externalLink')" translate>toolbar_external_link</button>
     </div>
-    <div class="align-dropdown" ng-show="align" ng-mouseenter="align=true" ng-mouseleave="align=false">
+    <div class="wysiwyg-dropdown" ng-show="align" ng-mouseenter="align=true" ng-mouseleave="align=false">
         <button ng-click="action('left')" translate>toolbar_align_left</button>
         <button ng-click="action('center')" translate>toolbar_align_center</button>
         <button ng-click="action('right')" translate>toolbar_align_right</button>
         <button ng-click="action('justify')" translate>toolbar_justify_text</button>
     </div>
-    <div class="table-dropdown" ng-show="table" ng-mouseenter="table=true" ng-mouseleave="table=false">
+    <div class="wysiwyg-dropdown" ng-show="table" ng-mouseenter="table=true" ng-mouseleave="table=false">
         <button ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false" translate>toolbar_insert_table</button>
         <div ng-show="insertTable" ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false" ng-click="insertTable=false" class="table-dropdown--insert">
             <button ng-repeat="cell in editor.tableRows" ng-class="{'cell-select--focus': selectedCell(cell.row, cell.col)}" class="cell-select" ng-mouseover="cellMouseover(cell.row, cell.col)" ng-click="createTable(cell.row, cell.col)"></button>
@@ -88,14 +88,14 @@
         <button class="divide" ng-click="action('deleteCol')" translate>toolbar_column</button>
         <button ng-click="action('deleteTable')" translate>toolbar_table</button>
     </div>
-    <div class="media-dropdown" ng-show="media" ng-mouseenter="media=true" ng-mouseleave="media=false">
+    <div class="wysiwyg-dropdown" ng-show="media" ng-mouseenter="media=true" ng-mouseleave="media=false">
         <button ng-click="action('photo')" translate>toolbar_photo</button>
         <button ng-click="action('video')" translate>toolbar_upload_video</button>
         <button ng-click="action('videourl')" translate>toolbar_external_video</button>
         <button ng-click="action('audio')" translate>toolbar_audio</button>
         <button ng-click="action('gallery')" translate>toolbar_gallery</button>
     </div>
-    <div class="code-dropdown" ng-show="code" ng-mouseenter="code=true" ng-mouseleave="code=false">
+    <div class="wysiwyg-dropdown" ng-show="code" ng-mouseenter="code=true" ng-mouseleave="code=false">
         <button ng-click="action('toggle')" translate>toolbar_code_view</button>
         <button ng-click="action('html')" translate>toolbar_insert_html</button>
         <button ng-click="action('div')" translate>toolbar_div</button>
@@ -104,7 +104,7 @@
             <button ng-repeat="directive in editor.directives track by $index" ng-click="action('premade', '{{directive.directive}}', '{{directive.description}}')">{{directive.name}}</button>
         </div>
     </div>
-    <div class="list-dropdown" ng-show="list" ng-mouseenter="list=true" ng-mouseleave="list=false">
+    <div class="wysiwyg-dropdown" ng-show="list" ng-mouseenter="list=true" ng-mouseleave="list=false">
         <button ng-click="action('ol')" translate>toolbar_ordered_list</button>
         <button ng-click="action('ul')" translate>toolbar_unordered_list</button>
         <button ng-click="action('hr')" translate>toolbar_line_break</button>

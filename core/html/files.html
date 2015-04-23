@@ -86,8 +86,6 @@
                     <button  ng-click="selectFile()" translate="files_choose_file"></button>
                 </div>
                 <div class="form-case">
-                    <button class="btn-file--prev" ng-click="prev()" ng-show="!search&&!page.media.type&&currentIndex>0" translate="files_previous"></button>
-                    <button class="btn-file--next" ng-click="next()" ng-show="!search&&!page.media.type&&nextExists()" translate="files_next"></button>
                     <img class="file-img--prev" ng-if="files.type==='image'" ng-src="{{selectedFile}}">
                     <iframe ng-if="files.type==='youtube'" width="100%" height="264" ng-src="{{selectedFile}}" frameborder="0" allowfullscreen></iframe>
                     <iframe ng-if="files.type==='vimeo'" ng-src="{{selectedFile}}" width="100%" height="188" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

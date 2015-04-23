@@ -12,8 +12,7 @@
 @import "partials/wysiwyg"; // wysiwyg editor
 
 html, body, [ng-include="template"] {
-    height: 100%;
-
+    
     [ng-href] {
         cursor: pointer;
     }
