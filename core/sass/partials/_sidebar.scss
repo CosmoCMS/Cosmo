@@ -1,6 +1,7 @@
 // sidebar for all of cosmo editing outside of the live editing done on page
 .sidebar {
     background-color: palette(gray, white);
+    box-shadow: 1px 0 20px 0 palette(blue, dark--two-third);
     bottom: 0;
     height: 100%;
     left: -100%;
@@ -71,8 +72,6 @@
     a {
         color: palette(gray, light);
         font-size: 1.75rem;
-        flex: .15;
-        text-align: left;
         text-transform: uppercase;
 
         &:hover {
@@ -90,47 +89,9 @@
     }
 }
 
-// username and logout styling for prfl-qk-view
-.prfl-info {
-    flex: 4;
-    margin-left: size(20);
-    padding-top: .8rem;
-
-    p {
-        color: palette(gray, white);
-
-        &:first-child {
-            margin-bottom: 0;
-        }
-
-        &:last-child {
-            font-size: .8rem;
-        }
-    }
-}
-
-.prfl-img {
-    background: center center no-repeat;
-    background-size: cover;
-    flex: 1.5;
-    margin-left: -2rem;
-    width: 6rem;
-}
-
 // case to adjust sides within the sidebar
 .form-case {
     padding: size(25);
-
-    button {
-        @extend %button;
-        background-color: palette(blue, dark);
-        color: palette(gray, white);
-
-        &:hover {
-            background-color: palette(blue, light);
-            color: palette(gray, white);
-        }
-    }
 }
 
 // similar to .form-case, but with a border at the bottom
@@ -177,10 +138,8 @@
     text-align: center;
 
     button {
-        color: palette(gray, light);
         flex: 1;
-        margin-right: 0;
-        padding: 1rem;
+        margin: 0;
     }
 
     p {

@@ -1,9 +1,5 @@
 <div class="bar-top">
-    <div class="prfl-img" style="background-image: url({{admin.photo | imageSize:320}})" ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"></div>
-    <div class="prfl-info">
-        <p>Welcome,</p>
-        <p ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"> {{admin.username}}</p>
-    </div>
+    <h1>Welcome, {{admin.username}}</h1>
     <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
 </div>
 <div class="bar--actions">

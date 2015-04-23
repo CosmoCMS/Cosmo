@@ -28,8 +28,10 @@ ul {
         a {
             color: palette(blue, mid);
             display: block;
-            font-size: .95rem;
-            font-weight: 200;
+            font-size: .8rem;
+            font-weight: 500;
+            letter-spacing: .03rem;
+            text-transform: uppercase;
         }
 
         button {
@@ -96,6 +98,12 @@ ul li ul {
 
         &:last-child {
           margin-bottom: -1rem;
+        }
+
+        a {
+            font-size: .9rem;
+            font-weight: 200;
+            text-transform: capitalize;
         }
     }
 }
