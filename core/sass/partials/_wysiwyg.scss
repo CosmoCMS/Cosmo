@@ -1,132 +1,24 @@
 // for dropdowns used in the cosmo WYSIWYG editor
-%wysiwyg-dropdown {
-    background-color: palette(gray, xlight);
-    border-radius: 5px;
-    color: palette(blue, dark);
-    display: block;
-    height: auto;
-    position: relative;
-    width: 10rem;
 
+.wysiwyg-dropdown {
     button {
-        background-color: transparent;
-        border: 0;
-        border-radius: 5px;
+        background-color: palette(gray, white);
+        color: palette(blue, dark);
         display: block;
         font-family: $font-alpha;
         outline: none;
-        padding: .625rem;
+        padding: .5rem;
         text-align: left;
         width: 100%;
 
         &:hover {
             background-color: palette(gray, light);
-
-            i {
-                background-color: transparent;
-                color: palette(blue, light);
-                vertical-align: middle;
-            }
-        }
-
-        i {
-            margin-right: .59rem;
-            margin-top: -.2rem;
-            vertical-align: middle;
-        }
-    }
-}
-
-// full length bar for wysiwyg
-.cosmo-toolbar-large {
-    background-color: palette(gray, xlight);
-    border: 1px solid palette(gray, light);
-    border-radius: 5px;
-    color: palette(gray, light);
-    cursor: pointer;
-    font-size: .787rem;
-    height: 2.094rem;
-    position: absolute;
-    z-index: z(hamburger);
-
-    td,tr,hr {
-        border: 1px solid palette(blue, dark);
-    }
-
-    i {
-        color: palette(blue, dark);
-        display: inline-block;
-        font-size: .813rem;
-        vertical-align: middle;
-
-        &:hover {
-            color: palette(blue, light);
         }
     }
 
-    ul {
-        display: block;
-        margin: 0;
-        padding: 0;
-
-        li {
-            display: inline-block;
-            padding: 0;
-            border: 0;
-
-            &:after, &:before {
-                display: none;
-            }
-
-            &:hover {
-                background-color: transparent;
-            }
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-            button {
-                background-color: transparent;
-                border: 0;
-                display: inline-block;
-                height: 2.094rem;
-                margin: 0;
-                outline: none;
-                padding-right: .366rem;
-                text-align: center;
-
-                &:hover {
-                    background-color: palette(gray, light);
-
-                    i {
-                        color: palette(blue, light);
-                    }
-                }
-            }
-        }
-
-        .table, .code {
-            display: none;
-
-            @media #{$bp-gamma} {
-                display: inline-block;
-            }
-        }
+    .divide {
+        border-bottom: 1px solid palette(gray, mid--light);
     }
-}
-
-.type-dropdown {
-    @extend %wysiwyg-dropdown;
-    left: 0;
-
-    button {
-
-        &:hover {
-            color: palette(blue, light);
-        }
-    }
-
 
     .wysiwyg-u {
         font-family: monospace;
@@ -171,126 +63,121 @@
     }
 }
 
-.format-dropdown {
-    @extend %wysiwyg-dropdown;
-    left: .4rem;
-}
+// full length bar for wysiwyg
+.cosmo-toolbar-large {
+    background-color: palette(gray, xlight);
+    border: 0;
+    color: palette(gray, light);
+    cursor: pointer;
+    font-size: .787rem;
+    height: 2.094rem;
+    position: absolute;
+    text-align: center;
+    z-index: z(hamburger);
 
-.link-dropdown {
-    @extend %wysiwyg-dropdown;
-    left: 2.3rem;
-}
+    td,tr,hr {
+        border: 1px solid palette(blue, mid);
+    }
 
-.list-dropdown {
-    @extend %wysiwyg-dropdown;
-    left: 4.3rem;
-}
+    i {
+        color: palette(blue, dark);
+        flex: 1;
+        font-size: .813rem;
+        padding: .25rem .5rem;
+        vertical-align: middle;
 
-.align-dropdown {
-    @extend %wysiwyg-dropdown;
-    left: 6.2rem;
-}
+        &:hover {
+            color: palette(blue, light);
+        }
+    }
 
+    ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
-.table-dropdown {
-    @extend %wysiwyg-dropdown;
-    display: none;
+        li {
+            flex: 1;
+            padding: 0;
+            border: 0;
 
-    @media #{$bp-gamma} {
-        display: block;
-        left: 8.3rem;
+            &:after, &:before {
+                display: none;
+            }
 
-        .divide {
-            border-bottom: 1px solid palette(gray, mid--light);
-            margin-bottom: .39075rem;
-            padding-bottom: .7815rem;
+            &:hover {
+                background-color: transparent;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            button {
+                background-color: transparent;
+                display: inline-block;
+                height: 2.094rem;
+                margin: 0;
+                outline: none;
+                padding: 0;
+                text-align: center;
+
+                &:hover {
+                    background-color: palette(gray, light);
+
+                    i {
+                        color: palette(blue, light);
+                    }
+                }
+            }
+        }
+
+        .table, .code {
+            display: none;
+
+            @media #{$bp-alpha} {
+                display: inline-block;
+            }
         }
     }
 }
 
 .table-dropdown--insert {
-    @extend %wysiwyg-dropdown;
-    display: none;
+    padding: .469rem .156rem .156rem .469rem;
+    width: 10.75rem;
 
-    @media #{$bp-gamma} {
-        display: block;
-        left: -11.3rem;
-        margin-top: -2.2rem;
-        padding: .469rem .156rem .156rem .469rem;
-        position: absolute;
-        width: 10.75rem;
+    p {
+        margin: 0;
+    }
 
-        p {
-            margin: 0;
-        }
+    .cell-select {
+        border: 1px solid palette(gray, mid--light);
+        border-radius: 0;
+        display: inline-block;
+        height: .9rem;
+        margin: 0 .156rem .156rem 0;
+        padding: 0;
+        width: .9rem;
 
-        .cell-select {
-            border: 1px solid palette(gray, mid--light);
-            border-radius: 0;
-            display: inline-block;
-            height: .9rem;
-            margin: 0 .156rem .156rem 0;
-            padding: 0;
-            width: .9rem;
-
-            &:hover {
-                background-color: palette(blue, light);
-            }
-
-            &:nth-child(10n) {
-                margin-right: 0;
-            }
-        }
-
-        .cell-select--focus {
+        &:hover {
             background-color: palette(blue, light);
-            border: 1px solid palette(gray, mid--light);
-            display: inline-block;
+        }
+
+        &:nth-child(10n) {
+            margin-right: 0;
         }
     }
-}
 
-.media-dropdown {
-    @extend %wysiwyg-dropdown;
-    left: 8.3rem;
-
-    @media #{$bp-gamma} {
-        left: 10.2rem;
-    }
-}
-
-.code-dropdown {
-    @extend %wysiwyg-dropdown;
-    display: none;
-
-    @media #{$bp-gamma} {
-        display: block;
-        left: 12.1rem;
-
-        .directive-dropdown {
-            background-color: palette(gray, light);
-            border-radius: 0 0 5px 5px;
-            border-top: 1px solid palette(gray, mid--light);
-
-            button {
-                padding-left: 15px;
-
-                &:hover {
-                    background-color: palette(blue, light);
-                    border-radius: 0;
-                    color: palette(gray, light);
-                }
-
-                &:last-child:hover {
-                    border-radius: 0 0 5px 5px;
-                }
-            }
-        }
+    .cell-select--focus {
+        background-color: palette(blue, light);
+        border: 1px solid palette(gray, mid--light);
+        display: inline-block;
     }
 }
 
 pre {
-    background-color: darken(palette(blue, dark), 15%);
+    background-color: darken(palette(blue, mid), 15%);
     border: 1px solid palette(gray, mid);
     color: palette(gray, light);
     font-family: Consolas, Monaco, Lucida Console, Courier New;

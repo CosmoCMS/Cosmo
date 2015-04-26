@@ -4,8 +4,8 @@
 
 .angular-ui-tree-handle {
     background: palette(gray, light);
-    border: 1px solid palette(gray, mid--light);
-    color: palette(blue, dark);
+    border: 0;
+    color: palette(gray, dark);
     padding: size(10);
 
     &:hover {
@@ -43,25 +43,11 @@ ol.angular-ui-tree-nodes {
     float: right;
     margin-top: .125rem;
 
-    i {
-        color: palette(gray, mid);
-        margin-right: size(5);
-        vertical-align: middle;
+    a {
+        margin-right: size(20);
 
         &:last-child {
             margin-right: 0;
         }
-    }
-
-    .fa-pencil-square-o:hover {
-        color: palette(blue, mid);
-    }
-
-    .fa-plus:hover {
-        color: palette(alert, success);
-    }
-
-    .fa-times:hover {
-        color: palette(alert, error);
     }
 }

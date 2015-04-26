@@ -1,9 +1,9 @@
-<div class="users" ng-controller="usersCtrl">
+<div ng-controller="usersCtrl">
     <div ng-show="!selectedUser">
         <div class="bar-top">
-            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''">Back</ai>
+            <a ng-click="admin.sidebar='core/html/sidebar.html';active=''"><i class="fa fa-angle-left"></i></a>
             <h1 translate="users"></h1>
-            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
+            <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
         </div>
 
         <div class="bar--actions">

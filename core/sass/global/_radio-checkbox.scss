@@ -1,68 +1,41 @@
 %radio-check {
-    background-color: palette(gray, light);
-    border-color: transparent;
-    color: palette(blue, dark);
-    display: inline-block;
-    margin-right: 0;
+    background-color: transparent;
+    border-bottom: size(5) solid transparent;
+    color: palette(blue, mid);
+    display: block;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .01rem;
+    margin-bottom: 1rem;
+    padding: 0 size(10) size(10) size(10);
+    text-transform: uppercase;
 
-    &:before {
-        font-family: $font-beta;
-        margin-right: size(5);
+    @media #{$bp-alpha} {
+        display: inline-block;
     }
 
     &:hover {
-        background-color: palette(gray, mid--light);
-        color: palette(blue, dark);
+        background-color: transparent;
+        border-bottom: size(5) solid palette(gray, light);
+
+        @media #{$bp-beta} {
+            margin-bottom: .05rem;
+        }
     }
 }
 
 // hide the round disc and generic check button, we will use just the label as the radio button
 input[type=radio], input[type=checkbox] {
     display:none;
-    margin: size(10);
 }
 
-
-// change the look of labels that are now covering the input button
-input[type=radio] + label {
-    @extend %button;
+// change the look of labels that are now covering the input / checkbox button
+input[type=radio] + label, input[type=checkbox] + label {
     @extend %radio-check;
-    padding: .7rem;
-    margin-bottom: size(5);
-
-    &:before {
-        content: "\f10c";
-    }
-}
-
-// change the look of checkbox labels
-input[type=checkbox] + label {
-    @extend %button;
-    @extend %radio-check;
-    margin-bottom: 1.5rem;
-    padding: size(5) + .2rem;
-
-    &:before {
-        content: "\f058";
-    }
 }
 
 // change background color for label to make it look selected
-input[type=radio]:checked + label, input[type=radio].active + label {
-    background-color: palette(blue, light);
-    background-image: none;
-    color: palette(gray, light);
-    display: inline-block;
-
-    &:before {
-        content: "\f111";
-    }
-}
-
-// change background color for checkbox label to make it look selected
-input[type=checkbox]:checked + label {
-    background-color: palette(blue, light);
-    background-image: none;
-    color: palette(gray, light);
-    display: inline-block;
+input[type=radio]:checked + label, input[type=radio].active + label, input[type=checkbox]:checked + label {
+    @extend %radio-check;
+    border-bottom: size(5) solid palette(blue, light);
 }

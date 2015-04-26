@@ -1,44 +1,66 @@
+@mixin placeholder {
+
+    &::-webkit-input-placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder { // Firefox 18-
+        @content;
+    }
+
+    &::-moz-placeholder {  // Firefox 19+
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
 input {
-	background-color: palette(gray, xlight);
-	border: 1px solid palette(gray, mid--light);
+	@include placeholder {
+		color: palette(gray, mid);
+	}
+
+	background-color: palette(gray, light);
+	border: 0;
 	box-sizing: border-box;
-	color: palette(blue, dark);
+	color: palette(gray, mid);
 	display: inline-block;
 	font-family: $font-alpha;
+    font-size: .9rem;
 	height: 3rem;
 	margin-bottom: 1.5rem;
 	outline: none;
 	padding: .56rem;
-	transition: background-color .15s ease-in;
+	transition: .15s ease-in;
 	width: 100%;
 
 	&:focus {
-		background-color: palette(gray, white);
-	}
+        @include placeholder {
+            opacity: 0;
+        }
 
-	&:hover {
-		cursor: text;
-	}
-
-	span {
-		color: palette(blue, dark);
+		background-color: palette(gray, xlight);
+		color: palette(gray, dark);
 	}
 }
 
 textarea {
 	@extend input;
+    font-size: .9rem;
+	line-height: 1.5;
 	min-height: 9rem;
 	resize: vertical;
 }
 
-label {
-	color: palette(blue, dark);
-	display: inline-block;
+ label {
+	color: palette(gray, mid);
+	display: block;
 	font-family: $font-alpha;
 	font-size: .85rem;
-	font-weight: 600;
+	font-weight: 200;
 	margin-top: 0;
-	text-transform: uppercase;
 }
 
 // number count for things like titles, descriptions etc...
@@ -52,12 +74,13 @@ label {
 // modified select style dropdown wrap standard <select> with <div class="cos-select"> to add the style
 .cos-select {
 	background: url(../img/arrows.svg) no-repeat transparent right;
+	background-color: palette(gray, light);
 	background-size: 2.25rem size(15);
-	border: 1px solid palette(gray, mid--light);
 	box-sizing: border-box;
-	color: palette(blue, dark);
+	color: palette(gray, dark);
 	cursor: pointer;
 	font-family: $font-alpha;
+	font-weight: 200;
 	height: 3rem;
 	margin-bottom: 1.5rem;
 	outline: none;

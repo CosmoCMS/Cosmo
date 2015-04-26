@@ -1,22 +1,21 @@
 %button {
-    background-color: transparent;
-    border: 1px solid palette(gray, mid--light);
-    border-radius: size(5);
-    color: palette(blue, dark);
+    background-color: palette(blue, dark);
+    color: palette(gray, white);
     cursor: pointer;
     display: inline-block;
     font-family: $font-alpha;
-    font-size: .813rem;
-    font-weight: 400;
-    margin: 0 size(5) size(10) 0;
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .03rem;
+    margin: 0 size(25) 0 0;
     outline: none;
-    padding: size(10) size(15);
+    padding: 1rem 2rem;
     text-align: center;
-    text-transform: capitalize;
-    transition: all .15s ease-in-out;
+    text-transform: uppercase;
 
     &:hover {
-        color: palette(gray, light);
+        background-color: palette(blue, light);
+        color: palette(gray, white);
     }
 
     &:last-child {
@@ -24,66 +23,6 @@
     }
 }
 
-// save/success style button
-.btn-success {
+button {
     @extend %button;
-
-    &:hover {
-        background-color: palette(alert, success);
-    }
-}
-
-// error button, generally used for "delete"
-.btn-error {
-    @extend %button;
-
-    &:hover {
-        background-color: palette(alert, error);
-    }
-
-}
-
-// general button used
-.btn-options {
-    @extend %button;
-
-    &:hover {
-        background-color: palette(blue, mid);
-        color: palette(gray, light);
-    }
-}
-
-// holder for button needed to add a new menu/block etc...
-.new {
-    background-color: transparent;
-    opacity: 1;
-    padding: 0;
-    text-align: left;
-    text-transform: lowercase;
-    width: auto;
-    z-index: 100000;
-
-    &:focus {
-        outline: none;
-    }
-
-    &:hover {
-
-        i {
-            color: palette(blue, light);
-        }
-    }
-
-    i {
-        color: palette(blue, dark);
-        margin-right: size(5);
-        transition: color .15s ease-in;
-        vertical-align: middle;
-    }
-
-    p {
-        display: inline-block;
-        margin-bottom: 0;
-    }
-
 }

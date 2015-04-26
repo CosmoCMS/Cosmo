@@ -6,9 +6,9 @@
         <button class="btn-success" type="button" ng-click='localVersion()' translate="use"></button>
     </div>
     <div class="bar-top">
-        <a ng-click="admin.sidebar='core/html/sidebar.html';active=''" translate="back"></a>
+        <a ng-click="admin.sidebar='core/html/sidebar.html';active=''"><i class="fa fa-angle-left"></i></a>
         <h1 class="title" translate="page_details"></h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;" translate="close"></a>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;" ><i class="fa fa-times"></i></a>
     </div>
     <div class="bar--actions">
         <button type="button" class="btn-error" ng-click="page.confirm=true" translate="delete" ng-show="!page.confirm"></button>

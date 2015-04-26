@@ -17,26 +17,31 @@ ul {
             background-color: palette(gray, light);
 
             a {
-                color: palette(blue, dark);
+                color: palette(blue, mid);
             }
 
-            i {
-                color: palette(blue, light);
+            input, .cos-select {
+                background-color: palette(gray, white);
             }
         }
 
         a {
-            color: palette(blue, dark);
+            color: palette(blue, mid);
             display: block;
+            font-weight: 200;
+            letter-spacing: .03rem;
         }
 
-        .active {
+        button {
             background-color: palette(blue, dark);
-            color: palette(blue, light);
-        }
+            color: palette(gray, white);
+            margin: 0;
+            padding: 1rem 1.25rem;
 
-        .cos-select-half {
-            margin-bottom: 0;
+            &:hover {
+                background-color: palette(blue, light);
+                color: palette(gray, white);
+            }
         }
 
         p {
@@ -44,10 +49,16 @@ ul {
             margin-bottom: 0;
         }
 
-        i {
-            color: palette(blue, dark);
-            margin-right: .75rem;
+        .active {
+            background-color: palette(blue, mid);
+            color: palette(blue, light);
         }
+
+        .cos-select-half {
+            margin-bottom: 0;
+        }
+
+
         //NEED TO CHANGE
         small {
 
@@ -60,7 +71,7 @@ ul {
 }
 
 ul li ul {
-    background-color: palette(gray, light);
+    background-color: palette(gray, xlight);
     margin-left: -2.5rem;
     width: 130%;
 
@@ -69,7 +80,7 @@ ul li ul {
     }
 
     li {
-        padding-left: 4.3rem;
+        padding-left: 3.75rem;
 
         &:first-child {
             margin-top: 1rem;
@@ -79,16 +90,16 @@ ul li ul {
             background-color: palette(blue, light);
 
             a {
-                color: palette(gray, light);
-            }
-
-            i {
-                color: palette(gray, light);
+                color: palette(gray, xlight);
             }
         }
 
         &:last-child {
           margin-bottom: -1rem;
+        }
+
+        a {
+            font-size: .95rem;
         }
     }
 }

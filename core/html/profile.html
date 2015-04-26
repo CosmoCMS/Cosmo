@@ -1,32 +1,24 @@
 <div class="profile" ng-controller="profileCtrl">
     <div class="bar-top">
-        <a ng-click="admin.sidebar='core/html/sidebar.html';active=''">Back</a>
+        <a ng-click="admin.sidebar='core/html/sidebar.html';active=''"><i class="fa fa-angle-left"></i></a>
         <h1 translate="profile_header"></h1>
-        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;">Close</a>
+        <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
     </div>
     <div class="bar--actions">
         <button  ng-click="updateProfile()" translate="save"></button>
     </div>
     <div class="form-case">
-        <div class="half-width">
-            <label for="name" translate="name"></label>
-            <input id="name" ng-model="profile.name">
-        </div>
+        <label for="name" translate="name"></label>
+        <input id="name" ng-model="profile.name">
 
-        <div class="half-width">
-            <label for="email" translate="email"></label>
-            <input id="email" ng-model="profile.email">
-        </div>
+        <label for="email" translate="email"></label>
+        <input id="email" ng-model="profile.email">
 
-        <div class="half-width">
-            <label for="facebook" translate="facebook"></label>
-            <input id="facebook" ng-model="profile.facebook">
-        </div>
+        <label for="facebook" translate="facebook"></label>
+        <input id="facebook" ng-model="profile.facebook">
 
-        <div class="half-width">
-            <label for="twitter" translate="twitter"></label>
-            <input id="twitter" ng-model="profile.twitter">
-        </div>
+        <label for="twitter" translate="twitter"></label>
+        <input id="twitter" ng-model="profile.twitter">
 
         <label for="bio" translate="bio"></label>
         <textarea id="bio" ng-model="profile.bio"></textarea>

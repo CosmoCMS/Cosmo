@@ -1,6 +1,7 @@
 // sidebar for all of cosmo editing outside of the live editing done on page
 .sidebar {
-    background-color: palette(gray, xlight);
+    background-color: palette(gray, white);
+    box-shadow: 1px 0 20px 0 palette(blue, dark--two-third);
     bottom: 0;
     height: 100%;
     left: -100%;
@@ -10,11 +11,11 @@
     position: fixed;
     top: 0;
     transition: left .3s ease;
-    width: 100%;
+    width: 20rem;
     z-index: z(sidebar);
 
-    @media #{$bp-beta} {
-        left: -34rem;
+    @media #{$bp-alpha} {
+        left: -50rem;
         width: 30rem;
     }
 }
@@ -28,12 +29,13 @@
 
 // active hamburger navigation before you open the sidebar
 .hamburger {
+    height: 5rem;
     position: fixed;
-    top: 25%;
+    width: 5rem;
     z-index: z(hamburger);
 
     .hamburger {
-        background-color: palette(blue, light);
+        background-color: transparent;
         left: 0;
         outline: none;
         opacity: .5;
@@ -52,36 +54,25 @@
     }
 }
 
-//NEED TO CHANGE *
-.hamburgeractive .hamburger {
-    left: -28.5rem;
-}
-
-.sidebar-close {
-    position: absolute;
-    right: size(25);
-    top: 1.25rem;
-}
-
 // bar to be used at the top of each area of the sidebar
 .bar-top {
-    background-color: palette(blue, dark);
-    height: 3.75rem;
+    align-items: center;
+    background-color: palette(blue, mid);
+    display: flex;
+    height: 5rem;
+    justify-content: center;
     overflow: hidden;
-    width: 100%;
+    padding: 0 1.5rem;
+    width: 17rem;
 
-    @media #{$bp-beta} {
-        width: 30rem;
+    @media #{$bp-alpha} {
+        width: 27rem;
     }
 
-    h1 {
-        color: palette(gray, white);
-        margin-left: size(5);
-    }
-
-    i {
+    a {
         color: palette(gray, light);
-        margin-left: size(25);
+        font-size: 1.75rem;
+        text-transform: uppercase;
 
         &:hover {
             color: palette(blue, light);
@@ -90,69 +81,39 @@
 
     .active {
         color: palette(alert, warning);
-  }
-}
-
-// username and logout styling for prfl-qk-view
-.prfl-info {
-    display: inline-block;
-    font-size: .85rem;
-    height: 3.75rem;
-    margin-left: size(5);
-    overflow: hidden;
-    padding-top: .65rem;
-    width: 7.813rem;
-    vertical-align: top;
-
-    p {
-        color: palette(gray, white);
-        font-size: 1rem;
-        margin-bottom: 0;
     }
 
-    a {
-        color: palette(gray, light);
-        font-size: .8rem;
-        font-weight: 400;
-
-        &:hover {
-            color: palette(blue, light);
-        }
+    a.sidebar-close {
+        font-size: 1.15rem;
+        text-align: right;
     }
-}
-
-.prfl-img {
-    background: center center no-repeat;
-    background-size: cover;
-    display: inline-block;
-    height: 3.75rem;
-    width: 3.75rem;
 }
 
 // case to adjust sides within the sidebar
 .form-case {
-    padding: size(25) size(25) 0 size(25);
+    padding: size(25);
 }
 
 // similar to .form-case, but with a border at the bottom
 .form-case--border {
+    @extend .form-case;
     border-bottom: 1px solid palette(gray, mid--light);
-    padding: size(25);
 }
 
 .new-message--cosmo {
     background-color: palette(blue, light);
     color: palette(gray, light);
+    display: flex;
     padding: size(10) size(25);
-    position: relative;
 
     .message {
         display: inline-block;
+        flex: 11;
+        font-weight: 400;
         margin: 0;
-        width: 90%;
 
         a {
-            color: palette(blue, dark);
+            color: palette(blue, mid);
             font-weight: 400;
 
             &:hover {
@@ -161,7 +122,56 @@
         }
     }
 
-    span {
-        float: right;
+    a.hide {
+        color: white;
+        font-size: .75rem;
+        flex: 1;
+        line-height: 2;
+        text-align: right;
+    }
+}
+
+.bar--actions {
+    background-color: palette(blue, dark);
+    color: palette(gray, white);
+    display: flex;
+    text-align: center;
+
+    button {
+        flex: 1;
+        margin: 0;
+    }
+
+    p {
+        flex: 2;
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+        text-align: left;
+    }
+}
+
+// alert when a newer version of the page has been saved
+.new-version {
+    background-color: palette(blue, mid);
+    position: fixed;
+    width: 17rem;
+    z-index: z(sidebar);
+
+    @media #{$bp-alpha} {
+        width: 27rem;
+    }
+
+    p {
+        color: palette(gray, white);
+    }
+
+    button {
+        background-color: transparent;
+        margin: 0;
+        padding: 1rem 1.25rem;
+
+        &:hover {
+            background-color: palette(blue, light);
+        }
     }
 }
