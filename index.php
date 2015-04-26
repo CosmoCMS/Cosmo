@@ -48,6 +48,8 @@
 
         <link rel="stylesheet" type="text/css" href="<?php echo $minifyCSS; ?>">
 
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600' rel='stylesheet' type='text/css'>
+
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
         <?php echo $scripts; ?>

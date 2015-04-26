@@ -20,8 +20,6 @@
 input {
 	@include placeholder {
 		color: palette(gray, mid);
-    	font-size: .85rem;
-    	font-weight: 200;
 	}
 
 	background-color: palette(gray, light);
@@ -30,17 +28,19 @@ input {
 	color: palette(gray, mid);
 	display: inline-block;
 	font-family: $font-alpha;
+    font-size: .9rem;
 	height: 3rem;
 	margin-bottom: 1.5rem;
 	outline: none;
 	padding: .56rem;
-	transition: background-color .15s ease-in;
+	transition: .15s ease-in;
 	width: 100%;
 
 	&:focus {
         @include placeholder {
             opacity: 0;
         }
+
 		background-color: palette(gray, xlight);
 		color: palette(gray, dark);
 	}
@@ -48,7 +48,8 @@ input {
 
 textarea {
 	@extend input;
-	line-height: 1.35;
+    font-size: .9rem;
+	line-height: 1.5;
 	min-height: 9rem;
 	resize: vertical;
 }
