@@ -15,7 +15,7 @@ angular.module('cosmo', [])
  **************************************************/
 
 .controller('urlCtrl', ['$scope', '$routeParams', 'Page', '$rootScope', 'REST', '$location', 'Users', '$filter', function($scope, $routeParams, Page, $rootScope, REST, $location, Users, $filter){
-    
+
     // Reset variables while new page loads
     $scope.page = {};
     Page.title = '';
@@ -30,10 +30,10 @@ angular.module('cosmo', [])
     Page.scheduleDate = '';
     Page.timestamp = '';
     Page.extras = {};
-    
+
     // Get content
     REST.content.get({ url: $location.path() }, function(data, headers){
-        
+
         // Check if the site is under maintenence
         if(Page.settings){
             if(parseInt(Page.settings.maintenance_mode) === 1 && Page.settings.maintenance_url && !Users.admin){
@@ -43,13 +43,13 @@ angular.module('cosmo', [])
                     return false;
             }
         }
-        
+
         // If the URL has changed, redirect the user to the new URL
         if(data.redirect){
             $location.path(data.redirect).replace();
             return false;
         }
-        
+
         Page.id = data.id;
         Page.author = data.author;
         $scope.page.author = data.author;
@@ -77,18 +77,18 @@ angular.module('cosmo', [])
             Page.extras = data.extras;
         else
             Page.extras = {};
-        
+
         if(Page.theme)
             $scope.template = 'themes/' + Page.theme + '/' + Page.type;
-        
+
         $rootScope.$broadcast('contentGet', data);
-        
+
         // Get blocks
         REST.blocks.query({ type: Page.type, url: $location.path() }, function(data){
             Page.blocks = data;
             $rootScope.$broadcast('blocksGet', data);
         });
-        
+
         // Get comments for this page
         REST.comments.query({ id: Page.id }, function(data){
             // Parse comment from JSON
@@ -100,28 +100,28 @@ angular.module('cosmo', [])
             $scope.page.commentsNum = $scope.page.comments.length;
             $rootScope.$broadcast('commentsGet', {comments: $scope.page.comments});
         });
-        
+
     }, function(data){ // Page not found
         $location.path('error').replace();
     });
-    
+
     // Update the theme if it's been changed
     var changeTheme = function(){
         if($scope.template !== 'themes/' + Page.theme + '/' + Page.type && Page.theme && Page.type)
             $scope.template = 'themes/' + Page.theme + '/' + Page.type;
     };
     changeTheme();
-    
+
     // Update the theme
     $scope.$on('settingsGet', function(data){
         changeTheme();
     });
-    
+
     // Update the theme
     $scope.$on('contentGet', function(data){
         changeTheme();
     });
-    
+
     // Watch for shortcut keypresses
     if(Users.admin){
         angular.element(document).on('keydown', function(event){
@@ -130,7 +130,7 @@ angular.module('cosmo', [])
                 $rootScope.$broadcast('switchViewMode');
         });
     }
-    
+
     // Callback for the page loading
     $rootScope.$broadcast('pageLoaded', { url: $location.path() });
 }])
@@ -150,23 +150,23 @@ angular.module('cosmo', [])
 /**************************************************
  *            Comments Controller                 *
  **************************************************/
- 
+
  .controller('commentsCtrl', ['$scope', 'REST', 'Page', 'Users', '$rootScope', function($scope, REST, Page, Users, $rootScope){
-    
+
     // Initialize variables
     $scope.comment = {};
     $scope.comments = Page.comments;
-    
+
     // Get the path of the last comment
     if($scope.comments && $scope.comments[0] && $scope.comments[0].path)
         $scope.comment.path = [$scope.comments[$scope.comments.length-1].path[0]+1];
     else
         $scope.comment.path = [1];
-    
+
     // See if the user is logged in
     if(!Users.username)
         $scope.guest = true;
-    
+
     // Watch for comments
     $scope.$on('commentsGet', function(event, data){
         $scope.comments = data.comments;
@@ -176,7 +176,7 @@ angular.module('cosmo', [])
         else
             $scope.comment.path = [1];
     });
-    
+
     // Check the level of the reply.
     $scope.replyLevel = function(path){
         if(path)
@@ -184,7 +184,7 @@ angular.module('cosmo', [])
         else
             return 0;
     };
-    
+
     // Set the path for someone to reply to another comment
     $scope.reply = function(index, path){
         var tempPath = angular.copy(path);
@@ -196,10 +196,10 @@ angular.module('cosmo', [])
         }
         $scope.comment.path = tempPath;
     };
-    
+
     // Post a new comment
     $scope.submit = function(){
-        REST.comments.save({ 
+        REST.comments.save({
             content_id: Page.id,
             path: angular.toJson($scope.comment.path),
             name: Users.username,
@@ -229,7 +229,7 @@ angular.module('cosmo', [])
 .directive('csBlock', ['Page', '$compile', '$timeout', function(Page, $compile, $timeout) {
     return {
         link: function(scope, elm, attrs, ctrl) {
-            
+
             var updateBlocks = function() {
                 // Match the block(s) to the right location
                 if(Page.blocks) {
@@ -238,7 +238,7 @@ angular.module('cosmo', [])
                         if(data.area === attrs.csBlock)
                             blockHTML += data.block;
                     });
-                    
+
                     elm.html(blockHTML);
                     $timeout(function(){
                         $compile(elm.contents())(scope);
@@ -246,7 +246,7 @@ angular.module('cosmo', [])
                 }
             };
             updateBlocks();
-            
+
             scope.$on('blocksGet', function(){
                 updateBlocks();
             });
@@ -264,12 +264,12 @@ angular.module('cosmo', [])
     return {
         priority: 100,
         link: function(scope, elm, attrs, ctrl) {
-            
+
             scope.editor = {};
             scope.editor.codeEditor = false;
-            
+
             var updateCosmo = function(){
-                
+
                 if(Page[attrs.csContent])
                     var content = Page[attrs.csContent];
                 else if(Page.extras[attrs.csContent])
@@ -278,14 +278,14 @@ angular.module('cosmo', [])
                     var content = attrs.prepopulate;
                 else
                     var content = ' ';
-                
+
                 if(content)
                     content = content.toString();
-                
+
                 // Remove HTML tags if this is a text only area
                 if(attrs.type === 'text')
                     content = content.replace(/<[^<]+?>/g, '');
-                
+
                 if(content){
                     elm.html(content);
                     if(attrs.type !== 'text')
@@ -327,13 +327,13 @@ angular.module('cosmo', [])
                 elm.on('keyup focusout', function(event) {
                     // todo: Open quick-save option
                     // $rootScope.$broadcast('notify', {message: '<a ng-controller="pageCtrl" ng-click="savePage()">Quick Save</a>', duration: 99999});
-                    
+
                     // Make sure we aren't saving escaped HTML
                     if(scope.editor.codeEditor)
                         var html = scope.unescapeHTML(elm.html());
                     else
                         var html = elm.html();
-                    
+
                     // Don't save the fields marked 'none'
                     if(attrs.csContent === 'none') {
                         $rootScope.$broadcast('wysiwygEdit', { html: html });
@@ -448,24 +448,24 @@ angular.module('cosmo', [])
         template: '<audio ng-dblclick="clicked()"><source ng-repeat="file in audioFiles" ng-src="{{file.src}}"></audio>',
         replace: true,
         link: function(scope, elm, attrs) {
-            
+
             if(Page.extras[attrs.csAudio])
                 scope.audioFiles = angular.fromJson(Page.extras[attrs.csAudio]);
             else if(Users.admin)
                 scope.audioFiles = [{ src: 'core/img/image.svg', type: 'audio' }];
-            
+
             elm.css('min-height', '50px'); // Only way to make this clickable in Chrome?
-            
+
             // Check if user is an admin
             if(Users.admin) {
                 scope.clicked = function(){
-                    $rootScope.$broadcast('editFiles', angular.toJson({ 
-                            id: attrs.csAudio, 
-                            data: scope.audioFiles 
+                    $rootScope.$broadcast('editFiles', angular.toJson({
+                            id: attrs.csAudio,
+                            data: scope.audioFiles
                         })
                     );
                 };
-                
+
                 // Save edits/selection of the movie
                 scope.$on('choseGalleryFile', function(event, data){
                     if(data.id === attrs.csMovie){
@@ -480,11 +480,11 @@ angular.module('cosmo', [])
 
 
 /**************************************************
- *            Fluidvids Directive                 * 
+ *            Fluidvids Directive                 *
  *          Make videos responsive                *
  **************************************************/
  // Borrowed from http://toddmotto.com/creating-an-angularjs-directive-from-one-of-your-existing-plugins-scripts/
- 
+
 .directive('fluidvids', ['$sce', function($sce){
     return {
         replace: true,
@@ -506,7 +506,7 @@ angular.module('cosmo', [])
 .directive('csBgImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'Responsive', 'Hooks', function(Page, $rootScope, ngDialog, Users, Responsive, Hooks) {
     return {
         link: function(scope, elm, attrs, ctrl) {
-            
+
             function updateBGImage(){
                 if(Page.extras[attrs.csBgImage]){
                     Page.extras[attrs.csBgImage] = angular.fromJson(Page.extras[attrs.csBgImage]);
@@ -519,18 +519,18 @@ angular.module('cosmo', [])
                     elm.css('background-image', 'url(core/img/image.svg)');
             }
             updateBGImage();
-            
+
             scope.$on('contentGet', function(){
                 updateBGImage();
             });
-            
+
             // Check if user is an admin
             if(Users.admin) {
                 // Double click image to edit
                 elm.on('dblclick', function(){
                    ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csBgImage }) });
                 });
-                
+
                 // Update page when another image is chosen
                 scope.$on('choseFile', function(event, data){
                     if(data.id === attrs.csBgImage){
@@ -562,9 +562,9 @@ angular.module('cosmo', [])
                     attrs.size = '{{image.size}}';
                 },
                 post: function(scope, elm, attrs){
-                    
+
                     scope.image = {};
-                    
+
                     // Initialize the image data
                     if(Page.extras[attrs.csImage]){
                         Page.extras[attrs.csImage] = angular.fromJson(Page.extras[attrs.csImage]);
@@ -573,7 +573,7 @@ angular.module('cosmo', [])
                         scope.image.alt = Page.extras[attrs.csImage].alt;
                         scope.image.title = Page.extras[attrs.csImage].title;
                         scope.image.size = Page.extras[attrs.csImage].size;
-                        
+
                         // Get responsive URL for the image
                         if(Page.extras[attrs.csImage].responsive === 'yes')
                             scope.src = Hooks.imageHookNotify(Responsive.resize(Page.extras[attrs.csImage].src, Page.extras[attrs.csImage].size));
@@ -586,14 +586,14 @@ angular.module('cosmo', [])
 
                     } else if(Users.admin)
                         scope.src = 'core/img/image.svg';
-                    
+
                     // Check if user is an admin
                     if(Users.admin) {
                         // Open image editing modal
                         elm.on('click', function(){
-                            $rootScope.$broadcast('editFiles', angular.toJson({ 
-                                    id: attrs.csImage, 
-                                    data: scope.image 
+                            $rootScope.$broadcast('editFiles', angular.toJson({
+                                    id: attrs.csImage,
+                                    data: scope.image
                                 })
                             );
 
@@ -602,14 +602,14 @@ angular.module('cosmo', [])
                                 $rootScope.$broadcast('hideWYSIWYG');
                             });
                         });
-                        
+
                         // Save edits to the image
                         scope.$on('choseFile', function(event, data){
                             if(data.id === attrs.csImage){
                                 scope.image = data;
                                 Page.extras[attrs.csImage] = data;
                                 elm.addClass(data.class);
-                                
+
                                 // Get responsive URL for the image
                                 if(data.responsive === 'yes')
                                     scope.src = Responsive.resize(Page.extras[attrs.csImage].src, Page.extras[attrs.csImage].size);
@@ -635,13 +635,13 @@ angular.module('cosmo', [])
         scope: {},
         replace: true,
         link: function(scope, elm, attrs){
-            
+
             // Initialize
             if(attrs.limit)
                 scope.limitNum = parseInt(attrs.limit);
             else
                 scope.limitNum = 10000;
-            
+
             function updateGallery(){
                 // Get images
                 if(Page.extras[attrs.csGallery]){
@@ -662,12 +662,12 @@ angular.module('cosmo', [])
                 $rootScope.$broadcast(attrs.csGallery, scope.images);
             }
             updateGallery();
-            
+
             // Update the gallery
             scope.$on('contentGet', function(data){
                 updateGallery();
             });
-            
+
             // Bug: currently adjusts limit of all galleries on the page. Isolate
             // Get a new limit on the number of images displayed
             scope.$on('galleryLimitNum', function(event, data){
@@ -695,19 +695,19 @@ angular.module('cosmo', [])
                 });
             } else
                 scope.showOnlyOne = false;
-            
+
             // Check if user is an admin
             if(Users.admin) {
                 // When clicked, open a modal window to edit
                 scope.clickedGallery = function(index){
-                    $rootScope.$broadcast('editFiles', angular.toJson({ 
+                    $rootScope.$broadcast('editFiles', angular.toJson({
                             id: attrs.csGallery,
                             gallery: true,
                             images: scope.images
                         })
                     );
                 };
-                
+
                 // Watch for edits to the gallery
                 scope.$on('choseGalleryFile', function(event, data){
                     if(data.id === attrs.csGallery){
@@ -778,7 +778,7 @@ angular.module('cosmo', [])
         template: '<video ng-dblclick="clicked()"><source ng-repeat="video in videos" ng-src="{{video.src}}"></video>',
         replace: true,
         link: function(scope, elm, attrs, ctrl) {
-            
+
             if(Page.extras[attrs.csMovie]){
                 scope.videos = angular.fromJson(Page.extras[attrs.csMovie]);
                 if(scope.videos[0].controls)
@@ -791,18 +791,18 @@ angular.module('cosmo', [])
                     elm.attr('autoload', true);
             } else if(Users.admin)
                 scope.videos = [{ src: 'core/img/image.svg', type: 'video' }];
-            
+
             // Check if user is an admin
             if(Users.admin) {
                 scope.clicked = function(){
-                    $rootScope.$broadcast('editFiles', angular.toJson({ 
+                    $rootScope.$broadcast('editFiles', angular.toJson({
                             id: attrs.csMovie,
                             gallery: true,
                             images: scope.videos
                         })
                     );
                 };
-                
+
                 // Save edits/selection of the movie
                 scope.$on('choseGalleryFile', function(event, data){
                     if(data.id === attrs.csMovie){
@@ -834,7 +834,7 @@ angular.module('cosmo', [])
                 });
             };
             updateMenus();
-            
+
             scope.$on('menusGet', function(){
                 updateMenus();
             });
@@ -849,24 +849,24 @@ angular.module('cosmo', [])
 
 .directive('csNotification', ['$timeout', '$sce', function($timeout, $sce){
     return {
-        template: '<div ng-show="showNotification" class="{{classes}}"><a ng-click="showNotification=false"><i class="fa fa-times"></i></a><span ng-bind-html="message"></span></div>',
+        template: '<div ng-show="showNotification" class="{{classes}}"><span ng-bind-html="message"></span></div>',
         replace: true,
         link: function(scope, elm, attrs){
             // Watch for notifications
             scope.$on('notify', function(event, data){
                 scope.showNotification = true;
                 scope.message = $sce.trustAsHtml(data.message);
-                
+
                 // Default class is alert-alert
                 if(!data.classes)
                     scope.classes = 'alert-alert';
                 else
                     scope.classes = data.classes;
-                
+
                 // Default duration is 5 seconds
                 if(!data.duration)
                     data.duration = 5000;
-                
+
                 // Disappear after 5 seconds
                 $timeout(function(){
                     scope.showNotification = false;
@@ -880,12 +880,12 @@ angular.module('cosmo', [])
  *              HTML Controller                   *
  *              Manage Meta-tags                  *
  **************************************************/
- 
+
 .controller('HTMLCtrl', ['$scope', 'Page', 'Hooks', '$rootScope', 'Users', function($scope, Page, Hooks, $rootScope, Users){
-    
+
     if(Users.admin)
         $scope.admin = true;
-    
+
     // Update meta-tags
     var updateMetaTags = function(){
         var data = Hooks.HTMLHookNotify({title: Page.title, description: Page.description});
@@ -964,7 +964,7 @@ angular.module('cosmo', [])
     // Login
     $scope.login = function(){
         REST.users.get({ username: $scope.login.username, password: $scope.login.password, dontcache: new Date().getTime() }, function(data){
-            
+
             // Set Users variables
             Users.name = data.name;
             Users.bio = data.bio;
@@ -982,21 +982,21 @@ angular.module('cosmo', [])
             document.cookie= "username=" + $scope.login.username.toLowerCase() + ";expires=" + expdate.toGMTString();
             document.cookie= "token=" + data.token + ";expires=" + expdate.toGMTString();
             document.cookie= "role=" + data.role + ";expires=" + expdate.toGMTString();
-            
+
             $http.defaults.headers.common['username'] = $scope.login.username.toLowerCase();
             $http.defaults.headers.common['token'] = data.token;
             $http.defaults.headers.common['usersID'] = data.id;
-            
+
             Users.id = data.id;
             Users.username = $scope.login.username.toLowerCase();
             Users.role = data.role;
-            
+
             // Check if the user is an administrator
             if(data.role === 'admin'){
                 $rootScope.$broadcast('adminLogin');
                 Users.roleNum = 1;
             }
-            
+
             $scope.login.username = '';
             $scope.login.password = '';
             // ngDialog.close();
@@ -1024,7 +1024,7 @@ angular.module('cosmo', [])
             location.reload();
         }, 1000);
     };
-    
+
     // Reset password
     $scope.resetPassword = function(){
         if($scope.login.username){
@@ -1034,28 +1034,28 @@ angular.module('cosmo', [])
         } else
             alert('Error: You must enter your username to reset your password');
     };
-    
+
     // Change Username
     $scope.changeUsername = function(){
         REST.users.update({ userID: Users.id, username: $scope.username }, function(){
             $rootScope.$broadcast('notify', {message: 'Username updated'});
         });
     };
-    
+
     // Change email address
     $scope.changeEmail = function(){
         REST.users.update({ userID: Users.id, email: $scope.email }, function(data){
             $rootScope.$broadcast('notify', {message: 'Email updated'});
         });
     };
-    
+
     // Change password
     $scope.changePassword = function(){
         REST.users.update({ userID: Users.id, password: $scope.password }, function(){
             $rootScope.$broadcast('notify', {message: 'Password updated'});
         });
     };
-    
+
     // Delete account
     $scope.deleteAccount = function(){
         REST.users.delete({ userID: Users.id }, function(data){
@@ -1068,26 +1068,26 @@ angular.module('cosmo', [])
             $location.path('/');
         });
     };
-    
+
 }])
 
 // Forgotten password reset
 .controller('resetModal', ['ngDialog', function(ngDialog){
     // Open modal
-    ngDialog.open({ 
-        template: 'core/html/partials/password-reset.html', 
-        controller: 'resetPasswordCtrl', 
-        showClose: false, 
-        closeByEscape: false, 
-        closeByDocument: false 
+    ngDialog.open({
+        template: 'core/html/partials/password-reset.html',
+        controller: 'resetPasswordCtrl',
+        showClose: false,
+        closeByEscape: false,
+        closeByDocument: false
     });
 }])
 
 // Forgotten password reset
 .controller('resetPasswordCtrl', ['$routeParams', '$scope', 'ngDialog', 'REST', '$location', function($routeParams, $scope, ngDialog, REST, $location){
-    
+
     $scope.reset = {};
-    
+
     // Reset password
     $scope.reset = function(){
         if($scope.reset.password === $scope.reset.password2){
@@ -1190,17 +1190,17 @@ angular.module('cosmo', [])
 .factory('Responsive', ['$http', function($http){
     return {
         resize: function(imageURL, maxSize){
-            
+
             // Make sure the image URL is a string, responsive feature isn't disabled, and the image isn't already a smaller size.
             if(!angular.isString(imageURL) || maxSize === 'nonresponsive' || imageURL.indexOf('-2048') > 0 || imageURL.indexOf('-1024.') > 0 || imageURL.indexOf('-512.') > 0 || imageURL.indexOf('-320.') > 0)
                 return imageURL;
-            
+
             var width = window.innerWidth;
-            
+
             // Check for retina displays
             if(window.devicePixelRatio > 1)
                 width = width * window.devicePixelRatio;
-            
+
             // Check screen size for responsive images
             if(width >= 2048)
                 var quality = 2048;
@@ -1210,7 +1210,7 @@ angular.module('cosmo', [])
                 var quality = 512;
             else
                 var quality = 320;
-            
+
             // Make sure the image isn't larger than the max size
             if(maxSize){
                 switch(maxSize){
@@ -1435,13 +1435,13 @@ angular.module('cosmo', [])
                             Page.extras[attrs.csTable] = rows;
                     });
                 });
-                
+
                 // Add table header
                 scope.$on('addTableHeader', function(){
                     Page.extras[attrs.csTable + '-header'] = true;
                     scope.tableHeader = true;
                 });
-                
+
                 // Remove table header
                 scope.$on('removeTableHeader', function(){
                     Page.extras[attrs.csTable + '-header'] = false;
@@ -1455,7 +1455,7 @@ angular.module('cosmo', [])
                         angular.forEach(scope.rows[0], function(){
                             columns.push('');
                         });
-                        
+
                         Page.extras[attrs.csTable].splice(Page.misc.selectedRow, 0, columns);
                         updateCosmoTable();
                         Page.misc.lastChange = data;
@@ -1476,7 +1476,7 @@ angular.module('cosmo', [])
                             Page.extras[attrs.csTable].push(columns); // scope.rows.push(columns);
                         else
                             Page.extras[attrs.csTable].splice(Page.misc.selectedRow+1, 0, columns); // scope.rows.splice(scope.selectedRow, 0, columns);
-                        
+
                         updateCosmoTable();
                         Page.misc.lastChange = data;
                     }
@@ -1534,7 +1534,7 @@ angular.module('cosmo', [])
                             Page.extras[attrs.csTable][i].splice(Page.misc.selectedCol, 1);
                             Page.misc.lastChange = data;
                         }
-                        
+
                         updateCosmoTable();
                     }
                 });
@@ -1604,13 +1604,13 @@ angular.module('cosmo', [])
 
     // Watch all keypresses
     angular.element(document).on('keydown', function(event){
-        
+
         // If the modal is open, log keypresses to the modal instead of the window
         if(Page.misc.wysiwyg.modalOpen){
             // Watch for paste commands
             if(($scope.lastKeyPress === 91 || $scope.lastKeyPress === 17) && event.keyCode === 86)
                 return true;
-            
+
             if(event.keyCode === 8) { // delete key
                 $scope.editor.letter = $scope.editor.letter-1;
                 $scope.editor[$scope.editor.selected].splice($scope.editor.letter, 1);
@@ -1843,7 +1843,7 @@ angular.module('cosmo', [])
         // ngDialog.close();
         $rootScope.$broadcast('saveAndRefresh');
     };
-    
+
 }])
 
 .directive('csWysiwyg', ['$rootScope', 'Page', '$compile', '$timeout', function($rootScope, Page, $compile, $timeout){
@@ -1852,14 +1852,14 @@ angular.module('cosmo', [])
         replace: true,
         scope: {},
         link: function(scope, elm, attr){
-            
+
             scope.editor = {};
             scope.editor.codeEditor = false;
             scope.editor.showToolbar = false;
             scope.editor.tableRows = [];
             scope.editor.directives = Page.directives;
             Page.misc.wysiwyg = {};
-            
+
             // Populate 100 table rows
             for(var i=1; i<=10; i++){
                 for(var j=1; j<=10; j++){
@@ -1904,7 +1904,7 @@ angular.module('cosmo', [])
                 });
                 var pageX = data.pageX - 120; // -120 centers toolbar
                 var pageY = data.pageY - 75; // Go directly above click. CSS margin pushes this above mouse
-                
+
                 // Make sure the toolbar isn't too far to the left (where it cuts off toolbar items)
                 if((pageX - 50) < 0)
                     pageX = 0;
@@ -1916,7 +1916,7 @@ angular.module('cosmo', [])
                 // Make sure the toolbar isn't too far down (where it cuts off the dropdowns)
                 if((data.clientY + 100) > window.innerHeight)
                     pageY = pageY - 100;
-                
+
                 elm.css('top', pageY + 'px');
                 elm.css('left', pageX + 'px');
             });
@@ -2131,7 +2131,7 @@ angular.module('cosmo', [])
                 }
                 if(!toggle)
                     $rootScope.$broadcast('saveAndRefresh');
-                
+
                 // Hide WYWSIWYG editor
                 $rootScope.$broadcast('hideWYSIWYG');
             };
@@ -2198,7 +2198,7 @@ angular.module('cosmo', [])
         }
     }
     filesInit();
-    
+
     $scope.$on('editFiles', function(event, data){
         filesInit();
     });
@@ -2243,12 +2243,12 @@ angular.module('cosmo', [])
         });
     }
     getFiles();
-    
+
     // De-selects the file (to go back to the image select view)
     $scope.noSelectedFile = function() {
         $scope.selectedFile = null;
     };
-    
+
     // Upload files
     $scope.onFileSelect = function($files) {
         // $files: an array of files selected, each file has name, size, and type.
@@ -2263,7 +2263,7 @@ angular.module('cosmo', [])
                 //(optional) set 'Content-Desposition' formData name for file
                 //fileFormDataName: myFile,
                 progress: function(evt) {
-                    
+
                 }
             }).progress(function(evt) {
                 $scope.progress = parseInt(100.0 * evt.loaded / evt.total) + '% Uploaded';
@@ -2288,7 +2288,7 @@ angular.module('cosmo', [])
         // Check if coming from a gallery
         if(!$scope.media[$scope.currentIndex].src)
            $scope.media[$scope.currentIndex].src = $scope.media[$scope.currentIndex].url;
-        
+
         $scope.selectedId = $scope.media[$scope.currentIndex].id;
         $scope.selectedFile = $scope.media[$scope.currentIndex].src;
         $scope.origFilename = $scope.media[$scope.currentIndex].origFilename;
@@ -2300,7 +2300,7 @@ angular.module('cosmo', [])
         $scope.files.type = $scope.media[$scope.currentIndex].type;
         $scope.files.responsive = $scope.media[$scope.currentIndex].responsive;
     };
-    
+
     // View this media info
     $scope.viewFile = function(file, index){
         $scope.selectedId = file.id;
@@ -2320,7 +2320,7 @@ angular.module('cosmo', [])
         $scope.currentIndex = $scope.currentIndex-1;
         $scope.updateCurrentImage();
     };
-    
+
     // Make sure the next image exists
     $scope.nextExists = function(){
         if(angular.isNumber($scope.currentIndex) && $scope.media[$scope.currentIndex+1])
@@ -2337,7 +2337,7 @@ angular.module('cosmo', [])
 
     // Save title/tags to the file
     $scope.save = function(){
-        
+
         // Delete old tags
         REST.filesTags.delete({ fileID: $scope.selectedId });
 
