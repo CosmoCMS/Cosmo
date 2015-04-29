@@ -26,6 +26,9 @@
             <li ng-click="admin.sidebar='core/html/revisions.html';active='content';showAdminPanel=true;">
                 <a translate>revisions</a>
             </li>
+            <li ng-click="admin.sidebar='core/html/files.html';active='content';showAdminPanel=true;">
+                <a translate>media</a>
+            </li>
         </ul>
     </li>
     <li ng-show="admin.roleNum==1" ng-class="{active: active=='menus'}" ng-click="admin.sidebar='core/html/menu.html';active='menus';showAdminPanel=true">
