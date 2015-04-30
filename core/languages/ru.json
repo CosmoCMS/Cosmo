@@ -71,6 +71,9 @@
     "new_password": "Новый пароль",
     "comments": "Комментарии",
     "or": "или",
+    "welcome": "добро пожаловать",
+    "log_out": "Выйти",
+    "edit_profile": "редактировать профиль",
 
     "blocks_title": "Редактировать блоки",
     "blocks_description": "Новый блок",

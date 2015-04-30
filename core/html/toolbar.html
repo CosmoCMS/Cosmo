@@ -2,42 +2,42 @@
     <ul>
         <li>
             <button ng-mouseenter="format=true" ng-mouseleave="format=false">
-                <i class="fa  fa-fw fa-font"></i>
+                <i class="fa fa-fw fa-font"></i>
             </button>
         </li>
         <li>
             <button ng-mouseenter="style=true" ng-mouseleave="style=false">
-                <i class="fa  fa-fw fa-bold"></i>
+                <i class="fa fa-fw fa-bold"></i>
             </button>
         </li>
         <li>
             <button ng-mouseenter="link=true" ng-mouseleave="link=false">
-                <i class="fa  fa-fw fa-link"></i>
+                <i class="fa fa-fw fa-link"></i>
             </button>
         </li>
         <li>
             <button ng-mouseenter="list=true" ng-mouseleave="list=false">
-                <i class="fa  fa-fw fa-list-ul"></i>
+                <i class="fa fa-fw fa-list-ul"></i>
             </button>
         </li>
         <li>
             <button ng-mouseenter="align=true" ng-mouseleave="align=false">
-                <i class="fa  fa-fw fa-align-justify"></i>
+                <i class="fa fa-fw fa-align-justify"></i>
             </button>
         </li>
         <li class="table">
             <button ng-mouseenter="table=true" ng-mouseleave="table=false">
-                <i class="fa  fa-fw fa-table"></i>
+                <i class="fa fa-fw fa-table"></i>
             </button>
         </li>
         <li class="media">
             <button ng-mouseenter="media=true" ng-mouseleave="media=false">
-                <i class="fa  fa-fw fa-camera-retro"></i>
+                <i class="fa fa-fw fa-camera-retro"></i>
             </button>
         </li>
         <li class="code">
             <button ng-mouseenter="code=true" ng-mouseleave="code=false">
-                <i class="fa  fa-fw fa-code"></i>
+                <i class="fa fa-fw fa-code"></i>
             </button>
         </li>
     </ul>
@@ -72,8 +72,8 @@
         <button ng-click="action('justify')" translate>toolbar_justify_text</button>
     </div>
     <div class="wysiwyg-dropdown" ng-show="table" ng-mouseenter="table=true" ng-mouseleave="table=false">
-        <button ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false" translate>toolbar_insert_table</button>
-        <div ng-show="insertTable" ng-mouseenter="insertTable=true" ng-mouseleave="insertTable=false" ng-click="insertTable=false" class="table-dropdown--insert">
+        <button translate>toolbar_insert_table</button>
+        <div class="table-dropdown--insert">
             <button ng-repeat="cell in editor.tableRows" ng-class="{'cell-select--focus': selectedCell(cell.row, cell.col)}" class="cell-select" ng-mouseover="cellMouseover(cell.row, cell.col)" ng-click="createTable(cell.row, cell.col)"></button>
             <p>{{mouseoverCol}} x {{mouseoverRow}}</p>
         </div>

@@ -144,10 +144,12 @@
 }
 
 .table-dropdown--insert {
-    padding: .469rem .156rem .156rem .469rem;
-    width: 10.75rem;
+    background-color: palette(gray, light);
+    padding: .8rem 2.75rem;
+    width: 11rem;
 
     p {
+        color: palette(gray, mid);
         margin: 0;
     }
 
@@ -156,7 +158,7 @@
         border-radius: 0;
         display: inline-block;
         height: .9rem;
-        margin: 0 .156rem .156rem 0;
+        margin: 0 .156rem .2rem 0;
         padding: 0;
         width: .9rem;
 
