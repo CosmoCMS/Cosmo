@@ -71,7 +71,10 @@
     "new_password": "Nowe hasło",
     "comments": "Komentarze",
     "or": "albo",
-    
+    "welcome": "Powitanie",
+    "log_out": "Wyloguj",
+    "edit_profile": "Edytuj Profil",
+
     "blocks_title": "Edytuj Bloki",
     "blocks_description": "Nowy Blok",
     "blocks_name": "Nazwa Bloku",
@@ -142,7 +145,7 @@
     "login_sign": "Zapisz się",
     "login_in": "Zaloguj się",
     "login_forgot_password": "Zapomniane hasło?",
-    
+
     "menus": "Menu",
     "menu_new": "Nowe Menu",
     "menu_add": "Dodaj do Menu",
@@ -161,14 +164,14 @@
     "page_newer": "Istnieje nowsza wersja tego dokumentu, której nie zachowano. Czy chesz użyć aktualnej wersji zamiast tamtej?",
     "page_delete": "Czy na pewno chcesz usunąć tę stronę?",
     "page_details": "Informacje dodatkowe o stronie",
-    
+
     "profile_header": "Twój profil",
     "profile_photo": "Zdjęcie profilowe",
-    
+
     "roles_header": "Zarządzanie rolami",
     "roles_new": "Dodaj nową rolę",
     "roles_edit": "Edytuj nazwę roli",
-    
+
     "settings_site_name": "Nazwa strony",
     "settings_slogan": "Slogan",
     "settings_maintenance_url": "Adres URL podczas konserwacji",
@@ -220,7 +223,7 @@
     "toolbar_outdent": "Zmniejsz wcięcie",
 
     "themes_header": "Szablony",
-    
+
     "users_new_user": "Nowy użytkownik",
     "users_create": "Stwórz użytkownia",
     "users_admin": "admin",

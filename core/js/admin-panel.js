@@ -12,11 +12,11 @@ angular.module('cosmo.admin', [])
     $scope.admin.sidebar = 'core/html/sidebar.html';
     $scope.admin.username = Users.username;
     $scope.admin.roleNum = Users.roleNum;
-    
+
     // Get latest official message from Cosmo (for version, updates, and blog posts)
     $http.get('http://www.cosmocms.org/message.php?dontcache='+ new Date().getTime())
     .success(officialMessagePromise);
-    
+
     // Update official message from Cosmo
     function officialMessagePromise(data){
         if(data){
@@ -29,7 +29,7 @@ angular.module('cosmo.admin', [])
             }
         }
     };
-    
+
     // Set a cookie so you don't see this message any more
     $scope.removeMessage = function(){
         var expdate = new Date();
@@ -37,10 +37,10 @@ angular.module('cosmo.admin', [])
         document.cookie = "dontShowMessage=" + $scope.admin.messageID + ";expires=" + expdate.toGMTString();
         $scope.admin.displayMessage = false;
     };
-    
+
     // Get user's info
     REST.users.get({userID: Users.id}, usersInfoPromise);
-    
+
     // Update user's info in the template
     function usersInfoPromise(data){
         Users.name = data.name;
@@ -51,7 +51,7 @@ angular.module('cosmo.admin', [])
         Users.facebook = data.facebook;
         Users.username = data.username;
         Users.email = data.email;
-        
+
         if(data.photo)
             $scope.admin.photo = data.photo;
         else
@@ -97,17 +97,17 @@ angular.module('cosmo.admin', [])
  **************************************************/
 
 .controller('blockCtrl', ['$scope', 'REST', 'Page', '$rootScope', function($scope, REST, Page, $rootScope){
-    
+
     $scope.block = {};
     $scope.block.panel = 'manage';
     $scope.types = [];
     $scope.block.selectedTypes = {};
-    
+
     // Get all available blocks
     REST.blocks.query({}, function(data){
         $scope.blocks = data;
     });
-    
+
     // Get the page types availabl
     $scope.types = Page.themePages;
 
@@ -134,7 +134,7 @@ angular.module('cosmo.admin', [])
         // Get the block requirements
         REST.blocksRequirements.query({ blockID: $scope.block.id }, blockRequirementsPromise);
     };
-    
+
     // Update block requirements
     function blockRequirementsPromise(data){
         var blockURLs = '';
@@ -154,7 +154,7 @@ angular.module('cosmo.admin', [])
     $scope.newBlock = function(){
         REST.blocks.save({ name: $scope.block.newName }, newBlockPromise);
     };
-    
+
     // Update info from the new block
     function newBlockPromise(data){
         if($scope.blocks)
@@ -170,7 +170,7 @@ angular.module('cosmo.admin', [])
     $scope.deleteBlock = function(){
         REST.blocks.delete({ blockID: $scope.block.id }, deleteBlockPromise);
     };
-    
+
     // Update block after being deleted
     function deleteBlockPromise(data){
         if(data){
@@ -182,7 +182,7 @@ angular.module('cosmo.admin', [])
             $rootScope.$broadcast('notify', {message: 'Block deleted'});
         }
     }
-    
+
     // Update block section/priority from the overview section
     $scope.updateBlock = function(block){
         REST.blocks.update({
@@ -195,7 +195,7 @@ angular.module('cosmo.admin', [])
             $rootScope.$broadcast('notify', {message: 'Block updated'});
         });
     };
-    
+
     // Save the addition/edits to the block
     $scope.saveBlock = function(){
         // Save block to database
@@ -207,10 +207,10 @@ angular.module('cosmo.admin', [])
             priority: $scope.block.priority
         }, saveBlockPromise);
     };
-    
+
     // Update page after saving a block
     function saveBlockPromise(data){
-            
+
         // Update block name in CMS
         for(var i=0; i< $scope.blocks.length; i++){
             if($scope.blocks[i]['id'] === $scope.block.id)
@@ -223,7 +223,7 @@ angular.module('cosmo.admin', [])
         // Notify the user of the updated block
         $rootScope.$broadcast('notify', {message: 'Block updated'});
     };
-    
+
     // Update visibility requirements
     function blocksRequirementsDeletePromise(){
         // Save block visibility requirements
@@ -250,7 +250,7 @@ angular.module('cosmo.admin', [])
         });
         fetchUpdatedBlocks();
     }
-    
+
     // Get new updated blocks
     function fetchUpdatedBlocks(){
         REST.blocks.query({ type: Page.type, url: Page.url }, function(data){
@@ -266,7 +266,7 @@ angular.module('cosmo.admin', [])
  **************************************************/
 
 .controller('contentListCtrl', ['$scope', 'REST', 'Hooks', 'Responsive', function($scope, REST, Hooks, Responsive){
-    
+
     $scope.search = {};
     $scope.exclude = {};
     $scope.exclude.tags = '!exclude';
@@ -292,10 +292,10 @@ angular.module('cosmo.admin', [])
                 break;
         }
     };
-    
+
     // Fetch content
     REST.content.query({}, fetchContentPromise);
-    
+
     // Update the content after it's called
     function fetchContentPromise(data){
         angular.forEach(data, function(data2){
@@ -320,7 +320,7 @@ angular.module('cosmo.admin', [])
     REST.menus.query({}, function(data){
         $scope.menus = data;
     });
-    
+
     $scope.remove = function(scope) {
         if($scope.list.length>1){
             var index = scope.$index;
@@ -330,7 +330,7 @@ angular.module('cosmo.admin', [])
         } else
             alert("You cannot have an empty menu");
     };
-    
+
     $scope.newSubItem = function(scope) {
         var nodeData = scope.$modelValue;
         nodeData.items.push({
@@ -340,7 +340,7 @@ angular.module('cosmo.admin', [])
             items: []
         });
     };
-    
+
     // Select a menu
     $scope.selectMenu = function(menu){
         $scope.menu.id = menu.id;
@@ -383,14 +383,14 @@ angular.module('cosmo.admin', [])
 
     // Edit a menu's name
     $scope.updateMenuName = function(){
-        REST.menus.update({ 
-            menuID: $scope.menu.id, 
-            name: $scope.menu.name, 
-            menu: $scope.menu.menu, 
-            area: $scope.menu.area 
+        REST.menus.update({
+            menuID: $scope.menu.id,
+            name: $scope.menu.name,
+            menu: $scope.menu.menu,
+            area: $scope.menu.area
         }, updateMenuPromise);
     };
-    
+
     // Update the menu after it's called
     function updateMenuPromise(data){
         if(data){
@@ -446,14 +446,14 @@ angular.module('cosmo.admin', [])
     // Save the addition/edits to the menu
     $scope.saveMenu = function(){
         // Save menu
-        REST.menus.update({ 
-            menuID: $scope.menu.id, 
-            name: $scope.menu.name, 
-            menu: angular.toJson($scope.list), 
-            area: $scope.menu.area 
+        REST.menus.update({
+            menuID: $scope.menu.id,
+            name: $scope.menu.name,
+            menu: angular.toJson($scope.list),
+            area: $scope.menu.area
         }, saveMenuPromise);
     };
-    
+
     // Update page after saving the menu
     function saveMenuPromise(data){
         // Re-fetch menus to update the site live
@@ -501,7 +501,7 @@ angular.module('cosmo.admin', [])
         $scope.currentIndex = index;
         REST.modules.delete({ moduleID: moduleID }, uninstallModulePromise);
     };
-    
+
     // Update the page after uninstalling a module
     function uninstallModulePromise(data){
         // Check for an uninstallation file and run it
@@ -514,13 +514,13 @@ angular.module('cosmo.admin', [])
         // Success Message
         $rootScope.$broadcast('notify', {message: 'Module uninstalled'});
     }
-    
+
     // Activate Module
     $scope.activate = function(moduleID, index){
         $scope.currentIndex = index;
         REST.modules.update({ moduleID: moduleID, status: 'active' }, activateModulePromise);
     };
-    
+
     // Update the page after activating a module
     function activateModulePromise(data){
         $scope.modules[$scope.currentIndex]['status'] = 'active';
@@ -534,7 +534,7 @@ angular.module('cosmo.admin', [])
         $scope.currentIndex = index;
         REST.modules.update({ moduleID: moduleID, status: 'inactive' }, deactivateModulePromise);
     };
-    
+
     // Update the page after deactivating a module
     function deactivateModulePromise(data){
         $scope.modules[$scope.currentIndex]['status'] = 'inactive';
@@ -556,7 +556,7 @@ angular.module('cosmo.admin', [])
  **************************************************/
 
 .controller('pageCtrl', ['$scope', 'REST', '$location', 'Page', '$rootScope', '$routeParams', '$upload', 'Users', function($scope, REST, $location, Page, $rootScope, $routeParams, $upload, Users){
-    
+
     // Initialize variables
     $scope.page = {
         id: Page.id,
@@ -569,29 +569,29 @@ angular.module('cosmo.admin', [])
         type: Page.type,
         themePages: []
     };
-    
+
     // Set the date to today if no date was set
     if(!$scope.page.scheduleDate || $location.path() === '/new')
         $scope.page.scheduleDate = new Date(); // Math.round(+new Date().getTime()/1000); Depreciate?
-    
+
     // Initialize schedule date - Depreciate?
     var date = new Date($scope.page.scheduleDate * 1000);
     var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
     var ampm = date.getHours() > 12 ? 'PM' : 'AM';
     var formattedDate = date.getMonth() + 1 +'/'+ date.getDate() +'/'+ date.getFullYear() +' '+ hours +':'+ date.getMinutes() +' '+ ampm;
     // $scope.page.scheduleDate = formattedDate;
-    
+
     // Get the pages available to this theme
     $scope.page.themePages = Page.themePages;
-    
+
     // Initialize the page type
     if(Page.type)
         $scope.page.type = Page.type;
     else
         $scope.page.type = $scope.page.themePages[0];
-    
+
     // todo: Save Page.extras save locally too
-    
+
     // Check if there's an unsaved version from a previous session
     var elements = ['title', 'description', 'publish', 'scheduleDate', 'header', 'subheader', 'body', 'url'];
     if($location.path() !== '/new'){ // Don't apply this to new pages
@@ -677,7 +677,7 @@ angular.module('cosmo.admin', [])
 
         // Log changes to the Page object
         Page.title = $scope.page.title;
-        
+
         // Only auto-generate urls for new pages
         if($scope.page.url === '/new' || $scope.page.url === 'new' || !$scope.page.url)
             $scope.autoURL = true;
@@ -727,7 +727,7 @@ angular.module('cosmo.admin', [])
         } else
             $scope.page.suggestions = [];
     };
-    
+
     // Select tag from autocomplete
     $scope.selectSuggestion = function(tag){
         var tags = angular.copy($scope.page.tags);
@@ -736,34 +736,34 @@ angular.module('cosmo.admin', [])
         $scope.page.tags = tags;
         $scope.page.suggestions = [];
     };
-    
+
     // Save the page
     $scope.savePage = function(duplicate){
-        
+
         // Check for duplicate URL
         if(duplicate && $scope.page.url === $location.path()){
             $rootScope.$broadcast('notify', {message: 'Error: URL must be different to duplicate a page', classes: 'alert-error'});
             return;
         }
-        
+
         // Make sure there is a page type
         if(!$scope.page.type){
             $rootScope.$broadcast('notify', {message: 'No page type selected', classes: 'alert-error'});
             return;
         }
-        
+
         // If there's no custom title tag, use the header
         if($scope.page.title){
             if($scope.page.title.length === 0)
                 $scope.page.title = Page.header;
         }
-        
+
         // If there's no custom url, throw an error
         if($scope.page.url.length === 0 || $scope.page.url === 'new'){
             $rootScope.$broadcast('notify', { message: 'No URL Input', classes: 'alert-error' });
             return;
         }
-        
+
         // Get the scheduled date to publish
         var scheduleDate;
         if($scope.page.publish === 'Y' && Page.publish === 'Y') // If this was already published, don't update the published date
@@ -778,13 +778,13 @@ angular.module('cosmo.admin', [])
             else
                 $scope.page.publish = 'N';
         }
-        
+
         // Get the featured image URL
         if(Page.extras.featured)
             var featured = Page.extras.featured.src;
         else
             var featured = null;
-        
+
         // Create a new page or a duplicate
         if($location.path() === '/new' || duplicate){
             // Save content
@@ -825,7 +825,7 @@ angular.module('cosmo.admin', [])
                 $rootScope.$broadcast('notify', {message: 'Error updating page', classes: 'alert-error'});
             });
         }
-        
+
         // Update the page after a new page was saved
         function newPagePromise(data){
             var contentID = data.id;
@@ -857,7 +857,7 @@ angular.module('cosmo.admin', [])
                 author: Users.id
             }, saveRevisionPromise);
         }
-            
+
         // Update the page after saving a page revision
         function saveRevisionPromise(data){
             revisionID = data.id;
@@ -927,7 +927,7 @@ angular.module('cosmo.admin', [])
                 author: Users.id
             }, savePageRevisionPromise);
         }
-        
+
         // Callback for saving a page revision
         function savePageRevisionPromise(data){
             revisionID = data.id;
@@ -998,7 +998,7 @@ angular.module('cosmo.admin', [])
         Users.facebook = data.facebook;
         Users.username = data.username;
         Users.email = data.email;
-        
+
         $scope.profile = data;
         if(!$scope.profile.photo)
             $scope.profile.photo = 'core/img/image.svg'; // Placeholder image
@@ -1014,7 +1014,7 @@ angular.module('cosmo.admin', [])
         if(data.id === 'profile')
             $scope.profile.photo = data.src;
     });
-    
+
     // Update the profile
     $scope.updateProfile = function(){
         REST.users.update({
@@ -1110,7 +1110,7 @@ angular.module('cosmo.admin', [])
 
     // Add a profile photo
     $scope.uploadPhoto = function(type){
-        ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: type }) });
+        ngDialog.open({ template: 'core/html/files.html', data: angular.toJson({ id: type }) });
     };
 
     // Watch for edits to the logo or favicon
@@ -1120,7 +1120,7 @@ angular.module('cosmo.admin', [])
         else if(data.id === 'favicon')
             $scope.settings.favicon = data.src;
     });
-    
+
     $scope.changeLanguage = function(key){
         $translate.use(key);
     };
@@ -1172,12 +1172,12 @@ angular.module('cosmo.admin', [])
 
     // Initialize variables
     $scope.users = {};
-    
+
     // Get users
     REST.users.query({}, function(data){
         $scope.users.data = data;
     });
-    
+
     // Update the user's info
     $scope.updateUser = function(user){
         REST.users.update({
@@ -1212,7 +1212,7 @@ angular.module('cosmo.admin', [])
  *        Format theme html files into            *
  *        user-friendly page options              *
  **************************************************/
- 
+
 .filter('themeFiles', function(){
     return function(input){
         if(input){
