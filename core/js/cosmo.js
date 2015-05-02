@@ -443,7 +443,7 @@ angular.module('cosmo', [])
  *                HTML5 Audio                     *
  **************************************************/
 
-.directive('csAudio', ['Page', '$routeParams', '$rootScope', 'ngDialog', 'Users', '$sce', function(Page, $routeParams, $rootScope, ngDialog, Users, $sce) {
+.directive('csAudio', ['Page', '$routeParams', '$rootScope', 'Users', '$sce', function(Page, $routeParams, $rootScope, Users, $sce) {
     return {
         template: '<audio ng-dblclick="clicked()"><source ng-repeat="file in audioFiles" ng-src="{{file.src}}"></audio>',
         replace: true,
@@ -528,7 +528,12 @@ angular.module('cosmo', [])
             if(Users.admin) {
                 // Double click image to edit
                 elm.on('dblclick', function(){
-                   ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csBgImage }) });
+                    $rootScope.$broadcast('editFiles', angular.toJson({ 
+                            id: attrs.csBgImage, 
+                            data: imageURL
+                        })
+                    );
+                   // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csBgImage }) });
                 });
                 
                 // Update page when another image is chosen
@@ -547,7 +552,7 @@ angular.module('cosmo', [])
  *              Image Directive                   *
  **************************************************/
 
-.directive('csImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', '$timeout', function(Page, $rootScope, ngDialog, Users, REST, $compile, $http, Responsive, Hooks, $timeout){
+.directive('csImage', ['Page', '$rootScope', 'Users', 'REST', '$compile', '$http', 'Responsive', 'Hooks', '$timeout', function(Page, $rootScope, Users, REST, $compile, $http, Responsive, Hooks, $timeout){
     return {
         scope: {},
         template: '<img ng-src="{{src}}" alt="{{image.alt}}" title="{{image.title}}" size="{{image.size}}" />',
@@ -749,7 +754,6 @@ angular.module('cosmo', [])
 .controller('linkCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
     $scope.save = function(){
         $rootScope.$broadcast('editedLink', {text: $scope.link.text, url: $scope.link.url});
-        // ngDialog.close();
     };
 }])
 
@@ -950,7 +954,6 @@ angular.module('cosmo', [])
                 password: $scope.register.password
             }, function(data){ // Success
                 $rootScope.$broadcast('notify', {message: 'Account created'});
-                // ngDialog.close();
                 $location.path('/');
             }, function(){ // Error
                 $rootScope.$broadcast('notify', {message: 'Username/email is already in use'});
@@ -999,7 +1002,6 @@ angular.module('cosmo', [])
             
             $scope.login.username = '';
             $scope.login.password = '';
-            // ngDialog.close();
             $location.path('/');
 
             $rootScope.$broadcast('loggedIn');
@@ -1084,7 +1086,7 @@ angular.module('cosmo', [])
 }])
 
 // Forgotten password reset
-.controller('resetPasswordCtrl', ['$routeParams', '$scope', 'ngDialog', 'REST', '$location', function($routeParams, $scope, ngDialog, REST, $location){
+.controller('resetPasswordCtrl', ['$routeParams', '$scope', 'REST', '$location', function($routeParams, $scope, REST, $location){
     
     $scope.reset = {};
     
@@ -1563,7 +1565,7 @@ angular.module('cosmo', [])
     };
 }])
 
-.controller('wysiwygCtrl', ['$scope', 'ngDialog', '$rootScope', 'Page', function($scope, ngDialog, $rootScope, Page){
+.controller('wysiwygCtrl', ['$scope', '$rootScope', 'Page', function($scope, $rootScope, Page){
 
     $scope.editor = {};
     $scope.editor.url = [];
@@ -1765,12 +1767,6 @@ angular.module('cosmo', [])
         }
     });
 
-    // Watch for the modal closing
-    $rootScope.$on('ngDialog.closed', function(event, data){
-        // Make the user's keypresses go to the screen instead of the modal
-        Page.misc.wysiwyg.modalOpen = false;
-    });
-
     // Clicked an input-like div
     $scope.clicked = function(event, item) {
         $scope.editor.selected = item; // Keep track of which variable is being edited
@@ -1804,7 +1800,6 @@ angular.module('cosmo', [])
             url = 'http://' + url;
 
         document.execCommand('insertHTML', false, '<a href="'+ url +'" target="'+ newTab +'" class="'+ $scope.editor.classes.join('') +'">'+ $scope.editor.text.join('') +'</a>');
-        // ngDialog.close();
     };
 
     // Insert a table
@@ -1840,7 +1835,6 @@ angular.module('cosmo', [])
         Page.extras[timestamp] = angular.toJson(rows);
 
         document.execCommand('insertHTML', false, '<div cs-table="'+ timestamp +'"></div>');
-        // ngDialog.close();
         $rootScope.$broadcast('saveAndRefresh');
     };
     

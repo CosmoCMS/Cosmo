@@ -982,7 +982,7 @@ angular.module('cosmo.admin', [])
  *              Edit your profile                 *
  **************************************************/
 
-.controller('profileCtrl', ['$scope', 'REST', '$rootScope', 'ngDialog', 'Users', function($scope, REST, $rootScope, ngDialog, Users){
+.controller('profileCtrl', ['$scope', 'REST', '$rootScope', 'Users', function($scope, REST, $rootScope, Users){
 
     // Initialize variables
     $scope.profile = {};
@@ -1006,7 +1006,12 @@ angular.module('cosmo.admin', [])
 
     // Add a profile photo
     $scope.addProfilePhoto = function(){
-        ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: 'profile' }) });
+        $rootScope.$broadcast('editFiles', angular.toJson({ 
+                id: 'profile',
+                data: $scope.profile
+            })
+        );
+        // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: 'profile' }) });
     };
 
     // Watch for edits to the profile photo
@@ -1014,7 +1019,7 @@ angular.module('cosmo.admin', [])
         if(data.id === 'profile')
             $scope.profile.photo = data.src;
     });
-    
+
     // Update the profile
     $scope.updateProfile = function(){
         REST.users.update({
@@ -1089,7 +1094,7 @@ angular.module('cosmo.admin', [])
  *        Manage the settings of the site         *
  **************************************************/
 
-.controller('settingsCtrl', ['$scope', 'REST', '$rootScope', 'Page', 'ngDialog', '$translate', function($scope, REST, $rootScope, Page, ngDialog, $translate){
+.controller('settingsCtrl', ['$scope', 'REST', '$rootScope', 'Page', '$translate', function($scope, REST, $rootScope, Page, $translate){
 
     $scope.settings = {};
     $scope.settings.siteName = Page.settings.site_name;
@@ -1110,7 +1115,12 @@ angular.module('cosmo.admin', [])
 
     // Add a profile photo
     $scope.uploadPhoto = function(type){
-        ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: type }) });
+        $rootScope.$broadcast('editFiles', angular.toJson({ 
+                id: type,
+                data: $scope.settings.logo
+            })
+        );
+        // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: type }) });
     };
 
     // Watch for edits to the logo or favicon
@@ -1168,7 +1178,7 @@ angular.module('cosmo.admin', [])
  *               Manage all users                 *
  **************************************************/
 
-.controller('usersCtrl', ['$scope', 'REST', '$rootScope', 'ngDialog', function($scope, REST, $rootScope, ngDialog){
+.controller('usersCtrl', ['$scope', 'REST', '$rootScope', function($scope, REST, $rootScope){
 
     // Initialize variables
     $scope.users = {};
