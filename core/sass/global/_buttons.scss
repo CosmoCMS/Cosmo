@@ -1,20 +1,21 @@
 %button {
-    background-color: palette(blue, dark);
+    background-color: darken(palette(blue, mid), 5%);
     color: palette(gray, white);
     cursor: pointer;
     display: inline-block;
     font-family: $font-alpha;
     font-size: .8rem;
-    font-weight: 500;
-    letter-spacing: .03rem;
+    font-weight: 600;
+    letter-spacing: .05rem;
     margin: 0 size(25) 0 0;
     outline: none;
     padding: 1rem 2rem;
     text-align: center;
     text-transform: uppercase;
+    transition: ease-in-out .15s;
 
     &:hover {
-        background-color: palette(blue, light);
+        background-color: palette(blue, dark);
         color: palette(gray, white);
     }
 
