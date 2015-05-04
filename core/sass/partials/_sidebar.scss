@@ -101,7 +101,7 @@
 }
 
 .new-message--cosmo {
-    background-color: palette(blue, light);
+    background-color: palette(blue, dark);
     color: palette(gray, light);
     display: flex;
     padding: size(10) size(25);
@@ -140,6 +140,7 @@
     button {
         flex: 1;
         margin: 0;
+        padding: 1rem 0;
     }
 
     p {
