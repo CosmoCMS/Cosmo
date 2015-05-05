@@ -131,27 +131,17 @@ if(!$_GET):
         <link rel="stylesheet" type="text/css" href="core/css/cosmo-default-style.minify.css">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="core/js/angular/angular.min.js"></script>
-        <script src="core/js/3rd-party/ngDialog.min.js"></script>
         <script src="core/js/3rd-party/angular-translate.min.js"></script>
         <!--<script src="core/js/3rd-party/angular-translate-storage-cookie.min.js"></script>-->
         <script src="core/js/3rd-party/angular-translate-loader-static-files.min.js"></script>
         <script>
-            angular.module('app', ['ngDialog', 'pascalprecht.translate'])
+            angular.module('app', ['pascalprecht.translate'])
             
             .config(function($translateProvider) {
                 // Load files from the core/languages folder
                 $translateProvider.useStaticFilesLoader({
                     prefix: '/core/languages/',
                     suffix: '.json'
-                });
-            })
-
-            .run(function(ngDialog){
-                ngDialog.open({ 
-                    template: 'core/html/install.html', 
-                    showClose: false,
-                    closeByEscape: false,
-                    closeByDocument: false 
                 });
             })
 
@@ -203,4 +193,7 @@ if(!$_GET):
             });
         </script>
     </head>
+    <body>
+        <div ng-include="'core/html/install.html'"></div>
+    </body>
 </html><?php endif; ?>
