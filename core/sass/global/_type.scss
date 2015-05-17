@@ -15,12 +15,12 @@ h1 {
     flex: 3;
     font-size: 1.15rem;
     font-weight: 200;
-    line-height: 1.5;
+    line-height: 1.15;
     text-align: center;
     text-transform: capitalize;
 
     @media #{$bp-alpha} {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 }
 
