@@ -37,7 +37,6 @@ describe('Directives', function() {
     var Page;
     
     beforeEach(module('cosmo'));
-    beforeEach(module('ngDialog'));
 
     beforeEach(inject(function(_$compile_, _$rootScope_, _Page_){
         $compile = _$compile_;

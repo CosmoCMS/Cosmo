@@ -67,7 +67,6 @@
                 'ui.tree',
                 'angularFileUpload',
                 'ngResource',
-                'ngDialog',
                 'ngTouch'<?php echo $angularModules; ?>
 
             ])

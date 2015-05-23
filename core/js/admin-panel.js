@@ -1011,7 +1011,6 @@ angular.module('cosmo.admin', [])
                 data: $scope.profile
             })
         );
-        // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: 'profile' }) });
     };
 
     // Watch for edits to the profile photo
@@ -1120,7 +1119,6 @@ angular.module('cosmo.admin', [])
                 data: $scope.settings.logo
             })
         );
-        // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: type }) });
     };
 
     // Watch for edits to the logo or favicon
