@@ -861,7 +861,9 @@ angular.module('cosmo.admin', [])
         // Update the page after saving a page revision
         function saveRevisionPromise(data){
             revisionID = data.id;
-            var extrasCounter.i = 1;
+            var extrasCounter = { 
+                i: 1
+            };
 
             // Save additional data if there is any
             if(Object.keys(Page.extras).length === 0){
@@ -1008,10 +1010,11 @@ angular.module('cosmo.admin', [])
     $scope.addProfilePhoto = function(){
         $rootScope.$broadcast('editFiles', angular.toJson({
                 id: 'profile',
-                data: $scope.profile
+                data: {
+                    src: $scope.profile
+                }
             })
         );
-        // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: 'profile' }) });
     };
 
     // Watch for edits to the profile photo
@@ -1117,10 +1120,11 @@ angular.module('cosmo.admin', [])
     $scope.uploadPhoto = function(type){
         $rootScope.$broadcast('editFiles', angular.toJson({ 
                 id: type,
-                data: $scope.settings.logo
+                data: {
+                    src: $scope.settings.logo
+                }
             })
         );
-        // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: type }) });
     };
 
     // Watch for edits to the logo or favicon

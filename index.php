@@ -19,7 +19,7 @@
         <!--[if lte IE 9]>
             <script>
                 if(window.location.href.indexOf('#!') === -1)
-                    window.location.href = window.location.protocol + '//' + window.location.host + '/#!' + window.location.pathname;
+                    window.location.href = window.location.protocol + '//' + window.location.host + '/#!' + encodeURLComponet(window.location.pathname);
             </script>
             <script src="core/js/3rd-party/html5.js"></script>
         <![endif]-->

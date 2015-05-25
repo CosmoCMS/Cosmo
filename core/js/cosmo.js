@@ -503,7 +503,7 @@ angular.module('cosmo', [])
  *             Background images                  *
  **************************************************/
 
-.directive('csBgImage', ['Page', '$rootScope', 'ngDialog', 'Users', 'Responsive', 'Hooks', function(Page, $rootScope, ngDialog, Users, Responsive, Hooks) {
+.directive('csBgImage', ['Page', '$rootScope', 'Users', 'Responsive', 'Hooks', function(Page, $rootScope, Users, Responsive, Hooks) {
     return {
         link: function(scope, elm, attrs, ctrl) {
 
@@ -533,7 +533,6 @@ angular.module('cosmo', [])
                             data: imageURL
                         })
                     );
-                   // ngDialog.open({ template: 'core/html/modal.html', data: angular.toJson({ id: attrs.csBgImage }) });
                 });
 
                 // Update page when another image is chosen

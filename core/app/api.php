@@ -558,18 +558,18 @@ switch($segments[0])
                 break;
                 
             case 'PUT':
-                $username = isset($_POST['username']) ? $_POST['username'] : '';
-                $password = isset($_POST['password']) ? $_POST['password'] : '';
-                $name = isset($_POST['name']) ? $_POST['name'] : '';
-                $photo = isset($_POST['photo']) ? $_POST['photo'] : '';
-                $bio = isset($_POST['bio']) ? $_POST['bio'] : '';
-                $facebook = isset($_POST['facebook']) ? $_POST['facebook'] : '';
-                $twitter = isset($_POST['twitter']) ? $_POST['twitter'] : '';
-                $role = isset($_POST['role']) ? $_POST['role'] : '';
-                $email = isset($_POST['email']) ? $_POST['email'] : '';
-                $reset = isset($_POST['reset']) ? $_POST['reset'] : '';
-                $token = isset($_POST['token']) ? $_POST['token'] : '';
-                
+                $username = isset($_PUT['username']) ? $_PUT['username'] : '';
+                $password = isset($_PUT['password']) ? $_PUT['password'] : '';
+                $name = isset($_PUT['name']) ? $_PUT['name'] : '';
+                $photo = isset($_PUT['photo']) ? $_PUT['photo'] : '';
+                $bio = isset($_PUT['bio']) ? $_PUT['bio'] : '';
+                $facebook = isset($_PUT['facebook']) ? $_PUT['facebook'] : '';
+                $twitter = isset($_PUT['twitter']) ? $_PUT['twitter'] : '';
+                $role = isset($_PUT['role']) ? $_PUT['role'] : '';
+                $email = isset($_PUT['email']) ? $_PUT['email'] : '';
+                $reset = isset($_PUT['reset']) ? $_PUT['reset'] : '';
+                $token = isset($_PUT['token']) ? $_PUT['token'] : '';
+
                 if(count($segments) > 1 && $segments[1]) // Edit username, email, role, or password
                 {
                     // Make sure the user is editing their own info, or the user is an administrator
