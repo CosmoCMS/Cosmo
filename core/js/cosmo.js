@@ -1073,18 +1073,6 @@ angular.module('cosmo', [])
 }])
 
 // Forgotten password reset
-.controller('resetModal', ['ngDialog', function(ngDialog){
-    // Open modal
-    ngDialog.open({
-        template: 'core/html/partials/password-reset.html',
-        controller: 'resetPasswordCtrl',
-        showClose: false,
-        closeByEscape: false,
-        closeByDocument: false
-    });
-}])
-
-// Forgotten password reset
 .controller('resetPasswordCtrl', ['$routeParams', '$scope', 'REST', '$location', function($routeParams, $scope, REST, $location){
 
     $scope.reset = {};
