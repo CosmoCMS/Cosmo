@@ -2171,7 +2171,7 @@ angular.module('cosmo', [])
 
     // Initialize variables
     function filesInit() {
-        if($scope.admin.files.gallery){ // Editing an image gallery
+        if($scope.admin.files && $scope.admin.files.gallery){ // Editing an image gallery
             $scope.images = $scope.admin.files.images;
             for(var i=0; i<$scope.images.length; i++)
                 $scope.images[i].url = $sce.trustAsResourceUrl($scope.images[i].src);
