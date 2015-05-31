@@ -1076,6 +1076,7 @@ angular.module('cosmo', [])
 .controller('resetPasswordCtrl', ['$routeParams', '$scope', 'REST', '$location', function($routeParams, $scope, REST, $location){
 
     $scope.reset = {};
+    $scope.admin.showAdminPanel = true;
 
     // Reset password
     $scope.reset = function(){
