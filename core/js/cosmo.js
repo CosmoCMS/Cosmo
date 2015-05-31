@@ -2185,7 +2185,7 @@ angular.module('cosmo', [])
         if($scope.admin.files)
             $scope.id = $scope.admin.files.id;
 
-        if($scope.admin.files.data){
+        if($scope.admin.files && $scope.admin.files.data){
             $scope.files.title = $scope.admin.files.data.title;
             $scope.files.class = $scope.admin.files.data.class;
             $scope.files.alt = $scope.admin.files.data.alt;
