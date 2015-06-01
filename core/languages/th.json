@@ -1,235 +1,220 @@
 {
     "close": "ปิด",
-    "back": "หลัง,ส่วนหลัง",
-    "search": "สืบหา,ค้นหา",
-    "name": "Name","ชื่อ",
-    "code": "Code","รหัส",
-    "section": "Section","การตัดออก,ส่วนที่ตัดออก",
-    "priority": "Priority","การมาก่อน,การมีสิทธิ์ก่อน",
-    "no": "No","ไม่",
-    "yes": "Yes","ไช่",
-    "delete": "delete","ลบ",
-    "save": "save","ประหยัด,บันทึก",
-    "header": "Header","ส่วนหัว,หัวข้อ",
-    "footer": "Footer","ข้อความส่วนท้าย",
+    "back": "ด้านหลัง,ข้างหลัง",
+    "search": "ค้นหา",
+    "name": "Name","ชื่อ"
+    "code": "Code","รหัส"
+    "section": "Section","ส่วนย่อย"
+    "priority": "Priority","ลำดับความสำคัญ"
+    "no": "No","ไม่"
+    "yes": "Yes","ไช่"
+    "delete": "delete","ลบ"
+    "save": "save","บันทึก"
+    "header": "Header","ส่วนหัว"
+    "footer": "Footer","ข้อความส่วนท้าย"
     "sidebar": "Sidebar","แถบด้านข้าง"
-    "block": "Block","ปิดกั้น"
-    "archives": "Archives","เอกสารหรือบันทึกสำคัญ"
+    "block": "Block",""กีดกัน,บล็อก
+    "archives": "Archives","ที่เก็บเอกสาร"
     "all": "All","ทั้งหมด"
-    "type": "Type","ชนิด,แบบ"
-    "author": "Author","ผู้ประพันธ์,นักเขัยน"
-    "tags": "Tags","ติดป้าย,แถบป้ายบอกข้อมูล"
+    "type": "Type","ชนิด"
+    "author": "Author","ผู้ประพันธ์,ผู้แต่ง"
+    "tags": "Tags","ติดป้าย"
     "username": "Username","ชื่อผู้ใช้"
-    "password": "Password","รหัสผ่าน,คำผ่าน"
-    "register": "Register","การลงทะเบียน"
+    "password": "Password","รหัสผ่าน"
+    "register": "Register","ลงทะเบียน"
     "login": "Log In","เข้าสู่ระบบ"
-    "add": "add",ใส่,เพิ่มเติม,บวก
-    "editing": "Editing","การแก้ไข,การตัดต่อ"
-    "area": "Area","พื้นที่"
-    "primary": "Primary","สำัญที่สุด,อันดับแรก"
-    "secondary": "Secondary","ลำดับสอง"
-    "menu": "Menu","เมนู,รายการ"
-    "settings": "Settings","สถานที่ติดตั้ง"
+    "add": "add","เพิ่มเติม,บวก"
+    "editing": "Editing","การตั้งค่า"
+    "area": "Area","พื้นที่,อาณาเขต"
+    "primary": "Primary","อันดับแรก,ขั้นแรก"
+    "secondary": "Secondary","ขั้นรองลงมา"
+    "menu": "Menu","รายการ"
+    "settings": "Settings","การตั้งค่า"
     "install": "Install","การติดตั้ง"
     "title": "Title","หัวข้อ"
     "description": "Description","การบรรยาย"
     "discard": "discard","ละทิ้ง"
-    "compare": "compare","เปรียบเทียบ"
-    "use": "use","ใช้,วิธีใช้"
+    "compare": "compare","การเปรียบเทียบ"
+    "use": "use","ใช้"
     "publish": "Publish","จัดพิมพ์,ตีพิมพ์"
     "draft": "Draft","ต้นร่าง,ฉบับร่าง"
-    "schedule": "Schedule","รายการหมายกำหนดการ"
-    "url": "URL",
-    "duplicate": "duplicate",
-    "email": "Email",
-    "facebook": "Facebook",
-    "twitter": "Twitter",
-    "bio": "Bio",
-    "revert": "Revert",
-    "create": "Create",
-    "edit": "Edit",
-    "permissions": "Permissions",
-    "read": "read",
-    "write": "write",
-    "update": "update",
-    "logo": "Logo",
-    "favicon": "Favicon",
-    "select": "select",
-    "confirm_password": "Confirm Password",
-    "role": "Role",
-    "revisions": "Revisions",
-    "blocks": "Blocks",
-    "theme": "Theme",
-    "users": "Users",
-    "modules": "Modules",
-    "paragraph": "Paragraph",
-    "view_move": "View More",
-    "submit": "Submit",
-    "folder": "Folder",
-    "text": "Text",
-    "link": "Link",
-    "reset": "Reset",
-    "new_password": "New Password",
-    "comments": "Comments",
-    "or": "or",
-    "welcome": "Welcome",
-    "log_out": "Log Out",
-    "edit_profile": "Edit Profile",
-
-    "blocks_title": "Edit Blocks",
-    "blocks_description": "New Block",
-    "blocks_name": "Name of block here",
-    "blocks_visibility": "Page Visibility",
-    "blocks_all_pages": "Display on all pages",
-    "blocks_only": "Only for pages below",
-    "blocks_except": "All pages, except below",
-    "blocks_wildcard": "Use an asterisk (*) as a wildcard at the end of a page. e.g. /blog*",
-    "blocks_specific": "Show only for specific content type(s):",
-    "blocks_no_limitation": "*If no item is selected, there will be no limitation.",
-    "blocks_delete": "Are you sure you want to delete this block?",
-
-    "browse_search": "Search Pages",
-    "browse_restrict": "Restrict Search",
-
-    "files_media": "Media",
-    "files_add_media": "Add Media",
-    "files_alt_text": "Alt Text",
+    "schedule": "Schedule","รายการ,หมายกำหนดการ"
+    "url": "URL","ชื่อหรือที่อยู่ของเว็ปไซต์"
+    "duplicate": "duplicate","สำเนา"
+    "email": "Email","อีเมล"
+    "facebook": "Facebook","เฟสบุ๊ค"
+    "twitter": "Twitter","ทวิตเตอร์"
+    "bio": "Bio","ชีวประวัติ"
+    "revert": "Revert","กลับสู่สภาพเดิม"
+    "create": "Create","สร้างสรรค์"
+    "edit": "Edit","การตั้งค่า"
+    "permissions": "Permissions","การอนุมัติ,การยินยอม"
+    "read": "read","อ่าน"
+    "write": "write","เขียน"
+    "update": "update","การทำให้ทันสมัย"
+    "logo": "Logo","สัญลักษณ์"
+    "favicon": "Favicon","ไอคอนที่จะแสดงอยู่ที่หัวแท็บของเบราเซอร์"
+    "select": "select","เลือก,คัดสรรค์"
+    "confirm_password": "Confirm Password","ยืนยันรหัสผ่าน"
+    "role": "Role","บทบาท,หน้าที่"
+    "revisions": "Revisions","การปรับปรุงแก้ไขใหม่"
+    "blocks": "Blocks","การบล็อก,กีดกัน"
+    "theme": "Theme","หัวข้อในการสนทนา,ประเด็นหลัก"
+    "users": "Users","ผู้ใช้"
+    "modules": "Modules","เกณฑ์วัด"
+    "paragraph": "Paragraph","วรรคตอน,ย่อหน้า"
+    "view_move": "View More","ดูเพิ่มเติม"
+    "submit": "Submit","ยินยอม,"
+    "folder": "Folder","โฟลเดอร์,แฟ้มเก็บเอกสาร"
+    "text": "Text","ข้อความ"
+    "link": "Link","สิ่งเชื่อมต่อ"
+    "reset": "Reset","ตั้งใหม่,เปลี่ยนใหม่"
+    "new_password": "New Password","รหัสผ่านใหม่"
+    "comments": "Comments","ข้อคิดเห็น"
+    "or": "or","หรือ"
+    "welcome": "Welcome","ยินดีต้อนรับ"
+    "log_out": "Log Out","ออกจากระบบ"
+    "edit_profile": "Edit Profile","แก้ไขโปรไฟล์,แก้ไขประวัติ"
+    "blocks_title": "Edit Blocks","แก้ไขการบล็อก"
+    "blocks_description": "New Block","บล็อกใหม่"
+    "blocks_name": "Name of block here","ชือของการบล็อก"
+    "blocks_visibility": "Page Visibility","หน้าการแสดงผล"
+    "blocks_all_pages": "Display on all pages","การแสดงผลบนหน้ากระดาษทั้งหมด"
+    "blocks_only": "Only for pages below","สำหรับหน้ากระดาษด้านล่าง"
+    "blocks_except": "All pages, except below","หน้ากระดาษทั้งหมด,ยกเว้นด้านล่าง"
+    "blocks_wildcard": "Use an asterisk (*) as a wildcard at the end of a page. e.g. /blog*","ใช้เครื่องหมายดอกจันเป็นตัวแทนในตอนท้ายของหน้ากระดาษ.เช่น/บล็อก",""
+    "blocks_specific": "Show only for specific content type(s):","แสดงเฉพาะประเภทสำหรับเนื้อหาที่เฉพาะเจาะจง"
+    "blocks_no_limitation": "*If no item is selected, there will be no limitation.","หากไม่เลือกรายการ,จะไม่มีข้อจำกัด"
+    "blocks_delete": "Are you sure you want to delete this block?","คุณแน่ใจหรือว่าคุณต้องการลบบล็อกนี้"
+    "browse_search": "Search Pages","หน้าค้นหา"
+    "browse_restrict": "Restrict Search","จำกัดการค้นหา"
+    "files_media": "Media","สื่อ"
+    "files_add_media": "Add Media","เพิ่มสื่อ"
+    "files_alt_text": "Alt Text","ข้อความสำหรับ"
     "files_down": "Down","ลง"
     "files_up": "Up","ขึ้น"
     "files_remove": "Remove","เอาออก"
-    "files_search_media": "Search Media",
-    "files_images": "Images",
+    "files_search_media""": "Search Media","ค้นหาสื่อ"
+    "files_images": "Images","รูปภาพ"
     "files_video": "Video","วิดีโอ"
-    "files_audio": "Audio",
-    "files_files": "Files",
-    "files_upload": "Upload",
-    "files_image_information": "Image Information",
-    "files_previous": "Previous",
-    "files_next": "Next",
-    "files_full": "Full",
-    "files_large": "Large",
-    "files_medium": "Medium",
-    "files_small": "Small",
-    "files_non_responsive": "Non-responsive",
-    "files_autoplay": "Autoplay",
-    "files_controls": "Controls",
-    "files_loop": "Loop",
-    "files_autoload": "Autoload",
-    "files_css_classes": "CSS Classes (space separated)",
-    "files_link_url": "Link URL",
-    "files_choose_file": "Choose File",
-    "files_edit_video": "Edit Video",
-    "files_upload_files": "Upload Files",
-    "files_save_from_url": "Save from URL",
-    "files_completed": "Completed",
-    "files_click_drag": "Click or Drag files",
-    "files_html5_not_supported": "HTML5 Drop File is not supported!",
-
-    "install_cosmo": "Install cosmo",
-    "install_choose_language": "Choose your Language",
-    "install_error_upload": "Error: /uploads/ folder is not writeable. Please change the permissions and refresh.",
-    "install_error_autoload": "Error: File core/app/autoload.php is not writeable. Please change the permission and refresh.",
-    "install_error_htaccess": "Error: File .htaccess does not exist. Please upload and refresh.",
-    "install_complete": "Your installation is complete.",
-    "install_delete": "Delete install.php file and change permissions of core/app/autoload.php to 644.",
-    "install_view": "You can view your home page now or go to /admin to log in.",
-    "install_error": "There was an error installing Cosmo.",
-    "install_database": "Database Info",
+    "files_audio": "Audio","เสียง"
+    "files_files": "Files","ไฟล์,แฟ้มเอกสาร"
+    "files_upload": "Upload","อัปโหลด,การถ่ายโอนข้อมูล"
+    "files_image_information": "Image Information","ข้อมูลภาพ"
+    "files_previous": "Previous","เมื่อก่อน,ครั้งก่อน"
+    "files_next": "Next","ต่อไป"
+    "files_full": "Full","เต็ม"
+    "files_large": "Large","ใหญ่โต"
+    "files_medium": "Medium","ขนาดกลาง"
+    "files_small": "Small","เล็ก"
+    "files_non_responsive": "Non-responsive","ไม่ตอบสนอง"
+    "files_autoplay": "Autoplay","เล่นอัตโนมัติ"
+    "files_controls": "Controls","ควบคุม"
+    "files_loop": "Loop","วงแหวน"
+    "files_autoload": "Autoload","โหลดอัตโนมัติ"
+    "files_css_classes": "CSS Classes (space separated)","จัดหมวดหมู่ CSS(จัดแยกออกจากกัน)"
+    "files_link_url": "Link URL","เชื่อมต่อชื่อหรือที่อยู่เว็ปไซต์"
+    "files_choose_file": "Choose File","เลือกแฟ้มเอกสารหรือไฟล์"
+    "files_edit_video": "Edit Video","แก้ไขวิดีโอ"
+    "files_upload_files": "Upload Files","การอัปโหลดไฟล์"
+    "files_save_from_url": "Save from URL","บันทึกจากชื่อหรือที่อยู่ของเว็บไซต์"
+    "files_completed": "Completed","สำเร็จ,สมบูรณ์"
+    "files_click_drag": "Click or Drag files","คลิ๊กหรือดึงไฟล์"
+    "files_html5_not_supported": "HTML5 Drop File is not supported!","ไฟล์ไม่สนันสนุน HTML5"
+    "install_cosmo": "Install cosmo","การติดตั้งcosmo"
+    "install_choose_language": "Choose your Language","เลือกภาษาของคุณ"
+    "install_error_upload": "Error: /uploads/ folder is not writeable. Please change the permissions and refresh.","ข้อผิดพลาด/อัปโหลด/โฟลเดอร์ไม่สามารถเขียนได้.กรุณาอนุมัติและฟื้นฟู"
+    "install_error_autoload": "Error: File core/app/autoload.php is not writeable. Please change the permission and refresh.","ข้อผิดพลาด:ไฟล์หลัก/การขอ/โหลดอัตโนมัติ.ไม่สามารถเขียนphp.กรุณาอนุัติและฟื้นฟู"
+    "install_error_htaccess": "Error: File .htaccess does not exist. Please upload and refresh.","ไม่มีไฟล์htaccessอยู่กรุณณาอัปโหลดและฟื้นฟู"
+    "install_complete": "Your installation is complete.","การติดตั้งของคุณสมบูรณ์"
+    "install_delete": "Delete install.php file and change permissions of core/app/autoload.php to 644.","ลบการติดตั้งไฟล์.phpและเปลี่ยนสิทธิ์การอนุมัติ/app/อัปโหลดphpไปที่644"
+    "install_view": "You can view your home page now or go to /admin to log in.","คุณสามารถดูหน้าแรกหรือไปที่/ผู้ดูแลเข้าสู่ระบบ"
+    "install_error": "There was an error installing Cosmo.","เกิดข้อผิดพลาดการติดตั้งcosmo"
+    "install_database": "Database Info","ข้อมูลพื้นฐาน"
     "install_host": "Host",
-    "install_database_name": "Database name",
-    "install_database_prefix": "Database Prefix",
-    "install_site_info": "Site Info",
-    "install_site_title": "Site Title",
-
-    "login_register": "Register For Cosmo",
-    "login_email": "Email Address",
-    "login_create_account": "create account",
-    "login_sign": "Sign In",
-    "login_in": "In",
-    "login_forgot_password": "Forgot your password?",
-
-    "menus": "Menus",
-    "menu_new": "New Menu",
-    "menu_add": "Add a Menu",
-    "menu_edit_link_text": "Edit Link Text",
-    "menu_edit_link_url": "Edit Link URL",
-    "menu_delete": "delete menu",
-    "menu_save": "save menu",
-    "menu_confirm": "Are you sure you want to delete this menu?",
-
-    "module": "Module",
-    "manager": "Manager",
-    "activate": "Activate",
-    "deactivate": "Deactivate",
-    "uninstall": "Uninstall",
-
-    "page_newer": "There's a newer version of this document you didn't save. Would you like to use that instead?",
-    "page_delete": "Are you sure you want to delete this page?",
-    "page_details": "Page Details",
-
-    "profile_header": "Your Profile",
-    "profile_photo": "Profile Photo",
-
-    "roles_header": "Role Manager",
-    "roles_new": "Add a new role",
-    "roles_edit": "Edit Role Name",
-
-    "settings_site_name": "Site name",
-    "settings_slogan": "Slogan",
-    "settings_maintenance_url": "Maintenance URL",
-    "settings_activate_maintenance": "Activate Maintenance Mode",
-
-    "sidebar_content": "Content",
-    "sidebar_new_page": "New Page",
-    "sidebar_browse": "Browse",
-    "sidebar_edit_page": "Edit Page",
-    "sidebar_revisions": "Revisions",
-
-    "toolbar_block_quote": "Block Quote",
-    "toolbar_code": "code",
-    "toolbar_bold": "Bold",
-    "toolbar_italicize": "Italicize",
+    "install_database_name": "Database name","ชื่อข้อมูลพื้นฐาน"
+    "install_database_prefix": "Database Prefix","คำนำหน้าของข้อมูลพื้นฐาน"
+    "install_site_info": "Site Info","ข้อมูลเว็ปไซต์"
+    "install_site_title": "Site Title","หัวข้อเว็ปไซต์"
+    "login_register": "Register For Cosmo","ลงทะเบียนสำหรับcosmo"
+    "login_email": "Email Address","ที่อยู่อีเมล"
+    "login_create_account": "create account","สร้างบัญชี"
+    "login_sign": "Sign In","เข้าสู่ระบบ"
+    "login_in": "In","ใน"
+    "login_forgot_password": "Forgot your password?","ลืมรหัสผ่านของคุณ"
+    "menus": "Menus","รายการ"
+    "menu_new": "New Menu","รายการใหม่"
+    "menu_add": "Add a Menu","เพิ่มรายการ"
+    "menu_edit_link_text": "Edit Link Text","แก้ไขข้อความเชื่อมต่อ"
+    "menu_edit_link_url": "Edit Link URL","แก้ไขชื่อหรือที่อยู่ของเว็ปไซต์"
+    "menu_delete": "delete menu","ลบรายการ"
+    "menu_save": "save menu","บันทึกรายการ"
+    "menu_confirm": "Are you sure you want to delete this menu?","คุณแน่ใจหรือไม่ว้าคุณต้องการลบรายการนี้"
+    "module": "Module","เกณฑ์วัด"
+    "manager": "Manager","ผู้จัดการ"
+    "activate": "Activate","การกระตุ้น"
+    "deactivate": "Deactivate","ปิด,ยกเลิกการ"
+    "uninstall": "Uninstall","ถอนการติดตั้ง"
+    "page_newer": "There's a newer version of this document you didn't save. Would you like to use that instead?","คุณไม่ได้บันทึกเอกสารรุ่นใหม่.คุณต้องการจะใช้แทนหรือไม่"
+    "page_delete": "Are you sure you want to delete this page?","คุณแน่ใจหรือว่าคุณต้องการลบหน้านี้"
+    "page_details": "Page Details","รายละเอียดของหน้า"
+    "profile_header": "Your Profile","โปรไฟล์ของคุณ,ประวัติของคุณ"
+    "profile_photo": "Profile Photo","รูปภาพโปรไฟล์"
+    "roles_header": "Role Manager","บทบาทหน้าที่ของผู้จัดการ"
+    "roles_new": "Add a new role","เพิ่มบาทบาท"
+    "roles_edit": "Edit Role Name","แก้ไขบาทบาท"
+    "settings_site_name": "Site name","ชื่อเว็ปไซต์,ชื่อสถานที่ตั้ง"
+    "settings_slogan": "Slogan","คำขวัญ,สัญลักษณ์"
+    "settings_maintenance_url": "Maintenance URL","การบำรุงรักษาชื่อหรือที่อยู่ของเว็ปไซต์"
+    "settings_activate_maintenance": "Activate Maintenance Mode","วิธีการบำรุงรักษา"
+    "sidebar_content": "Content","ความสามารถ"
+    "sidebar_new_page": "New Page","หน้าใหม่"
+    "sidebar_browse": "Browse","การอ่านคร่าวๆ"
+    "sidebar_edit_page": "Edit Page","แก้ไขหน้ากระดาษ"
+    "sidebar_revisions": "Revisions","การปรับปรุงแก้ไขใหม่"
+    "toolbar_block_quote": "Block Quote","การอ้างบล็อก"
+    "toolbar_code": "code","รหัส"
+    "toolbar_bold": "Bold","ชัดเจน,เห็นชัด"
+    "toolbar_italicize": "Italicize","ขีดเส้นใต้คำ,พิมพ์ตัวเอน"
     "toolbar_strikethrough": "Strikethrough",
-    "toolbar_underline": "Underline",
-    "toolbar_unformat": "Unformat",
-    "toolbar_add_link": "Add Link",
-    "toolbar_remove_link": "Remove Link",
-    "toolbar_external_link": "External Link",
-    "toolbar_align_left": "Align Left",
-    "toolbar_align_center": "Align Center",
-    "toolbar_align_right": "Align Right",
-    "toolbar_justify_text": "Justify Text",
-    "toolbar_insert_table": "Insert Table",
-    "toolbar_paste_table": "Paste Table",
-    "toolbar_table_head": "Table Head",
-    "toolbar_table_head": "Table Head",
-    "toolbar_row_above": "Row Above",
-    "toolbar_row_below": "Row Below",
-    "toolbar_row": "Row",
-    "toolbar_column_left": "Column Left",
-    "toolbar_column_right": "Column Right",
-    "toolbar_column": "Column",
-    "toolbar_table": "Table",
-    "toolbar_photo": "Photo",
-    "toolbar_upload_video": "Upload Video",
-    "toolbar_external_video": "External Video",
-    "toolbar_audio": "Audio",
-    "toolbar_gallery": "Gallery",
-    "toolbar_code_view": "Code View",
-    "toolbar_insert_html": "Insert HTML",
-    "toolbar_div": "Div",
-    "toolbar_directive": "Directive",
-    "toolbar_ordered_list": "Ordered List",
-    "toolbar_unordered_list": "Unordered List",
-    "toolbar_line_break": "Line Break",
-    "toolbar_indent": "Indent",
-    "toolbar_outdent": "Outdent",
-
-    "themes_header": "Themes",
-
-    "users_new_user": "New User",
-    "users_create": "Create User",
-    "users_admin": "admin",
-    "users_editor": "editor",
-    "users_author": "author"
+    "toolbar_underline": "Underline","ขีดเส้นใต้"
+    "toolbar_unformat": "Unformat","ยกเลิกการจัดรูปแบบข้อมูล"
+    "toolbar_add_link": "Add Link","เพิ่มสิ่งเชื่อมต่อ"
+    "toolbar_remove_link": "Remove Link","ลบการเชื่อมโยง"
+    "toolbar_external_link": "External Link","ภายนอกการเชื่อมต่อ"
+    "toolbar_align_left": "Align Left","จัดให้อยู่ด้านซ้าย"
+    "toolbar_align_center": "Align Center","จัดให้อยู่ตรงกลาง
+    "toolbar_align_right": "Align Right","จัดให้อยู่ด้านขวา"
+    "toolbar_justify_text": "Justify Text","ข้อความที่ถูกต้องเหมาะสม"
+    "toolbar_insert_table": "Insert Table","แทรกตาราง"
+    "toolbar_paste_table": "Paste Table","วางตาราง"
+    "toolbar_table_head": "Table Head","หัวข้อตาราง"
+    "toolbar_table_head": "Table Head","หัวข้อตาราง"
+    "toolbar_row_above": "Row Above","แถวบน"
+    "toolbar_row_below": "Row Below","แถวล่าง"
+    "toolbar_row": "Row","แถว"
+    "toolbar_column_left": "Column Left","คอลัมน์ซ้าย"
+    "toolbar_column_right": "Column Right","คอลัมน์ขวา"
+    "toolbar_column": "Column","คอลัมน์"
+    "toolbar_table": "Table","ตาราง,โต๊ะ"
+    "toolbar_photo": "Photo","รูปภาพ"
+    "toolbar_upload_video": "Upload Video","อัปโหลดวิดีโอ"
+    "toolbar_external_video": "External Video","ด้านนอกวิดีโอ"
+    "toolbar_audio": "Audio","เสียง"
+    "toolbar_gallery": "Gallery","ห้องแสดงผลงาน,สตูดิโอ"
+    "toolbar_code_view": "Code View","ทรรศนะรหัสผ่าน"
+    "toolbar_insert_html": "Insert HTML","แทรก HTML"
+    "toolbar_div": "Div","การแบ่งแยก,แผนก,ฝ่าย,ส่วน"
+    "toolbar_directive": "Directive","คำสั่ง"
+    "toolbar_ordered_list": "Ordered List","คำสั่งรายการ"
+    "toolbar_unordered_list": "Unordered List","ยกเลิกคำสั่งรายการ"
+    "toolbar_line_break": "Line Break","แบ่งบรรทัด"
+    "toolbar_indent": "Indent","ย่อหน้า"
+    "toolbar_outdent": "Outdent","เยื้อง"
+    "themes_header": "Themes","หัวข้อในการสนทนา,ประเด็นหลัก"
+    "users_new_user": "New User","ผู้ใช้ใหม่"
+    "users_create": "Create User","สร้างผู้ใช้"
+    "users_admin": "admin","ผู้ดูแลระบบ"
+    "users_editor": "editor","บรรณาธิการ"
+    "users_author": "author""ผู้แต่ง,ผู้ประพันธ์"
 }
