@@ -1,0 +1,235 @@
+{
+    "close": "ปิด",
+    "back": "หลัง,ส่วนหลัง",
+    "search": "สืบหา,ค้นหา",
+    "name": "Name","ชื่อ",
+    "code": "Code","รหัส",
+    "section": "Section","การตัดออก,ส่วนที่ตัดออก",
+    "priority": "Priority","การมาก่อน,การมีสิทธิ์ก่อน",
+    "no": "No","ไม่",
+    "yes": "Yes","ไช่",
+    "delete": "delete","ลบ",
+    "save": "save","ประหยัด,บันทึก",
+    "header": "Header","ส่วนหัว,หัวข้อ",
+    "footer": "Footer","ข้อความส่วนท้าย",
+    "sidebar": "Sidebar","แถบด้านข้าง"
+    "block": "Block","ปิดกั้น"
+    "archives": "Archives","เอกสารหรือบันทึกสำคัญ"
+    "all": "All","ทั้งหมด"
+    "type": "Type","ชนิด,แบบ"
+    "author": "Author","ผู้ประพันธ์,นักเขัยน"
+    "tags": "Tags","ติดป้าย,แถบป้ายบอกข้อมูล"
+    "username": "Username","ชื่อผู้ใช้"
+    "password": "Password","รหัสผ่าน,คำผ่าน"
+    "register": "Register","การลงทะเบียน"
+    "login": "Log In","เข้าสู่ระบบ"
+    "add": "add",ใส่,เพิ่มเติม,บวก
+    "editing": "Editing","การแก้ไข,การตัดต่อ"
+    "area": "Area","พื้นที่"
+    "primary": "Primary","สำัญที่สุด,อันดับแรก"
+    "secondary": "Secondary","ลำดับสอง"
+    "menu": "Menu","เมนู,รายการ"
+    "settings": "Settings","สถานที่ติดตั้ง"
+    "install": "Install","การติดตั้ง"
+    "title": "Title","หัวข้อ"
+    "description": "Description","การบรรยาย"
+    "discard": "discard","ละทิ้ง"
+    "compare": "compare","เปรียบเทียบ"
+    "use": "use","ใช้,วิธีใช้"
+    "publish": "Publish","จัดพิมพ์,ตีพิมพ์"
+    "draft": "Draft","ต้นร่าง,ฉบับร่าง"
+    "schedule": "Schedule","รายการหมายกำหนดการ"
+    "url": "URL",
+    "duplicate": "duplicate",
+    "email": "Email",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "bio": "Bio",
+    "revert": "Revert",
+    "create": "Create",
+    "edit": "Edit",
+    "permissions": "Permissions",
+    "read": "read",
+    "write": "write",
+    "update": "update",
+    "logo": "Logo",
+    "favicon": "Favicon",
+    "select": "select",
+    "confirm_password": "Confirm Password",
+    "role": "Role",
+    "revisions": "Revisions",
+    "blocks": "Blocks",
+    "theme": "Theme",
+    "users": "Users",
+    "modules": "Modules",
+    "paragraph": "Paragraph",
+    "view_move": "View More",
+    "submit": "Submit",
+    "folder": "Folder",
+    "text": "Text",
+    "link": "Link",
+    "reset": "Reset",
+    "new_password": "New Password",
+    "comments": "Comments",
+    "or": "or",
+    "welcome": "Welcome",
+    "log_out": "Log Out",
+    "edit_profile": "Edit Profile",
+
+    "blocks_title": "Edit Blocks",
+    "blocks_description": "New Block",
+    "blocks_name": "Name of block here",
+    "blocks_visibility": "Page Visibility",
+    "blocks_all_pages": "Display on all pages",
+    "blocks_only": "Only for pages below",
+    "blocks_except": "All pages, except below",
+    "blocks_wildcard": "Use an asterisk (*) as a wildcard at the end of a page. e.g. /blog*",
+    "blocks_specific": "Show only for specific content type(s):",
+    "blocks_no_limitation": "*If no item is selected, there will be no limitation.",
+    "blocks_delete": "Are you sure you want to delete this block?",
+
+    "browse_search": "Search Pages",
+    "browse_restrict": "Restrict Search",
+
+    "files_media": "Media",
+    "files_add_media": "Add Media",
+    "files_alt_text": "Alt Text",
+    "files_down": "Down","ลง"
+    "files_up": "Up","ขึ้น"
+    "files_remove": "Remove","เอาออก"
+    "files_search_media": "Search Media",
+    "files_images": "Images",
+    "files_video": "Video","วิดีโอ"
+    "files_audio": "Audio",
+    "files_files": "Files",
+    "files_upload": "Upload",
+    "files_image_information": "Image Information",
+    "files_previous": "Previous",
+    "files_next": "Next",
+    "files_full": "Full",
+    "files_large": "Large",
+    "files_medium": "Medium",
+    "files_small": "Small",
+    "files_non_responsive": "Non-responsive",
+    "files_autoplay": "Autoplay",
+    "files_controls": "Controls",
+    "files_loop": "Loop",
+    "files_autoload": "Autoload",
+    "files_css_classes": "CSS Classes (space separated)",
+    "files_link_url": "Link URL",
+    "files_choose_file": "Choose File",
+    "files_edit_video": "Edit Video",
+    "files_upload_files": "Upload Files",
+    "files_save_from_url": "Save from URL",
+    "files_completed": "Completed",
+    "files_click_drag": "Click or Drag files",
+    "files_html5_not_supported": "HTML5 Drop File is not supported!",
+
+    "install_cosmo": "Install cosmo",
+    "install_choose_language": "Choose your Language",
+    "install_error_upload": "Error: /uploads/ folder is not writeable. Please change the permissions and refresh.",
+    "install_error_autoload": "Error: File core/app/autoload.php is not writeable. Please change the permission and refresh.",
+    "install_error_htaccess": "Error: File .htaccess does not exist. Please upload and refresh.",
+    "install_complete": "Your installation is complete.",
+    "install_delete": "Delete install.php file and change permissions of core/app/autoload.php to 644.",
+    "install_view": "You can view your home page now or go to /admin to log in.",
+    "install_error": "There was an error installing Cosmo.",
+    "install_database": "Database Info",
+    "install_host": "Host",
+    "install_database_name": "Database name",
+    "install_database_prefix": "Database Prefix",
+    "install_site_info": "Site Info",
+    "install_site_title": "Site Title",
+
+    "login_register": "Register For Cosmo",
+    "login_email": "Email Address",
+    "login_create_account": "create account",
+    "login_sign": "Sign In",
+    "login_in": "In",
+    "login_forgot_password": "Forgot your password?",
+
+    "menus": "Menus",
+    "menu_new": "New Menu",
+    "menu_add": "Add a Menu",
+    "menu_edit_link_text": "Edit Link Text",
+    "menu_edit_link_url": "Edit Link URL",
+    "menu_delete": "delete menu",
+    "menu_save": "save menu",
+    "menu_confirm": "Are you sure you want to delete this menu?",
+
+    "module": "Module",
+    "manager": "Manager",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "uninstall": "Uninstall",
+
+    "page_newer": "There's a newer version of this document you didn't save. Would you like to use that instead?",
+    "page_delete": "Are you sure you want to delete this page?",
+    "page_details": "Page Details",
+
+    "profile_header": "Your Profile",
+    "profile_photo": "Profile Photo",
+
+    "roles_header": "Role Manager",
+    "roles_new": "Add a new role",
+    "roles_edit": "Edit Role Name",
+
+    "settings_site_name": "Site name",
+    "settings_slogan": "Slogan",
+    "settings_maintenance_url": "Maintenance URL",
+    "settings_activate_maintenance": "Activate Maintenance Mode",
+
+    "sidebar_content": "Content",
+    "sidebar_new_page": "New Page",
+    "sidebar_browse": "Browse",
+    "sidebar_edit_page": "Edit Page",
+    "sidebar_revisions": "Revisions",
+
+    "toolbar_block_quote": "Block Quote",
+    "toolbar_code": "code",
+    "toolbar_bold": "Bold",
+    "toolbar_italicize": "Italicize",
+    "toolbar_strikethrough": "Strikethrough",
+    "toolbar_underline": "Underline",
+    "toolbar_unformat": "Unformat",
+    "toolbar_add_link": "Add Link",
+    "toolbar_remove_link": "Remove Link",
+    "toolbar_external_link": "External Link",
+    "toolbar_align_left": "Align Left",
+    "toolbar_align_center": "Align Center",
+    "toolbar_align_right": "Align Right",
+    "toolbar_justify_text": "Justify Text",
+    "toolbar_insert_table": "Insert Table",
+    "toolbar_paste_table": "Paste Table",
+    "toolbar_table_head": "Table Head",
+    "toolbar_table_head": "Table Head",
+    "toolbar_row_above": "Row Above",
+    "toolbar_row_below": "Row Below",
+    "toolbar_row": "Row",
+    "toolbar_column_left": "Column Left",
+    "toolbar_column_right": "Column Right",
+    "toolbar_column": "Column",
+    "toolbar_table": "Table",
+    "toolbar_photo": "Photo",
+    "toolbar_upload_video": "Upload Video",
+    "toolbar_external_video": "External Video",
+    "toolbar_audio": "Audio",
+    "toolbar_gallery": "Gallery",
+    "toolbar_code_view": "Code View",
+    "toolbar_insert_html": "Insert HTML",
+    "toolbar_div": "Div",
+    "toolbar_directive": "Directive",
+    "toolbar_ordered_list": "Ordered List",
+    "toolbar_unordered_list": "Unordered List",
+    "toolbar_line_break": "Line Break",
+    "toolbar_indent": "Indent",
+    "toolbar_outdent": "Outdent",
+
+    "themes_header": "Themes",
+
+    "users_new_user": "New User",
+    "users_create": "Create User",
+    "users_admin": "admin",
+    "users_editor": "editor",
+    "users_author": "author"
+}
