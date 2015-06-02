@@ -30,7 +30,7 @@
     "secondary": "ขั้นรองลงมา",
     "menu": "รายการ",
     "settings": "การตั้งค่า",
-    "install": "การติดตั้ง",,
+    "install": "การติดตั้ง",
     "title": "หัวข้อ",
     "description": "การบรรยาย",
     "discard": "ละทิ้ง",
@@ -90,7 +90,7 @@
     "browse_restrict": "จำกัดการค้นหา",
     "files_media": "สื่อ",
     "files_add_media": "เพิ่มสื่อ",
-    "files_alt_text": "ข้อความสำหรับ,"
+    "files_alt_text": "ข้อความสำหรับ",
     "files_down": "ลง",
     "files_up": "ขึ้น",
     "files_remove": "เอาออก",
@@ -191,7 +191,7 @@
     "toolbar_table_head": "หัวข้อตาราง",
     "toolbar_table_head": "หัวข้อตาราง",
     "toolbar_row_above": "แถวบน",
-    "toolbar_row_below": "แถวล่าง,"
+    "toolbar_row_below": "แถวล่าง",
     "toolbar_row": "แถว",
     "toolbar_column_left": "คอลัมน์ซ้าย",
     "toolbar_column_right": "คอลัมน์ขวา",
