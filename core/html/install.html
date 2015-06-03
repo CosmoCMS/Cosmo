@@ -26,6 +26,9 @@
                 <label for="ru" ng-click="changeLanguage('ru');install.language='ru'">русский язык</label>
                 <input type="radio" value="pl" ng-model="install.language">
                 <label for="pl" ng-click="changeLanguage('pl');install.language='pl'">polszczyzna</label>
+                <input type="radio" value="th" ng-model="install.language">
+                <label for="th" ng-click="changeLanguage('th');install.language='th'">ภาษาไทย</label>
+
             <h3 translate="install_database"></h3>
                 <label translate="install_host"></label>
                 <input type="text" name="host" value="localhost">
@@ -35,13 +38,11 @@
                 <input type="text" ng-model="install.username" name="username">
                 <label translate="password"></label>
                 <input type="password" ng-model="install.password" name="password">
-
                 <label translate="install_database_prefix"></label>
                 <input type="text" ng-model="install.prefix" name="prefix" value="cosmo_">
-            <!-- todo: Add message about modifying the .htaccess files as well
+            <!-- todo: Add message about modifying the .htaccess files as well -->
                 <label translate="folder"></label>
                 <input type="text" ng-model="install.folder" name="folder" value="">
-            -->
             <h3 translate="install_site_info"></h3>
                 <label translate="install_site_title"></label>
                 <input type="text" ng-model="install.title" name="title" value="My Cosmo Site">
