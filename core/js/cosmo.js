@@ -939,8 +939,9 @@ angular.module('cosmo', [])
 .controller('loginRegistrationCtrl', ['$scope', 'REST', '$http', '$location', '$rootScope', 'Users', 'Page', '$timeout', function($scope, REST, $http, $location, $rootScope, Users, Page, $timeout){
 
     // Initialize panel to show
-    $scope.panel = 'login';
-    $scope.login = {};
+    $scope.login = {
+        panel: 'login'
+    };
     $scope.register = {};
     $scope.register.email = '';
 
@@ -964,7 +965,7 @@ angular.module('cosmo', [])
     };
 
     // Login
-    $scope.login = function(){
+    $scope.userLogin = function(){
         REST.users.get({ username: $scope.login.username, password: $scope.login.password, dontcache: new Date().getTime() }, function(data){
 
             // Set Users variables

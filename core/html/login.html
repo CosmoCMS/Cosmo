@@ -1,11 +1,11 @@
 <div class="cosmo-default" ng-controller="loginRegistrationCtrl">
     <div class="sidebar adminSidebarSlideOut" ng-show="login.panel=='register'">
         <div class="bar-top">
-            <i class="fa fa-chevron-left" ng-click="panel='login'"></i>
+            <i class="fa fa-chevron-left" ng-click="login.panel='login'"></i>
             <h1 translate="login_register"></h1>
         </div>
         <div class="bar--actions">
-            <button type="button"  ng-click="register()" translate="login_create_account"></button>
+            <button type="button" ng-click="register()" translate="login_create_account"></button>
         </div>
         <div class="form-case">
             <label translate="username"></label>
@@ -21,13 +21,13 @@
             <input id="confirm your password" type="password" ng-model="register.confirmPassword" class="ng-valid ng-dirty">
         </div>
     </div>
-    <div class="sidebar adminSidebarSlideOut" ng-show="panel=='login'">
+    <div class="sidebar adminSidebarSlideOut" ng-show="login.panel=='login'">
         <div class="bar-top">
             <h1 class="no-marg" translate="login_sign"></h1>
         </div>
         <div class="bar--actions">
-            <button type="button"  ng-click="panel='register'" translate="register"></button>
-            <button type="button"  ng-click="login()" translate="login"></button>
+            <button type="button" ng-click="login.panel='register'" translate="register"></button>
+            <button type="button" ng-click="userLogin()" translate="login"></button>
         </div>
         <div class="form-case">
             <label translate="username"></label>
