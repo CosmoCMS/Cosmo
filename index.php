@@ -60,7 +60,6 @@
             // Setup main module with HTML5 URLs
             angular.module('main', [
                 'cosmo',
-                'cosmo.admin',
                 'pascalprecht.translate',
                 'ngRoute',
                 'ngAnimate',
