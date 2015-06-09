@@ -32,11 +32,11 @@ function checkPermissions($action, $publishedStatus=null, $url=null)
     global $Cosmo;
     global $username;
     global $role;
-    
+
     // Admins can do anything. Skip permission checking
     if($role === 'admin')
         return true;
-    
+
     switch($action)
     {
         case 'createPage':
@@ -59,7 +59,7 @@ function checkPermissions($action, $publishedStatus=null, $url=null)
                     break;
             }
             break;
-        
+
         case 'editPage':
             switch($role)
             {
@@ -86,7 +86,7 @@ function checkPermissions($action, $publishedStatus=null, $url=null)
                     break;
             }
             break;
-        
+
         case 'deletePage':
             switch($role)
             {
@@ -109,7 +109,7 @@ function checkPermissions($action, $publishedStatus=null, $url=null)
                     break;
             }
             break;
-            
+
         default:
             break;
     }
@@ -123,17 +123,17 @@ switch($method)
         if(!$_POST)
             $_POST = json_decode(file_get_contents("php://input"), TRUE);
         break;
-        
+
     case 'PUT':
         $_PUT = json_decode(file_get_contents("php://input"), TRUE);
         break;
-    
+
     case 'DELETE':
         break;
-    
+
     case 'GET':
         break;
-    
+
     default:
         break;
 }
@@ -148,7 +148,7 @@ function error($code)
             $message = array('error' => "This method is not allowed. You probably used the wrong verb (GET, POST, PUT, or DELETE) or you included/omitted an id parameter.");
             break;
     }
-    
+
     return $message;
 }
 
@@ -157,15 +157,15 @@ switch($segments[0])
     ##################################################
     #                   Blocks                       #
     ##################################################
-    
+
     case 'blocks':
-        
+
         switch($method)
         {
             case 'GET':
                 $url = isset($_GET['url']) ? $_GET['url'] : '';
                 $type = isset($_GET['type']) ? $_GET['type'] : '';
-                
+
                 if(isset($segments[2]) && $segments[2] === 'requirements')
                     $response = $Cosmo->blocksRequirementsRead($segments[1]);
                 else if(isset($segments[1]))
@@ -175,21 +175,21 @@ switch($segments[0])
                 else
                     $response = $Cosmo->blocksRead();
                 break;
-                
+
             case 'POST':
                 if($role === 'admin')
                 {
                     $type = isset($_POST['type']) ? $_POST['type'] : '';
                     $requirement = isset($_GET['requirement']) ? $_POST['requirement'] : '';
                     $name = isset($_POST['name']) ? $_POST['name'] : '';
-                    
+
                     if(isset($segments[2]))
                         $response = $Cosmo->blocksRequirementsCreate($segments[1], $type, $requirement);
                     else
                         $response = $Cosmo->blocksCreate($name);
                 }
                 break;
-                
+
             case 'PUT':
                 if($role === 'admin')
                 {
@@ -200,7 +200,7 @@ switch($segments[0])
                     $block = isset($_PUT['block']) ? $_PUT['block'] : '';
                     $priority = isset($_PUT['priority']) ? $_PUT['priority'] : '';
                     $area = isset($_PUT['area']) ? $_PUT['area'] : '';
-                    
+
                     if(isset($segments[3]))
                         $response = $Cosmo->blocksRequirementsUpdate($segments[3], $blockID, $type, $requirement);
                     else if(isset($segments[1]))
@@ -209,7 +209,7 @@ switch($segments[0])
                         $response = error(405);
                 }
                 break;
-                
+
             case 'DELETE':
                 if($role === 'admin')
                 {
@@ -223,7 +223,7 @@ switch($segments[0])
                 break;
         }
         break;
-    
+
     ##################################################
     #                 Comments                       #
     ##################################################
@@ -233,24 +233,24 @@ switch($segments[0])
         {
             case 'GET':
                 $id = isset($_GET['id']) ? $_GET['id'] : '';
-                
+
                 $response = $Cosmo->commentsRead($id);
                 break;
-                
+
             case 'POST':
                 $content_id = isset($_POST['content_id']) ? $_POST['content_id'] : '';
                 $path = isset($_POST['path']) ? $_POST['path'] : '';
                 $name = isset($_POST['name']) ? $_POST['name'] : '';
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
                 $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
-                
+
                 $response = $Cosmo->commentsCreate($content_id, $path, $name, $email, $comment);
                 break;
 
             case 'PUT':
                 $id = isset($_PUT['id']) ? $_PUT['id'] : '';
                 $comment = isset($_PUT['comment']) ? $_PUT['comment'] : '';
-                
+
                 $response = $Cosmo->commentsUpdate($id, $comment);
                 break;
 
@@ -259,7 +259,7 @@ switch($segments[0])
                 break;
         }
         break;
-        
+
     ##################################################
     #                  Content                       #
     ##################################################
@@ -274,6 +274,8 @@ switch($segments[0])
                     $response = $Cosmo->revisionsRead(NULL, $segments[1]);
                 else if(count($segments) > 2 && $segments[2] === 'tags')
                     $response = $Cosmo->contentTagsRead($segments[1]);
+                else if(count($segments) > 1 && $segments[1] === 'tags')
+                    $response = $Cosmo->contentTagsRead('', $_GET['tag']);
                 else
                     $response = $Cosmo->contentRead(isset($_GET['url']) ? $_GET['url'] : '', $role==='admin');
                 break;
@@ -293,7 +295,7 @@ switch($segments[0])
                 $published_date = isset($_POST['published_date']) ? $_POST['published_date'] : '';
                 $author = isset($_POST['author']) ? $_POST['author'] : '';
                 $tag = isset($_POST['tag']) ? $_POST['tag'] : '';
-                
+
                 if(checkPermissions('createPage', $published))
                 {
                     if(count($segments) > 4 && $segments[2] === 'revisions' && $segments[4] === 'extras')
@@ -324,13 +326,13 @@ switch($segments[0])
                 $published_date = isset($_PUT['published_date']) ? $_PUT['published_date'] : '';
                 $author = isset($_PUT['author']) ? $_PUT['author'] : '';
                 $tag = isset($_PUT['tag']) ? $_PUT['tag'] : '';
-                
+
                 if(isset($segments[1])){
                     if(checkPermissions('editPage', $_PUT['published'], $_PUT['url']))
                         $response = $Cosmo->contentUpdate($segments[1], $_PUT['title'], $_PUT['description'], $_PUT['header'], $_PUT['subheader'], $_PUT['featured'], $_PUT['body'], $_PUT['url'], $_PUT['author'], $_PUT['type'], $_PUT['published'], $_PUT['published_date']);
                 }
                 break;
-                
+
             case 'DELETE':
                 if(checkPermissions('deletePage')){
                     if(isset($segments[2]) && $segments[2] === 'revisions' && $segments[3])
@@ -359,21 +361,22 @@ switch($segments[0])
                 $to = isset($_POST['to']) ? $_POST['to'] : '';
                 $subject = isset($_POST['subject']) ? $_POST['subject'] : '';
                 $message = isset($_POST['message']) ? $_POST['message'] : '';
-                
+
                 $Cosmo->email($to, $subject, $message);
                 break;
         }
         break;
+
     ##################################################
     #                    Files                       #
     ##################################################
-    
+
     case 'files':
         switch($method)
         {
             case 'GET':
                 $url = isset($_GET['url']) ? $_GET['url'] : '';
-                
+
                 if(isset($segments[1]))
                     $response = $Cosmo->filesRead($segments[1]);
                 else if($url)
@@ -381,11 +384,11 @@ switch($segments[0])
                 else
                     $response = $Cosmo->filesRead();
                 break;
-                
+
             case 'POST':
                 $published = isset($_POST['published']) ? $_POST['published'] : '';
                 $file = isset($_POST['file']) ? $_POST['file'] : '';
-                
+
                 if(checkPermissions('createPage', $published))
                     $response = $Cosmo->filesCreate($file);
                 break;
@@ -414,7 +417,7 @@ switch($segments[0])
 
             case 'POST':
                 $name = isset($_POST['name']) ? $_POST['name'] : '';
-                
+
                 if($role === 'admin')
                     $response = $Cosmo->menusCreate($name);
                 break;
@@ -450,14 +453,14 @@ switch($segments[0])
 
             case 'POST':
                 $module = isset($_POST['module']) ? $_POST['module'] : '';
-                
+
                 if($role === 'admin')
                     $response = $Cosmo->modulesCreate($module);
                 break;
 
             case 'PUT':
                 $status = isset($_PUT['status']) ? $_PUT['status'] : '';
-                
+
                 if($role === 'admin')
                     $response = $Cosmo->modulesUpdate($segments[1], $status);
                 break;
@@ -489,7 +492,7 @@ switch($segments[0])
                 $language = isset($_PUT['language']) ? $_PUT['language'] : '';
                 $maintenanceURL = isset($_PUT['maintenanceURL']) ? $_PUT['maintenanceURL'] : '';
                 $maintenanceMode = isset($_PUT['maintenanceMode']) ? $_PUT['maintenanceMode'] : '';
-                
+
                 if($role === 'admin')
                     $response = $Cosmo->settingsUpdate($siteName, $slogan, $logo, $favicon, $email, $language, $maintenanceURL, $maintenanceMode);
                 break;
@@ -498,7 +501,7 @@ switch($segments[0])
                 break;
         }
         break;
-        
+
     ##################################################
     #                   Themes                       #
     ##################################################
@@ -520,7 +523,7 @@ switch($segments[0])
 
             case 'PUT':
                 $theme = isset($_PUT['theme']) ? $_PUT['theme'] : '';
-                
+
                 if($role === 'admin')
                     $response = $Cosmo->themesUpdate($theme);
                 break;
@@ -535,7 +538,7 @@ switch($segments[0])
     ##################################################
 
     case 'users':
-        
+
         switch($method)
         {
             case 'GET':
@@ -548,15 +551,15 @@ switch($segments[0])
                 else // Get a list of all users
                     $response = $Cosmo->usersRead();
                 break;
-                
+
             case 'POST':
                 $username = isset($_POST['username']) ? $_POST['username'] : '';
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
                 $password = isset($_POST['password']) ? $_POST['password'] : '';
-                
+
                 $response = $Cosmo->usersCreate($username, $email, $password);
                 break;
-                
+
             case 'PUT':
                 $username = isset($_PUT['username']) ? $_PUT['username'] : '';
                 $password = isset($_PUT['password']) ? $_PUT['password'] : '';
@@ -587,7 +590,7 @@ switch($segments[0])
                         $response = FALSE;
                 }
                 break;
-                
+
             case 'DELETE':
                 if($role === 'admin')
                 {

@@ -167,7 +167,7 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
     $scope.autocompleteTags = function(){
         var tag = $scope.page.tags[$scope.page.tags.length - 1];
         if(tag){
-            REST.filesTags.query({ tag: tag }, function(data){
+            REST.contentTags.query({ tag: tag }, function(data){
                 $scope.page.suggestions = data;
             }, function(){ // no tag found
                 $scope.page.suggestions = [];

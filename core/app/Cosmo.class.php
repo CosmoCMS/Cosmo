@@ -345,7 +345,7 @@ class Cosmo {
         // If this post is scheduled to publish immediately, set the published date to now
         if(!$publishedDate)
             $publishedDate = time();
-        
+
         // Save to database
         $stmt = $this->pdo->prepare('INSERT INTO '.$this->prefix.'content (title, description, header, subheader, featured, body, url, type, published, published_date, author, timestamp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
         $data = array($title, $description, $header, $subheader, $featured, $body, $url, $type, $published, $publishedDate, $author, time());
@@ -554,18 +554,29 @@ class Cosmo {
     }
 
     /**
-     * Get all tags for a page
+     * Get all tags for a page, or that start with the user's input
      * @param int $contentID Content id
      * @return array Array of tags
      */
-    public function contentTagsRead($contentID){
-        $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content_tags WHERE content_id=?');
-        $data = array($contentID);
-        $stmt->execute($data);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    public function contentTagsRead($contentID, $tagStartsWith){
         $tags = array();
-        while($row = $stmt->fetch())
-            $tags[] = $row['tag'];
+        if($contentId)
+        {
+            $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content_tags WHERE content_id=?');
+            $data = array($contentID);
+            $stmt->execute($data);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while($row = $stmt->fetch())
+                $tags[] = $row['tag'];
+        } else
+        {
+            $stmt = $this->pdo->prepare('SELECT DISTINCT tag FROM '.$this->prefix.'content_tags WHERE tag LIKE ?');
+            $data = array($tagStartsWith . '%');
+            $stmt->execute($data);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while($row = $stmt->fetch())
+                $tags[] = $row['tag'];
+        }
 
         return $tags;
     }
@@ -592,7 +603,7 @@ class Cosmo {
     public function filesCreate($file=null)
     {
         $forbiddenFileType = FALSE;
-        
+
         $fileExtensions = array(
             'xls',
             'csv',
@@ -1587,7 +1598,7 @@ class Cosmo {
                 $role = $roleRecord['role'];
             else
                 $role = 'Guest';
-            
+
             return array(
                 'id' => $usersID,
                 'username' => strtolower($username),
@@ -1718,7 +1729,7 @@ class Cosmo {
         $newwidth = $thumbwidth;
         $divisor = $width / $thumbwidth;
         $newheight = floor($height / $divisor);
-        
+
         // Create a new temporary image.
         $tmpimg = imagecreatetruecolor($newwidth, $newheight);
 
