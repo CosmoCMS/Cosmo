@@ -60,7 +60,6 @@
             // Setup main module with HTML5 URLs
             angular.module('main', [
                 'cosmo',
-                'cosmo.admin',
                 'pascalprecht.translate',
                 'ngRoute',
                 'ngAnimate',
@@ -74,7 +73,7 @@
             .config(['$routeProvider', '$locationProvider', '$translateProvider', function($routeProvider, $locationProvider, $translateProvider) {
                 // Configure standard URLs
                 $routeProvider.
-                    when('/admin', { controller: 'loginRegistrationCtrl', templateUrl: 'core/html/login.html' }).
+                    when('/admin', { templateUrl: 'core/html/login.html' }).
                     when('/reset/:userID/:token', { controller: 'resetPasswordCtrl', templateUrl: 'core/html/partials/password-reset.html' }).
                     when('/', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' }).
                     when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' });
@@ -93,7 +92,7 @@
             }])
 
             // Initialize JS variables
-            .run(['Users', '$http', '$templateCache', 'REST', '$rootScope', 'Page', function(Users, $http, $templateCache, REST, $rootScope, Page) {
+            .run(['Users', '$http', '$templateCache', 'REST', '$rootScope', 'Page', '$timeout', function(Users, $http, $templateCache, REST, $rootScope, Page, $timeout) {
 
                 Users.username = '<?php echo $username; ?>';<?php if(isset($usersID) && $usersID): ?>
 
@@ -145,10 +144,12 @@
                     });
                 };
 
-                // Cache all template pages
-                angular.forEach(Page.themePages, function(page){
-                    cacheTemplate('themes/<?php echo $theme; ?>/'+page);
-                });
+                // Cache all template pages. Wait 1 second for the current page to load first
+                $timeout(function() {
+                    angular.forEach(Page.themePages, function(page){
+                        cacheTemplate('themes/<?php echo $theme; ?>/'+page);
+                    });
+                }, 1000);
 
                 // Cache all admin pages
                 if(Users.admin) {
@@ -181,9 +182,12 @@
                         'core/html/partials/user-registration.html'
                     ];
 
-                    angular.forEach(adminPanelPages, function(page){
-                        cacheTemplate(page);
-                    });
+                    // Let the rest of the page load first
+                    $timeout(function() {
+                        angular.forEach(adminPanelPages, function(page){
+                            cacheTemplate(page);
+                        });
+                    }, 5000);
                 }
 
             }]);
