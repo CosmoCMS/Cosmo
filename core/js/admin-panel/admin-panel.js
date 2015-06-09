@@ -6,9 +6,17 @@
 angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST', '$location', '$timeout', '$http', '$sce', function($scope, Users, REST, $location, $timeout, $http, $sce){
 
     $scope.admin = {};
-    $scope.admin.sidebar = 'core/html/sidebar.html';
     $scope.admin.username = Users.username;
     $scope.admin.roleNum = Users.roleNum;
+    // Check if the user is on the admin or password reset page
+    if($location.path() === '/admin') {
+        $scope.admin.sidebar = 'core/html/login.html';
+        $scope.admin.showAdminPanel = true;
+    } else if($location.path().indexOf('/reset') === 0) {
+        $scope.admin.sidebar = 'core/html/password-reset.html';
+        $scope.admin.showAdminPanel = true;
+    } else
+        $scope.admin.sidebar = 'core/html/sidebar.html';
 
     // Get latest official message from Cosmo (for version, updates, and blog posts)
     $http.get('http://www.cosmocms.org/message.php?dontcache='+ new Date().getTime())
@@ -69,6 +77,12 @@ angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST',
         $scope.admin.sidebar = 'core/html/files.html';
         $scope.admin.showAdminPanel = true;
         $scope.admin.active = true;
+    });
+
+    // Watch for login to close the sidebar
+    $scope.$on('loggedIn', function() {
+        $scope.admin.showAdminPanel = false;
+        $scope.admin.sidebar = 'core/html/sidebar.html';
     });
 
     // todo: Depreciate. Remove from admin-panel.html and use loginRegistrationCtrl instead

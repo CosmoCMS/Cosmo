@@ -5,8 +5,9 @@
 angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '$http', '$location', '$rootScope', 'Users', 'Page', '$timeout', function($scope, REST, $http, $location, $rootScope, Users, Page, $timeout){
 
     // Initialize panel to show
-    $scope.panel = 'login';
-    $scope.login = {};
+    $scope.login = {
+        panel: 'login'
+    };
     $scope.register = {};
     $scope.register.email = '';
 
@@ -24,13 +25,13 @@ angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '
                 $rootScope.$broadcast('notify', {message: 'Username/email is already in use'});
             });
         } else {
-            alert("Passwords don't match");
+            $rootScope.$broadcast('notify', { message: 'Passwords don\'t match' });
         }
         $rootScope.$broadcast('registered', { usernamem: $scope.register.username, email: $scope.register.email });
     };
 
     // Login
-    $scope.login = function(){
+    $scope.userLogin = function(){
         REST.users.get({ username: $scope.login.username, password: $scope.login.password, dontcache: new Date().getTime() }, function(data){
 
             // Set Users variables
@@ -71,7 +72,7 @@ angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '
 
             $rootScope.$broadcast('loggedIn');
         }, function(){
-            alert('Wrong Username/Password');
+            $rootScope.$broadcast('notify', { message: 'Wrong Username/Password' });
         });
     };
 
@@ -99,7 +100,7 @@ angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '
                 $rootScope.$broadcast('notify', {message: 'Check your password reset for instructions'});
             });
         } else
-            alert('Error: You must enter your username to reset your password');
+            $rootScope.$broadcast('notify', { message: 'Error: You must enter your username to reset your password' });
     };
 
     // Change Username

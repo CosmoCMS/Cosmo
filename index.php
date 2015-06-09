@@ -74,7 +74,7 @@
                 // Configure standard URLs
                 $routeProvider.
                     when('/admin', { controller: 'loginRegistrationCtrl', template: '<div></div>' }).
-                    when('/reset/:userID/:token', { controller: 'resetPasswordCtrl', templateUrl: 'core/html/password-reset.html' }).
+                    when('/reset/:userID/:token', { controller: 'resetPasswordCtrl', template: '<div></div>' }).
                     when('/', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' }).
                     when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' });
 
