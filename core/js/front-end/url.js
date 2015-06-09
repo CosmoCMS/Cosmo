@@ -3,7 +3,7 @@
  *      Get the current page information          *
  **************************************************/
 
-angular.module('cosmo').controller('urlCtrl', ['$scope', '$routeParams', 'Page', '$rootScope', 'REST', '$location', 'Users', '$filter', function($scope, $routeParams, Page, $rootScope, REST, $location, Users, $filter){
+angular.module('cosmo').controller('urlCtrl', ['$scope', 'Page', '$rootScope', 'REST', '$location', 'Users', '$filter', function($scope, Page, $rootScope, REST, $location, Users, $filter){
 
     // Reset variables while new page loads
     $scope.page = {};
