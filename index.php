@@ -9,7 +9,7 @@
        \__ \__/ __) |  | \__/
 
       http://www.cosmocms.org/
-            v1.0.0-beta.4
+            v1.0.0-beta.5
 
 ####################################
 -->
@@ -73,8 +73,8 @@
             .config(['$routeProvider', '$locationProvider', '$translateProvider', function($routeProvider, $locationProvider, $translateProvider) {
                 // Configure standard URLs
                 $routeProvider.
-                    when('/admin', { templateUrl: 'core/html/login.html' }).
-                    when('/reset/:userID/:token', { controller: 'resetPasswordCtrl', templateUrl: 'core/html/partials/password-reset.html' }).
+                    when('/admin', { controller: 'loginRegistrationCtrl', template: '<div></div>' }).
+                    when('/reset/:userID/:token', { controller: 'resetPasswordCtrl', templateUrl: 'core/html/password-reset.html' }).
                     when('/', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' }).
                     when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' });
 
@@ -164,6 +164,7 @@
                         'core/html/modal.html',
                         'core/html/modules.html',
                         'core/html/page.html',
+                        'core/html/password-reset.html',
                         'core/html/profile.html',
                         'core/html/revisions.html',
                         'core/html/roles.html',
@@ -176,7 +177,6 @@
                         'core/html/partials/comments.html',
                         'core/html/partials/link.html',
                         'core/html/partials/menu-links.html',
-                        'core/html/partials/password-reset.html',
                         'core/html/partials/results.html',
                         'core/html/partials/user-login.html',
                         'core/html/partials/user-registration.html'

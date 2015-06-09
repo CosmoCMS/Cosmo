@@ -30,22 +30,4 @@ angular.module('cosmo').controller('HTMLCtrl', ['$scope', 'Page', 'Hooks', '$roo
         $scope.admin = true;
         Users.admin = true;
     });
-}])
-
-// Create a login box
-.directive('csLogin', function() {
-    return {
-        templateUrl: 'core/html/partials/user-login.html',
-        replace: true,
-        controller: 'loginRegistrationCtrl'
-    };
-})
-
-// Create a registration box
-.directive('csRegistration', function() {
-    return {
-        templateUrl: 'core/html/partials/user-registration.html',
-        replace: true,
-        controller: 'loginRegistrationCtrl'
-    };
-});
+}]);
