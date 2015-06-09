@@ -1,12 +1,14 @@
 %alert-style {
-    background-color: palette(blue, dark--two-third);
+    background-color: palette(blue, dark);
     border-left: 5px solid;
     color: palette(gray, white);
     font-family: $font-alpha;
-    padding: 2rem;
+    font-size: .85rem;
+    padding: 1rem 2rem;
     position: fixed;
-    right: 2rem;
-    top: 2rem;
+    right: 1rem;
+    text-transform: uppercase;
+    top: 1rem;
     transition: opacity .25s ease;
     width: auto;
     z-index: z(alerts);

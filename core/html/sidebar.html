@@ -1,10 +1,10 @@
 <div class="bar-top">
-    <h1>Welcome, {{admin.username}}</h1>
+    <h1><span translate>welcome</span>, {{admin.username}}</h1>
     <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
 </div>
 <div class="bar--actions">
-    <button ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true"> View Profile</button>
-    <button ng-click="logout()">Log Out</button>
+    <button ng-click="admin.sidebar='core/html/profile.html';showAdminPanel=true" translate>edit_profile</button>
+    <button ng-click="logout()" translate>log_out</button>
 </div>
 <div class="new-message--cosmo" ng-show="admin.displayMessage">
     <p class="message" ng-bind-html="admin.message"></p>
@@ -25,6 +25,9 @@
             </li>
             <li ng-click="admin.sidebar='core/html/revisions.html';active='content';showAdminPanel=true;">
                 <a translate>revisions</a>
+            </li>
+            <li ng-click="admin.sidebar='core/html/files.html';active='content';showAdminPanel=true;">
+                <a translate>files_media</a>
             </li>
         </ul>
     </li>

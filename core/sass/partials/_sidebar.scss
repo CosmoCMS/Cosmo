@@ -1,10 +1,9 @@
 // sidebar for all of cosmo editing outside of the live editing done on page
 .sidebar {
     background-color: palette(gray, white);
-    box-shadow: 1px 0 20px 0 palette(blue, dark--two-third);
     bottom: 0;
     height: 100%;
-    left: -100%;
+    left: -20rem;
     margin-top: 0;
     overflow-x: hidden;
     overflow-y: auto;
@@ -15,7 +14,7 @@
     z-index: z(sidebar);
 
     @media #{$bp-alpha} {
-        left: -50rem;
+        left: -30rem;
         width: 30rem;
     }
 }
@@ -59,7 +58,7 @@
     align-items: center;
     background-color: palette(blue, mid);
     display: flex;
-    height: 5rem;
+    height: 4.5rem;
     justify-content: center;
     overflow: hidden;
     padding: 0 1.5rem;
@@ -101,7 +100,7 @@
 }
 
 .new-message--cosmo {
-    background-color: palette(blue, light);
+    background-color: palette(blue, dark);
     color: palette(gray, light);
     display: flex;
     padding: size(10) size(25);
@@ -140,6 +139,7 @@
     button {
         flex: 1;
         margin: 0;
+        padding: 1rem 0;
     }
 
     p {
