@@ -21,7 +21,7 @@ angular.module('cosmo').controller('menuCtrl', ['$scope', 'REST', '$rootScope', 
                 scope.sortableModelValue.splice(index, 1)[0];
             }
         } else
-            alert("You cannot have an empty menu");
+            $rootScope.$broadcast('notify', {message: 'You cannot have an empty menu'});
     };
 
     $scope.newSubItem = function(scope) {

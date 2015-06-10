@@ -14,13 +14,13 @@ angular.module('cosmo').controller('resetPasswordCtrl', ['$routeParams', '$scope
                 token: $routeParams.token,
                 password: $scope.reset.password
             }, function(data){
-                alert('Password updated');
+                $rootScope.$broadcast('notify', {message: 'Password updated'});
                 $location.path('/');
             }, function(data){
-                alert('Invalid link');
+                $rootScope.$broadcast('notify', {message: 'Invalid link'});
             });
         } else
-            alert("Passwords don't match");
+            $rootScope.$broadcast('notify', {message: 'Passwords don\'t match'});
     };
 
 }]);
