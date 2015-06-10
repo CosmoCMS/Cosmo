@@ -2,10 +2,9 @@
  *         Password Reset Controller              *
  **************************************************/
 
-angular.module('cosmo').controller('resetPasswordCtrl', ['$routeParams', '$scope', 'REST', '$location', function($routeParams, $scope, REST, $location){
+angular.module('cosmo').controller('resetPasswordCtrl', ['$routeParams', '$scope', 'REST', '$location', '$rootScope', function($routeParams, $scope, REST, $location, $rootScope){
 
     $scope.reset = {};
-    $scope.admin.showAdminPanel = true;
 
     // Reset password
     $scope.reset = function(){
@@ -15,13 +14,15 @@ angular.module('cosmo').controller('resetPasswordCtrl', ['$routeParams', '$scope
                 token: $routeParams.token,
                 password: $scope.reset.password
             }, function(data){
-                alert('Password updated');
+                $rootScope.$broadcast('notify', {message: 'Password updated'});
+                $scope.$parent.admin.showAdminPanel = false;
+                $scope.$parent.admin.sidebar = 'core/html/sidebar.html';
                 $location.path('/');
             }, function(data){
-                alert('Invalid link');
+                $rootScope.$broadcast('notify', {message: 'Invalid link'});
             });
         } else
-            alert("Passwords don't match");
+            $rootScope.$broadcast('notify', {message: 'Passwords don\'t match'});
     };
 
 }]);

@@ -6,9 +6,21 @@
 angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST', '$location', '$timeout', '$http', '$sce', function($scope, Users, REST, $location, $timeout, $http, $sce){
 
     $scope.admin = {};
-    $scope.admin.sidebar = 'core/html/sidebar.html';
     $scope.admin.username = Users.username;
     $scope.admin.roleNum = Users.roleNum;
+    $scope.isUserAdmin = Users.admin;
+
+    // Check if the user is on the admin or password reset page
+    if($location.path() === '/admin') {
+        $scope.admin.sidebar = 'core/html/login.html';
+        $scope.admin.showAdminPanel = true;
+        $scope.admin.active = true;
+    } else if($location.path().indexOf('/reset') === 0) {
+        $scope.admin.sidebar = 'core/html/password-reset.html';
+        $scope.admin.showAdminPanel = true;
+        $scope.admin.active = true;
+    } else
+        $scope.admin.sidebar = 'core/html/sidebar.html';
 
     // Get latest official message from Cosmo (for version, updates, and blog posts)
     $http.get('http://www.cosmocms.org/message.php?dontcache='+ new Date().getTime())
@@ -36,7 +48,8 @@ angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST',
     };
 
     // Get user's info
-    REST.users.get({userID: Users.id}, usersInfoPromise);
+    if(Users.id)
+        REST.users.get({userID: Users.id}, usersInfoPromise);
 
     // Update user's info in the template
     function usersInfoPromise(data){
@@ -54,9 +67,6 @@ angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST',
         else
             $scope.admin.photo = 'core/img/image.svg';
     };
-
-    $scope.sidebar = '';
-    $scope.showAdminPanel = false; // Initialize sidebar as hidden
 
     // Go to the new page
     $scope.navigate = function(){

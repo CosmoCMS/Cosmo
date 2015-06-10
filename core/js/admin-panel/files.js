@@ -232,17 +232,22 @@ angular.module('cosmo').controller('filesCtrl', ['$scope', '$upload', 'REST', '$
                 url: $scope.origFilename
             });
         } else {
-            $rootScope.$broadcast('choseFile', {
-                id: $scope.id,
-                title: $scope.files.title,
-                alt: $scope.files.alt,
-                src: $scope.origFilename,
-                href: $scope.files.href,
-                class: $scope.files.class,
-                size: $scope.files.size,
-                responsive: $scope.files.responsive
-            });
-            $scope.admin.showAdminPanel = false;
+            if($rootScope.tempSidebarPic){
+                $rootScope.tempSidebarPic.src = $scope.origFilename;
+                $scope.admin.sidebar = $rootScope.tempSidebarPic.sidebar;
+            } else {
+                $rootScope.$broadcast('choseFile', {
+                    id: $scope.id,
+                    title: $scope.files.title,
+                    alt: $scope.files.alt,
+                    src: $scope.origFilename,
+                    href: $scope.files.href,
+                    class: $scope.files.class,
+                    size: $scope.files.size,
+                    responsive: $scope.files.responsive
+                });
+                $scope.admin.showAdminPanel = false;
+            }
         }
     };
 

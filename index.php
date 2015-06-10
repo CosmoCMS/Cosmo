@@ -73,8 +73,8 @@
             .config(['$routeProvider', '$locationProvider', '$translateProvider', function($routeProvider, $locationProvider, $translateProvider) {
                 // Configure standard URLs
                 $routeProvider.
-                    when('/admin', { controller: 'loginRegistrationCtrl', template: '<div></div>' }).
-                    when('/reset/:userID/:token', { controller: 'resetPasswordCtrl', templateUrl: 'core/html/password-reset.html' }).
+                    when('/admin', { template: '<div></div>' }).
+                    when('/reset/:userID/:token', { controller: 'resetPasswordCtrl', template: '<div></div>' }).
                     when('/', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' }).
                     when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' });
 
@@ -194,7 +194,7 @@
         </script>
     </head>
     <body>
-        <div ng-if="admin">
+        <div>
             <div ng-include="'core/html/admin-panel.html'"></div>
             <div cs-wysiwyg></div>
         </div>
