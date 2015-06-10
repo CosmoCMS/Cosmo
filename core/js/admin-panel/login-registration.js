@@ -27,7 +27,7 @@ angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '
         } else {
             $rootScope.$broadcast('notify', { message: 'Passwords don\'t match' });
         }
-        $rootScope.$broadcast('registered', { usernamem: $scope.register.username, email: $scope.register.email });
+        $rootScope.$broadcast('registered', { username: $scope.register.username, email: $scope.register.email });
     };
 
     // Login
