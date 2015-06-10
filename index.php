@@ -73,7 +73,7 @@
             .config(['$routeProvider', '$locationProvider', '$translateProvider', function($routeProvider, $locationProvider, $translateProvider) {
                 // Configure standard URLs
                 $routeProvider.
-                    when('/admin', { controller: 'adminPanelCtrl', template: '<div></div>' }).
+                    when('/admin', { template: '<div></div>' }).
                     when('/reset/:userID/:token', { controller: 'resetPasswordCtrl', template: '<div></div>' }).
                     when('/', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' }).
                     when('/:url', { controller: 'urlCtrl', template: '<div ng-include="template" ng-cloak></div>' });

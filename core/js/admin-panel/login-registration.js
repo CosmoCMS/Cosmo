@@ -69,6 +69,8 @@ angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '
             $scope.login.username = '';
             $scope.login.password = '';
             $location.path('/');
+            $scope.$parent.admin.showAdminPanel = false;
+            $scope.$parent.admin.sidebar = 'core/html/sidebar.html';
 
             $rootScope.$broadcast('loggedIn');
         }, function(){

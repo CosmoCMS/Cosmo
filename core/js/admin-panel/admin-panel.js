@@ -81,12 +81,6 @@ angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST',
         $scope.admin.active = true;
     });
 
-    // Watch for login to close the sidebar
-    $scope.$on('loggedIn', function() {
-        $scope.admin.showAdminPanel = false;
-        $scope.admin.sidebar = 'core/html/sidebar.html';
-    });
-
     // todo: Depreciate. Remove from admin-panel.html and use loginRegistrationCtrl instead
     $scope.logout = function(){
         // Delete cookies

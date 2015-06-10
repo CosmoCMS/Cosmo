@@ -573,7 +573,13 @@ switch($segments[0])
                 $reset = isset($_PUT['reset']) ? $_PUT['reset'] : '';
                 $token = isset($_PUT['token']) ? $_PUT['token'] : '';
 
-                if(count($segments) > 1 && $segments[1]) // Edit username, email, role, or password
+                if($token) // Update your password
+                {
+                    if($Cosmo->passwordResetVerify($segments[1], $token))
+                        $response = $Cosmo->usersUpdate($segments[1], NULL, NULL, NULL, NULL, NULL, NULL, NULL, $password);
+                    else
+                        $response = FALSE;
+                } else if(count($segments) > 1 && $segments[1]) // Edit username, email, role, or password
                 {
                     // Make sure the user is editing their own info, or the user is an administrator
                     if($role === 'admin') // Allow the editing of the role too
@@ -582,13 +588,6 @@ switch($segments[0])
                         $response = $Cosmo->usersUpdate($segments[1], $username, $name, $photo, $bio, $facebook, $twitter, NULL, $email);
                 } else if($reset) // Reset password
                     $response['token'] = $Cosmo->passwordReset($segments[1]);
-                else if($token) // Update your password
-                {
-                    if($Cosmo->passwordResetVerify($segments[1], $token))
-                        $response = $Cosmo->usersUpdate($segments[1], NULL, NULL, NULL, NULL, NULL, NULL, NULL, $password);
-                    else
-                        $response = FALSE;
-                }
                 break;
 
             case 'DELETE':
@@ -611,8 +610,10 @@ switch($segments[0])
 if(is_string($response))
     $response = array('data'=>$response);
 
-if($response === false)
+if($response === false){
     $header = 500;
+    header('HTTP/1.1 500 Internal Server Error');
+}
 
 // Set Headers
 header("Content-Type: application/json", true);
@@ -620,7 +621,6 @@ header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
 header('Pragma: no-cache'); // HTTP 1.0.
 header('Expires: 0'); // Proxies.
 header("Status: $header");
-// http_response_code($header); // todo: Breaks older versions of PHP. Find workaround
 
 echo json_encode($response);
 
