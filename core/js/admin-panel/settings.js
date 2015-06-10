@@ -16,6 +16,14 @@ angular.module('cosmo').controller('settingsCtrl', ['$scope', 'REST', '$rootScop
     if(Page.settings.maintenance_mode)
         $scope.settings.maintenanceMode = true;
 
+    // Check if the file was just selected from the media panel
+    if($rootScope.tempSidebarPic && $rootScope.tempSidebarPic.id === 'logo')
+        $scope.settings.logo = $rootScope.tempSidebarPic.src;
+    if($rootScope.tempSidebarPic && $rootScope.tempSidebarPic.id === 'favicon')
+        $scope.settings.favicon = $rootScope.tempSidebarPic.src;
+
+    $rootScope.tempSidebarPic = null;
+
     // Default if no custom images were set
     if(!$scope.settings.logo)
         $scope.settings.logo = 'core/img/image.svg';
@@ -24,22 +32,15 @@ angular.module('cosmo').controller('settingsCtrl', ['$scope', 'REST', '$rootScop
 
     // Add a profile photo
     $scope.uploadPhoto = function(type){
-        $rootScope.$broadcast('editFiles', angular.toJson({
-                id: type,
-                data: {
-                    src: $scope.settings.logo
-                }
-            })
-        );
+        // Save the data before switching
+        $scope.changeSettings();
+        $rootScope.tempSidebarPic = {
+            id: type,
+            src: $scope.settings.logo,
+            sidebar: 'core/html/settings.html'
+        }
+        $rootScope.$broadcast('editFiles', angular.toJson($rootScope.tempSidebarPic));
     };
-
-    // Watch for edits to the logo or favicon
-    $scope.$on('choseFile', function(event, data){
-        if(data.id === 'logo')
-            $scope.settings.logo = data.src;
-        else if(data.id === 'favicon')
-            $scope.settings.favicon = data.src;
-    });
 
     $scope.changeLanguage = function(key){
         $translate.use(key);
@@ -57,6 +58,13 @@ angular.module('cosmo').controller('settingsCtrl', ['$scope', 'REST', '$rootScop
             maintenanceURL: $scope.settings.maintenanceURL,
             maintenanceMode: $scope.settings.maintenanceMode
         }, function(data){
+            Page.settings.site_name = $scope.settings.siteName;
+            Page.settings.logo = $scope.settings.logo;
+            Page.settings.favicon = $scope.settings.favicon;
+            Page.settings.slogan = $scope.settings.slogan;
+            Page.settings.email = $scope.settings.email;
+            Page.settings.language = $scope.settings.language;
+            Page.settings.maintenance_url = $scope.settings.maintenanceURL;
             $rootScope.$broadcast('notify', {message: 'Settings updated'});
         });
     };

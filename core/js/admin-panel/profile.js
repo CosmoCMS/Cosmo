@@ -19,28 +19,25 @@ angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope
         Users.facebook = data.facebook;
         Users.username = data.username;
         Users.email = data.email;
-
         $scope.profile = data;
-        if(!$scope.profile.photo)
+
+        // Check if the photo was just selected from the media picker
+        if($rootScope.tempSidebarPic && $rootScope.tempSidebarPic.id === 'profile') {
+            $scope.profile.photo = $rootScope.tempSidebarPic.src;
+            $rootScope.tempSidebarPic = null;
+        } else if(!$scope.profile.photo)
             $scope.profile.photo = 'core/img/image.svg'; // Placeholder image
     });
 
     // Add a profile photo
     $scope.addProfilePhoto = function(){
-        $rootScope.$broadcast('editFiles', angular.toJson({
-                id: 'profile',
-                data: {
-                    src: $scope.profile
-                }
-            })
-        );
+        $rootScope.tempSidebarPic = {
+            id: 'profile',
+            src: $scope.profile,
+            sidebar: 'core/html/profile.html'
+        }
+        $rootScope.$broadcast('editFiles', angular.toJson($rootScope.tempSidebarPic));
     };
-
-    // Watch for edits to the profile photo
-    $scope.$on('choseFile', function(event, data){
-        if(data.id === 'profile')
-            $scope.profile.photo = data.src;
-    });
 
     // Update the profile
     $scope.updateProfile = function(){
