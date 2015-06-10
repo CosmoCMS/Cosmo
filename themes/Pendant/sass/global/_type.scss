@@ -1,5 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic);
 $font-alpha: 'Open Sans', sans-serif;
-$font-beta: 'Lora', serif;
+$font-beta: 'Merriweather', serif;
 
 @mixin placeholder {
     &::-webkit-input-placeholder {
@@ -31,24 +32,20 @@ code {
     padding: size(10);
 }
 
-h1, h2, h3, h4, p, a {
-    font-family: $font-alpha;
-    margin-top: 0;
-}
-
 h1 {
+    font-family: $font-alpha;
     font-size: 2.5rem;
     font-weight: 200;
     margin-bottom: 1rem;
 
     @media #{$bp-beta} {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
 }
 
 h2 {
     font-size: 1.6rem;
-    font-weight: 200;
+    font-weight: 700;
 
     @media #{$bp-beta} {
         font-size: 1.8rem;
@@ -65,10 +62,11 @@ h3 {
 }
 
 h4 {
+    font-family: $font-alpha;
     font-size: 1.2rem;
-    font-weight: 200;
-    line-height: 1.8;
+    font-weight: 800;
     margin-bottom: 1rem;
+    text-transform: uppercase;
 
     @media #{$bp-beta} {
         font-size: 1.4rem;
@@ -95,24 +93,24 @@ h6 {
 }
 
 p {
-    font-size: 1rem;
-    font-weight: 200;
-    line-height: 1.75;
-
-    @media #{$bp-beta} {
-        font-size: 1.2rem;
-    }
+    font-family: $font-alpha;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 blockquote {
-    border-left: 2px solid palette(gray, mid);
     color: palette(gray, mid);
     font-family: $font-beta;
     font-size: 1.25rem;
     font-style: italic;
     line-height: 1.5;
-    margin: size(15) 0 size(15) size(15);
-    padding: size(25) 1.5rem;
+    margin: size(25) 1.5rem;
+
+    @media #{$bp-beta} {
+        float: right;
+        max-width: 35%;
+    }
 }
 
 small {

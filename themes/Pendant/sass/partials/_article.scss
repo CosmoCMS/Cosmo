@@ -1,3 +1,19 @@
+article {
+    margin-top: size(30);
+
+    p {
+        color: palette(gray, dark);
+        line-height: 1.75;
+        margin: 0 auto;
+        margin-bottom: 1.75rem;
+        max-width: 40rem;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
 .article--byline {
     @extend .marg-vert;
     @extend .container--flex;
@@ -72,8 +88,7 @@
 }
 
 .article--title {
-    border-bottom: 1px solid palette(gray, mid--light);
-    margin-bottom: 2rem;
+    text-align: center;
 
     h4 {
         margin-bottom: 1rem;

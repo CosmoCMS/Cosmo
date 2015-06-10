@@ -1,12 +1,11 @@
 <section class="article--title">
     <h1 cs-content="header" type="text" prepopulate="Headline"></h1>
-    <h4 cs-content="subheader" type="text" prepopulate="Subheader"></h4>
     <div class="meta">
         <div class="byline">
-            <a>By <span>{{page.author.name}}</span> on <span>{{page.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in page.tags">#{{tag}} </span></a>
+            <span>By {{page.author.name}} on</span> <span>{{page.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in page.tags" class="tags">#{{tag}} </span>
         </div>
-        <div class="comments">
+        <!--<div class="comments">
             <a ng-click="showComments=true;page.expandMenu=true"><i class="fa fa-comments"></i>{{page.commentsNum}} Comments</a>
-        </div>
+        </div>-->
     </div>
 </section>

@@ -239,7 +239,9 @@
 // article info shown on search, banners and throughout
 .meta {
     color: palette(gray, mid);
+    font-family: $font-beta;
     font-size: .8rem;
+    font-style: italic;
     margin-bottom: size(20);
 
     i {
@@ -253,16 +255,15 @@
         transition: .15s ease-in;
     }
 
-    .category, .byline {
-        margin-right: size(20);
-
-        span {
-            font-family: $font-beta;
-            font-style: italic;
-        }
-    }
-
     .category span {
         margin-left: size(5);
+    }
+
+    .tags {
+        font-family: $font-alpha;
+        font-size: .7rem;
+        font-style: normal;
+        font-weight: 600;
+        margin-left: size(15);
     }
 }

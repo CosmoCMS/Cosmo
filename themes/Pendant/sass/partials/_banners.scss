@@ -13,13 +13,12 @@
 
     h1, h3, h4 {
         color: palette(gray, light);
-        font-weight: 200;
     }
 
     .article--title {
         border: 0;
-        min-width: 20rem;
         max-width: 68.75rem;
+        padding: 0 size(20);
         text-align: center;
     }
 
@@ -64,8 +63,6 @@
 
     h1 {
         color: palette(gray, white);
-        font-weight: 600;
-        margin-bottom: .25rem;
     }
 
     p {
@@ -79,4 +76,12 @@
             margin-bottom: 0;
         }
     }
+}
+
+.tags {
+    display: inline-block;
+    border: 1px solid palette(gray, mid--light);
+    border-radius: size(15);
+    font-family: $font-alpha;
+    padding: size(5) size(15);
 }
