@@ -25,7 +25,9 @@ angular.module('cosmo').controller('moduleCtrl', ['$scope', 'REST', '$rootScope'
             $http.get('modules/'+ $scope.modules[$scope.currentIndex]['folder'] +'/'+ $scope.modules[$scope.currentIndex]['install']);
 
         // Success Message
-        $rootScope.$broadcast('notify', { message: 'Module installed' });
+        $translate('module_installed').then(function(translatedText){
+            $rootScope.$broadcast('notify', { message: translatedText });
+        });
     }
 
     // Uninstall Module
@@ -44,7 +46,9 @@ angular.module('cosmo').controller('moduleCtrl', ['$scope', 'REST', '$rootScope'
         $scope.modules[$scope.currentIndex] = null;
 
         // Success Message
-        $rootScope.$broadcast('notify', {message: 'Module uninstalled'});
+        $translate('module_uninstalled').then(function(translatedText){
+            $rootScope.$broadcast('notify', {message: translatedText});
+        });
     }
 
     // Activate Module
@@ -58,7 +62,9 @@ angular.module('cosmo').controller('moduleCtrl', ['$scope', 'REST', '$rootScope'
         $scope.modules[$scope.currentIndex]['status'] = 'active';
 
         // Success Message
-        $rootScope.$broadcast('notify', {message: 'Module activated'});
+        $translate('module_activated').then(function(translatedText){
+            $rootScope.$broadcast('notify', {message: translatedText});
+        });
     }
 
     // Deactivate Module
@@ -72,7 +78,9 @@ angular.module('cosmo').controller('moduleCtrl', ['$scope', 'REST', '$rootScope'
         $scope.modules[$scope.currentIndex]['status'] = 'inactive';
 
         // Success Message
-        $rootScope.$broadcast('notify', {message: 'Module deactivated'});
+        $translate('module_deactivated').then(function(translatedText){
+            $rootScope.$broadcast('notify', {message: translatedText});
+        });
     }
 
     // Go to a module's settings

@@ -19,13 +19,19 @@ angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '
                 email: $scope.register.email,
                 password: $scope.register.password
             }, function(data){ // Success
-                $rootScope.$broadcast('notify', {message: 'Account created'});
+                $translate('login_account_created').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText});
+                });
                 $location.path('/');
             }, function(){ // Error
-                $rootScope.$broadcast('notify', {message: 'Username/email is already in use'});
+                $translate('login_duplicate_username').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText});
+                });
             });
         } else {
-            $rootScope.$broadcast('notify', { message: 'Passwords don\'t match' });
+            $translate('login_passwords_match').then(function(translatedText){
+                $rootScope.$broadcast('notify', { message: translatedText });
+            });
         }
         $rootScope.$broadcast('registered', { username: $scope.register.username, email: $scope.register.email });
     };
@@ -74,7 +80,9 @@ angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '
 
             $rootScope.$broadcast('loggedIn');
         }, function(){
-            $rootScope.$broadcast('notify', { message: 'Wrong Username/Password' });
+            $translate('login_wrong_passwords').then(function(translatedText){
+                $rootScope.$broadcast('notify', { message: translatedText });
+            });
         });
     };
 
@@ -99,30 +107,41 @@ angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '
     $scope.resetPassword = function(){
         if($scope.login.username){
             REST.users.update({ username: $scope.login.username, reset: true }, function(data){
-                $rootScope.$broadcast('notify', {message: 'Check your password reset for instructions'});
+                $translate('login_reset_password').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText});
+                });
             });
-        } else
-            $rootScope.$broadcast('notify', { message: 'Error: You must enter your username to reset your password' });
+        } else {
+            $translate('login_username_required').then(function(translatedText){
+                $rootScope.$broadcast('notify', { message: translatedText });
+            });
+        }
     };
 
     // Change Username
     $scope.changeUsername = function(){
         REST.users.update({ userID: Users.id, username: $scope.username }, function(){
-            $rootScope.$broadcast('notify', {message: 'Username updated'});
+            $translate('login_username_updated').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
     };
 
     // Change email address
     $scope.changeEmail = function(){
         REST.users.update({ userID: Users.id, email: $scope.email }, function(data){
-            $rootScope.$broadcast('notify', {message: 'Email updated'});
+            $translate('login_email_updated').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
     };
 
     // Change password
     $scope.changePassword = function(){
         REST.users.update({ userID: Users.id, password: $scope.password }, function(){
-            $rootScope.$broadcast('notify', {message: 'Password updated'});
+            $translate('login_password_updated').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
     };
 

@@ -3,7 +3,7 @@
  *     Manage admin sidebar menu editor           *
  **************************************************/
 
-angular.module('cosmo').controller('menuCtrl', ['$scope', 'REST', '$rootScope', 'Page', function($scope, REST, $rootScope, Page){
+angular.module('cosmo').controller('menuCtrl', ['$scope', 'REST', '$rootScope', 'Page', '$translate', function($scope, REST, $rootScope, Page, $translate){
 
     $scope.menu = {};
     $scope.menu.panel = 'manage';
@@ -14,14 +14,17 @@ angular.module('cosmo').controller('menuCtrl', ['$scope', 'REST', '$rootScope', 
         $scope.menus = data;
     });
 
-    $scope.remove = function(scope) {
+    $scope.remove = function(scope){
         if($scope.list.length>1){
             var index = scope.$index;
             if (index > -1) {
                 scope.sortableModelValue.splice(index, 1)[0];
             }
-        } else
-            $rootScope.$broadcast('notify', {message: 'You cannot have an empty menu'});
+        } else {
+            $translate('menu_empty').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
+        }
     };
 
     $scope.newSubItem = function(scope) {
@@ -70,7 +73,9 @@ angular.module('cosmo').controller('menuCtrl', ['$scope', 'REST', '$rootScope', 
                 $scope.menus = [{ id: data, name: $scope.menu.newName }];
 
             $scope.menu.newName = '';
-            $rootScope.$broadcast('notify', {message: 'Menu created'});
+            $translate('menu_created').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
     };
 
@@ -108,7 +113,9 @@ angular.module('cosmo').controller('menuCtrl', ['$scope', 'REST', '$rootScope', 
                     $scope.menus.splice(i,1);
             }
             $scope.menu.name = '';
-            $rootScope.$broadcast('notify', {message: 'Menu deleted'});
+            $translate('menu_deleted').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         }
     }
 
@@ -155,6 +162,8 @@ angular.module('cosmo').controller('menuCtrl', ['$scope', 'REST', '$rootScope', 
             $rootScope.$broadcast('menusGet');
         });
         // Notify the user the menu has been updated
-        $rootScope.$broadcast('notify', {message: 'Menu saved'});
+        $translate('menu_saved').then(function(translatedText){
+            $rootScope.$broadcast('notify', {message: translatedText});
+        });
     }
 }]);
