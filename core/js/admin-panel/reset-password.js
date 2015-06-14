@@ -14,15 +14,22 @@ angular.module('cosmo').controller('resetPasswordCtrl', ['$routeParams', '$scope
                 token: $routeParams.token,
                 password: $scope.reset.password
             }, function(data){
-                $rootScope.$broadcast('notify', {message: 'Password updated'});
+                $translate('reset_password_updated').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText});
+                });
                 $scope.$parent.admin.showAdminPanel = false;
                 $scope.$parent.admin.sidebar = 'core/html/sidebar.html';
                 $location.path('/');
             }, function(data){
-                $rootScope.$broadcast('notify', {message: 'Invalid link'});
+                $translate('reset_password_invalid').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText});
+                });
             });
-        } else
-            $rootScope.$broadcast('notify', {message: 'Passwords don\'t match'});
+        } else {
+            $translate('reset_password_match').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
+        }
     };
 
 }]);

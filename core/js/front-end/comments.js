@@ -58,9 +58,13 @@ angular.module('cosmo').controller('commentsCtrl', ['$scope', 'REST', 'Page', 'U
             comment: $scope.comment.message
         }, function(data){
             $scope.comments.push({path: $scope.comment.path, name: Users.username, email: Users.email, comment: $scope.comment.message});
-            $rootScope.$broadcast('notify', { message: 'Comment Added' });
+            $translate('comments_added').then(function(translatedText){
+                $rootScope.$broadcast('notify', { message: translatedText });
+            });
         }, function(){
-            $rootScope.$broadcast('notify', { message: 'There was an error submitting your comment' });
+            $translate('comments_error').then(function(translatedText){
+                $rootScope.$broadcast('notify', { message: translatedText });
+            });
         });
     };
 }]);

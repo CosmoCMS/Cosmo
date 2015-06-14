@@ -24,7 +24,9 @@ angular.module('cosmo').controller('usersCtrl', ['$scope', 'REST', '$rootScope',
             role: user.role,
             email: user.email
         }, function(data){
-            $rootScope.$broadcast('notify', {message: 'User info updated'});
+            $translate('users_updated').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
     };
 
@@ -33,10 +35,14 @@ angular.module('cosmo').controller('usersCtrl', ['$scope', 'REST', '$rootScope',
         // Delete user
         REST.users.delete({ userID: $scope.selectedUser.id }, function(){
             // Show success message
-            $rootScope.$broadcast('notify', {message: 'User deleted'});
+            $translate('users_deleted').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         }, function(){
             // Show error message
-            $rootScope.$broadcast('notify', {message: 'Error deleting user', classes: 'alert-error'});
+            $translate('users_delete_error').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText, classes: 'alert-error'});
+            });
         });
     };
 

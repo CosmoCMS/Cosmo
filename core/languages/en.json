@@ -96,6 +96,9 @@
     "browse_search": "Search Pages",
     "browse_restrict": "Restrict Search",
 
+    "comments_added": "Comment Added",
+    "comments_error": "There was an error submitting your comment",
+
     "files_media": "Media",
     "files_add_media": "Add Media",
     "files_alt_text": "Alt Text",
@@ -198,6 +201,14 @@
 
     "profile_header": "Your Profile",
     "profile_photo": "Profile Photo",
+    "profile_updated": "Profile info updated",
+    "profile_error": "There was an error updating your profile",
+
+    "reset_password_updated": "Password updated",
+    "reset_password_invalid": "Invalid link",
+    "reset_password_match": "Passwords don't match",
+
+    "revisions_revised": "Content has been revised",
 
     "roles_header": "Role Manager",
     "roles_new": "Add a new role",
@@ -207,6 +218,7 @@
     "settings_slogan": "Slogan",
     "settings_maintenance_url": "Maintenance URL",
     "settings_activate_maintenance": "Activate Maintenance Mode",
+    "settings_updated": "Settings updated",
 
     "sidebar_content": "Content",
     "sidebar_new_page": "New Page",
@@ -260,5 +272,8 @@
     "users_create": "Create User",
     "users_admin": "admin",
     "users_editor": "editor",
-    "users_author": "author"
+    "users_author": "author",
+    "users_updated": "User info updated",
+    "users_deleted": "User deleted",
+    "users_delete_error": "Error deleting user"
 }
