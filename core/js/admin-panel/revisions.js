@@ -40,7 +40,9 @@ angular.module('cosmo').controller('revisionsCtrl', ['$scope', 'REST', 'Page', '
     // Revert to previous edition
     $scope.revert = function(index){
         REST.contentRevisions.save({ contentID: Page.id, revisionID: $scope.revisions[index].id }, function(){
-            $rootScope.$broadcast('notify', {message: 'Content has been revised'});
+            $translate('revisions_revised').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
     };
 

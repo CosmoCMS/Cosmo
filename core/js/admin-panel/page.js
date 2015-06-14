@@ -81,7 +81,9 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
         // Delete the page
         REST.content.delete({ contentID: $scope.page.id }, function(data){
             // Success message
-            $rootScope.$broadcast('notify', {message: 'Deleted'});
+            $translate('deleted').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
 
         // Delete all revisions of this page
@@ -190,13 +192,17 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
 
         // Check for duplicate URL
         if(duplicate && $scope.page.url === $location.path()){
-            $rootScope.$broadcast('notify', {message: 'Error: URL must be different to duplicate a page', classes: 'alert-error'});
+            $translate('page_different_url').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText, classes: 'alert-error'});
+            });
             return;
         }
 
         // Make sure there is a page type
         if(!$scope.page.type){
-            $rootScope.$broadcast('notify', {message: 'No page type selected', classes: 'alert-error'});
+            $translate('page_no_type_selected').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText, classes: 'alert-error'});
+            });
             return;
         }
 
@@ -208,7 +214,9 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
 
         // If there's no custom url, throw an error
         if($scope.page.url.length === 0 || $scope.page.url === 'new'){
-            $rootScope.$broadcast('notify', { message: 'No URL Input', classes: 'alert-error' });
+            $translate('page_no_url').then(function(translatedText){
+                $rootScope.$broadcast('notify', { message: translatedText, classes: 'alert-error' });
+            });
             return;
         }
 
@@ -249,7 +257,9 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
                 published_date: scheduleDate,
                 author: Users.id
             }, newPagePromise, function(){ // Error
-                $rootScope.$broadcast('notify', {message: 'Error saving page. Possible duplicate URL', classes: 'alert-error'});
+                $translate('page_error_saving').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText, classes: 'alert-error'});
+                });
             });
         } else { // Update existing page
 
@@ -270,7 +280,9 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
                 published_date: scheduleDate,
                 author: Users.id
             }, updatePagePromise, function(data){ // Error
-                $rootScope.$broadcast('notify', {message: 'Error updating page', classes: 'alert-error'});
+                $translate('page_error_updating').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText, classes: 'alert-error'});
+                });
             });
         }
 
@@ -316,7 +328,9 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
             // Save additional data if there is any
             if(Object.keys(Page.extras).length === 0){
                 // Success message
-                $rootScope.$broadcast('notify', {message: 'Saved'});
+                $translate('saved').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText});
+                });
                 // Redirect to new page
                 $location.path($scope.page.url);
             } else {
@@ -341,7 +355,9 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
                     });
                 };
             }
-            $rootScope.$broadcast('notify', {message: 'Page Created'});
+            $translate('page_created').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         }
 
         // Notify the user after saving the last extra
@@ -349,7 +365,9 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
             // Wait for the last extra to be saved, then redirect the user
             if(extrasCounter.i === Object.keys(Page.extras).length){
                 // Success message
-                $rootScope.$broadcast('notify', {message: 'Saved'});
+                $translate('page_created').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText});
+                });
                 // Redirect to new page
                 $location.path($scope.page.url);
             } else
@@ -420,8 +438,11 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
                 }
             }
             // If there were no extras, notify right away
-            if(!Page.extras.length)
-                $rootScope.$broadcast('notify', {message: 'Page Updated'});
+            if(!Page.extras.length) {
+                $translate('page_updated').then(function(translatedText){
+                    $rootScope.$broadcast('notify', {message: translatedText});
+                });
+            }
         }
     };
 }]);

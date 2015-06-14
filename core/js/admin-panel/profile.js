@@ -51,10 +51,14 @@ angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope
             twitter: $scope.profile.twitter,
             email: $scope.profile.email
         }, function(data){
-            $rootScope.$broadcast('notify', { message: 'Profile info updated' });
+            $translate('profile_updated').then(function(translatedText){
+                $rootScope.$broadcast('notify', { message: translatedText });
+            });
             $scope.admin.photo = $scope.profile.photo;
         }, function(){
-            $rootScope.$broadcast('notify', { message: 'There was an error updating your profile' });
+            $translate('profile_error').then(function(translatedText){
+                $rootScope.$broadcast('notify', { message: translatedText });
+            });
         });
     };
 

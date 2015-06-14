@@ -3,7 +3,7 @@
  *       Manage the sidebar block editor          *
  **************************************************/
 
-angular.module('cosmo').controller('blockCtrl', ['$scope', 'REST', 'Page', '$rootScope', function($scope, REST, Page, $rootScope){
+angular.module('cosmo').controller('blockCtrl', ['$scope', 'REST', 'Page', '$rootScope', '$translate', function($scope, REST, Page, $rootScope, $translate){
 
     $scope.block = {};
     $scope.block.panel = 'manage';
@@ -70,7 +70,9 @@ angular.module('cosmo').controller('blockCtrl', ['$scope', 'REST', 'Page', '$roo
             $scope.blocks = [{ id: data.data, name: $scope.block.newName }];
 
         $scope.block.newName = '';
-        $rootScope.$broadcast('notify', {message: 'New block added'});
+        $translate('blocks_added').then(function(translatedText){
+            $rootScope.$broadcast('notify', {message: translatedText});
+        });
     }
 
     // Delete block
@@ -86,7 +88,9 @@ angular.module('cosmo').controller('blockCtrl', ['$scope', 'REST', 'Page', '$roo
                     $scope.blocks.splice(i,1);
             }
             $scope.block.name = '';
-            $rootScope.$broadcast('notify', {message: 'Block deleted'});
+            $translate('blocks_deleted').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         }
     }
 
@@ -99,7 +103,9 @@ angular.module('cosmo').controller('blockCtrl', ['$scope', 'REST', 'Page', '$roo
             area: block.area,
             priority: parseInt(block.priority)
         }, function(data){
-            $rootScope.$broadcast('notify', {message: 'Block updated'});
+            $translate('blocks_updated').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
     };
 
@@ -128,7 +134,9 @@ angular.module('cosmo').controller('blockCtrl', ['$scope', 'REST', 'Page', '$roo
         REST.blocksRequirements.delete({ blockID: $scope.block.id }, blocksRequirementsDeletePromise);
 
         // Notify the user of the updated block
-        $rootScope.$broadcast('notify', {message: 'Block updated'});
+        $translate('blocks_updated').then(function(translatedText){
+            $rootScope.$broadcast('notify', {message: translatedText});
+        });
     };
 
     // Update visibility requirements

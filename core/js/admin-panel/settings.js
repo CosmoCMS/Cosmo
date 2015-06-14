@@ -65,7 +65,9 @@ angular.module('cosmo').controller('settingsCtrl', ['$scope', 'REST', '$rootScop
             Page.settings.email = $scope.settings.email;
             Page.settings.language = $scope.settings.language;
             Page.settings.maintenance_url = $scope.settings.maintenanceURL;
-            $rootScope.$broadcast('notify', {message: 'Settings updated'});
+            $translate('settings_updated').then(function(translatedText){
+                $rootScope.$broadcast('notify', {message: translatedText});
+            });
         });
     };
 

@@ -7,6 +7,8 @@ angular.module('cosmo').directive('csBgImage', ['Page', '$rootScope', 'Users', '
     return {
         link: function(scope, elm, attrs, ctrl) {
 
+            var imageURL;
+
             function updateBGImage(){
                 if(Page.extras[attrs.csBgImage]){
                     Page.extras[attrs.csBgImage] = angular.fromJson(Page.extras[attrs.csBgImage]);
