@@ -292,6 +292,10 @@ angular.module('cosmo').directive('csWysiwyg', ['$rootScope', 'Page', '$compile'
 
                 // Hide WYWSIWYG editor
                 $rootScope.$broadcast('hideWYSIWYG');
+
+                $timeout(function() {
+                    scope.$apply();
+                });
             };
         }
     };
