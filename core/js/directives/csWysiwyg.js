@@ -9,11 +9,12 @@ angular.module('cosmo').directive('csWysiwyg', ['$rootScope', 'Page', '$compile'
         scope: {},
         link: function(scope, elm, attr){
 
-            scope.editor = {};
-            scope.editor.codeEditor = false;
-            scope.editor.showToolbar = false;
-            scope.editor.tableRows = [];
-            scope.editor.directives = Page.directives;
+            scope.editor = {
+                codeEditor: false,
+                showToolbar: false,
+                tableRows: [],
+                directives: Page.directives
+            };
             Page.misc.wysiwyg = {};
 
             // Populate 100 table rows
@@ -57,6 +58,7 @@ angular.module('cosmo').directive('csWysiwyg', ['$rootScope', 'Page', '$compile'
                 // Focusout from one editable div closes the toolbar.
                 $timeout(function(){
                     scope.editor.showToolbar = true;
+                    scope.editor.dropdown = null;
                 });
                 var pageX = data.pageX - 120; // -120 centers toolbar
                 var pageY = data.pageY - 75; // Go directly above click. CSS margin pushes this above mouse
@@ -290,6 +292,10 @@ angular.module('cosmo').directive('csWysiwyg', ['$rootScope', 'Page', '$compile'
 
                 // Hide WYWSIWYG editor
                 $rootScope.$broadcast('hideWYSIWYG');
+
+                $timeout(function() {
+                    scope.$apply();
+                });
             };
         }
     };

@@ -79,6 +79,9 @@ angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST',
         $scope.admin.sidebar = 'core/html/files.html';
         $scope.admin.showAdminPanel = true;
         $scope.admin.active = true;
+        $timeout(function() {
+            $scope.$apply();
+        });
     });
 
     // todo: Depreciate. Remove from admin-panel.html and use loginRegistrationCtrl instead
