@@ -7,7 +7,7 @@
             <a class="sidebar-close" ng-click="admin.showAdminPanel=false;admin.active=false;"><i class="fa fa-times"></i></a>
         </div>
         <div class="bar--actions">
-            <button ng-click="files.gallery=false" translate="files_add_media"></button>
+            <button ng-click="files.gallery=false;noSelectedFile()" translate="files_add_media"></button>
             <button ng-click="saveGallery()" translate="update">Save Gallery</button>
         </div>
         <div class="file-prev--list">
