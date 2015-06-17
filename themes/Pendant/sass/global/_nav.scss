@@ -47,21 +47,6 @@
         transition: .05s ease-in;
     }
 
-    input {
-        border: 0;
-        border-bottom: 1px solid palette(gray, mid--light);
-        box-sizing: border-box;
-        font-weight: 600;
-        height: 4rem;
-        padding-left: 1.25rem;
-        width: 100%;
-
-        @include placeholder {
-            color: palette(gray, dark);
-            font-weight: 200;
-        }
-    }
-
     nav {
         @extend %sidebar;
     }

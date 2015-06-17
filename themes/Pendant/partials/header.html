@@ -3,8 +3,32 @@
         <div class="logo">
             <div cs-logo></div>
             <h1 cs-title class="title">PENDANT</h1>
-            <p cs-slogan class="slogan"></p>
         </div>
+
+        <section class="pen-search" ng-controller="contentListCtrl">
+            <form>
+                <input id="search" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="Search">
+            </form>
+            <div class="search-results container">
+                <div class="search-results--article" ng-repeat="post in pages | filter:search | filter:exclude">
+                    <div class="image">
+                        <img ng-if="post.featured" ng-src="{{post.featured}}">
+                    </div>
+                    <article>
+                        <a ng-href="{{post.url}}">
+                            <h1>{{post.header}}</h1>
+                            <h2>{{post.subheader}}</h2>
+                        </a>
+                        <div class="meta">
+                            <div class="byline">
+                                <span>By {{page.author.name}} on</span> <span>{{page.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in page.tags" class="tags">#{{tag}} </span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </section>
         <div class="nav-toggle">
             <a class="social" href="#"><i class="fa fa-facebook"></i></a>
             <a class="social" href="#"><i class="fa fa-twitter"></i></a>
@@ -17,37 +41,9 @@
     <div class="sidebar" ng-class="{'show-right': page.expandMenu}">
         <div class="nav-options">
             <a class="close" ng-click="page.expandMenu=!page.expandMenu"><i class="fa fa-times"></i></a>
-            <div class="selections">
-                <a class="menu" ng-click="panel='menu'"><i class="fa fa-bars"></i></a>
-                <a class="search" ng-click="panel='search'"><i class="fa fa-search"></i></a>
-            </div>
         </div>
         <nav ng-class="{'show-right': panel=='menu'}">
             <ul cs-menu="primary"></ul>
         </nav>
-
-        <!-- Search -->
-
-        <section class="pen-search" ng-class="{'show-right': panel=='search'}" ng-controller="contentListCtrl">
-            <form>
-                <input id="search" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="Search">
-            </form>
-
-            <div ng-repeat="post in pages | filter:search | filter:exclude">
-                <div ng-if="post.featured" class="search-results--img" style="background-image: url({{post.featured}});"></div>
-                <article class="search-results--article">
-                    <a ng-href="{{post.url}}">
-                        <h1>{{post.header}}</h1>
-                        <h2>{{post.subheader}}</h2>
-                    </a>
-                    <div class="meta">
-                        <div class="byline">
-                            <a>By <span>{{page.author.name}}</span> on <span>{{post.published_date * 1000 | date:'MM/dd/yyyy'}}</span> <span ng-repeat="tag in post.tags">#{{tag}} </span></a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-        </section>
     </div>
 </header>

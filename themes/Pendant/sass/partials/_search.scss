@@ -1,12 +1,75 @@
 // search styling for the container on the search area
 .pen-search {
-    @extend %sidebar;
+    background-color: palette(gray, white);
+    border: 0;
+    flex: 3;
+    transition: .3s ease;
+
+    form {
+        display: inline-block;
+        transition: 2s;
+        width: 100%;
+
+        &:before {
+            color: palette(gray, mid--light);
+            content: "\f002";
+            font-family: 'FontAwesome';
+            font-size: 1rem;
+        }
+    }
+
+    input {
+        border: 0;
+        border-radius: 5rem;
+        color: palette(gray, dark);
+        font-size: 1rem;
+        font-weight: 700;
+        height: 2.5rem;
+        margin-top: .75rem;
+        transition: .25s ease-in;
+        width: 35%;
+
+        @include placeholder {
+            color: palette(gray, mid--light);
+            height: 4rem;
+            opacity: 1;
+            text-transform: uppercase;
+            transition: .2s ease-in;
+        }
+
+        &:focus {
+            background-color: palette(gray, light);
+            padding-left: size(15);
+            width: 95%;
+
+            @include placeholder {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.search-results {
+    background-color: palette(gray, white);
+    display: none;
+    left: 0;
+    padding-top: 5rem;
+    position: fixed;
+    right: 0;
+    width: 100%;
 }
 
 // text info for articles in search
 .search-results--article {
     cursor: pointer;
+    display: flex;
+    height: auto;
     padding: size(20);
+
+    article {
+        flex: 5;
+        margin-top: 0;
+    }
 
     h1 {
         font-size: 1.5rem;
@@ -20,21 +83,19 @@
         margin-top: 0;
     }
 
+    .image {
+        flex: 1;
+        height: auto;
+        margin-right: size(30);
+        min-width: 12rem;
+
+        img {
+            height: auto;
+            width: 100%;
+        }
+    }
+
     p {
         font-size: .8rem;
-    }
-}
-
-// div with bg image if article has a banner
-.search-results--img {
-    display: none;
-    transition: .2s ease-in;
-
-    @media #{$bp-gamma} {
-        background: no-repeat center center;
-        background-size: cover;
-        display: block;
-        height: 12rem;
-        width: 100%;
     }
 }
