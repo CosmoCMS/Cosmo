@@ -83,7 +83,7 @@
                 </div>
                 <div class="bar--actions">
                     <button  ng-click="deleteFile()" translate="delete"></button>
-                    <button  ng-click="selectFile()" translate="files_choose_file"></button>
+                    <button  ng-click="selectFile();noSelectedFile();" translate="files_choose_file"></button>
                 </div>
                 <div class="form-case">
                     <img class="file-img--prev" ng-if="files.type==='image'" ng-src="{{selectedFile}}">
