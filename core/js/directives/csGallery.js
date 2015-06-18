@@ -30,8 +30,8 @@ angular.module('cosmo').directive('csGallery', ['Page', '$rootScope', 'REST', '$
                     });
                     scope.images = gallery;
                 } else if(Users.admin) {
-                    Page.extras[attrs.csGallery] = [{ url: 'core/img/image.svg', type: 'image' }];
-                    scope.images = [{ url: 'core/img/image.svg', type: 'image' }];
+                    Page.extras[attrs.csGallery] = [{ url: 'core/img/image.svg', src: 'core/img/image.svg', type: 'image' }];
+                    scope.images = [{ url: 'core/img/image.svg', src: 'core/img/image.svg', type: 'image' }];
                 }
                 $rootScope.$broadcast(attrs.csGallery, scope.images);
             }
@@ -103,7 +103,8 @@ angular.module('cosmo').directive('csGallery', ['Page', '$rootScope', 'REST', '$
                                 });
                             }
                         });
-                        scope.images = data.data;
+                        scope.images = records;
+                        console.log(records);
                         Page.extras[attrs.csGallery] = scope.images;
                         if(data.class)
                             elm.addClass(data.class);
