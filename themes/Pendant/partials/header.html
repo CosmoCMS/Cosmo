@@ -7,9 +7,9 @@
 
         <section class="pen-search" ng-controller="contentListCtrl">
             <form>
-                <input id="search" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="Search">
+                <input id="search" ng-click="showSearchResults=true" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="Search">
             </form>
-            <div class="search-results container">
+            <div class="search-results container" ng-mouseout="showSearchResults=false" ng-show="pages.length && showSearchResults">
                 <div class="search-results--article" ng-repeat="post in pages | filter:search | filter:exclude">
                     <div class="image">
                         <img ng-if="post.featured" ng-src="{{post.featured}}">
