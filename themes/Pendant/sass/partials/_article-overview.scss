@@ -64,8 +64,10 @@
             flex: 2.5;
         }
 
-        a, h2, i, .meta {
+        a, h2, i, p, .meta {
             color: palette(gray, dark);
+            font-weight: 200;
+            margin-top: 0;
         }
     }
 }

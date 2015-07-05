@@ -44,6 +44,7 @@ h1 {
 }
 
 h2 {
+    font-family: $font-alpha;
     font-size: 1.6rem;
     font-weight: 700;
 
@@ -53,6 +54,7 @@ h2 {
 }
 
 h3 {
+    font-family: $font-alpha;
     font-size: 1.4rem;
     margin-bottom: 1rem;
 
@@ -74,6 +76,7 @@ h4 {
 }
 
 h5 {
+    font-family: $font-alpha;
     font-size: 1.1rem;
     margin-bottom: 1rem;
 
@@ -83,6 +86,7 @@ h5 {
 }
 
 h6 {
+    font-family: $font-alpha;
     font-size: 1.05rem;
     margin-bottom: 1rem;
     text-transform: uppercase;

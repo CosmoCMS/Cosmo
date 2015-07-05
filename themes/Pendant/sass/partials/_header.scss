@@ -1,6 +1,5 @@
 header {
     background-color: palette(gray, white);
-    border-bottom: 1px solid palette(gray, mid--light);
     position: fixed;
     top: -10rem;
     transition: .2s ease-in 1s, top .35s ease-in 0s;
@@ -35,6 +34,7 @@ header .social {
 }
 
 .head {
+    @extend .center;
     height: 4rem;
     overflow: hidden;
 }
@@ -48,19 +48,12 @@ header .social {
 }
 
 .logo {
-    flex: 2.5;
+    flex: 1;
     height: auto;
-    padding-top: 1rem;
-
-    @media #{$bp-beta} {
-        flex: 1;
-        margin-left: 0;
-    }
 
     img {
-        height: 2rem;
-        max-width: 7rem;
-        width: auto;
+        height: auto;
+        width: 100%;
     }
 
     .title {
@@ -79,32 +72,15 @@ header .social {
             margin-right: 1.5rem;
         }
     }
-
-    .slogan {
-        display: none;
-
-        @media #{$bp-beta} {
-            color: palette(gray, mid--light);
-            display: inline-block;
-            font-family: $font-beta;
-            font-size: 1rem;
-            font-style: italic;
-            font-weight: 200;
-            margin-bottom: 0;
-            position: relative;
-            top: -.7rem;
-        }
-    }
 }
 
 .nav-toggle {
-    flex: 1;
+    flex: .5;
     font-size: 1.5rem;
-    margin-top: .95rem;
     text-align: right;
 
     @media #{$bp-beta} {
-        flex: 1;
+        flex: 2;
     }
 
     a {
@@ -117,11 +93,16 @@ header .social {
     }
 
     span {
+        display: none;
         font-size: .5rem;
         font-weight: 200;
         margin-right: size(10);
         position: relative;
         top: -.25rem;
+
+        @media #{$bp-beta} {
+            display: inline-block;
+        }
     }
 }
 
