@@ -1,13 +1,8 @@
 .file--listed {
     background-color: palette(gray, light);
-    border-bottom: 1px solid palette(gray, mid--light);
     display: flex;
     flex-wrap: wrap;
     margin: 1rem;
-
-    &:hover {
-        cursor: move;
-    }
 
     @media #{$bp-alpha} {
         div {
@@ -29,10 +24,12 @@
         width: 100%;
 
         button {
+            background-color: palette(gray, light);
             color: palette(blue, mid);
 
             &:hover {
-                color: palette(gray, white);
+                background-color: palette(gray, mid--light);
+                color: palette(blue, dark);
             }
         }
     }
@@ -155,4 +152,9 @@ input[type='file'] {
 .ng-file-over {
     border: 2px dashed palette(blue, light);
     transition: all .25s ease;
+}
+
+.preview--files {
+    height: 1rem;
+    margin-left: -.5rem;
 }
