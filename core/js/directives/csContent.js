@@ -30,6 +30,9 @@ angular.module('cosmo').directive('csContent', ['Page', '$routeParams', '$sce', 
                 if(attrs.type === 'text')
                     content = content.replace(/<[^<]+?>/g, '');
 
+                // Pass content to Hooks first
+                content = Hooks.contentHookNotify(content);
+
                 if(content){
                     elm.html(content);
                     if(attrs.type !== 'text')
