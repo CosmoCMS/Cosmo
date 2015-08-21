@@ -1,10 +1,5 @@
 <header ng-controller="pendantHeaderCtrl" ng-class="{sticky: scrollingUp}">
     <div class="head container">
-        <div class="logo">
-            <div cs-logo></div>
-            <h1 cs-title class="title">PENDANT</h1>
-        </div>
-
         <section class="pen-search" ng-controller="contentListCtrl">
             <form>
                 <input id="search" ng-click="showSearchResults=true" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="Search">
@@ -29,6 +24,11 @@
             </div>
 
         </section>
+
+        <div class="logo">
+            <div cs-logo></div>
+        </div>
+
         <div class="nav-toggle">
             <a class="social" href="#"><i class="fa fa-facebook"></i></a>
             <a class="social" href="#"><i class="fa fa-twitter"></i></a>

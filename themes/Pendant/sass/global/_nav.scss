@@ -8,10 +8,9 @@
     width: 100%;
 }
 
-// overall sidebar for all comments/nav etc...
+/* overall sidebar for all comments/nav etc...*/
 .sidebar {
     background-color: palette(gray, white);
-    border-left: 1px solid palette(gray, mid--light);
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -19,11 +18,11 @@
     right: -100%;
     top: 0;
     transition: .25s ease-in;
-    width: 100%;
+    width: 70%;
     z-index: z(sidebar);
 
     @media #{$bp-beta} {
-        width: 30rem;
+        width: 35%;
     }
 
     @media #{$bp-delta} {
@@ -77,16 +76,6 @@
         .close {
             font-size: 1.1rem;
         }
-
-        .search, .comments {
-            font-size: 1rem;
-            margin-left: size(15);
-        }
-
-        .menu {
-            @extend .search;
-            font-size: .9rem;
-        }
     }
 }
 
@@ -125,7 +114,6 @@
 .sidebar ul li {
 
     ul {
-        display: none;
         font-size: 1rem;
         margin-left: - size(20);
         padding: 0;

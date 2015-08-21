@@ -23,19 +23,8 @@
     }
 
     .meta {
+        color: palette(gray, white);
         margin-bottom: 0;
-
-        a, i {
-            color: palette(gray, white);
-
-            &:hover {
-                color: palette(gray, mid--light);
-            }
-        }
-
-        .posted {
-            color: palette(gray, white);
-        }
     }
 }
 

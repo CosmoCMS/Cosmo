@@ -112,11 +112,12 @@
         margin: 0;
 
         a {
-            color: palette(blue, mid);
+            color: palette(blue, light);
             font-weight: 400;
+            transition: color .2s;
 
             &:hover {
-                color: palette(gray, dark);
+                color: palette(gray, white);
             }
         }
     }
