@@ -14,7 +14,6 @@ $minifyScripts = 'min/?f=';
 $minifyCSS = 'min/?f=';
 $scripts = '';
 $CSS = '';
-$developerMode = FALSE;
 
 // Log user in if they have a cookie
 if(isset($_COOKIE['usersID']) && $_COOKIE['usersID'] && $_COOKIE['token'])

@@ -83,7 +83,7 @@
 
                 // Load files from the core/languages folder
                 $translateProvider.useStaticFilesLoader({
-                    prefix: '/core/languages/',
+                    prefix: 'core/languages/',
                     suffix: '.json'
                 });
 
