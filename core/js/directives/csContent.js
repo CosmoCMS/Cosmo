@@ -4,7 +4,7 @@
  *          subheaders, body, etc.                *
  **************************************************/
 
-angular.module('cosmo').directive('csContent', ['Page', '$routeParams', '$sce', '$rootScope', '$compile', 'Users', function(Page, $routeParams, $sce, $rootScope, $compile, Users) {
+angular.module('cosmo').directive('csContent', ['Page', '$routeParams', '$sce', '$rootScope', '$compile', 'Users', 'Hooks', function(Page, $routeParams, $sce, $rootScope, $compile, Users, Hooks) {
     return {
         priority: 100,
         link: function(scope, elm, attrs, ctrl) {
