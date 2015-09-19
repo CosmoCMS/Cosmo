@@ -30,7 +30,7 @@
                 <label for="th" ng-click="changeLanguage('th');install.language='th'">ภาษาไทย</label>
             <h3 translate="install_database"></h3>
                 <label translate="install_host"></label>
-                <input type="text" name="host" value="localhost">
+                <input type="text" ng-model="install.host" name="host">
                 <label translate="install_database_name"></label>
                 <input type="text" ng-model="install.dbname" name="name">
                 <label translate="username"></label>

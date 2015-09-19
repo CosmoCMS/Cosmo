@@ -99,8 +99,8 @@
         <button ng-click="action('toggle')" translate>toolbar_code_view</button>
         <button ng-click="action('html')" translate>toolbar_insert_html</button>
         <button ng-click="action('div')" translate>toolbar_div</button>
-        <button ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false" translate>toolbar_directive</button>
-        <div ng-show="premadeDirective" ng-mouseenter="premadeDirective=true" ng-mouseleave="premadeDirective=false" ng-click="premadeDirective=false" class="directive-dropdown">
+        <button ng-mouseenter="editor.premadeDirective=true" ng-mouseleave="editor.premadeDirective=false" translate>toolbar_directive</button>
+        <div ng-show="editor.premadeDirective" ng-mouseenter="editor.premadeDirective=true" ng-mouseleave="editor.premadeDirective=false" ng-click="editor.premadeDirective=false" class="directive-dropdown">
             <button ng-repeat="directive in editor.directives track by $index" ng-click="action('premade', '{{directive.directive}}', '{{directive.description}}')">{{directive.name}}</button>
         </div>
     </div>
