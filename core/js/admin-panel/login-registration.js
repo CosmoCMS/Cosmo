@@ -2,7 +2,7 @@
  *      Login / Registration Controller           *
  **************************************************/
 
-angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '$http', '$location', '$rootScope', 'Users', 'Page', '$timeout', function($scope, REST, $http, $location, $rootScope, Users, Page, $timeout){
+angular.module('cosmo').controller('loginRegistrationCtrl', ['$scope', 'REST', '$http', '$location', '$rootScope', 'Users', 'Page', '$timeout', '$translate', function($scope, REST, $http, $location, $rootScope, Users, Page, $timeout, $translate){
 
     // Initialize panel to show
     $scope.login = {

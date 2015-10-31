@@ -3,7 +3,7 @@
  *              Edit your profile                 *
  **************************************************/
 
-angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope', 'Users', 'Responsive', 'Hooks', function($scope, REST, $rootScope, Users, Responsive, Hooks) {
+angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope', 'Users', 'Responsive', 'Hooks', '$translate', function($scope, REST, $rootScope, Users, Responsive, Hooks, $translate) {
 
     // Initialize variables
     $scope.profile = {};

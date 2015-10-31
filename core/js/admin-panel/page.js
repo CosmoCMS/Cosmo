@@ -3,7 +3,7 @@
  *      Make new pages and edit old pages.        *
  **************************************************/
 
-angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', 'Page', '$rootScope', '$routeParams', '$upload', 'Users', function($scope, REST, $location, Page, $rootScope, $routeParams, $upload, Users){
+angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', 'Page', '$rootScope', '$routeParams', '$upload', 'Users', '$translate', function($scope, REST, $location, Page, $rootScope, $routeParams, $upload, Users, $translate){
 
     // Initialize variables
     $scope.page = {
