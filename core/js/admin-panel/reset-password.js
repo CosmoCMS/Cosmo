@@ -2,7 +2,7 @@
  *         Password Reset Controller              *
  **************************************************/
 
-angular.module('cosmo').controller('resetPasswordCtrl', ['$routeParams', '$scope', 'REST', '$location', '$rootScope', function($routeParams, $scope, REST, $location, $rootScope){
+angular.module('cosmo').controller('resetPasswordCtrl', ['$routeParams', '$scope', 'REST', '$location', '$rootScope', '$translate', function($routeParams, $scope, REST, $location, $rootScope, $translate){
 
     $scope.reset = {};
 

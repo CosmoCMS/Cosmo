@@ -3,7 +3,7 @@
  *              Edit your profile                 *
  **************************************************/
 
-angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope', 'Users', function($scope, REST, $rootScope, Users){
+angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope', 'Users', 'Responsive', 'Hooks', '$translate', function($scope, REST, $rootScope, Users, Responsive, Hooks, $translate) {
 
     // Initialize variables
     $scope.profile = {};
@@ -23,7 +23,7 @@ angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope
 
         // Check if the photo was just selected from the media picker
         if($rootScope.tempSidebarPic && $rootScope.tempSidebarPic.id === 'profile') {
-            $scope.profile.photo = $rootScope.tempSidebarPic.src;
+            $scope.profile.photo = Hooks.imageHookNotify(Responsive.resize($rootScope.tempSidebarPic.src, 320));
             $rootScope.tempSidebarPic = null;
         } else if(!$scope.profile.photo)
             $scope.profile.photo = 'core/img/image.svg'; // Placeholder image
@@ -33,7 +33,7 @@ angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope
     $scope.addProfilePhoto = function(){
         $rootScope.tempSidebarPic = {
             id: 'profile',
-            src: $scope.profile,
+            src: $scope.profile.photo,
             sidebar: 'core/html/profile.html'
         }
         $rootScope.$broadcast('editFiles', angular.toJson($rootScope.tempSidebarPic));
@@ -54,12 +54,11 @@ angular.module('cosmo').controller('profileCtrl', ['$scope', 'REST', '$rootScope
             $translate('profile_updated').then(function(translatedText){
                 $rootScope.$broadcast('notify', { message: translatedText });
             });
-            $scope.admin.photo = $scope.profile.photo;
+            $scope.admin.photo = Hooks.imageHookNotify(Responsive.resize($scope.profile.photo, 320));
         }, function(){
             $translate('profile_error').then(function(translatedText){
                 $rootScope.$broadcast('notify', { message: translatedText });
             });
         });
     };
-
 }]);

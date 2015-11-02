@@ -3,7 +3,7 @@
  *         Check the revision history             *
  **************************************************/
 
-angular.module('cosmo').controller('revisionsCtrl', ['$scope', 'REST', 'Page', '$rootScope', function($scope, REST, Page, $rootScope){
+angular.module('cosmo').controller('revisionsCtrl', ['$scope', 'REST', 'Page', '$rootScope', '$translate', function($scope, REST, Page, $rootScope, $translate){
 
     // Get all revisions for this url
     REST.contentRevisions.query({ contentID: Page.id }, function(data){

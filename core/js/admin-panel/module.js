@@ -3,7 +3,7 @@
  *      Manage the admin sidebar modules          *
  **************************************************/
 
-angular.module('cosmo').controller('moduleCtrl', ['$scope', 'REST', '$rootScope', '$http', function($scope, REST, $rootScope, $http){
+angular.module('cosmo').controller('moduleCtrl', ['$scope', 'REST', '$rootScope', '$http', '$translate', function($scope, REST, $rootScope, $http, $translate){
 
     // Get modules
     REST.modules.query({}, function(data){

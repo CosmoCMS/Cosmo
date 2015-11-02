@@ -22,6 +22,8 @@
             <h3 translate="install_choose_language"></h3>
                 <input type="radio" value="en" ng-model="install.language">
                 <label for="en" ng-click="changeLanguage('en');install.language='en'">English</label>
+                <input type="radio" value="it" ng-model="install.language">
+                <label for="it" ng-click="changeLanguage('it');install.language='it'">Italiano</label>
                 <input type="radio" value="ru" ng-model="install.language">
                 <label for="ru" ng-click="changeLanguage('ru');install.language='ru'">русский язык</label>
                 <input type="radio" value="pl" ng-model="install.language">
@@ -30,7 +32,7 @@
                 <label for="th" ng-click="changeLanguage('th');install.language='th'">ภาษาไทย</label>
             <h3 translate="install_database"></h3>
                 <label translate="install_host"></label>
-                <input type="text" name="host" value="localhost">
+                <input type="text" ng-model="install.host" name="host">
                 <label translate="install_database_name"></label>
                 <input type="text" ng-model="install.dbname" name="name">
                 <label translate="username"></label>

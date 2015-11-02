@@ -2,7 +2,7 @@
  *            Comments Controller                 *
  **************************************************/
 
-angular.module('cosmo').controller('commentsCtrl', ['$scope', 'REST', 'Page', 'Users', '$rootScope', function($scope, REST, Page, Users, $rootScope){
+angular.module('cosmo').controller('commentsCtrl', ['$scope', 'REST', 'Page', 'Users', '$rootScope', '$translate', function($scope, REST, Page, Users, $rootScope, $translate){
 
     // Initialize variables
     $scope.comment = {};

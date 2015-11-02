@@ -3,7 +3,7 @@
  *               Manage all users                 *
  **************************************************/
 
-angular.module('cosmo').controller('usersCtrl', ['$scope', 'REST', '$rootScope', function($scope, REST, $rootScope){
+angular.module('cosmo').controller('usersCtrl', ['$scope', 'REST', '$rootScope', '$translate', function($scope, REST, $rootScope, $translate){
 
     // Initialize variables
     $scope.users = {};
