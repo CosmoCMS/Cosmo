@@ -12,7 +12,7 @@ $method = $_SERVER['REQUEST_METHOD']; # GET, POST, PUT, or DELETE
 $uri = substr($_SERVER['REQUEST_URI'], 5 + strlen(FOLDER)); # remove '/api/' and prefix - (strlen($prefix) +)
 $uri = explode('?', $uri); // Separate GET parameters
 $segments = explode('/', $uri[0]);
-$header = 200;
+$HTTPHeaderCode = 200;
 $role = '';
 
 // Check permissions for autorized requests
@@ -180,7 +180,7 @@ switch($segments[0])
                 if($role === 'admin')
                 {
                     $type = isset($_POST['type']) ? $_POST['type'] : '';
-                    $requirement = isset($_GET['requirement']) ? $_POST['requirement'] : '';
+                    $requirement = isset($_POST['requirement']) ? $_POST['requirement'] : '';
                     $name = isset($_POST['name']) ? $_POST['name'] : '';
 
                     if(isset($segments[2]))
@@ -611,7 +611,7 @@ if(is_string($response))
     $response = array('data'=>$response);
 
 if($response === false){
-    $header = 500;
+    $HTTPHeaderCode = 500;
     header('HTTP/1.1 500 Internal Server Error');
 }
 
@@ -620,7 +620,7 @@ header("Content-Type: application/json", true);
 header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
 header('Pragma: no-cache'); // HTTP 1.0.
 header('Expires: 0'); // Proxies.
-header("Status: $header");
+header("Status: $HTTPHeaderCode");
 
 echo json_encode($response);
 
