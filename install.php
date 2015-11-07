@@ -90,6 +90,11 @@ if($_GET)
     $data = array('/error', 'home.html', 1, 'Y');
     $stmt->execute($data);
 
+    // Create maintenance page
+    $stmt = $pdo->prepare('INSERT INTO '.$prefix.'content (url, type, author, published) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE url=VALUES(url)');
+    $data = array('/maintenance', 'home.html', 1, 'Y');
+    $stmt->execute($data);
+
     // Insert records
     try {
         // Create admin username/password

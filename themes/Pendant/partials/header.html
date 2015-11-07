@@ -4,7 +4,7 @@
             <form>
                 <input id="search" ng-click="showSearchResults=true" type="text" ng-model="content.input" ng-keyup="searchBar()" placeholder="Search">
             </form>
-            <div class="search-results container" ng-mouseenter="showSearchResults=true" ng-mouseout="showSearchResults=false" ng-show="pages.length && showSearchResults">
+            <div class="search-results container" ng-show="pages.length && showSearchResults">
                 <div class="search-results--article" ng-repeat="post in pages | filter:search | filter:exclude">
                     <div class="image">
                         <img ng-if="post.featured" ng-src="{{post.featured}}">
@@ -14,7 +14,7 @@
                             <h1>{{post.header}}</h1>
                             <h2>{{post.description}}</h2>
                         </a>
-                        <div class="meta">
+                        <div class="meta" ng-show="page.author.name">
                             <div class="byline">
                                 <span>By {{page.author.name}} on</span> <span>{{page.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in page.tags" class="tags">#{{tag}} </span>
                             </div>

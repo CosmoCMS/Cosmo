@@ -222,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `**prefix**settings` (
   `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `theme` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `language` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `maintenance_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'maintenance',
+  `maintenance_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT '/maintenance',
   `maintenance_mode` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'false',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
