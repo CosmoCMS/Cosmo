@@ -558,9 +558,9 @@ class Cosmo {
      * @param int $contentID Content id
      * @return array Array of tags
      */
-    public function contentTagsRead($contentID, $tagStartsWith){
+    public function contentTagsRead($contentID, $tagStartsWith = ''){
         $tags = array();
-        if($contentId)
+        if($contentID)
         {
             $stmt = $this->pdo->prepare('SELECT * FROM '.$this->prefix.'content_tags WHERE content_id=?');
             $data = array($contentID);
