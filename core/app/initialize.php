@@ -111,8 +111,14 @@ $minifyScripts .= FOLDER."core/js/3rd-party/angular-translate.min.js,";
 $minifyScripts .= FOLDER."core/js/3rd-party/angular-translate-loader-static-files.min.js,";
 // $minifyScripts .= FOLDER."core/js/3rd-party/angular-translate-storage-cookie.min.js,";
 $minifyScripts .= FOLDER."core/js/3rd-party/diff_match_patch.js,";
+$minifyScripts .= FOLDER."core/js/3rd-party/document-register-element.js,";
 $minifyScripts .= FOLDER."core/js/3rd-party/angular-ui-tree.min.js";
 
+// load all scripts in the 'components' folder
+foreach (glob(FOLDER ."components/*.js") as $file) {
+    $filename = basename($file, '.js');
+    $minifyScripts .= ",components/" . $filename . ".js";
+}
 
 $minifyCSS .= FOLDER."core/css/cosmo-default-style.minify.css";
 
@@ -205,7 +211,7 @@ while($row = $stmt->fetch())
             foreach($moduleJSON->scripts as $script){
                 if(strpos($script, '//') !== FALSE)
                     $scripts .= "<script src='". $script ."'></script>\n\t"; // External file
-                else if(!$developerMode && (strpos($script, '.min.') !== FALSE || strpos($script, '.minify.')) !== FALSE)
+                else if(!$developerMode && (strpos($script, '.min.') !== FALSE || strpos($script, '.minify.') !== FALSE))
                     $minifyScripts .= ",".FOLDER."modules/$folder/". $script; // Minify and combine script
                 else
                     $scripts .= "<script src='"."modules/$folder/". $script ."'></script>\n\t"; // File can't be minified

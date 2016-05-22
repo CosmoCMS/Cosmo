@@ -2,7 +2,7 @@
     <h1 cs-content="header" type="text" prepopulate="Headline"></h1>
     <div class="meta">
         <div class="byline">
-            <span>By {{post.author.name}} on</span> <span>{{post.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in post.tags" class="tags">#{{tag}} </span>
+            <span>By {{page.author.name || page.author.username}} on</span> <span>{{page.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in post.tags" class="tags">#{{tag}} </span>
         </div>
         <!--<div class="comments">
             <a ng-click="showComments=true;post.expandMenu=true"><i class="fa fa-comments"></i>{{post.commentsNum}} Comments</a>

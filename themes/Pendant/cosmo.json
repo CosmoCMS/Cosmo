@@ -60,7 +60,10 @@
     "pages": [
         "post.html",
         "post-alt.html",
-        "blog-alt-2.html",
+        "post-alt-2.html",
+        "page.html",
+        "page-alt.html",
+        "page-alt-2.html",
         "home.html",
         "home-alt.html"
     ],

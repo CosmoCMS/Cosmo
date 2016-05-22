@@ -3,7 +3,7 @@
         <img ng-src="{{page.author.photo}}">
     </div>
     <div class="byline-info">
-        <h5>{{page.author.name}}</h5>
+        <h5>{{page.author.name || page.author.username}}</h5>
         <p>{{page.author.bio}}</p>
     </div>
     <!-- <div class="article--comments pad-vert">
