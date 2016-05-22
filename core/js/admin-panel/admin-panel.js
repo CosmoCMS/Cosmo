@@ -37,7 +37,7 @@ angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST',
                 $scope.admin.displayMessage = true;
             }
         }
-    };
+    }
 
     // Set a cookie so you don't see this message any more
     $scope.removeMessage = function(){
@@ -66,7 +66,7 @@ angular.module('cosmo').controller('adminPanelCtrl', ['$scope', 'Users', 'REST',
             $scope.admin.photo = data.photo;
         else
             $scope.admin.photo = 'core/img/image.svg';
-    };
+    }
 
     // Go to the new page
     $scope.navigate = function(){

@@ -71,6 +71,7 @@
             ])
 
             .config(['$routeProvider', '$locationProvider', '$translateProvider', function($routeProvider, $locationProvider, $translateProvider) {
+
                 // Configure standard URLs
                 $routeProvider.
                     when('/admin', { template: '<div></div>' }).
@@ -92,7 +93,7 @@
             }])
 
             // Initialize JS variables
-            .run(['Users', '$http', '$templateCache', 'REST', '$rootScope', 'Page', '$timeout', function(Users, $http, $templateCache, REST, $rootScope, Page, $timeout) {
+            .run(['Users', '$http', '$templateCache', '$rootScope', 'Page', '$timeout', function(Users, $http, $templateCache, $rootScope, Page, $timeout) {
 
                 Users.username = '<?php echo $username; ?>';<?php if(isset($usersID) && $usersID): ?>
 

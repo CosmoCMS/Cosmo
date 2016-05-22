@@ -10,7 +10,7 @@
                     <h3>{{post.subheader}}</h3>
                     <div class="meta">
                         <div class="byline">
-                            <span>By {{page.author.name}} on</span> <span>{{page.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in page.tags" class="tags">#{{tag}} </span>
+                            <span>By {{post.author.name || post.author.username}} on</span> <span>{{post.published_date * 1000 | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in page.tags" class="tags">#{{tag}} </span>
                         </div>
                     </div>
                 </div>

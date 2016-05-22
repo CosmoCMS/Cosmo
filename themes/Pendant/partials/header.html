@@ -16,7 +16,7 @@
                         </a>
                         <div class="meta" ng-show="page.author.name">
                             <div class="byline">
-                                <span>By {{page.author.name}} on</span> <span>{{page.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in page.tags" class="tags">#{{tag}} </span>
+                                <span>By {{page.author.name || page.author.username}} on</span> <span>{{page.published_date | date:'MM.dd.yyyy'}}</span> <span ng-repeat="tag in page.tags" class="tags">#{{tag}} </span>
                             </div>
                         </div>
                     </article>

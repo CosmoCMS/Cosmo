@@ -2,7 +2,7 @@
  *              WYSIWYG Directive                 *
  **************************************************/
 
-angular.module('cosmo').directive('csWysiwyg', ['$rootScope', 'Page', '$compile', '$timeout', function($rootScope, Page, $compile, $timeout){
+angular.module('cosmo').directive('csWysiwyg', ['$rootScope', 'Page', '$timeout', 'Users', function($rootScope, Page, $timeout, Users){
     return {
         templateUrl: 'core/html/toolbar.html',
         replace: true,
@@ -57,8 +57,10 @@ angular.module('cosmo').directive('csWysiwyg', ['$rootScope', 'Page', '$compile'
                 // Wait for the next digest cycle in case user clicked from another editable div.
                 // Focusout from one editable div closes the toolbar.
                 $timeout(function(){
-                    scope.editor.showToolbar = true;
-                    scope.editor.dropdown = null;
+                    if (Users.admin) {
+                        scope.editor.showToolbar = true;
+                        scope.editor.dropdown = null;
+                    }
                 });
                 var pageX = data.pageX - 120; // -120 centers toolbar
                 var pageY = data.pageY - 75; // Go directly above click. CSS margin pushes this above mouse
@@ -91,8 +93,8 @@ angular.module('cosmo').directive('csWysiwyg', ['$rootScope', 'Page', '$compile'
                 while(nextLoc < loc && nextLoc !== -1){
                     var tableLoc = html.indexOf('<table>', nextLoc);
                     nextLoc = tableLoc;
-                };
-            };
+                }
+            }
 
             // User clicked a button on the toolbar
             scope.action = function(action, premade, premadeDesc){

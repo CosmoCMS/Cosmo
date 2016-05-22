@@ -40,6 +40,7 @@ angular.module('cosmo').controller('urlCtrl', ['$scope', 'Page', '$rootScope', '
         }
 
         Page.id = data.id;
+        $scope.page.id = data.id;
         Page.author = data.author;
         $scope.page.author = data.author;
         Page.title = data.title;

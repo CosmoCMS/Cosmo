@@ -15,7 +15,7 @@ angular.module('cosmo').controller('blockCtrl', ['$scope', 'REST', 'Page', '$roo
         $scope.blocks = data;
     });
 
-    // Get the page types availabl
+    // Get the page types available
     $scope.types = Page.themePages;
 
     $scope.$on('wysiwygEdit', function(event, data){

@@ -267,7 +267,7 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
 
             // Update the page
             REST.content.update({
-                contentID: $scope.page.id,
+                contentID: Page.id,
                 title: $scope.page.title,
                 description: $scope.page.description,
                 header: Page.header,
@@ -321,9 +321,6 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
         // Update the page after saving a page revision
         function saveRevisionPromise(data){
             revisionID = data.id;
-            var extrasCounter = {
-                i: 1
-            };
 
             // Save additional data if there is any
             if(Object.keys(Page.extras).length === 0){
@@ -341,7 +338,7 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
 
                     // Save extra
                     REST.contentExtras.save({
-                        contentID: contentID,
+                        contentID: $scope.page.id,
                         name: key,
                         extra: Page.extras[key]
                     }, saveExtrasPromise, saveExtrasPromise);
@@ -349,16 +346,20 @@ angular.module('cosmo').controller('pageCtrl', ['$scope', 'REST', '$location', '
                     // Save extra to revisions
                     REST.contentRevisionsExtras.save({
                         revisionID: revisionID,
-                        contentID: contentID,
+                        contentID: $scope.page.id,
                         name: key,
                         extra: Page.extras[key]
                     });
-                };
+                }
             }
             $translate('page_created').then(function(translatedText){
                 $rootScope.$broadcast('notify', {message: translatedText});
             });
         }
+
+        var extrasCounter = {
+            i: 1
+        };
 
         // Notify the user after saving the last extra
         function saveExtrasPromise(){
