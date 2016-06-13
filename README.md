@@ -10,3 +10,9 @@ Home page - http://www.cosmocms.org/
 Demo- http://www.cosmocms.org/demo/
 
 Install - http://www.cosmocms.org/install
+
+Basics - http://www.cosmocms.org/cosmo-basics
+
+Create a Module - http://www.cosmocms.org/how-to-create-a-module-for-cosmo
+
+Create a Theme - http://www.cosmocms.org/how-to-create-a-theme-for-cosmo
